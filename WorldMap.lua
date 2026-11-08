@@ -456,13 +456,18 @@ local function markBest()
     SFP.db.bestSpots = newSaved
 end
 
+-- a farm spot (a monster) is on the map only when the player picked it in the spot list, like the rares are picked for a waypoint: SFP.db.pickedSpots
+local function isPlainSpot(sp) return not (sp.gather or sp.rare or sp.special or sp.hunter) end
+local function spotIsOff(sp)
+    if isPlainSpot(sp) then return not (SFP.db.pickedSpots and SFP.db.pickedSpots[spotKey(sp)]) end
+    return SFP.db.hiddenSpots and SFP.db.hiddenSpots[spotKey(sp)] and true or false
+end
+SFP.SpotIsOff = spotIsOff
+
 local function showSpot(sp)
     local hid = SFP.db.hiddenSpots
+    if isPlainSpot(sp) then return spotIsOff(sp) == false end
     if hid and hid[spotKey(sp)] then return false end
-    if not (sp.gather or sp.rare or sp.special or sp.hunter) then
-        if not SFP._bestDone then markBest() end
-        if sp._best == false then return false end
-    end
     if sp.gather then return sp.gather == "ore" and SFP.db.showMining or sp.gather == "herb" and SFP.db.showHerbs or false end
     if sp.hunter then return SFP.db.showHunter end
     if sp.rare then return SFP.db.showRares end
@@ -1413,7 +1418,8 @@ end
 local function setSpotsHidden(zone, keys, hide, group)
     if not hide and group then enableGroup(group) end
     SFP.db.hiddenSpots = SFP.db.hiddenSpots or {}
-    for _, k in ipairs(keys) do SFP.db.hiddenSpots[k] = hide and true or nil end
+    SFP.db.pickedSpots = SFP.db.pickedSpots or {}
+    for _, k in ipairs(keys) do SFP.db.hiddenSpots[k] = hide and true or nil; SFP.db.pickedSpots[k] = (not hide) and true or nil end
     SFP.hiddenVer = SFP.hiddenVer + 1
     zone._areas, zone._clusters = nil, nil
     SFP.RefreshWorldMap()
@@ -1568,7 +1574,7 @@ local function spotRow(i)
         local s = self.spot
         if not s then return end
         local zone = SFP.zoneByMap[spotPanel.mapID]
-        if zone then setSpotsHidden(zone, { spotKey(s) }, not (SFP.db.hiddenSpots and SFP.db.hiddenSpots[spotKey(s)]), spotGroup(s)) end
+        if zone then setSpotsHidden(zone, { spotKey(s) }, not spotIsOff(s), spotGroup(s)) end
     end)
     spotPanel.rows[i] = r
     return r
@@ -1589,7 +1595,7 @@ drawSpotList = function(mapID)
             groups[e.group] = true
             nSpots = nSpots + 1
             keys[#keys + 1] = spotKey(e.spot)
-            if SFP.db.hiddenSpots and SFP.db.hiddenSpots[spotKey(e.spot)] then nHidden = nHidden + 1 end
+            if spotIsOff(e.spot) then nHidden = nHidden + 1 end
         end
     end
     spotPanel.title:SetText("|cffff8000Rares|r  |cffaaaaaa" .. (nSpots - nHidden) .. "/" .. nSpots .. "|r")
@@ -1631,7 +1637,7 @@ drawSpotList = function(mapID)
                 r.name:SetText("|cffffd100" .. e.header .. "|r" .. (groupOn(e.group) and "" or "  |cff808080(off in the menu)|r"))
             else
                 local s = e.spot
-                local off = SFP.db.hiddenSpots and SFP.db.hiddenSpots[spotKey(s)]
+                local off = spotIsOff(s)
                 r.spot = s
                 r.check:Show(); r.dot:Show()
                 r.check:SetChecked(not off)

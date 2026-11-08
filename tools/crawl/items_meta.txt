@@ -1832,3 +1832,101 @@
 220932|Waylaid Supplies: Thorium Grenades|2|7|0|45|0
 220935|Waylaid Supplies: Thorium Belts|2|7|0|45|0
 221302|Four of Nightmares|3|15|0|1|0
+2466|Skullsplitter Fetish|1|12|0|1|0
+3395|Recipe: Limited Invulnerability Potion|2|9|6|50|0
+6425|Blackforge Girdle|2|4|3|44|39
+9295|Recipe: Invisibility Potion|2|9|6|47|0
+9915|Royal Headband|2|4|1|45|40
+9917|Tracker's Boots|2|4|2|44|39
+9923|Tracker's Shoulderpads|2|4|2|45|40
+10089|Gothic Sabatons|2|4|4|45|40
+220924|Waylaid Supplies: Truesilver Bars|2|7|0|45|0
+220940|Waylaid Supplies: Black Mageweave Headbands|2|7|0|45|0
+1522|Headhunting Spear|2|2|6|36|31
+1532|Shrunken Head|1|12|0|1|0
+8387|Pattern: Big Voodoo Mask|2|9|1|44|0
+1613|Spiritchaser Staff|2|2|10|44|39
+1713|Ankh of Life|3|4|-4|45|40
+1715|Polished Jazeraint Armor|3|4|3|44|39
+1994|Ebonclaw Reaver|2|2|0|46|41
+4046|Mistscape Pants|2|4|1|45|40
+4080|Blackforge Cowl|2|4|3|45|40
+6427|Mistscape Robe|2|4|1|46|41
+7113|Mistscape Armor|2|4|1|46|41
+7522|Gossamer Boots|2|4|1|45|40
+7524|Gossamer Cape|2|4|-6|44|39
+7526|Gossamer Belt|2|4|1|46|41
+7529|Cabalist Helm|2|4|2|47|42
+7531|Cabalist Boots|2|4|2|46|41
+7544|Champion's Cape|2|4|-6|44|39
+7546|Champion's Girdle|2|4|3|46|41
+8107|Hibernal Boots|2|4|1|47|42
+8109|Hibernal Cloak|2|4|-6|46|41
+8114|Hibernal Sash|2|4|1|47|42
+8116|Heraldic Belt|2|4|2|47|42
+8120|Heraldic Cloak|2|4|-6|45|40
+8127|Myrmidon's Cape|2|4|-6|47|42
+8139|Chromite Gauntlets|2|4|4|44|40
+8143|Chromite Legplates|2|4|4|46|41
+8144|Chromite Pauldrons|2|4|4|45|40
+8199|Battlefield Destroyer|2|2|8|47|42
+8273|Valorous Wristguards|2|4|4|46|41
+8278|Valorous Greaves|2|4|4|47|42
+9298|Recipe: Elixir of Giants|2|9|6|49|0
+9882|Sorcerer Sphere|2|4|-5|43|38
+9911|Royal Trousers|2|4|1|46|41
+9912|Royal Amice|2|4|1|45|40
+9921|Tracker's Headband|2|4|2|45|40
+9922|Tracker's Leggings|2|4|2|46|41
+9956|Warmonger's Bracers|2|4|3|46|41
+9960|Warmonger's Gauntlets|2|4|3|47|42
+10090|Gothic Plate Helmet|2|4|4|46|41
+12012|Marsh Ring|2|4|-2|45|40
+13095|Assault Band|3|4|-2|44|39
+15262|Greater Maul|2|2|5|46|41
+15270|Gigantic War Axe|2|2|1|46|41
+15287|Crusader Bow|2|2|2|45|40
+220922|Waylaid Supplies: Sungrass|2|7|0|45|0
+220937|Waylaid Supplies: Rugged Armor Kits|2|7|0|45|0
+220942|Waylaid Supplies: Tuxedo Shirts|2|7|0|45|0
+221283|Three of Plagues|3|15|0|1|0
+867|Gloves of Holy Might|4|4|2|42|37
+1630|Broken Electro-lantern|0|15|0|1|0
+2771|Tin Ore|1|7|7|20|0
+2772|Iron Ore|1|7|7|30|0
+2836|Coarse Stone|1|7|7|15|0
+2838|Heavy Stone|1|7|7|25|0
+3917|Singing Blue Crystal|1|12|0|1|0
+5432|Hickory Pipe|0|15|0|1|14
+7993|Plans: Dazzling Mithril Rapier|2|9|4|48|0
+11203|Formula: Enchant Gloves - Advanced Mining|2|9|8|43|0
+11208|Formula: Enchant Weapon - Demonslaying|2|9|8|46|0
+13088|Gazlowe's Charm|3|4|-3|41|36
+13132|Skeletal Shoulders|3|4|3|43|38
+220923|Waylaid Supplies: Dreamfoil|2|7|0|45|0
+220928|Waylaid Supplies: Enchanted Thorium Bars|2|7|0|45|0
+220933|Waylaid Supplies: Thorium Rifles|2|7|0|45|0
+220934|Waylaid Supplies: Mithril Coifs|2|7|0|45|0
+220938|Waylaid Supplies: Wicked Leather Bracers|2|7|0|45|0
+220941|Waylaid Supplies: Runecloth Belts|2|7|0|45|0
+1652|Sturdy Lunchbox|1|1|0|35|14
+9966|Embossed Plate Armor|2|4|4|45|40
+220919|Waylaid Supplies: Nightfin Soup|2|7|0|45|0
+1664|Spellforce Rod|2|2|10|41|36
+221291|Two of Dunes|3|15|0|1|0
+1659|Engineering Gloves|2|4|1|40|35
+4377|Heavy Blasting Powder|1|7|1|25|0
+4382|Bronze Framework|1|7|1|29|0
+4387|Iron Strut|1|7|1|32|0
+4389|Gyrochronatom|1|7|1|34|0
+9930|Brigade Gauntlets|2|4|3|43|38
+3930|Maury's Key|1|13|0|1|0
+1677|Drake-scale Vest|2|4|3|46|41
+1686|Bristly Whisker|0|15|0|1|0
+1687|Retractable Claw|0|15|0|1|0
+12202|Tiger Meat|1|7|8|30|0
+8146|Wicked Claw|1|7|0|45|0
+12261|Plans: Searing Golden Blade|2|9|4|38|0
+1688|Long Soft Tail|0|15|0|1|0
+3838|Shadowmaw Claw|1|12|0|1|0
+10605|Schematic: Spellpower Goggles Xtreme|3|9|3|45|0
