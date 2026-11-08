@@ -13,6 +13,16 @@ for line in open(os.path.join(HERE, "crawl", "questgivers.txt"), encoding="utf8"
     p = line.split("|", 3)
     if len(p) < 4 or not p[2]:
         continue
+    # holiday and event quests (the Darkmoon Faire, seasonal events) are level 60 quests that need only a few levels: they are not part of the zones
+    keep = []
+    for q in p[3].split(","):
+        f = q.split(":")
+        if len(f) >= 5 and f[1].isdigit() and f[2].isdigit() and int(f[1]) >= 60 and int(f[2]) <= 10:
+            continue
+        keep.append(q)
+    if not keep:
+        continue
+    p[3] = ",".join(keep)
     qs = p[3].replace('"', "'")
     for part in p[2].split("~"):
         area, pts = part.split(":", 1)
