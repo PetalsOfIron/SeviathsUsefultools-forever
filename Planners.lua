@@ -353,9 +353,13 @@ local buildQuests = K.simplePage("Quest Planner",
 ---------------------------------------------------------------------------
 -- Roleplay: the OC (original character) of each of your characters, saved for the whole account
 ---------------------------------------------------------------------------
+-- the fields of the roleplay addons (Total RP, MyRolePlay, XRP): the long texts on the left, the short facts on the right; { key, label, lines, column }
 local RP_FIELDS = {
-    { "title", "Title or role", 1 }, { "looks", "Looks", 3 }, { "traits", "Personality", 3 },
-    { "story", "Backstory", 5 }, { "notes", "Notes and plans", 3 },
+    { "title", "Title or role", 1, 1 }, { "looks", "Looks (physical description)", 3, 1 }, { "traits", "Personality", 3, 1 },
+    { "story", "Backstory (history)", 5, 1 }, { "notes", "Notes and plans (private)", 3, 1 },
+    { "age", "Age", 1, 2 }, { "height", "Height and build", 1, 2 }, { "eyes", "Eyes and hair", 1, 2 }, { "residence", "Residence", 1, 2 },
+    { "birthplace", "Birthplace", 1, 2 }, { "motto", "Motto", 1, 2 }, { "currently", "Currently (what my character is doing)", 2, 2 },
+    { "ooc", "Out of character info", 2, 2 },
 }
 
 local function rpData() SFP.db.rp = SFP.db.rp or { chars = {} }; return SFP.db.rp end
@@ -414,14 +418,26 @@ local buildRoleplay = K.simplePage("Roleplay",
             end
             for i = #keys + 1, #charButtons do charButtons[i]:Hide() end
         end
-        local top = y - 82   -- room for three rows of characters
+        local top1 = y - 112   -- room for three rows of characters and the status button
+        local top2 = top1
+        -- in character / out of character, like the roleplay addons have
+        local statusBtn
+        statusBtn = K.mkButton(pane, "", 230, function()
+            local r = rpOf(rpSelected)
+            r.status = (r.status == "OOC") and "IC" or "OOC"
+            statusBtn.text:SetText(r.status == "OOC" and "Out of character (OOC)" or "In character (IC)")
+        end, "In character or out of character: shown on the tooltip of your character.")
+        statusBtn:SetPoint("TOPLEFT", 12, y - 84)
         for _, f in ipairs(RP_FIELDS) do
-            K.mkText(pane, f[2], 12, top, 300, "GameFontNormalSmall")
+            local col = f[4] or 1
+            local top = col == 1 and top1 or top2
+            local colX, colW = (col == 1) and 12 or 500, (col == 1) and 470 or 230
+            K.mkText(pane, f[2], colX, top, colW, "GameFontNormalSmall")
             -- a visible box (dark with a gold edge) to type in
             local h = f[3] * 13 + 10
             local holder = CreateFrame("Frame", nil, pane, "BackdropTemplate")
-            holder:SetPoint("TOPLEFT", 12, top - 14)
-            holder:SetSize(470, h)
+            holder:SetPoint("TOPLEFT", colX, top - 14)
+            holder:SetSize(colW, h)
             holder:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8x8", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", edgeSize = 12,
                 insets = { left = 3, right = 3, top = 3, bottom = 3 } })
             holder:SetBackdropColor(0.04, 0.04, 0.05, 0.9)
@@ -440,9 +456,10 @@ local buildRoleplay = K.simplePage("Roleplay",
             box:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
             if f[3] == 1 then box:SetScript("OnEnterPressed", function(self) save(self); self:ClearFocus() end) end
             editors[#editors + 1] = { key = f[1], box = box }
-            top = top - h - 17
+            if col == 1 then top1 = top1 - h - 17 else top2 = top2 - h - 17 end
         end
-        return function() rebuildButtons(); load() end
+        local baseLoad = load
+        return function() rebuildButtons(); baseLoad(); statusBtn.text:SetText(rpOf(rpSelected).status == "OOC" and "Out of character (OOC)" or "In character (IC)") end
     end)
 
 -- your OC on the tooltip of your character
@@ -462,7 +479,13 @@ if TooltipDataProcessor and Enum and Enum.TooltipDataType and Enum.TooltipDataTy
             if (rec.looks or "") ~= "" then tt:AddLine(rec.looks:sub(1, 160), 0.8, 0.8, 0.8, true) end
             if (rec.traits or "") ~= "" then tt:AddLine("|cffffd100Personality:|r " .. rec.traits:sub(1, 120), 0.8, 0.8, 0.8, true) end
             if (rec.story or "") ~= "" then tt:AddLine("|cffffd100Backstory:|r " .. rec.story:sub(1, 240), 0.8, 0.8, 0.8, true) end
-            if title or (rec.looks or "") ~= "" or (rec.traits or "") ~= "" or (rec.story or "") ~= "" then tt:Show() end
+            if (rec.age or "") ~= "" then tt:AddLine("|cffffd100Age:|r " .. rec.age:sub(1, 40), 0.8, 0.8, 0.8) end
+            if (rec.motto or "") ~= "" then tt:AddLine("\"" .. rec.motto:sub(1, 100) .. "\"", 0.9, 0.8, 0.5, true) end
+            if (rec.currently or "") ~= "" then tt:AddLine("|cffffd100Currently:|r " .. rec.currently:sub(1, 120), 0.8, 0.8, 0.8, true) end
+            local any = false
+            for _, k in ipairs({ "title", "looks", "traits", "story", "age", "motto", "currently" }) do if (rec[k] or "") ~= "" then any = true end end
+            if any then tt:AddLine(rec.status == "OOC" and "|cffff6060Out of character|r" or "|cff40ff40In character|r") end
+            tt:Show()
         end
     end)
 end

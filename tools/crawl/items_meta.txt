@@ -5357,3 +5357,8 @@
 12564|Assassination Note|1|12|0|23|23
 11668|Flute of Xavaric|1|12|0|54|49
 16869|The Skull of Scryer|1|12|0|1|0
+12842|Crudely-written Log|1|12|0|52|52
+12722|Good Luck Other-Half-Charm|1|12|0|1|0
+12402|Ancient Egg|1|12|0|1|0
+19064|Shackle Key|1|12|0|1|0
+12738|Dalson Outhouse Key|1|12|0|1|0
