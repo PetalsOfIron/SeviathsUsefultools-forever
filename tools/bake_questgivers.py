@@ -17,7 +17,7 @@ for line in open(os.path.join(HERE, "crawl", "questgivers.txt"), encoding="utf8"
     keep = []
     for q in p[3].split(","):
         f = q.split(":")
-        if len(f) >= 5 and f[1].isdigit() and f[2].isdigit() and int(f[1]) >= 60 and int(f[2]) <= 10:
+        if len(f) >= 5 and f[1].isdigit() and f[2].isdigit() and int(f[1]) >= 60 and int(f[2]) <= 30:
             continue
         keep.append(q)
     if not keep:
