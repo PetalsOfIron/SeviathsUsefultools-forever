@@ -163,4 +163,5 @@ Modules\Codex\Hooks.lua
 Hub.lua
 Menu.lua
 Planners.lua
+RPBridge.lua
 SavedPackLogout.lua

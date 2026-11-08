@@ -5709,3 +5709,15 @@
 216950|Creepy Dalaran Relic|1|12|0|1|0
 216951|Slippery Dalaran Relic|1|12|0|1|0
 217266|Pattern: Guardian Belt|3|9|1|34|0
+913|Huge Ogre Sword|2|2|8|29|24
+219402|Dream-Touched Dragonscale|1|12|0|25|0
+219446|Dream-Infused Dragonscale|1|12|0|40|0
+9060|Inlaid Mithril Cylinder|1|15|1|42|0
+11987|Iridium Circle|2|4|-2|43|38
+221971|Dreamsworn Horn|2|15|0|40|0
+221972|Dreampyre Fire|2|15|0|40|0
+221973|Dreamhunter Fang|2|15|0|40|0
+13342|Pet Fish|1|15|0|20|0
+13926|Golden Pearl|2|7|0|40|0
+219487|Starshell|1|7|0|50|0
+219517|Moondragon Scale|1|12|0|50|0

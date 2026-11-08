@@ -430,6 +430,18 @@ local buildRoleplay = K.simplePage("Roleplay",
         local top1 = y - 112   -- room for three rows of characters and the status button
         local top2 = top1
         -- in character / out of character, like the roleplay addons have
+        -- copy the profile of an installed roleplay addon (Total RP 3, XRP, MyRolePlay) into these fields
+        local importBtn
+        if SFP.RPBridge and SFP.RPBridge.Which() then
+            importBtn = K.mkButton(pane, "Import from " .. SFP.RPBridge.Which(), 230, function()
+                local mine = SFP.RPBridge.MyProfile()
+                if not mine then SFP:Print("No profile found in " .. SFP.RPBridge.Which() .. " yet.") return end
+                local r = rpOf(rpSelected)
+                for k, v in pairs(mine) do if k ~= "name" and v and v ~= "" then r[k] = v end end
+                SFP:Safe("rp", pane.refresh)
+            end, "Copies your own profile of the roleplay addon into this page (only for the character you are playing).")
+            importBtn:SetPoint("TOPLEFT", 252, y - 84)
+        end
         local statusBtn
         statusBtn = K.mkButton(pane, "", 230, function()
             local r = rpOf(rpSelected)

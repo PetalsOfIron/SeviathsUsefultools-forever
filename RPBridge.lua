@@ -1,0 +1,119 @@
+-- SeviathsUsefulTools - roleplay addon bridge: reads the character profiles of Total RP 3, XRP and MyRolePlay (when one of them is installed),
+-- shows them on the tooltip of other players, and can copy your own profile of that addon into the Roleplay page.
+-- Every call into another addon is guarded: a different version of it can only make a field empty, never an error.
+
+local _, SFP = ...
+
+local Bridge = {}
+SFP.RPBridge = Bridge
+
+local function safe(f, ...)
+    local ok, a, b, c = pcall(f, ...)
+    if ok then return a, b, c end
+end
+
+local function text(v)
+    if type(v) ~= "string" then return nil end
+    if issecretvalue and issecretvalue(v) then return nil end
+    v = v:gsub("{[^}]*}", ""):gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", ""):gsub("^%s+", ""):gsub("%s+$", "")
+    return v ~= "" and v or nil
+end
+
+-- the fields of one profile: name, title, age, height, eyes, residence, birthplace, motto, looks, traits, story, currently, ooc
+local function fromTRP3(profile)
+    if type(profile) ~= "table" then return nil end
+    local c, a = profile.characteristics or {}, profile.about or {}
+    local t3 = a.T3 or {}
+    local function block(k) local t = t3[k] return type(t) == "table" and text(t.TX) or nil end
+    local name = text(((c.FN or "") .. " " .. (c.LN or "")))
+    return { name = name, title = text(c.TI), age = text(c.AG), height = text(c.HE), eyes = text(c.EC), residence = text(c.RE),
+        birthplace = text(c.BP), looks = block("PH"), traits = block("PS"), story = block("HI"),
+        currently = profile.character and text(profile.character.CU) or nil, ooc = profile.character and text(profile.character.CO) or nil }
+end
+
+local function fromFields(f)
+    if type(f) ~= "table" then return nil end
+    return { name = text(f.NA), title = text(f.NT), age = text(f.AG), height = text(f.AH), eyes = text(f.AE), residence = text(f.HH),
+        birthplace = text(f.HB), motto = text(f.MO), looks = text(f.DE), traits = text(f.PE), story = text(f.HI),
+        currently = text(f.CU), ooc = text(f.CO) }
+end
+
+function Bridge.Which()
+    if _G.TRP3_API then return "Total RP 3" end
+    if _G.xrp then return "XRP" end
+    if _G.msp and _G.mrp then return "MyRolePlay" end
+    if _G.msp then return "an MSP addon" end
+end
+
+-- the profile of a unit ("target", "mouseover" ...) from the installed roleplay addon, or nil
+function Bridge.ProfileOf(unit)
+    if type(unit) ~= "string" then return nil end
+    local trp = _G.TRP3_API
+    if trp and trp.register and trp.utils and trp.utils.str then
+        local id = safe(trp.utils.str.getUnitID, unit)
+        if id and trp.register.isUnitIDKnown and safe(trp.register.isUnitIDKnown, id) then
+            local p = safe(trp.register.getUnitIDCurrentProfile, id)
+            local r = fromTRP3(p)
+            if r then return r end
+        end
+    end
+    local xrp = _G.xrp
+    if xrp and xrp.characters and xrp.characters.byUnit then
+        local ch = safe(xrp.characters.byUnit, unit)
+        if type(ch) == "table" and ch.fields then return fromFields(ch.fields) end
+    end
+    local msp = _G.msp
+    if msp and msp.char then
+        local name, realm = UnitName(unit)
+        if name then
+            local key = (realm and realm ~= "") and (name .. "-" .. realm) or name
+            local rec = msp.char[key] or msp.char[name]
+            if type(rec) == "table" and rec.field then return fromFields(rec.field) end
+            if msp.Request then safe(msp.Request, msp, key) end   -- asked once: the answer is there on a later hover
+        end
+    end
+end
+
+-- your own profile of the roleplay addon, to copy into the Roleplay page
+function Bridge.MyProfile()
+    local trp = _G.TRP3_API
+    if trp and trp.profile and trp.profile.getData then
+        local c, a = safe(trp.profile.getData, "player/characteristics"), safe(trp.profile.getData, "player/about")
+        local r = fromTRP3({ characteristics = c, about = a })
+        if r then return r end
+    end
+    local xrp = _G.xrp
+    if xrp and xrp.profile and xrp.profile.fields then return fromFields(xrp.profile.fields) end
+    local msp = _G.msp
+    if msp and msp.my and msp.my.field then return fromFields(msp.my.field) end
+end
+
+-- the lines on the tooltip of another player
+local function addLines(tt, unit)
+    local r = Bridge.ProfileOf(unit)
+    if not r then return end
+    local CY = "|c" .. (SFP.CYAN_HEX or "ffffd100")
+    local any = false
+    local function line(label, v, max)
+        if v then tt:AddLine(CY .. label .. ":|r " .. v:sub(1, max or 80), 0.8, 0.8, 0.8, true); any = true end
+    end
+    if r.name then tt:AddLine(CY .. r.name .. "|r"); any = true end
+    if r.title then tt:AddLine(r.title, 1, 1, 1); any = true end
+    line("Age", r.age, 40); line("Height", r.height, 60); line("Residence", r.residence, 80)
+    line("Personality", r.traits, 120); line("Backstory", r.story, 240); line("Currently", r.currently, 120)
+    if any then tt:Show() end
+end
+
+if TooltipDataProcessor and Enum and Enum.TooltipDataType and Enum.TooltipDataType.Unit then
+    pcall(TooltipDataProcessor.AddTooltipPostCall, Enum.TooltipDataType.Unit, function(tt)
+        if tt ~= GameTooltip then return end
+        local okU, _, unit = pcall(tt.GetUnit, tt)
+        if not okU or not unit or (issecretvalue and issecretvalue(unit)) then return end
+        local okP, isPlayer = pcall(UnitIsPlayer, unit)
+        if not okP or not isPlayer or (issecretvalue and issecretvalue(isPlayer)) then return end
+        local okS, isMe = pcall(UnitIsUnit, unit, "player")
+        if okS and isMe then return end   -- yourself: the Roleplay page of this addon
+        if not Bridge.Which() then return end
+        pcall(addLines, tt, unit)
+    end)
+end
