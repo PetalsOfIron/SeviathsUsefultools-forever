@@ -149,3 +149,79 @@ end
 function API.GetPrice(itemID)
     return SFP.GetPrice and SFP:GetPrice(itemID) or nil
 end
+
+---------------------------------------------------------------------------
+-- The MSP exchange (the language Total RP 3, MyRolePlay and XRP speak over addon messages): this addon answers "?FIELD" requests with the card written on
+-- the Roleplay page, and asks the same of other players when you hover them, so players of those addons see your card and you see theirs even without one of
+-- these addons yourself. Only when no addon of that family is installed (an installed one does the talking itself, and this would answer twice).
+---------------------------------------------------------------------------
+local MSP_FIELDS = { NA = "name", NT = "title", AG = "age", AH = "height", AE = "eyes", HH = "residence", HB = "birthplace", MO = "motto",
+    DE = "looks", PE = "traits", HI = "story", CU = "currently", CO = "ooc" }
+local theirs = {}   -- [sender] = { fields, t }
+
+local function mspActive()
+    return not (_G.msp or _G.TRP3_API or _G.xrp)
+end
+
+local function myCard()
+    local p = API.GetMyProfile() or {}
+    local n, s = UnitName("player")
+    p.name = (type(s) == "string" and s ~= "" and not s:find("Realm") and not s:find("CAMWOW")) and (n .. " " .. s) or n
+    return p
+end
+
+local function clean(v) return (tostring(v or ""):gsub("[\t\n]", " ")) end
+
+if C_ChatInfo and C_ChatInfo.RegisterAddonMessagePrefix and C_ChatInfo.SendAddonMessage then
+    pcall(C_ChatInfo.RegisterAddonMessagePrefix, "MSP")
+    local f = CreateFrame("Frame")
+    f:RegisterEvent("CHAT_MSG_ADDON")
+    f:SetScript("OnEvent", function(_, _, prefix, text, channel, sender)
+        if prefix ~= "MSP" or type(text) ~= "string" or (issecretvalue and (issecretvalue(text) or issecretvalue(sender))) then return end
+        if not mspActive() then return end
+        if text:find("^%?") or text:find("\t%?") then
+            -- a request: ?NA\t?DE ...  -> our answer: NA=...\tDE=...
+            local out = { "VP=1", "VA=SeviathsUsefulTools/" .. tostring(SFP.VERSION) }
+            local card = myCard()
+            for fld in text:gmatch("%?(%u%u)") do
+                local key = MSP_FIELDS[fld]
+                if key and card[key] and card[key] ~= "" then out[#out + 1] = fld .. "=" .. clean(card[key]) end
+            end
+            if #out > 2 then pcall(C_ChatInfo.SendAddonMessage, "MSP", table.concat(out, "\t"), "WHISPER", sender) end
+        else
+            -- an answer from someone: FIELD=value pairs
+            local rec = theirs[sender] or { fields = {} }
+            for fld, val in text:gmatch("(%u%u)=([^\t]*)") do rec.fields[fld] = val end
+            rec.t = GetTime()
+            theirs[sender] = rec
+        end
+    end)
+    -- ask a player we hover (once a minute) for the card
+    local asked = {}
+    local hov = CreateFrame("Frame")
+    hov:RegisterEvent("UPDATE_MOUSEOVER_UNIT")
+    hov:SetScript("OnEvent", function()
+        if not mspActive() or not UnitExists("mouseover") then return end
+        local okP, isP = pcall(UnitIsPlayer, "mouseover")
+        if not okP or not isP or (issecretvalue and issecretvalue(isP)) or UnitIsUnit("mouseover", "player") then return end
+        local name, realm = UnitName("mouseover")
+        if type(name) ~= "string" or (issecretvalue and issecretvalue(name)) then return end
+        local key = (type(realm) == "string" and realm ~= "") and (name .. "-" .. realm) or name
+        if asked[key] and GetTime() - asked[key] < 60 then return end
+        asked[key] = GetTime()
+        pcall(C_ChatInfo.SendAddonMessage, "MSP", "?NA\t?NT\t?AG\t?AH\t?HH\t?DE\t?PE\t?HI\t?CU", "WHISPER", key)
+    end)
+    -- the answers are shown on the tooltip like those of an installed roleplay addon
+    local prev = Bridge.ProfileOf
+    function Bridge.ProfileOf(unit)
+        local r = prev(unit)
+        if r then return r end
+        local name, realm = UnitName(unit)
+        if type(name) ~= "string" then return nil end
+        for sender, rec in pairs(theirs) do
+            if sender == name or sender:match("^([^-]+)") == name then return fromFields(rec.fields) end
+        end
+    end
+    local oldWhich = Bridge.Which
+    function Bridge.Which() return oldWhich() or (next(theirs) and "MSP") or nil end
+end
