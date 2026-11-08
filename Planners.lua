@@ -403,17 +403,26 @@ local buildRoleplay = K.simplePage("Roleplay",
                 if (a == rpKey()) ~= (b == rpKey()) then return a == rpKey() end
                 return a < b
             end)
+            local x, row = 12, 0
             for i, k in ipairs(keys) do
                 local b = charButtons[i]
                 if not b then
                     b = K.mkButton(pane, k, 112, function(self) rpSelected = self.key; SFP:Safe("rp", pane.refresh) end)
-                    b:SetPoint("TOPLEFT", 12 + ((i - 1) % 6) * 118, y - math.floor((i - 1) / 6) * 26)
                     charButtons[i] = b
                 end
                 b.key = k
+                -- both names of the character: saved when that character logged in (the surname is only known to the character itself)
                 local nm = k:match("^(.-)%-") or k
-                b.text:SetText(k == rpKey() and fullName() or nm)
+                local rec = rpData().chars[k]
+                b.text:SetText(k == rpKey() and fullName() or (type(rec) == "table" and rec.full) or nm)
                 b.text:SetTextColor(k == rpSelected and 1 or 0.8, k == rpSelected and 0.82 or 0.8, k == rpSelected and 0 or 0.8)
+                -- the button is as wide as the name
+                local w = math.max(70, math.ceil(b.text:GetStringWidth()) + 28)
+                b:SetWidth(w)
+                if x + w > 640 then x, row = 12, row + 1 end
+                b:ClearAllPoints()
+                b:SetPoint("TOPLEFT", x, y - row * 26)
+                x = x + w + 6
                 b:Show()
             end
             for i = #keys + 1, #charButtons do charButtons[i]:Hide() end
@@ -495,6 +504,19 @@ if TooltipDataProcessor and Enum and Enum.TooltipDataType and Enum.TooltipDataTy
 end
 
 ---------------------------------------------------------------------------
+-- every character notes its own full name (first name and surname) at login, so the Roleplay page can show both names of all of them
+SFP:OnLogin(function()
+    C_Timer.After(2, function()
+        if not SFP.db then return end
+        local key = (UnitName("player") or "?") .. "-" .. ((GetNormalizedRealmName and GetNormalizedRealmName()) or (GetRealmName() or "?"):gsub("[%s%-']", ""))
+        local d = rpData().chars
+        local first = charKey()
+        if d[first] and not d[key] then d[key] = d[first]; d[first] = nil end
+        d[key] = d[key] or {}
+        d[key].full = fullName()
+    end)
+end)
+
 -- the character sheet: a window with just what the player wrote for the character, read only, with the snake of the addon
 local rpCard
 function SFP:ShowRoleplayCard()

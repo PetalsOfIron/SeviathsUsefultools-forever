@@ -5522,3 +5522,44 @@
 19067|Warsong Gulch Mageweave Bandage|1|0|7|45|35
 19068|Warsong Gulch Silk Bandage|1|0|7|35|25
 20465|Crystal Unlocking Mechanism|1|12|0|1|0
+20381|Dreamscale|2|7|6|63|0
+20578|Emerald Dragonfang|4|2|15|71|60
+20579|Green Dragonskin Cloak|4|4|-6|71|60
+20580|Hammer of Bestial Fury|4|2|4|71|60
+20581|Staff of Rampant Growth|4|2|10|71|60
+20582|Trance Stone|4|4|-5|71|60
+20615|Dragonspur Wraps|4|4|2|71|60
+20616|Dragonbone Wristguards|4|4|4|71|60
+20617|Ancient Corroded Leggings|4|4|3|72|60
+20618|Gloves of Delusional Power|4|4|1|72|60
+20619|Acid Inscribed Greaves|4|4|4|72|60
+20635|Jade Inlaid Vestments|4|4|1|71|60
+20636|Hibernation Crystal|4|4|-4|71|60
+20637|Acid Inscribed Pauldrons|4|4|4|72|60
+20638|Leggings of the Demented Mind|4|4|3|72|60
+20639|Strangely Glyphed Legplates|4|4|4|72|60
+20644|Nightmare Engulfed Object|4|12|0|63|60
+22932|A Torn Letter|1|12|0|1|0
+12720|Plans: Stronghold Gauntlets|4|9|4|62|0
+20253|Pattern: Warbear Harness|1|9|1|55|0
+20625|Belt of the Dark Bog|4|4|1|71|60
+20626|Black Bark Wristbands|4|4|1|71|60
+20627|Dark Heart Pants|4|4|2|71|60
+20628|Deviate Growth Cap|4|4|2|72|60
+20630|Gauntlets of the Shining Light|4|4|4|72|60
+20599|Polished Ironwood Crossbow|4|2|18|71|60
+20621|Boots of the Endless Moor|4|4|3|71|60
+20622|Dragonheart Necklace|4|4|-3|71|60
+20623|Circlet of Restless Dreams|4|4|2|72|60
+20624|Ring of the Unliving|4|4|-2|72|60
+20577|Nightmare Blade|4|2|7|71|60
+20631|Mendicant's Slippers|4|4|1|71|60
+20632|Mindtear Band|4|4|-2|71|60
+20633|Unnatural Leather Spaulders|4|4|2|72|60
+20634|Boots of Fright|4|4|2|72|60
+5140|Flash Powder|1|15|1|20|0
+8923|Essence of Agony|1|7|0|50|0
+20063|Arathi Basin Field Ration|1|0|0|35|25
+20064|Arathi Basin Iron Ration|1|0|0|45|35
+20065|Arathi Basin Mageweave Bandage|1|0|7|45|35
+20067|Arathi Basin Silk Bandage|1|0|7|35|25
