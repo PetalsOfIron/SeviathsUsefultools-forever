@@ -67,6 +67,7 @@ end
 ---------------------------------------------------------------------------
 local group = { members = {}, start = nil, context = nil }
 local lastGroup = nil
+local ratedRun   -- the run (dungeon and start time) whose rate window already opened
 
 local function MyFullName()
   local name, realm = UnitFullName("player")
@@ -112,7 +113,9 @@ local function FinishGroup()
       ns.db.players[full] = rec
     end
     lastGroup = { members = members, context = group.context }
-    if ns.db.ratePrompt and group.context and duration >= (ns.db.rateMinMinutes or 5) * 60 then
+    -- (not again when the window already opened after the last boss of this run)
+    local already = ratedRun and ratedRun == (tostring(group.context) .. "@" .. tostring(group.start))
+    if ns.db.ratePrompt and not already and group.context and duration >= (ns.db.rateMinMinutes or 5) * 60 then
       ns:ShowRateWindow(members, group.context)
     end
   end
@@ -126,7 +129,6 @@ for _, n in ipairs({ "Bazzalan", "Mutanus the Devourer", "Edwin VanCleef", "Arch
   "Charlga Razorflank", "High Inquisitor Whitemane", "Amnennar the Coldbringer", "Archaedas", "Chief Ukorz Sandscalp", "Princess Theradras",
   "Shade of Eranikus", "Emperor Dagran Thaurissan", "Overlord Wyrmthalak", "General Drakkisath", "Baron Rivendare", "Darkmaster Gandling", "King Gordok",
   "Ragnaros", "Onyxia", "Nefarian", "Hakkar", "Ossirian the Unscarred", "C'Thun", "Kel'Thuzad" }) do FINAL_BOSS[n:lower()] = true end
-local ratedRun
 local function RateNow(why)
   if not ns.db.ratePrompt then return end
   Snapshot()
@@ -146,6 +148,10 @@ ns:On("SCENARIO_COMPLETED", function() RateNow("scenario") end)
 ns:On("GROUP_ROSTER_UPDATE", Snapshot)
 ns:On("PLAYER_ENTERING_WORLD", Snapshot)
 ns:On("GROUP_LEFT", FinishGroup)
+-- a group that is disbanded by the leader (or that falls apart): the roster update finds you without a group and ends it too, when GROUP_LEFT does not come
+ns:On("GROUP_ROSTER_UPDATE", function()
+  if group.start and not IsInGroup() then FinishGroup() end
+end)
 
 -- Forget untagged players not seen for 60 days
 ns:On("PLAYER_LOGIN", function()
