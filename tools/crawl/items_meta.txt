@@ -5224,3 +5224,18 @@
 10754|Amulet of Sevine|1|12|0|1|0
 12365|Dense Stone|1|7|7|45|0
 9460|Grimtotem Horn|1|12|0|1|0
+3858|Mithril Ore|1|7|7|40|32
+8244|Flawless Draenethyst Sphere|3|12|0|1|0
+10620|Thorium Ore|1|7|7|40|0
+8723|Caliph Scorpidsting's Head|1|12|0|1|0
+9276|Pirate's Footlocker|1|15|4|45|0
+20519|Southsea Pirate Hat|1|12|0|1|0
+221372|Mangled Coin Purse|0|15|0|1|0
+221371|Kidnapper's Coin Purse|1|15|0|1|0
+14473|Pattern: Ghostweave Belt|2|9|2|53|0
+14477|Pattern: Ghostweave Gloves|2|9|2|54|0
+10571|Ebony Boneclub|3|2|4|37|32
+10573|Boneslasher|3|2|8|37|32
+10584|Stormgale Fists|3|4|3|36|31
+10582|Briar Tredders|3|4|2|36|31
+212748|Tattered Note|2|12|0|30|30

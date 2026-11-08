@@ -144,6 +144,7 @@ Modules\Codex\Guide.lua
 Modules\Codex\Veterans.lua
 Modules\Codex\RaidMplus.lua
 Modules\Codex\Special.lua
+Modules\Codex\ClassicInstances.lua
 Modules\Codex\Indexers.lua
 Modules\Codex\Quests.lua
 Modules\Codex\AchievementTips.lua

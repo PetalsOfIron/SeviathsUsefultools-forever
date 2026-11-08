@@ -502,6 +502,7 @@ ev:SetScript("OnEvent", function(_, event, arg1)
         if ns.LoadVeterans then ns:LoadVeterans() end
         if ns.LoadRaidMplus then ns:LoadRaidMplus() end
         if ns.LoadSpecial then ns:LoadSpecial() end
+        if ns.LoadClassicInstances then ns:LoadClassicInstances() end
     elseif event == "PLAYER_LOGIN" then
         if ns.CreateMinimapButton then ns:CreateMinimapButton() end
         -- Index lazily: start a few seconds after login so it never slows loading.
