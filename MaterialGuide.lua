@@ -2069,14 +2069,21 @@ local function build()
     end
     win.tabs.monsters:SetEnabled(matTab ~= "monsters")
     win.tabs.gather:SetEnabled(matTab ~= "gather")
+    -- what was built for the section is let go only after a minute with the window closed: opening it again a moment later (each map button) is then fast
+    local freeToken = 0
     win:SetScript("OnHide", function()
-        -- everything built for the section that was open is let go
-        guideIndex, monsterIndex, mapRecs, ownByMap, guideMapSet = {}, {}, {}, nil, nil
-        if SFP.FreeMonsterCache then SFP:FreeMonsterCache() end
-        entriesCache = nil
-        zonesCache = {}
+        freeToken = freeToken + 1
+        local token = freeToken
+        C_Timer.After(60, function()
+            if token ~= freeToken or (win and win:IsShown()) then return end
+            guideIndex, monsterIndex, mapRecs, ownByMap, guideMapSet = {}, {}, {}, nil, nil
+            if SFP.FreeMonsterCache then SFP:FreeMonsterCache() end
+            entriesCache = nil
+            zonesCache = {}
+        end)
     end)
     win:SetScript("OnShow", function()
+        freeToken = freeToken + 1   -- (a pending release is cancelled)
         fit()
         -- the icons of the crafting reagents are stored the first time the window opens (a few hundred a frame), not at login
         if not SFP._reagentIcons then
