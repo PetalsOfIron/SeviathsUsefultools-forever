@@ -935,7 +935,7 @@ function UI:Build()
     local S0 = _G.SeviathsUsefulTools
     if S0 and S0.OpenGroupFinder then S0.OpenGroupFinder() end
   end)
-  lfgBtn:SetPoint("TOPRIGHT", f, "TOPRIGHT", -44, -8)
+  lfgBtn:SetPoint("TOPRIGHT", f, "TOPRIGHT", -44, -3)
 
   f.tabButtons = {}
   for _, tab in ipairs(TABS) do
