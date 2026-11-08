@@ -47,6 +47,14 @@ local function charKey()
     return type(n) == "string" and n or "?"
 end
 
+-- the character's two names (first name and surname; the game gives the surname where other games have the realm)
+local function fullName()
+    local n, s = UnitName("player")
+    if type(n) ~= "string" then return "?" end
+    if type(s) == "string" and s ~= "" and not s:find("Realm") and not s:find("CAMWOW") then return n .. " " .. s end
+    return n
+end
+
 -- green: the level fits, yellow: a few levels ahead, grey: too low or too high
 local function levelColor(lvl, lo, hi)
     if lvl >= lo and lvl <= hi then return "|cff40ff40" end
@@ -380,7 +388,7 @@ local buildRoleplay = K.simplePage("Roleplay",
                     charButtons[i] = b
                 end
                 b.key = k
-                b.text:SetText(k)
+                b.text:SetText(k == charKey() and fullName() or k)
                 b.text:SetTextColor(k == rpSelected and 1 or 0.8, k == rpSelected and 0.82 or 0.8, k == rpSelected and 0 or 0.8)
                 b:Show()
             end
@@ -427,7 +435,8 @@ if TooltipDataProcessor and Enum and Enum.TooltipDataType and Enum.TooltipDataTy
         local rec = SFP.db and SFP.db.rp and SFP.db.rp.chars and SFP.db.rp.chars[charKey()]
         if rec then
             local title = (rec.title or "") ~= "" and rec.title or nil
-            if title then tt:AddLine(CY .. title .. "|r") end
+            if title or (rec.looks or "") ~= "" or (rec.traits or "") ~= "" or (rec.story or "") ~= "" then tt:AddLine(CY .. fullName() .. "|r") end
+            if title then tt:AddLine(title, 1, 1, 1) end
             if (rec.looks or "") ~= "" then tt:AddLine(rec.looks:sub(1, 160), 0.8, 0.8, 0.8, true) end
             if (rec.traits or "") ~= "" then tt:AddLine("|cffffd100Personality:|r " .. rec.traits:sub(1, 120), 0.8, 0.8, 0.8, true) end
             if (rec.story or "") ~= "" then tt:AddLine("|cffffd100Backstory:|r " .. rec.story:sub(1, 240), 0.8, 0.8, 0.8, true) end
