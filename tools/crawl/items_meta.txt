@@ -5239,3 +5239,8 @@
 10584|Stormgale Fists|3|4|3|36|31
 10582|Briar Tredders|3|4|2|36|31
 212748|Tattered Note|2|12|0|30|30
+2930|Essence of Pain|1|7|0|22|0
+5173|Deathweed|1|7|0|30|0
+5530|Blinding Powder|1|15|1|34|0
+9246|Firebeard's Head|1|12|0|1|0
+9275|Cuergo's Key|1|12|0|1|0

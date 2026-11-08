@@ -161,7 +161,7 @@ function SFP.BlizzardFrame(f, big)
                 local p, rel, rp, x, y = t:GetPoint(1)
                 if p == "TOPLEFT" and type(y) == "number" and y <= -6 and y >= -14 and not t.seviathNudged then
                     t.seviathNudged = true
-                    t:SetPoint(p, rel, rp, x, y + 3)
+                    t:SetPoint(p, rel, rp, x, y + 5)
                 end
             end
         end

@@ -306,11 +306,11 @@ local function build()
     tinsert(UISpecialFrames, "SeviathsUsefulToolsBrowser")
 
     local title = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-    title:SetPoint("TOPLEFT", 12, -10)
+    title:SetPoint("TOPLEFT", 12, -5)
     title:SetText("|c" .. SFP.CYAN_HEX .. "Seviaths|rFarmPack  |cff808080v" .. SFP.VERSION .. "|r")
     local sub = frame:CreateFontString(nil, "OVERLAY", "GameFontDisableSmall")
     sub:SetPoint("LEFT", title, "RIGHT", 8, -1)
-    sub:SetText("farm spots + rares, Classic to Midnight · data from wowhead.com")
+    sub:SetText("farm spots + rares, Classic · data from wowhead.com")
 
     local close = CreateFrame("Button", nil, frame, "UIPanelCloseButton")
     close:SetPoint("TOPRIGHT", 2, 2)

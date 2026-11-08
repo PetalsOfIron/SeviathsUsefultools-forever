@@ -778,3 +778,5 @@
 228216|Numi|618:61.2,37|84146:60:55:3:Red Bag Blues,84212:60:55:3:Bookin' it Back
 228619|Orthas|139:7.4,43.6;14.4,33.6;14.6,33.2|84318:55:50:1:Oi!,84319:55:50:1:Oh No Ye Don't!,84330:55:50:1:A Wee Bit O' Necromancy
 228822|Calyx Greenglow|361:61.4,13;61.6,13|84369:60:52:3:Healing the Healer
+229018|Rotting Dwarf Corpse|139:27.4,85.4;27.4,85.8|84414:55:50:1:Send Me On Me Way!
+231498|Aeonas|28:52,83.4|85457:60:60:1:Just What Was Needed,85508:60:60:1:Our Wayward Friend
