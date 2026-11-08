@@ -3,9 +3,17 @@
 Run: python tools/watch_curseforge.py   (or double-click tools/watch_curseforge.bat)"""
 import os
 import shutil
+import socket
 import subprocess
 import sys
 import time
+
+# only one copy runs (a second one, for example the one started with Windows, stops at once)
+_lock = socket.socket()
+try:
+    _lock.bind(("127.0.0.1", 47654))
+except OSError:
+    sys.exit(0)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ADDONS = os.path.dirname(os.path.dirname(HERE))
