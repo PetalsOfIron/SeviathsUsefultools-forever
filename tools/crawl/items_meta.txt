@@ -5013,3 +5013,41 @@
 6894|Whirlwind Heart|1|12|0|1|0
 7081|Breath of Wind|1|7|10|45|0
 20087|Wavethrasher Scales|1|12|0|1|0
+14958|High Chief's Armor|2|4|4|56|51
+14925|Lofty Helm|2|4|4|57|52
+10450|Undamaged Hippogryph Feather|1|12|0|0|0
+13028|Bludstone Hammer|3|2|4|61|56
+7209|Tazan's Satchel|1|12|0|1|0
+7231|Astor's Letter of Introduction|1|12|0|1|0
+11018|Un'Goro Soil|1|12|0|1|0
+11116|A Mangled Journal|2|12|0|48|48
+15417|Devilsaur Leather|1|7|6|50|0
+20015|Elder Raptor Feathers|0|15|0|1|0
+20016|Trophy Raptor Skull|0|15|0|1|0
+11114|Dinosaur Bone|1|12|0|1|0
+11477|White Ravasaur Claw|1|12|0|1|0
+227444|Idol of the Huntress|2|4|8|60|0
+11316|Bloodpetal|1|12|0|1|0
+15657|Merciless Shield|2|4|6|57|52
+11479|Un'Goro Stomper Pelt|1|12|0|1|0
+11478|Un'Goro Gorilla Pelt|1|12|0|1|0
+11480|Un'Goro Thunderer Pelt|1|12|0|1|0
+11834|Super Sticky Tar|1|12|0|1|0
+14805|Bloodlust Britches|2|4|3|57|52
+14806|Bloodlust Epaulets|2|4|3|57|52
+14859|Vanguard Legplates|2|4|4|57|52
+14971|Glorious Shoulder Pads|2|4|4|57|52
+15185|Praetorian Coif|2|4|2|57|52
+15650|Merciless Surcoat|2|4|3|57|52
+15985|Arachnidian Branch|2|4|-5|57|52
+14288|Arachnidian Armor|2|4|1|57|52
+14320|Resplendent Bracelets|2|4|1|57|52
+14459|Elunarian Cloak|2|4|-6|57|52
+14678|Pridelord Pauldrons|2|4|2|57|52
+14924|Lofty Breastplate|2|4|4|57|52
+15188|Grand Armguards|2|4|2|57|52
+7078|Essence of Fire|2|7|10|55|0
+11829|Un'Goro Ash|1|12|0|1|0
+22527|Core of Elements|1|12|0|1|0
+12703|Plans: Storm Gauntlets|3|9|4|59|0
+6315|Steelarrow Crossbow|2|2|18|27|22

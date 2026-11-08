@@ -134,15 +134,18 @@ function SFP.BlizzardFrame(f, big)
         f.SetBackdropColor = function() end
         f.SetBackdropBorderColor = function() end
     end
-    -- the window's title sits on the top bar of the frame, in the middle, like the titles of the game's own windows
+    -- the window's title sits on the top bar of the frame
     -- (the title is made after the frame is styled, so it is placed a moment later)
     C_Timer.After(0, function()
         for _, key in ipairs({ "title", "header", "Title" }) do
             local t = rawget(f, key)
             if type(t) == "table" and t.GetObjectType and t:GetObjectType() == "FontString" then
-                t:ClearAllPoints()
-                t:SetPoint("TOP", f, "TOP", 0, 4)
-                t:SetJustifyH("CENTER")
+                -- a title at the top left: a little higher, onto the bar (the other texts stay where they are)
+                local p, rel, rp, x, y = t:GetPoint(1)
+                if p == "TOPLEFT" and type(y) == "number" and y <= -6 and y >= -14 and not t.seviathNudged then
+                    t.seviathNudged = true
+                    t:SetPoint(p, rel, rp, x, y + 6)
+                end
             end
         end
     end)
