@@ -11,7 +11,13 @@ local function secret(v) return issecretvalue and issecretvalue(v) end
 local function money(c)
     c = math.floor((c or 0) + 0.5)
     if GetCoinTextureString then return GetCoinTextureString(c) end
-    return math.floor(c / 10000) .. "g"
+    -- gold, silver and copper, each shown when it is there
+    local g, s, cc = math.floor(c / 10000), math.floor(c / 100) % 100, c % 100
+    local parts = {}
+    if g > 0 then parts[#parts + 1] = "|cffffd100" .. g .. "g|r" end
+    if s > 0 or g > 0 then parts[#parts + 1] = "|cffc7c7cf" .. s .. "s|r" end
+    parts[#parts + 1] = "|cffeda55f" .. cc .. "c|r"
+    return table.concat(parts, " ")
 end
 
 ---------------------------------------------------------------------------

@@ -37,7 +37,12 @@ end
 local function money(c)
     if not c or c <= 0 then return nil end
     if GetCoinTextureString then return GetCoinTextureString(c) end
-    return math.floor(c / 10000) .. "g"
+    local g, s, cc = math.floor(c / 10000), math.floor(c / 100) % 100, c % 100
+    local parts = {}
+    if g > 0 then parts[#parts + 1] = "|cffffd100" .. g .. "g|r" end
+    if s > 0 or g > 0 then parts[#parts + 1] = "|cffc7c7cf" .. s .. "s|r" end
+    parts[#parts + 1] = "|cffeda55f" .. cc .. "c|r"
+    return table.concat(parts, " ")
 end
 
 local function cap(s) return (s:gsub("^%l", string.upper)) end
