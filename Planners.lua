@@ -35,7 +35,12 @@ for _, z in ipairs(ZONES) do ZONE_LEVEL[z[1]] = z end
 SFP.ZoneLevels = ZONE_LEVEL
 
 local function myLevel() local l = UnitLevel("player"); return type(l) == "number" and l or 1 end
-local function zoneName(map) local ok, n = pcall(function() return SFP:ZoneName(map) end); return ok and n or ("zone " .. map) end
+local function zoneName(map)
+    local okI, info = pcall(C_Map.GetMapInfo, map)
+    if okI and type(info) == "table" and type(info.name) == "string" and info.name ~= "" then return info.name end
+    local ok, n = pcall(function() return SFP:ZoneName(map) end)
+    return ok and n or ("zone " .. map)
+end
 
 local function charKey()
     local n = UnitName("player")
@@ -183,32 +188,49 @@ local buildDungeons = K.simplePage("Dungeon & Raid Planner",
 -- Quest Planner
 ---------------------------------------------------------------------------
 local buildQuests = K.simplePage("Quest Planner",
-    "Which zones are good for your level, and where to head next. Green zones fit your level, yellow ones are a few levels ahead. Press Map to open the world map on the zone.",
+    "The zones you still need for your level, and where to head next. Green zones fit your level, yellow ones are a few levels ahead. Press Done when you have finished a zone and it leaves the list. Map opens the world map on the zone.",
     function(pane, y)
-        local head = K.mkText(pane, "", 12, y, 480, "GameFontNormal")
-        local list = SFP.MakeRowList(pane, 8, y - 26, 500, 400, 22)
+        local head = K.mkText(pane, "", 12, y - 6, 480, "GameFontNormal")
+        local list = SFP.MakeRowList(pane, 8, y - 34, 500, 380, 22)
+        local function done() SFP.db.zoneDone = SFP.db.zoneDone or {}; local d = SFP.db.zoneDone[charKey()]; if not d then d = {}; SFP.db.zoneDone[charKey()] = d end return d end
+        local showAll = false
+        local allBtn = K.mkButton(pane, "Show all", 70, function(self) showAll = not showAll; self.text:SetText(showAll and "Needed only" or "Show all"); SFP:Safe("quests", pane.refresh) end)
+        allBtn:SetPoint("TOPRIGHT", -34, y - 4)
         return function()
             local lvl = myLevel()
             local rows = {}
-            for _, z in ipairs(ZONES) do rows[#rows + 1] = { z = z, dist = distance(lvl, z[2], z[3]) } end
+            for _, z in ipairs(ZONES) do
+                local isDone = done()[z[1]]
+                local dist = distance(lvl, z[2], z[3])
+                -- what you need: zones that fit your level or are up to 6 levels ahead, and that you have not marked done
+                if showAll or (not isDone and (dist == 0 or (lvl < z[2] and z[2] - lvl <= 6))) then rows[#rows + 1] = { z = z, dist = dist, done = isDone } end
+            end
             table.sort(rows, function(a, b)
+                if (a.done and true or false) ~= (b.done and true or false) then return not a.done end
                 if a.dist ~= b.dist then return a.dist < b.dist end
-                return a.z[2] > b.z[2]   -- of the zones that fit, the one with the higher range first: it leads further on
+                return a.z[3] > b.z[3]   -- of the zones that fit, the one with the higher range first: it leads further on
             end)
-            local next1 = rows[1] and zoneName(rows[1].z[1])
-            head:SetText(("%sLevel %d|r  -  head to: %s"):format(CY, lvl, next1 and ("|cffffd100" .. next1 .. "|r") or "?"))
+            local first = rows[1] and not rows[1].done and rows[1].z
+            if first then
+                head:SetText(("%sHead to %s next|r  |cffffd100(level %d-%d)|r"):format(CY, zoneName(first[1]), first[2], first[3]))
+            else
+                head:SetText(("%sLevel %d|r  -  no zone left for your level in the list"):format(CY, lvl))
+            end
             local items = {}
             for i, r in ipairs(rows) do
                 local z = r.z
                 items[i] = {
-                    text = ("%s%s|r  |cff808080level %d-%d%s|r"):format(levelColor(lvl, z[2], z[3]), zoneName(z[1]), z[2], z[3],
+                    text = ("%s%s|r  |cff808080level %d-%d%s|r"):format(r.done and "|cff606060" or levelColor(lvl, z[2], z[3]), zoneName(z[1]), z[2], z[3],
                         (C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player") == z[1]) and "  (you are here)" or ""),
-                    buttons = { { "Map", 50, function()
-                        if WorldMapFrame then
-                            if not WorldMapFrame:IsShown() then ToggleWorldMap() end
-                            WorldMapFrame:SetMapID(z[1])
-                        end
-                    end } },
+                    buttons = {
+                        { r.done and "Undo" or "Done", 50, function() done()[z[1]] = (not r.done) or nil; SFP:Safe("quests", pane.refresh) end },
+                        { "Map", 46, function()
+                            if WorldMapFrame then
+                                if not WorldMapFrame:IsShown() then ToggleWorldMap() end
+                                WorldMapFrame:SetMapID(z[1])
+                            end
+                        end },
+                    },
                 }
             end
             list:Set(items)
