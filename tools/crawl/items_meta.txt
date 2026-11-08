@@ -2009,3 +2009,138 @@
 10088|Gothic Plate Girdle|2|4|4|45|40
 13071|Plated Fist of Hakoo|3|4|4|45|40
 8390|Pattern: Big Voodoo Cloak|2|9|1|48|0
+1608|Skullcrusher Mace|2|2|4|47|42
+1720|Tanglewood Staff|3|2|10|46|41
+7332|Regal Armor|2|4|1|45|40
+7519|Gossamer Pants|2|4|1|47|42
+7521|Gossamer Gloves|2|4|1|46|41
+7523|Gossamer Shoulderpads|2|4|1|46|41
+7535|Cabalist Belt|2|4|2|46|41
+9951|Chieftain's Cloak|2|4|-6|47|42
+9961|Warmonger's Belt|2|4|3|47|42
+13102|Cassandra's Grace|3|4|1|47|42
+7528|Cabalist Leggings|2|4|2|48|43
+7539|Champion's Leggings|2|4|3|48|43
+7543|Champion's Pauldrons|2|4|3|47|42
+4603|Raw Spotted Yellowtail|1|7|8|45|35
+7973|Big-mouth Clam|1|7|11|40|0
+17058|Fish Oil|1|12|0|1|0
+220929|Waylaid Supplies: Superior Mana Potions|2|7|0|45|0
+2815|Curve-bladed Ripper|3|2|0|45|40
+2825|Bow of Searing Arrows|4|2|2|42|37
+6430|Imperial Leather Breastplate|2|4|2|46|41
+7452|Pattern: Dusky Boots|3|9|1|40|0
+7530|Cabalist Gloves|2|4|2|46|41
+7542|Champion's Greaves|2|4|3|46|41
+7976|Plans: Mithril Shield Spike|3|9|4|43|0
+8118|Heraldic Bracers|2|4|2|46|41
+4069|Blackforge Buckler|2|4|6|47|42
+4084|Blackforge Leggings|2|4|3|46|41
+4088|Dreadblade|2|2|15|47|42
+7468|Regal Robe|2|4|1|45|40
+7532|Cabalist Spaulders|2|4|2|47|42
+8108|Hibernal Bracers|2|4|1|47|42
+8117|Heraldic Boots|2|4|2|47|42
+8138|Chromite Chestplate|2|4|4|47|42
+8277|Valorous Girdle|2|4|4|46|41
+10087|Gothic Plate Gauntlets|2|4|4|46|41
+10092|Gothic Plate Spaulders|2|4|4|47|42
+11974|Aquamarine Ring|2|4|-2|46|41
+13082|Mountainside Buckler|3|4|6|46|41
+13115|Sheepshear Mantle|3|4|2|45|40
+1982|Nightblade|4|2|8|44|39
+8115|Hibernal Cowl|2|4|1|48|43
+8125|Myrmidon's Bracers|2|4|3|48|43
+8279|Valorous Helm|2|4|4|48|43
+10091|Gothic Plate Leggings|2|4|4|47|42
+10206|Overlord's Girdle|2|4|4|48|43
+12043|Desert Choker|2|4|-3|47|42
+15235|Crescent Edge|2|2|0|48|43
+5429|A Pretty Rock|0|15|0|1|0
+216523|Rusted Cage Key|1|13|0|1|0
+2453|Bruiseweed|1|7|9|20|0
+3357|Liferoot|1|7|9|30|0
+3358|Khadgar's Whisker|1|7|9|37|0
+3818|Fadeleaf|1|7|9|32|0
+3819|Wintersbite|1|7|9|39|0
+3827|Mana Potion|1|0|1|32|22
+4607|Delicious Cave Mold|1|0|5|35|25
+6065|Khadgar's Essays on Dimensional Convergence|1|12|0|1|0
+10286|Heart of the Wild|1|7|10|45|0
+11205|Formula: Enchant Gloves - Advanced Herbalism|2|9|8|45|0
+5608|Living Cowl|2|4|1|40|35
+6080|Shadow Panther Heart|1|12|0|1|0
+7428|Shadowcat Hide|1|7|0|30|0
+4337|Thick Spider's Silk|1|7|5|35|0
+4585|Dripping Spider Mandible|0|15|0|1|0
+10285|Shadow Silk|1|7|5|40|0
+12205|White Spider Meat|1|7|8|40|0
+213529|Viscous Venom|1|12|0|40|0
+4464|Trouncing Boots|2|4|3|32|27
+4465|Bonefist Gauntlets|2|4|3|32|27
+3839|Pristine Tigress Fang|1|12|0|1|0
+1707|Stormwind Brie|1|0|5|35|25
+5431|Empty Hip Flask|0|15|0|1|0
+213127|Spell Notes: PELFRB STOLLOTS|2|15|0|10|0
+217161|Spell Notes: TROFF IRESTBOL|2|15|0|10|0
+1624|Skullsplitter Helm|2|4|3|43|38
+7520|Gossamer Headpiece|2|4|1|47|42
+8135|Chromite Shield|2|4|6|46|41
+13051|Witchfury|3|2|8|44|39
+7541|Champion's Gauntlets|2|4|3|46|41
+8110|Hibernal Gloves|2|4|1|47|42
+221274|Three of Wilds|3|15|0|1|0
+221282|Two of Plagues|3|15|0|1|0
+2017|Glowing Leather Bracers|2|4|2|28|23
+2013|Cryptbone Staff|2|2|10|26|21
+2004|Grelin Whitebeard's Journal|1|12|0|1|0
+2109|Frostmane Chain Vest|1|4|3|5|0
+3615|Kurzen's Head|1|12|0|1|0
+3616|Mind's Eye|1|12|0|1|0
+3722|Familiar Hide|0|15|0|1|0
+3723|Familiar Fang|0|15|0|1|0
+3724|Familiar Claw|0|15|0|1|0
+3725|Familiar Horn|0|15|0|1|0
+1926|Weighted Sap|2|2|4|15|10
+2087|Hard Crawler Carapace|2|4|2|13|8
+2673|Coyote Meat|1|7|8|10|0
+2674|Crawler Meat|1|7|8|13|0
+2675|Crawler Claw|1|7|8|13|0
+209042|Fishy Bonemeal|1|15|0|1|0
+2088|Long Crawler Limb|2|2|15|15|10
+4874|Clean Fishbones|0|15|0|1|0
+5506|Beady Eye Stalk|0|15|0|1|0
+4290|Dust Bowl|2|4|6|18|13
+5669|Dust Devil Debris|1|12|0|1|0
+7069|Elemental Air|1|7|10|25|0
+209058|Elemental Core|1|15|0|1|0
+208851|Libram of Justice|2|4|7|10|0
+14047|Runecloth|1|7|5|50|0
+4611|Blue Pearl|1|15|1|1|0
+5785|Thick Murloc Scale|1|7|6|35|0
+5796|Encrusted Tail Fin|1|12|0|1|0
+6362|Raw Rockscale Cod|1|7|8|35|25
+10457|Empty Sea Snail Shell|0|15|0|1|0
+6810|Surena's Choker|1|12|0|1|0
+911|Ironwood Treebranch|2|2|5|25|20
+2226|Ogremage Staff|2|2|10|27|22
+2227|Heavy Ogre War Axe|2|2|1|27|22
+4860|Glistening Frenzy Scale|0|15|0|1|0
+1077|Defias Mage Ring|2|4|-2|26|21
+5773|Pattern: Robes of Arcana|2|9|2|30|0
+2234|Nightwalker Armor|2|4|1|30|25
+3010|Fine Sand|0|15|0|1|0
+5569|Seaweed|0|15|0|20|0
+5938|Pristine Crawler Leg|1|12|0|1|0
+8384|Pattern: Comfortable Leather Hat|3|9|1|40|0
+12206|Tender Crab Meat|1|7|8|40|0
+7267|Pristine Spider Silk|1|12|0|1|0
+5788|Pattern: Thick Murloc Armor|2|9|1|34|0
+216616|Compound Cage Key|1|15|0|1|0
+2633|Jungle Remedy|1|0|0|32|22
+3356|Kingsblood|1|7|9|24|0
+2110|Light Magesmith Robe|1|4|1|4|0
+6753|Feather Charm|1|12|0|1|0
+4446|Blackvenom Blade|3|2|15|26|21
+4447|Cloak of Night|2|4|-6|26|21
+7307|Flesh Eating Worm|1|0|-3|30|0
