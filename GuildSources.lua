@@ -76,10 +76,13 @@ end
 local whoPats
 if ChatFrame_AddMessageEventFilter then
     ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", function(_, _, msg)
-        if GetTime() - scan.waiting > 4 then return false end
+        if GetTime() - scan.waiting > 10 then return false end
         if type(msg) ~= "string" or secret(msg) then return false end
         whoPats = whoPats or whoPatterns()
         for _, p in ipairs(whoPats) do if msg:match(p) then return true end end
+        -- whatever the wording of this game: a line with a player link and a level, or a count of players found, in the seconds after our own ask
+        if msg:find("|Hplayer:", 1, true) and (msg:find("Level", 1, true) or msg:find("level", 1, true)) then return true end
+        if msg:lower():find("%d+ players? total") or msg:lower():find("%d+ players? found") or msg:lower():find("no players found") then return true end
         return false
     end)
 end
