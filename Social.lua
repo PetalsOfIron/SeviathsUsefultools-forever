@@ -42,7 +42,7 @@ local AUTO_LABEL = { raider = "Serious raider", mythic = (WOW_PROJECT_CAMELOT ~=
     achiever = "Achievement hunter", pvp = "PvP player", dailies = "Daily quest player", farmer = "Gold farmer",
     gold = "Gold grinder", ["gold:loot"] = "Gold grinder (farming)", ["gold:daily"] = "Gold grinder (daily quests)",
     ["gold:trade"] = "Gold grinder (auction house)", housing = "Housing fan",
-    alliance = "Alliance player", horde = "Horde player", altaholic = "Alt collector", casual = "Casual", hardcore = "Serious player" }
+    alliance = "Alliance player", horde = "Horde player", altaholic = "Alt collector", casual = "Casual", hardcore = "Serious player", hardcoremode = "Hardcore (one life)" }
 local STYLE_LABEL = { relaxed = "Relaxed", learning = "Learning", social = "Social", speed = "Fast runs and farming", roleplay = "Roleplayer" }
 
 -- what a player can say they dislike in a group (the number is what is sent)
@@ -728,6 +728,21 @@ local function mplusScore()
 end
 
 -- the play style the addon decides on from the numbers: collections, Mythic+ and raids
+-- is this character a Hardcore (one life) character? The game says so: the Hardcore rules call, the Hardcore aura, or a Hardcore realm
+function S.IsHardcoreCharacter()
+    if C_GameRules and C_GameRules.IsHardcoreActive then
+        local ok, v = pcall(C_GameRules.IsHardcoreActive)
+        if ok and v == true then return true end
+    end
+    if C_UnitAuras and C_UnitAuras.GetPlayerAuraBySpellID then
+        local ok, a = pcall(C_UnitAuras.GetPlayerAuraBySpellID, 1219201)   -- the Hardcore aura of the game
+        if ok and a then return true end
+    end
+    local realm = GetRealmName and GetRealmName() or ""
+    if type(realm) == "string" and not (issecretvalue and issecretvalue(realm)) and realm:lower():find("hardcore", 1, true) then return true end
+    return false
+end
+
 function S.AutoStyles(p)
     -- by what the player DOES this week (it starts again at every weekly reset), never by how much they own: every activity gets a score
     -- (its count against what a regular player of it does), and the two strongest are the play style
@@ -754,6 +769,8 @@ function S.AutoStyles(p)
             cand[#cand + 1] = { id = id, score = count / regular }
         end
     end
+    -- Hardcore (one life): decided by the game, not by the numbers: a Hardcore character is a Hardcore player
+    if S.IsHardcoreCharacter() then cand[#cand + 1] = { id = "hardcoremode", score = 99 } end
     add("raider", (p.u and p.u.raid) or 0, 8, 6, "raid")
     -- a raid every week, never skipping one (a single boss is enough), is a raid player: 4 weeks in a row or more
     if (p.rstreak or 0) >= 4 then cand[#cand + 1] = { id = "raider", score = 1 + (p.rstreak - 4) / 8 } end                  -- raid bosses killed (this week counts double)
