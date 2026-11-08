@@ -1514,3 +1514,23 @@
 205947|Prophecy of a Desecrated Citadel|2|0|-3|10|0
 778|Kobold Excavation Pick|1|2|0|7|2
 203752|Spell Notes: MILEGIN VALF|2|0|-3|10|0
+7100|Sticky Ichor|0|15|0|1|0
+2327|Sturdy Leather Bracers|1|4|2|10|5
+209031|Discreet Envelope|1|15|0|1|0
+1448|Blackrock Gauntlets|2|4|3|20|15
+1260|Tharil'zun's Head|1|12|0|1|0
+765|Silverleaf|1|7|9|5|0
+785|Mageroyal|1|7|9|10|4
+1401|Green Tea Leaf|1|0|5|14|4
+2450|Briarthorn|1|7|9|15|0
+2452|Swiftthistle|1|7|9|15|0
+1187|Spiked Collar|2|0|0|30|20
+4462|Cloak of Rot|2|4|-6|31|26
+3931|Poisoned Spider Fang|0|15|0|1|0
+2203|Brashclaw's Chopper|2|2|1|19|14
+2204|Brashclaw's Skewer|2|2|8|17|12
+4474|Ravenwood Bow|2|2|2|32|27
+6204|Tribal Worg Helm|2|4|2|32|27
+1946|Mary's Looking Glass|1|12|0|1|0
+1405|Foamspittle Staff|2|2|10|17|12
+3614|Yowler's Paw|1|12|0|1|0
