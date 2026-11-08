@@ -1008,7 +1008,7 @@ function UI:Layout(section)
   f.scroll:ClearAllPoints()
   f.scroll:SetPoint("TOPLEFT", 4, top)
   f.scroll:SetPoint("BOTTOMRIGHT", -28, 8)
-  f:SetSize(700, 700)   -- the same size floating and docked
+  f:SetSize(700, 800)   -- the same size floating and docked
   if section then
     f.title:SetText("Seviath's Dungeons & Raids |cffffffff- " .. (TAB_LABEL[section] or "") .. "|r")
   else
@@ -1112,7 +1112,7 @@ function UI:Dock()
   -- Blizzard's "Dungeons & Raids / Player vs. Player" tabs hang ~34px below the frame
   local TAB_GAP = 36
   local space = below and (below * host:GetEffectiveScale() / f:GetEffectiveScale() - TAB_GAP - 6) or 0
-  if ns.db.dock == "BOTTOM" and space >= 200 then
+  if ns.db.dock == "BOTTOM" and space >= 200 and not WOW_PROJECT_CAMELOT then
     f:SetPoint("TOPLEFT", host, "BOTTOMLEFT", 0, -TAB_GAP)
     -- never taller than the room below, so it can't slide up over Sign Up / the list
     f:SetHeight(math.min(f:GetHeight(), space))
@@ -1126,6 +1126,7 @@ function UI:Dock()
     end
     f:SetPoint("TOPLEFT", anchor, "TOPRIGHT", 4, 0)
   end
+  f:SetSize(700, 800)
   f:SetFrameStrata("FULLSCREEN_DIALOG")   -- in front of the main menu
   self.docked = true
   self:Select(OpeningTab(section))
