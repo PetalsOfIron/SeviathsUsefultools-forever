@@ -548,10 +548,10 @@ function SFP:ShowRoleplayCard()
     local key = (UnitName("player") or "?") .. "-" .. ((GetNormalizedRealmName and GetNormalizedRealmName()) or (GetRealmName() or "?"):gsub("[%s%-']", ""))
     local rec = (SFP.db.rp and SFP.db.rp.chars and (SFP.db.rp.chars[key] or SFP.db.rp.chars[UnitName("player") or "?"])) or {}
     local lines = { CY .. full .. "|r" }
+    -- every field of the Roleplay page is listed; an empty one stays an empty section
     local function add(label, v, long)
-        if type(v) == "string" and v ~= "" then
-            if long then lines[#lines + 1] = "\n" .. CY .. label .. "|r\n" .. v else lines[#lines + 1] = CY .. label .. ":|r " .. v end
-        end
+        v = (type(v) == "string") and v or ""
+        if long then lines[#lines + 1] = "\n" .. CY .. label .. "|r\n" .. v else lines[#lines + 1] = CY .. label .. ":|r " .. v end
     end
     local race, class = UnitRace("player"), UnitClass("player")
     lines[#lines + 1] = "|cff808080" .. tostring(race or "") .. " " .. tostring(class or "") .. ", level " .. tostring(UnitLevel("player")) .. "|r"
@@ -561,7 +561,6 @@ function SFP:ShowRoleplayCard()
     add("Residence", rec.residence); add("Birthplace", rec.birthplace); add("Motto", rec.motto)
     add("Looks", rec.looks, true); add("Personality", rec.traits, true); add("Backstory", rec.story, true)
     add("Currently", rec.currently, true); add("Out of character", rec.ooc, true)
-    if #lines <= 4 then lines[#lines + 1] = "|cff808080Nothing written yet. Press Edit to fill in your character.|r" end
     rpCard.title:SetText("Character")
     rpCard:SetContent(table.concat(lines, "\n"))
     rpCard:Show()

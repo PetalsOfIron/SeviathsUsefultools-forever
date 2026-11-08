@@ -5721,3 +5721,21 @@
 13926|Golden Pearl|2|7|0|40|0
 219487|Starshell|1|7|0|50|0
 219517|Moondragon Scale|1|12|0|50|0
+13343|Pet Stone|1|15|2|20|0
+219935|Kajind's Blade|1|12|0|50|0
+220213|Fel Lifeblood|1|12|0|1|0
+220165|Rune of Wrath|2|0|-3|50|0
+220616|Rune of Overcharged|2|0|-3|50|0
+220570|Mantle of Nightmares|4|12|0|50|0
+220682|Rune of the Unbridled|2|0|-3|50|0
+220687|Rune of the Raptor|2|0|-3|50|0
+220754|Rune of the Windstorm|2|0|-3|50|0
+18285|Crystallized Mana Shard|0|15|0|1|0
+18286|Condensed Mana Fragment|0|15|0|1|0
+221317|Feralas Leycryst|1|0|0|50|0
+221318|Azshara Leycryst|1|0|0|50|0
+221319|Blackrock Leycryst|1|0|0|50|0
+221320|Hinterlands Leycryst|1|0|0|50|0
+223168|Worldcore Fragment|2|0|0|45|0
+221267|Rune of the Bloodthirsty|2|0|-3|50|0
+221326|Sacred Stag Heart|1|15|0|1|0
