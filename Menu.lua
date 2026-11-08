@@ -156,7 +156,7 @@ end
 -- a simple page: title, a short explanation, then whatever the page adds
 local function pageHead(pane, title, desc)
     mkText(pane, CYHEX .. title .. "|r", 12, -10, 480, "GameFontNormalLarge")
-    local fs = mkText(pane, desc, 12, -38, 500, "GameFontHighlightSmall")
+    local fs = mkText(pane, desc, 12, -38, 700, "GameFontHighlightSmall")
     fs:SetTextColor(0.85, 0.85, 0.85)
     fs:SetSpacing(2)
     return -38 - math.max(30, fs:GetStringHeight() or 30) - 14
@@ -1427,7 +1427,7 @@ function SFP:MenuFrame() return frame end
 
 local function build()
     frame = CreateFrame("Frame", "SeviathsUsefulToolsMenu", UIParent, "BackdropTemplate")
-    frame:SetSize(710, 540)
+    frame:SetSize(960, 700)
     frame:SetPoint("CENTER")
     frame:SetFrameStrata("DIALOG")
     frame:SetToplevel(true)
@@ -1457,9 +1457,9 @@ local function build()
     local navScroll = CreateFrame("ScrollFrame", nil, frame)
     navScroll:SetPoint("TOPLEFT", 4, -34)
     navScroll:SetPoint("BOTTOMLEFT", 4, 8)
-    navScroll:SetWidth(150)
+    navScroll:SetWidth(194)
     local navChild = CreateFrame("Frame", nil, navScroll)
-    navChild:SetSize(150, #SECTIONS * 25 + 8)
+    navChild:SetSize(194, #SECTIONS * 28 + 8)
     navScroll:SetScrollChild(navChild)
     navScroll:EnableMouseWheel(true)
     navScroll:SetScript("OnMouseWheel", function(self, delta)
@@ -1467,13 +1467,13 @@ local function build()
         self:SetVerticalScroll(math.min(maxScroll, math.max(0, self:GetVerticalScroll() - delta * 50)))
     end)
     for i, s in ipairs(SECTIONS) do
-        local b = mkButton(navChild, s.label, 138, function() SFP:ShowMenuSection(s.key) end)
-        b:SetHeight(22)
-        b:SetPoint("TOPLEFT", 6, -2 - (i - 1) * 25)
+        local b = mkButton(navChild, s.label, 184, function() SFP:ShowMenuSection(s.key) end)
+        b:SetHeight(24)
+        b:SetPoint("TOPLEFT", 6, -2 - (i - 1) * 28)
         navButtons[s.key] = b
     end
     frame.content = CreateFrame("Frame", nil, frame, "BackdropTemplate")
-    frame.content:SetPoint("TOPLEFT", 156, -34)
+    frame.content:SetPoint("TOPLEFT", 202, -34)
     frame.content:SetPoint("BOTTOMRIGHT", -8, 8)
     SFP.BlizzardFrame(frame.content, "inset")
 end

@@ -5339,3 +5339,18 @@
 11227|Piece of Krom'zar's Banner|1|12|0|1|0
 10575|Black Dragonflight Molt|1|15|4|1|0
 15879|Overlord Ror's Claw|1|12|0|1|0
+13207|Shadow Lord Fel'dan's Head|1|12|0|1|0
+2776|Gold Ore|2|7|7|25|30
+11476|U'cha's Pelt|1|12|0|1|0
+11509|Ravasaur Pheromone Gland|1|12|0|1|0
+11510|Lar'korwi's Head|1|12|0|1|0
+18622|Flawless Fel Essence (Jaedenar)|1|12|0|1|0
+220166|Fiery Infernal Core|1|12|0|1|0
+11723|Goodsteel's Balanced Flameberge|1|12|0|1|0
+11835|Gorishi Queen Brain|1|12|0|0|0
+22338|Volcanic Ash|1|12|0|1|0
+12828|Plans: Volcanic Hammer|2|9|4|58|0
+21105|Draconic for Dummies|4|15|4|1|0
+12300|Orb of Draconic Energy|1|12|0|1|0
+12323|Unforged Seal of Ascension|1|12|0|1|0
+12324|Forged Seal of Ascension|1|12|0|1|0
