@@ -187,8 +187,29 @@ local buildDungeons = K.simplePage("Dungeon & Raid Planner",
 ---------------------------------------------------------------------------
 -- Quest Planner
 ---------------------------------------------------------------------------
+-- a zone is done when every quest of it that you can take (known quest givers: Data/QuestGivers.lua and the ones you learned) is completed;
+-- a zone with fewer than 5 known quests is never called done (the quest data is not complete enough)
+local function zoneAutoDone(z)
+    if not (C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted) then return false end
+    local lvl = myLevel()
+    local f = UnitFactionGroup("player")
+    local side = f == "Alliance" and 1 or f == "Horde" and 2 or 0
+    local total, open = 0, 0
+    for _, e in ipairs((SFP.QuestGivers and SFP.QuestGivers[z[1]]) or {}) do
+        for part in string.gmatch(e[4] or "", "[^|]+") do
+            local id, ql, req, qs = part:match("^(%d+):(%d+):(%d+):(%d+):")
+            id, ql, req, qs = tonumber(id), tonumber(ql), tonumber(req), tonumber(qs)
+            if id and (qs == 0 or qs == side or side == 0) and ql >= z[2] and ql <= z[3] + 2 and req <= lvl then
+                total = total + 1
+                if not C_QuestLog.IsQuestFlaggedCompleted(id) then open = open + 1 end
+            end
+        end
+    end
+    return total >= 5 and open == 0
+end
+
 local buildQuests = K.simplePage("Quest Planner",
-    "The zones you still need for your level, and where to head next. Green zones fit your level, yellow ones are a few levels ahead. Press Done when you have finished a zone and it leaves the list. Map opens the world map on the zone.",
+    "The zones you still need for your level, and where to head next. Green zones fit your level, yellow ones are a few levels ahead. A zone leaves the list by itself when all the quests of it that you can take are completed. Map opens the world map on the zone.",
     function(pane, y)
         local head = K.mkText(pane, "", 12, y - 6, 480, "GameFontNormal")
         local list = SFP.MakeRowList(pane, 8, y - 34, 500, 380, 22)
@@ -200,7 +221,7 @@ local buildQuests = K.simplePage("Quest Planner",
             local lvl = myLevel()
             local rows = {}
             for _, z in ipairs(ZONES) do
-                local isDone = done()[z[1]]
+                local isDone = zoneAutoDone(z)
                 local dist = distance(lvl, z[2], z[3])
                 -- what you need: zones that fit your level or are up to 6 levels ahead, and that you have not marked done
                 if showAll or (not isDone and z[3] > lvl and z[2] - lvl <= 6) then rows[#rows + 1] = { z = z, dist = dist, done = isDone } end
@@ -223,7 +244,6 @@ local buildQuests = K.simplePage("Quest Planner",
                     text = ("%s%s|r  |cff808080level %d-%d%s|r"):format(r.done and "|cff606060" or levelColor(lvl, z[2], z[3]), zoneName(z[1]), z[2], z[3],
                         (C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player") == z[1]) and "  (you are here)" or ""),
                     buttons = {
-                        { r.done and "Undo" or "Done", 50, function() done()[z[1]] = (not r.done) or nil; SFP:Safe("quests", pane.refresh) end },
                         { "Map", 46, function()
                             if WorldMapFrame then
                                 if not WorldMapFrame:IsShown() then ToggleWorldMap() end
