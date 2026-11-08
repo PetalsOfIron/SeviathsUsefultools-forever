@@ -5402,3 +5402,14 @@
 20501|Heavy Silithid Carapace|1|15|0|55|0
 20373|Stonelash Scorpid Stinger|1|12|0|0|0
 22381|Silithus Venom Sample|1|12|0|1|0
+20374|Stonelash Pincer Stinger|1|12|0|0|0
+20375|Stonelash Flayer Stinger|1|12|0|0|0
+20376|Sand Skitterer Fang|1|12|0|0|0
+20377|Rock Stalker Fang|1|12|0|0|0
+20424|Sandworm Meat|1|7|8|55|0
+234010|Ancient Sandworm Bile|1|7|0|60|0
+7082|Essence of Air|2|7|10|55|0
+14501|Pattern: Mooncloth Vest|3|9|2|60|0
+17756|Shadowshard Fragment|1|12|0|1|0
+20395|Twilight Lexicon - Chapter 2|1|12|0|0|0
+20396|Twilight Lexicon - Chapter 3|1|12|0|0|0

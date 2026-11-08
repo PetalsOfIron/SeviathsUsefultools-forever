@@ -135,21 +135,8 @@ local function addRareFull(map, npc, name, items, note, hunter, pts)
     if not block then block = { exp = "classic" }; SFP.Rares[map] = block end
     block[#block + 1] = { npc = npc, name = name, items = items, note = note, hunter = hunter, pts = pts }
 end
-addRareFull(1417, 142709, "Beastrider Kama", {163644}, "Only up while your faction controls the warfront zone (Battle for Azeroth warfront phase).", nil, "64.8,71.6;65.4,68.8;65.4,70.4;65.4,70.6;65.6,69.4;65.6,70;65.6,70.6;65.6,71.6;66,67.6;66.2,67.4;66.6,66.8;66.8,65.4;67,66;67.8,66.4;68.2,66.8")
-addRareFull(1417, 142692, "Nimar the Slayer", {163706}, "Only up while your faction controls the warfront zone (Battle for Azeroth warfront phase).", nil, "67,61.6;67.4,60.4;67.4,60.8;67.6,60.4;67.6,60.8")
-addRareFull(1417, 142423, "Overseer Krix", {163646}, "Only up while your faction controls the warfront zone (Battle for Azeroth warfront phase).", nil, "27,56.4;27.2,56.8;32.8,35.4;33,36.4;33,37.4;33,37.6")
-addRareFull(1417, 142437, "Skullripper", {163645}, "Only up while your faction controls the warfront zone (Battle for Azeroth warfront phase).", nil, "56.2,46.6;56.4,44.2;56.4,45.4;56.4,46.2;56.8,44.2;56.8,45;56.8,46;56.8,46.6;57,43.4;57.6,44.4;57.6,45;57.6,45.6")
-addRareFull(1417, 142739, "Knight-Captain Aldrin", {163578}, "Only up while your faction controls the warfront zone (Battle for Azeroth warfront phase). Horde side.", nil, "47.4,41.2;47.8,41.6;48.4,39.4;48.4,40.4;48.4,40.6;48.6,40.6;48.8,40.2;49.4,37.6;49.4,39.4;49.6,39.2;49.6,39.6;49.6,41")
-addRareFull(1417, 142741, "Doomrider Helgrim", {163579}, "Only up while your faction controls the warfront zone (Battle for Azeroth warfront phase). Alliance side.", nil, "52.4,57.6;53.2,56;53.2,57.4;53.2,57.8;53.4,58.6;53.6,58;53.8,57.2;54.6,58")
 addRareFull(1431, 118244, "Lightning Paw", {}, "Spirit beast (fox). It hides stealthed in bushes until you are very close - make a /tar Lightning Paw macro and press it at each spot.", "spirit", "16,60.2;16.4,54;16.6,54.4;16.6,60.4;17,55.4;23.4,76.6;23.6,76.6;24.2,40.6;24.4,39.2;24.4,39.6;30,40.8;30.2,41.6")
 addRareFull(1434, 51663, "Pogeyan", {}, "The Fire Spirit - a cat with a unique burning look. Tameable rare, no special tactic.", "unique", "36.2,29.2;36.4,27.4;36.4,28.2;36.4,29.6;36.6,29.2;37,28.4;37,29.8;37.6,30.2")
-addRareFull(1439, 148787, "Alash'anir", {166432}, "Only up while your faction controls the warfront zone (Battle for Azeroth warfront phase).", nil, "56.4,30.8;56.6,30.4;56.6,30.8")
-addRareFull(1439, 148037, "Athil Dewfire", {166803, 166449}, "Only up while your faction controls the warfront zone (Battle for Azeroth warfront phase).", nil, "40.4,73.2;40.4,74;40.8,73;40.8,74.2;41.4,74.8;41.4,76.4;41.4,76.6;41.6,75;41.6,76.4;41.6,76.6")
-addRareFull(1439, 149651, "Blackpaw", {166428}, "Only up while your faction controls the warfront zone (Battle for Azeroth warfront phase).", nil, "49.4,24.8;49.6,25")
-addRareFull(1439, 149658, "Shadowclaw", {166435}, "Only up while your faction controls the warfront zone (Battle for Azeroth warfront phase).", nil, "39.4,32.8;39.6,33")
-addRareFull(1439, 149652, "Agathe Wyrmwood", {166438}, "Only up while your faction controls the warfront zone (Battle for Azeroth warfront phase).", nil, "49.4,24.8;49.6,25")
-addRareFull(1439, 149661, "Croz Bloodrage", {166437}, "Only up while your faction controls the warfront zone (Battle for Azeroth warfront phase).", nil, "50.6,32.2")
-addRareFull(1439, 147701, "Moxo the Beheader", {166434}, "Only up while your faction controls the warfront zone (Battle for Azeroth warfront phase).", nil, "63.2,20;63.2,20.6;63.4,19.4;64,19.2;64.2,20;64.6,19.4;64.8,20;65,20.6;65.8,19.8;66.4,19.2;66.8,18.4;67,18.8")
 addRareFull(1453, 121567, "Lost Spectral Gryphon", {}, "Spirit beast (gryphon). Click the Spectral Feather in the far back of the gryphon master's nest to make it appear; only Beast Mastery hunters can see it.", "spirit", "62.8,72.4;67.8,72.6;71.4,72;71.4,72.6;71.6,72.2;71.8,73")
 addRareFull(1454, 121571, "Gon", {}, "Spirit beast. Click the Spectral Eggshell by the skull pile near the priest trainer's hut in the Valley of Spirits; only Beast Mastery hunters can see it.", "spirit", "35.4,69.2;35.8,67.8;35.8,69")
 -- rares found by the Wowhead crawl
