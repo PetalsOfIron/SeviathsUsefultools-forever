@@ -480,10 +480,12 @@ if TooltipDataProcessor and Enum and Enum.TooltipDataType and Enum.TooltipDataTy
             if (rec.traits or "") ~= "" then tt:AddLine("|cffffd100Personality:|r " .. rec.traits:sub(1, 120), 0.8, 0.8, 0.8, true) end
             if (rec.story or "") ~= "" then tt:AddLine("|cffffd100Backstory:|r " .. rec.story:sub(1, 240), 0.8, 0.8, 0.8, true) end
             if (rec.age or "") ~= "" then tt:AddLine("|cffffd100Age:|r " .. rec.age:sub(1, 40), 0.8, 0.8, 0.8) end
+            if (rec.height or "") ~= "" then tt:AddLine("|cffffd100Height:|r " .. rec.height:sub(1, 60), 0.8, 0.8, 0.8) end
+            if (rec.residence or "") ~= "" then tt:AddLine("|cffffd100Residence:|r " .. rec.residence:sub(1, 80), 0.8, 0.8, 0.8) end
             if (rec.motto or "") ~= "" then tt:AddLine("\"" .. rec.motto:sub(1, 100) .. "\"", 0.9, 0.8, 0.5, true) end
             if (rec.currently or "") ~= "" then tt:AddLine("|cffffd100Currently:|r " .. rec.currently:sub(1, 120), 0.8, 0.8, 0.8, true) end
             local any = false
-            for _, k in ipairs({ "title", "looks", "traits", "story", "age", "motto", "currently" }) do if (rec[k] or "") ~= "" then any = true end end
+            for _, k in ipairs({ "title", "looks", "traits", "story", "age", "height", "residence", "motto", "currently" }) do if (rec[k] or "") ~= "" then any = true end end
             if any then tt:AddLine(rec.status == "OOC" and "|cffff6060Out of character|r" or "|cff40ff40In character|r") end
             tt:Show()
         end
@@ -491,6 +493,16 @@ if TooltipDataProcessor and Enum and Enum.TooltipDataType and Enum.TooltipDataTy
 end
 
 ---------------------------------------------------------------------------
+-- clicking on your own portrait (or yourself in the world): the menu has an entry that opens the Roleplay section with all the fields of your OC
+if Menu and Menu.ModifyMenu then
+    for _, tag in ipairs({ "MENU_UNIT_SELF" }) do
+        pcall(Menu.ModifyMenu, tag, function(owner, root)
+            root:CreateDivider()
+            root:CreateButton("Roleplay information (OC)", function() SFP:ToggleMenu("decor") end)
+        end)
+    end
+end
+
 -- the zone levels on the world map: the level range of the zone under the mouse
 ---------------------------------------------------------------------------
 SFP:OnLogin(function()

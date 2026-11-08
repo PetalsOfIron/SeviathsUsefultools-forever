@@ -5434,3 +5434,34 @@
 21937|Scorched Ectoplasm|1|12|0|1|0
 15767|Hameya's Key|1|12|0|1|0
 15785|Zaeldarr's Head|1|12|0|1|0
+15874|Soft-shelled Clam|1|7|11|1|0
+15803|Book of the Ancients|1|12|0|1|0
+19233|Five of Beasts|3|15|0|1|0
+19273|Six of Elementals|3|15|0|1|0
+10367|Hyperion Shield|2|4|6|65|60
+12716|Plans: Helm of the Great Chief|3|9|4|61|0
+14509|Pattern: Mooncloth Circlet|3|9|2|62|0
+14510|Pattern: Bottomless Bag|3|9|2|62|0
+17111|Blazefury Medallion|4|4|-3|68|60
+17112|Empyrean Demolisher|4|2|4|66|60
+17113|Amberseal Keeper|4|2|10|67|60
+18204|Eskhandar's Pelt|4|4|-6|66|60
+18543|Ring of Entropy|4|4|-2|66|60
+18544|Doomhide Gauntlets|4|4|2|71|60
+18546|Infernal Headcage|4|4|3|69|60
+19133|Fel Infused Leggings|4|4|1|71|60
+19134|Flayed Doomguard Belt|4|4|2|68|60
+19135|Blacklight Bracer|4|4|1|66|60
+21371|Pattern: Core Felcloth Bag|3|9|2|60|0
+22389|Plans: Sageblade|4|9|4|64|0
+15968|Elunarian Sphere|2|4|-5|64|59
+21147|Fragment of the Nightmare's Corruption|1|12|0|1|0
+2243|Hand of Edward the Odd|4|2|4|62|57
+21146|Fragment of the Nightmare's Corruption|1|12|0|1|0
+15941|High Councillor's Scepter|2|4|-5|64|59
+12058|Demonic Bone Ring|2|4|-2|64|59
+14460|Elunarian Diadem|2|4|1|63|58
+16190|Bloodfury Ripper's Remains|1|12|0|1|0
+16746|Warsong Report|1|12|0|1|0
+16408|Befouled Water Globe|2|12|0|23|23
+21024|Chimaerok Tenderloin|1|7|8|60|0
