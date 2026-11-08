@@ -1531,6 +1531,19 @@ local function addProfileLines(tt, rec)
     if d then tt:AddLine("Dislikes in a group: " .. d, 1, 0.5, 0.5, true) end
 end
 
+-- what is worked out about your own character for the tooltip (gear check, talents) is kept for a few seconds: the game redraws the tooltip many times a
+-- second while the mouse is on it, and doing the whole check each time made the lines come late
+local selfKeep = {}
+local function keepFor(key, seconds, fn)
+    local k = selfKeep[key]
+    local now = GetTime()
+    if k and now - k.t < seconds then return k.v end
+    local ok, v = pcall(fn)
+    selfKeep[key] = { t = now, v = ok and v or nil }
+    return ok and v or nil
+end
+S.ForgetSelfTooltip = function() wipe(selfKeep) end
+
 local function playerTooltip(tt, unit)
     local c = S.Config()
     if not c.tip then return end
@@ -1574,7 +1587,7 @@ local function playerTooltip(tt, unit)
     -- talents: the hero tree and the guide build closest to theirs
     local tal
     if isSelf then
-        tal = mySummary()
+        tal = keepFor("tal", 5, mySummary)
     elseif insp and insp.talent then
         tal = insp.talent
     elseif rec and rec.talent then
@@ -1596,7 +1609,7 @@ local function playerTooltip(tt, unit)
 
     -- sockets and enchants
     local gear
-    if isSelf and SFP.GemHelper then gear = SFP.GemHelper.CheckUnit("player")
+    if isSelf and SFP.GemHelper then gear = keepFor("gear", 5, function() return SFP.GemHelper.CheckUnit("player") end)
     elseif insp and insp.gear then gear = insp.gear
     elseif rec and rec.gear then gear = rec.gear end
     if gear and gear.any then

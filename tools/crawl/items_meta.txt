@@ -5485,3 +5485,40 @@
 18677|Zephyr Cloak|2|4|-6|61|56
 19268|Ace of Elementals|3|15|0|1|0
 21548|Pattern: Stormshroud Gloves|3|9|1|62|0
+18678|Tempestria's Frozen Necklace|3|4|-3|61|56
+18679|Frigid Ring|2|4|-2|61|56
+18671|Baron Charr's Sceptre|3|2|4|59|54
+18672|Elemental Ember|2|4|-5|59|54
+18673|Avalanchion's Stony Hide|3|4|6|59|54
+18674|Hardened Stone Band|2|4|-2|59|54
+20451|Twilight Cultist Ring of Lordship|1|4|-2|60|60
+18719|The Traitor's Heart|1|12|0|1|0
+18922|Secret Plans: Fiery Flux|1|12|0|1|0
+18946|Head of Overseer Maltorius|1|12|0|1|0
+18962|Stinglasher's Glands|1|12|0|1|0
+22484|Necrotic Rune|2|15|4|1|0
+23090|Bracers of Undead Slaying|3|4|4|63|58
+23091|Bracers of Undead Cleansing|3|4|1|63|58
+23092|Wristguards of Undead Slaying|3|4|3|63|58
+23093|Wristwraps of Undead Slaying|3|4|2|63|58
+236710|Wristguards of Undead Slaying|4|4|3|70|58
+236711|Wristwraps of Undead Slaying|4|4|2|70|58
+236712|Bracers of Undead Slaying|4|4|4|70|58
+236716|Bracers of Undead Cleansing|4|4|1|70|58
+236719|Bracers of Undead Purification|4|4|1|70|58
+236722|Bracers of Undead Warding|4|4|1|70|58
+236725|Wristwraps of Undead Cleansing|4|4|2|70|58
+236728|Wristwraps of Undead Purification|4|4|2|70|58
+236731|Wristwraps of Undead Warding|4|4|2|70|58
+236734|Wristguards of Undead Cleansing|4|4|3|70|58
+236737|Wristguards of Undead Warding|4|4|3|70|58
+236740|Wristguards of Undead Purification|4|4|3|70|58
+236743|Bracers of Undead Purification|4|4|4|70|58
+236746|Bracers of Undead Warding|4|4|4|70|58
+19034|Lard's Lunch|1|12|0|1|0
+18588|Ez-Thro Dynamite II|1|7|2|40|30
+19061|Warsong Gulch Iron Ration|1|0|0|45|35
+19062|Warsong Gulch Field Ration|1|0|0|35|25
+19067|Warsong Gulch Mageweave Bandage|1|0|7|45|35
+19068|Warsong Gulch Silk Bandage|1|0|7|35|25
+20465|Crystal Unlocking Mechanism|1|12|0|1|0
