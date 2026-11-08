@@ -541,7 +541,7 @@ function SFP:ShowRoleplayCard()
         snake:SetVertexColor(0.95, 0.2, 0.18)
         snake:SetAlpha(0.45)
         local edit = K.mkButton(rpCard, "Edit", 80, function() SFP:ToggleMenu("decor") end)
-        edit:SetPoint("TOPRIGHT", rpCard, "TOPRIGHT", -34, -4)
+        edit:SetPoint("TOPRIGHT", rpCard, "TOPRIGHT", -34, 1)
     end
     local n, s = UnitName("player")
     local full = (type(s) == "string" and s ~= "" and not s:find("Realm") and not s:find("CAMWOW")) and (n .. " " .. s) or tostring(n)

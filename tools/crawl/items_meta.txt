@@ -5739,3 +5739,11 @@
 223168|Worldcore Fragment|2|0|0|45|0
 221267|Rune of the Bloodthirsty|2|0|-3|50|0
 221326|Sacred Stag Heart|1|15|0|1|0
+221445|Rune of Focused Fire|2|0|-3|50|0
+221461|Rune of Carnage|2|0|-3|50|0
+221473|Rune of the Watchman|2|0|-3|50|0
+20030|Pet Rock|0|15|0|1|0
+219515|Greater Moonstone|2|7|0|50|0
+220610|Rune of Mental Dexterity|2|0|-3|50|0
+221979|Prophecy of Verdant Winter|2|0|-3|50|0
+220614|Rune of Static Shock|2|0|-3|50|0
