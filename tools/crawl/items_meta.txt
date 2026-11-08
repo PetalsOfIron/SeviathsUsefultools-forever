@@ -5431,3 +5431,6 @@
 16192|Besseleth's Fang|1|12|0|1|0
 12811|Righteous Orb|2|7|11|60|0
 16723|Lightforge Belt|3|4|4|58|53
+21937|Scorched Ectoplasm|1|12|0|1|0
+15767|Hameya's Key|1|12|0|1|0
+15785|Zaeldarr's Head|1|12|0|1|0

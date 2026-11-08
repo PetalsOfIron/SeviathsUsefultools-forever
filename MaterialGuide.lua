@@ -141,6 +141,7 @@ local function place(side, r, n, indent)
     r.text:SetPoint("LEFT", r.icon, "RIGHT", 4, 0)
     r.text:SetPoint("RIGHT", r.right, "LEFT", -4, 0)
     r.item, r.click, r.hint, r.tipFn, r.spotTip = nil, nil, nil, nil, nil
+    r.isSpacer = false
     r:EnableMouse(true)
     r.right:SetText("")
     r.bg:SetColorTexture(0, 0, 0, 0)
@@ -166,12 +167,19 @@ local function finish(side, n)
     local per = 600   -- the list scrolls (the bar on its side and the mouse wheel); only a very long list is cut into pages
     local sig = tostring(mode) .. "|" .. tostring(matTab) .. "|" .. tostring(gatherExp) .. "|" .. tostring(selected) .. "|" .. tostring(expSel) .. "|" .. (search and search:GetText() or "")
     if sig ~= listSig then listSig, listPage = sig, 1 end
-    local pages = math.max(1, math.ceil(n / per))
+    -- the pages end after an empty row (the space between two blocks), so a monster or an item with everything under it always finishes on the page where it started
+    local starts, cnt = { 1 }, 0
+    for i = 1, n do
+        cnt = cnt + 1
+        if cnt >= per and side.rows[i] and side.rows[i].isSpacer and i < n then starts[#starts + 1] = i + 1; cnt = 0 end
+    end
+    local pages = #starts
     listPage = math.min(math.max(listPage, 1), pages)
-    local first = (listPage - 1) * per
+    local first = starts[listPage] - 1
+    local last = (starts[listPage + 1] or (n + 1)) - 1
     for i = 1, n do
         local r = side.rows[i]
-        if i > first and i <= first + per then
+        if i > first and i <= last then
             r:ClearAllPoints()
             r:SetPoint("TOPLEFT", side.content, "TOPLEFT", 0, -(i - first - 1) * ROW_H)
             r:SetPoint("TOPRIGHT", side.content, "TOPRIGHT", 0, -(i - first - 1) * ROW_H)
@@ -180,7 +188,7 @@ local function finish(side, n)
             r:Hide()
         end
     end
-    side.content:SetHeight(math.max(math.min(n - first, per) * ROW_H, 1))
+    side.content:SetHeight(math.max((last - first) * ROW_H, 1))
     if win and win.pager then
         win.pager.text:SetText("Page " .. listPage .. " / " .. pages .. "   |cff808080" .. n .. " rows|r")
         win.pager.prev:SetEnabled(listPage > 1)
@@ -197,6 +205,7 @@ local function spacer(n)
     r.icon:SetTexture(nil)
     r.text:SetText("")
     r.hl:Hide()
+    r.isSpacer = true
     return n
 end
 
