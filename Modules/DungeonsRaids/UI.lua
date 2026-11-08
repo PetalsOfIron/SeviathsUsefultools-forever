@@ -970,6 +970,8 @@ function UI:Layout(section)
     for _, b in ipairs(f.tabButtons) do
       b:ClearAllPoints()
       local show = (b.row == 2 and not b.generic) or b.key == section or (section == "dungeon" and b.key == "mplus") or b.listedFor == section
+      -- WoW Forever: the group finder has few categories, so every section stays reachable (Questing, Dungeons, Raids, Custom)
+      if FOREVER_GAME and b.row == 1 then show = true end
       b:SetShown(show)
       if show then
         local w = tabWidth(b)
