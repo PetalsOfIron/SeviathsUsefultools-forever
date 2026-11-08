@@ -447,38 +447,41 @@ function SFP:BoeDeals()
     return out, nohist
 end
 
-local dealWin
+local dealWin, dealRows
 local function renderDeals(self)
     local list, nohist = self:BoeDeals()
-    local lines = {}
+    local items = {}
+    local function tip(id) return function(tt) tt:SetItemByID(id) end end   -- the tooltip of the item (read from the auction house scan or the game)
     for i, d in ipairs(list) do
-        if i > 40 then break end
+        if i > 60 then break end
         local pct = math.floor(d.cut * 100 + 0.5)
         local color = pct >= 20 and "|cff40ff40" or (pct <= -20 and "|cffff6060" or "|cffffffff")
-        lines[#lines + 1] = ("%s%s%d%%|r  %s   now %s   typical %s  |cff808080(%s)|r"):format(
+        items[#items + 1] = { tip = tip(d.id), text = ("%s%s%d%%|r  %s   now %s   typical %s  |cff808080(%s)|r"):format(
             color, pct >= 0 and "-" or "+", math.abs(pct), self:ItemName(d.id), money(d.now), money(d.typical),
-            d.src == "your scans" and (d.n .. " scans") or d.src)
+            d.src == "your scans" and (d.n .. " scans") or d.src) }
     end
-    if #lines > 0 then
-        table.insert(lines, 1, "|cff808080Green = cheaper than usual. Prices: your own scans, else Auctionator or TradeSkillMaster.|r\n")
+    if #items > 0 then
+        table.insert(items, 1, { text = "|cff808080Green = cheaper than usual. Prices: your own scans, else Auctionator or TradeSkillMaster. Hover an item for its tooltip.|r" })
     end
     -- items that have a price now but nothing to compare with yet
     if #nohist > 0 then
-        lines[#lines + 1] = (#lines > 0 and "\n" or "") .. "|cffffd100BoE prices now|r  |cff808080(no price history yet - the addon keeps one from now on, so this fills in over a few days)|r"
+        items[#items + 1] = { text = "|cffffd100BoE prices now|r  |cff808080(no price history yet - the addon keeps one from now on, so this fills in over a few days)|r" }
         for i, d in ipairs(nohist) do
-            if i > 30 then break end
-            lines[#lines + 1] = ("  %s   %s"):format(self:ItemName(d.id), money(d.now))
+            if i > 80 then break end
+            items[#items + 1] = { tip = tip(d.id), text = ("%s   %s"):format(self:ItemName(d.id), money(d.now)) }
         end
     end
-    if #lines == 0 then
-        lines[1] = "No BoE prices known yet. Scan the auction house (button below its window), or install Auctionator or TradeSkillMaster and scan there. Then open this list again."
+    if #items == 0 then
+        items[1] = { text = "No BoE prices known yet. Scan the auction house (button below its window), or install Auctionator or TradeSkillMaster and scan there. Then open this list again." }
     end
-    dealWin:SetContent(table.concat(lines, "\n"))
+    dealRows:Set(items)
 end
 
 function SFP:ShowDeals()
     if not dealWin then
-        dealWin = makeWindow("SeviathsUsefulToolsDeals", "BoE deals - now against the typical price", 480, 360)
+        dealWin = makeWindow("SeviathsUsefulToolsDeals", "BoE deals - now against the typical price", 680, 600)
+        dealWin.scroll:Hide()
+        dealRows = SFP.MakeRowList(dealWin, 12, -34, 650, 548, 26)   -- roomy rows
         local acc = 0
         dealWin:SetScript("OnUpdate", function(_, dt)
             acc = acc + dt
