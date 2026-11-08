@@ -686,6 +686,8 @@ function ns:ItemGroupFor(id, fallback, savedExp)
         if ok and type(a) == "number" then expID = a end
     end
     local name = expID and _G["EXPANSION_NAME" .. expID]
+    -- WoW Forever has one expansion: every item is a Classic item (no Midnight or "WoW Forever" groups)
+    if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then name = _G.EXPANSION_NAME0 or "Classic" end
     -- sections inside sections: expansion > type > subtype (Classic > Trade Goods > Herb); the UI opens each part on its own
     local kind = fallback
     local ok, itype, isub = pcall(C_Item.GetItemInfoInstant, id)

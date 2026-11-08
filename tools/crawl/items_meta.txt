@@ -5362,3 +5362,18 @@
 12402|Ancient Egg|1|12|0|1|0
 19064|Shackle Key|1|12|0|1|0
 12738|Dalson Outhouse Key|1|12|0|1|0
+15043|Plagueland Termites|1|12|0|1|0
+16039|Ta'Kierthan Songblade|3|2|8|57|52
+10256|Adventurer's Bracers|2|4|2|61|56
+12739|Dalson Cabinet Key|1|12|0|1|0
+12925|Arikara Serpent Skin|1|12|0|1|0
+12884|Arnak's Hoof|1|0|0|0|0
+12829|Winterfall Crate|1|12|0|1|0
+12946|Hypercapacitor Gizmo|1|12|0|1|0
+12938|Blood of Heroes|1|12|0|60|0
+12814|Flame in a Bottle|1|12|0|1|0
+13470|Head of Alexi Barov|1|12|0|1|0
+13194|Felstone Field Cauldron Key|1|12|0|1|0
+13197|Writhing Haunt Cauldron Key|1|12|0|1|0
+13195|Dalson's Tears Cauldron Key|1|12|0|1|0
+13196|Gahrron's Withering Cauldron Key|1|12|0|1|0
