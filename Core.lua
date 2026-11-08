@@ -110,6 +110,23 @@ function SFP.BlizzardFrame(f, big)
         end
         return
     end
+    if big == "small" then
+        -- a small window (the farm session controls): the marble of the game's windows with a gold edge
+        f:SetBackdrop({ edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", edgeSize = 14, insets = { left = 3, right = 3, top = 3, bottom = 3 } })
+        f:SetBackdropBorderColor(0.8, 0.65, 0.3, 1)
+        if not f.seviathBase then
+            local bg = f:CreateTexture(nil, "BACKGROUND", nil, -8)
+            bg:SetPoint("TOPLEFT", 3, -3)
+            bg:SetPoint("BOTTOMRIGHT", -3, 3)
+            bg:SetTexture("Interface\\FrameGeneral\\UI-Background-Marble", "REPEAT", "REPEAT")
+            bg:SetHorizTile(true)
+            bg:SetVertTile(true)
+            f.seviathBase = bg
+            f.SetBackdropColor = function() end
+            f.SetBackdropBorderColor = function() end
+        end
+        return
+    end
     if not big then
         -- a small frame (a button, a row, a panel): flat and red
         f:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8x8", edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = 1 })
