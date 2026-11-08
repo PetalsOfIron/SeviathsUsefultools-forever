@@ -17,11 +17,6 @@ for line in open(os.path.join(HERE, "crawl", "questgivers.txt"), encoding="utf8"
     keep = []
     for q in p[3].split(","):
         f = q.split(":")
-        if len(f) >= 5 and f[1].isdigit() and f[2].isdigit() and int(f[1]) >= 60 and int(f[2]) <= 30:
-            continue
-        # the Darkmoon Faire quest numbers (7881-7999, 8222-8228, and the later copies above 80000)
-        if f[0].isdigit() and (7881 <= int(f[0]) <= 7999 or 8222 <= int(f[0]) <= 8228 or int(f[0]) >= 80000):
-            continue
         keep.append(q)
     if not keep:
         continue

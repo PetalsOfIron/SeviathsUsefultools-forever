@@ -16,6 +16,24 @@ local function playerFaction()
 end
 
 -- the quests of one giver that the character can take: { { id, level, name }, ... }
+-- the Darkmoon Faire quests are offered only while the fair is on (the first Sunday of each month, for a week): the game's calendar says
+local fairOn, fairAt
+local function darkmoonOn()
+    if fairAt and GetTime() - fairAt < 600 then return fairOn end
+    fairAt, fairOn = GetTime(), false
+    if C_Calendar and C_Calendar.GetNumDayEvents and C_Calendar.GetDayEvent and C_DateAndTime and C_DateAndTime.GetCurrentCalendarTime then
+        local ok = pcall(function()
+            local now = C_DateAndTime.GetCurrentCalendarTime()
+            for i = 1, (C_Calendar.GetNumDayEvents(0, now.monthDay) or 0) do
+                local ev = C_Calendar.GetDayEvent(0, now.monthDay, i)
+                if ev and type(ev.title) == "string" and ev.title:find("Darkmoon", 1, true) then fairOn = true end
+            end
+        end)
+    end
+    return fairOn
+end
+local function isFairQuest(id) return (id >= 7881 and id <= 7999) or (id >= 8222 and id <= 8228) or id >= 80000 end
+
 local function available(entry)
     local lvl = UnitLevel("player")
     if type(lvl) ~= "number" then return nil end
@@ -31,7 +49,7 @@ local function available(entry)
     end
     local out = {}
     for _, q in ipairs(list) do
-        local ok = q.req <= lvl and (q.side == 0 or q.side == 3 or q.side == side or side == 0)   -- (Wowhead: 1 Alliance, 2 Horde, 3 both)
+        local ok = (not isFairQuest(q.id) or darkmoonOn()) and q.req <= lvl and (q.side == 0 or q.side == 3 or q.side == side or side == 0)   -- (Wowhead: 1 Alliance, 2 Horde, 3 both)
         -- quests far above the level are not offered (the Darkmoon Faire quests of level 60 need only level 1, but are not for a level 6 character)
         if ok and q.level > 0 and q.level > lvl + 6 then ok = false end
         -- quests far below the level give nothing: left out
