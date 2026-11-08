@@ -5789,3 +5789,12 @@
 19236|Eight of Beasts|3|15|0|1|0
 19272|Five of Elementals|3|15|0|1|0
 227801|Firelands Ember|2|7|0|1|53
+17010|Fiery Core|3|15|1|60|0
+17011|Lava Core|3|15|1|60|0
+17012|Core Leather|1|7|6|60|0
+22388|Plans: Titanic Leggings|4|9|4|61|0
+227743|Obsidian Power Core|1|12|0|1|0
+11382|Blood of the Mountain|2|7|0|50|0
+12800|Azerothian Diamond|2|7|0|60|0
+227749|Rune of the Falling Star|2|0|-3|60|0
+225690|Spell Notes: Frozen Orb|2|0|-3|60|0

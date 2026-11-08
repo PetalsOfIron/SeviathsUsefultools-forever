@@ -87,6 +87,22 @@ end
 
 -- the look of the windows: the dark dialog background of the game (red tinted), a red tooltip-style border, and the snake in a corner
 local SNAKE = "Interface\\AddOns\\SeviathsUsefulTools\\Media\\snake_tile.tga"
+-- opens the game's own Looking For Group window (the call that does it differs between versions of the game: the first one that exists is used)
+function SFP.OpenGroupFinder()
+    for _, name in ipairs({ "PVEFrame_ToggleFrame", "ToggleLFGParentFrame", "ToggleLFDParentFrame", "LFGParentFrame_Toggle", "ToggleGroupFinder" }) do
+        local fn = _G[name]
+        if type(fn) == "function" and pcall(fn) then return true end
+    end
+    for _, name in ipairs({ "PVEFrame", "LFGParentFrame", "LFGListFrame" }) do
+        local fr = _G[name]
+        if fr and fr.Show then
+            local ok = pcall(function() if fr:IsShown() then fr:Hide() else fr:Show() end end)
+            if ok then return true end
+        end
+    end
+    SFP:Print("Could not open the Looking For Group window: open it with its key (default I).")
+end
+
 function SFP.BlizzardFrame(f, big)
     if not f or not f.SetBackdrop then return end
     if big == "inset" then

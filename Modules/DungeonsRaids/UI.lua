@@ -930,6 +930,13 @@ function UI:Build()
   scroll:HookScript("OnVerticalScroll", UpdateMore)
   scroll:HookScript("OnShow", UpdateMore)
 
+  -- a button in the title bar: opens the game's own Looking For Group window
+  local lfgBtn = UI.Button(f, "Looking For Group", 130, 20, function()
+    local S0 = _G.SeviathsUsefulTools
+    if S0 and S0.OpenGroupFinder then S0.OpenGroupFinder() end
+  end)
+  lfgBtn:SetPoint("TOPRIGHT", f, "TOPRIGHT", -44, -8)
+
   f.tabButtons = {}
   for _, tab in ipairs(TABS) do
     local b = UI.Button(f, tab.label, 88, 22, function() UI:Select(tab.key) end)
