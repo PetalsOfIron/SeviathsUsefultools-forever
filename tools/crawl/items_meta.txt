@@ -5429,3 +5429,5 @@
 210534|Idol of the Wild|2|4|8|25|0
 16581|Resonite Crystal|1|12|0|1|0
 16192|Besseleth's Fang|1|12|0|1|0
+12811|Righteous Orb|2|7|11|60|0
+16723|Lightforge Belt|3|4|4|58|53

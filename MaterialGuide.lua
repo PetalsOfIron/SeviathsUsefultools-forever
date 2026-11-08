@@ -1500,7 +1500,7 @@ end
 local function setMode(m)
     mode = m
     if win and win.tabs then
-        win.tabs.monsters:SetShown(m == "mat")
+        win.tabs.monsters:SetShown(m == "mat" and not itemMode)
         win.tabs.gather:SetShown(m == "mat" and not itemMode)
         if win.curBtn then win.curBtn:SetShown(m == "farm" or m == "rare") end
         if win.topBtn then win.topBtn:SetShown(m == "farm" or m == "rare" or m == "top") end
