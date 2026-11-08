@@ -117,3 +117,35 @@ if TooltipDataProcessor and Enum and Enum.TooltipDataType and Enum.TooltipDataTy
         pcall(addLines, tt, unit)
     end)
 end
+
+---------------------------------------------------------------------------
+-- A small public API, so other addons (tooltip addons, roleplay addons, WeakAuras) can read what this addon knows about a player:
+--   SeviathsUsefulTools_API.GetPlayer("Name-Realm")  ->  { level, class, race, guild, zone, faction, seen } or nil   (from the Who and nameplate scans)
+--   SeviathsUsefulTools_API.GetMyProfile()           ->  your profile of the Roleplay page: title, age, height, looks, personality, story ...
+--   SeviathsUsefulTools_API.GetPrice(itemID)         ->  the auction price in copper of your server kind, or nil
+-- Other addons cannot be made to show our data: each tooltip addon (Raider.IO and the like) reads only its own files. The API is the part we can offer.
+---------------------------------------------------------------------------
+local API = {}
+_G.SeviathsUsefulTools_API = API
+
+function API.GetPlayer(key)
+    local info = SFP.db and SFP.db.seenInfo
+    local r = type(key) == "string" and info and info[key]
+    if type(r) ~= "table" then return nil end
+    return { level = r.lvl, class = r.class, race = r.race, guild = r.guild, zone = r.zone, faction = r.faction, seen = r.t }
+end
+
+function API.GetMyProfile()
+    local n = UnitName("player") or "?"
+    local realm = (GetNormalizedRealmName and GetNormalizedRealmName()) or ""
+    local chars = SFP.db and SFP.db.rp and SFP.db.rp.chars
+    local r = chars and (chars[n .. "-" .. realm] or chars[n])
+    if type(r) ~= "table" then return nil end
+    local out = {}
+    for k, v in pairs(r) do if k ~= "notes" then out[k] = v end end   -- the private notes are never given out
+    return out
+end
+
+function API.GetPrice(itemID)
+    return SFP.GetPrice and SFP:GetPrice(itemID) or nil
+end
