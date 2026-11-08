@@ -701,3 +701,7 @@
 15606|Elder Brightspear|618:55.4,43.6;55.6,43.4;55.6,43.6|8726:60:1:3:Brightspear the Elder
 15624|Forest Wisp|141:37.4,47.8;37.6,48|8734:60:60:3:Tyrande and Remulos
 15693|Jonathan the Revelator|1377:26,90.8|8745:60:60:3:Treasure of the Timeless One,86449:60:60:3:Treasure of the Timeless One
+15732|Wonderform Operator|1:53,35.6;53.2,35.4~11:9.2,58.4;9.2,58.6~14:50,13.6~33:26.6,73.4;26.6,73.6~85:61,59.4;61,59.6~440:53.4,28;53.6,28~1519:62.2,60.8|8827:1:1:1:Winter's Presents,8828:1:1:2:Winter's Presents,8860:60:1:1:New Year Celebrations!,8861:60:1:2:New Year Celebrations!
+15797|Colossus Researcher Sophia|1377:49.4,37.2;49.6,37.2|8859:60:51:3:Secrets of the Colossus - Zora
+15798|Colossus Researcher Nestor|1377:49.4,37.2;49.6,37.2|8857:60:51:3:Secrets of the Colossus - Ashi
+15799|Colossus Researcher Eazel|1377:49.4,37.2;49.6,37.2|8858:60:51:3:Secrets of the Colossus - Regal

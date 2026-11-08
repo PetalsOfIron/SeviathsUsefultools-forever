@@ -4975,3 +4975,41 @@
 6845|Burning Rock|1|12|0|1|0
 19775|Sealed Azure Bag|1|12|0|1|0
 8953|Deep Fried Plantains|1|0|5|55|45
+13815|Some Rune|1|12|0|1|0
+14293|Arachnidian Circlet|2|4|1|55|50
+14437|Venomshroud Vest|2|4|1|54|49
+14447|Highborne Footpads|2|4|1|53|48
+14664|Keeper's Armor|2|4|2|54|49
+14915|Jade Breastplate|2|4|4|53|48
+15186|Praetorian Leggings|2|4|2|55|50
+15291|Harpy Needler|2|2|2|51|46
+16045|Schematic: Spellpower Goggles Xtreme Plus|2|9|3|54|0
+20029|Enchanted Coral|1|12|0|1|0
+14974|Glorious Bindings|2|4|4|55|50
+15646|Ironhide Legguards|2|4|3|55|50
+20028|Glittering Dust|1|12|0|1|0
+14284|Opulent Robes|2|4|1|56|51
+14309|Celestial Belt|2|4|1|56|51
+14860|Vanguard Pauldrons|2|4|4|56|51
+14930|Lofty Shield|2|4|6|57|52
+14938|Heroic Bracers|2|4|4|56|51
+15428|Peerless Belt|2|4|2|56|51
+15648|Ironhide Shield|2|4|6|56|51
+15655|Merciless Legguards|2|4|3|56|51
+15984|Opulent Scepter|2|4|-5|56|51
+15425|Peerless Bracers|2|4|2|55|50
+18624|Flawless Fel Essence (Azshara)|1|12|0|1|0
+13491|Recipe: Elixir of the Mongoose|2|9|6|56|0
+14964|High Chief's Shield|2|4|6|56|51
+14972|Glorious Sabatons|2|4|4|56|51
+15119|Highborne Pants|2|4|1|56|51
+15391|Jadefire Cap|2|4|2|56|51
+15728|Pattern: Wicked Leather Bracers|2|9|1|53|0
+16219|Formula: Enchant Gloves - Greater Agility|2|9|8|54|0
+14671|Pridelord Boots|2|4|2|56|51
+14967|Glorious Gauntlets|2|4|4|56|51
+15640|Ironhide Breastplate|2|4|3|56|51
+9279|White Punch Card|1|12|0|1|0
+6894|Whirlwind Heart|1|12|0|1|0
+7081|Breath of Wind|1|7|10|45|0
+20087|Wavethrasher Scales|1|12|0|1|0

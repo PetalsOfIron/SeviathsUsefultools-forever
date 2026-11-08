@@ -98,6 +98,7 @@ function SFP.BlizzardFrame(f, big)
             bg:SetTexture("Interface\\FrameGeneral\\UI-Background-Rock", "REPEAT", "REPEAT")
             bg:SetHorizTile(true)
             bg:SetVertTile(true)
+            bg:SetVertexColor(0.62, 0.62, 0.62, 1)   -- darker, like the inset of the quest log
             f.seviathMarble = bg
             local ok = NineSliceUtil and NineSliceUtil.ApplyLayoutByName and pcall(NineSliceUtil.ApplyLayoutByName, f, "InsetFrameTemplate")
             if not ok then
@@ -133,6 +134,18 @@ function SFP.BlizzardFrame(f, big)
         f.SetBackdropColor = function() end
         f.SetBackdropBorderColor = function() end
     end
+    -- the window's title sits on the top bar of the frame, in the middle, like the titles of the game's own windows
+    -- (the title is made after the frame is styled, so it is placed a moment later)
+    C_Timer.After(0, function()
+        for _, key in ipairs({ "title", "header", "Title" }) do
+            local t = rawget(f, key)
+            if type(t) == "table" and t.GetObjectType and t:GetObjectType() == "FontString" then
+                t:ClearAllPoints()
+                t:SetPoint("TOP", f, "TOP", 0, 4)
+                t:SetJustifyH("CENTER")
+            end
+        end
+    end)
     if not f.seviathSnake then
         local tex = f:CreateTexture(nil, "BACKGROUND", nil, 2)
         tex:SetTexture(SNAKE)

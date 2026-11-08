@@ -57,22 +57,20 @@ local function backdrop(f, r, g, b, a, br, bg_, bb, ba)
 end
 
 local function mkButton(parent, text, w, fn, tip)
-    local b = CreateFrame("Button", nil, parent, "BackdropTemplate")
+    -- the game's own red panel button (the look of the Hunter search / Waypoint buttons)
+    local b = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
     b:SetSize(w, 22)
-    backdrop(b, 0.24, 0.07, 0.07, 0.95, CY.r, CY.g, CY.b, 0.6)
-    b.text = b:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-    b.text:SetPoint("CENTER")
-    b.text:SetText(text)
+    b:SetText(text)
+    b.text = b:GetFontString()
     b:SetScript("OnClick", function(self) fn(self) end)
     b:SetScript("OnEnter", function(self)
-        self:SetBackdropColor(0.42, 0.10, 0.10, 1)
         if tip then
             SFP.Tip():SetOwner(self, "ANCHOR_RIGHT")
             SFP.Tip():AddLine(tip, 1, 1, 1, true)
             SFP.Tip():Show()
         end
     end)
-    b:SetScript("OnLeave", function(self) self:SetBackdropColor(0.24, 0.07, 0.07, 0.95); SFP.Tip():Hide() end)
+    b:SetScript("OnLeave", function() SFP.Tip():Hide() end)
     return b
 end
 
@@ -1409,7 +1407,7 @@ function SFP:ShowMenuSection(key)
     current = key
     for _, s in ipairs(SECTIONS) do
         local b = navButtons[s.key]
-        b:SetBackdropColor(s.key == key and 0.42 or 0.12, s.key == key and 0.10 or 0.04, s.key == key and 0.10 or 0.04, 0.95)
+        if s.key == key then b:LockHighlight() else b:UnlockHighlight() end
         if panes[s.key] then panes[s.key]:Hide() end
     end
     local pane = panes[key]
