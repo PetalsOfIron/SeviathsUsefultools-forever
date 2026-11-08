@@ -2,7 +2,7 @@
 ## Title: |cff00e5ffSeviaths|rUsefulTools
 ## Notes: Everything Seviath in one addon for WoW Forever (Classic): farm spots, rares and gathering on the map, auction prices, crafting and farming profit on tooltips, the Codex encyclopedia, Dungeons group tools, talent advisor and the Guild Helper. Made from the retail version; being converted to Classic.
 ## Author: Seviath
-## Version: 2.3
+## Version: 1.0
 ## X-Formerly: SeviathsFarmPack, SeviathsCodex, SeviathsDungeonsRaids, SeviathsGuildHelper
 ## Category: Professions
 ## IconTexture: Interface\Icons\INV_Misc_Map_01
