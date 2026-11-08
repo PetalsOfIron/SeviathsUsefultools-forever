@@ -37,7 +37,7 @@ local function available(entry)
         -- quests far below the level give nothing: left out
         if ok and q.level > 0 and q.level < lvl - 8 and not SFP.db.questMarkersAll then ok = false end
         -- a quest of a chain is offered only when the one before it is done
-        local prev = SFP.QuestPrereq and SFP.QuestPrereq[q.id]
+        local prev = (SFP.QuestPrereq and SFP.QuestPrereq[q.id]) or (SFP.db.learnedPrereq and SFP.db.learnedPrereq[q.id])
         if ok and prev and C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted and not C_QuestLog.IsQuestFlaggedCompleted(prev) then ok = false end
         if ok and C_QuestLog then
             if C_QuestLog.IsQuestFlaggedCompleted and C_QuestLog.IsQuestFlaggedCompleted(q.id) then ok = false end
@@ -80,6 +80,49 @@ local function getPin(i, canvas)
 end
 
 -- the quest givers this character has learned itself: the Codex notes the giver's place (qloc[quest].g) when a quest is picked up or turned in
+-- what the game shows while you play: the giver of a quest (where you stood, the name of the quest NPC), its level and title, and the chain: a quest
+-- offered shortly after another was turned in follows it. Saved in db.learnedQuests and db.learnedPrereq; the marks use them when the shipped data lacks it.
+local lastTurnIn
+local function learnQuest(questID)
+    if type(questID) ~= "number" or questID <= 0 or not SFP.db then return end
+    local okM, map = pcall(C_Map.GetBestMapForUnit, "player")
+    local pos = okM and map and C_Map.GetPlayerMapPosition(map, "player")
+    local x, y
+    if pos and pos.GetXY then x, y = pos:GetXY() end
+    local nm = UnitName("questnpc")
+    if type(nm) ~= "string" or (issecretvalue and issecretvalue(nm)) then nm = nil end
+    SFP.db.learnedQuests = SFP.db.learnedQuests or {}
+    local rec = SFP.db.learnedQuests[questID] or {}
+    SFP.db.learnedQuests[questID] = rec
+    if nm and map and x and x > 0 and not (issecretvalue and (issecretvalue(x) or issecretvalue(y))) then rec.g, rec.m, rec.x, rec.y = nm, map, x * 100, y * 100 end
+    local okL, lvl = pcall(function() return C_QuestLog.GetQuestDifficultyLevel and C_QuestLog.GetQuestDifficultyLevel(questID) end)
+    if okL and type(lvl) == "number" and lvl > 0 then rec.l = lvl end
+    local okT, title = pcall(function() return C_QuestLog.GetTitleForQuestID and C_QuestLog.GetTitleForQuestID(questID) end)
+    if okT and type(title) == "string" and title ~= "" then rec.t = title end
+    -- the chain: offered within two minutes of turning another quest in
+    if lastTurnIn and lastTurnIn.id ~= questID and GetTime() - lastTurnIn.at < 120 then
+        SFP.db.learnedPrereq = SFP.db.learnedPrereq or {}
+        SFP.db.learnedPrereq[questID] = lastTurnIn.id
+    end
+end
+QM.LearnQuest = learnQuest
+
+local function learnedQuestGivers(map)
+    local out = {}
+    for qid, r in pairs((SFP.db and SFP.db.learnedQuests) or {}) do
+        if type(r) == "table" and r.m == map and r.g and r.x then
+            local done = C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted and C_QuestLog.IsQuestFlaggedCompleted(qid)
+            local inLog = C_QuestLog and C_QuestLog.GetLogIndexForQuestID and C_QuestLog.GetLogIndexForQuestID(qid)
+            local prev = (SFP.QuestPrereq and SFP.QuestPrereq[qid]) or (SFP.db.learnedPrereq and SFP.db.learnedPrereq[qid])
+            local blocked = prev and C_QuestLog.IsQuestFlaggedCompleted and not C_QuestLog.IsQuestFlaggedCompleted(prev)
+            if not done and not inLog and not blocked then
+                out[#out + 1] = { n = r.g, x = r.x, y = r.y, q = { id = qid, level = r.l or 0, name = r.t or ("Quest " .. qid) } }
+            end
+        end
+    end
+    return out
+end
+
 local function learnedGivers(map)
     local cdb = _G.SeviathsCodexDB
     local out = {}
@@ -101,6 +144,7 @@ local function learnedGivers(map)
             end
         end
     end
+    for _, g in ipairs(learnedQuestGivers(map)) do out[#out + 1] = g end
     return out
 end
 
@@ -155,7 +199,10 @@ SFP:OnLogin(function()
     ev:RegisterEvent("QUEST_ACCEPTED")
     ev:RegisterEvent("QUEST_DETAIL")
     ev:RegisterEvent("PLAYER_LEVEL_UP")
-    ev:SetScript("OnEvent", function(_, event)
+    ev:SetScript("OnEvent", function(_, event, ...)
+        if event == "QUEST_TURNED_IN" then lastTurnIn = { id = ..., at = GetTime() } end
+        if event == "QUEST_DETAIL" then SFP:Safe("learn quest", learnQuest, GetQuestID and GetQuestID()) end
+        if event == "QUEST_ACCEPTED" then SFP:Safe("learn quest", learnQuest, select(2, ...) or select(1, ...)) end
         if event == "QUEST_DETAIL" or event == "QUEST_ACCEPTED" then
             -- the camps of a side: a quest seen in a zone is noted for the faction of this character (the Quest Planner uses it)
             local mp = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player")
