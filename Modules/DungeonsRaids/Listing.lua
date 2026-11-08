@@ -65,7 +65,8 @@ local function KindForCategory(cat)
       elseif n:find("raid") then kind = "raid"
       elseif n:find("dungeon") then kind = "dungeon"
       elseif n:find("quest") then kind = "quest"
-      elseif n:find("custom") then kind = "custom" end
+      elseif n:find("custom") or n:find("battleground") or n:find("arena") or n:find("skirmish") then kind = "custom"   -- (PvP groups use the Custom page: it has the PvP filters)
+      end
     end
   end
   catKind[cat] = kind or false

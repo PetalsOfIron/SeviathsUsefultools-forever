@@ -1088,7 +1088,7 @@ function UI:Dock()
   end
   if not host or ns.db.dock == "OFF" then return end
   self:Build() -- pages must exist before we can look up the section
-  local section = CurrentSection() or (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT and pages.dungeon and "dungeon") or nil
+  local section = CurrentSection() or (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT and (pages.quest and "quest" or pages.dungeon and "dungeon")) or nil
   if not section then return end
   local f = self.frame
   f:ClearAllPoints()
@@ -1266,11 +1266,17 @@ if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
       end
     end
   end
-  local docked
+  local docked, lastSection
   C_Timer.NewTicker(0.5, function()
     local host = find()
+    if host and docked then
+      -- the tab of the group finder changed (Quests & Zones, Battlegrounds, Custom): the list follows it by itself
+      local sec = CurrentSection()
+      if sec ~= lastSection then lastSection = sec; pcall(UI.Dock, UI) end
+    end
     if host and not docked then
       docked = true
+      lastSection = CurrentSection()
       UI.lfgHost = host
       pcall(UI.Dock, UI)
     elseif not host and docked then
