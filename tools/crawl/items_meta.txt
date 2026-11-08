@@ -5679,3 +5679,22 @@
 210724|Hirzek's Staff|1|12|0|1|0
 211814|Warsong Outrider Mark|2|12|0|1|0
 210811|Rune of Primordial Fury|2|0|-3|25|0
+211293|Crimson Trophy Quill|1|12|0|40|0
+211488|Rune of the Avenger|2|0|-3|25|0
+211477|Rune of Incinerate|2|0|-3|25|0
+212693|Rotten Seed|1|12|0|1|0
+212792|Eye of the Tempest|3|12|0|1|0
+1481|Grimclaw|3|2|0|25|20
+3414|Crested Scepter|3|2|4|27|22
+3416|Martyr's Chain|3|4|3|26|21
+3417|Onyx Claymore|3|2|8|26|21
+1454|Axe of the Enforcer|3|2|0|27|22
+213093|Rune of Power|2|0|-3|40|0
+213451|Corrupted Fire Totem|1|15|1|1|0
+213594|Idol of the Heckler|2|4|8|40|28
+213101|Rune of Shadowflames|2|0|-3|40|0
+213098|Rune of Invocation|2|0|-3|40|0
+213632|Partial Spell Notes|2|15|0|10|0
+213633|Partial Spell Notes|2|15|0|10|0
+213634|Partial Spell Notes|2|15|0|10|0
+213126|Rune of the Scrapper|2|0|-3|40|0

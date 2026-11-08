@@ -587,8 +587,10 @@ local function BuildRaid(p)
     "Bosses the group hasn't killed AND you haven't killed this week on that difficulty.")
   UI.Number(p, "Min members", o, "minMembers", 20, -280)
   UI.Number(p, "Max members", o, "maxMembers", COL2 + 4, -280)
-  UI.Number(p, "Max same tier token", o, "maxSameToken", 20, -308,
-    "Tier tokens. Conqueror: Paladin, Priest, Warlock - Protector: Warrior, Hunter, Shaman, Monk - Vanquisher: Rogue, Death Knight, Mage, Druid")
+  if not FOREVER_GAME then
+    UI.Number(p, "Max same tier token", o, "maxSameToken", 20, -308,
+      "Tier tokens. Conqueror: Paladin, Priest, Warlock - Protector: Warrior, Hunter, Shaman, Monk - Vanquisher: Rogue, Death Knight, Mage, Druid")
+  end
   UI.Number(p, "Min new collectibles", o, "minNewLoot", COL2 + 4, -308,
     "Mounts, pets, toys and appearances you don't have, from bosses still alive for you. 0 = off.")
   BuildClassPicks(p, o, -342)
