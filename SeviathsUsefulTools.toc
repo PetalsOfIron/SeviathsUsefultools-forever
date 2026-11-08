@@ -123,6 +123,7 @@ Scanner.lua
 WorldMap.lua
 Data\QuestGivers.lua
 Data\QuestPrereqs.lua
+Data\MountPlaces.lua
 QuestMarkers.lua
 Treasures.lua
 PointsMenu.lua

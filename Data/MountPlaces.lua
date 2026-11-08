@@ -1,0 +1,3 @@
+-- placeholder: replaced by tools/bake_mount_places.py
+local _, SFP = ...
+SFP.MountPlaces = SFP.MountPlaces or {}

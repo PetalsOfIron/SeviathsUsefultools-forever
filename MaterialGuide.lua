@@ -795,6 +795,13 @@ local function mountEntriesBase()
                     if type(p) == "table" and p[1] then src.map, src.x, src.y = map, p[1], p[2]; src.zone = SFP:ZoneName(map) break end
                 end
             end
+            -- the place found on Wowhead for this mount (Data/MountPlaces.lua): { npc, name, map, x, y }
+            local mp = SFP.MountPlaces and SFP.MountPlaces[id]
+            if mp and not src.map then
+                src.map, src.x, src.y = mp[3], mp[4], mp[5]
+                src.zone = SFP:ZoneName(mp[3])
+                if src.text == "Mount" or src.text == "" then src.text = "Source: " .. tostring(mp[2]) end
+            end
             add(id, "classic", src)
             byItem[id].name = row[1]
             byItem[id].mtype = (row[1]:find("Turtle") or row[1]:find("Seahorse")) and "aquatic" or "ground"
