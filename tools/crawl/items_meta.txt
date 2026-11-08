@@ -5329,3 +5329,4 @@
 11058|Sha'ni's Nose-Ring|1|12|0|1|0
 12219|Unadorned Seal of Ascension|1|12|0|1|0
 18987|Blackhand's Command|1|12|0|55|55
+11830|Webbed Diemetradon Scale|1|12|0|1|0

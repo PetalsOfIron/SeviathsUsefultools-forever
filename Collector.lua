@@ -771,7 +771,7 @@ local function recipeTexts(keys, limit)
 end
 
 -- the lines our addon adds to an item tooltip
-function SFP:ItemTipLines(id, link)
+function SFP:ItemTipLinesBase(id, link)
     local lines = {}
     local name, _, q, ilvl, minLvl, itype, subtype, _, equip, _, price, classID = C_Item.GetItemInfo(link or id)
     if not name then return lines end
@@ -834,6 +834,27 @@ function SFP:ItemTipLines(id, link)
     if SFP.ItemInfoLines then SFP:Safe("item info", SFP.ItemInfoLines, SFP, id, lines, drops ~= nil, link) end
     local craft = SFP.CraftProfitLines and SFP:CraftProfitLines(id)
     for _, l in ipairs(craft or {}) do lines[#lines + 1] = l end
+    return lines
+end
+
+-- does the item sell at the auction house? "Sells" (it sold), "Doesn't sell" (its auctions only ran out), "Sometimes sells" (both happened) or "No selling data"
+-- (from the sales and expired auctions the addon saw: AuctionSold.lua)
+function SFP:SellVerdict(itemID)
+    local o = self.db and self.db.ahOutcome and self.db.ahOutcome[itemID]
+    local s, e = (type(o) == "table" and o.s) or 0, (type(o) == "table" and o.e) or 0
+    if s > 0 and e == 0 then return "|cff40ff40Sells|r"
+    elseif s == 0 and e > 0 then return "|cffff6060Doesn't sell|r"
+    elseif s > 0 and e > 0 then return "|cffffd100Sometimes sells|r"
+    end
+    return "|cff808080No selling data|r"
+end
+
+function SFP:ItemTipLines(id, link)
+    local lines = self:ItemTipLinesBase(id, link)
+    local _, _, q = C_Item.GetItemInfo(link or id)
+    if type(id) == "number" and q and q > 0 then
+        lines[#lines + 1] = { "|cffff6a60At the auction house:|r " .. self:SellVerdict(id) }
+    end
     return lines
 end
 
