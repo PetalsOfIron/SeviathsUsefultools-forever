@@ -30,8 +30,9 @@ who:SetScript("OnEvent", function()
             if okI and type(info) == "table" and not secret(info.fullName) and type(info.fullName) == "string" then
                 local short, realm = realmOf(info.fullName)
                 local guild = info.fullGuildName
-                if realm and type(guild) == "string" and guild ~= "" and not secret(guild) then
-                    S.GuildNote(realm, guild, faction, short, nil, nil)
+                local hasGuild = type(guild) == "string" and guild ~= "" and not secret(guild)
+                if realm then
+                    if hasGuild then S.GuildNote(realm, guild, faction, short, nil, nil) end
                     -- the player himself: the same record the nameplate scan makes
                     local key = short .. "-" .. realm
                     if not S.CanAddSeen or S.CanAddSeen(key) then
@@ -39,9 +40,10 @@ who:SetScript("OnEvent", function()
                         SFP.db.seenPlayers[key] = time()
                         SFP.db.seenInfo = SFP.db.seenInfo or {}
                         local rec = SFP.db.seenInfo[key] or {}
-                        rec.guild = guild
+                        if hasGuild then rec.guild = guild end
                         rec.faction = faction or rec.faction
                         if type(info.level) == "number" and info.level > 0 then rec.lvl = info.level end
+                        if type(info.area) == "string" and not secret(info.area) and info.area ~= "" then rec.zone = info.area end
                         if type(info.filename) == "string" and not secret(info.filename) then rec.class = info.filename end
                         rec.t = time()
                         SFP.db.seenInfo[key] = rec
@@ -50,6 +52,62 @@ who:SetScript("OnEvent", function()
             end
         end
     end)
+end)
+
+-- ---------------------------------------------------------------- the background /who scan
+-- The addon asks the game's /who list by itself, one level range or one zone at a time, and keeps what comes back (name, level, class, guild, zone) in
+-- the same records as the answers above. It waits between asks (the server allows about one in five seconds), stays out of combat, instances and
+-- the places where someone else is using /who, and the lines the game prints for its answers are hidden while it waits for an answer.
+local scan = { last = 0, step = 0, waiting = 0 }
+local function whoPatterns()
+    local pats = {}
+    for _, g in ipairs({ _G.WHO_LIST_FORMAT, _G.WHO_LIST_GUILD_FORMAT, _G.FORMAT_PLAYERS_FOUND_S, _G.WHO_NUM_RESULTS, _G.FORMAT_PLAYERS_FOUND }) do
+        if type(g) == "string" then
+            pats[#pats + 1] = "^" .. g:gsub("([%^%$%(%)%.%[%]%*%+%-%?])", "%%%1"):gsub("%%%%s", ".-"):gsub("%%%%d", "%%d+"):gsub("%%s", ".-"):gsub("%%d", "%%d+") .. "$"
+        end
+    end
+    return pats
+end
+local whoPats
+if ChatFrame_AddMessageEventFilter then
+    ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", function(_, _, msg)
+        if GetTime() - scan.waiting > 4 then return false end
+        if type(msg) ~= "string" or secret(msg) then return false end
+        whoPats = whoPats or whoPatterns()
+        for _, p in ipairs(whoPats) do if msg:match(p) then return true end end
+        return false
+    end)
+end
+
+local function nextQuery()
+    scan.step = scan.step + 1
+    local lvl = UnitLevel("player")
+    if type(lvl) ~= "number" or lvl < 1 then lvl = 1 end
+    local top = 60
+    -- 1 of 3 asks: the zone you are in; the others: level ranges around and above you, all the way up (so every level gets seen)
+    if scan.step % 3 == 0 then
+        local z = GetRealZoneText and GetRealZoneText()
+        if type(z) == "string" and z ~= "" and not secret(z) then return 'z-"' .. z .. '"' end
+    end
+    local lo = ((scan.step * 7) % top) + 1
+    return ("%d-%d"):format(lo, math.min(top, lo + 6))
+end
+
+local scanFrame = CreateFrame("Frame")
+local acc = 0
+scanFrame:SetScript("OnUpdate", function(_, dt)
+    acc = acc + dt
+    if acc < 6 then return end
+    acc = 0
+    if not (SFP.db and SFP.db.whoScan ~= false) then return end
+    if InCombatLockdown and InCombatLockdown() then return end
+    if IsInInstance and select(1, IsInInstance()) then return end
+    if GetTime() - scan.last < 25 then return end
+    if (FriendsFrame and FriendsFrame:IsShown()) or (WhoFrame and WhoFrame:IsShown()) then return end
+    if not (C_FriendList and C_FriendList.SendWho) then return end
+    local q = nextQuery()
+    scan.last, scan.waiting = GetTime(), GetTime()
+    pcall(C_FriendList.SendWho, q)
 end)
 
 -- ---------------------------------------------------------------- Guild Roster Manager
