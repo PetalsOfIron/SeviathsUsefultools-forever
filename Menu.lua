@@ -1438,7 +1438,7 @@ local function build()
     frame:SetMovable(true)
     frame:SetClampedToScreen(true)
     frame:EnableMouse(true)
-    backdrop(frame, 0.03, 0.06, 0.08, 0.97, CY.r, CY.g, CY.b, 0.6)
+    SFP.BlizzardFrame(frame, true)
     tinsert(UISpecialFrames, "SeviathsUsefulToolsMenu")
 
     local title = CreateFrame("Frame", nil, frame)

@@ -50,24 +50,32 @@ SFP.NAME    = "SeviathsUsefulTools"
 SFP.VERSION = meta("Version") or "dev"
 SFP.AUTHOR  = meta("Author") or "Seviath"
 
-SFP.CYAN = { r = 0.0, g = 0.9, b = 1.0 }
+SFP.CYAN = { r = 0.9, g = 0.28, b = 0.24 }
 
 
 -- the look of the windows: the dark dialog background of the game (red tinted), a red tooltip-style border, and the snake in a corner
 local SNAKE = "Interface\\AddOns\\SeviathsUsefulTools\\Media\\snake_tile.tga"
-function SFP.BlizzardFrame(f, snake)
+function SFP.BlizzardFrame(f, big)
     if not f or not f.SetBackdrop then return end
+    if not big then
+        -- a small frame (a button, a row, a panel): flat and red
+        f:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8x8", edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = 1 })
+        f:SetBackdropColor(0.09, 0.04, 0.04, 0.95)
+        f:SetBackdropBorderColor(0.9, 0.28, 0.24, 0.8)
+        return
+    end
+    -- a window: the dark dialog background of the game, a red tooltip border, and the snake in the corner
     f:SetBackdrop({ bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
         tile = true, tileSize = 32, edgeSize = 14, insets = { left = 3, right = 3, top = 3, bottom = 3 } })
-    f:SetBackdropColor(0.55, 0.3, 0.3, 0.97)
+    f:SetBackdropColor(0.6, 0.35, 0.35, 0.98)
     f:SetBackdropBorderColor(0.9, 0.28, 0.24, 1)
-    if snake ~= false and not f.seviathSnake then
+    if not f.seviathSnake then
         local tex = f:CreateTexture(nil, "BACKGROUND", nil, 2)
         tex:SetTexture(SNAKE)
-        tex:SetSize(150, 150)
-        tex:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", -6, 6)
-        tex:SetVertexColor(0.9, 0.2, 0.18)
-        tex:SetAlpha(0.14)
+        tex:SetSize(190, 190)
+        tex:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", -8, 8)
+        tex:SetVertexColor(0.95, 0.2, 0.18)
+        tex:SetAlpha(0.22)
         f.seviathSnake = tex
     end
 end
@@ -1123,11 +1131,11 @@ local function OnItemTooltip(tooltip, data)
     -- the auction price first, right under the normal sell price, like on every other item
     local ahFirst = SFP:GetPrice(itemID)
     if ahFirst and ahFirst > 0 then
-        tooltip:AddLine("|cff66e6ffAuction price:|r " .. SFP:FormatPrice(ahFirst), 1, 1, 1)
+        tooltip:AddLine("|cffff6a60Auction price:|r " .. SFP:FormatPrice(ahFirst), 1, 1, 1)
         -- the stack right under it, written the same way
         local stackFirst = SFP:StackCount(itemID)
         if stackFirst and stackFirst > 1 then
-            tooltip:AddLine(("|cff66e6ffAuction price (stack of %d):|r "):format(stackFirst) .. SFP:FormatPrice(ahFirst * stackFirst), 1, 1, 1)
+            tooltip:AddLine(("|cffff6a60Auction price (stack of %d):|r "):format(stackFirst) .. SFP:FormatPrice(ahFirst * stackFirst), 1, 1, 1)
         end
     end
     tooltip:AddLine(" ")
@@ -1143,7 +1151,7 @@ local function OnItemTooltip(tooltip, data)
     -- what crafting orders pay for this item (read from the orders the game listed), like the auction price above
     local tip, orders = SFP.OrderPrice and SFP:OrderPrice(itemID)
     if tip then
-        tooltip:AddDoubleLine(("Crafting orders (%d):"):format(orders), SFP:FormatPrice(tip), 0.8, 0.8, 0.8, 0.4, 0.8, 1)
+        tooltip:AddDoubleLine(("Crafting orders (%d):"):format(orders), SFP:FormatPrice(tip), 0.8, 0.8, 0.8, 1, 0.55, 0.5)
     end
     local extra = SFP:ItemExtra(base)
     if extra then tooltip:AddLine(extra, 1, 1, 1, true) end
@@ -1348,6 +1356,16 @@ SlashCmdList["SEVIATHSUSEFULTOOLS"] = function(msg)
         table.sort(rows, function(a, b) if a[2] ~= b[2] then return a[2] < b[2] end return a[1] < b[1] end)
         SFP:Print(#rows .. " nodes with x below 2000; the first 24:")
         for i = 1, math.min(24, #rows) do SFP:Print(rows[i][3]) end
+    elseif cmd == "groups" then
+        -- the categories of the group finder of this game (for the group tools): number and name
+        if not (C_LFGList and C_LFGList.GetAvailableCategories) then SFP:Print("no group finder calls in this game") return end
+        local ok, cats = pcall(C_LFGList.GetAvailableCategories)
+        SFP:Print("categories: " .. tostring(ok and cats and #cats))
+        for _, id in ipairs(ok and cats or {}) do
+            local okI, info = pcall(C_LFGList.GetLfgCategoryInfo, id)
+            local name = okI and type(info) == "table" and info.name
+            SFP:Print(("  %d  %s%s"):format(id, tostring(name), (SFP.Social and SFP.Social.KindOfCategory) and "" or ""))
+        end
     elseif cmd == "window" then
         -- finds the Talents window by its title (open it first)
         local ta = SFP.TalentAdvisor

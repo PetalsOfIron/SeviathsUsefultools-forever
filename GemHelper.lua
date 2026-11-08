@@ -489,7 +489,7 @@ local function planRefresh()
                         text = ("%s  |cff808080%s|r  %s%s%s"):format(e.name, e.where or "",
                             p and ("|cffffd100" .. moneyText(p) .. "|r") or "|cff808080no price|r",
                             own > 0 and ("  |cff66ff66you have " .. own .. "|r") or "",
-                            GH.CanCraft(e) and "  |cff66ccffyou can craft|r" or ""),
+                            GH.CanCraft(e) and "  |cffff6a60you can craft|r" or ""),
                         check = plan[e.name:lower()] ~= nil,
                         onToggle = function(on)
                             GH.PlanSet(e.name, e.kind, on, e.itemID)

@@ -777,7 +777,7 @@ function SFP:ItemTipLines(id, link)
         lines[#lines + 1] = { "|cff9d9d9dVendor junk|r" .. (price and price > 0 and ("  sells for " .. money(price)) or "") }
     elseif classID == 7 then
         local kind = KIND_BY_SUBCLASS[select(13, C_Item.GetItemInfo(id)) or 0] or "mat"
-        lines[#lines + 1] = { "|cff40d0ffCrafting material|r  " .. (subtype or "") }
+        lines[#lines + 1] = { "|cffff6a60Crafting material|r  " .. (subtype or "") }
         if usedIn[id] then
             lines[#lines + 1] = { "Used in: " .. recipeTexts(usedIn[id], 6), 0.85, 0.85, 0.85, true }
         else
@@ -1142,10 +1142,10 @@ local function itemTip(tt, data)
     if SFP.GetPrice and not (SFP.trackedIDs and SFP.trackedIDs[id]) then
         local ahp = SFP:GetPrice(id)
         if ahp and ahp > 0 then
-            tt:AddLine("|cff66e6ffAuction price:|r " .. SFP:FormatPrice(ahp), 1, 1, 1)
+            tt:AddLine("|cffff6a60Auction price:|r " .. SFP:FormatPrice(ahp), 1, 1, 1)
             local stack = SFP:StackCount(id)
             if stack and stack > 1 then
-                tt:AddLine(("|cff66e6ffAuction price (stack of %d):|r "):format(stack) .. SFP:FormatPrice(ahp * stack), 1, 1, 1)
+                tt:AddLine(("|cffff6a60Auction price (stack of %d):|r "):format(stack) .. SFP:FormatPrice(ahp * stack), 1, 1, 1)
             end
         end
     end

@@ -202,7 +202,7 @@ local function showMultiTip(h)
         else
             local best = {}
             for _, id in ipairs(s.bestFor or {}) do best[id] = true end
-            if s.learned then tip:AddLine("learned from your loot", 0.4, 0.8, 1) end
+            if s.learned then tip:AddLine("learned from your loot", 1, 0.55, 0.5) end
             for _, id in ipairs(sortedItems(s.items)) do lootLine(id, best[id], s) end
         end
     end
@@ -247,7 +247,7 @@ local function showSpotTip(h, owner)
     for _, id in ipairs(s.bestFor or {}) do best[id] = true end
     local function line(id) lootLine(id, best[id], s) end
     if s.learned then
-        tip:AddLine("Learned from your own loot", 0.4, 0.8, 1, true)
+        tip:AddLine("Learned from your own loot", 1, 0.55, 0.5, true)
     end
     if s.bestFor and not s.rare then
         local names = {}
@@ -481,7 +481,7 @@ local function placeFarmPin(p, x, y, h)
     if not p.pinTex then
         p.pinTex = p:CreateTexture(nil, "OVERLAY")
         p.pinTex:SetAtlas("Waypoint-MapPin-Untracked")
-        p.pinTex:SetVertexColor(0.3, 0.95, 1, 1)
+        p.pinTex:SetVertexColor(1, 0.5, 0.45, 1)
         p.ring = p:CreateTexture(nil, "ARTWORK")
         p.ring:SetTexture("Interface\\CHARACTERFRAME\\TempPortraitAlphaMask")
         p.ring:SetBlendMode("BLEND")

@@ -337,7 +337,7 @@ local function useLines(id, lines, name, classID, subID, subtype, equip)
     end
     if #out == 0 then return end
     for i, t in ipairs(out) do
-        lines[#lines + 1] = { (i == 1 and "|cff40d0ffHow to use:|r " or "  ") .. t, 0.85, 0.85, 0.85, true }
+        lines[#lines + 1] = { (i == 1 and "|cffff6a60How to use:|r " or "  ") .. t, 0.85, 0.85, 0.85, true }
     end
 end
 

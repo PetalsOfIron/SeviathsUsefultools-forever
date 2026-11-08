@@ -859,7 +859,7 @@ function UI:Build()
   f:SetFrameStrata("DIALOG")
   if _G.SeviathsUsefulTools and _G.SeviathsUsefulTools.RegisterWindow then _G.SeviathsUsefulTools.RegisterWindow(f) end
   UI.Skin(f)
-  if _G.SeviathsUsefulTools and _G.SeviathsUsefulTools.BlizzardFrame then _G.SeviathsUsefulTools.BlizzardFrame(f) end   -- the red dialog look
+  if _G.SeviathsUsefulTools and _G.SeviathsUsefulTools.BlizzardFrame then _G.SeviathsUsefulTools.BlizzardFrame(f, true) end   -- the red dialog look
   UI.Movable(f)
   -- Dragging a docked window frees it for the rest of the session
   f:SetScript("OnDragStart", function(s)

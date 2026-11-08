@@ -210,7 +210,7 @@ local function UpdateList()
                 row.text:SetPoint("LEFT", 6 + (item.indent or 0) * 14, 0)
                 local arrow = item.static and "" or (item.collapsed and "+ " or "– ")
                 row.text:SetText(CYAN .. arrow .. item.label .. "|r" .. (item.count and ("  |cff888888(" .. item.count .. ")|r") or ""))
-                row.bg:SetColorTexture(0.1, 0.3, 0.36, 0.45)
+                row.bg:SetColorTexture(0.36, 0.1, 0.1, 0.45)
             else
                 local e = item.entry
                 row.icon:Show()
@@ -220,7 +220,7 @@ local function UpdateList()
                 row.icon:SetPoint("LEFT", 4 + (item.indent or 0) * 14, 0)
                 local name = e.name
                 if e.collected == false then name = "|cff9a9a9a" .. name .. "|r" end
-                if item.showCat then name = name .. "  |cff5fa8b8" .. catName(e.cat) .. "|r" end
+                if item.showCat then name = name .. "  |cffff6a60" .. catName(e.cat) .. "|r" end
                 row.text:SetText(name)
                 row.check:SetShown(e.collected == true)
                 if e.key == state.selected then
@@ -650,7 +650,7 @@ function ns:ShowEntry(key, noHistory)
                 end
                 b.key = r.key
                 b.icon:SetTexture(r.icon or "Interface\\Icons\\INV_Misc_QuestionMark")
-                b.text:SetText(r.name .. "  |cff5fa8b8" .. catName(r.cat) .. "|r")
+                b.text:SetText(r.name .. "  |cffff6a60" .. catName(r.cat) .. "|r")
                 b:Show()
             end
         end
@@ -665,7 +665,7 @@ end
 ------------------------------------------------------------------------
 local function CreateWindow()
     frame = Panel(UIParent, 0.96)
-    if _G.SeviathsUsefulTools and _G.SeviathsUsefulTools.BlizzardFrame then _G.SeviathsUsefulTools.BlizzardFrame(frame) end   -- the red dialog look
+    if _G.SeviathsUsefulTools and _G.SeviathsUsefulTools.BlizzardFrame then _G.SeviathsUsefulTools.BlizzardFrame(frame, true) end   -- the red dialog look
     frame:SetSize(W, H)
     frame:SetPoint("CENTER")
     frame:SetFrameStrata("DIALOG")
@@ -705,8 +705,8 @@ local function CreateWindow()
         GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
         if ns.pin then
             GameTooltip:AddLine("Pin: " .. (ns.pin.title or "?"), 1, 1, 1)
-            GameTooltip:AddLine("Click: show it on the map", 0.6, 0.9, 1)
-            GameTooltip:AddLine("Shift+click or the X: remove it", 0.6, 0.9, 1)
+            GameTooltip:AddLine("Click: show it on the map", 1, 0.6, 0.55)
+            GameTooltip:AddLine("Shift+click or the X: remove it", 1, 0.6, 0.55)
         else
             GameTooltip:AddLine("No pin set. Use Show on map on any page.", 1, 1, 1)
         end

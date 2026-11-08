@@ -740,16 +740,16 @@ local function MakeButton(parent, text, w, h, tip, onClick)
     function b:SetLabel(t) self.label = t; self.text:SetText(t) end
     function b:Paint()
         if self.active then
-            self:SetBackdropColor(0, 0.75, 0.85, 0.95)
+            self:SetBackdropColor(0.85, 0.2, 0.18, 0.95)
             self:SetBackdropBorderColor(0.6, 1, 1, 1)
         else
-            self:SetBackdropColor(0, 0.22, 0.27, 0.75)
+            self:SetBackdropColor(0.27, 0.07, 0.07, 0.75)
             self:SetBackdropBorderColor(0.9, 0.28, 0.24, 0.7)
         end
     end
     function b:SetActive(v) self.active = v and true or false; self:Paint() end
     b:SetScript("OnEnter", function(self)
-        if not self.active then self:SetBackdropColor(0, 0.45, 0.55, 0.9) end
+        if not self.active then self:SetBackdropColor(0.55, 0.14, 0.12, 0.9) end
         if tip then ShowTip(self, self.label, tip) end
     end)
     b:SetScript("OnLeave", function(self)
@@ -815,7 +815,7 @@ end
 -- MAIN WINDOW
 ---------------------------------------------------------------
 UI = CreateFrame("Frame", "SeviathsGuildHelperUI", UIParent, "BackdropTemplate")
-if _G.SeviathsUsefulTools and _G.SeviathsUsefulTools.BlizzardFrame then _G.SeviathsUsefulTools.BlizzardFrame(UI) end
+if _G.SeviathsUsefulTools and _G.SeviathsUsefulTools.BlizzardFrame then _G.SeviathsUsefulTools.BlizzardFrame(UI, true) end
 UI:SetSize(640, 590)
 UI:SetPoint("CENTER")
 -- (the red dialog look of Core.lua is on this window; its colors are set by BlizzardFrame)
@@ -850,7 +850,7 @@ UI.closeBtn:SetPoint("TOPRIGHT", -5, -5)
 UI.helpBtn = MakeButton(UI, "?", 20, 20, nil, nil)
 UI.helpBtn:SetPoint("RIGHT", UI.closeBtn, "LEFT", -4, 0)
 UI.helpBtn:SetScript("OnEnter", function(self)
-    self:SetBackdropColor(0, 0.45, 0.55, 0.9)
+    self:SetBackdropColor(0.55, 0.14, 0.12, 0.9)
     GameTooltip:SetOwner(self, "ANCHOR_BOTTOMLEFT")
     GameTooltip:AddLine("How it works", 0.9, 0.28, 0.24)
     GameTooltip:AddLine("1. Write your message. <GUILD> becomes your guild name, <INFO> your Guild Info tab text, <NAME> the player's name.", 1, 1, 1, true)
@@ -866,7 +866,7 @@ UI.helpBtn:SetScript("OnEnter", function(self)
     GameTooltip:AddLine("/gi  open   ·   /gi scan   ·   /gi sync   ·   /gi minimap   ·   /gi help", 0.5, 0.7, 0.75, true)
     GameTooltip:Show()
 end)
-UI.helpBtn:SetScript("OnLeave", function(self) self:SetBackdropColor(0, 0.22, 0.27, 0.75); GameTooltip:Hide() end)
+UI.helpBtn:SetScript("OnLeave", function(self) self:SetBackdropColor(0.27, 0.07, 0.07, 0.75); GameTooltip:Hide() end)
 
 ---------------------------------------------------------------
 -- 1  MESSAGE
@@ -892,7 +892,7 @@ UI.msgBg:SetScript("OnMouseDown", function() UI.msgBox:SetFocus() end)
 UI.msgBox:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
 UI.msgBox:SetScript("OnEnterPressed", function(self) self:ClearFocus() end)
 UI.msgBox:SetScript("OnEditFocusGained", function() UI.msgBg:SetBackdropBorderColor(0.9, 0.28, 0.24, 1) end)
-UI.msgBox:SetScript("OnEditFocusLost", function() UI.msgBg:SetBackdropBorderColor(0.2, 0.4, 0.45, 1) end)
+UI.msgBox:SetScript("OnEditFocusLost", function() UI.msgBg:SetBackdropBorderColor(0.45, 0.2, 0.2, 1) end)
 UI.msgBox:SetScript("OnTextChanged", function(self, userInput)
     if userInput and DB then
         DB.settings[TemplateKey()] = (self:GetText() or ""):gsub("[\r\n]+", " ")

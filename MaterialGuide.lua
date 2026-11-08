@@ -1887,7 +1887,7 @@ local function build()
     fit()
     win.fit = fit
     sc:HookScript("OnSizeChanged", fit)
-    SFP.BlizzardFrame(win)
+    SFP.BlizzardFrame(win, true)
     win:SetBackdropColor(0.02, 0.03, 0.05, 0.96)
     win:SetBackdropBorderColor(0.9, 0.28, 0.24, 0.9)
     win:EnableMouse(true)

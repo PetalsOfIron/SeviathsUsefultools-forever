@@ -116,7 +116,7 @@ local function build()
         GameTooltip:SetOwner(self, "ANCHOR_TOP")
         GameTooltip:AddLine("Auction prices", 1, 1, 1)
         local others = otherRealmScans()
-        GameTooltip:AddLine("This realm: " .. SFP:RealmKey() .. "  (" .. ((SFP.LastScan and SFP:LastScan() > 0) and ago(SFP:LastScan(), true) or "not scanned") .. ")", 0.4, 0.9, 1)
+        GameTooltip:AddLine("This realm: " .. SFP:RealmKey() .. "  (" .. ((SFP.LastScan and SFP:LastScan() > 0) and ago(SFP:LastScan(), true) or "not scanned") .. ")", 1, 0.55, 0.5)
         for _, o in ipairs(others) do GameTooltip:AddLine("Other realm: " .. o[1] .. "  (" .. (ago(o[2], true) or "?") .. ")", 1, 0.8, 0.3) end
         if #others > 0 and (not SFP.LastScan or SFP:LastScan() == 0) then
             GameTooltip:AddLine("This realm has no scan, so prices shown come from another realm and may be wrong here.", 1, 0.8, 0.3, true)
