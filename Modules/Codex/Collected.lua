@@ -93,6 +93,9 @@ function ns:LoadCollected()
             local k0 = SFP.ObjectKind and SFP:ObjectKind(r)
             local lk = type(k0) == "string" and k0:lower() or ""
             gather = r.gt == "herb" or r.gt == "ore" or lk:find("herb", 1, true) or lk:find("min", 1, true) or lk:find("ore", 1, true)
+            -- fishing: the bobber and the schools of fish
+            local ln = type(r.n) == "string" and r.n:lower() or ""
+            if ln:find("bobber", 1, true) or ln:find("fishing", 1, true) or ln:find("school of", 1, true) or ln:find("pool", 1, true) or lk:find("fish", 1, true) then gather = true end
         end
         if type(r) == "table" and r.n and not gather and not ns:Get("node:" .. id) then
             local body = {}
