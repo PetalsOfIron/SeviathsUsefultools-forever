@@ -84,7 +84,23 @@ end
 local placeTier = { dungeon = {}, raid = {} }
 local ejLoaded = {}
 
+-- WoW Forever has no Adventure Guide data: the dungeons and raids of Classic are listed here
+local FOREVER_PLACES = {
+  dungeon = { "Ragefire Chasm", "The Deadmines", "Wailing Caverns", "Shadowfang Keep", "Blackfathom Deeps", "The Stockade", "Gnomeregan", "Razorfen Kraul",
+    "Scarlet Monastery", "Razorfen Downs", "Uldaman", "Zul'Farrak", "Maraudon", "The Temple of Atal'Hakkar", "Blackrock Depths", "Lower Blackrock Spire",
+    "Upper Blackrock Spire", "Stratholme", "Scholomance", "Dire Maul" },
+  raid = { "Molten Core", "Onyxia's Lair", "Blackwing Lair", "Zul'Gurub", "Ruins of Ahn'Qiraj", "Temple of Ahn'Qiraj", "Naxxramas" },
+}
 function ns:LoadEJPlaces(kind)
+  if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT and FOREVER_PLACES[kind] then
+    if ejLoaded[kind] then return end
+    for _, name in ipairs(FOREVER_PLACES[kind]) do
+      ns.db[kind].known[name] = true
+      placeTier[kind][name] = 1
+    end
+    ejLoaded[kind] = true
+    return
+  end
   if ejLoaded[kind] or not placeTier[kind] or not EJReady() or EJBusy() then return end
   local isRaid = kind == "raid"
   local prev = EJ_GetCurrentTier and EJ_GetCurrentTier()

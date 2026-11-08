@@ -10,6 +10,7 @@ local frame
 local navButtons, panes, current = {}, {}, nil
 
 local SECTIONS = {
+    { key = "groups",   label = "Find Groups" },
     { key = "home",     label = "Home" },
     { key = "farm",     label = "Farm & Map" },
     { key = "alerts",   label = "Rare Alerts" },
@@ -30,7 +31,6 @@ local SECTIONS = {
     { key = "decor",    label = "Housing Decor" },
     { key = "alts",     label = "Alt Overview" },
     { key = "guides",   label = "Guides (Codex)" },
-    { key = "groups",   label = "Groups" },
     { key = "social",   label = "Players & Party" },
     { key = "guild",    label = "Guild" },
     { key = "know",     label = "Learned data" },
@@ -112,7 +112,7 @@ local function buildHome(pane)
     local list = {
         { "Farm & Map", "farm", "Glowing farm spots, rares and gathering routes on the world map, prices, layers." },
         { "Guides (Codex)", "guides", "How to do things: dungeons, raids, bosses, quests, mounts, pets, entrances, materials, gold." },
-        { "Groups", "groups", "Raid buffs, tier tokens, player tags and notes for dungeons and raids." },
+        { "Find Groups", "groups", "Raid buffs, tier tokens, player tags and notes for dungeons and raids." },
         { "Guild", "guild", "Find and invite players for your guild, charter signatures." },
         { "Learned data", "know", "Every monster, item, node and recipe the addon has learned from your play." },
         { "Settings", "settings", "Switches for the map, tooltips and learning." },

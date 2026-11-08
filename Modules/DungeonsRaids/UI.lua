@@ -473,6 +473,7 @@ end
 
 -- One checkbox per class: only groups that already have a ticked class are listed (nothing ticked = every group)
 local CLASS_ORDER = { "DEATHKNIGHT", "DEMONHUNTER", "DRUID", "EVOKER", "HUNTER", "MAGE", "MONK", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }
+if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then CLASS_ORDER = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" } end   -- WoW Forever: the nine classes of Classic
 local function BuildClassPicks(p, o, y)
   o.classPicked = o.classPicked or {}
   Header(p, "Classes in the group", 16, y)
@@ -1076,32 +1077,38 @@ local function Float(f)
 end
 
 function UI:Dock()
-  if not PVEFrame or ns.db.dock == "OFF" then return end
+  -- the window the lists are shown in: the Group Finder (host), or in WoW Forever the Looking For Group window (the top frame above the list)
+  local host = host
+  if not (host and host:IsShown()) and LFGListFrame and LFGListFrame:IsShown() then
+    host = LFGListFrame
+    while host:GetParent() and host:GetParent() ~= UIParent do host = host:GetParent() end
+  end
+  if not host or ns.db.dock == "OFF" then return end
   self:Build() -- pages must exist before we can look up the section
-  local section = CurrentSection()
+  local section = CurrentSection() or (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT and pages.dungeon and "dungeon") or nil
   if not section then return end
   local f = self.frame
   f:ClearAllPoints()
   self:Layout(section)
-  local below = PVEFrame:GetBottom()
+  local below = host:GetBottom()
   -- Blizzard's "Dungeons & Raids / Player vs. Player" tabs hang ~34px below the frame
   local TAB_GAP = 36
-  local space = below and (below * PVEFrame:GetEffectiveScale() / f:GetEffectiveScale() - TAB_GAP - 6) or 0
+  local space = below and (below * host:GetEffectiveScale() / f:GetEffectiveScale() - TAB_GAP - 6) or 0
   if ns.db.dock == "BOTTOM" and space >= 200 then
-    f:SetPoint("TOPLEFT", PVEFrame, "BOTTOMLEFT", 0, -TAB_GAP)
+    f:SetPoint("TOPLEFT", host, "BOTTOMLEFT", 0, -TAB_GAP)
     -- never taller than the room below, so it can't slide up over Sign Up / the list
     f:SetHeight(math.min(f:GetHeight(), space))
   else
     -- Sit to the right of Raider.IO's profile card when it's showing there
-    local anchor = PVEFrame
+    local anchor = host
     local rio = _G.RaiderIO_ProfileTooltip
-    if rio and rio.IsShown and rio:IsShown() and rio:GetLeft() and PVEFrame:GetRight()
-      and rio:GetLeft() >= PVEFrame:GetRight() - 10 then
+    if rio and rio.IsShown and rio:IsShown() and rio:GetLeft() and host:GetRight()
+      and rio:GetLeft() >= host:GetRight() - 10 then
       anchor = rio
     end
     f:SetPoint("TOPLEFT", anchor, "TOPRIGHT", 4, 0)
   end
-  f:SetFrameStrata(PVEFrame:GetFrameStrata() or "HIGH")
+  f:SetFrameStrata(host:GetFrameStrata() or "HIGH")
   self.docked = true
   self:Select(OpeningTab(section))
   f:Show()
@@ -1234,3 +1241,21 @@ ns:WhenReady(function()
   PVEFrame:HookScript("OnHide", CloseDocked)
   return true
 end)
+
+-- WoW Forever: the lists open by themselves when the Looking For Group window is opened
+if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
+  local hooked
+  local function hook()
+    if hooked or not LFGListFrame then return end
+    hooked = true
+    LFGListFrame:HookScript("OnShow", function()
+      C_Timer.After(0.15, function() if LFGListFrame:IsShown() then pcall(UI.Dock, UI) end end)
+    end)
+    LFGListFrame:HookScript("OnHide", function() if UI.frame and UI.docked then UI.frame:Hide() end end)
+  end
+  local ev = CreateFrame("Frame")
+  ev:RegisterEvent("PLAYER_ENTERING_WORLD")
+  ev:RegisterEvent("ADDON_LOADED")
+  ev:SetScript("OnEvent", hook)
+  hook()
+end
