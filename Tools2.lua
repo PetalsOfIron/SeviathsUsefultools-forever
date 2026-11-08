@@ -47,6 +47,13 @@ function SFP:UpdateAlt()
     mergeCharKeys(self.db.killed, "t")
     if self.db.altSel and self.db.altSel:find("%s") then self.db.altSel = nil end
     local rec = { t = time(), level = UnitLevel("player"), money = GetMoney(), profs = {} }
+    -- both names of the character (first name and surname; the game gives the surname where other games have the realm)
+    do
+        local n, s = UnitName("player")
+        if type(n) == "string" then
+            rec.full = (type(s) == "string" and s ~= "" and not s:find("Realm") and not s:find("CAMWOW")) and (n .. " " .. s) or n
+        end
+    end
     local _, class = UnitClass("player")
     rec.class = class
     local okI, _, equipped = pcall(GetAverageItemLevel)
@@ -131,7 +138,12 @@ end
 
 local altWin, altRows, altBox
 local altView = "overview"
+-- the Warband bank tab is left out while the game has no Warband bank (WoW Forever; the code stays for a later version)
+local HAS_WARBAND = not (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT)
 local ALT_VIEWS = { { "overview", "Overview", 80 }, { "bags", "Bags", 60 }, { "bank", "Bank", 60 }, { "warband", "Warband bank", 100 }, { "gold", "All gold", 80 } }
+if not HAS_WARBAND then
+    for i = #ALT_VIEWS, 1, -1 do if ALT_VIEWS[i][1] == "warband" then table.remove(ALT_VIEWS, i) end end
+end
 local altViewBtns = {}
 
 local function ago(t)
@@ -175,6 +187,12 @@ local function altSelected()
     return db.altSel, keys
 end
 
+-- the name to show for a character of the list: both names when it has logged in with this version, else the first name
+local function altName(key, rec)
+    if type(rec) == "table" and type(rec.full) == "string" and rec.full ~= "" then return rec.full end
+    return key:match("^([^-]+)") or key
+end
+
 local function altContent(key)
     local db = SFP.db
     local r = key and db.alts and db.alts[key]
@@ -185,12 +203,14 @@ local function altContent(key)
         for k, rec in pairs(db.alts or {}) do rows[#rows + 1] = { k = k, m = rec.money or 0 }; total = total + (rec.money or 0) end
         table.sort(rows, function(x, y) return x.m > y.m end)
         lines[1] = "|cffffd100Gold on every character|r"
-        for _, e in ipairs(rows) do lines[#lines + 1] = ("%s   %s"):format(e.k, money(e.m)) end
+        for _, e in ipairs(rows) do lines[#lines + 1] = ("%s   %s"):format(altName(e.k, db.alts[e.k]), money(e.m)) end
         local wb = db.warband and db.warband.money
         lines[#lines + 1] = ""
         lines[#lines + 1] = "Characters together: " .. money(total)
-        lines[#lines + 1] = "Warband bank: " .. (wb and money(wb) or "|cff808080not read yet - open the bank once|r")
-        lines[#lines + 1] = "|cffffd100Together: " .. money(total + (wb or 0)) .. "|r"
+        if HAS_WARBAND then
+            lines[#lines + 1] = "Warband bank: " .. (wb and money(wb) or "|cff808080not read yet - open the bank once|r")
+            lines[#lines + 1] = "|cffffd100Together: " .. money(total + (wb or 0)) .. "|r"
+        end
         return table.concat(lines, "\n")
     end
     if altView == "warband" then
@@ -210,7 +230,7 @@ local function altContent(key)
     local short = key:match("^([^-]+)") or key
     if altView == "bags" or altView == "bank" then
         local data = altView == "bags" and r.bags or r.bank
-        lines[1] = ("|cffffd100%s - %s|r"):format(key, altView == "bags" and "bags" or "character bank")
+        lines[1] = ("|cffffd100%s - %s|r"):format(altName(key, r), altView == "bags" and "bags" or "character bank")
         if not data then
             lines[2] = altView == "bags" and ("Not read yet. Log in with " .. short .. " once.") or
                 ("Not read yet. Open the bank with " .. short .. " once: the addon saves what is in it.")
@@ -224,7 +244,7 @@ local function altContent(key)
     end
     -- overview
     local age = math.floor((time() - (r.t or 0)) / 3600)
-    lines[#lines + 1] = ("|cffffd100%s|r  |cff808080(%s)|r"):format(key, age < 1 and "now" or (age .. " h ago"))
+    lines[#lines + 1] = ("|cffffd100%s|r  |cff808080(%s)|r"):format(altName(key, r), age < 1 and "now" or (age .. " h ago"))
     lines[#lines + 1] = ("Level %s %s %s"):format(tostring(r.level or "?"), r.spec or "", r.class or "")
     lines[#lines + 1] = ("Item level %s     Gold %s"):format(tostring(r.ilvl or "?"), money(r.money))
     lines[#lines + 1] = "Professions: " .. (#(r.profs or {}) > 0 and table.concat(r.profs, ", ") or "none")
@@ -237,9 +257,11 @@ local function altContent(key)
     lines[#lines + 1] = ""
     lines[#lines + 1] = ("Bags: %s   Bank: %s"):format(r.bags and (count(r.bags) .. " different items, read " .. ago(r.bagsT)) or "not read yet",
         r.bank and (count(r.bank) .. " different items, read " .. ago(r.bankT)) or "not read yet (open the bank once)")
-    lines[#lines + 1] = "Warband bank: " .. ((db.warband and db.warband.items) and (count(db.warband.items) .. " different items, " .. (db.warband.money and money(db.warband.money) or "?") .. " gold") or "not read yet")
+    if HAS_WARBAND then
+        lines[#lines + 1] = "Warband bank: " .. ((db.warband and db.warband.items) and (count(db.warband.items) .. " different items, " .. (db.warband.money and money(db.warband.money) or "?") .. " gold") or "not read yet")
+    end
     lines[#lines + 1] = ""
-    lines[#lines + 1] = "|cff808080A character shows here after you log in with it. Use the buttons above to see its bags, bank, the warband bank and everybody's gold. Profession cooldowns are not shown.|r"
+    lines[#lines + 1] = "|cff808080A character shows here after you log in with it. Use the buttons above to see its bags, bank and everybody's gold. Profession cooldowns are not shown.|r"
     return table.concat(lines, "\n")
 end
 
@@ -251,10 +273,9 @@ local function altRefresh()
     local sel, keys = altSelected()
     local items = {}
     for _, k in ipairs(keys) do
-        local short = k:match("^([^-]+)") or k
         local rec = SFP.db.alts[k]
-        local label = (k == sel and "|cff40ff40> |r" or "") .. short .. (rec.level and (" " .. rec.level) or "")
-        items[#items + 1] = { text = "", buttons = { { label, 150, function() SFP.db.altSel = k; altRefresh() end } } }
+        local label = (k == sel and "|cff40ff40> |r" or "") .. altName(k, rec) .. (rec.level and (" " .. rec.level) or "")
+        items[#items + 1] = { text = "", buttons = { { label, 190, function() SFP.db.altSel = k; altRefresh() end } } }
     end
     altRows:Set(items)
     for _, bt in ipairs(altViewBtns) do bt:SetText((bt.view == altView and "|cff40ff40" or "") .. bt.label) end
