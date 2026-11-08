@@ -161,7 +161,7 @@ function SFP.BlizzardFrame(f, big)
                 local path = nt and nt.GetTexture and nt:GetTexture()
                 if type(path) == "string" and path:find("MinimizeButton", 1, true) then
                     c:ClearAllPoints()
-                    c:SetPoint("TOPRIGHT", f, "TOPRIGHT", 2, 5)
+                    c:SetPoint("TOPRIGHT", f, "TOPRIGHT", -3, 5)
                 end
             end
         end

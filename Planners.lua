@@ -133,7 +133,7 @@ local buildDungeons = K.simplePage("Dungeon & Raid Planner",
     function(pane, y)
         local head = K.mkText(pane, "", 12, y - 8, 480, "GameFontNormal")
         local stats = K.mkText(pane, "", 12, y - 28, 470, "GameFontHighlightSmall")
-        stats:SetHeight(30)
+        stats:SetHeight(46)
         stats:SetJustifyV("TOP")
         local function done() SFP.db.plannerDone = SFP.db.plannerDone or {}; local d = SFP.db.plannerDone[charKey()]; if not d then d = {}; SFP.db.plannerDone[charKey()] = d end return d end
         local function pick() SFP.db.plannerPick = SFP.db.plannerPick or {}; local d = SFP.db.plannerPick[charKey()]; if not d then d = {}; SFP.db.plannerPick[charKey()] = d end return d end
@@ -169,10 +169,10 @@ local buildDungeons = K.simplePage("Dungeon & Raid Planner",
         end
         local planList, allList
         local H = 8   -- (the lists are placed below)
-        planList = makeList(y - 86, 130, "plan")
-        local sep = K.mkText(pane, "", 12, y - 224, 470, "GameFontNormal")
-        allList = makeList(y - 246, 240, "all")
-        local planLabel = K.mkText(pane, "", 12, y - 68, 470, "GameFontNormal")
+        planList = makeList(y - 104, 112, "plan")
+        local sep = K.mkText(pane, "", 12, y - 226, 470, "GameFontNormal")
+        allList = makeList(y - 248, 230, "all")
+        local planLabel = K.mkText(pane, "", 12, y - 86, 470, "GameFontNormal")
 
         local function fillList(list, entries, lvl)
             for i, r in ipairs(entries) do
@@ -230,7 +230,7 @@ local buildDungeons = K.simplePage("Dungeon & Raid Planner",
             local planRows, suggest = {}, {}
             for _, r in ipairs(rows) do
                 if pick()[r.d[1]] then planRows[#planRows + 1] = r end
-                if r.fit and r.dist <= 5 and #suggest < 4 and not done()[r.d[1]] then suggest[#suggest + 1] = r.d[1] end
+                if r.fit and r.dist <= 10 and #suggest < 4 and not done()[r.d[1]] then suggest[#suggest + 1] = r.d[1] end
             end
             local best
             for _, r in ipairs(planRows) do if not done()[r.d[1]] then best = r.d break end end

@@ -5783,3 +5783,9 @@
 221981|Prophecy of the Lost Tribe|2|0|-3|50|0
 226587|Rune of Shelling|2|0|-3|60|0
 226252|Rune of the Guerrilla|2|0|-3|60|0
+226698|Vertically Composited Patch Hampler|1|12|0|60|0
+226699|Brass-fitted Flam-Tamp Flange|1|12|0|60|0
+225687|Rune of Infernal Armor|2|0|-3|60|0
+19236|Eight of Beasts|3|15|0|1|0
+19272|Five of Elementals|3|15|0|1|0
+227801|Firelands Ember|2|7|0|1|53
