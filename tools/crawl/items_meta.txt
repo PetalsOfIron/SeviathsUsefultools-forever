@@ -5563,3 +5563,6 @@
 20064|Arathi Basin Iron Ration|1|0|0|45|35
 20065|Arathi Basin Mageweave Bandage|1|0|7|45|35
 20067|Arathi Basin Silk Bandage|1|0|7|35|25
+21257|Logistics Task Briefing IV|2|12|0|60|60
+20379|Noggle's Satchel|1|12|0|1|0
+20385|Deathclasp's Pincer|1|12|0|0|0

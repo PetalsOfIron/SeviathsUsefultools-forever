@@ -28,6 +28,7 @@ local CHARTER_ITEM    = 5863      -- Guild Charter
 local CHARTER_ASK_CD  = 86400     -- don't ask the same player to sign again for 1 day
 
 local BRACKETS = { "1-10", "11-20", "21-30", "31-40", "41-50", "51-60", "61-70", "71-80", "81-90" }
+if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then BRACKETS = { "1-10", "11-20", "21-30", "31-40", "41-50", "51-60" } end   -- (Classic: level 60 is the top)
 
 -- Phrases that count as YES. Matched at the start of the reply,
 -- or anywhere for the multi-word ones. Repeated letters are
@@ -717,6 +718,12 @@ end
 local FLAT = { bgFile = "Interface\\Buttons\\WHITE8x8", edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = 1 }
 
 local function Skin(f, r, g, b, a, br, bg, bb, ba)
+    -- panels use the game's own inset art (the same as the other windows of the addon)
+    local S0 = _G.SeviathsUsefulTools
+    if S0 and S0.BlizzardFrame and f.CreateTexture and (a or 1) > 0.3 then
+        S0.BlizzardFrame(f, "inset")
+        return
+    end
     f:SetBackdrop(FLAT)
     f:SetBackdropColor(r or 0.07, g or 0.03, b or 0.03, a or 0.95)
     f:SetBackdropBorderColor(br or 0.9, bg or 0.28, bb or 0.24, ba or 0.9)
@@ -730,34 +737,17 @@ local function ShowTip(owner, title, body)
 end
 
 local function MakeButton(parent, text, w, h, tip, onClick)
-    local b = CreateFrame("Button", nil, parent, "BackdropTemplate")
+    -- the game's own red panel button
+    local b = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
     b:SetSize(w, h)
-    Skin(b, 0, 0.22, 0.27, 0.75, 0.9, 0.28, 0.24, 0.7)
-    b.text = b:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-    b.text:SetPoint("CENTER")
-    b.text:SetText(text)
+    b:SetText(text)
+    b.text = b:GetFontString()
     b.label = text
-    function b:SetLabel(t) self.label = t; self.text:SetText(t) end
-    function b:Paint()
-        if self.active then
-            self:SetBackdropColor(0.85, 0.2, 0.18, 0.95)
-            self:SetBackdropBorderColor(0.6, 1, 1, 1)
-        else
-            self:SetBackdropColor(0.27, 0.07, 0.07, 0.95)
-            self:SetBackdropBorderColor(0.9, 0.28, 0.24, 0.7)
-        end
-    end
+    function b:SetLabel(t) self.label = t; self:SetText(t) end
+    function b:Paint() if self.active then self:LockHighlight() else self:UnlockHighlight() end end
     function b:SetActive(v) self.active = v and true or false; self:Paint() end
-    b:SetScript("OnEnter", function(self)
-        if not self.active then self:SetBackdropColor(0.55, 0.14, 0.12, 0.9) end
-        if tip then ShowTip(self, self.label, tip) end
-    end)
-    b:SetScript("OnLeave", function(self)
-        self:Paint()
-        GameTooltip:Hide()
-    end)
-    b:SetScript("OnMouseDown", function(self) self.text:SetPoint("CENTER", 1, -1) end)
-    b:SetScript("OnMouseUp", function(self) self.text:SetPoint("CENTER", 0, 0) end)
+    b:HookScript("OnEnter", function(self) if tip then ShowTip(self, self.label, tip) end end)
+    b:HookScript("OnLeave", function() GameTooltip:Hide() end)
     b:SetScript("OnClick", onClick)
     return b
 end
