@@ -5798,3 +5798,11 @@
 12800|Azerothian Diamond|2|7|0|60|0
 227749|Rune of the Falling Star|2|0|-3|60|0
 225690|Spell Notes: Frozen Orb|2|0|-3|60|0
+7911|Truesilver Ore|2|7|7|40|0
+12799|Large Opal|2|7|0|55|0
+230909|Depleted Essence of Fire|4|12|0|71|0
+230949|Depleted Essence of Frost|4|12|0|71|0
+231304|Scroll: SERELS PATALIS GNEMIND|4|12|0|71|0
+228105|Everburning Flame Core|4|12|0|60|0
+231836|Glowing Scroll of Spatial Mending|2|0|0|10|0
+231837|Shadow Carving|2|12|0|1|0

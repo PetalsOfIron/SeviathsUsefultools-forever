@@ -1126,7 +1126,7 @@ function UI:Dock()
     end
     f:SetPoint("TOPLEFT", anchor, "TOPRIGHT", 4, 0)
   end
-  f:SetFrameStrata(host:GetFrameStrata() or "HIGH")
+  f:SetFrameStrata("FULLSCREEN_DIALOG")   -- in front of the main menu
   self.docked = true
   self:Select(OpeningTab(section))
   f:Show()

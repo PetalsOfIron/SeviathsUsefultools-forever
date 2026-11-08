@@ -270,7 +270,7 @@ end
 function SFP.RegisterWindow(f)
     if not f or f.SeviathsFront or not f.HookScript then return end
     f.SeviathsFront = true
-    f:SetFrameStrata("DIALOG")
+    f:SetFrameStrata("FULLSCREEN_DIALOG")
     if f.SetToplevel then f:SetToplevel(true) end
     -- raise now and again a moment later: the click that opened the window can raise the menu above it afterwards
     -- every window remembers where you put it and opens exactly there next time
