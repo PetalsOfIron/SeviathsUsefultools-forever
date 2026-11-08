@@ -1,0 +1,8 @@
+## Interface: 16001
+## Title: SeviathsUsefulTools - transmog items 2
+## Notes: Where transmog items come from, read only when an item of this part is looked at.
+## Dependencies: SeviathsUsefulTools
+## LoadOnDemand: 1
+## Author: Seviath
+
+Transmog.lua

@@ -1,0 +1,8 @@
+## Interface: 16001
+## Title: SeviathsUsefulTools - items 1
+## Notes: Names and types of items, read only when the Codex lists them.
+## Dependencies: SeviathsUsefulTools
+## LoadOnDemand: 1
+## Author: Seviath
+
+Items.lua

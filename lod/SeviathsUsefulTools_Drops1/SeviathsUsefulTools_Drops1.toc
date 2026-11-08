@@ -1,0 +1,8 @@
+## Interface: 16001
+## Title: SeviathsUsefulTools - monster drops 1
+## Notes: Items monsters drop, read only when a monster of this part is looked at.
+## Dependencies: SeviathsUsefulTools
+## LoadOnDemand: 1
+## Author: Seviath
+
+Drops.lua

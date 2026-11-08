@@ -1,0 +1,10 @@
+## Interface: 16001
+## Title: SeviathsUsefulTools - monster and gray item data
+## Notes: Shipped monster drops and gray items, read only when needed.
+## Dependencies: SeviathsUsefulTools
+## LoadOnDemand: 1
+## Author: Seviath
+
+tools.knownItems.lua
+tools.npcMaps.lua
+tools.npcs.lua
