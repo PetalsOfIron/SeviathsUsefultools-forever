@@ -1468,6 +1468,14 @@ SlashCmdList["SEVIATHSUSEFULTOOLS"] = function(msg)
             local name = okI and type(info) == "table" and info.name
             SFP:Print(("  %d  %s%s"):format(id, tostring(name), (SFP.Social and SFP.Social.KindOfCategory) and "" or ""))
         end
+    elseif cmd == "lfg" then
+        -- which group finder frames this game has, and which one the group tools found (open the Looking For Group window first)
+        for _, name in ipairs({ "LFGListFrame", "LFGParentFrame", "PVEFrame", "LFDParentFrame", "GroupFinderFrame" }) do
+            local fr = _G[name]
+            SFP:Print(("%s: %s"):format(name, fr and (fr:IsVisible() and "visible" or "hidden") or "none"))
+        end
+        local S2 = _G.SeviathsDungeonsRaids
+        SFP:Print("group tools window: " .. tostring(S2 and "known" or "no handle") .. "; /sut groups to open it by hand")
     elseif cmd == "window" then
         -- finds the Talents window by its title (open it first)
         local ta = SFP.TalentAdvisor

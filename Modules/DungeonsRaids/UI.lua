@@ -1248,22 +1248,32 @@ end)
 -- WoW Forever: the lists open by themselves when the "Looking For Group" window is opened. That window is found by its title text (its frame name is not
 -- known), every half second; the dungeon list docks to it while it is open and goes away when it is closed
 if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
-  local function titleOf(fr)
+  -- a visible frame (or one of its children, up to three levels down) that has the title text "Looking For Group"
+  local function hasTitle(fr, depth)
     for _, r in ipairs({ fr:GetRegions() }) do
       if r.GetObjectType and r:GetObjectType() == "FontString" then
         local ok, t = pcall(r.GetText, r)
-        if ok and type(t) == "string" and not (issecretvalue and issecretvalue(t)) and t == (LOOKING_FOR_GROUP or "Looking For Group") then return true end
+        if ok and type(t) == "string" and not (issecretvalue and issecretvalue(t)) and t:lower() == "looking for group" then return true end
+      end
+    end
+    if depth > 0 then
+      for _, c in ipairs({ fr:GetChildren() }) do
+        if c.IsShown and c:IsShown() and not (c.IsForbidden and c:IsForbidden()) and hasTitle(c, depth - 1) then return true end
       end
     end
   end
+  local function topOf(fr)
+    while fr:GetParent() and fr:GetParent() ~= UIParent do fr = fr:GetParent() end
+    return fr
+  end
   local function find()
+    -- the group finder frames the game names (the list of groups and the category screen): the window around them
+    for _, name in ipairs({ "LFGListFrame", "LFGParentFrame", "PVEFrame" }) do
+      local fr = _G[name]
+      if fr and fr.IsVisible and fr:IsVisible() then return topOf(fr) end
+    end
     for _, fr in ipairs({ UIParent:GetChildren() }) do
-      if fr.IsShown and fr:IsShown() and not (fr.IsForbidden and fr:IsForbidden()) then
-        if titleOf(fr) then return fr end
-        for _, c in ipairs({ fr:GetChildren() }) do
-          if c.IsShown and c:IsShown() and titleOf(c) then return fr end
-        end
-      end
+      if fr.IsShown and fr:IsShown() and not (fr.IsForbidden and fr:IsForbidden()) and hasTitle(fr, 3) then return fr end
     end
   end
   local docked, lastSection
