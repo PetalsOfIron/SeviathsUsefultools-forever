@@ -810,6 +810,7 @@ local function hunterEntries()
                 local x, y = firstPoint(sp.pts)
                 seen[sp.name .. "@" .. map] = true
                 out[#out + 1] = { name = sp.name, exp = list.exp, map = map, x = x, y = y,
+                    family = (tostring(sp.note or ""):match("^([%a ]-) %(")) or "Beast",
                     kind = sp.hunter == "spirit" and "spirit beast" or "unique look" }
             end
         end
@@ -820,7 +821,7 @@ local function hunterEntries()
         if type(b) == "table" and b.n and b.m and not seen[b.n .. "@" .. b.m] then
             seen[b.n .. "@" .. b.m] = true
             local e = SFP:ExpansionForMap(b.m)
-            out[#out + 1] = { name = b.n, exp = e and e.key, map = b.m, x = b.x, y = b.y, kind = (b.f or "beast") .. (b.r and " (rare)" or "") }
+            out[#out + 1] = { name = b.n, exp = e and e.key, map = b.m, x = b.x, y = b.y, family = b.f or "Beast", kind = (b.f or "beast") .. (b.r and " (rare)" or "") }
         end
     end
     return out
@@ -865,6 +866,21 @@ local function renderModeTree()
             renderModeTree()
             win.refreshList()
         end
+    end
+    if mode == "hunter" then
+        -- the pet types (families) on the left; the list is sorted by type, then zone
+        row(1, "All pet types", "all", 0)
+        local fams, seenF = {}, {}
+        for _, e in ipairs(hunterEntries()) do
+            if not seenF[e.family] then seenF[e.family] = true; fams[#fams + 1] = e.family end
+        end
+        table.sort(fams)
+        for _, fam in ipairs(fams) do
+            n = n + 1
+            row(n, fam, "fam:" .. fam, 12)
+        end
+        finish(tree, n)
+        return
     end
     if mode == "mount" then
         row(1, "All mounts", "all", 0)
@@ -1434,29 +1450,32 @@ local function renderHunters(q)
     for _, e in ipairs(entriesCache) do
         local nm = tostring(e.name):lower()
         if (#ql >= 2 and (nm:find(ql, 1, true) or tostring(e.kind):lower():find(ql, 1, true)))
-            or (#ql < 2 and (expSel == "all" or e.exp == expSel)) then
+            or (#ql < 2 and (expSel == "all" or e.exp == expSel or expSel == "fam:" .. tostring(e.family))) then
             entries[#entries + 1] = e
         end
     end
+    -- by pet type, then zone, then name
     table.sort(entries, function(a, c)
-        if expOrder(a.exp) ~= expOrder(c.exp) then return expOrder(a.exp) < expOrder(c.exp) end
+        if a.family ~= c.family then return tostring(a.family) < tostring(c.family) end
         if a.map ~= c.map then return SFP:ZoneName(a.map) < SFP:ZoneName(c.map) end
         return tostring(a.name) < tostring(c.name)
     end)
-    local lastExp
+    local lastFam, lastZone
     for _, e in ipairs(entries) do
-        if e.exp ~= lastExp then
-            lastExp = e.exp
-            local en
-            for _, x in ipairs(SFP.Expansions) do if x.key == e.exp then en = x.name end end
-            n = headerRow(n, "|cffffd100" .. (en or "Other") .. "|r")
+        if e.family ~= lastFam then
+            lastFam, lastZone = e.family, nil
+            n = headerRow(n, "|cffffd100" .. tostring(e.family) .. "|r")
+        end
+        if e.map ~= lastZone then
+            lastZone = e.map
+            n = headerRow(n, "|cffabd473   " .. SFP:ZoneName(e.map) .. "|r")
         end
         n = n + 1
         local r = rowOf(list, n)
         place(list, r, n, 8)
         r.icon:SetTexture("Interface\\Icons\\ClassIcon_Hunter")
         r.text:SetText("|cffffd100" .. tostring(e.name) .. "|r")
-        r.right:SetText("|cffff3030WAYPOINT|r   |cff808080" .. SFP:ZoneName(e.map) .. "|r   |cffabd473" .. e.kind .. "|r")
+        r.right:SetText("|cffff3030WAYPOINT|r   |cffabd473" .. e.kind .. "|r")
         r.hint = (e.x and "Click: set a waypoint and open the map there") or "Click: open the map"
         r.click = function() openWaypoint(e.map, e.x, e.y, tostring(e.name)) end
     end
