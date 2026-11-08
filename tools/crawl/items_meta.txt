@@ -5193,3 +5193,20 @@
 240835|Crate of Moonglade Supplies|1|12|0|60|0
 227552|Shredded Parchment|0|15|0|1|0
 15747|Pattern: Frostsaber Leggings|2|9|1|57|0
+15761|Pattern: Frostsaber Gloves|2|9|1|59|0
+12432|Shardtooth E'ko|1|12|0|1|0
+12622|Shardtooth Meat|1|12|0|1|0
+15419|Warbear Leather|1|7|6|50|0
+15991|Warleader's Shield|2|4|6|63|58
+229416|Warm Fur|1|12|0|1|0
+14867|Warleader's Leggings|2|4|4|62|57
+15988|Resplendent Orb|2|4|-5|63|58
+12434|Chillwind E'ko|1|12|0|1|0
+12444|Uncracked Chillwind Horn|1|12|0|1|0
+12623|Chillwind Meat|1|12|0|1|0
+15423|Chimera Leather|1|7|0|50|0
+12433|Wildkin E'ko|1|12|0|1|0
+18590|Raging Beast's Blood|1|12|0|1|0
+227914|Owlbeast Pineal Gland|1|12|0|60|0
+12524|Blue-feathered Amulet|1|12|0|1|0
+12558|Blue-feathered Necklace|1|12|0|52|52

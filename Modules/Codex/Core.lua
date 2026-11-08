@@ -19,6 +19,7 @@ ns.CATEGORIES = {
     { key = "boss",       name = "Bosses",                  icon = "Interface\\Icons\\Achievement_Dungeon_ClassicDungeonMaster" },
     { key = "rare",       name = "Rares",                   icon = "Interface\\Icons\\Achievement_Boss_Archaedas" },
     { key = "creature",   name = "Monsters & Creatures",    icon = "Interface\\Icons\\Ability_Hunter_BeastTaming" },
+    { key = "hunter",     name = "Hunter Pets",             icon = "Interface\\Icons\\Ability_Hunter_BeastTaming" },
     { key = "npc",        name = "NPCs (vendors & more)",   icon = "Interface\\Icons\\Achievement_Character_Human_Male" },
     { key = "item",       name = "Loot & Items",            icon = "Interface\\Icons\\INV_Chest_Plate16" },
     { key = "town",       name = "Towns & Cities",          icon = "Interface\\Icons\\INV_Misc_Map_01" },

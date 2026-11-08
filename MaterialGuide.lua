@@ -781,7 +781,8 @@ local function mountEntriesBase()
             end
             add(id, "classic", src)
             byItem[id].name = row[1]
-            byItem[id].mtype = "ground"
+            byItem[id].mtype = (row[1]:find("Turtle") or row[1]:find("Seahorse")) and "aquatic" or "ground"
+            byItem[id].zone = src.zone or "Other places"   -- the mount lists sort by zone
         end
     end
     for map, list in pairs(SFP.Rares or {}) do
@@ -842,6 +843,7 @@ local function mountSel(e)
     local kind, exp = expSel:match("^type:(%a+)|?(.*)$")
     if kind then
         if (e.mtype or "other") ~= kind then return false end
+        if exp:find("^zone:") then return e.zone == exp:sub(6) end
         return exp == "" or e.exp == exp
     end
     return e.exp == expSel
@@ -870,9 +872,24 @@ local function renderModeTree()
             n = n + 1
             row(n, kind[2], "type:" .. kind[1], 8)
             if expSel == "type:" .. kind[1] or expSel:find("^type:" .. kind[1] .. "|") then
-                for _, exp in ipairs(SFP.Expansions) do
-                    n = n + 1
-                    row(n, exp.name, "type:" .. kind[1] .. "|" .. exp.key, 22)
+                -- WoW Forever (one expansion): the zones, the mounts of a zone together; otherwise the expansions
+                local zones, seenZ = {}, {}
+                if #SFP.Expansions <= 1 then
+                    for _, e in ipairs(mountEntriesBase()) do
+                        if e.zone and (e.mtype or "other") == kind[1] and not seenZ[e.zone] then seenZ[e.zone] = true; zones[#zones + 1] = e.zone end
+                    end
+                    table.sort(zones)
+                end
+                if #zones > 0 then
+                    for _, z in ipairs(zones) do
+                        n = n + 1
+                        row(n, z, "type:" .. kind[1] .. "|zone:" .. z, 22)
+                    end
+                else
+                    for _, exp in ipairs(SFP.Expansions) do
+                        n = n + 1
+                        row(n, exp.name, "type:" .. kind[1] .. "|" .. exp.key, 22)
+                    end
                 end
             end
         end

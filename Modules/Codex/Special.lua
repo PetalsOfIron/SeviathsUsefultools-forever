@@ -101,15 +101,24 @@ function ns:LoadSpecial()
             wh = wh(m.name), tags = "mount rare world boss", zoneText = m.zone,
         })
     end
-    for _, t in ipairs(self.SPECIAL_TAMES) do
-        self:Add({
-            cat = "creature", id = "tame:" .. t.name, name = t.name,
-            group = "Hunter pets — rare tames",
-            icon = "Interface\\Icons\\Ability_Hunter_BeastTaming",
-            sub = t.family .. " — " .. t.zone,
-            body = C .. "Family|r\n" .. t.family .. "\n\n" .. C .. "Where|r\n" .. t.zone .. "\n\n" .. C .. "How to tame|r\n" .. t.how,
-            wh = wh(t.name), tags = "hunter pet tame " .. t.family:lower(), zoneText = t.zone,
-        })
+    -- hunter pets of Classic: the tames of the map data (S-tier families, with their places), in a tab of their own
+    local S = _G.SeviathsUsefulTools
+    for map, list in pairs((S and S.Rares) or {}) do
+        for _, r in ipairs(type(list) == "table" and list or {}) do
+            if r.hunter then
+                local family = (r.note or ""):match("^([%a ]-) %(") or "Beast"
+                local x, y = (r.pts or ""):match("^([%d%.]+),([%d%.]+)")
+                local mapt = x and { m = map, x = tonumber(x) / 100, y = tonumber(y) / 100 } or nil
+                self:Add({
+                    cat = "hunter", id = "tame:" .. tostring(r.npc) .. "@" .. map, name = r.name, npcID = r.npc,
+                    group = family,
+                    icon = "Interface" .. string.char(92) .. "Icons" .. string.char(92) .. "Ability_Hunter_BeastTaming",
+                    sub = family .. " — " .. self:MapName(map),
+                    body = C .. "Family|r\n" .. family .. "\n\n" .. C .. "Where|r\n" .. self:MapName(map) .. (mapt and ("  " .. self:Coords(mapt)) or "") .. "\n\n" .. C .. "About|r\n" .. (r.note or ""),
+                    map = mapt, wh = wh(r.name), tags = "hunter pet tame beast " .. family:lower(),
+                })
+            end
+        end
     end
 end
 
@@ -122,8 +131,8 @@ end
 
 local function AddBeast(key, b)
     ns:Add({
-        cat = "creature", id = "beast:" .. key, name = b.n,
-        group = "Hunter pets — " .. b.f,
+        cat = "hunter", id = "beast:" .. key, name = b.n,
+        group = b.f,
         icon = "Interface\\Icons\\Ability_Hunter_BeastTaming",
         sub = ("%s — %s%s"):format(b.f, ns:MapName(b.m), b.r and (" (" .. b.r .. ")") or ""),
         body = C .. "Family|r\n" .. b.f .. "\n\n" .. C .. "Where|r\n" .. ns:Coords({ m = b.m, x = b.x, y = b.y })
