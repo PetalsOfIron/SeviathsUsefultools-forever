@@ -5136,3 +5136,60 @@
 4949|Orcish Cleaver|2|2|0|21|16
 8073|Cache of Zanzil's Altered Mixture|1|12|0|1|0
 8049|Gnarlpine Necklace|1|12|0|1|0
+8072|Silixiz's Tower Key|1|13|0|1|0
+8074|Gallywix's Head|1|12|0|1|0
+8344|Silvery Spinnerets|1|12|0|0|0
+235785|Deadwind Cage "Key"|1|13|0|1|0
+10366|Demon Guard|2|4|6|63|58
+16246|Formula: Enchant Bracer - Superior Strength|2|9|8|59|0
+12334|Frostmaul Shards|1|12|0|1|0
+12436|Frostmaul E'ko|1|12|0|1|0
+13495|Recipe: Greater Frost Protection Potion|2|9|6|58|0
+12430|Frostsaber E'ko|1|12|0|1|0
+12733|Sacred Frostsaber Meat|1|12|0|1|0
+14319|Resplendent Boots|2|4|1|59|54
+14676|Pridelord Halo|2|4|2|58|53
+14683|Indomitable Cloak|2|4|-6|59|54
+14808|Warstrike Belt|2|4|3|59|54
+15666|Impenetrable Pauldrons|2|4|3|59|54
+21928|Winterspring Blood Sample|1|12|0|1|0
+14316|Celestial Pauldrons|2|4|1|59|54
+14864|Warleader's Belt|2|4|4|59|54
+15431|Peerless Leggings|2|4|2|59|54
+15672|Magnificent Gauntlets|2|4|3|60|55
+14325|Resplendent Epaulets|2|4|1|61|56
+14455|Highborne Padded Armor|2|4|1|59|54
+14682|Indomitable Armguards|2|4|2|59|54
+14798|Bloodlust Breastplate|2|4|3|59|54
+14814|Warstrike Helmet|2|4|3|63|58
+14966|Glorious Breastplate|2|4|4|61|56
+14969|Glorious Headdress|2|4|4|59|54
+14973|Glorious Shield|2|4|6|60|55
+15189|Grand Boots|2|4|2|60|55
+15658|Impenetrable Sabatons|2|4|3|59|54
+15675|Magnificent Guard|2|4|6|62|57
+15693|Grand Shoulders|2|4|2|59|54
+15967|Highborne Star|2|4|-5|59|54
+15986|Bonecaster's Star|2|4|-5|60|55
+15987|Astral Orb|2|4|-5|61|56
+14453|Highborne Robes|2|4|1|59|54
+14810|Warstrike Armsplints|2|4|3|59|54
+14816|Warstrike Legguards|2|4|3|62|57
+14868|Warleader's Shoulders|2|4|4|61|56
+15665|Impenetrable Legguards|2|4|3|60|55
+14869|Warleader's Bracers|2|4|4|58|53
+240832|Nivifacient Gland|1|12|0|60|0
+2245|Helm of Narv|4|4|3|59|54
+13497|Recipe: Greater Arcane Protection Potion|2|9|6|58|0
+14493|Pattern: Robe of Winter Night|3|9|2|57|0
+16054|Schematic: Arcanite Dragonling|2|9|3|60|0
+12431|Winterfall E'ko|1|12|0|1|0
+12771|Empty Firewater Flask|1|12|0|52|52
+12820|Winterfall Firewater|1|0|2|50|45
+15779|Pattern: Frostsaber Tunic|2|9|1|62|0
+20742|Winterfall Ritual Totem|1|12|0|50|50
+21383|Winterfall Spirit Beads|1|12|0|1|0
+23203|Libram of Fervor|3|4|7|65|60
+240835|Crate of Moonglade Supplies|1|12|0|60|0
+227552|Shredded Parchment|0|15|0|1|0
+15747|Pattern: Frostsaber Leggings|2|9|1|57|0

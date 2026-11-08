@@ -24,7 +24,6 @@ ns.CATEGORIES = {
     { key = "item",       name = "Loot & Items",            icon = "Interface\\Icons\\INV_Chest_Plate16" },
     { key = "town",       name = "Towns & Cities",          icon = "Interface\\Icons\\INV_Misc_Map_01" },
     { key = "node",       name = "Nodes & Objects",         icon = "Interface\\Icons\\INV_Misc_Herb_Felblossom" },
-    { key = "delve",      name = "Delves",                  icon = "Interface\\Icons\\INV_Misc_Lantern_01" },
     { key = "entrance",   name = "Entrances (How to Enter)", icon = "Interface\\Icons\\Spell_Arcane_PortalDalaran" },
     { key = "quest",      name = "Quests (what to do)",     icon = "Interface\\Icons\\INV_Misc_Note_01" },
     { key = "mount",      name = "Mounts",                  icon = "Interface\\Icons\\Ability_Mount_RidingHorse" },

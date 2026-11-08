@@ -771,11 +771,10 @@ end
 ns.LoadQuestsLazy = LoadQuests   -- run when the quest section is opened (see UI.lua: ns:ShowCategoryData)
 
 ns.INDEXERS = {
-    { name = "Reading the Adventure Guide", cats = { "boss", "dungeon", "raid", "creature", "entrance", "item", "material", "delve", "quest" },   fn = IndexJournal },
+    { name = "Reading the Adventure Guide", cats = { "boss", "dungeon", "raid", "creature", "entrance", "item", "material", "quest" },   fn = IndexJournal },
     { name = "Finding instance entrances", cats = { "entrance" },    fn = function() if C_EncounterJournal and C_EncounterJournal.GetDungeonEntrancesForMap then (IndexEntrances)() end end },
     { name = "Loading rares", cats = { "rare" },                 fn = function() if C_VignetteInfo and C_VignetteInfo.GetVignettes then (IndexRares)() end end },
     { name = "Loading vendors", cats = { "npc" },               fn = function() if ns.IndexVendors then ns:IndexVendors() end end },
-    { name = "Finding delves", cats = { "delve" },                fn = function() if ns.IndexDelves then ns:IndexDelves() end end },
     { name = "Loading gold farms", cats = { "mats", "grind", "material" },            fn = function() if ns.LoadFarms then ns:LoadFarms() end end },
     { name = "Ranking grinding spots", cats = { "grind" },        fn = function() if ns.LoadGrind then ns:LoadGrind() end end },
     { name = "Loading hunter pets", cats = { "creature" },           fn = function() if ns.LoadBeasts then ns:LoadBeasts() end end },
