@@ -232,19 +232,52 @@ end
 ------------------------------------------------------------------------
 -- 3) Mounts
 ------------------------------------------------------------------------
+local MOUNT_FLYING = { [247] = true, [248] = true, [398] = true, [402] = true, [407] = true, [424] = true, [436] = true, [445] = true }
+local MOUNT_AQUATIC = { [231] = true, [232] = true, [254] = true }
+local function mountTypeName(typeID)
+    if MOUNT_FLYING[typeID or 0] then return "Flying" end
+    if MOUNT_AQUATIC[typeID or 0] then return "Aquatic" end
+    return "Ground"
+end
+
 local function IndexMounts()
-    for _, mountID in ipairs(C_MountJournal.GetMountIDs() or {}) do
-        local name, spellID, icon, _, _, sourceType, _, _, _, _, isCollected = C_MountJournal.GetMountInfoByID(mountID)
-        if name then
-            local _, description, source = C_MountJournal.GetMountInfoExtraByID(mountID)
+    local seenName = {}
+    if C_MountJournal and C_MountJournal.GetMountIDs then
+        for _, mountID in ipairs(C_MountJournal.GetMountIDs() or {}) do
+            local name, spellID, icon, _, _, sourceType, _, _, _, _, isCollected = C_MountJournal.GetMountInfoByID(mountID)
+            if name then
+                local _, description, source, _, mountTypeID = C_MountJournal.GetMountInfoExtraByID(mountID)
+                seenName[name] = true
+                -- sorted by what it can do (Ground / Flying / Aquatic), then by where it comes from
+                ns:Add({
+                    cat = "mount", id = mountID, name = name, icon = icon,
+                    group = mountTypeName(mountTypeID) .. " > " .. (_G["BATTLE_PET_SOURCE_" .. (sourceType or 0)] or "Other"),
+                    sub = strip(source), source = source, body = description,
+                    collected = isCollected, spellID = spellID, wh = spellID and ("spell=" .. spellID),
+                })
+            end
+            ns:Yield()
+        end
+    end
+    -- the mount items of Classic (WoW Forever): sorted by type and then by the zone of the vendor or monster
+    local S = _G.SeviathsUsefulTools
+    for itemID, row in pairs((S and S.MountItems) or {}) do
+        if not seenName[row[1]] then
+            local zone = "Other places"
+            local rec = row[3] and row[3] > 0 and S.Npc and S:Npc(row[3])
+            if type(rec) == "table" and type(rec.m) == "table" then
+                local map = next(rec.m)
+                if map and S.ZoneName then zone = S:ZoneName(map) or zone end
+            end
+            local kind = (row[1]:find("Turtle") or row[1]:find("Seahorse")) and "Aquatic" or "Ground"
             ns:Add({
-                cat = "mount", id = mountID, name = name, icon = icon,
-                group = _G["BATTLE_PET_SOURCE_" .. (sourceType or 0)] or "Other",
-                sub = strip(source), source = source, body = description,
-                collected = isCollected, spellID = spellID, wh = spellID and ("spell=" .. spellID),
+                cat = "mount", id = "item:" .. itemID, name = row[1], itemID = itemID,
+                icon = C_Item.GetItemIconByID(itemID),
+                group = kind .. " > " .. zone,
+                sub = row[2], source = row[2], body = row[2] ~= "" and row[2] or "Mount",
+                wh = "item=" .. itemID,
             })
         end
-        ns:Yield()
     end
 end
 
