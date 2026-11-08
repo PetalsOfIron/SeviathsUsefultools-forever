@@ -53,7 +53,7 @@ local function buildPanel(sc)
     panel:SetFrameStrata("HIGH")
     panel:SetPoint("TOPLEFT", button, "BOTTOMLEFT", 0, -4)
     panel:SetWidth(186)
-    SFP.BlizzardFrame(panel)
+    SFP.BlizzardFrame(panel, true)
     panel:SetBackdropColor(0, 0.04, 0.07, 0.92)
     panel:SetBackdropBorderColor(SFP.CYAN.r, SFP.CYAN.g, SFP.CYAN.b, 0.9)
     panel:EnableMouse(true) -- clicks on the panel don't fall through to the map

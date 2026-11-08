@@ -107,8 +107,18 @@ function SFP.BlizzardFrame(f, big)
     -- a window: the dark dialog background of the game, a red tooltip border, and the snake in the corner
     f:SetBackdrop({ bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
         tile = true, tileSize = 32, edgeSize = 14, insets = { left = 3, right = 3, top = 3, bottom = 3 } })
-    f:SetBackdropColor(0.6, 0.35, 0.35, 0.98)
+    f:SetBackdropColor(0.6, 0.35, 0.35, 1)
     f:SetBackdropBorderColor(0.9, 0.28, 0.24, 1)
+    -- never see-through: a solid dark base under the dialog background, and later color calls on a window (old per-window tints) are ignored
+    if not f.seviathBase then
+        local base = f:CreateTexture(nil, "BACKGROUND", nil, -8)
+        base:SetPoint("TOPLEFT", 3, -3)
+        base:SetPoint("BOTTOMRIGHT", -3, 3)
+        base:SetColorTexture(0.07, 0.03, 0.03, 1)
+        f.seviathBase = base
+        f.SetBackdropColor = function() end
+        f.SetBackdropBorderColor = function() end
+    end
     if not f.seviathSnake then
         local tex = f:CreateTexture(nil, "BACKGROUND", nil, 2)
         tex:SetTexture(SNAKE)
