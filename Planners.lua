@@ -244,7 +244,7 @@ local buildDungeons = K.simplePage("Dungeon & Raid Planner",
 -- which side a zone belongs to (the other side does not quest there); zones not listed are for both
 local ZONE_SIDE = { [1429] = "Alliance", [1426] = "Alliance", [1438] = "Alliance", [1436] = "Alliance", [1432] = "Alliance", [1439] = "Alliance",
     [1433] = "Alliance", [1431] = "Alliance", [1437] = "Alliance",
-    [1411] = "Horde", [1412] = "Horde", [1420] = "Horde", [1413] = "Horde", [1421] = "Horde" }
+    [1411] = "Horde", [1412] = "Horde", [1420] = "Horde", [1413] = "Horde", [1421] = "Horde", [1442] = "Horde", [1441] = "Horde" }
 -- the starting zone of each race: the other starting zones of the side are not suggested
 local START_OF = { Human = 1429, Dwarf = 1426, Gnome = 1426, NightElf = 1438, Orc = 1411, Troll = 1411, Tauren = 1412, Scourge = 1420 }
 local START_ZONES = { [1429] = true, [1426] = true, [1438] = true, [1411] = true, [1412] = true, [1420] = true }
