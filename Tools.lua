@@ -147,6 +147,9 @@ function SFP.MakeRowList(parent, x, y, w, h, rowH)
                     r.click = CreateFrame("Button", nil, r)
                     r.click:SetFrameLevel(r:GetFrameLevel() + 1)
                     r.click:SetScript("OnClick", function() if r.tick then r.tick:Click() end end)
+                    -- the click area lies over the row: it passes the hover on, so the tooltip of the row shows
+                    r.click:SetScript("OnEnter", function() local h = r:GetScript("OnEnter"); if h then h(r) end end)
+                    r.click:SetScript("OnLeave", function() local h = r:GetScript("OnLeave"); if h then h(r) end end)
                     r.click:SetHighlightTexture("Interface\\Buttons\\UI-Listbox-Highlight2", "ADD")
                 end
                 r.tick:SetFrameLevel(r:GetFrameLevel() + 3)

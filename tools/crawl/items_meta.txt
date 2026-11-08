@@ -5566,3 +5566,31 @@
 21257|Logistics Task Briefing IV|2|12|0|60|60
 20379|Noggle's Satchel|1|12|0|1|0
 20385|Deathclasp's Pincer|1|12|0|0|0
+20394|Twilight Lexicon - Chapter 1|1|12|0|0|0
+20466|Vyral's Signet Ring|1|12|0|1|0
+20515|Abyssal Scepter|4|12|0|1|0
+20682|Elemental Focus Band|4|4|-2|65|60
+20690|Abyssal Cloth Wristbands|3|4|1|68|60
+20691|Windshear Cape|4|4|-6|65|60
+20688|Earthen Guard|4|4|6|65|60
+20514|Abyssal Signet|3|12|0|1|0
+20665|Abyssal Leather Leggings|3|4|2|62|57
+20666|Hardened Steel Warhammer|3|2|4|62|57
+21989|Cinder of Cynders|1|12|0|1|0
+20667|Abyssal Leather Belt|2|4|2|65|60
+20668|Abyssal Mail Legguards|3|4|3|62|57
+20669|Darkstone Claymore|3|2|8|62|57
+20670|Abyssal Mail Clutch|2|4|3|65|60
+20671|Abyssal Plate Legplates|3|4|4|62|57
+20672|Sparkling Crystal Wand|3|2|19|62|57
+20513|Abyssal Crest|2|12|0|1|0
+20655|Abyssal Cloth Handwraps|2|4|1|60|55
+20656|Abyssal Mail Sabatons|2|4|3|60|55
+20657|Crystal Tipped Stiletto|3|2|15|60|55
+20653|Abyssal Plate Gauntlets|2|4|4|60|55
+20654|Amethyst War Staff|3|2|10|60|55
+20658|Abyssal Leather Boots|2|4|2|60|55
+20659|Abyssal Mail Handguards|2|4|3|60|55
+20660|Stonecutting Glaive|3|2|6|60|55
+20673|Abyssal Plate Girdle|2|4|4|65|60
+20675|Soulrender|3|2|0|62|57
