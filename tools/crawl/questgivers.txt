@@ -302,3 +302,155 @@
 4200|Laird|148:36.8,44.2|6343:10:10:1:Return to Nessa
 4201|Ziz Fizziks|406:59,62.4;59,62.6|1093:21:16:3:Super Reaper 6000,1094:21:16:3:Further Instructions,1096:27:16:3:Gerenzo Wrenchwhistle
 4276|Piznik|406:71.8,60|1090:22:17:3:Gerenzo's Orders,1092:22:17:3:Gerenzo's Orders
+4452|Kravel Koalbeard|400:77.8,77.2|1110:31:28:3:Rocket Car Parts,1111:36:30:3:Wharfmaster Dizzywig,1114:36:30:3:Delivery to the Gnomes,1115:36:30:3:The Rumormonger,1118:43:35:3:Back to Booty Bay,1120:44:35:3:Get the Gnomes Drunk,1121:44:35:3:Get the Goblins Drunk,1122:44:35:3:Report Back to Fizzlebub,5762:31:28:3:Hemet Nesingwary
+4453|Wizzle Brassbolts|400:78,77|1105:30:28:3:Hardened Shells,1107:35:28:3:Encrusted Tail Fins,2770:50:40:3:Gahz'rilla
+4454|Fizzle Brassbolts|400:78,77|1104:30:28:3:Salt Flat Venom,1106:35:26:3:Martek the Exiled
+4455|Red Jack Flint|11:9.8,57.8|1132:20:18:1:Fiora Longears
+4456|Fiora Longears|15:66.4,45.2|1133:20:18:1:Journey to Astranaar,1135:30:25:1:Highperch Venom
+4484|Feero Ironhand|331:25.8,30.2;25.8,35.6;26.2,38.8|976:24:19:1:Supplies to Auberdine
+4503|Mudcrush Durtfeet|15:35,38.2|1177:36:32:3:Hungry!
+4618|Martek the Exiled|3:42.2,52.4;42.2,52.6|1108:39:28:3:Indurium,1137:38:28:3:News for Fizzle
+4629|Trackmaster Zherin|400:81.4,77.8;81.6,77.8|1175:33:28:3:A Bump in the Road
+4630|Pozzik|400:80,75.8|1176:30:29:3:Load Lightening,1178:37:29:3:Goblin Sponsorship,1186:37:29:3:The Eighteenth Pilot,1190:41:29:3:Keeping Pace,1192:42:29:3:Indurium Ore
+4631|Wharfmaster Lozgil|33:26.2,73.4;26.4,73.6|1181:37:29:3:Goblin Sponsorship
+4706|Razzeric|400:80.2,76|1187:41:29:3:Razzeric's Tweaking,1188:41:29:3:Safety First
+4708|Shreev|440:51,27.2|1189:41:29:3:Safety First
+4709|Zamek|400:79.8,77|1191:41:29:3:Zamek's Distraction
+4792|"Swamp Eye" Jarl|15:55.4,26.2|1203:35:30:3:Jarl Needs a Blade,1206:35:30:3:Jarl Needs Eyes,1218:35:30:3:Soothing Spices,81570:35:30:3:Jarl Needs a Blade
+4794|Morgan Stern|15:66.2,45.4|1204:38:33:1:Mudrock Soup and Bugs,1258:40:33:1:... and Bugs
+4880|"Stinky" Ignatz|15:46.8,17.4;46.8,17.6;47.2,19.4|1222:37:30:1:Stinky's Escape,1270:37:30:2:Stinky's Escape
+4921|Guard Byron|15:66,46|1282:35:30:1:They Call Him Smiling Jim
+4941|Caz Twosprocket|15:64.6,50.4|1320:35:30:1:The Black Shield
+4944|Captain Garran Vimes|15:68.2,48.4;68.2,48.6|1259:40:30:1:Lieutenant Paval Reethe,1286:38:30:1:The Deserters,1319:35:30:1:The Black Shield
+4947|Theramore Lieutenant|15:65,47;67.2,51;68,48.2|1220:35:30:1:Captain Vimes
+4948|Adjutant Tesoran|15:68,48.2|1285:38:30:1:Daelin's Men
+4962|Tapoke "Slim" Jahn|11:10.6,60.2;10.8,59.4|1250:33:28:1:The Missing Diplomat
+4963|Mikhail|11:10.6,60.6|1249:33:28:1:The Missing Diplomat,1264:33:28:1:The Missing Diplomat
+4964|Commander Samaul|15:67.8,48.4;68,48.6|1265:35:28:1:The Missing Diplomat
+4966|Private Hendel|15:45.2,24.4;45.2,24.6;46.6,23.6|1324:38:28:1:The Missing Diplomat
+4967|Archmage Tervosh|15:45.2,24.4;59.6,41.2;66.4,49.2|1266:36:28:1:The Missing Diplomat,7070:42:39:1:Shadowshard Fragments
+4968|Lady Jaina Proudmoore|15:45.2,24.2;66.2,49|1267:38:28:1:The Missing Diplomat
+5082|Vincent Hyal|11:10.8,60.4|1302:35:30:1:James Hyal
+5353|Itharius|8:13.6,71.4;13.6,71.6|3512:55:48:3:In Eranikus' Own Words,82019:50:40:3:Going Under,82020:50:50:3:Return to Moonglade
+5391|Galen Goodward|8:53,29.6;65,21.2;65,24.8|1393:38:30:3:Galen's Escape
+5396|Captain Pentigast|405:66.6,11|1382:35:30:1:Strange Alliance,1385:35:30:1:Brutal Politics
+5397|Uthek the Wise|405:36.2,79.2|1370:35:30:3:Stealing Supplies,1373:37:30:3:Ongeku,1374:37:30:3:Khan Jehn,1380:42:30:3:Khan Hratha,1384:32:30:1:Raid on the Kolkar
+5398|Warug|405:74.8,68|1369:33:30:3:Broken Tears,1371:35:30:3:Gizmo for Warug,1375:37:30:3:Khan Shaka,1381:42:30:3:Khan Hratha,1386:32:30:1:Assault on the Kolkar
+5411|Krinkle Goodsteel|440:51.4,28.8|5801:57:55:1:Fire Plume Forged,5802:57:55:2:Fire Plume Forged
+5464|Watchmaster Sorigal|10:75.4,46.4;75.8,46.2|1395:45:40:1:Supplies for Nethergarde
+5476|Watcher Biggs|8:26.4,59.4;26.8,59.4;26.8,59.6|1396:37:30:1:Encroaching Wildlife,1398:42:30:1:Driftwood,1421:35:30:1:The Lost Caravan,1425:42:30:1:Deliver the Shipment
+5594|Alchemist Pestlezugg|440:50.8,27|113:48:39:3:Insect Part Analysis,4496:53:50:3:Bungle in the Jungle,4507:54:50:3:Pawn Captures Queen,4508:54:50:1:Calm Before the Storm,4509:54:50:2:Calm Before the Storm
+5598|Atal'ai Exile|47:33.6,75.2|1444:44:38:2:Return to Fel'Zerul,1446:53:38:3:Jammal'an the Prophet,82104:50:50:3:Jammal'an the Prophet
+5634|Rhapsody Shindigger|47:26.8,48.4;26.8,48.6|1452:43:38:1:Rhapsody's Kalimdor Kocktail,1469:43:38:1:Rhapsody's Tale
+5635|Falstad Wildhammer|47:11.8,46.8|1450:43:38:1:Gryphon Master Talonaxe
+5636|Gryphon Master Talonaxe|47:9.8,44.4;9.8,44.6|1451:43:38:1:Rhapsody Shindigger,2988:45:40:1:Witherbark Cages,2989:48:40:1:The Altar of Zul,2990:47:40:1:Thadius Grimshade,2994:51:40:1:Saving Sharpbeak
+5638|Kreldig Ungor|405:66.2,9.6|1454:39:30:1:The Karnitol Shipwreck,1456:39:30:1:The Karnitol Shipwreck,1457:39:30:1:The Karnitol Shipwreck,1458:33:30:1:Reagents for Reclaimers Inc.,1459:35:30:1:Reagents for Reclaimers Inc.,1466:40:30:1:Reagents for Reclaimers Inc.,1467:40:30:1:Reagents for Reclaimers Inc.
+5642|Vahlarriel Demonslayer|405:66.4,11.8;66.6,11.8|1437:33:30:1:Vahlarriel's Search,1438:33:30:1:Vahlarriel's Search
+5644|Dalinda Malem|405:54.8,26.2;55.6,26.8|1439:33:30:1:Search for Tyranis,1440:33:30:1:Return to Vahlarriel
+5752|Corporal Melkins|405:66.6,10.8|1387:31:30:1:Centaur Bounty
+5901|Islen Waterseer|17:65.8,43.8|63:23:20:2:Call of Water,972:20:20:2:Water Sapta,1530:22:20:2:Call of Water,5159:54:48:3:Cleansed Water Returns to Felwood
+5955|Tooga|440:28.4,63.4;28.4,63.6;28.4,67.4|1560:50:40:3:Tooga's Quest
+6019|Hornizz Brimbuzzle|405:47.8,61.8|6134:39:34:3:Ghost-o-plasm Round Up
+6121|Remen Marcot|12:44.4,66.2|1685:10:10:1:Gakin's Summons
+6134|Lord Arkkoroc|16:77.2,42.8|3510:58:45:3:The Name of the Beast,3511:58:45:3:The Name of the Beast
+6166|Yorus Barleybrew|44:26.6,44.4;26.6,44.8|1699:22:20:1:The Rethban Gauntlet,1702:22:20:1:The Shieldsmith
+6172|Henze Faulk|12:72.4,51.4;72.4,51.6;72.6,51.4|1787:13:12:1:The Tome of Divinity
+6176|Bath'rah the Windwatcher|36:80.4,66.8|1712:40:30:3:Cyclonian,1713:40:30:3:The Summoning,1792:40:30:3:Whirlwind Weapon,8411:52:50:2:Mastering the Elements,8412:52:50:2:Spirit Totem,8413:52:50:2:Da Voodoo,79361:35:30:2:Power of da Wind,79362:38:30:2:Power of da Earth,79363:36:30:2:Power of da Water,79364:40:30:2:A Simple Container,79365:40:30:2:With Wind Beneath Your Wings,82113:50:50:2:Da Voodoo
+6177|Narm Faulk|1:78.2,58|1784:13:12:1:The Tome of Divinity
+6181|Jordan Stilwell|1:52.4,36.8;52.6,36.8|1654:22:20:1:The Test of Righteousness,1806:22:20:1:The Test of Righteousness
+6182|Daphne Stilwell|40:41.4,88.4;41.4,88.6;42.2,88.6|1651:25:20:1:The Tome of Valor,1652:25:20:1:The Tome of Valor
+6236|Klannoc Macleod|17:68.6,49|1719:30:30:3:The Affray,1791:30:30:3:The Windwatcher
+6241|Bailor Stonehand|38:36,45|1655:22:20:1:Bailor's Ore Shipment
+6244|Takar the Seer|17:49.2,57|1738:20:20:1:Heartswood,65602:0:20:1:What Is Love?
+6247|Doan Karhan|17:49.2,57.2|1740:25:20:3:The Orb of Soran'ruk,78680:25:20:3:Rumors Abound,78681:28:20:3:The Conjuring,78702:28:20:3:Raszel Ander,85112:60:60:3:The Depleted Scythe,85468:60:60:3:Soul of Mischief
+6251|Strahad Farsan|17:62.6,35.4;62.6,35.6|1758:30:30:1:Tome of the Cabal,1795:30:30:3:The Binding,1801:30:30:2:Tome of the Cabal,4490:40:40:3:Summon Felsteed
+6252|Acolyte Magaz|17:62.6,35.2|4963:40:35:3:Shard of an Infernal
+6254|Acolyte Wytula|17:62.6,35.2|4962:40:35:3:Shard of a Felhound
+6266|Menara Voidrender|17:62.4,35.4;62.6,35.4|1796:31:31:3:Components for the Enchanted Gold Bloodrobe,1799:40:35:3:Fragments of the Orb of Orahil,4781:34:31:3:Components for the Enchanted Gold Bloodrobe,4783:37:31:3:Components for the Enchanted Gold Bloodrobe,4784:37:31:3:Components for the Enchanted Gold Bloodrobe,4786:38:31:3:The Completed Robe,4964:40:35:3:The Completed Orb of Dar'Orahil,4975:40:35:3:The Completed Orb of Noh'Orahil
+6286|Zarrin|141:57,61.2|4161:7:1:1:Recipe of the Kaldorei
+6301|Gorbold Steelhand|148:38,41.2|982:17:13:1:Deep Ocean  Vast Sea
+6546|Tabetha|15:46,57|1948:40:30:3:Items of Power,1949:38:30:3:Hidden Secrets,1952:40:30:3:Mage's Wand,1954:40:35:3:The Infernal Orb,1955:40:35:3:The Exorcism,1956:40:35:3:Power in Uldaman,1957:40:35:3:Mana Surges,1958:40:35:3:Celestial Power,2846:46:40:3:Tiara of the Deep,4961:40:35:3:Cleansing of the Orb of Orahil,4976:40:35:3:Returning the Cleansed Orb
+6548|Magus Tirth|400:78.2,75.8|1950:30:30:3:Get the Scoop,1951:40:30:3:Rituals of Power
+6577|Bingles Blastenheimer|38:63.4,47.4;63.4,47.8;63.6,47.8|2038:15:12:1:Bingles' Missing Supplies
+6667|Gelkak Gyromast|148:56.6,13.4;56.6,13.6|2078:20:14:1:Gyromast's Revenge,2098:20:14:1:Gyromast's Retrieval
+6707|Fahrad|36:84.4,80.2;84.6,80.2|8249:60:50:3:Junkboxes Needed,80411:50:45:3:The Talisman of Kazdor,80453:50:45:3:Best Laid Plans,80526:50:45:3:Fool Me Twice,84881:60:55:3:Into the Hold of Shadows
+6766|Ravenholdt Guard|36:81.6,77;82,78;82.4,73.8~267:77.2,20;77.6,20|6701:60:24:3:Syndicate Emblems
+6768|Lord Jorach Ravenholdt|36:86,79|8234:52:50:3:Sealed Azure Bag
+6774|Falkhaan Isenstrider|12:45.4,47.8;45.6,47.8|2158:5:1:1:Rest and Relaxation
+6777|Zan Shivsproket|36:86,80|80454:50:45:3:One Last Drop
+6780|Porthannius|141:61.2,47.4;61.2,47.6|2159:5:1:1:Dolanaar Delivery
+6782|Hands Springsprocket|1:33.8,72.2|2160:5:1:1:Supplies to Tannok
+6886|Onin MacHammar|1:25.2,44.4;25.2,44.6|2239:10:10:1:Onin's Report
+6966|Lucius|44:28.2,52.2|2282:20:16:1:Alther's Mill
+7024|Agent Kearnen|40:68.4,70|2359:24:20:1:Klaven's Tower
+7161|Wrenix the Wretched|17:63,36.4|2381:18:16:2:Plundering the Plunderers
+7317|Oben Rageclaw|141:45,61.4;45,61.6|2541:8:3:1:The Sleeping Druid,2561:10:3:1:Druid of the Claw
+7363|Kum'isha the Collector|4:51.8,35.4;51.8,35.6;53,33.8|2521:55:45:3:To Serve Kum'isha,2522:55:45:3:Kum'isha's Endeavors,3501:55:45:3:Everything Counts In Large Amounts,3502:55:45:3:One Draenei's Junk...
+7406|Oglethorpe Obnoticus|33:28.2,76.2|3642:47:30:2:The Pledge of Secrecy,3643:47:30:2:Show Your Work,3645:47:30:3:Membership Card Renewal,3721:50:40:3:An OOX of Your Own
+7407|Chief Engineer Bilgewhizzle|440:52.4,28.4|379:46:38:2:Slake That Thirst,841:46:38:2:Another Power Source?,864:46:38:2:Return to Apothecary Zinge,1690:43:40:3:Wastewander Justice,1691:44:40:3:More Wastewander Justice,2768:47:40:3:Divino-matic Rod
+7408|Spigot Operator Luglunket|440:52.4,28.4|1707:44:40:3:Water Pouch Bounty,1878:44:40:3:Water Pouch Bounty,82209:44:40:3:Water Pouch Bounty
+7505|Bloodmage Drazial|4:50.4,14.2;50.6,14.2|2581:50:45:3:Snickerfang Jowls,2582:50:45:3:Rage of Ages,2583:50:45:3:A Boar's Vitality,2584:50:45:3:Spirit of the Boar,2585:50:45:3:The Decisive Striker,2586:50:45:3:Salt of the Scorpok
+7506|Bloodmage Lynnore|4:50.6,14.2|2601:50:45:3:The Basilisk's Bite,2602:50:45:3:Infallible Mind,2603:50:45:3:Vulture's Vigor,2604:50:45:3:Spiritual Domination,81917:50:45:3:Chains That Bind,81919:50:45:3:Brought to Heel
+7564|Marin Noggenfogger|440:51.8,28.6|2605:49:44:3:The Thirsty Goblin,2606:49:44:3:In Good Taste,2662:49:44:3:Noggenfogger Elixir
+7572|Fallen Hero of the Horde|8:34.2,66|2621:50:45:2:The Disgraced One,2681:57:45:3:The Stones That Bind Us,2702:57:45:3:Heroes of Old,2721:58:45:3:Kirith,2744:60:45:3:The Demon Hunter,2784:50:45:2:Fall From Grace,2801:57:45:3:A Tale of Sorrow,3627:60:45:3:Uniting the Shattered Amulet,3628:60:45:3:You Are Rakh'likh  Demon,8423:52:50:3:Warrior Kinship,8424:52:50:3:War on the Shadowsworn,8425:52:50:3:Voodoo Feathers,82107:50:50:3:Voodoo Feathers
+7583|Sprinkle|440:51,26.8|2641:49:44:3:Sprinkle's Secret Ingredient,2661:49:44:3:Delivery for Marin
+7724|Senior Surveyor Fizzledowser|440:50.2,27.4|10:48:39:3:The Scrimshank Redemption,32:48:39:2:Rise of the Silithid,82:47:39:3:Noxious Lair Investigation,110:48:39:3:Insect Part Analysis,162:49:39:1:Rise of the Silithid,992:46:38:3:Gadgetzan Water Survey
+7729|Spirit of Kirith|4:66.8,31.2;67.4,31.6;67.8,31.6|2743:60:45:3:The Cover of Darkness
+7736|Innkeeper Shyria|357:31,43.4|3788:50:47:1:Jonespyre's Request
+7750|Corporal Thund Splithoof|8:33.4,66;33.6,66|2701:57:45:3:Heroes of Old
+7763|Curgle Cranklehop|440:52.2,26.8|2747:60:42:3:An Extraordinary Egg,2748:60:42:3:A Fine Egg,2749:60:42:3:An Ordinary Egg,2750:60:42:3:A Bad Egg,2944:48:42:1:The Super Snapper FX,3022:47:42:1:Handle With Care
+7764|Troyas Moonbreeze|357:31.8,45.4|2879:50:42:1:The Stave of Equinex,2939:47:42:1:In Search of Knowledge
+7765|Rockbiter|357:42.4,22|2844:49:44:1:The Giant Guardian
+7771|Marvon Rivetseeker|440:52.6,45.8|3161:48:43:3:Gahz'ridian,3444:51:46:3:The Stone Circle,3446:51:46:3:Into the Depths,3447:51:46:3:Secret of the Circle,82096:50:50:3:Into the Depths,82097:50:50:3:Secret of the Circle
+7773|Marli Wishrunner|357:45.8,16.4;45.8,16.6|3567:25:25:3:To the Top
+7774|Shay Leafrunner|357:38.2,10.2;42.4,21.8|2845:49:44:1:Wandering Shay
+7775|Gregan Brewspewer|357:45,25.4;45,25.6|4041:52:47:3:The Videre Elixir,4143:52:47:1:Haze of Evil,82099:50:50:1:Haze of Evil
+7783|Loramus Thalipedes|16:60.8,66.4;60.8,66.6|3141:57:45:3:Loramus,3508:58:45:3:Breaking the Ward,3509:58:45:3:The Name of the Beast,3602:58:45:3:Azsharite,3621:58:45:3:The Formation of Felbane
+7784|Homing Robot OOX-17/TN|440:59.8,61.8;60,62.8;60.2,64.4|648:48:43:3:Rescue OOX-17/TN!
+7794|McGavan|33:28.8,75.4|2760:40:40:3:The Mithril Order
+7801|Gilveradin Sunchaser|47:26.6,48.4;26.6,48.6|77:48:42:2:A Sticky Situation,81:48:42:2:Ripple Delivery
+7802|Galvan the Ancient|33:50.4,20.4;50.6,20.4;50.6,20.6|2761:45:40:3:Smelt On  Smelt Off,2762:45:40:3:The Great Silver Deceiver,2763:45:40:3:The Art of the Imbue,2764:45:40:3:Galvan's Finest Pupil,2765:45:40:3:Expert Blacksmith!,3625:58:45:3:Enchanted Azsharite Fel Weaponry,3626:58:45:3:Return to the Blasted Lands
+7804|Trenton Lighthammer|440:51.4,28.6|2771:45:40:3:A Good Head On Your Shoulders,2772:45:40:3:The World At Your Feet,2773:45:40:3:The Mithril Kid,3042:45:40:3:Troll Temper,3321:50:40:3:Did You Lose This?
+7806|Homing Robot OOX-09/HL|47:48.2,44.2;49.2,40.6;49.4,37.6|836:48:43:3:Rescue OOX-09/HL!
+7807|Homing Robot OOX-22/FE|357:53.4,55.6;55,56.2|2767:45:40:3:Rescue OOX-22/FE!
+7826|Ambassador Ardalan|4:67.4,19.2;67.6,19.2|2783:57:50:1:Petty Squabbles
+7852|Pratt McGrubben|357:30.6,42.6|2821:46:40:1:The Mark of Quality,2847:45:30:1:Wild Leather Armor,2848:45:30:1:Wild Leather Shoulders,2849:45:30:1:Wild Leather Vest,2850:45:30:1:Wild Leather Helmet,2851:45:30:1:Wild Leather Boots,2852:45:30:1:Wild Leather Leggings,2853:45:30:1:Master of the Wild Leather,7733:48:40:1:Improved Quality,82657:45:30:1:Wild Leather Vest
+7853|Scooty|33:27.4,77.4;27.6,77.4|2843:35:20:2:Gnomer-gooooone!,79984:40:40:3:Quadrangulation,80134:40:40:2:Gnomer-gooooone!
+7866|Peter Galen|16:37.4,65.4;37.4,65.6;37.6,65.4|5141:55:40:1:Dragonscale Leatherworking,85701:55:40:1:Dragonscale Leatherworking
+7868|Sarah Tanner|51:63.2,75.4;63.4,76;63.6,75.4|5144:55:40:1:Elemental Leatherworking,85703:55:40:1:Elemental Leatherworking
+7870|Caryssia Moonhunter|357:89.4,46.4;89.4,46.6|5143:55:40:1:Tribal Leatherworking,85705:55:40:1:Tribal Leatherworking
+7876|Tran'rek|440:51.4,26.8;51.6,26.8|2865:45:40:3:Scarab Shells,3362:50:45:3:Thistleshrub Valley,4504:54:48:3:Super Sticky
+7877|Latronicus Moonspear|357:30.4,46|2869:43:40:1:Against the Hatecrest,2870:45:40:1:Against Lord Shalzaru,2871:45:40:1:Delivering the Relic,4124:43:40:1:The Missing Courier,7488:57:54:1:Lethtendris's Web
+7879|Quintis Jonespyre|357:32.4,43.8|3791:50:47:1:The Mystery of Morrowgrain,3792:55:47:1:Morrowgrain to Feathermoon Stronghold,4130:44:40:1:Psychometric Reading
+7880|Ginro Hearthkindle|357:31.8,45.2|4125:43:40:1:The Missing Courier,4129:44:40:1:The Knife Revealed,4131:44:40:1:The Woodpaw Gnolls,4266:46:40:1:A Hero's Welcome
+7881|Stoley|440:67,23.8|2873:45:40:3:Stoley's Shipment,2874:45:40:3:Deliver to MacKinley
+7882|Security Chief Bilgewhizzle|440:67,23.8|8366:45:40:3:Southsea Shakedown
+7884|Fraggar Thundermantle|47:14.8,44.4;14.8,44.6|2877:48:40:1:Skulk Rock Clean-up,2880:45:40:1:Troll Necklace Bounty,2881:45:40:1:Troll Necklace Bounty,82210:45:40:1:Troll Necklace Bounty
+7900|Angelas Moonbreeze|357:31.8,45.4;31.8,45.6|2982:44:39:1:The High Wilderness,3445:51:46:1:The Sunken Temple
+7907|Daryn Lightwind|141:55.4,92.2|2941:48:42:1:The Borrower,2943:48:42:1:Return to Troyas,5250:56:53:1:Starfall
+7916|Erelas Ambersky|141:55.4,92|978:55:52:1:Moontouched Wildkin,979:57:52:1:Find Ranshalla,3661:47:42:1:Favored of Elune?,4902:57:52:1:Wildkin of Elune
+7956|Kindal Moonweaver|357:65.8,45.6;66.6,46.6|2969:47:38:1:Freedom for All Creatures,3841:47:38:1:An Orphan Looking For a Home
+7957|Jer'kai Moonweaver|357:65.8,45.6|2970:47:38:1:Doling Justice,2972:47:38:1:Doling Justice
+8022|Thadius Grimshade|4:67,19.4|2991:47:40:1:Nekrum's Medallion,2992:47:40:1:The Divination,2993:47:40:1:Return to the Hinterlands
+8125|Dirge Quikcleave|440:52.6,28|6610:45:35:3:Clamlette Surprise,8585:60:60:3:The Isle of Dread!,8586:60:60:3:Dirge's Kickin' Chimaerok Chops,8587:60:60:3:Return to Narain
+8126|Nixx Sprocketspring|440:52.4,27.2|3638:47:30:3:The Pledge of Secrecy,3639:47:30:3:Show Your Work,3644:47:30:3:Membership Card Renewal
+8284|Dorius Stonetender|51:63.4,58.4;63.8,60.8;64,50.8|3367:48:40:1:Suntara Stones
+8379|Archmage Xylem|16:29.2,40.2;29.6,40.4;29.6,40.6|3565:52:45:2:Xylem's Payment to Jediga,8235:52:50:3:Encoded Fragments,8236:52:50:3:The Azure Key,8251:52:50:3:Magic Dust,8252:52:50:3:The Siren's Coral,8253:52:50:3:Destroy Morphaz,9362:60:60:3:Warlord Krellian,9364:60:60:3:Fragmented Magic,82110:50:50:3:The Azure Key,82114:50:50:3:Destroy Morphaz
+8380|Captain Vanessa Beltis|16:53,87.8|3382:57:48:3:A Crew Under Fire
+8392|Pilot Xiggs Fuselighter|16:77.8,91.4|3461:52:45:1:Return to Tymor
+8395|Sanath Lim-yo|16:28,50|3503:55:45:3:Meeting with the Master
+8399|Nyrill|16:26.4,46.2|3421:55:45:3:Return Trip
+8405|Ogtinc|16:42.4,42.6|8153:52:50:3:Courser Antlers,8231:52:50:3:Wavethrashing,8232:52:50:3:The Green Drake,8255:52:50:3:Of Coursers We Know,8256:52:50:3:The Ichor of Undeath,8257:52:50:3:Blood of Morphaz,82108:50:50:3:The Green Drake,82111:50:50:3:Blood of Morphaz
+8416|Felix Whindlebolt|1:28.4,67.6;28.6,67.8|3361:3:3:1:A Refugee's Quandary
+8417|Dying Archaeologist|51:41.2,25.4;41.2,25.6|3372:52:40:1:Release Them,3566:52:40:1:Rise  Obsidion!
+8418|Falla Sagewind|17:48.2,32.8|3369:25:10:2:In Nightmares,3370:25:10:1:In Nightmares
+8420|Kim'jael|16:53.4,21.8|3601:53:47:3:Kim'jael Indeed!,5534:53:47:3:Kim'jael's "Missing" Equipment
+8436|Zamael Lunthistle|51:29.4,26.4;29.4,26.6;29.6,26.4|3377:50:40:1:Prayer to Elune,3378:50:40:1:Prayer to Elune
+8439|Nilith Lokrav|51:40.8,74.4;41,74.8|3379:50:40:3:Shadoweaver,3385:50:40:3:The Undermarket,3402:50:40:3:The Undermarket
+8479|Velarok Windblade|51:39,39|3441:48:40:3:Divine Retribution,3442:48:40:3:The Flawless Flame,3443:48:40:3:Forging the Shaft,3452:50:40:3:The Flame's Casing,3453:50:40:3:The Torch of Retribution,3454:50:40:3:The Torch of Retribution,3462:50:40:3:Squire Maltrake
+8496|Liv Rizzlefix|17:62.4,38.6|4146:52:47:2:Zapper Fuel,4502:55:49:3:Volcanic Activity,82101:50:50:2:Zapper Fuel
+8509|Squire Maltrake|51:39,38.4;39,39|3463:52:40:3:Set Them Ablaze!
+8579|Yeh'kinya|440:67,22.4|3520:44:40:3:Screecher Spirits,3527:47:40:3:The Prophecy of Mosh'aru,3528:53:40:3:The God Hakkar,4787:50:40:3:The Ancient Egg,82095:50:50:3:The God Hakkar
+8583|Dirania Silvershine|141:60.8,42|3521:4:2:1:Iverron's Antidote,3522:4:2:1:Iverron's Antidote,4495:4:2:1:A Good Friend
+8584|Iverron|141:54.6,33|3519:4:2:1:A Friend in Need
+8737|Linken|490:44.6,8.2|3908:52:47:3:It's a Secret to Everybody,3941:52:47:3:A Gnome's Assistance,3962:56:47:3:It's Dangerous to Go Alone
