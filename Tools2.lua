@@ -2019,7 +2019,8 @@ local function achReadAll()
     local idx, seen = {}, {}
     local cats = (GetCategoryList and GetCategoryList()) or {}
     local ci, ai = 1, 1
-    local function step()
+    local step
+    local function stepInner()
         local t0 = debugprofilestop()
         while ci <= #cats do
             local n = (GetCategoryNumAchievements and GetCategoryNumAchievements(cats[ci], true)) or 0
@@ -2038,6 +2039,15 @@ local function achReadAll()
         if achBox then
             local fn = achBox:GetScript("OnTextChanged")
             if fn then fn(achBox) end
+        end
+    end
+    -- an error while reading ends the reading with what was read so far (and is reported), instead of leaving "Reading the achievement list..." for ever
+    step = function()
+        local ok, err = pcall(stepInner)
+        if not ok then
+            if SFP.CatchError then SFP:CatchError("achievement list", err) end
+            achAll, achReading = idx, false
+            if achBox then local fn = achBox:GetScript("OnTextChanged"); if fn then pcall(fn, achBox) end end
         end
     end
     step()

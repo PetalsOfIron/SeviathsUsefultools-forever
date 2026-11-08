@@ -299,26 +299,33 @@ local buildRoleplay = K.simplePage("Roleplay",
                 b:Show()
             end
         end
-        local top = y - 56
+        local top = y - 52
         for _, f in ipairs(RP_FIELDS) do
             K.mkText(pane, f[2], 12, top, 300, "GameFontNormalSmall")
-            local sf = CreateFrame("ScrollFrame", nil, pane, "UIPanelScrollFrameTemplate")
-            local h = f[3] * 16 + 8
-            sf:SetPoint("TOPLEFT", 12, top - 16)
-            sf:SetSize(460, h)
-            local box = CreateFrame("EditBox", nil, sf)
+            -- a visible box (dark with a gold edge) to type in
+            local h = f[3] * 14 + 12
+            local holder = CreateFrame("Frame", nil, pane, "BackdropTemplate")
+            holder:SetPoint("TOPLEFT", 12, top - 14)
+            holder:SetSize(470, h)
+            holder:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8x8", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", edgeSize = 12,
+                insets = { left = 3, right = 3, top = 3, bottom = 3 } })
+            holder:SetBackdropColor(0.04, 0.04, 0.05, 0.9)
+            holder:SetBackdropBorderColor(0.7, 0.58, 0.3, 1)
+            local box = CreateFrame("EditBox", nil, holder)
+            box:SetPoint("TOPLEFT", 7, -6)
+            box:SetPoint("BOTTOMRIGHT", -7, 6)
             box:SetMultiLine(f[3] > 1)
             box:SetAutoFocus(false)
             box:SetFontObject("GameFontHighlightSmall")
-            box:SetWidth(450)
             box:SetMaxLetters(f[3] > 1 and 1500 or 60)
-            sf:SetScrollChild(box)
+            holder:EnableMouse(true)
+            holder:SetScript("OnMouseDown", function() box:SetFocus() end)
             local function save(self) rpOf(rpSelected)[f[1]] = strtrim(self:GetText() or "") end
             box:SetScript("OnEditFocusLost", save)
             box:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
             if f[3] == 1 then box:SetScript("OnEnterPressed", function(self) save(self); self:ClearFocus() end) end
             editors[#editors + 1] = { key = f[1], box = box }
-            top = top - h - 24
+            top = top - h - 20
         end
         return function() rebuildButtons(); load() end
     end)

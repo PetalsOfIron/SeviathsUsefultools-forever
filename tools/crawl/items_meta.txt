@@ -5084,3 +5084,12 @@
 15748|Pattern: Heavy Scorpid Leggings|2|9|1|57|0
 15774|Pattern: Heavy Scorpid Shoulders|2|9|1|61|0
 225676|Molten Obsidian Core|1|15|0|1|0
+11266|Fractured Elemental Shard|1|12|0|1|0
+15732|Pattern: Volcanic Leggings|2|9|1|54|0
+227908|Pattern: Masterwork Volcanic Leggings|2|9|1|54|0
+14482|Pattern: Cindercloth Cloak|2|9|2|55|0
+14490|Pattern: Cindercloth Pants|2|9|2|56|0
+15416|Black Dragonscale|1|7|6|55|0
+7923|Defias Tower Key|1|13|0|1|0
+7908|Klaven Mortwake's Journal|1|12|0|1|0
+22229|Soul Ashes of the Banished|1|12|0|1|0
