@@ -96,6 +96,7 @@ local function rowOf(side, i)
     r.right = r:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     r.right:SetPoint("RIGHT", -6, 0)
     r.right:SetJustifyH("RIGHT")
+    SFP.AttachWaypointButton(r)
     r.text = r:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
     r.text:SetJustifyH("LEFT")
     r.text:SetWordWrap(false)   -- one line per row: a long name is cut instead of running into the next row
@@ -162,7 +163,7 @@ local function finish(side, n)
     -- rows that fit: the window's height less the header (64) and the page buttons (40); the scroll frame has no size yet on the first draw
     local winH = (win and win:GetHeight()) or 0
     if winH < 100 then winH = (WorldMapFrame:GetHeight() or 400) end
-    local per = math.min(30, math.max(6, math.floor((winH - 104) / ROW_H)))
+    local per = 600   -- the list scrolls (the bar on its side and the mouse wheel); only a very long list is cut into pages
     local sig = tostring(mode) .. "|" .. tostring(matTab) .. "|" .. tostring(gatherExp) .. "|" .. tostring(selected) .. "|" .. tostring(expSel) .. "|" .. (search and search:GetText() or "")
     if sig ~= listSig then listSig, listPage = sig, 1 end
     local pages = math.max(1, math.ceil(n / per))
@@ -767,6 +768,22 @@ local function mountEntriesBase()
             end
         end
     end
+    -- every mount item of the Classic list (WoW Forever): where it comes from, and the place of its vendor or monster when the addon knows it
+    for id, row in pairs(SFP.MountItems or {}) do
+        if not byItem[id] then
+            local src = { text = row[2] ~= "" and row[2] or "Mount" }
+            local rec = row[3] and row[3] > 0 and SFP.Npc and SFP:Npc(row[3])
+            if type(rec) == "table" and type(rec.m) == "table" then
+                for map, pts in pairs(rec.m) do
+                    local p = type(pts) == "table" and pts[1]
+                    if type(p) == "table" and p[1] then src.map, src.x, src.y = map, p[1], p[2]; src.zone = SFP:ZoneName(map) break end
+                end
+            end
+            add(id, "classic", src)
+            byItem[id].name = row[1]
+            byItem[id].mtype = "ground"
+        end
+    end
     for map, list in pairs(SFP.Rares or {}) do
         for _, sp in ipairs(list) do
             for _, id in ipairs(sp.items or {}) do
@@ -1057,7 +1074,13 @@ end
 
 local function petEntries()
     local out = {}
-    if not (C_PetJournal and C_PetJournal.GetPetInfoBySpeciesID) then return out end
+    -- WoW Forever has no battle pets: its companion pets are items; they are listed with their source and price
+    for id, row in pairs(SFP.PetItems or {}) do
+        local icon = C_Item and C_Item.GetItemIconByID and C_Item.GetItemIconByID(id)
+        local price = SFP:GetPrice(id)
+        out[#out + 1] = { species = nil, itemID = id, name = row[1], icon = icon, source = row[2], price = price, tradeable = true }
+    end
+    if not (C_PetJournal and C_PetJournal.GetPetInfoBySpeciesID) then table.sort(out, function(x, y) return x.name < y.name end) petSpots(out) return out end
     local prices = petPrices()
     for i = 1, 6000 do
         local ok, name, icon, petType, _, source, _, _, canBattle, tradeable = pcall(C_PetJournal.GetPetInfoBySpeciesID, i)
@@ -1952,11 +1975,12 @@ local function build()
     pg.prev:SetScript("OnClick", function() listPage = listPage - 1; win.refreshList() end)
     pg.next:SetScript("OnClick", function() listPage = listPage + 1; win.refreshList() end)
     win.pager = pg
-    -- the mouse wheel turns the pages of the list
+    -- the mouse wheel scrolls the list
     list.scroll:EnableMouseWheel(true)
-    list.scroll:SetScript("OnMouseWheel", function(_, delta)
-        listPage = listPage - (delta > 0 and 1 or -1)
-        win.refreshList()
+    list.scroll:SetScript("OnMouseWheel", function(self, delta)
+        local range = self:GetVerticalScrollRange() or 0
+        local cur = self:GetVerticalScroll() or 0
+        self:SetVerticalScroll(math.max(0, math.min(range, cur - delta * ROW_H * 3)))
     end)
     list.content:SetWidth(list.scroll:GetWidth())
     win:SetScript("OnSizeChanged", function()

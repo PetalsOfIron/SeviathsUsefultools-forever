@@ -53,6 +53,38 @@ SFP.AUTHOR  = meta("Author") or "Seviath"
 SFP.CYAN = { r = 0.9, g = 0.28, b = 0.24 }
 
 
+-- the word WAYPOINT in a row of a list is a real red button (the look of the map buttons): the row's text is written as before, the word is taken out of it and
+-- the button shown at the right edge; pressing it does what a click on the row does
+function SFP.AttachWaypointButton(r)
+    if not r or not r.right or r.wpButton then return end
+    local btn = CreateFrame("Button", nil, r, "UIPanelButtonTemplate")
+    btn:SetSize(84, 18)
+    btn:SetPoint("RIGHT", r, "RIGHT", -4, 0)
+    btn:SetText("Waypoint")
+    btn:SetScript("OnClick", function()
+        if r.click then r.click(r)
+        else local h = r:GetScript("OnClick"); if h then h(r) end end
+    end)
+    btn:Hide()
+    r.wpButton = btn
+    local fs = r.right
+    local raw = fs.SetText
+    fs.SetText = function(self, text)
+        if type(text) == "string" and text:find("WAYPOINT", 1, true) then
+            local rest = text:gsub("|c%x%x%x%x%x%x%x%x?WAYPOINT|r", ""):gsub("WAYPOINT", ""):gsub("^%s+", ""):gsub("%s+$", "")
+            btn:Show()
+            self:ClearAllPoints()
+            self:SetPoint("RIGHT", btn, "LEFT", -8, 0)
+            raw(self, rest)
+        else
+            btn:Hide()
+            self:ClearAllPoints()
+            self:SetPoint("RIGHT", r, "RIGHT", -6, 0)
+            raw(self, text)
+        end
+    end
+end
+
 -- the look of the windows: the dark dialog background of the game (red tinted), a red tooltip-style border, and the snake in a corner
 local SNAKE = "Interface\\AddOns\\SeviathsUsefulTools\\Media\\snake_tile.tga"
 function SFP.BlizzardFrame(f, big)
