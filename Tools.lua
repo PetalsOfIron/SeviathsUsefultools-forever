@@ -632,9 +632,21 @@ local shopRefresh
 -- the tooltip of a recipe: the item it makes, else the recipe's spell, else its name
 local function recipeTip(rec)
     return function(tt)
-        if rec and rec.o and rec.o > 0 then tt:SetItemByID(rec.o)
+        if rec and rec.o and rec.o > 0 then
+            if C_Item and C_Item.RequestLoadItemDataByID then pcall(C_Item.RequestLoadItemDataByID, rec.o) end
+            tt:SetItemByID(rec.o)
         elseif rec and rec.id and tt.SetSpellByID then tt:SetSpellByID(rec.id)
         else tt:SetText((rec and rec.n) or "?") end
+        -- what the recipe needs, so the tooltip is never empty (an item the game has not loaded yet shows only its name)
+        if rec and rec.r and #rec.r > 0 then
+            tt:AddLine(" ")
+            tt:AddLine("|cffffd100Reagents:|r")
+            for _, rg in ipairs(rec.r) do
+                local nm = C_Item and C_Item.GetItemNameByID and C_Item.GetItemNameByID(rg[1])
+                tt:AddLine(("  %dx %s"):format(rg[2] or 1, nm or ("item " .. rg[1])), 0.9, 0.9, 0.9)
+            end
+        end
+        tt:Show()
     end
 end
 

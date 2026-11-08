@@ -5594,3 +5594,36 @@
 20660|Stonecutting Glaive|3|2|6|60|55
 20673|Abyssal Plate Girdle|2|4|4|65|60
 20675|Soulrender|3|2|0|62|57
+20684|Abyssal Mail Armguards|3|4|3|68|60
+20685|Wavefront Necklace|4|4|-3|65|60
+20661|Abyssal Leather Gloves|2|4|2|60|55
+20662|Abyssal Plate Greaves|2|4|4|60|55
+20663|Deep Strike Bow|3|2|2|60|55
+20803|Twilight Battle Orders|1|12|0|0|0
+20806|Logistics Task Briefing X|2|12|0|60|60
+20807|Logistics Task Briefing I|2|12|0|60|60
+20939|Logistics Task Briefing II|2|12|0|60|60
+20940|Logistics Task Briefing III|2|12|0|60|60
+20942|Combat Task Briefing III|2|12|0|60|60
+20943|Tactical Task Briefing X|2|12|0|60|60
+20944|Tactical Task Briefing IX|2|12|0|60|60
+20948|Tactical Task Briefing V|2|12|0|60|60
+21165|Tactical Task Briefing VI|2|12|0|60|60
+21166|Tactical Task Briefing VII|2|12|0|60|60
+21245|Tactical Task Briefing I|2|12|0|60|60
+21248|Combat Task Briefing IV|2|12|0|60|60
+21249|Combat Task Briefing V|2|12|0|60|60
+21250|Combat Task Briefing VI|2|12|0|60|60
+21251|Combat Task Briefing VII|2|12|0|60|60
+21252|Combat Task Briefing VIII|2|12|0|60|60
+21253|Combat Task Briefing IX|2|12|0|60|60
+21255|Combat Task Briefing X|2|12|0|60|60
+21256|Combat Task Briefing XI|2|12|0|60|60
+21259|Logistics Task Briefing V|2|12|0|60|60
+21260|Logistics Task Briefing VI|2|12|0|60|60
+21262|Logistics Task Briefing VIII|2|12|0|60|60
+21263|Logistics Task Briefing VII|2|12|0|60|60
+21751|Tactical Task Briefing III|2|12|0|60|60
+22649|Hive'Regal Dossier|1|15|4|1|0
+22650|Hive'Zora Dossier|1|15|4|1|0
+5500|Iridescent Pearl|2|7|0|25|0
