@@ -48,14 +48,15 @@ function SFP:KilledTodayList()
     local byNpc = {}
     for mapID, list in pairs(self.Rares or {}) do
         for _, sp in ipairs(type(list) == "table" and list or {}) do
-            if sp.npc and sp.npc > 0 then byNpc[sp.npc] = { name = sp.name, map = mapID } end
+            -- (the hunter tames of the map are ordinary monsters, not rares)
+            if sp.npc and sp.npc > 0 and not sp.hunter then byNpc[sp.npc] = { name = sp.name, map = mapID } end
         end
     end
     for char, kills in pairs(self.db and self.db.killed or {}) do
         for npcID, t in pairs(kills) do
             local known = byNpc[npcID]
             local rec = self.db.npcs and self.db.npcs[npcID]
-            local isRare = known or (rec and (rec.c == "rare" or rec.c == "rareelite" or rec.c == "worldboss" or rec.boss))
+            local isRare = known or (rec and (rec.c == "rare" or rec.c == "rareelite" or rec.c == "worldboss"))   -- (rec.boss alone is a "??" level seen once, not a boss)
             if t >= reset and isRare then
                 local map = known and known.map or (rec and rec.m and next(rec.m))
                 out[#out + 1] = {

@@ -742,3 +742,5 @@
 211653|Grizzby|17:61.8,39.4|78265:25:20:3:Fish Oil,78266:25:20:3:Dark Iron Ordinance,78267:25:20:3:Shredder Turbochargers,78287:25:20:1:Let Me Make You An Offer,78288:25:20:2:Let Me Make You An Offer,82850:25:20:3:Fish Oil,82851:25:20:3:Dark Iron Ordinance,82853:25:20:3:Shredder Turbochargers
 213444|Mysterious Traveler|331:79,80.2|78684:28:20:3:Mysterious Traveler
 213445|Raszel Ander|17:49.2,57.2|78914:40:30:3:Soul Vessel,78994:40:30:3:A Solid Foundation
+214208|N'ora Anyheart|17:62,39.4|78909:25:25:3:Shifting Scale Talisman
+214876|Davius Voidstar|148:36.8,43.4;36.8,43.6|79099:27:25:1:Baron Aquanis

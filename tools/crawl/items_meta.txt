@@ -5093,3 +5093,7 @@
 7923|Defias Tower Key|1|13|0|1|0
 7908|Klaven Mortwake's Journal|1|12|0|1|0
 22229|Soul Ashes of the Banished|1|12|0|1|0
+11515|Corrupted Soul Shard|1|12|0|1|0
+12230|Felwood Slime Sample|1|12|0|1|0
+20614|Bloodvenom Essence|1|12|0|1|0
+11503|Blood Amber|1|12|0|0|0
