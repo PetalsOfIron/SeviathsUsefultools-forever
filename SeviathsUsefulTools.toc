@@ -111,6 +111,8 @@ MinimapPins.lua
 Guides.lua
 Scanner.lua
 WorldMap.lua
+Data\QuestGivers.lua
+QuestMarkers.lua
 Treasures.lua
 PointsMenu.lua
 MapMenu.lua

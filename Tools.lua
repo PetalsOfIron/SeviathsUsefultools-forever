@@ -844,7 +844,7 @@ function SFP:ShowShop()
         end)
         bar("Remove all", 100, 386, -34, 22, function() wipe(shopData()); wipe(shopOff); shopRefresh() end)
         shopWin.tabs = {}
-        shopResRows = SFP.MakeRowList(shopWin, 18, -118, 510, 160, 20)
+        shopResRows = SFP.MakeRowList(shopWin, 18, -152, 510, 128, 20)
         local label = shopWin:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
         label:SetPoint("TOPLEFT", 22, -290)
         label:SetText("Your list (saved)")
@@ -873,7 +873,7 @@ function SFP:ShowShop()
             seen[nm] = true; names[#names + 1] = nm
         end
         for _, rec in pairs(SFP.db.recipes or {}) do
-            if rec.p and not seen[rec.p] then seen[rec.p] = true; names[#names + 1] = rec.p end
+            if rec.p and rec.p ~= "" and not seen[rec.p] then seen[rec.p] = true; names[#names + 1] = rec.p end
         end
         table.sort(names)
         table.insert(names, 1, false)

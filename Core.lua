@@ -93,7 +93,7 @@ function SFP.BlizzardFrame(f, big)
         -- a panel inside a window: the darker dialog background with a thin red border
         f:SetBackdrop({ bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background-Dark", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
             tile = true, tileSize = 32, edgeSize = 12, insets = { left = 3, right = 3, top = 3, bottom = 3 } })
-        f:SetBackdropColor(0.85, 0.6, 0.6, 1)
+        f:SetBackdropColor(0.55, 0.55, 0.58, 1)
         f:SetBackdropBorderColor(0.75, 0.22, 0.2, 1)
         return
     end
@@ -114,7 +114,11 @@ function SFP.BlizzardFrame(f, big)
         local base = f:CreateTexture(nil, "BACKGROUND", nil, -8)
         base:SetPoint("TOPLEFT", 6, -6)
         base:SetPoint("BOTTOMRIGHT", -6, 6)
-        base:SetColorTexture(0.09, 0.06, 0.04, 1)
+        -- the gray marble of the game's own windows (the quest log, the map frame)
+        base:SetTexture("Interface\\FrameGeneral\\UI-Background-Marble", "REPEAT", "REPEAT")
+        base:SetHorizTile(true)
+        base:SetVertTile(true)
+        base:SetVertexColor(0.78, 0.78, 0.8, 1)
         f.seviathBase = base
         f.SetBackdropColor = function() end
         f.SetBackdropBorderColor = function() end
