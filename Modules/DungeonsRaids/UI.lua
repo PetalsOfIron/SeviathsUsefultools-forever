@@ -864,7 +864,7 @@ local BUILDERS = {
 function UI:Build()
   if self.frame then return end
   local f = CreateFrame("Frame", "SeviathsDungeonsRaidsFrame", UIParent, "BackdropTemplate")
-  f:SetSize(580, 520)
+  f:SetSize(700, 680)
   f:SetPoint("CENTER")
   f:SetFrameStrata("DIALOG")
   if _G.SeviathsUsefulTools and _G.SeviathsUsefulTools.RegisterWindow then _G.SeviathsUsefulTools.RegisterWindow(f) end
@@ -982,7 +982,7 @@ function UI:Layout(section)
       b:SetShown(show)
       if show then
         local w = tabWidth(b)
-        if x + w > 556 then row = row + 1; x = 14 end
+        if x + w > 676 then row = row + 1; x = 14 end
         b:SetWidth(w)
         b:SetPoint("TOPLEFT", x, -40 - row * 26)
         x = x + w + 4
@@ -1008,7 +1008,7 @@ function UI:Layout(section)
   f.scroll:ClearAllPoints()
   f.scroll:SetPoint("TOPLEFT", 4, top)
   f.scroll:SetPoint("BOTTOMRIGHT", -28, 8)
-  f:SetHeight(-top + 418)
+  f:SetHeight(-top + 600)
   if section then
     f.title:SetText("Seviath's Dungeons & Raids |cffffffff- " .. (TAB_LABEL[section] or "") .. "|r")
   else
