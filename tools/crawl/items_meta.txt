@@ -5413,3 +5413,19 @@
 17756|Shadowshard Fragment|1|12|0|1|0
 20395|Twilight Lexicon - Chapter 2|1|12|0|0|0
 20396|Twilight Lexicon - Chapter 3|1|12|0|0|0
+13542|Demon Box|1|12|0|1|0
+15868|The Grand Crusader's Command|1|12|0|1|0
+15875|Rotten Apple|1|12|0|1|0
+16001|SI:7 Insignia (Fredo)|1|12|0|1|0
+16002|SI:7 Insignia (Turyen)|1|12|0|1|0
+16203|Greater Eternal Essence|2|7|12|55|0
+20404|Encrypted Twilight Text|1|12|0|1|0
+20406|Twilight Cultist Mantle|2|4|1|60|60
+20407|Twilight Cultist Robe|2|4|1|60|60
+20408|Twilight Cultist Cowl|2|4|1|60|60
+234008|Qiraji Silk|1|7|0|60|0
+14613|Taelan's Hammer|1|12|0|1|0
+15850|Patch of Duskwing's Fur|1|12|0|1|0
+210534|Idol of the Wild|2|4|8|25|0
+16581|Resonite Crystal|1|12|0|1|0
+16192|Besseleth's Fang|1|12|0|1|0

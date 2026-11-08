@@ -2039,7 +2039,7 @@ local function build()
     win.refreshList = renderList
     win.curBtn = CreateFrame("Button", nil, win, "UIPanelButtonTemplate")
     win.curBtn:SetSize(170, 24)
-    win.curBtn:SetPoint("TOPLEFT", win, "TOPLEFT", 200, -8)
+    win.curBtn:SetPoint("TOPLEFT", win, "TOPLEFT", 200, -3)
     win.curBtn:SetText("Show current zone")
     win.curBtn:SetScript("OnClick", function()
         selected = WorldMapFrame:GetMapID()
@@ -2053,7 +2053,7 @@ local function build()
         local key, text = def[1], def[2]
         local tb = CreateFrame("Button", nil, win, "UIPanelButtonTemplate")
         tb:SetSize(k == 1 and 90 or 150, 24)
-        tb:SetPoint("TOPLEFT", win, "TOPLEFT", 200 + (k - 1) * 94, -8)
+        tb:SetPoint("TOPLEFT", win, "TOPLEFT", 200 + (k - 1) * 94, -3)
         tb:SetText(text)
         tb:SetScript("OnClick", function() setTab(key) end)
         win.tabs[key] = tb
