@@ -82,7 +82,6 @@ end
 -- the quest givers this character has learned itself: the Codex notes the giver's place (qloc[quest].g) when a quest is picked up or turned in
 -- what the game shows while you play: the giver of a quest (where you stood, the name of the quest NPC), its level and title, and the chain: a quest
 -- offered shortly after another was turned in follows it. Saved in db.learnedQuests and db.learnedPrereq; the marks use them when the shipped data lacks it.
-local lastTurnIn
 local function learnQuest(questID)
     if type(questID) ~= "number" or questID <= 0 or not SFP.db then return end
     local okM, map = pcall(C_Map.GetBestMapForUnit, "player")
@@ -99,10 +98,29 @@ local function learnQuest(questID)
     if okL and type(lvl) == "number" and lvl > 0 then rec.l = lvl end
     local okT, title = pcall(function() return C_QuestLog.GetTitleForQuestID and C_QuestLog.GetTitleForQuestID(questID) end)
     if okT and type(title) == "string" and title ~= "" then rec.t = title end
-    -- the chain: offered within two minutes of turning another quest in
-    if lastTurnIn and lastTurnIn.id ~= questID and GetTime() - lastTurnIn.at < 120 then
-        SFP.db.learnedPrereq = SFP.db.learnedPrereq or {}
-        SFP.db.learnedPrereq[questID] = lastTurnIn.id
+    -- the text of the quest (its description and objective): the names in it say what comes before and after
+    local function safeText(fn)
+        local ok, t = pcall(fn)
+        return (ok and type(t) == "string" and not (issecretvalue and issecretvalue(t))) and t or ""
+    end
+    local txt = (safeText(GetObjectiveText or function() return "" end) .. " " .. safeText(GetQuestText or function() return "" end)):lower()
+    if txt:gsub("%s", "") ~= "" then rec.o = txt:sub(1, 700) end
+    -- the chain, guessed from names: a quest that is given by an NPC (or called by a title) that an earlier quest speaks of follows that quest.
+    -- A quest A is the one before B when the text of A names the giver of B (or the title of B) and A is not above B in level.
+    if rec.g and not (SFP.QuestPrereq and SFP.QuestPrereq[questID]) then
+        local gname = rec.g:lower()
+        local best, bestLvl
+        for aid, a in pairs(SFP.db.learnedQuests) do
+            if aid ~= questID and type(a) == "table" and type(a.o) == "string" and a.g ~= rec.g
+               and (a.o:find(gname, 1, true) or (rec.t and #rec.t > 6 and a.o:find(rec.t:lower(), 1, true))) and (a.l or 0) <= (rec.l or 99) then
+                if not best or (a.l or 0) > (bestLvl or 0) then best, bestLvl = aid, a.l or 0 end
+            end
+        end
+        -- and the other way: this quest's own text names the giver of a quest that was learned earlier: that one is after this one (not stored here)
+        if best then
+            SFP.db.learnedPrereq = SFP.db.learnedPrereq or {}
+            SFP.db.learnedPrereq[questID] = best
+        end
     end
 end
 QM.LearnQuest = learnQuest
@@ -200,7 +218,6 @@ SFP:OnLogin(function()
     ev:RegisterEvent("QUEST_DETAIL")
     ev:RegisterEvent("PLAYER_LEVEL_UP")
     ev:SetScript("OnEvent", function(_, event, ...)
-        if event == "QUEST_TURNED_IN" then lastTurnIn = { id = ..., at = GetTime() } end
         if event == "QUEST_DETAIL" then SFP:Safe("learn quest", learnQuest, GetQuestID and GetQuestID()) end
         if event == "QUEST_ACCEPTED" then SFP:Safe("learn quest", learnQuest, select(2, ...) or select(1, ...)) end
         if event == "QUEST_DETAIL" or event == "QUEST_ACCEPTED" then
