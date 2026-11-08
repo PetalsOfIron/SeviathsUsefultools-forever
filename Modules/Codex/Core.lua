@@ -14,7 +14,6 @@ ns.CATEGORIES = {
     { key = "guide",      name = "New Player Guide",        icon = "Interface\\Icons\\INV_Misc_Book_09" },
     { key = "vet",        name = "Veteran Tips",            icon = "Interface\\Icons\\Achievement_Level_90" },
     { key = "raidg",      name = "Raiding Guide",           icon = "Interface\\Icons\\Achievement_Boss_Kelthuzad_01" },
-    { key = "mpg",        name = "Mythic+ Guide",           icon = "Interface\\Icons\\INV_Relics_Hourglass" },
     { key = "dungeon",    name = "Dungeons",                icon = "Interface\\Icons\\INV_Misc_Key_14" },
     { key = "raid",       name = "Raids",                   icon = "Interface\\Icons\\Achievement_Boss_Ragnaros" },
     { key = "boss",       name = "Bosses",                  icon = "Interface\\Icons\\Achievement_Dungeon_ClassicDungeonMaster" },
