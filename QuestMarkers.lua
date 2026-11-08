@@ -171,5 +171,24 @@ SFP:OnLogin(function()
     end)
 end)
 
+-- the map changes size when the quest log opens beside it or when it is zoomed: the marks are placed again from their map percent by the current size of the
+-- map canvas (they were placed once when the map opened, at the size it had then)
+local last = {}
+local fixer = CreateFrame("Frame")
+local acc = 0
+fixer:SetScript("OnUpdate", function(_, dt)
+    acc = acc + dt
+    if acc < 0.2 then return end
+    acc = 0
+    if not (WorldMapFrame and WorldMapFrame:IsShown()) then return end
+    local canvas = WorldMapFrame.ScrollContainer and WorldMapFrame.ScrollContainer.Child
+    if not canvas then return end
+    local w, h = canvas:GetWidth(), canvas:GetHeight()
+    local mapID = WorldMapFrame:GetMapID()
+    if w == last.w and h == last.h and mapID == last.map then return end
+    last.w, last.h, last.map = w, h, mapID
+    SFP:Safe("quest markers", QM.Draw, QM)
+end)
+
 -- the old call of WorldMap.lua (zones of quests): nothing more to draw there
 function QM:DrawZones() end
