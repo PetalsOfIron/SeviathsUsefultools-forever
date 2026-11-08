@@ -128,7 +128,7 @@ SFP:OnLogin(function()
 
     local bg = button:CreateTexture(nil, "BACKGROUND")
     bg:SetAllPoints()
-    bg:SetColorTexture(0, 0.04, 0.07, 0.85)
+    bg:SetColorTexture(0.07, 0.02, 0.02, 0.85)
     local icon = button:CreateTexture(nil, "ARTWORK")
     icon:SetPoint("TOPLEFT", 3, -3)
     icon:SetPoint("BOTTOMRIGHT", -3, 3)
