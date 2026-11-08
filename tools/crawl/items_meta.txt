@@ -5806,3 +5806,31 @@
 228105|Everburning Flame Core|4|12|0|60|0
 231836|Glowing Scroll of Spatial Mending|2|0|0|10|0
 231837|Shadow Carving|2|12|0|1|0
+237143|Orders from the Commander|1|12|0|1|0
+238811|Juicy Apple|1|12|0|1|0
+239016|Holy Salts|1|7|0|1|60
+237037|Haute Club Membership Card|1|15|0|15|0
+238301|Pattern: Scarlet Augur's Cuffs|3|9|2|1|0
+238302|Pattern: Scarlet Augur's Mitts|3|9|2|1|0
+238303|Pattern: Scarlet Augur's Strap|3|9|2|1|0
+238304|Pattern: Scarlet Augur's Leggings|3|9|2|1|0
+238305|Pattern: Scarlet Augur's Soles|3|9|2|1|0
+238309|Pattern: Scarlet Infiltrator's Bracers|3|9|1|1|0
+238310|Pattern: Scarlet Infiltrator's Gloves|3|9|1|1|0
+238311|Pattern: Scarlet Infiltrator's Belt|3|9|1|1|0
+238312|Pattern: Scarlet Infiltrator's Trousers|3|9|1|1|0
+238313|Pattern: Scarlet Infiltrator's Shoes|3|9|1|1|0
+238317|Pattern: Scarlet Huntsman's Wristguards|3|9|1|1|0
+238318|Pattern: Scarlet Huntsman's Handguards|3|9|1|1|0
+238319|Pattern: Scarlet Huntsman's Clasp|3|9|1|1|0
+238320|Pattern: Scarlet Huntsman's Legguards|3|9|1|1|0
+238321|Pattern: Scarlet Huntsman's Boots|3|9|1|1|0
+238326|Plans: Scarlet Soldier's Grips|3|9|4|1|0
+238327|Plans: Scarlet Soldier's Waistguard|3|9|4|1|0
+238328|Plans: Scarlet Soldier's Legplates|3|9|4|1|0
+238329|Plans: Scarlet Soldier's Stompers|3|9|4|1|0
+239302|Scarlet Uniform Belt|1|12|0|1|0
+238325|Plans: Scarlet Soldier's Protectors|3|9|4|1|0
+19234|Six of Beasts|3|15|0|1|0
+19274|Seven of Elementals|3|15|0|1|0
+239119|Holy Arrow|1|12|0|1|0

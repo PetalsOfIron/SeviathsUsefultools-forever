@@ -952,7 +952,12 @@ local function buildGroups(pane)
     mkText(pane, CYHEX .. "Groups|r", 12, -10, 480, "GameFontNormalLarge")
     mkText(pane, "Tools for dungeon and raid groups: your group's raid buffs and tier tokens, tags and notes on players you met, filters for Premade Groups when the game offers them. " ..
         "The group makeup opens by itself when you are in a group of 5 or more (dungeon, raid or open world); the switch is on the Settings page.", 12, -34, 500, "GameFontHighlightSmall")
-    mkButton(pane, "Open Dungeons & Raids", 190, function() SFP:RunModule("SEVIATHSDUNGEONSRAIDS", "") end):SetPoint("TOPLEFT", 12, -90)
+    mkButton(pane, "Open Dungeons & Raids", 190, function()
+        -- always opens it (the slash command toggles: a window that was already open would be closed by the button)
+        local okM, _, dns = pcall(SFP_Module, "DungeonsRaids")
+        if okM and dns and dns.UI and dns.UI.frame and dns.UI.frame:IsShown() then dns.UI.frame:Raise(); return end
+        SFP:RunModule("SEVIATHSDUNGEONSRAIDS", "")
+    end):SetPoint("TOPLEFT", 12, -90)
     mkButton(pane, "Open Looking For Group", 190, function() SFP.OpenGroupFinder() end, "Opens the game's own Looking For Group window."):SetPoint("TOPLEFT", 214, -90)
     mkButton(pane, "My group's makeup", 190, function()
         -- open the makeup window directly, in front of the menu, and say if something goes wrong
