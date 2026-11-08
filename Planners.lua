@@ -453,6 +453,8 @@ local buildRoleplay = K.simplePage("Roleplay",
             holder:SetScript("OnMouseDown", function() box:SetFocus() end)
             local function save(self) rpOf(rpSelected)[f[1]] = strtrim(self:GetText() or "") end
             box:SetScript("OnEditFocusLost", save)
+            -- saved as you type (no Enter needed): the tooltip shows it at once
+            box:SetScript("OnTextChanged", function(self, byUser) if byUser then save(self) end end)
             box:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
             if f[3] == 1 then box:SetScript("OnEnterPressed", function(self) save(self); self:ClearFocus() end) end
             editors[#editors + 1] = { key = f[1], box = box }
@@ -514,9 +516,7 @@ function SFP:ShowRoleplayCard()
     local lines = { CY .. full .. "|r" }
     local function add(label, v, long)
         if type(v) == "string" and v ~= "" then
-            if long then lines[#lines + 1] = "
-" .. CY .. label .. "|r
-" .. v else lines[#lines + 1] = CY .. label .. ":|r " .. v end
+            if long then lines[#lines + 1] = "\n" .. CY .. label .. "|r\n" .. v else lines[#lines + 1] = CY .. label .. ":|r " .. v end
         end
     end
     local race, class = UnitRace("player"), UnitClass("player")
@@ -529,8 +529,7 @@ function SFP:ShowRoleplayCard()
     add("Currently", rec.currently, true); add("Out of character", rec.ooc, true)
     if #lines <= 4 then lines[#lines + 1] = "|cff808080Nothing written yet. Press Edit to fill in your character.|r" end
     rpCard.title:SetText("Character")
-    rpCard:SetContent(table.concat(lines, "
-"))
+    rpCard:SetContent(table.concat(lines, "\n"))
     rpCard:Show()
 end
 

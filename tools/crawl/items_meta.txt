@@ -5480,3 +5480,8 @@
 9061|Goblin Rocket Fuel|1|15|1|42|0
 3053|Humbert's Chestpiece|2|4|3|28|23
 3693|Humbert's Sword|1|12|0|1|0
+18612|Bloody Chain Boots|1|4|3|8|3
+18676|Sash of the Windreaver|3|4|3|61|56
+18677|Zephyr Cloak|2|4|-6|61|56
+19268|Ace of Elementals|3|15|0|1|0
+21548|Pattern: Stormshroud Gloves|3|9|1|62|0
