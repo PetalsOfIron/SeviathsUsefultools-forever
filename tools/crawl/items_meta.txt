@@ -5265,3 +5265,30 @@
 10561|Mithril Casing|1|7|1|43|0
 10553|Foreman Vest|2|4|1|11|6
 10554|Foreman Pants|2|4|1|11|6
+17309|Discordant Bracers|1|12|0|1|0
+15447|Living Rot|1|12|0|1|0
+14500|Pattern: Wizardweave Robe|2|9|2|60|0
+14505|Pattern: Wizardweave Turban|2|9|2|61|0
+15931|Arcane Star|2|4|-5|61|56
+23199|Totem of the Storm|3|4|9|65|60
+227041|Scourge Shadow Scalpel|1|12|0|1|0
+8283|Arcane Armor|2|4|1|61|56
+8303|Hero's Breastplate|2|4|3|62|57
+10160|Mercurial Circlet|2|4|3|62|57
+10257|Adventurer's Boots|2|4|2|62|57
+13157|Fetid Skull|1|12|0|1|0
+10218|Elegant Tunic|2|4|1|62|57
+10385|Hyperion Greaves|2|4|4|62|57
+15940|Elegant Scepter|2|4|-5|62|57
+14480|Pattern: Ghostweave Vest|2|9|2|55|0
+21935|Stable Ectoplasm|1|12|0|1|0
+10259|Adventurer's Belt|2|4|2|62|57
+227689|Partially-Digested Plate Armor|1|12|0|50|0
+13499|Recipe: Greater Shadow Protection Potion|2|9|6|58|0
+14485|Pattern: Wizardweave Leggings|2|9|2|55|0
+10459|Chief Sharptusk Thornmantle's Head|1|12|0|0|0
+22525|Crypt Fiend Parts|1|12|0|1|0
+12804|Powerful Mojo|1|7|11|55|0
+16056|Schematic: Flawless Arcanite Rifle|2|9|3|61|0
+18960|Lookout's Spyglass|1|12|0|1|0
+10597|Head of Magus Rimtori|1|12|0|0|0

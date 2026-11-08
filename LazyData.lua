@@ -33,6 +33,16 @@ local function shipped()
     return packed and packed.npcs, data and data.npcMaps
 end
 
+-- the numbers of the monsters known on one map (shipped and your own)
+function SFP:MonstersOnMap(mapID)
+    local out = {}
+    if self:LoadMonsterData() then
+        local _, byMap = shipped()
+        for _, id in ipairs((byMap and byMap[mapID]) or {}) do out[#out + 1] = id end
+    end
+    return out
+end
+
 -- a monster's shipped record, decoded now: a fresh table each time
 function SFP:ShippedNpcRecord(id)
     if not self:LoadMonsterData() then return nil end

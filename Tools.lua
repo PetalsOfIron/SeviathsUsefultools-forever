@@ -1020,9 +1020,32 @@ local function rtSetZone(mapID)
         for _, sp in ipairs(zone.spawns or {}) do
             if sp.hx and sp.hy then rt.spots[#rt.spots + 1] = sp; rt.sel[SFP.SpotKey(sp)] = true end
         end
-        table.sort(rt.spots, function(a, b) return tostring(a.name) < tostring(b.name) end)
     end
-    rtWin.zoneText:SetText(zone and ("Zone: " .. SFP:ZoneName(mapID) .. "  |cff808080(" .. #rt.spots .. " farm spots)|r") or "No farm spots here - pick a zone below.")
+    if mapID then
+        local have = {}
+        for _, sp in ipairs(rt.spots) do have[SFP.SpotKey(sp)] = true end
+        -- the rares and hunter tames of the map (ticked), then every other monster of the zone to choose from (not ticked)
+        for _, sp in ipairs((SFP.Rares and SFP.Rares[mapID]) or {}) do
+            local x, y = tostring(sp.pts or ""):match("^([%d%.]+),([%d%.]+)")
+            if x and not have[SFP.SpotKey(sp)] then
+                have[SFP.SpotKey(sp)] = true
+                local e = { name = sp.name, hx = tonumber(x) / 100, hy = tonumber(y) / 100, rare = (not sp.hunter) or nil, hunter = sp.hunter }
+                rt.spots[#rt.spots + 1] = e
+                rt.sel[SFP.SpotKey(e)] = true
+            end
+        end
+        for _, id in ipairs(SFP:MonstersOnMap(mapID)) do
+            local rec = SFP.Npc and SFP:Npc(id)
+            local pts = type(rec) == "table" and type(rec.m) == "table" and rec.m[mapID]
+            local p = type(pts) == "table" and pts[1]
+            if type(rec) == "table" and rec.n and rec.t ~= "Critter" and type(p) == "table" and p[1] and not have["n|" .. rec.n] then
+                have["n|" .. rec.n] = true
+                rt.spots[#rt.spots + 1] = { name = rec.n, hx = p[1], hy = p[2], monster = true }
+            end
+        end
+    end
+    table.sort(rt.spots, function(a, b) return tostring(a.name) < tostring(b.name) end)
+    rtWin.zoneText:SetText(zone and ("Zone: " .. SFP:ZoneName(mapID) .. "  |cff808080(" .. #rt.spots .. " spots and monsters to choose from)|r") or (#rt.spots > 0 and ("Zone: " .. SFP:ZoneName(mapID) .. "  |cff808080(" .. #rt.spots .. " monsters)|r") or "No farm spots here - pick a zone below."))
     rtWin.spotScroll:SetVerticalScroll(0)
     rtFillSpots()
 end
