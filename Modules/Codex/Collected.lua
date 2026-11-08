@@ -87,7 +87,14 @@ function ns:LoadCollected()
     -- nodes and objects that were gathered
     n = 0
     for id, r in pairs(db.objects or {}) do
-        if type(r) == "table" and r.n and not ns:Get("node:" .. id) then
+        -- herb and ore nodes (Silverleaf, Peacebloom, copper veins ...) are not listed here: the material itself is in the Materials section. Their data stays in the addon.
+        local gather = false
+        if type(r) == "table" then
+            local k0 = SFP.ObjectKind and SFP:ObjectKind(r)
+            local lk = type(k0) == "string" and k0:lower() or ""
+            gather = r.gt == "herb" or r.gt == "ore" or lk:find("herb", 1, true) or lk:find("min", 1, true) or lk:find("ore", 1, true)
+        end
+        if type(r) == "table" and r.n and not gather and not ns:Get("node:" .. id) then
             local body = {}
             local kind = SFP.ObjectKind and SFP:ObjectKind(r)
             if kind then body[#body + 1] = C .. "Type|r" .. string.char(10) .. kind .. string.char(10) end
