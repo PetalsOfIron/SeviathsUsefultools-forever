@@ -5708,3 +5708,4 @@
 216949|Heavy Dalaran Relic|1|12|0|1|0
 216950|Creepy Dalaran Relic|1|12|0|1|0
 216951|Slippery Dalaran Relic|1|12|0|1|0
+217266|Pattern: Guardian Belt|3|9|1|34|0

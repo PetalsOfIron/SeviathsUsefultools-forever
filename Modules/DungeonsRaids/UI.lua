@@ -721,6 +721,10 @@ local function BuildTemplates(p)
     { "quest", "Questing" }, { "delve", "Delves" }, { "dungeon", "Dungeons" }, { "mplus", "Mythic+" },
     { "raidN", "Raid - Normal" }, { "raidH", "Raid - Heroic" }, { "raidM", "Raid - Mythic" }, { "custom", "Custom" },
   }
+  if FOREVER_GAME then
+    -- Classic: questing, dungeons, raids (one difficulty) and custom groups (battlegrounds too); no Delves, Mythic+ or raid difficulties
+    rows = { { "quest", "Questing" }, { "dungeon", "Dungeons" }, { "raidN", "Raids" }, { "custom", "Custom and battlegrounds" } }
+  end
   local y = -82
   for _, r in ipairs(rows) do
     local key = r[1]
@@ -731,7 +735,7 @@ local function BuildTemplates(p)
     eb:SetScript("OnEnterPressed", function(s) t[key] = s:GetText() or "" s:ClearFocus() end)
     y = y - 30
   end
-  Label(p, "Examples:\n  \"Know the route, have lust, can swap to off-spec\"\n  \"Need the rare for my quest, can tank\"", 20, y - 8, "GameFontHighlightSmall")
+  Label(p, "Examples:\n  \"Know the route, can swap to off-spec\"\n  \"Need the rare for my quest, can tank\"", 20, y - 8, "GameFontHighlightSmall")
 end
 
 local function BuildGroup(p)
