@@ -972,6 +972,20 @@ function SFP:ItemUseText(id)
     return text
 end
 
+-- the worth of an item for a loot line: the auction price (crafting materials and the rest) or, for a gray item, what a vendor pays; "" when nothing is known
+function SFP.ValueText(itemID)
+    local ok, v = pcall(function() return SFP:GetPrice(itemID) end)
+    if not ok or type(v) ~= "number" or v <= 0 then
+        -- nothing on the auction house (or a gray item whose quality is not loaded yet): what a vendor pays
+        local okv, sell = pcall(function() return select(11, C_Item.GetItemInfo(itemID)) end)
+        v = okv and type(sell) == "number" and sell or 0
+        if v <= 0 then return "" end
+    end
+    local g, s, c = math.floor(v / 10000), math.floor(v / 100) % 100, v % 100
+    local t = g > 0 and (g .. "g" .. (s > 0 and (" " .. s .. "s") or "")) or s > 0 and (s .. "s" .. (c > 0 and (" " .. c .. "c") or "")) or (c .. "c")
+    return "|cffffd100" .. t .. "|r  "
+end
+
 -- the loot lines of a recorded object (a chest, a cache ...): each item with its chance ("33% 1/3 chance") from the first time it was opened - for the tooltip of the
 -- object and for the little boxes on the world map
 function SFP.ObjectLootLines(tt, rec)
@@ -1102,7 +1116,7 @@ local function unitTip(tt, data)
         -- the chance from your own kills with how many kills it takes: "12.5% (1 in 8)"; the number of kills itself is not shown
         local chance = SFP.ChanceText(e[2], kills)
         tt:AddDoubleLine("|T" .. SFP:ItemIcon(e[1]) .. ":12|t " .. SFP:ItemName(e[1]),
-            SFP.SoldTag(e[1]) .. (chance ~= "" and chance or string.format("%d%%", min(100, floor(e[2] * 100 / kills + 0.5)))), 1, 1, 1, 0.7, 0.7, 0.7)
+            SFP.ValueText(e[1]) .. SFP.SoldTag(e[1]) .. (chance ~= "" and chance or string.format("%d%%", min(100, floor(e[2] * 100 / kills + 0.5)))), 1, 1, 1, 0.7, 0.7, 0.7)
     end
     -- and what Wowhead lists for this monster (rares, bosses, any monster), the rest of its loot table
     do
@@ -1113,7 +1127,7 @@ local function unitTip(tt, data)
                 if not shownIds[itemID] and not (rec and rec.d and rec.d[itemID]) and not SFP.IsQuestLoot(itemID) then
                     extra = extra + 1
                     if extra > 8 then tt:AddLine("|cff808080+ more|r") break end
-                    tt:AddDoubleLine("|T" .. SFP:ItemIcon(itemID) .. ":12|t " .. SFP:ItemName(itemID), "|cff808080listed|r", 1, 1, 1, 0.7, 0.7, 0.7)
+                    tt:AddDoubleLine("|T" .. SFP:ItemIcon(itemID) .. ":12|t " .. SFP:ItemName(itemID), SFP.ValueText(itemID) .. "|cff808080listed|r", 1, 1, 1, 0.7, 0.7, 0.7)
                 end
             end
         end
@@ -1123,7 +1137,7 @@ local function unitTip(tt, data)
         for itemID, c in pairs(rec.s) do sk[#sk + 1] = { itemID, c } end
         table.sort(sk, function(a, b) return a[2] > b[2] end)
         for i = 1, min(3, #sk) do
-            tt:AddDoubleLine("|T" .. SFP:ItemIcon(sk[i][1]) .. ":12|t " .. SFP:ItemName(sk[i][1]), "skinning", 1, 1, 1, 0.7, 0.7, 0.7)
+            tt:AddDoubleLine("|T" .. SFP:ItemIcon(sk[i][1]) .. ":12|t " .. SFP:ItemName(sk[i][1]), SFP.ValueText(sk[i][1]) .. "skinning", 1, 1, 1, 0.7, 0.7, 0.7)
         end
     end
     local shown = #list > 0
@@ -1213,6 +1227,10 @@ local function itemTip(tt, data)
             local stack = SFP:StackCount(id)
             if stack and stack > 1 then
                 tt:AddLine(("|cffff6a60Auction price (stack of %d):|r "):format(stack) .. SFP:FormatPrice(ahp * stack), 1, 1, 1)
+            end
+            local okc, have = pcall(C_Item.GetItemCount, id, true)
+            if okc and type(have) == "number" and have > 0 then
+                tt:AddLine(("|cffff6a60Auction price (you have %d):|r "):format(have) .. SFP:FormatPrice(ahp * have), 1, 1, 1)
             end
         end
     end

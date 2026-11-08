@@ -1281,6 +1281,10 @@ local function OnItemTooltip(tooltip, data)
         if stackFirst and stackFirst > 1 then
             tooltip:AddLine(("|cffff6a60Auction price (stack of %d):|r "):format(stackFirst) .. SFP:FormatPrice(ahFirst * stackFirst), 1, 1, 1)
         end
+        local okc, have = pcall(C_Item.GetItemCount, itemID, true)
+        if okc and type(have) == "number" and have > 0 then
+            tooltip:AddLine(("|cffff6a60Auction price (you have %d):|r "):format(have) .. SFP:FormatPrice(ahFirst * have), 1, 1, 1)
+        end
     end
     tooltip:AddLine(" ")
     tooltip:AddLine("|c" .. SFP.CYAN_HEX .. "SeviathsUsefulTools|r")
