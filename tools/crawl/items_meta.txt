@@ -5627,3 +5627,9 @@
 22649|Hive'Regal Dossier|1|15|4|1|0
 22650|Hive'Zora Dossier|1|15|4|1|0
 5500|Iridescent Pearl|2|7|0|25|0
+10714|Crystallized Azsharite|1|12|0|1|0
+10839|Crystallized Note|1|12|0|1|0
+21103|Draconic for Dummies|4|15|4|1|0
+21106|Draconic for Dummies|4|15|4|1|0
+21145|Essence of Xandivious|1|12|0|1|0
+21149|Fragment of the Nightmare's Corruption|1|12|0|1|0

@@ -96,7 +96,8 @@ function SFP.MakeRowList(parent, x, y, w, h, rowH)
                     elseif self.tip then
                         -- a row without a unit (a listed player): its own tooltip lines
                         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-                        pcall(self.tip, GameTooltip)
+                        local okT, errT = pcall(self.tip, GameTooltip)
+                        if not okT and SFP.CatchError then SFP:CatchError("row tooltip", errT) end   -- (shown in BugSack)
                         GameTooltip:Show()
                     end
                 end)
