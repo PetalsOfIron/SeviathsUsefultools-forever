@@ -346,7 +346,7 @@ local buildQuests = K.simplePage("Quest Planner",
 -- Roleplay: the OC (original character) of each of your characters, saved for the whole account
 ---------------------------------------------------------------------------
 local RP_FIELDS = {
-    { "name", "OC name", 1 }, { "title", "Title or role", 1 }, { "looks", "Looks", 3 }, { "traits", "Personality", 3 },
+    { "title", "Title or role", 1 }, { "looks", "Looks", 3 }, { "traits", "Personality", 3 },
     { "story", "Backstory", 5 }, { "notes", "Notes and plans", 3 },
 }
 
@@ -355,8 +355,8 @@ local function rpOf(key) local d = rpData(); d.chars[key] = d.chars[key] or {}; 
 
 local rpSelected
 local buildRoleplay = K.simplePage("Roleplay",
-    "Type who each of your characters is (your OC): name, title, looks, personality and backstory. It is saved for the whole account, so every character shows the same data of all of them. " ..
-    "Your OC name and title show on the tooltip of your character.",
+    "Type who each of your characters is (your OC; the character's own name is its name): title, looks, personality and backstory. It is saved for the whole account, so every character shows the same data of all of them. " ..
+    "Your title, looks, personality and backstory show on the tooltip of your character (notes and plans stay private).",
     function(pane, y)
         rpSelected = rpSelected or charKey()
         rpOf(charKey())
@@ -380,8 +380,7 @@ local buildRoleplay = K.simplePage("Roleplay",
                     charButtons[i] = b
                 end
                 b.key = k
-                local oc = rpOf(k).name
-                b.text:SetText(k .. ((oc and oc ~= "") and (" - " .. oc) or ""))
+                b.text:SetText(k)
                 b.text:SetTextColor(k == rpSelected and 1 or 0.8, k == rpSelected and 0.82 or 0.8, k == rpSelected and 0 or 0.8)
                 b:Show()
             end
@@ -426,10 +425,13 @@ if TooltipDataProcessor and Enum and Enum.TooltipDataType and Enum.TooltipDataTy
         local okS, isMe = pcall(UnitIsUnit, unit, "player")
         if not okS or (issecretvalue and issecretvalue(isMe)) or not isMe then return end
         local rec = SFP.db and SFP.db.rp and SFP.db.rp.chars and SFP.db.rp.chars[charKey()]
-        if rec and (rec.name or "") ~= "" then
-            tt:AddLine(CY .. "OC: " .. rec.name .. "|r" .. ((rec.title or "") ~= "" and (" - " .. rec.title) or ""))
+        if rec then
+            local title = (rec.title or "") ~= "" and rec.title or nil
+            if title then tt:AddLine(CY .. title .. "|r") end
             if (rec.looks or "") ~= "" then tt:AddLine(rec.looks:sub(1, 160), 0.8, 0.8, 0.8, true) end
-            tt:Show()
+            if (rec.traits or "") ~= "" then tt:AddLine("|cffffd100Personality:|r " .. rec.traits:sub(1, 120), 0.8, 0.8, 0.8, true) end
+            if (rec.story or "") ~= "" then tt:AddLine("|cffffd100Backstory:|r " .. rec.story:sub(1, 240), 0.8, 0.8, 0.8, true) end
+            if title or (rec.looks or "") ~= "" or (rec.traits or "") ~= "" or (rec.story or "") ~= "" then tt:Show() end
         end
     end)
 end
