@@ -260,3 +260,45 @@
 3600|Laurna Morninglight|141:55.4,56.8;55.6,56.8|5621:4:5:1:Garments of the Moon,5629:10:10:1:Returning Home,5636:10:10:1:Desperate Prayer
 3601|Dazalar|141:56.6,59.4;56.6,59.6|6063:10:10:1:Taming the Beast,6101:10:10:1:Taming the Beast,6102:10:10:1:Taming the Beast,6103:10:10:1:Training the Beast
 3602|Kal|141:56,61.4;56,61.6|5925:10:10:1:Heeding the Call
+3616|Onu|148:43.4,76.2;43.6,76.4|944:17:12:1:The Master's Glaive,951:20:12:1:Mathystra Relics,960:1:1:1:Onu is meditating,961:1:1:1:Onu is meditating
+3639|Sentinel Tysha Moonblade|148:40.2,59.8|953:12:9:1:The Fall of Ameth'Aran
+3644|Cerellean Whiteclaw|148:35.8,43.6|963:16:11:1:For Love Eternal
+3649|Thundris Windweaver|148:37.4,40.2|954:12:7:1:Bashal'Aran,958:12:9:1:Tools of the Highborne,1442:22:20:1:Seeking the Kor Gem,4762:15:11:1:The Cliffspring River,4763:18:15:1:The Blackwood Corrupted
+3650|Asterion|148:44.2,36.2|955:12:7:1:Bashal'Aran,956:13:7:1:Bashal'Aran,957:13:7:1:Bashal'Aran
+3657|Sentinel Elissa Starbreeze|148:39,43.4|965:18:13:1:The Tower of Althalaxx
+3661|Balthule Shadowstrike|148:55,24.8|966:18:13:1:The Tower of Althalaxx,967:18:13:1:The Tower of Althalaxx,981:31:13:1:The Tower of Althalaxx,1143:31:13:1:The Tower of Althalaxx
+3663|Delgren the Purifier|331:26.2,38.6|970:21:13:1:The Tower of Althalaxx,973:24:13:1:The Tower of Althalaxx,1140:28:13:1:The Tower of Althalaxx,1167:28:13:1:The Tower of Althalaxx,78088:25:1:1:A Strange Artifact,78089:25:1:1:Advice From Stormwind
+3665|Crane Operator Bigglefuzz|17:63,37.4;63,37.6|959:18:14:3:Trouble at the Docks
+3666|Wizbang Cranktoggle|148:37,44|983:10:7:1:Buzzbox 827,1579:12:10:1:Gaffer Jacks,1580:12:10:1:Electropellers
+3691|Raene Wolfrunner|331:36.4,49.6;36.6,49.6|991:19:18:1:Raene's Cleansing,1024:21:18:1:Raene's Cleansing,1025:24:18:1:An Aggressive Defense,1030:28:18:1:Raene's Cleansing,1054:25:18:1:Culling the Threat
+3692|Volcor|148:41.8,81.8;45,85.2|994:22:10:1:Escape Through Force,995:20:10:1:Escape Through Stealth
+3693|Terenthis|148:39.2,43.4|984:14:10:1:How Big a Threat?,985:14:10:1:How Big a Threat?,986:20:10:1:A Lost Master,993:20:10:1:A Lost Master,4761:15:11:1:Thundris Windweaver
+3694|Sentinel Selarin|148:39.2,43.4|990:19:15:1:Trek to Ashenvale
+3701|Tharnariun Treetender|148:38.8,43.4|2118:14:10:1:Plagued Lands,2138:16:10:1:Cleansing of the Infected,2139:18:10:1:Tharnariun's Hope
+3702|Alanndarian Nightsong|148:37.6,40.6|2178:12:9:1:Easy Strider Living,6123:14:14:1:Gathering the Cure,6124:14:14:1:Curing the Sick
+3836|Mountaineer Pebblebitty|38:18.2,83.8|3182:48:40:1:Proof of Deed
+3838|Vesprystus|141:58.4,94|6342:10:10:1:Flight to Auberdine
+3845|Shindrell Swiftfire|331:34.6,48.8|1008:19:14:1:The Zoram Strand,1134:21:18:1:Pridewings of Stonetalon,4581:29:24:1:Kayneth Stillwind
+3846|Talen|331:14.8,31.2|1007:20:19:1:The Ancient Statuette,1009:25:20:1:Ruuzel
+3847|Orendil Broadleaf|331:26.4,38.4;26.4,38.6|1010:20:20:1:Bathran's Hair,1020:20:20:1:Orendil's Cure
+3848|Kayneth Stillwind|331:85.2,44.6|1011:29:24:1:Forsaken Diseases,1012:32:24:1:Insane Druids
+3880|Sentinel Melyria Frostshadow|331:22.2,52.8|1022:30:25:1:The Howling Vale,1037:30:25:1:Velinde Starsong
+3885|Sentinel Velene Starstrike|331:49.8,67.2|1016:24:20:1:Elemental Bracers,1017:25:20:1:Mage Summoner
+3891|Teronis' Corpse|331:20.2,42.2|1023:21:18:1:Raene's Cleansing
+3894|Pelturas Whitemoon|331:37.2,51.8|1033:22:20:1:Elune's Tear,1034:23:20:1:The Ruins of Stardust,1035:30:20:1:Fallen Sky Lake
+3897|Krolg|331:50.8,75|1045:30:18:1:Raene's Cleansing,1046:30:18:1:Raene's Cleansing
+3901|Illiyana|331:21.8,53.2|1021:32:26:1:Vile Satyr! Dryads in Danger!,1032:32:26:1:Satyr Slaying!
+3916|Shael'dryn|331:53.4,46.2|1026:27:18:1:Raene's Cleansing,1027:28:18:1:Raene's Cleansing,1028:28:18:1:Raene's Cleansing,1029:28:18:1:Raene's Cleansing
+3920|Anilia|331:78.2,44.8|1031:32:26:1:The Branch of Cenarius
+3936|Shandris Feathermoon|357:30.2,46|2866:43:40:1:The Ruins of Solarsal ,3130:43:40:1:Against the Hatecrest,4267:46:40:1:Rise of the Silithid
+3945|Caravaneer Ruzzgot|33:27.2,74|1041:30:25:1:The Caravan Road
+3980|Raleigh the Devout|267:51.4,58.4;51.4,58.6|1053:40:34:1:In the Name of the Light
+3994|Keeper Albagorm|406:37,8|1057:27:20:1:Reclaiming the Charred Vale,1059:27:20:1:Reclaiming the Charred Vale
+3996|Faldreas Goeth'Shael|331:35.6,49.2|1056:18:18:1:Journey to Stonetalon Peak
+4048|Falfindel Waywarder|357:89.4,45.8;89.6,46.4;89.6,46.6|1101:34:29:1:The Crone of the Kraul
+4077|Gaxim Rustfizzle|406:59.4,67.2;59.6,67|1071:21:17:1:A Gnome's Respite,1072:21:17:1:An Old Colleague,1075:21:17:1:A Scroll from Mauren,1079:22:17:1:Covert Ops - Alpha,1080:22:17:1:Covert Ops - Beta,1091:22:17:1:Kaela's Update,2931:28:25:1:Castpipe's Task
+4079|Sentinel Thenysil|331:34.8,49.8|1070:21:17:1:On Guard in Stonetalon,1081:28:17:1:Reception from Tyrande
+4080|Kaela Shadowspear|406:59.8,66.8|1082:22:17:1:Update for Sentinel Thenysil,1083:26:20:1:Enraged Spirits,1084:28:22:1:Wounded Ancients,1085:21:17:1:On Guard in Stonetalon
+4200|Laird|148:36.8,44.2|6343:10:10:1:Return to Nessa
+4201|Ziz Fizziks|406:59,62.4;59,62.6|1093:21:16:3:Super Reaper 6000,1094:21:16:3:Further Instructions,1096:27:16:3:Gerenzo Wrenchwhistle
+4276|Piznik|406:71.8,60|1090:22:17:3:Gerenzo's Orders,1092:22:17:3:Gerenzo's Orders

@@ -152,3 +152,7 @@ addRareFull(1439, 149661, "Croz Bloodrage", {166437}, "Only up while your factio
 addRareFull(1439, 147701, "Moxo the Beheader", {166434}, "Only up while your faction controls the warfront zone (Battle for Azeroth warfront phase).", nil, "63.2,20;63.2,20.6;63.4,19.4;64,19.2;64.2,20;64.6,19.4;64.8,20;65,20.6;65.8,19.8;66.4,19.2;66.8,18.4;67,18.8")
 addRareFull(1453, 121567, "Lost Spectral Gryphon", {}, "Spirit beast (gryphon). Click the Spectral Feather in the far back of the gryphon master's nest to make it appear; only Beast Mastery hunters can see it.", "spirit", "62.8,72.4;67.8,72.6;71.4,72;71.4,72.6;71.6,72.2;71.8,73")
 addRareFull(1454, 121571, "Gon", {}, "Spirit beast. Click the Spectral Eggshell by the skull pile near the priest trainer's hut in the Valley of Spirits; only Beast Mastery hunters can see it.", "spirit", "35.4,69.2;35.8,67.8;35.8,69")
+-- rares found by the Wowhead crawl
+addRare(1416, 2258, "Stone Fury", "Rare, level 37", "47.4,63.6;64.6,41.8;69.8,46.6;76.8,47.6;79.8,34.2")
+addRare(1416, 2452, "Skhowl", "Rare, level 36", "28.0,59.6;30.0,61.6;31.2,52.2;36.4,35.6;41.2,62.0")
+addRare(1416, 2453, "Lo'Grosh", "Rare, level 39", "47.4,32.2;48.8,34.8;51.6,47.4;52.6,44.4;53.4,48.4")
