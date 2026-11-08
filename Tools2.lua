@@ -281,7 +281,7 @@ local function altRefresh()
     for _, k in ipairs(keys) do
         local rec = SFP.db.alts[k]
         local label = (k == sel and "|cff40ff40> |r" or "") .. altName(k, rec) .. (rec.level and (" " .. rec.level) or "")
-        items[#items + 1] = { text = "", buttons = { { label, 190, function() SFP.db.altSel = k; altRefresh() end } } }
+        items[#items + 1] = { text = "", buttons = { { label, 224, function() SFP.db.altSel = k; altRefresh() end } } }
     end
     altRows:Set(items)
     for _, bt in ipairs(altViewBtns) do bt:SetText((bt.view == altView and "|cff40ff40" or "") .. bt.label) end
@@ -292,17 +292,17 @@ function SFP:ShowAlts()
     self:UpdateAlt()
     self:SnapshotBags()
     if not altWin then
-        altWin = window("SeviathsUsefulToolsAlts", "Alt overview - all your characters", 700, 520)
+        altWin = window("SeviathsUsefulToolsAlts", "Alt overview - all your characters", 880, 680)
         altWin.scroll:ClearAllPoints()
-        altWin.scroll:SetPoint("TOPLEFT", 190, -94)
+        altWin.scroll:SetPoint("TOPLEFT", 270, -94)
         altWin.scroll:SetPoint("BOTTOMRIGHT", -30, 12)
-        altWin.child:SetWidth(450)
-        altWin.text:SetWidth(446)
+        altWin.child:SetWidth(540)
+        altWin.text:SetWidth(536)
         local lbl = altWin:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
         lbl:SetPoint("TOPLEFT", 14, -36)
         lbl:SetText("Characters:")
-        altRows = SFP.MakeRowList(altWin, 10, -52, 176, 450, 24)
-        local x = 190
+        altRows = SFP.MakeRowList(altWin, 10, -52, 256, 600, 26)
+        local x = 270
         for _, v in ipairs(ALT_VIEWS) do
             local bt = CreateFrame("Button", nil, altWin, "UIPanelButtonTemplate")
             bt:SetSize(v[3], 22)
@@ -314,11 +314,11 @@ function SFP:ShowAlts()
             x = x + v[3] + 4
         end
         local sl = altWin:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-        sl:SetPoint("TOPLEFT", 194, -68)
+        sl:SetPoint("TOPLEFT", 274, -68)
         sl:SetText("Search items:")
         altBox = CreateFrame("EditBox", nil, altWin, "InputBoxTemplate")
         altBox:SetSize(220, 20)
-        altBox:SetPoint("TOPLEFT", 280, -64)
+        altBox:SetPoint("TOPLEFT", 360, -64)
         altBox:SetAutoFocus(false)
         altBox:SetScript("OnTextChanged", function() altRefresh() end)
         altBox:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)

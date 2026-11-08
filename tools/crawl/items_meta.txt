@@ -5658,3 +5658,24 @@
 206963|Rune of Natural Potential|2|0|-3|1|0
 206388|Sulfurous Icon|2|4|9|1|0
 208196|Moa'kin Band|3|4|-2|33|60
+208701|Rune of Beast Mastery|2|0|-3|10|0
+205932|Prophecy of a King's Demise|2|0|-3|10|0
+208758|Earthen Rune|2|0|-3|10|0
+208777|Rune of the Sniper|2|0|-3|1|0
+208778|Rune of Quick Strike|2|0|-3|10|0
+209028|Spell Notes: BIVOLG NIMB|2|0|-3|10|0
+208687|Rune of Lacerate|2|0|-3|10|0
+205905|Memory of a Devout Champion|2|0|-3|10|0
+208849|Libram of Blessings|2|4|7|10|0
+208772|Rune of Saber Slash|2|0|-3|10|0
+210043|Symbol of the Second Owl|1|12|0|25|0
+210596|Rune of Cobra Strikes|2|0|-3|25|0
+221191|Dreamstone|3|13|0|1|0
+210573|Rune of Consuming Rage|2|0|-3|25|0
+211205|Rune of Cobra Slayer|2|0|-3|1|0
+243177|Ingenious Toy|3|13|0|1|0
+210569|Rune of Flagellation|2|0|-3|25|0
+211514|Spell Notes: Mass Regeneration|2|0|-3|25|0
+210724|Hirzek's Staff|1|12|0|1|0
+211814|Warsong Outrider Mark|2|12|0|1|0
+210811|Rune of Primordial Fury|2|0|-3|25|0
