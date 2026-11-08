@@ -338,6 +338,14 @@ function GH.Catalog()
         elseif prof == "Tailoring" and name:find("Spellthread") then add(name, "enchant", out, "Tailoring", rk)
         elseif prof == "Leatherworking" and name:find("Armor Kit") then add(name, "enchant", out, "Leatherworking", rk) end
     end
+    -- Classic has no gems to socket: the raw gems and stones are crafting reagents (they are listed here, with where they come from)
+    local RAW = { { 774, "Malachite" }, { 818, "Tigerseye" }, { 1210, "Shadowgem" }, { 1206, "Moss Agate" }, { 1705, "Lesser Moonstone" },
+        { 1529, "Jade" }, { 3864, "Citrine" }, { 7909, "Aquamarine" }, { 7910, "Star Ruby" }, { 12361, "Blue Sapphire" }, { 12799, "Large Opal" },
+        { 12364, "Huge Emerald" }, { 12800, "Azerothian Diamond" }, { 11754, "Black Diamond" }, { 7971, "Black Pearl" }, { 13926, "Golden Pearl" } }
+    for _, g in ipairs(RAW) do
+        local nm = C_Item and C_Item.GetItemNameByID and C_Item.GetItemNameByID(g[1])
+        add(type(nm) == "string" and nm ~= "" and nm or g[2], "gem", g[1], "Raw gem - mining, vendors, drops")
+    end
     -- what the auction house scans saw (item class 3 = gems, class 8 = item enhancements)
     for id, cls in pairs(SFP.db.ahItems or {}) do
         local nm = SFP.db.ahNames and SFP.db.ahNames[id]

@@ -589,6 +589,24 @@ function SFP:RealmKey()
     end
     table.sort(list)
     realmKey = table.concat(list, ",")
+    -- WoW Forever has one big server split into four kinds (Normal, PvP, Roleplay, Roleplay PvP): each kind has its own auction house, so its own
+    -- prices and its own shipped gold data, named by the kind
+    if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
+        local nm = tostring(list[1] or "")
+        local kind = nm:find("RPPVP$") and "RPPVP" or nm:find("RP$") and "RP" or nm:find("PVP$") and "PVP" or "Normal"
+        local old = realmKey
+        realmKey = "Forever" .. kind
+        -- what was saved under the old realm key moves to the kind
+        if self.db and self.db.realmPrices and self.db.realmPrices[old] and not self.db.realmPrices[realmKey] then
+            self.db.realmPrices[realmKey] = self.db.realmPrices[old]
+            self.db.realmPrices[old] = nil
+        end
+        if self.db and self.db.realmScan and self.db.realmScan[old] and not self.db.realmScan[realmKey] then
+            self.db.realmScan[realmKey] = self.db.realmScan[old]
+            self.db.realmScan[old] = nil
+        end
+        list = { realmKey }
+    end
     -- every realm of this group is remembered with its group (db.realmGroups): shipped with the addon, so a player who logs into a realm
     -- someone else played knows which realms share its auction house and which shipped prices are its own
     if self.db then

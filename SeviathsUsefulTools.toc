@@ -84,7 +84,7 @@ collected\tools.seenInfo.lua
 collected\tools.seenPlayers.lua
 collected\tools.towns.lua
 collected\tools.vendorLearned.lua
-collected\gold.CAMWOWEU4Realm10RP.lua
+collected\gold.ForeverRP.lua
 CollectedImport.lua
 Data\TransmogIndex.lua
 Data\DropIndex.lua
