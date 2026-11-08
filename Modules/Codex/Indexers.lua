@@ -253,6 +253,18 @@ end
 ------------------------------------------------------------------------
 local function IndexPets()
     local misses = 0
+    -- WoW Forever has no battle pet journal: the companion pets are listed from the item data (the pet items with where they come from)
+    local S = _G.SeviathsUsefulTools
+    for itemID, row in pairs((S and S.PetItems) or {}) do
+        local icon = C_Item and C_Item.GetItemIconByID and C_Item.GetItemIconByID(itemID)
+        ns:Add({
+            cat = "pet", id = "item:" .. itemID, name = row[1], icon = icon or "Interface\\Icons\\INV_Box_PetCarrier_01",
+            group = (row[2] ~= "" and (row[2]:match("^(%a+):") or "Other")) or "Other",
+            sub = row[2], source = row[2], body = row[2] ~= "" and row[2] or "Companion pet",
+            wh = "item=" .. itemID, tags = "companion pet",
+        })
+    end
+    if not (C_PetJournal and C_PetJournal.GetPetInfoBySpeciesID) then return end
     for speciesID = 1, 8000 do
         local name, icon, petType, companionID, source, description, isWild, canBattle, isTradeable, _, obtainable =
             C_PetJournal.GetPetInfoBySpeciesID(speciesID)

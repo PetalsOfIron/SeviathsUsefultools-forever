@@ -765,3 +765,6 @@
 222188|Shadowy Figure|493:52,40.4;52,40.6|81986:50:50:3:Waking the Nightmare,82021:50:50:3:A Fortuitous Turn of Events,82022:50:50:3:The Bad News...
 222261|Maximillian "The Greaser"|400:79.8,77.2|81987:55:50:3:Goblin Solutions,82001:55:50:3:Require Gnomish Problems,82002:55:50:3:Whats Red and Smells like Paint?,82003:55:50:3:Victory Lap For the Goblins!,82013:55:50:3:Hush Money
 222316|Fizzbizz Coppercoil|400:77,77.2|82004:55:50:3:Hush Money,82008:55:50:3:Gnomish Solutions,82009:55:50:3:Require Goblin Problems,82010:55:50:3:Watering Down the Competition,82011:55:50:3:Victory Lap for the Gnomes!
+222408|Shadowtooth Emissary|361:51.4,82;51.6,82|82043:45:40:3:The Wild Gods,84384:60:55:3:Demonic Deceptions
+222413|Zalgo the Explorer|33:15.2,15.6|82016:60:50:3:Atal'ai Potent Potables,82093:60:50:3:Jungle Durian,82094:60:50:3:Signets of the Lost Temple
+222444|Injured Gnome|33:26.8,77.2|82023:50:50:3:The Lost Vambraces

@@ -5210,3 +5210,14 @@
 227914|Owlbeast Pineal Gland|1|12|0|60|0
 12524|Blue-feathered Amulet|1|12|0|1|0
 12558|Blue-feathered Necklace|1|12|0|52|52
+12366|Thick Yeti Fur|1|12|0|1|0
+12435|Ice Thistle E'ko|1|12|0|1|0
+12367|Pristine Yeti Horn|1|12|0|1|0
+18604|Tears of the Hederine|1|12|0|1|0
+18665|The Eye of Shadow|4|4|-4|71|60
+21936|Frozen Ectoplasm|1|12|0|1|0
+16223|Formula: Enchant Weapon - Icy Chill|2|9|8|57|0
+9590|Splintered Log|1|12|0|1|0
+10759|Severed Horn of the Defiler|1|12|0|1|0
+10753|Amulet of Grol|1|12|0|1|0
+10755|Amulet of Allistarj|1|12|0|1|0
