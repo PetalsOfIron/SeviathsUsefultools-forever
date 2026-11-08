@@ -390,7 +390,7 @@ local buildRoleplay = K.simplePage("Roleplay",
         for _, f in ipairs(RP_FIELDS) do
             K.mkText(pane, f[2], 12, top, 300, "GameFontNormalSmall")
             -- a visible box (dark with a gold edge) to type in
-            local h = f[3] * 14 + 12
+            local h = f[3] * 13 + 10
             local holder = CreateFrame("Frame", nil, pane, "BackdropTemplate")
             holder:SetPoint("TOPLEFT", 12, top - 14)
             holder:SetSize(470, h)
@@ -412,7 +412,7 @@ local buildRoleplay = K.simplePage("Roleplay",
             box:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
             if f[3] == 1 then box:SetScript("OnEnterPressed", function(self) save(self); self:ClearFocus() end) end
             editors[#editors + 1] = { key = f[1], box = box }
-            top = top - h - 20
+            top = top - h - 17
         end
         return function() rebuildButtons(); load() end
     end)
