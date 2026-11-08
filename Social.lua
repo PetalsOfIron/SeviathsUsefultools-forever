@@ -30,19 +30,19 @@ S.STYLES = {
     { "farmer",   "Gold farmer" },
     { "collector", "Collector" },
     { "mythic",   (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT) and "Dungeon player" or "Hardcore Mythic+ player" },
-    { "raider",   "Hardcore raider" },
+    { "raider",   "Serious raider" },
     { "pvp",      "PvP player" },
     { "achiever", "Achievement hunter" },
     { "dailies",  "Daily quest player" },
     { "casual",   "Casual" },
-    { "hardcore", "Hardcore" },
+    { "hardcore", "Serious player (plays to win)" },
 }
-local AUTO_LABEL = { raider = "Hardcore raider", mythic = (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT) and "Dungeon player" or "Hardcore Mythic+ player",
+local AUTO_LABEL = { raider = "Serious raider", mythic = (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT) and "Dungeon player" or "Hardcore Mythic+ player",
     delver = "Delve player", roleplayer = "Roleplayer", collector = "Collector",
     achiever = "Achievement hunter", pvp = "PvP player", dailies = "Daily quest player", farmer = "Gold farmer",
     gold = "Gold grinder", ["gold:loot"] = "Gold grinder (farming)", ["gold:daily"] = "Gold grinder (daily quests)",
     ["gold:trade"] = "Gold grinder (auction house)", housing = "Housing fan",
-    alliance = "Alliance player", horde = "Horde player", altaholic = "Alt collector", casual = "Casual", hardcore = "Hardcore" }
+    alliance = "Alliance player", horde = "Horde player", altaholic = "Alt collector", casual = "Casual", hardcore = "Serious player" }
 local STYLE_LABEL = { relaxed = "Relaxed", learning = "Learning", social = "Social", speed = "Fast runs and farming", roleplay = "Roleplayer" }
 
 -- what a player can say they dislike in a group (the number is what is sent)
