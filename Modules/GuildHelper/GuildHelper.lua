@@ -743,7 +743,7 @@ local function MakeButton(parent, text, w, h, tip, onClick)
             self:SetBackdropColor(0.85, 0.2, 0.18, 0.95)
             self:SetBackdropBorderColor(0.6, 1, 1, 1)
         else
-            self:SetBackdropColor(0.27, 0.07, 0.07, 0.75)
+            self:SetBackdropColor(0.27, 0.07, 0.07, 0.95)
             self:SetBackdropBorderColor(0.9, 0.28, 0.24, 0.7)
         end
     end
@@ -866,7 +866,7 @@ UI.helpBtn:SetScript("OnEnter", function(self)
     GameTooltip:AddLine("/gi  open   ·   /gi scan   ·   /gi sync   ·   /gi minimap   ·   /gi help", 0.5, 0.7, 0.75, true)
     GameTooltip:Show()
 end)
-UI.helpBtn:SetScript("OnLeave", function(self) self:SetBackdropColor(0.27, 0.07, 0.07, 0.75); GameTooltip:Hide() end)
+UI.helpBtn:SetScript("OnLeave", function(self) self:SetBackdropColor(0.27, 0.07, 0.07, 0.95); GameTooltip:Hide() end)
 
 ---------------------------------------------------------------
 -- 1  MESSAGE

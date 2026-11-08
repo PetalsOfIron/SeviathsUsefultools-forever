@@ -10,9 +10,8 @@ SFP.GemHelper = GH
 
 local function secret(v) return issecretvalue and issecretvalue(v) end
 
-GH.CLASSES = {
-    { "DEATHKNIGHT", "Death Knight" }, { "DEMONHUNTER", "Demon Hunter" }, { "DRUID", "Druid" }, { "EVOKER", "Evoker" },
-    { "HUNTER", "Hunter" }, { "MAGE", "Mage" }, { "MONK", "Monk" }, { "PALADIN", "Paladin" }, { "PRIEST", "Priest" },
+GH.CLASSES = {   -- the nine classes of WoW Forever
+    { "DRUID", "Druid" }, { "HUNTER", "Hunter" }, { "MAGE", "Mage" }, { "PALADIN", "Paladin" }, { "PRIEST", "Priest" },
     { "ROGUE", "Rogue" }, { "SHAMAN", "Shaman" }, { "WARLOCK", "Warlock" }, { "WARRIOR", "Warrior" },
 }
 
@@ -35,7 +34,13 @@ end
 function GH.Own()
     local _, token = UnitClass("player")
     local spec
-    if GetSpecialization and GetSpecializationInfo then
+    -- Forever has no specialization: the one found from the talents (the tree with most points), as in the talent advisor
+    local ta = SFP.TalentAdvisor
+    if ta and ta.DetectedSpec then
+        local okD, found = pcall(ta.DetectedSpec)
+        if okD and type(found) == "string" then spec = found end
+    end
+    if not spec and GetSpecialization and GetSpecializationInfo then
         local idx = GetSpecialization()
         if idx then
             local _, name = GetSpecializationInfo(idx)

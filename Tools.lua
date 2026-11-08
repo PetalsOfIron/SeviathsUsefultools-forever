@@ -407,20 +407,38 @@ end
 
 function SFP:BoeDeals()
     local out, nohist = {}, {}
+    local seen = {}
+    local function consider(id)
+        if seen[id] then return end
+        seen[id] = true
+        -- now: our own scan, else Auctionator / TradeSkillMaster
+        local now = self:GetPrice(id)
+        if now and now > 0 then
+            local typical, n, src = self:TypicalPrice(id)
+            if typical and typical > 0 then
+                out[#out + 1] = { id = id, now = now, typical = typical, n = n, src = src, cut = 1 - now / typical }
+            else
+                nohist[#nohist + 1] = { id = id, now = now }
+            end
+        end
+    end
     for id, info in pairs(self.Items or {}) do
         if info.kind == "boe" then
             if C_Item and C_Item.RequestLoadItemDataByID and not (C_Item.GetItemNameByID and C_Item.GetItemNameByID(id)) then
                 pcall(C_Item.RequestLoadItemDataByID, id)
             end
-            -- now: our own scan, else Auctionator / TradeSkillMaster
-            local now = self:GetPrice(id)
-            if now and now > 0 then
-                local typical, n, src = self:TypicalPrice(id)
-                if typical and typical > 0 then
-                    out[#out + 1] = { id = id, now = now, typical = typical, n = n, src = src, cut = 1 - now / typical }
-                else
-                    nohist[#nohist + 1] = { id = id, now = now }
-                end
+            consider(id)
+        end
+    end
+    -- every bind-on-equip weapon and armor piece (uncommon or better) the auction house scan priced
+    local prices = self:AllPrices()
+    for id in pairs(prices or {}) do
+        if type(id) == "number" and not seen[id] then
+            local okI, _, _, quality, _, _, _, _, _, _, _, _, classID, _, bindType = pcall(C_Item.GetItemInfo, id)
+            if okI and bindType == nil and C_Item.RequestLoadItemDataByID then
+                pcall(C_Item.RequestLoadItemDataByID, id)   -- not loaded yet: the next time the list opens it is there
+            elseif okI and bindType == 2 and (classID == 2 or classID == 4) and type(quality) == "number" and quality >= 2 then
+                consider(id)
             end
         end
     end

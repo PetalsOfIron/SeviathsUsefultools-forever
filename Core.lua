@@ -57,6 +57,14 @@ SFP.CYAN = { r = 0.9, g = 0.28, b = 0.24 }
 local SNAKE = "Interface\\AddOns\\SeviathsUsefulTools\\Media\\snake_tile.tga"
 function SFP.BlizzardFrame(f, big)
     if not f or not f.SetBackdrop then return end
+    if big == "inset" then
+        -- a panel inside a window: the darker dialog background with a thin red border
+        f:SetBackdrop({ bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background-Dark", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+            tile = true, tileSize = 32, edgeSize = 12, insets = { left = 3, right = 3, top = 3, bottom = 3 } })
+        f:SetBackdropColor(0.85, 0.6, 0.6, 1)
+        f:SetBackdropBorderColor(0.75, 0.22, 0.2, 1)
+        return
+    end
     if not big then
         -- a small frame (a button, a row, a panel): flat and red
         f:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8x8", edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = 1 })

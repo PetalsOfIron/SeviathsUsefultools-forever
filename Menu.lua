@@ -1422,7 +1422,6 @@ function SFP:ShowMenuSection(key)
     pane:Show()
     if pane.refresh then SFP:Safe("refresh " .. key, pane.refresh) end
     -- the decor list opens next to the menu, on its right side
-    if key == "decor" and SFP.ShowDecor then SFP:Safe("decor window", SFP.ShowDecor, SFP) end
     if key == "guilds" and SFP.ShowGuildDirectory then SFP:Safe("guild directory", SFP.ShowGuildDirectory, SFP) end
 end
 
@@ -1478,7 +1477,7 @@ local function build()
     frame.content = CreateFrame("Frame", nil, frame, "BackdropTemplate")
     frame.content:SetPoint("TOPLEFT", 156, -34)
     frame.content:SetPoint("BOTTOMRIGHT", -8, 8)
-    backdrop(frame.content, 0.02, 0.04, 0.06, 0.6, CY.r, CY.g, CY.b, 0.25)
+    SFP.BlizzardFrame(frame.content, "inset")
 end
 
 function SFP:ToggleMenu(section)

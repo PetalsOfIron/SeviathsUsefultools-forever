@@ -1,9 +1,53 @@
--- SeviathsUsefulTools - farm zones and old instances per expansion
--- map = uiMapID (the game supplies the localized zone name).
--- Only zones that drop in-demand creature loot are listed, so every listed zone
--- glows cyan (you can raise the bar with /sfp min <gold>).
--- Instance entrance coordinates are read in-game from the Encounter Journal.
+-- SeviathsUsefulTools - the zones of WoW Forever (the numbers of its maps are those of Classic Era). Every zone is a farm zone; the monsters come from the data.
 
 local _, SFP = ...
 
-SFP.Expansions = {}
+SFP.Expansions = {
+    {
+        key = "classic", name = "Classic", short = "Classic",
+        zones = {
+            { map = 1411, items = {} },
+            { map = 1412, items = {} },
+            { map = 1413, items = {} },
+            { map = 1416, items = {} },
+            { map = 1417, items = {} },
+            { map = 1418, items = {} },
+            { map = 1419, items = {} },
+            { map = 1420, items = {} },
+            { map = 1421, items = {} },
+            { map = 1422, items = {} },
+            { map = 1423, items = {} },
+            { map = 1424, items = {} },
+            { map = 1425, items = {} },
+            { map = 1426, items = {} },
+            { map = 1427, items = {} },
+            { map = 1428, items = {} },
+            { map = 1429, items = {} },
+            { map = 1430, items = {} },
+            { map = 1431, items = {} },
+            { map = 1432, items = {} },
+            { map = 1433, items = {} },
+            { map = 1434, items = {} },
+            { map = 1435, items = {} },
+            { map = 1436, items = {} },
+            { map = 1437, items = {} },
+            { map = 1438, items = {} },
+            { map = 1439, items = {} },
+            { map = 1440, items = {} },
+            { map = 1441, items = {} },
+            { map = 1442, items = {} },
+            { map = 1443, items = {} },
+            { map = 1444, items = {} },
+            { map = 1445, items = {} },
+            { map = 1446, items = {} },
+            { map = 1447, items = {} },
+            { map = 1448, items = {} },
+            { map = 1449, items = {} },
+            { map = 1450, items = {} },
+            { map = 1451, items = {} },
+            { map = 1452, items = {} },
+        },
+        instances = {},
+        anywhere = {},
+    },
+}

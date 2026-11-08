@@ -23,12 +23,12 @@ local DUNGEONS = {
 
 -- zone map (the game's UiMap number), level range
 local ZONES = {
-    { 37, 1, 10 }, { 27, 1, 10 }, { 1, 1, 10 }, { 7, 1, 10 }, { 57, 1, 10 }, { 18, 1, 10 },
-    { 52, 10, 20 }, { 48, 10, 20 }, { 62, 10, 20 }, { 10, 10, 25 }, { 21, 10, 20 }, { 49, 15, 25 }, { 47, 18, 30 }, { 56, 20, 30 },
-    { 25, 20, 30 }, { 63, 18, 30 }, { 65, 15, 27 }, { 64, 25, 35 }, { 2, 30, 40 }, { 14, 30, 40 }, { 50, 30, 45 }, { 210, 30, 45 },
-    { 66, 30, 40 }, { 15, 35, 45 }, { 51, 35, 45 }, { 70, 35, 45 }, { 69, 40, 50 }, { 71, 40, 50 }, { 26, 40, 50 }, { 32, 43, 50 },
-    { 36, 50, 58 }, { 17, 45, 55 }, { 78, 48, 55 }, { 76, 45, 55 }, { 77, 48, 55 }, { 83, 53, 60 }, { 81, 55, 60 }, { 23, 53, 60 },
-    { 22, 51, 58 }, { 80, 55, 60 },
+    { 1429, 1, 10 }, { 1426, 1, 10 }, { 1411, 1, 10 }, { 1412, 1, 10 }, { 1438, 1, 10 }, { 1420, 1, 10 },
+    { 1436, 10, 20 }, { 1432, 10, 20 }, { 1439, 10, 20 }, { 1413, 10, 25 }, { 1421, 10, 20 }, { 1433, 15, 25 }, { 1431, 18, 30 }, { 1437, 20, 30 },
+    { 1424, 20, 30 }, { 1440, 18, 30 }, { 1442, 15, 27 }, { 1441, 25, 35 }, { 1416, 30, 40 }, { 1417, 30, 40 }, { 1434, 30, 45 }, { 1434, 30, 45 },
+    { 1443, 30, 40 }, { 1418, 35, 45 }, { 1435, 35, 45 }, { 1445, 35, 45 }, { 1444, 40, 50 }, { 1446, 40, 50 }, { 1425, 40, 50 }, { 1427, 43, 50 },
+    { 1428, 50, 58 }, { 1419, 45, 55 }, { 1449, 48, 55 }, { 1447, 45, 55 }, { 1448, 48, 55 }, { 1452, 53, 60 }, { 1451, 55, 60 }, { 1423, 53, 60 },
+    { 1422, 51, 58 }, { 1450, 55, 60 },
 }
 local ZONE_LEVEL = {}
 for _, z in ipairs(ZONES) do ZONE_LEVEL[z[1]] = z end
@@ -81,14 +81,14 @@ end
 
 -- where the way in is: the zone map, and the place in percent (approximate: the entrances of the original game)
 local ENTRANCE = {
-    ["Ragefire Chasm"] = { 85, 52.5, 49.5 }, ["The Deadmines"] = { 52, 43, 72 }, ["Wailing Caverns"] = { 10, 45.7, 36.4 },
-    ["Shadowfang Keep"] = { 21, 44.5, 67.8 }, ["Blackfathom Deeps"] = { 63, 14.2, 14 }, ["The Stockade"] = { 84, 41, 57 },
-    ["Gnomeregan"] = { 27, 31.2, 34.5 }, ["Razorfen Kraul"] = { 199, 40.5, 90.5 }, ["Scarlet Monastery"] = { 18, 85.2, 32.3 },
-    ["Razorfen Downs"] = { 199, 47.5, 93 }, ["Uldaman"] = { 15, 41.8, 12 }, ["Zul'Farrak"] = { 71, 39, 21 }, ["Maraudon"] = { 66, 29, 62 },
-    ["The Temple of Atal'Hakkar"] = { 51, 69.8, 53.7 }, ["Blackrock Depths"] = { 36, 29.5, 38.5 }, ["Lower Blackrock Spire"] = { 36, 29.5, 38.5 },
-    ["Upper Blackrock Spire"] = { 36, 29.5, 38.5 }, ["Stratholme"] = { 23, 31.5, 15.7 }, ["Scholomance"] = { 22, 69.5, 73 }, ["Dire Maul"] = { 69, 62.5, 30.5 },
-    ["Molten Core"] = { 36, 29.5, 38.5 }, ["Onyxia's Lair"] = { 70, 52, 76 }, ["Blackwing Lair"] = { 36, 29.5, 38.5 }, ["Zul'Gurub"] = { 50, 53, 17.5 },
-    ["Ruins of Ahn'Qiraj"] = { 81, 29, 96 }, ["Temple of Ahn'Qiraj"] = { 81, 29, 96 }, ["Naxxramas"] = { 23, 39, 26 },
+    ["Ragefire Chasm"] = { 1454, 52.5, 49.5 }, ["The Deadmines"] = { 1436, 43, 72 }, ["Wailing Caverns"] = { 1413, 45.7, 36.4 },
+    ["Shadowfang Keep"] = { 1421, 44.5, 67.8 }, ["Blackfathom Deeps"] = { 1440, 14.2, 14 }, ["The Stockade"] = { 1453, 41, 57 },
+    ["Gnomeregan"] = { 1426, 31.2, 34.5 }, ["Razorfen Kraul"] = { 199, 40.5, 90.5 }, ["Scarlet Monastery"] = { 1420, 85.2, 32.3 },
+    ["Razorfen Downs"] = { 199, 47.5, 93 }, ["Uldaman"] = { 1418, 41.8, 12 }, ["Zul'Farrak"] = { 1446, 39, 21 }, ["Maraudon"] = { 1443, 29, 62 },
+    ["The Temple of Atal'Hakkar"] = { 1435, 69.8, 53.7 }, ["Blackrock Depths"] = { 1428, 29.5, 38.5 }, ["Lower Blackrock Spire"] = { 1428, 29.5, 38.5 },
+    ["Upper Blackrock Spire"] = { 1428, 29.5, 38.5 }, ["Stratholme"] = { 1423, 31.5, 15.7 }, ["Scholomance"] = { 1422, 69.5, 73 }, ["Dire Maul"] = { 1444, 62.5, 30.5 },
+    ["Molten Core"] = { 1428, 29.5, 38.5 }, ["Onyxia's Lair"] = { 1445, 52, 76 }, ["Blackwing Lair"] = { 1428, 29.5, 38.5 }, ["Zul'Gurub"] = { 1434, 53, 17.5 },
+    ["Ruins of Ahn'Qiraj"] = { 1451, 29, 96 }, ["Temple of Ahn'Qiraj"] = { 1451, 29, 96 }, ["Naxxramas"] = { 1423, 39, 26 },
 }
 
 local function waypointTo(map, x, y, label)

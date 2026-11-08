@@ -50,9 +50,7 @@ ns.state = state
 ------------------------------------------------------------------------
 local function Panel(parent, alpha)
     local f = CreateFrame("Frame", nil, parent, "BackdropTemplate")
-    f:SetBackdrop(BACKDROP)
-    f:SetBackdropColor(0.09, 0.04, 0.04, alpha or 0.92)
-    f:SetBackdropBorderColor(0.9, 0.28, 0.24, 0.35)
+    if _G.SeviathsUsefulTools and _G.SeviathsUsefulTools.BlizzardFrame then _G.SeviathsUsefulTools.BlizzardFrame(f, "inset") else f:SetBackdrop(BACKDROP) end
     return f
 end
 
@@ -739,7 +737,7 @@ local function CreateWindow()
     searchBox:SetSize(360, 24)
     searchBox:SetPoint("TOP", 0, -10)
     searchBox:SetBackdrop(BACKDROP)
-    searchBox:SetBackdropColor(0, 0, 0, 0.6)
+    searchBox:SetBackdropColor(0, 0, 0, 0.95)
     searchBox:SetBackdropBorderColor(0.9, 0.28, 0.24, 0.7)
     searchBox:SetFontObject("ChatFontNormal")
     searchBox:SetTextInsets(8, 8, 0, 0)
@@ -966,7 +964,7 @@ local function CreateWindow()
     d.wh:SetPoint("LEFT", d.whLabel, "RIGHT", 4, 0)
     d.wh:SetPoint("RIGHT", child, "RIGHT", -6, 0)
     d.wh:SetBackdrop(BACKDROP)
-    d.wh:SetBackdropColor(0, 0, 0, 0.5)
+    d.wh:SetBackdropColor(0, 0, 0, 0.95)
     d.wh:SetBackdropBorderColor(0.9, 0.28, 0.24, 0.3)
     d.wh:SetFontObject("GameFontHighlightSmall")
     d.wh:SetTextInsets(4, 4, 0, 0)
