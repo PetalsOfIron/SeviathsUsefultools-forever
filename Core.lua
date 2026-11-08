@@ -95,6 +95,17 @@ function SFP.BlizzardFrame(f, big)
             tile = true, tileSize = 32, edgeSize = 12, insets = { left = 3, right = 3, top = 3, bottom = 3 } })
         f:SetBackdropColor(0.55, 0.55, 0.58, 1)
         f:SetBackdropBorderColor(0.75, 0.22, 0.2, 1)
+        -- the same gray marble as the window, a little darker, so the panel is not a black hole
+        if not f.seviathMarble then
+            local mt = f:CreateTexture(nil, "BACKGROUND", nil, -7)
+            mt:SetPoint("TOPLEFT", 3, -3)
+            mt:SetPoint("BOTTOMRIGHT", -3, 3)
+            mt:SetTexture("Interface\\FrameGeneral\\UI-Background-Marble", "REPEAT", "REPEAT")
+            mt:SetHorizTile(true)
+            mt:SetVertTile(true)
+            mt:SetVertexColor(0.55, 0.55, 0.58, 1)
+            f.seviathMarble = mt
+        end
         return
     end
     if not big then
