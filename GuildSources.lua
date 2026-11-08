@@ -142,6 +142,39 @@ scanFrame:SetScript("OnUpdate", function(_, dt)
     pcall(C_FriendList.SendWho, q)
 end)
 
+-- When the player opens the Who list, or clicks in it, the addon sends the next question of the list above in the same click: the game allows a /who
+-- only from a click or key press of the player, and this is one. Questions are at least 6 seconds apart.
+local function askNext()
+    if not SFP.db or not (C_FriendList and C_FriendList.SendWho) then return end
+    if GetTime() - scan.last < 6 then return end
+    local q = nextQuery()
+    if not q then return end
+    scan.last, scan.waiting = GetTime(), GetTime()
+    pcall(C_FriendList.SendWho, q)
+end
+local function hookWho()
+    local fr = _G.WhoFrame
+    if fr and fr.HookScript and not fr.SeviathScan then
+        fr.SeviathScan = true
+        fr:HookScript("OnShow", askNext)
+        fr:HookScript("OnMouseDown", askNext)
+        -- the buttons of the list and its refresh button are clicks too
+        for _, c in ipairs({ fr:GetChildren() }) do
+            if c.GetObjectType and c:GetObjectType() == "Button" and c.HookScript then c:HookScript("OnClick", askNext) end
+        end
+    end
+    local ff = _G.FriendsFrame
+    if ff and ff.HookScript and not ff.SeviathScan then
+        ff.SeviathScan = true
+        ff:HookScript("OnShow", function() if _G.WhoFrame and _G.WhoFrame:IsShown() then askNext() end end)
+    end
+end
+local hookFrame = CreateFrame("Frame")
+hookFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+hookFrame:RegisterEvent("ADDON_LOADED")
+hookFrame:SetScript("OnEvent", hookWho)
+hookWho()
+
 -- ---------------------------------------------------------------- Guild Roster Manager
 -- GRM_GuildMemberHistory_Save[guildKey][playerKey] = { name, rankName, rankIndex, ... } with guildKey "Guild Name-Realm"
 local function importGRM()
