@@ -770,6 +770,30 @@ local function recipeTexts(keys, limit)
     return table.concat(out, ", ")
 end
 
+-- which professions use a reagent, and in which recipes, from the shipped recipe list (Data/RecipeData.lua): { professions sorted by use, recipes }
+local reagentUse
+local function shippedUse(id)
+    if not reagentUse then
+        reagentUse = {}
+        for _, r in ipairs(SFP.RecipeData or {}) do
+            for _, rg in ipairs(r[5] or {}) do
+                local e = reagentUse[rg[1]]
+                if not e then e = { profs = {}, recipes = {} }; reagentUse[rg[1]] = e end
+                e.profs[r[2]] = (e.profs[r[2]] or 0) + 1
+                if #e.recipes < 40 then e.recipes[#e.recipes + 1] = { r[3], r[2] } end
+            end
+        end
+    end
+    local e = reagentUse[id]
+    if not e then return nil end
+    local list = {}
+    for p, n in pairs(e.profs) do list[#list + 1] = { p, n } end
+    table.sort(list, function(x, y) if x[2] ~= y[2] then return x[2] > y[2] end return x[1] < y[1] end)
+    local names = {}
+    for _, p in ipairs(list) do names[#names + 1] = p[1] end
+    return names, e.recipes
+end
+
 -- the lines our addon adds to an item tooltip
 function SFP:ItemTipLinesBase(id, link)
     local lines = {}
@@ -788,9 +812,14 @@ function SFP:ItemTipLinesBase(id, link)
         lines[#lines + 1] = { "|cff9d9d9dVendor junk|r" .. (price and price > 0 and ("  sells for " .. money(price)) or "") }
     elseif classID == 7 then
         local kind = KIND_BY_SUBCLASS[select(13, C_Item.GetItemInfo(id)) or 0] or "mat"
-        lines[#lines + 1] = { "|cffff6a60Crafting material|r  " .. (subtype or "") }
+        local profs, srecipes = shippedUse(id)
+        lines[#lines + 1] = { "|cffff6a60Crafting material|r  " .. ((profs and #profs > 0) and table.concat(profs, ", ") or (subtype or "")) }
         if usedIn[id] then
             lines[#lines + 1] = { "Used in: " .. recipeTexts(usedIn[id], 6), 0.85, 0.85, 0.85, true }
+        elseif srecipes and #srecipes > 0 then
+            local names = {}
+            for i = 1, math.min(5, #srecipes) do names[i] = srecipes[i][1] .. " |cff808080(" .. srecipes[i][2] .. ")|r" end
+            lines[#lines + 1] = { "Used in: " .. table.concat(names, ", ") .. (#srecipes > 5 and ", ..." or ""), 0.85, 0.85, 0.85, true }
         else
             lines[#lines + 1] = { "Used for: " .. (GENERAL_USE[kind] or "crafting") .. "  |cff808080(open a profession window to learn exact recipes)|r", 0.85, 0.85, 0.85, true }
         end
