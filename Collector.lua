@@ -1058,7 +1058,8 @@ local function unitTip(tt, data)
     if who and not UnitCanAttack("player", who) then return dbg("friendly") end
     if hasOurLines(tt) then return end
     dbg("npc " .. id)
-    local rec = SFP.db.npcs[id]
+    -- your own record, else the shipped one (the drops read from Wowhead): a monster seen for the first time already shows what it drops
+    local rec = SFP.db.npcs[id] or (SFP.Npc and SFP:Npc(id))
     local seed = SFP.farmNpc and SFP.farmNpc[id]
     tt:AddLine(" ")
     do

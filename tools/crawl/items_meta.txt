@@ -5649,3 +5649,12 @@
 23087|Breastplate of Undead Slaying|3|4|4|63|58
 23088|Chestguard of Undead Slaying|3|4|3|63|58
 22892|Dim Necrotic Stone|1|12|0|1|0
+190179|Avelina's Heart|1|12|0|1|0
+203748|Spell Notes: Burnout|2|0|-3|10|0
+205228|Rune of Chaos Bolt|2|0|-3|1|0
+204912|Rune of Grace|2|0|-3|1|0
+205979|Rune of Flanking|2|0|-3|1|0
+206155|Rune of Marksmanship|2|0|-3|1|0
+206963|Rune of Natural Potential|2|0|-3|1|0
+206388|Sulfurous Icon|2|4|9|1|0
+208196|Moa'kin Band|3|4|-2|33|60
