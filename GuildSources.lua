@@ -128,6 +128,9 @@ scanFrame:SetScript("OnUpdate", function(_, dt)
     acc = acc + dt
     if acc < 6 then return end
     acc = 0
+    -- The game only lets a /who be sent from a click or a key press of the player (a protected call): sending it by itself is blocked and
+    -- reported as ADDON_ACTION_BLOCKED. So nothing is sent here; the answers of the /who the player (or another addon) sends are still read above.
+    if not scan.allowAuto then return end
     if not SFP.db then return end
     if InCombatLockdown and InCombatLockdown() then return end
     if IsInInstance and select(1, IsInInstance()) then return end
