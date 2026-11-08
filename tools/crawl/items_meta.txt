@@ -5747,3 +5747,39 @@
 220610|Rune of Mental Dexterity|2|0|-3|50|0
 221979|Prophecy of Verdant Winter|2|0|-3|50|0
 220614|Rune of Static Shock|2|0|-3|50|0
+220617|Rune of Pandemic|2|0|-3|50|0
+2840|Copper Bar|1|7|7|10|0
+2841|Bronze Bar|1|7|7|20|0
+2996|Bolt of Linen Cloth|1|7|5|10|0
+6297|Old Skull|0|15|0|1|0
+6439|Broken Binding Bracer|0|15|0|1|0
+223147|Spell Notes: Balefire Bolt|2|0|-3|50|0
+223163|Formula: Scroll of Spatial Mending|2|9|8|15|0
+223219|Fel Cloth Wristbands|3|4|1|20|10
+223221|Fel Leather Wristbands|3|4|2|20|10
+223222|Fel Mail Wristbands|3|4|3|20|10
+2997|Bolt of Woolen Cloth|1|7|5|25|0
+3575|Iron Bar|1|7|7|30|0
+223237|Fel Cloth Shoulder Pads|3|4|1|30|20
+223238|Fel Leather Shoulder Pads|3|4|2|30|20
+2775|Silver Ore|2|7|7|10|0
+3355|Wild Steelbloom|1|7|9|22|0
+3577|Gold Bar|2|7|7|30|0
+4305|Bolt of Silk Cloth|1|7|5|35|0
+223240|Fel Cloth Hood|3|4|1|40|30
+223241|Fel Leather Hat|3|4|2|40|30
+223242|Fel Mail Coif|3|4|3|40|30
+3860|Mithril Bar|1|7|7|40|0
+6037|Truesilver Bar|2|7|7|50|0
+12359|Thorium Bar|1|7|7|50|0
+223248|Fel Cloth Legs|3|4|1|50|40
+223249|Fel Leather Legs|3|4|2|50|40
+223250|Fel Mail Legs|3|4|3|50|40
+223251|Fel Plate Legs|3|4|4|50|40
+223256|Fel Cloth Robes|3|4|1|55|50
+223261|Fel Leather Chest|3|4|2|55|50
+223262|Fel Mail Chest|3|4|3|55|50
+223263|Fel Plate Chest|3|4|4|55|50
+221981|Prophecy of the Lost Tribe|2|0|-3|50|0
+226587|Rune of Shelling|2|0|-3|60|0
+226252|Rune of the Guerrilla|2|0|-3|60|0

@@ -153,6 +153,19 @@ function SFP.BlizzardFrame(f, big)
     end
     -- the window's title sits on the top bar of the frame
     -- (the title is made after the frame is styled, so it is placed a moment later)
+    -- the close (X) button sits in the top bar of the frame like the game's own windows, in every window of the addon
+    C_Timer.After(0, function()
+        for _, c in ipairs({ f:GetChildren() }) do
+            if c.GetObjectType and c:GetObjectType() == "Button" and c.GetNormalTexture then
+                local nt = c:GetNormalTexture()
+                local path = nt and nt.GetTexture and nt:GetTexture()
+                if type(path) == "string" and path:find("MinimizeButton", 1, true) then
+                    c:ClearAllPoints()
+                    c:SetPoint("TOPRIGHT", f, "TOPRIGHT", 2, 5)
+                end
+            end
+        end
+    end)
     C_Timer.After(0, function()
         for _, key in ipairs({ "title", "header", "Title" }) do
             local t = rawget(f, key)
