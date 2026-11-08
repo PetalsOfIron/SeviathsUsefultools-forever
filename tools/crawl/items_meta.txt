@@ -5256,3 +5256,12 @@
 17050|Chan's Imperial Robes|3|4|1|52|47
 8122|Heraldic Headpiece|2|4|2|48|43
 11129|Essence of the Elements|1|12|0|1|0
+15408|Heavy Scorpid Scale|1|7|6|55|0
+10447|Head of Lathoric the Black|1|12|0|1|0
+10446|Heart of Obsidion|1|12|0|1|0
+23250|Prismatic Shell|1|12|0|1|0
+10467|Trader's Satchel|1|12|0|1|0
+10505|Solid Blasting Powder|1|7|1|35|0
+10561|Mithril Casing|1|7|1|43|0
+10553|Foreman Vest|2|4|1|11|6
+10554|Foreman Pants|2|4|1|11|6

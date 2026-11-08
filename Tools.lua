@@ -167,14 +167,27 @@ local MAX_ROUTE = 12
 function SFP:BuildRoute(mapID, only)
     local zone = self.zoneByMap and self.zoneByMap[mapID]
     if not (zone and zone.spawns) then self:Print("No farm spots on this map."); return end
-    local spots = {}
-    for _, sp in ipairs(zone.spawns) do
+    local spots, seen = {}, {}
+    -- the first place of a rare or a hunter tame ("x,y;x,y" in percent)
+    local function firstPlace(sp)
+        if sp.hx and sp.hy then return sp.hx, sp.hy end
+        local x, y = tostring(sp.pts or ""):match("^([%d%.]+),([%d%.]+)")
+        if x then return tonumber(x) / 100, tonumber(y) / 100 end
+    end
+    local function consider(sp)
+        local key = self.SpotKey(sp)
+        if seen[key] then return end
         local use
-        if only then use = only[self.SpotKey(sp)] else use = self.ShowSpot and self.ShowSpot(sp) end
-        if sp.hx and sp.hy and use then
-            spots[#spots + 1] = { name = sp.name or "?", x = sp.hx, y = sp.hy }
+        if only then use = only[key] else use = self.ShowSpot and self.ShowSpot(sp) end
+        local x, y = firstPlace(sp)
+        if x and use then
+            seen[key] = true
+            spots[#spots + 1] = { name = sp.name or "?", x = x, y = y }
         end
     end
+    for _, sp in ipairs(zone.spawns) do consider(sp) end
+    -- rares and hunter tames of the map belong in the route too (a spot of the farm list that is ticked)
+    for _, sp in ipairs((self.Rares and self.Rares[mapID]) or {}) do consider(sp) end
     return self:RouteFromSpots(mapID, spots)
 end
 

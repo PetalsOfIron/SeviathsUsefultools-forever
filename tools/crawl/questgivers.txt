@@ -803,3 +803,6 @@
 241834|Istaria|493:52.2,43|89462:60:60:3:The Druid of the Talon
 242019|Leonid Barthalomew the Revered|139:33.4,27.4;33.4,27.6;33.6,27.4|89234:60:60:3:A Personal Matter,89568:60:60:3:Something New,89574:60:60:3:Servants of Death
 242174|Thisalee Crow|618:60.4,38;60.8,38|90506:60:60:3:Take Their Breath Away,90507:60:60:3:Logistics Challenges,90508:60:60:3:As The Crow Flies
+242501|The Will of the Ashbringer|139:81.6,58|89488:60:60:3:A Kind of Peace
+243386|Leonid Barthalomew the Revered|139:16.4,31.2;16.6,31.2|89229:60:60:3:The Right Path,89328:60:60:3:Loss,89329:60:60:3:Stomping Out The Infestation
+243393|Leonid Barthalomew the Revered|139:47.8,22|89235:60:60:3:The Culling,89310:60:60:3:Terrordale
