@@ -366,8 +366,20 @@ local buildRoleplay = K.simplePage("Roleplay",
     "Type who each of your characters is (your OC; the character's own name is its name): title, looks, personality and backstory. It is saved for the whole account, so every character shows the same data of all of them. " ..
     "Your title, looks, personality and backstory show on the tooltip of your character (notes and plans stay private).",
     function(pane, y)
-        rpSelected = rpSelected or charKey()
-        rpOf(charKey())
+        -- every character of the account: the key is "Name-Realm", the same as the Alt Overview uses
+        local function rpKey()
+            return (UnitName("player") or "?") .. "-" .. ((GetNormalizedRealmName and GetNormalizedRealmName()) or (GetRealmName() or "?"):gsub("[%s%-']", ""))
+        end
+        local function migrate()
+            -- an older profile was saved under the first name only: it moves to the full key of this character
+            local d = rpData().chars
+            local first, full = charKey(), rpKey()
+            if d[first] and not d[full] then d[full] = d[first]; d[first] = nil end
+        end
+        migrate()
+        rpSelected = rpSelected or rpKey()
+        if not rpData().chars[rpSelected] then rpSelected = rpKey() end
+        rpOf(rpKey())
         local charButtons = {}
         local editors = {}
         local function load()
@@ -377,23 +389,32 @@ local buildRoleplay = K.simplePage("Roleplay",
             end
         end
         local function rebuildButtons()
-            local keys = {}
-            for k in pairs(rpData().chars) do keys[#keys + 1] = k end
-            table.sort(keys)
+            -- all the characters the addon knows on this account (the Alt Overview list and the profiles saved so far), yours first
+            local keys, seen = {}, {}
+            local function add(k) if type(k) == "string" and not seen[k] then seen[k] = true; keys[#keys + 1] = k end end
+            for k in pairs(SFP.db.alts or {}) do add(k) end
+            for k in pairs(rpData().chars) do add(k) end
+            add(rpKey())
+            table.sort(keys, function(a, b)
+                if (a == rpKey()) ~= (b == rpKey()) then return a == rpKey() end
+                return a < b
+            end)
             for i, k in ipairs(keys) do
                 local b = charButtons[i]
                 if not b then
-                    b = K.mkButton(pane, k, 110, function(self) rpSelected = self.key; SFP:Safe("rp", pane.refresh) end)
-                    b:SetPoint("TOPLEFT", 12 + ((i - 1) % 4) * 116, y - math.floor((i - 1) / 4) * 26)
+                    b = K.mkButton(pane, k, 112, function(self) rpSelected = self.key; SFP:Safe("rp", pane.refresh) end)
+                    b:SetPoint("TOPLEFT", 12 + ((i - 1) % 6) * 118, y - math.floor((i - 1) / 6) * 26)
                     charButtons[i] = b
                 end
                 b.key = k
-                b.text:SetText(k == charKey() and fullName() or k)
+                local nm = k:match("^(.-)%-") or k
+                b.text:SetText(k == rpKey() and fullName() or nm)
                 b.text:SetTextColor(k == rpSelected and 1 or 0.8, k == rpSelected and 0.82 or 0.8, k == rpSelected and 0 or 0.8)
                 b:Show()
             end
+            for i = #keys + 1, #charButtons do charButtons[i]:Hide() end
         end
-        local top = y - 52
+        local top = y - 82   -- room for three rows of characters
         for _, f in ipairs(RP_FIELDS) do
             K.mkText(pane, f[2], 12, top, 300, "GameFontNormalSmall")
             -- a visible box (dark with a gold edge) to type in
@@ -432,7 +453,8 @@ if TooltipDataProcessor and Enum and Enum.TooltipDataType and Enum.TooltipDataTy
         if not okU or not unit or (issecretvalue and issecretvalue(unit)) then return end
         local okS, isMe = pcall(UnitIsUnit, unit, "player")
         if not okS or (issecretvalue and issecretvalue(isMe)) or not isMe then return end
-        local rec = SFP.db and SFP.db.rp and SFP.db.rp.chars and SFP.db.rp.chars[charKey()]
+        local rpk = (UnitName("player") or "?") .. "-" .. ((GetNormalizedRealmName and GetNormalizedRealmName()) or (GetRealmName() or "?"):gsub("[%s%-']", ""))
+        local rec = SFP.db and SFP.db.rp and SFP.db.rp.chars and (SFP.db.rp.chars[rpk] or SFP.db.rp.chars[charKey()])
         if rec then
             local title = (rec.title or "") ~= "" and rec.title or nil
             if title or (rec.looks or "") ~= "" or (rec.traits or "") ~= "" or (rec.story or "") ~= "" then tt:AddLine(CY .. fullName() .. "|r") end

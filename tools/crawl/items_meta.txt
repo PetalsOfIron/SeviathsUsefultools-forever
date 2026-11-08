@@ -5354,3 +5354,6 @@
 12300|Orb of Draconic Energy|1|12|0|1|0
 12323|Unforged Seal of Ascension|1|12|0|1|0
 12324|Forged Seal of Ascension|1|12|0|1|0
+12564|Assassination Note|1|12|0|23|23
+11668|Flute of Xavaric|1|12|0|54|49
+16869|The Skull of Scryer|1|12|0|1|0
