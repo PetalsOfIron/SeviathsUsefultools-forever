@@ -131,7 +131,8 @@ end
 local tierNames = {}
 function ns:TierName(tier)
   if not tierNames[tier] then
-    local name = EJ_GetTierInfo and EJ_GetTierInfo(tier)
+    local okT, name = pcall(function() return EJ_GetTierInfo and EJ_GetTierInfo(tier) end)
+    if not okT then name = nil end   -- (WoW Forever has no Adventure Guide tiers)
     tierNames[tier] = (type(name) == "string" and name ~= "") and name or ("Expansion " .. tier)
   end
   return tierNames[tier]

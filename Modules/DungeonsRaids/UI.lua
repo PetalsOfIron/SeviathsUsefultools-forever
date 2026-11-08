@@ -1248,8 +1248,13 @@ end)
 -- WoW Forever: the lists open by themselves when the "Looking For Group" window is opened. That window is found by its title text (its frame name is not
 -- known), every half second; the dungeon list docks to it while it is open and goes away when it is closed
 if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
+  -- every call on a frame of the game is protected: a forbidden (protected) frame gives an error, which is not ours to cause
+  local function try(f, ...)
+    local ok, a = pcall(f, ...)
+    if ok then return a end
+  end
   -- a visible frame (or one of its children, up to three levels down) that has the title text "Looking For Group"
-  local function hasTitle(fr, depth)
+  local function hasTitleRaw(fr, depth)
     for _, r in ipairs({ fr:GetRegions() }) do
       if r.GetObjectType and r:GetObjectType() == "FontString" then
         local ok, t = pcall(r.GetText, r)
@@ -1258,10 +1263,11 @@ if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
     end
     if depth > 0 then
       for _, c in ipairs({ fr:GetChildren() }) do
-        if c.IsShown and c:IsShown() and not (c.IsForbidden and c:IsForbidden()) and hasTitle(c, depth - 1) then return true end
+        if c.IsShown and try(c.IsShown, c) and not (c.IsForbidden and try(c.IsForbidden, c)) and hasTitleRaw(c, depth - 1) then return true end
       end
     end
   end
+  local function hasTitle(fr, depth) return try(hasTitleRaw, fr, depth) end
   local function topOf(fr)
     while fr:GetParent() and fr:GetParent() ~= UIParent do fr = fr:GetParent() end
     return fr
@@ -1270,10 +1276,10 @@ if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
     -- the group finder frames the game names (the list of groups and the category screen): the window around them
     for _, name in ipairs({ "LFGListFrame", "LFGParentFrame", "PVEFrame" }) do
       local fr = _G[name]
-      if fr and fr.IsVisible and fr:IsVisible() then return topOf(fr) end
+      if fr and fr.IsVisible and try(fr.IsVisible, fr) then return try(topOf, fr) end
     end
     for _, fr in ipairs({ UIParent:GetChildren() }) do
-      if fr.IsShown and fr:IsShown() and not (fr.IsForbidden and fr:IsForbidden()) and hasTitle(fr, 3) then return fr end
+      if fr.IsShown and not (fr.IsForbidden and try(fr.IsForbidden, fr)) and try(fr.IsShown, fr) and hasTitle(fr, 3) then return fr end
     end
   end
   local docked, lastSection
