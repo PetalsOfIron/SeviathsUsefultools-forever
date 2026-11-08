@@ -4791,3 +4791,187 @@
 11388|Basilisk Venom|0|15|0|1|0
 11389|Shimmering Basilisk Skin|0|15|0|1|0
 8392|Blasted Boar Lung|1|12|0|1|0
+220214|Infernal Chain Link|1|12|0|1|0
+227658|Shadowsworn Note|2|15|0|60|0
+11732|Libram of Rumination|2|9|0|50|50
+14507|Pattern: Mooncloth Shoulders|3|9|2|61|0
+12662|Demonic Rune|2|7|11|50|0
+14256|Felcloth|1|7|5|50|0
+18623|Flawless Fel Essence (Dark Portal)|1|12|0|1|0
+209779|Mote of Mannoroth|1|12|0|1|0
+210966|Blood of the Legion|1|12|0|1|0
+6783|Dead-tooth's Key|1|12|0|1|0
+5267|Scarlet Kris|3|2|15|63|58
+6622|Sword of Zeal|3|2|7|63|58
+9402|Earthborn Kilt|3|4|2|60|55
+12017|Prismatic Band|2|4|-2|65|60
+12048|Prismatic Pendant|2|4|-3|65|60
+12702|Plans: Radiant Circlet|2|9|4|59|0
+12711|Plans: Whitesoul Helm|3|9|4|60|0
+12717|Plans: Lionheart Helm|4|9|4|61|0
+12728|Plans: Invulnerable Mail|4|9|4|63|0
+13000|Staff of Hale Magefire|3|2|10|62|57
+13001|Maiden's Circle|3|4|-2|61|55
+13002|Lady Alizabeth's Pendant|3|4|-3|59|54
+13006|Mass of McGowan|3|2|4|62|57
+13053|Doombringer|3|2|8|60|55
+13083|Garrett Family Crest|3|4|6|62|57
+13107|Magiskull Cuffs|3|4|1|62|57
+13113|Feathermoon Headdress|3|4|2|63|58
+13133|Drakesfire Epaulets|3|4|3|61|56
+13487|Recipe: Transmute Water to Undeath|2|9|6|55|0
+13488|Recipe: Transmute Life to Earth|2|9|6|55|0
+13490|Recipe: Greater Stoneshield Potion|2|9|6|56|0
+13493|Recipe: Greater Arcane Elixir|2|9|6|57|0
+13518|Recipe: Flask of Petrification|2|9|6|60|0
+14330|Eternal Bindings|2|4|1|61|56
+14331|Eternal Cloak|2|4|-6|58|53
+14334|Eternal Sarong|2|4|1|63|58
+14336|Eternal Wraps|2|4|1|65|60
+14466|Pattern: Frostweave Tunic|2|9|2|51|0
+14511|Pattern: Gloves of Spell Mastery|4|9|2|62|0
+14978|Exalted Sabatons|2|4|4|63|58
+14979|Exalted Helmet|2|4|4|64|59
+14982|Exalted Shield|2|4|6|65|60
+14983|Exalted Armsplints|2|4|4|59|54
+15221|Holy War Sword|2|2|7|65|60
+15283|Lunar Wand|2|2|19|64|59
+15289|Archstrike Bow|2|2|2|65|60
+15434|Supreme Sash|2|4|2|61|56
+15435|Supreme Shoes|2|4|2|63|58
+15439|Supreme Crown|2|4|2|64|59
+15440|Supreme Leggings|2|4|2|63|58
+15441|Supreme Shoulders|2|4|2|63|58
+15678|Triumphant Sabatons|2|4|3|63|58
+15679|Triumphant Bracers|2|4|3|61|56
+15680|Triumphant Chestpiece|2|4|3|65|60
+15681|Triumphant Cloak|2|4|-6|58|53
+15682|Triumphant Gauntlets|2|4|3|63|58
+15683|Triumphant Girdle|2|4|3|60|55
+15684|Triumphant Skullcap|2|4|3|64|59
+15685|Triumphant Legplates|2|4|3|63|58
+15686|Triumphant Shoulder Pads|2|4|3|63|58
+15687|Triumphant Shield|2|4|6|65|60
+15989|Eternal Rod|2|4|-5|65|60
+16044|Schematic: Lifelike Mechanical Toad|2|9|3|53|0
+16055|Schematic: Arcane Bomb|2|9|3|60|0
+16253|Formula: Enchant Chest - Greater Stats|2|9|8|62|0
+17413|Codex: Prayer of Fortitude|3|9|0|48|48
+17414|Codex: Prayer of Fortitude II|3|9|0|60|60
+17682|Book: Gift of the Wild|3|9|0|50|50
+17683|Book: Gift of the Wild II|3|9|0|60|60
+17962|Blue Sack of Gems|2|15|4|1|0
+17963|Green Sack of Gems|2|15|4|1|0
+17964|Gray Sack of Gems|2|15|4|1|0
+17965|Yellow Sack of Gems|2|15|4|1|0
+17969|Red Sack of Gems|2|15|4|1|0
+18600|Tome of Arcane Brilliance|3|9|0|56|56
+18704|Mature Blue Dragon Sinew|4|12|0|71|60
+22390|Plans: Persuader|4|9|4|63|0
+22393|Codex: Prayer of Shadow Protection|3|9|0|60|60
+22890|Tome of Frost Ward V|3|9|0|60|60
+22891|Grimoire of Shadow Ward IV|3|9|0|60|60
+226404|Tarnished Undermine Real|2|12|0|60|0
+227905|Plans: Skyrider's Masterwork Stormhammer|3|9|4|63|0
+228114|Plans: Refined Arcanite Reaper|3|9|4|63|0
+228117|Plans: Refined Arcanite Champion|3|9|4|63|0
+228250|Plans: Stronger-hold Gauntlets|4|9|4|62|0
+228305|Plans: Refined Hammer of the Titans|3|9|4|63|0
+228310|Plans: Hardened Frostguard|3|9|4|63|0
+228313|Plans: Tempest Gauntlets|3|9|4|59|0
+228314|Plans: Warcrest of the Great Chief|3|9|4|61|0
+228315|Plans: Sageblade of the Archmagus|4|9|4|64|0
+228316|Pattern: Incandescent Mooncloth Vest|3|9|2|60|0
+228317|Pattern: Incandescent Mooncloth Circlet|3|9|2|62|0
+228318|Pattern: Incandescent Mooncloth Leggings|3|9|2|58|0
+228340|Unmelting Ice Girdle|4|4|4|71|60
+228345|Leggings of Arcane Supremacy|4|4|1|69|60
+228347|Typhoon|4|2|8|68|60
+228349|Eskhandar's Left Claw|4|2|13|66|60
+228381|Cold Snap|4|2|19|70|60
+228382|Fang of the Mystics|4|2|15|70|60
+228383|Puissant Cape|4|4|-6|70|60
+228384|Snowblind Shoes|4|4|1|69|60
+228385|Crystal Adorned Crown|4|4|1|68|60
+228389|Drape of Benediction|4|4|-6|67|60
+228993|Pattern: Bottomless Bag|3|9|2|62|0
+6799|Vejrek's Head|1|12|0|1|0
+6847|Dark Iron Script|1|12|0|1|0
+208205|Blackrat's Note|1|15|0|1|0
+208219|Bottom-Left Map Piece|1|0|0|1|0
+221351|Waterlogged Shaman's Notes|1|12|0|1|0
+6805|Horn of Vorlus|1|12|0|1|0
+15654|Merciless Belt|2|4|3|54|49
+6809|Elura's Medallion|1|12|0|1|0
+14283|Opulent Leggings|2|4|1|54|49
+14321|Resplendent Cloak|2|4|-6|55|50
+14452|Highborne Pauldrons|2|4|1|54|49
+14667|Keeper's Wreath|2|4|2|53|48
+14789|Protector Breastplate|2|4|3|54|49
+14790|Protector Buckler|2|4|6|54|49
+14849|Sunscale Helmet|2|4|4|53|48
+14926|Lofty Gauntlets|2|4|4|53|48
+14928|Lofty Legguards|2|4|4|55|50
+14929|Lofty Shoulder Pads|2|4|4|54|49
+14963|High Chief's Pauldrons|2|4|4|53|48
+15184|Praetorian Gloves|2|4|2|54|49
+15190|Grand Cloak|2|4|-6|55|50
+15390|Jadefire Chestguard|2|4|2|56|51
+15427|Peerless Cloak|2|4|-6|54|49
+15671|Magnificent Cloak|2|4|-6|56|51
+14281|Opulent Crown|2|4|1|53|48
+14295|Arachnidian Legguards|2|4|1|55|50
+14298|Bonecaster's Spaulders|2|4|1|56|51
+14299|Bonecaster's Boots|2|4|1|54|49
+14675|Pridelord Gloves|2|4|2|56|51
+14795|Protector Helm|2|4|3|53|48
+14802|Bloodlust Gauntlets|2|4|3|55|50
+15656|Merciless Epaulets|2|4|3|54|49
+15659|Impenetrable Bindings|2|4|3|55|50
+15661|Impenetrable Cloak|2|4|-6|54|49
+15663|Impenetrable Belt|2|4|3|56|51
+14287|Opulent Tunic|2|4|1|56|51
+14297|Arachnidian Robes|2|4|1|57|52
+14304|Bonecaster's Belt|2|4|1|55|50
+14305|Bonecaster's Sarong|2|4|1|57|52
+14311|Celestial Bindings|2|4|1|55|50
+14313|Celestial Cape|2|4|-6|54|49
+14445|Venomshroud Silk Robes|2|4|1|54|49
+14674|Pridelord Girdle|2|4|2|55|50
+14844|Sunscale Chestguard|2|4|4|54|49
+14857|Vanguard Sabatons|2|4|4|54|49
+14962|High Chief's Legguards|2|4|4|54|49
+14968|Glorious Belt|2|4|4|55|50
+14970|Glorious Legplates|2|4|4|58|53
+15181|Praetorian Boots|2|4|2|55|50
+15187|Praetorian Pauldrons|2|4|2|54|49
+15394|Jadefire Pants|2|4|2|54|49
+15662|Impenetrable Gauntlets|2|4|3|57|52
+15694|Merciless Greaves|2|4|3|54|49
+15983|Gaea's Scepter|2|4|-5|52|47
+14302|Bonecaster's Gloves|2|4|1|56|51
+14803|Bloodlust Belt|2|4|3|55|50
+14855|Vanguard Gauntlets|2|4|4|55|50
+14856|Vanguard Girdle|2|4|4|54|49
+14961|High Chief's Crown|2|4|4|55|50
+15179|Praetorian Padded Armor|2|4|2|57|52
+15395|Jadefire Epaulets|2|4|2|53|48
+15645|Ironhide Helmet|2|4|3|55|50
+15651|Merciless Crown|2|4|3|56|51
+15753|Pattern: Stormshroud Armor|3|9|1|57|0
+10598|Hetaera's Bloodied Head|1|12|0|1|0
+10599|Hetaera's Beaten Head|1|12|0|1|0
+10600|Hetaera's Bruised Head|1|12|0|1|0
+15764|Pattern: Stormshroud Shoulders|3|9|1|59|0
+14312|Celestial Crown|2|4|1|61|56
+14322|Resplendent Circlet|2|4|1|62|57
+227899|Pattern: Honed Blue Dragonscale Shoulders|3|9|1|59|0
+14685|Indomitable Gauntlets|2|4|2|62|57
+14815|Warstrike Gauntlets|2|4|3|62|57
+15660|Impenetrable Breastplate|2|4|3|61|56
+14554|Cloudkeeper Legplates|4|4|4|62|57
+15195|Grand Breastplate|2|4|2|62|57
+6840|Galvanized Horn|1|12|0|1|0
+6845|Burning Rock|1|12|0|1|0
+19775|Sealed Azure Bag|1|12|0|1|0
+8953|Deep Fried Plantains|1|0|5|55|45

@@ -90,18 +90,22 @@ local SNAKE = "Interface\\AddOns\\SeviathsUsefulTools\\Media\\snake_tile.tga"
 function SFP.BlizzardFrame(f, big)
     if not f or not f.SetBackdrop then return end
     if big == "inset" then
-        -- a panel inside a window: the darker dialog background with a thin red border
-        f:SetBackdrop({ bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background-Dark", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-            tile = true, tileSize = 32, edgeSize = 12, insets = { left = 3, right = 3, top = 3, bottom = 3 } })
-        f:SetBackdropColor(0.55, 0.55, 0.58, 1)
-        f:SetBackdropBorderColor(0.75, 0.22, 0.2, 1)
-        -- the same gray marble as the window, a little darker, so the panel is not a black hole
+        -- a panel inside a window: the game's own inset art (the rock background and the inset frame of the quest log / map)
+        f:SetBackdrop(nil)
         if not f.seviathMarble then
-            local mt = f:CreateTexture(nil, "BACKGROUND", nil, 0)
-            mt:SetPoint("TOPLEFT", 3, -3)
-            mt:SetPoint("BOTTOMRIGHT", -3, 3)
-            mt:SetColorTexture(0.24, 0.24, 0.26, 1)   -- the gray of the game's own windows
-            f.seviathMarble = mt
+            local bg = f:CreateTexture(nil, "BACKGROUND", nil, -8)
+            bg:SetAllPoints()
+            bg:SetTexture("Interface\\FrameGeneral\\UI-Background-Rock", "REPEAT", "REPEAT")
+            bg:SetHorizTile(true)
+            bg:SetVertTile(true)
+            f.seviathMarble = bg
+            local ok = NineSliceUtil and NineSliceUtil.ApplyLayoutByName and pcall(NineSliceUtil.ApplyLayoutByName, f, "InsetFrameTemplate")
+            if not ok then
+                f:SetBackdrop({ edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", edgeSize = 12, insets = { left = 3, right = 3, top = 3, bottom = 3 } })
+                f:SetBackdropBorderColor(0.6, 0.5, 0.3, 1)
+            end
+            f.SetBackdropColor = function() end
+            f.SetBackdropBorderColor = function() end
         end
         return
     end
@@ -112,19 +116,20 @@ function SFP.BlizzardFrame(f, big)
         f:SetBackdropBorderColor(0.9, 0.28, 0.24, 0.8)
         return
     end
-    -- a window: the dark dialog background of the game, a red tooltip border, and the snake in the corner
-    f:SetBackdrop({ bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
-        tile = true, tileSize = 32, edgeSize = 24, insets = { left = 6, right = 6, top = 6, bottom = 6 } })
-    f:SetBackdropColor(1, 1, 1, 1)
-    f:SetBackdropBorderColor(1, 1, 1, 1)
-    -- never see-through: a solid dark base under the dialog background, and later color calls on a window (old per-window tints) are ignored
+    -- a window: the game's own frame art, the way the quest log and the map are made: the marble background and the metal frame (nine slice), and the
+    -- snake in a corner. Later color calls on a window (old per-window tints) are ignored.
+    f:SetBackdrop(nil)
     if not f.seviathBase then
-        local base = f:CreateTexture(nil, "BACKGROUND", nil, 0)
-        base:SetPoint("TOPLEFT", 6, -6)
-        base:SetPoint("BOTTOMRIGHT", -6, 6)
-        -- the gray marble of the game's own windows (the quest log, the map frame)
-        base:SetColorTexture(0.30, 0.30, 0.32, 1)   -- the gray of the game's own windows
-        f.seviathBase = base
+        local bg = f:CreateTexture(nil, "BACKGROUND", nil, -8)
+        bg:SetAllPoints()
+        bg:SetTexture("Interface\\FrameGeneral\\UI-Background-Marble", "REPEAT", "REPEAT")
+        bg:SetHorizTile(true)
+        bg:SetVertTile(true)
+        f.seviathBase = bg
+        local ok = NineSliceUtil and NineSliceUtil.ApplyLayoutByName and pcall(NineSliceUtil.ApplyLayoutByName, f, "ButtonFrameTemplateNoPortrait")
+        if not ok then
+            f:SetBackdrop({ edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Gold-Border", edgeSize = 24, insets = { left = 6, right = 6, top = 6, bottom = 6 } })
+        end
         f.SetBackdropColor = function() end
         f.SetBackdropBorderColor = function() end
     end

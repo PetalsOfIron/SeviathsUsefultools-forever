@@ -658,3 +658,46 @@
 15395|Nafien|361:64.8,8.2|8461:55:45:3:Deadwood of the North,8465:55:45:3:Speak to Salfa,8467:55:45:3:Feathers for Nafien,84777:55:45:3:Feathers for Nafien,85987:60:1:1:One Commendation Signet,85988:60:1:2:One Commendation Signet,86160:60:1:1:Ten Commendation Signets,86161:60:1:2:Ten Commendation Signets
 15440|Captain Blackanvil|1377:32.8,52.4;32.8,52.6|8508:60:60:1:Field Duty Papers
 15498|Windcaller Yessendra|1377:52,38|8556:60:60:3:Signet of Unyielding Strength,8697:60:60:3:Ring of Infinite Wisdom,8698:60:60:2:Ring of the Gathering Storm,8699:60:60:3:Band of Vaulted Secrets,8700:60:60:3:Band of Unending Life,8701:60:60:3:Band of Veiled Shadows,8702:60:60:3:Ring of Unspoken Names,8703:60:60:1:Ring of Eternal Justice,8704:60:60:3:Signet of the Unseen Path
+15499|Warden Haro|1377:51,38.8|8558:60:60:3:Sickle of Unyielding Strength,8705:60:60:3:Gavel of Infinite Wisdom,8706:60:60:2:Hammer of the Gathering Storm,8707:60:60:3:Blade of Vaulted Secrets,8708:60:60:3:Mace of Unending Life,8709:60:60:3:Dagger of Veiled Shadows,8710:60:60:3:Kris of Unspoken Names,8711:60:60:1:Blade of Eternal Justice,8712:60:60:3:Scythe of the Unseen Path
+15500|Keyl Swiftclaw|1377:51.8,39.4|8557:60:60:3:Drape of Unyielding Strength,8689:60:60:3:Shroud of Infinite Wisdom,8690:60:60:2:Cloak of the Gathering Storm,8691:60:60:3:Drape of Vaulted Secrets,8692:60:60:3:Cloak of Unending Life,8693:60:60:3:Cloak of Veiled Shadows,8694:60:60:3:Shroud of Unspoken Names,8695:60:60:1:Cape of Eternal Justice,8696:60:60:3:Cloak of the Unseen Path
+15526|Meridith the Mermaiden|440:58.4,95.4;58.4,95.6;58.4,96.8|8599:60:60:3:Love Song for Narain
+15540|Windcaller Kaldon|1377:50,36.4;50,36.6|8507:60:60:1:Field Duty,8731:60:60:2:Field Duty,8800:60:60:3:Cenarion Battlegear,9338:60:60:3:Allegiance to Cenarion Circle
+15557|Elder Rumblerock|46:82.2,46.4;82.2,46.6|8636:60:1:3:Rumblerock the Elder
+15558|Elder Silvervein|38:33.2,46.4;33.2,46.6|8642:60:1:3:Silvervein the Elder
+15559|Elder Highpeak|47:49.8,48|8643:60:1:3:Highpeak the Elder
+15561|Elder Obsidian|130:45,41.2|8645:60:1:3:Obsidian the Elder
+15563|Elder Bellowrage|4:58.8,51.4;58.8,51.6|8647:60:1:3:Bellowrage the Elder
+15565|Elder Stormbrow|12:39.8,63.4;39.8,63.6|8649:60:1:3:Stormbrow the Elder
+15566|Elder Snowcrown|139:81.4,60.4;81.4,60.6|8650:60:1:3:Snowcrown the Elder
+15567|Elder Ironband|51:21.2,78.4;21.4,78.8;21.6,78.6|8651:60:1:3:Ironband the Elder
+15568|Elder Graveborn|85:61.8,53.8|8652:60:1:3:Graveborn the Elder
+15569|Elder Goldwell|1:46.8,51.4;46.8,51.6|8653:60:1:3:Goldwell the Elder
+15570|Elder Primestone|1377:23,11.8|8654:60:1:3:Primestone the Elder
+15572|Elder Runetotem|14:53.2,43.4;53.2,43.6|8670:60:1:3:Runetotem the Elder
+15573|Elder Ragetotem|440:36.2,80.4;36.2,80.6|8671:60:1:3:Ragetotem the Elder
+15574|Elder Stonespire|618:61.4,37.8|8672:60:1:3:Stonespire the Elder
+15575|Elder Bloodhoof|215:48.4,53.4;48.4,53.6|8673:60:1:3:Bloodhoof the Elder
+15576|Elder Winterhoof|33:27.4,74.2;27.6,74.2|8674:60:1:3:Winterhoof the Elder
+15577|Elder Skychaser|40:56.6,47.2|8675:60:1:3:Skychaser the Elder
+15578|Elder Wildmane|440:38.6,20.2|8676:60:1:3:Wildmane the Elder
+15581|Elder Grimtotem|357:76.6,37.8|8679:60:1:3:Grimtotem the Elder
+15582|Elder Windtotem|17:62.6,36.6|8680:60:1:3:Windtotem the Elder
+15583|Elder Thunderhorn|490:50.4,76.2|8681:60:1:3:Thunderhorn the Elder
+15584|Elder Skyseer|400:45.4,50;45.6,49.8|8682:60:1:3:Skyseer the Elder
+15585|Elder Dawnstrider|46:64.4,23.8;64.6,24|8683:60:1:3:Dawnstrider the Elder
+15586|Elder Dreamseer|440:51.4,27.8|8684:60:1:3:Dreamseer the Elder
+15588|Elder High Mountain|17:45,57.8|8686:60:1:3:High Mountain the Elder
+15592|Elder Windrun|139:39.4,75.2;39.6,75.4|8688:60:1:3:Windrun the Elder
+15595|Elder Bladeleaf|141:57.2,60.8|8715:60:1:3:Bladeleaf the Elder
+15596|Elder Starglade|33:53,18.4;53.2,18.6|8716:60:1:3:Starglade the Elder
+15597|Elder Moonwarden|17:51.4,30.6|8717:60:1:3:Moonwarden the Elder
+15599|Elder Bladesing|1377:49,37.4;49,37.6|8719:60:1:3:Bladesing the Elder
+15600|Elder Skygleam|16:72.4,85;72.6,85|8720:60:1:3:Skygleam the Elder
+15601|Elder Starweave|148:36.8,46.6|8721:60:1:3:Starweave the Elder
+15602|Elder Meadowrun|28:65.8,47.8|8722:60:1:3:Meadowrun the Elder
+15603|Elder Nightwind|361:37.6,53|8723:60:1:3:Nightwind the Elder
+15604|Elder Morningdew|400:79.2,77|8724:60:1:3:Morningdew the Elder
+15605|Elder Riversong|331:35.4,48.8;35.6,48.8|8725:60:1:3:Riversong the Elder
+15606|Elder Brightspear|618:55.4,43.6;55.6,43.4;55.6,43.6|8726:60:1:3:Brightspear the Elder
+15624|Forest Wisp|141:37.4,47.8;37.6,48|8734:60:60:3:Tyrande and Remulos
+15693|Jonathan the Revelator|1377:26,90.8|8745:60:60:3:Treasure of the Timeless One,86449:60:60:3:Treasure of the Timeless One
