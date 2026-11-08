@@ -2,6 +2,48 @@
 local _, ns = SFP_Module("DungeonsRaids")
 local D = ns.Data
 
+-- the role of a member: the role the game assigned; else (WoW Forever has no role assignment outside the dungeon finder) for yourself the
+-- role you chose for the group finder or the one your talents say, and for others what their addon shared or what an inspect read
+local function roleFromSpec(spec, class)
+  if type(spec) ~= "string" then return nil end
+  local s = spec:lower()
+  if s:find("protection") or s:find("blood") or s:find("bear") then return "TANK" end
+  if s:find("holy") or s:find("restoration") or s:find("discipline") then
+    if class == "SHAMAN" and s:find("restoration") then return "HEALER" end
+    return "HEALER"
+  end
+  if s ~= "" then return "DAMAGER" end
+end
+function ns.RoleOf(unit, class)
+  local assigned = ns.Safe(UnitGroupRolesAssigned and UnitGroupRolesAssigned(unit))
+  if assigned and assigned ~= "NONE" then return assigned end
+  local S = _G.SeviathsUsefulTools
+  if UnitIsUnit(unit, "player") then
+    -- the roles ticked in the group finder window
+    if GetLFGRoles then
+      local ok, _, tank, healer, dps = pcall(GetLFGRoles)
+      if ok then
+        if tank and not healer and not dps then return "TANK" end
+        if healer and not tank and not dps then return "HEALER" end
+        if dps and not tank and not healer then return "DAMAGER" end
+      end
+    end
+    if S and S.TalentAdvisor and S.TalentAdvisor.DetectedSpec then
+      local okS, sp = pcall(S.TalentAdvisor.DetectedSpec)
+      if okS then
+        local nm = type(sp) == "table" and (sp.name or sp[1]) or sp
+        local r = roleFromSpec(nm, class)
+        if r then return r end
+      end
+    end
+    return "NONE"
+  end
+  -- another player: what they shared (their addon) or an inspect read
+  local peer = S and S.Social and S.Social.PeerOf and S.Social.PeerOf(unit)
+  if peer and peer.talent and type(peer.talent.role) == "string" then return peer.talent.role end
+  return "NONE"
+end
+
 function ns:GroupComp()
   local c = {
     n = 0, roles = { TANK = 0, HEALER = 0, DAMAGER = 0, NONE = 0 },
@@ -11,7 +53,7 @@ function ns:GroupComp()
     if UnitExists(unit) then
       local _, class = UnitClass(unit)
       class = ns.Safe(class)
-      local role = ns.Safe(UnitGroupRolesAssigned(unit)) or "NONE"
+      local role = ns.RoleOf(unit, class) or "NONE"
       c.n = c.n + 1
       c.roles[role] = (c.roles[role] or 0) + 1
       if class then

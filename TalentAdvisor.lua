@@ -635,6 +635,17 @@ local function fitWindow()
     if win.shrinkBtn then win.shrinkBtn:SetText(shrunk and "+" or "-") end
     for _, btn in pairs(sections) do btn:SetShown(not shrunk) end
     for _, btn in pairs(specBtns) do btn:SetShown(not shrunk) end
+    if win.roleBtns and shrunk then for _, b in ipairs(win.roleBtns) do b:Hide() end end
+    -- shrunk: the big metal frame is left out (it is taller than the 34 px bar and showed as lone lines): a plain bar with a gold edge
+    if win.NineSlice then win.NineSlice:SetShown(not shrunk) end
+    if win.seviathBase then win.seviathBase:SetShown(not shrunk) end
+    if shrunk then
+        win:SetBackdrop({ bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = true, tileSize = 16, edgeSize = 14,
+            insets = { left = 3, right = 3, top = 3, bottom = 3 } })
+        win:SetBackdropBorderColor(0.8, 0.65, 0.3, 1)
+    elseif win.GetBackdrop and win:GetBackdrop() then
+        win:SetBackdrop(nil)
+    end
     local h = shrunk and 34 or math.max(160, math.min(text:GetStringHeight() + 84 + (FOREVER and (28 + (win.extraH or 0)) or 0), (UIParent:GetHeight() or 800) - 140))
     if FOREVER and win.child then
         win.child:SetHeight(text:GetStringHeight() + 10 + (win.extraH or 0))
@@ -847,6 +858,9 @@ for _, w in ipairs(WANT.dps) do WANT.feral[#WANT.feral + 1] = w end
 for _, w in ipairs(WANT.tank) do WANT.feral[#WANT.feral + 1] = w end
 
 local function roleOf(token, spec)
+    -- a role picked with the buttons (Feral: Cat dps or Bear tank)
+    local pick = SFP.db and SFP.db.talentRole and SFP.db.talentRole[token .. ":" .. tostring(spec)]
+    if pick == "tank" or pick == "dps" then return pick end
     if spec == "Feral Combat" then return "feral" end
     if spec == "Protection" then return "tank" end
     if spec == "Holy" or spec == "Discipline" or spec == "Restoration" then return "healer" end
@@ -1087,6 +1101,14 @@ local function refreshForever()
     makeSpecButtons()
     local token, chosen, specs, auto = foreverSpec()
     for _, b in ipairs(specBtns) do if b.spec then b:SetEnabled(b.spec ~= chosen) end end
+    -- the role buttons only for a specialization with two roles
+    if win and win.roleBtns then
+        local pick = SFP.db.talentRole and SFP.db.talentRole[token .. ":" .. tostring(chosen)]
+        for _, b in ipairs(win.roleBtns) do
+            b:SetShown(chosen == "Feral Combat")
+            b:SetEnabled(pick ~= b.role)
+        end
+    end
     local taken = takenTalents()
     if #specs == 0 then
         text:SetText("|cff808080No talent builds for your class yet.|r")
@@ -1112,6 +1134,17 @@ local function refreshForever()
             local all = SFP.TalentBuilds[token .. ":" .. chosen] or {}
             for _, r in ipairs(all) do if r[2] == c then rows[#rows + 1] = r end end
             if #rows == 0 then for _, r in ipairs(all) do if r[2] ~= "other" then rows[#rows + 1] = r end end end
+            -- the role picked (tank or dps): only the builds of that role (a build that fits both stays)
+            local pick = SFP.db.talentRole and SFP.db.talentRole[token .. ":" .. chosen]
+            if pick then
+                local kept = {}
+                for _, r in ipairs(rows) do
+                    local nm = tostring(r[1]):lower()
+                    local isTank, isDps = nm:find("tank") or nm:find("bear"), nm:find("dps") or nm:find("cat")
+                    if (pick == "tank" and (isTank or not isDps)) or (pick == "dps" and (isDps or not isTank)) then kept[#kept + 1] = r end
+                end
+                if #kept > 0 then rows = kept end
+            end
         end
         for _, row in ipairs(rows) do
             local seen = {}
@@ -1320,6 +1353,26 @@ local function build()
         b:SetScript("OnClick", function() setContent(o[1]); refresh() end)
         sections[o[1]] = b
         x = x + 110
+    end
+    -- Feral Combat has two roles: Cat (damage) and Bear (tank): the buttons choose which builds and stats the advice follows
+    if FOREVER then
+        local function roleBtn(label, role, x2)
+            local b = CreateFrame("Button", nil, win, "UIPanelButtonTemplate")
+            b:SetSize(104, 22)
+            b:SetPoint("TOPLEFT", x2, -32)
+            b:SetText(label)
+            b:SetScript("OnClick", function()
+                local _, tk = UnitClass("player")
+                local token2, _, _, _ = foreverSpec()
+                local _, chosen = foreverSpec()
+                SFP.db.talentRole = SFP.db.talentRole or {}
+                SFP.db.talentRole[(token2 or tk) .. ":" .. tostring(chosen)] = role
+                refresh()
+            end)
+            b.role = role
+            return b
+        end
+        win.roleBtns = { roleBtn("Cat (dps)", "dps", x), roleBtn("Bear (tank)", "tank", x + 110) }
     end
     if FOREVER then
         text = win.text

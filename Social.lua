@@ -1636,6 +1636,17 @@ local function playerTooltip(tt, unit)
         end
         if text then tt:AddLine("Talent choice: |cffffffff" .. text .. "|r", 1, 0.82, 0, true) end
     end
+    -- WoW Forever: the talent tree (specialization) they have most points in, from the Talent Advisor's own detection (yourself) or the profile shared
+    if isSelf and not (tal and (tal.hero or tal.matchName)) and SFP.TalentAdvisor and SFP.TalentAdvisor.DetectedSpec then
+        local okS, sp = pcall(SFP.TalentAdvisor.DetectedSpec)
+        local nm = okS and (type(sp) == "table" and (sp.name or sp[1]) or sp)
+        if type(nm) == "string" and nm ~= "" then
+            local pick = SFP.db and SFP.db.talentRole and SFP.db.talentRole[(select(2, UnitClass("player")) or "") .. ":" .. nm]
+            tt:AddLine("Talent choice: |cffffffff" .. nm .. (pick and (" (" .. (pick == "tank" and "tank" or "dps") .. ")") or "") .. "|r", 1, 0.82, 0, true)
+        end
+    elseif not isSelf and rec and rec.talent and type(rec.talent.spec) == "string" then
+        tt:AddLine("Talent choice: |cffffffff" .. rec.talent.spec .. "|r", 1, 0.82, 0, true)
+    end
     if S.AddGuildNote then S.AddGuildNote(tt, S.NormKey and S.NormKey(unit) or nil, rec ~= nil) end
 
     -- sockets and enchants
