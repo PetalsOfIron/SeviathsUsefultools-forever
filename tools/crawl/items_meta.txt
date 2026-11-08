@@ -5698,3 +5698,13 @@
 213633|Partial Spell Notes|2|15|0|10|0
 213634|Partial Spell Notes|2|15|0|10|0
 213126|Rune of the Scrapper|2|0|-3|40|0
+213122|Rune of Steady Shot|2|0|-3|40|0
+213109|Rune of Focused Rage|2|0|-3|40|0
+216884|Bloodthirst Blade|4|2|8|100|125
+216945|Curious Dalaran Relic|1|12|0|1|0
+216946|Glittering Dalaran Relic|1|12|0|1|0
+216947|Whirring Dalaran Relic|1|12|0|1|0
+216948|Odd Dalaran Relic|1|12|0|1|0
+216949|Heavy Dalaran Relic|1|12|0|1|0
+216950|Creepy Dalaran Relic|1|12|0|1|0
+216951|Slippery Dalaran Relic|1|12|0|1|0
