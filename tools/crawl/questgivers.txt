@@ -744,3 +744,11 @@
 213445|Raszel Ander|17:49.2,57.2|78914:40:30:3:Soul Vessel,78994:40:30:3:A Solid Foundation
 214208|N'ora Anyheart|17:62,39.4|78909:25:25:3:Shifting Scale Talisman
 214876|Davius Voidstar|148:36.8,43.4;36.8,43.6|79099:27:25:1:Baron Aquanis
+215643|Tokal|33:27,77.2|79236:40:30:3:Cherry for Your Thoughts?,79242:40:30:3:No Honor Among Thieves
+215850|Raszel Ander|405:51.2,82.4;51.2,82.6|79298:40:30:3:Tempting Fate
+216289|Orokai|493:41.2,43.6;41.4,43.4;41.6,43.4|79377:40:26:3:The Lost Saplings,85401:60:55:3:The Frigid Barrow
+216915|Strange Snowman|36:35.4,72.4;35.4,72.6;35.6,72|79484:60:25:1:You're a Mean One...,79485:60:25:2:You're a Mean One...
+217300|Skonk|45:57.4,74.4;57.6,74.4;57.6,74.6|79677:40:26:3:A Quick Grocery Run,79678:40:26:3:Taste Testing
+218236|Red Bag|46:53,24.4;53,24.8|84211:60:55:3:Poacher's Den
+218237|Wirdal Wondergear|357:84.2,43.8|79982:40:40:3:Warranty Claim
+218920|Agent Keanna|41:52,34.2;52,34.6|80098:40:1:3:Curious Dalaran Relic,80120:40:1:3:A Service to Dalaran,80147:40:1:3:Curious Dalaran Relic,80148:40:1:3:Curious Dalaran Relic,80149:40:1:3:Curious Dalaran Relic,80150:40:1:3:Curious Dalaran Relic,80151:40:1:3:Curious Dalaran Relic,80152:40:1:3:Curious Dalaran Relic,86966:60:60:3:Seeking Survivors,86969:60:60:3:The Hypothesis,86970:60:60:3:Testing Our Hypothesis

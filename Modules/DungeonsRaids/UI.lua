@@ -1078,7 +1078,7 @@ end
 
 function UI:Dock()
   -- the window the lists are shown in: the Group Finder (host), or in WoW Forever the Looking For Group window (the top frame above the list)
-  local host = host
+  local host = UI.lfgHost or PVEFrame
   if not (host and host:IsShown()) and LFGListFrame and LFGListFrame:IsShown() then
     host = LFGListFrame
     while host:GetParent() and host:GetParent() ~= UIParent do host = host:GetParent() end
@@ -1242,20 +1242,38 @@ ns:WhenReady(function()
   return true
 end)
 
--- WoW Forever: the lists open by themselves when the Looking For Group window is opened
+-- WoW Forever: the lists open by themselves when the "Looking For Group" window is opened. That window is found by its title text (its frame name is not
+-- known), every half second; the dungeon list docks to it while it is open and goes away when it is closed
 if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
-  local hooked
-  local function hook()
-    if hooked or not LFGListFrame then return end
-    hooked = true
-    LFGListFrame:HookScript("OnShow", function()
-      C_Timer.After(0.15, function() if LFGListFrame:IsShown() then pcall(UI.Dock, UI) end end)
-    end)
-    LFGListFrame:HookScript("OnHide", function() if UI.frame and UI.docked then UI.frame:Hide() end end)
+  local function titleOf(fr)
+    for _, r in ipairs({ fr:GetRegions() }) do
+      if r.GetObjectType and r:GetObjectType() == "FontString" then
+        local ok, t = pcall(r.GetText, r)
+        if ok and type(t) == "string" and not (issecretvalue and issecretvalue(t)) and t == (LOOKING_FOR_GROUP or "Looking For Group") then return true end
+      end
+    end
   end
-  local ev = CreateFrame("Frame")
-  ev:RegisterEvent("PLAYER_ENTERING_WORLD")
-  ev:RegisterEvent("ADDON_LOADED")
-  ev:SetScript("OnEvent", hook)
-  hook()
+  local function find()
+    for _, fr in ipairs({ UIParent:GetChildren() }) do
+      if fr.IsShown and fr:IsShown() and not (fr.IsForbidden and fr:IsForbidden()) then
+        if titleOf(fr) then return fr end
+        for _, c in ipairs({ fr:GetChildren() }) do
+          if c.IsShown and c:IsShown() and titleOf(c) then return fr end
+        end
+      end
+    end
+  end
+  local docked
+  C_Timer.NewTicker(0.5, function()
+    local host = find()
+    if host and not docked then
+      docked = true
+      UI.lfgHost = host
+      pcall(UI.Dock, UI)
+    elseif not host and docked then
+      docked = false
+      UI.lfgHost = nil
+      if UI.frame and UI.docked then UI.frame:Hide() end
+    end
+  end)
 end

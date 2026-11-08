@@ -5097,3 +5097,42 @@
 12230|Felwood Slime Sample|1|12|0|1|0
 20614|Bloodvenom Essence|1|12|0|1|0
 11503|Blood Amber|1|12|0|0|0
+11674|Jadefire Felbind|1|12|0|0|0
+15744|Pattern: Wicked Leather Headband|2|9|1|56|0
+15742|Pattern: Warbear Harness|1|9|1|55|0
+14449|Highborne Crown|2|4|1|57|52
+15191|Grand Belt|2|4|2|57|52
+15739|Pattern: Runic Leather Bracers|2|9|1|55|0
+13140|Blood Red Key|1|12|0|49|49
+11512|Patch of Tainted Skin|1|12|0|1|0
+7080|Essence of Water|2|7|10|55|0
+12822|Toxic Horror Droplet|1|12|0|1|0
+11173|Irontree Heart|1|12|0|1|0
+20613|Rotting Wood|1|12|0|1|0
+227924|Unusual Flask|2|12|0|60|0
+15426|Peerless Boots|2|4|2|58|53
+21377|Deadwood Headdress Feather|1|12|0|1|0
+20741|Deadwood Ritual Totem|1|12|0|45|45
+227796|Mysterious Darnassian Scroll|1|0|0|60|0
+14310|Celestial Slippers|2|4|1|58|53
+14314|Celestial Handwraps|2|4|1|58|53
+14327|Resplendent Belt|2|4|1|58|53
+14457|Elunarian Cuffs|2|4|1|58|53
+14677|Pridelord Pants|2|4|2|58|53
+14799|Bloodlust Boots|2|4|3|58|53
+14800|Bloodlust Buckler|2|4|6|59|54
+14804|Bloodlust Helm|2|4|3|58|53
+14858|Vanguard Headdress|2|4|4|58|53
+14932|Heroic Greaves|2|4|4|58|53
+14933|Heroic Gauntlets|2|4|4|58|53
+15429|Peerless Gloves|2|4|2|58|53
+15432|Peerless Shoulders|2|4|2|58|53
+15668|Magnificent Bracers|2|4|3|58|53
+15673|Magnificent Belt|2|4|3|58|53
+15890|Vanguard Shield|2|4|6|59|54
+15752|Pattern: Living Leggings|3|9|1|57|0
+225838|Voltaic Icon|2|4|9|1|0
+7968|Southsea Treasure|1|12|0|1|0
+4949|Orcish Cleaver|2|2|0|21|16
+8073|Cache of Zanzil's Altered Mixture|1|12|0|1|0
+8049|Gnarlpine Necklace|1|12|0|1|0
