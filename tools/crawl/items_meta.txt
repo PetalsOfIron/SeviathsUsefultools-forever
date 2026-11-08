@@ -5633,3 +5633,7 @@
 21106|Draconic for Dummies|4|15|4|1|0
 21145|Essence of Xandivious|1|12|0|1|0
 21149|Fragment of the Nightmare's Corruption|1|12|0|1|0
+1728|Teebu's Blazing Longsword|4|2|7|65|60
+2801|Blade of Hanna|4|2|8|64|59
+3475|Cloak of Flames|4|4|-6|65|60
+14558|Lady Maye's Pendant|4|4|-3|64|59
