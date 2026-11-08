@@ -803,7 +803,7 @@ local function BuildSettings(p)
   UI.Check(p, "Filter group finder listings", db, "enabled", 16, -34)
   UI.Check(p, "Show tags and tooltip info", db, "annotate", COL2, -34)
   UI.Check(p, "Sort favorites and friends first", db, "favoritesFirst", 16, -60)
-  UI.Check(p, "Rate group after leaving", db, "ratePrompt", COL2, -60,
+  UI.Check(p, "Rate group after the last boss and after leaving", db, "ratePrompt", COL2, -60,
     "Only after instance groups that lasted at least 5 minutes.")
   UI.Check(p, "Sound when invited", db, "inviteSound", 16, -86)
   UI.Check(p, "Pending applications panel", db, "showPending", COL2, -86, nil,

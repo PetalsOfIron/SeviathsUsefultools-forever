@@ -183,6 +183,9 @@ SFP.QuestGivers = {
 {"Taylor Stitchings",94.6,83.4,"90116:60:60:3:Holy Threads|90120:60:60:3:Red is Not Dead"},
 {"Kyndra Swiftarrow",93.8,90.2,"89381:60:60:3:Pin Cushion|89421:60:60:3:Bullet Heaven"},
 {"Leonid Barthalomew the Revered",33.4,27.4,"89234:60:60:3:A Personal Matter|89568:60:60:3:Something New|89574:60:60:3:Servants of Death"},
+{"The Will of the Ashbringer",81.6,58,"89488:60:60:3:A Kind of Peace"},
+{"Leonid Barthalomew the Revered",16.4,31.2,"89229:60:60:3:The Right Path|89328:60:60:3:Loss|89329:60:60:3:Stomping Out The Infestation"},
+{"Leonid Barthalomew the Revered",47.8,22,"89235:60:60:3:The Culling|89310:60:60:3:Terrordale"},
 },
 [1424] = {
 {"Lieutenant Farren Orinelle",51.4,58.4,"536:30:25:1:Down the Coast|559:32:25:1:Farren's Proof|560:32:25:1:Farren's Proof|562:32:25:1:Stormwind Ho!|563:32:25:1:Reassignment"},

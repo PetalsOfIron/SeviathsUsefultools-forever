@@ -119,6 +119,30 @@ local function FinishGroup()
   group = { members = {}, start = nil, context = nil }
 end
 
+-- the rate window also opens when the last boss of a dungeon or raid dies (once per run), for the groups that stay together
+-- (the final bosses of the Classic dungeons and raids; the completion events of the game open it too when it sends them)
+local FINAL_BOSS = {}
+for _, n in ipairs({ "Bazzalan", "Mutanus the Devourer", "Edwin VanCleef", "Archmage Arugal", "Aku'mai", "Dextren Ward", "Mekgineer Thermaplugg",
+  "Charlga Razorflank", "High Inquisitor Whitemane", "Amnennar the Coldbringer", "Archaedas", "Chief Ukorz Sandscalp", "Princess Theradras",
+  "Shade of Eranikus", "Emperor Dagran Thaurissan", "Overlord Wyrmthalak", "General Drakkisath", "Baron Rivendare", "Darkmaster Gandling", "King Gordok",
+  "Ragnaros", "Onyxia", "Nefarian", "Hakkar", "Ossirian the Unscarred", "C'Thun", "Kel'Thuzad" }) do FINAL_BOSS[n:lower()] = true end
+local ratedRun
+local function RateNow(why)
+  if not ns.db.ratePrompt then return end
+  Snapshot()
+  local key = tostring(group.context) .. "@" .. tostring(group.start)
+  if ratedRun == key or not group.context or not next(group.members) then return end
+  ratedRun = key
+  lastGroup = { members = group.members, context = group.context }
+  C_Timer.After(4, function() ns:ShowRateWindow(lastGroup.members, lastGroup.context) end)   -- after the loot window and the boss messages
+end
+ns:On("ENCOUNTER_END", function(id, name, difficulty, size, success)
+  name = ns.Safe(name)
+  if success == 1 and type(name) == "string" and FINAL_BOSS[name:lower()] then RateNow("last boss") end
+end)
+ns:On("LFG_COMPLETION_REWARD", function() RateNow("dungeon finder reward") end)
+ns:On("SCENARIO_COMPLETED", function() RateNow("scenario") end)
+
 ns:On("GROUP_ROSTER_UPDATE", Snapshot)
 ns:On("PLAYER_ENTERING_WORLD", Snapshot)
 ns:On("GROUP_LEFT", FinishGroup)
