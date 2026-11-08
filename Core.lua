@@ -97,13 +97,10 @@ function SFP.BlizzardFrame(f, big)
         f:SetBackdropBorderColor(0.75, 0.22, 0.2, 1)
         -- the same gray marble as the window, a little darker, so the panel is not a black hole
         if not f.seviathMarble then
-            local mt = f:CreateTexture(nil, "BACKGROUND", nil, -7)
+            local mt = f:CreateTexture(nil, "BACKGROUND", nil, 0)
             mt:SetPoint("TOPLEFT", 3, -3)
             mt:SetPoint("BOTTOMRIGHT", -3, 3)
-            mt:SetTexture("Interface\\FrameGeneral\\UI-Background-Marble", "REPEAT", "REPEAT")
-            mt:SetHorizTile(true)
-            mt:SetVertTile(true)
-            mt:SetVertexColor(0.55, 0.55, 0.58, 1)
+            mt:SetColorTexture(0.24, 0.24, 0.26, 1)   -- the gray of the game's own windows
             f.seviathMarble = mt
         end
         return
@@ -122,14 +119,11 @@ function SFP.BlizzardFrame(f, big)
     f:SetBackdropBorderColor(1, 1, 1, 1)
     -- never see-through: a solid dark base under the dialog background, and later color calls on a window (old per-window tints) are ignored
     if not f.seviathBase then
-        local base = f:CreateTexture(nil, "BACKGROUND", nil, -8)
+        local base = f:CreateTexture(nil, "BACKGROUND", nil, 0)
         base:SetPoint("TOPLEFT", 6, -6)
         base:SetPoint("BOTTOMRIGHT", -6, 6)
         -- the gray marble of the game's own windows (the quest log, the map frame)
-        base:SetTexture("Interface\\FrameGeneral\\UI-Background-Marble", "REPEAT", "REPEAT")
-        base:SetHorizTile(true)
-        base:SetVertTile(true)
-        base:SetVertexColor(0.78, 0.78, 0.8, 1)
+        base:SetColorTexture(0.30, 0.30, 0.32, 1)   -- the gray of the game's own windows
         f.seviathBase = base
         f.SetBackdropColor = function() end
         f.SetBackdropBorderColor = function() end
