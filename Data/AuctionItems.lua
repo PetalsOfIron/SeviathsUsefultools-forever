@@ -2,7 +2,6 @@
 -- Made by tools/bake_auction.py. No prices: those belong to each player's own realm.
 local _, SFP = ...
 SFP.AuctionItems = {
-SFP.AuctionItems = {
 [25]={2,"Worn Shortsword"},
 [35]={2,"Bent Staff"},
 [36]={2,"Worn Mace"},
