@@ -36,6 +36,9 @@ local function available(entry)
         if ok and q.level > 0 and q.level > lvl + 6 then ok = false end
         -- quests far below the level give nothing: left out
         if ok and q.level > 0 and q.level < lvl - 8 and not SFP.db.questMarkersAll then ok = false end
+        -- a quest of a chain is offered only when the one before it is done
+        local prev = SFP.QuestPrereq and SFP.QuestPrereq[q.id]
+        if ok and prev and C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted and not C_QuestLog.IsQuestFlaggedCompleted(prev) then ok = false end
         if ok and C_QuestLog then
             if C_QuestLog.IsQuestFlaggedCompleted and C_QuestLog.IsQuestFlaggedCompleted(q.id) then ok = false end
             if ok and C_QuestLog.GetLogIndexForQuestID and C_QuestLog.GetLogIndexForQuestID(q.id) then ok = false end

@@ -113,6 +113,7 @@ Guides.lua
 Scanner.lua
 WorldMap.lua
 Data\QuestGivers.lua
+Data\QuestPrereqs.lua
 QuestMarkers.lua
 Treasures.lua
 PointsMenu.lua
