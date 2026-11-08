@@ -1340,7 +1340,10 @@ local buildSocial = simplePage("Players & Party",
         mkText(pane, CYHEX .. "My play style|r  (tick as many as fit; none = automatic)", 12, y - 84, 500, "GameFontNormal")
         local styleChecks = {}
         local ids = {}
-        for _, s in ipairs(S.STYLES) do if s[1] ~= "auto" then ids[#ids + 1] = s end end
+        for _, s in ipairs(S.STYLES) do
+            -- (WoW Forever has no housing: no Housing fan)
+            if s[1] ~= "auto" and not (s[1] == "housing" and WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT) then ids[#ids + 1] = s end
+        end
         for i, s in ipairs(ids) do
             local id = s[1]
             styleChecks[#styleChecks + 1] = mkCheck(pane, s[2], function() local cc = S.Config(); return cc.styles and cc.styles[id] end,
