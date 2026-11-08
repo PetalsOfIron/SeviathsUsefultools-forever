@@ -44,6 +44,39 @@ local function haveQuest(id)
     return false
 end
 
+-- the quests this character has had in its log or finished, kept by the addon (db.questsHad[character][quest]): scanned at login and whenever the log changes,
+-- so a quest done before an update of the addon, or by a different route, is still known once it is seen in the log or turned in
+local function charId()
+    return (UnitName("player") or "?") .. "-" .. ((GetNormalizedRealmName and GetNormalizedRealmName()) or "")
+end
+local function noteHad(id)
+    if type(id) ~= "number" or not SFP.db then return end
+    SFP.db.questsHad = SFP.db.questsHad or {}
+    local t = SFP.db.questsHad[charId()]
+    if not t then t = {}; SFP.db.questsHad[charId()] = t end
+    t[id] = true
+end
+local function hadQuest(id)
+    local t = SFP.db and SFP.db.questsHad and SFP.db.questsHad[charId()]
+    return t and t[id] == true
+end
+local function scanLog()
+    if not SFP.db then return end
+    local n = GetNumQuestLogEntries and GetNumQuestLogEntries() or 0
+    for i = 1, n do
+        local qid
+        if C_QuestLog and C_QuestLog.GetInfo then
+            local ok, info = pcall(C_QuestLog.GetInfo, i)
+            qid = ok and type(info) == "table" and not info.isHeader and info.questID or nil
+        elseif GetQuestLogTitle then
+            local _, _, _, isHeader, _, _, _, id2 = GetQuestLogTitle(i)
+            qid = (not isHeader) and id2 or nil
+        end
+        if qid then noteHad(qid) end
+    end
+end
+QM.ScanLog = scanLog
+
 local function playerFaction()
     local f = UnitFactionGroup("player")
     return f == "Alliance" and 1 or f == "Horde" and 2 or 0
@@ -119,7 +152,7 @@ local function available(entry)
         if ok and prev and C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted and not C_QuestLog.IsQuestFlaggedCompleted(prev) then ok = false end
         if ok and C_QuestLog then
             if C_QuestLog.IsQuestFlaggedCompleted and C_QuestLog.IsQuestFlaggedCompleted(q.id) then ok = false end
-            if ok and haveQuest(q.id) then ok = false end
+            if ok and (haveQuest(q.id) or hadQuest(q.id)) then ok = false end
         end
         if ok then out[#out + 1] = q end
     end
@@ -208,7 +241,7 @@ local function learnedQuestGivers(map)
     for qid, r in pairs((SFP.db and SFP.db.learnedQuests) or {}) do
         if type(r) == "table" and r.m == map and r.g and r.x then
             local done = C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted and C_QuestLog.IsQuestFlaggedCompleted(qid)
-            local inLog = haveQuest(qid)
+            local inLog = haveQuest(qid) or hadQuest(qid)
             local prev = (SFP.QuestPrereq and SFP.QuestPrereq[qid]) or (SFP.db.learnedPrereq and SFP.db.learnedPrereq[qid])
             local blocked = prev and C_QuestLog.IsQuestFlaggedCompleted and not C_QuestLog.IsQuestFlaggedCompleted(prev)
             if not done and not inLog and not blocked then
@@ -228,10 +261,11 @@ local function learnedGivers(map)
         local g = type(rec) == "table" and rec.g
         if type(qid) == "number" and type(g) == "table" and g.m == map and g.x and g.y and g.n then
             local done = C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted and C_QuestLog.IsQuestFlaggedCompleted(qid)
-            local inLog = haveQuest(qid)
-            if not done and not inLog then
-                local qr = type(cdb.quests) == "table" and cdb.quests[qid]
-                local title = type(qr) == "table" and qr.t or ("Quest " .. qid)
+            local inLog = haveQuest(qid) or hadQuest(qid)
+            local qr = type(cdb.quests) == "table" and cdb.quests[qid]
+            -- a quest the Codex has no title for is from another game (the numbers of retail quests): not shown
+            if not done and not inLog and type(qr) == "table" and type(qr.t) == "string" and qr.t ~= "" then
+                local title = qr.t
                 local ql = type(qr) == "table" and tonumber(qr.l) or 0
                 if ql == 30 then ql = 0 end   -- 30 = level not known
                 if not (ql > 0 and type(lvl) == "number" and ql < lvl - 8) then
@@ -291,11 +325,14 @@ SFP:OnLogin(function()
     if hooksecurefunc and WorldMapFrame.OnMapChanged then hooksecurefunc(WorldMapFrame, "OnMapChanged", function() C_Timer.After(0.05, draw) end) end
     local ev = CreateFrame("Frame")
     ev:RegisterEvent("QUEST_LOG_UPDATE")
+    C_Timer.After(3, function() SFP:Safe("scan quest log", scanLog) end)
     ev:RegisterEvent("QUEST_TURNED_IN")
     ev:RegisterEvent("QUEST_ACCEPTED")
     ev:RegisterEvent("QUEST_DETAIL")
     ev:RegisterEvent("PLAYER_LEVEL_UP")
     ev:SetScript("OnEvent", function(_, event, ...)
+        if event == "QUEST_TURNED_IN" then noteHad((...)) end
+        if event == "QUEST_LOG_UPDATE" or event == "QUEST_ACCEPTED" or event == "QUEST_TURNED_IN" then SFP:Safe("scan quest log", scanLog) end
         if event == "QUEST_DETAIL" then SFP:Safe("learn quest", learnQuest, GetQuestID and GetQuestID()) end
         if event == "QUEST_ACCEPTED" then SFP:Safe("learn quest", learnQuest, select(2, ...) or select(1, ...)) end
         if event == "QUEST_DETAIL" or event == "QUEST_ACCEPTED" then
