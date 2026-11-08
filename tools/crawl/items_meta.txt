@@ -1498,3 +1498,19 @@
 1440|Gnoll Skull Basher|2|2|4|19|14
 1931|Huge Gnoll Claw|1|12|0|1|0
 203753|Spell Notes: RING SEFF OSTROF|2|0|-3|10|0
+5772|Pattern: Red Woolen Bag|1|9|2|23|0
+1391|Riverpaw Mystic Staff|2|2|10|18|13
+2447|Peacebloom|1|7|9|5|0
+4454|Talon of Vultros|3|2|15|26|21
+5116|Long Tail Feather|1|15|1|1|0
+5636|Delicate Feather|0|15|1|25|0
+5971|Feathered Cape|2|4|-6|26|21
+11416|Delicate Ribcage|0|15|0|1|0
+3000|Brood Mother Carapace|2|4|2|10|5
+3233|Gnoll Hide Sack|1|1|0|15|0
+5744|Pale Skinner|2|2|7|12|7
+6846|Defias Script|1|12|0|1|0
+204905|Ominous Tome|1|15|0|1|0
+205947|Prophecy of a Desecrated Citadel|2|0|-3|10|0
+778|Kobold Excavation Pick|1|2|0|7|2
+203752|Spell Notes: MILEGIN VALF|2|0|-3|10|0

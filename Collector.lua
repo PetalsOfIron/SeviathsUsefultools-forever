@@ -1169,26 +1169,27 @@ for _, e in ipairs({ "UPDATE_MOUSEOVER_UNIT", "PLAYER_TARGET_CHANGED", "LOOT_REA
     "PLAYERREAGENTBANKSLOTS_CHANGED", "BANK_TAB_SETTINGS_UPDATED" }) do
     pcall(ev.RegisterEvent, ev, e)
 end
--- every monster the player (or the group) kills is a kill and a farm spot, also when it dropped nothing and nothing was looted
+-- every monster the player kills is a kill and a farm spot, also when it dropped nothing and nothing was looted. The combat log is closed to addons in
+-- WoW Forever, so a dead target seen when experience comes in or when the fight ends counts (the target is the monster that just died)
 local killFrame = CreateFrame("Frame")
-if pcall(killFrame.RegisterEvent, killFrame, "COMBAT_LOG_EVENT_UNFILTERED") then
-    killFrame:SetScript("OnEvent", function()
-        if not SFP.db or SFP.db.learnAll == false or not CombatLogGetCurrentEventInfo then return end
-        SFP:Safe("record kill", function()
-            local _, sub, _, _, _, _, _, destGUID, destName = CombatLogGetCurrentEventInfo()
-            if sub ~= "PARTY_KILL" then return end
-            if (issecretvalue and (issecretvalue(destGUID) or issecretvalue(destName))) or type(destGUID) ~= "string" or type(destName) ~= "string" then return end
-            local kind, id = guidInfo(destGUID)
-            if kind ~= "npc" or seenGuid[destGUID] then return end
-            seenGuid[destGUID] = true
-            local rec = ensureNpc(id, destName)
-            rec.k = (rec.k or 0) + 1
-            if SFP.NoteKill then SFP:NoteKill(id) end
-            local map, px, py = playerPos()
-            if map then addPoint(rec, map, px, py) end
-        end)
-    end)
+local function countDeadTarget()
+    if not SFP.db or SFP.db.learnAll == false or not UnitExists("target") then return end
+    if not plainValue(UnitIsDead, "target") or plainValue(UnitIsPlayer, "target") or plainValue(UnitPlayerControlled, "target") then return end
+    if plainValue(UnitIsTapDenied, "target") then return end
+    local guid = plainValue(UnitGUID, "target")
+    local kind, id = guidInfo(guid)
+    if kind ~= "npc" or seenGuid[guid] then return end
+    local name = plainValue(UnitName, "target")
+    if type(name) ~= "string" or name == "" then return end
+    seenGuid[guid] = true
+    local rec = ensureNpc(id, name)
+    rec.k = (rec.k or 0) + 1
+    if SFP.NoteKill then SFP:NoteKill(id) end
+    local map, px, py = playerPos()
+    if map then addPoint(rec, map, px, py) end
 end
+for _, e in ipairs({ "PLAYER_XP_UPDATE", "PLAYER_REGEN_ENABLED", "CHAT_MSG_COMBAT_XP_GAIN" }) do pcall(killFrame.RegisterEvent, killFrame, e) end
+killFrame:SetScript("OnEvent", function() SFP:Safe("record kill", countDeadTarget) end)
 local recipeTimer
 local vendorTimer, bankTimer
 ev:SetScript("OnEvent", function(_, event, a, b, c, d)
