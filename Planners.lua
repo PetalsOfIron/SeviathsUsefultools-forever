@@ -241,6 +241,25 @@ local buildDungeons = K.simplePage("Dungeon & Raid Planner",
 ---------------------------------------------------------------------------
 -- a zone is done when every quest of it that you can take (known quest givers: Data/QuestGivers.lua and the ones you learned) is completed;
 -- a zone with fewer than 5 known quests is never called done (the quest data is not complete enough)
+-- which side a zone belongs to (the other side does not quest there); zones not listed are for both
+local ZONE_SIDE = { [1429] = "Alliance", [1426] = "Alliance", [1438] = "Alliance", [1436] = "Alliance", [1432] = "Alliance", [1439] = "Alliance",
+    [1433] = "Alliance", [1431] = "Alliance", [1437] = "Alliance",
+    [1411] = "Horde", [1412] = "Horde", [1420] = "Horde", [1413] = "Horde", [1421] = "Horde" }
+-- the starting zone of each race: the other starting zones of the side are not suggested
+local START_OF = { Human = 1429, Dwarf = 1426, Gnome = 1426, NightElf = 1438, Orc = 1411, Troll = 1411, Tauren = 1412, Scourge = 1420 }
+local START_ZONES = { [1429] = true, [1426] = true, [1438] = true, [1411] = true, [1412] = true, [1420] = true }
+local function zoneFitsMe(z)
+    local f = UnitFactionGroup("player")
+    local side = ZONE_SIDE[z[1]]
+    if side and f and side ~= f then return false end
+    if START_ZONES[z[1]] then
+        local _, race = UnitRace("player")
+        local mine = START_OF[race or ""]
+        if mine and z[1] ~= mine then return false end
+    end
+    return true
+end
+
 local function zoneAutoDone(z)
     if not (C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted) then return false end
     local lvl = myLevel()
@@ -273,8 +292,9 @@ local buildQuests = K.simplePage("Quest Planner",
             for _, z in ipairs(ZONES) do
                 local isDone = zoneAutoDone(z)
                 local dist = distance(lvl, z[2], z[3])
+                if not zoneFitsMe(z) then dist = nil end
                 -- what you need: zones that fit your level or are up to 6 levels ahead, and that you have not marked done
-                if showAll or (not isDone and z[3] > lvl and z[2] - lvl <= 6) then rows[#rows + 1] = { z = z, dist = dist, done = isDone } end
+                if dist and (showAll or (not isDone and z[3] > lvl and z[2] - lvl <= 6)) then rows[#rows + 1] = { z = z, dist = dist, done = isDone } end
             end
             table.sort(rows, function(a, b)
                 if (a.done and true or false) ~= (b.done and true or false) then return not a.done end
