@@ -52,7 +52,10 @@ SFP:OnLogin(function()
     for key, lists in pairs(SFP.StatPriority) do
         local list = lists[1]
         local rec = { stat = table.concat(list, " > "), gems = {}, gemNote = "Gems are not in the data yet." }
+        -- a shield only for the specializations that carry one (no shield for a balance druid, a mage, a rogue ...)
+        local SHIELD = { ["WARRIOR:Protection"] = true, ["PALADIN:Holy"] = true, ["PALADIN:Protection"] = true, ["SHAMAN:Elemental"] = true, ["SHAMAN:Restoration"] = true }
         for _, s in ipairs(SLOTS) do
+          if s.key ~= "offhand" or SHIELD[key] then
             local scored = {}
             for _, e in ipairs(bySlot[s.key] or {}) do
                 local score = 0
@@ -69,6 +72,7 @@ SFP:OnLogin(function()
                 if not seen[e.name] and #names < 3 then seen[e.name] = true; names[#names + 1] = e.name end
             end
             rec[s.key] = names
+          end
         end
         out[key] = rec
     end

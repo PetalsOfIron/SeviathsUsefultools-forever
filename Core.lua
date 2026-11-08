@@ -137,7 +137,7 @@ local defaults = {
     zonePanel    = false,  -- optional item panel when viewing a farm zone
     zoneFill     = false,  -- optional: light whole zones instead of just the farm spots
     showSpawns   = false,  -- cyan farm monster spots (off at the start: only rares are on, turn the rest on in the map's layer menu)
-    showRares    = true,   -- orange glowing rare spawns (mounts, pets, toys)
+    showRares    = false,  -- orange glowing rare spawns (mounts, pets, toys)
     showHunter   = false,  -- green hunter tames (spirit beasts, unique-look pets)
     showMining   = false,  -- (off at the start) best zone for each ore (amber glow)
     showHerbs    = false,  -- (off at the start, everyone can turn it on) best zone for each herb (mint glow)
@@ -1262,7 +1262,7 @@ events:SetScript("OnEvent", function(_, event, arg1)
                     "showDungeons", "showRaids" }) do
                     SFP.db[k] = false
                 end
-                SFP.db.showRares = true       -- only rares stay on
+                SFP.db.showRares = false      -- (WoW Forever: every spot layer starts off)
                 SFP.db.minimapSpots = true    -- and they show on the minimap too
             end
             -- every single farm spot starts unticked in the spot list, after an update and on a new install (WorldMap.lua)

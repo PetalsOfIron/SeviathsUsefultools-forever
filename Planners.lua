@@ -203,7 +203,7 @@ local buildQuests = K.simplePage("Quest Planner",
                 local isDone = done()[z[1]]
                 local dist = distance(lvl, z[2], z[3])
                 -- what you need: zones that fit your level or are up to 6 levels ahead, and that you have not marked done
-                if showAll or (not isDone and (dist == 0 or (lvl < z[2] and z[2] - lvl <= 6))) then rows[#rows + 1] = { z = z, dist = dist, done = isDone } end
+                if showAll or (not isDone and z[3] > lvl and z[2] - lvl <= 6) then rows[#rows + 1] = { z = z, dist = dist, done = isDone } end
             end
             table.sort(rows, function(a, b)
                 if (a.done and true or false) ~= (b.done and true or false) then return not a.done end

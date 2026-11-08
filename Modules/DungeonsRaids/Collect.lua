@@ -39,7 +39,7 @@ local function SearchEJ(name, isRaid)
     end
     if found then break end
   end
-  if prev then EJ_SelectTier(prev) end
+  if prev and prev > 0 then EJ_SelectTier(prev) end
   return found
 end
 
@@ -104,7 +104,7 @@ function ns:LoadEJPlaces(kind)
       i = i + 1
     end
   end
-  if prev then EJ_SelectTier(prev) end
+  if prev and prev > 0 then EJ_SelectTier(prev) end
   ejLoaded[kind] = true
 end
 
