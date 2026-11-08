@@ -1,76 +1,77 @@
 -- Seviath's Codex — Farming: the best places to make gold
--- Summarised in our own words from community gold guides (Midnight, 2026):
--- wow-professions.com (herbalism/mining routes), wowvendor.com (Aug 2026,
--- skinning / cloth / BoE spots), playnews.gg and nexttier.pro (old content).
+-- Gold farming for WoW Forever (Classic): gathering routes, skinning, cloth, dungeons, raids and the auction house, in our own words.
 -- No reliable gold-per-hour numbers exist — prices differ per realm — so
 -- each spot shows LIVE auction prices when Auctionator is installed.
 
 local ADDON, ns = SFP_Module("Codex")
 local C = ns.CYAN
 
-local Z = { EVERSONG = 2395, ZULAMAN = 2437, HARANDAR = 2413, VOIDSTORM = 2405 }
+local Z = { UNGORO = 1449, WINTERSPRING = 1452, EPL = 1423, WPL = 1422, SILITHUS = 1451, AZSHARA = 1447, FELWOOD = 1448, BADLANDS = 1418 }
 
 ns.FARMS = {
 ------------------------------------------------------------------------
-{ group = "1. Midnight — Herbs & Ore", name = "Eversong Woods (easiest gathering)", zone = "Eversong Woods", zid = Z.EVERSONG,
-  tier = "Easy · steady", mats = { "Argentleaf", "Tranquility Bloom", "Sanguithorn", "Azeroot", "Mana Lily", "Refulgent Copper Ore", "Dazzling Thorium" },
-  body = "The best place to start gathering: open terrain, few mobs and an easy loop around the whole zone with short trips through the middle. Herbs and ore here; Lightfused nodes (Mote of Light) are mostly in this zone.\n\nHow: fly one big loop, don't backtrack, take every node you pass. Works for herbalism, mining or both." },
-{ group = "1. Midnight — Herbs & Ore", name = "Zul'Aman (dual gathering, extra mats from mobs)", zone = "Zul'Aman", zid = Z.ZULAMAN,
-  tier = "Medium · higher yield with gear", mats = { "Argentleaf", "Nocturnal Lotus", "Refulgent Copper Ore", "Dazzling Thorium" },
-  body = "Best for herbalism + mining together. Wild nodes summon mobs when gathered (herbs and ore) — kill them for extra materials, or pull them away from the node so nobody steals it.\n\nNeeds decent gear. High Deftness lets you gather without getting stuck in fights. Not good for pure leveling of gathering." },
-{ group = "1. Midnight — Herbs & Ore", name = "Harandar (dense nodes, annoying terrain)", zone = "Harandar", zid = Z.HARANDAR,
-  tier = "Medium · dense but slow", mats = { "Argentleaf", "Tranquility Bloom", "Refulgent Copper Ore" },
-  body = "Very dense nodes, but many mobs and lots of up-and-down flying; herbs grow on mushrooms and roots. Mining alone is easier (ore is mostly on the ground).\n\nPrimal nodes are here: overloading one channels 50% of your health for extra motes — stay above 50% and don't interrupt it." },
-{ group = "1. Midnight — Herbs & Ore", name = "Voidstorm (dense, fly the edges)", zone = "Voidstorm", zid = Z.VOIDSTORM,
-  tier = "Medium · dense", mats = { "Nocturnal Lotus", "Dazzling Thorium" },
-  body = "Lots of nodes but a hard layout. Fly along the edge of the map and through the middle where there are fewer mobs. Voidbound nodes live here: gather them while mounted and fly straight up to escape the slowing circle." },
-{ group = "1. Midnight — Herbs & Ore", name = "Gathering setup (more gold per node)",
-  tier = "Tips", body = "• Tool stats: Finesse = more materials per node (best for gold), Deftness = faster gathering (needed in mob-heavy zones), Perception = rare finds (only worth it if Nocturnal Lotus / Dazzling Thorium sell high on your realm).\n• Buffs: Azeroot Tea (+Deftness) and Darkmoon Firewater (+15% Deftness).\n• Overload: 12-hour cooldown, 30 minutes shorter per Midnight node you gather.\n• Sell early in the week and before raid resets; prices drop as more players gather." },
+{ group = "1. Herbs & Ore", name = "Un'Goro Crater (Thorium, Dreamfoil, Golden Sansam)", zone = "Un'Goro Crater", zid = Z.UNGORO,
+  tier = "High · steady at 55-60", mats = { "Thorium Ore", "Dreamfoil", "Golden Sansam", "Mountain Silversage" },
+  body = "The best all-round gathering zone of Classic: a closed crater with a ring road and many nodes, few elites. Run one loop along the crater wall and the middle valley.\n\nThorium and Dreamfoil sell steadily for Engineering, Alchemy and flasks. The best nodes need Mining 250+ and Herbalism 285+." },
+{ group = "1. Herbs & Ore", name = "Winterspring (Mountain Silversage, Black Lotus, Thorium)", zone = "Winterspring", zid = Z.WINTERSPRING,
+  tier = "High · cold and long", mats = { "Mountain Silversage", "Black Lotus", "Thorium Ore", "Icecap" },
+  body = "Long open valleys with Icecap and Mountain Silversage, thorium veins along the hills, and a chance at Black Lotus (very valuable: flasks need it). Frostsabers and yetis make skinning here worth it too.\n\nTip: Black Lotus spawns are rare; check the known spawn points while you loop." },
+{ group = "1. Herbs & Ore", name = "Eastern Plaguelands (Plaguebloom, Thorium, Black Lotus)", zone = "Eastern Plaguelands", zid = Z.EPL,
+  tier = "High · dangerous mobs", mats = { "Plaguebloom", "Thorium Ore", "Black Lotus", "Dreamfoil" },
+  body = "Full of high-level undead, so best at level 60 with a mount. Plaguebloom is common here, thorium is in the south and east, and Black Lotus can appear. Run the roads and pick the nodes on the way." },
+{ group = "1. Herbs & Ore", name = "Silithus (Thorium, Black Lotus)", zone = "Silithus", zid = Z.SILITHUS,
+  tier = "Medium · long trips", mats = { "Thorium Ore", "Black Lotus", "Dreamfoil" },
+  body = "Thorium veins in the hills and Black Lotus now and then. A lot of elite silithid; keep to the edges and watch for patrols." },
+{ group = "1. Herbs & Ore", name = "Azshara (Mountain Silversage, Gromsblood, Mithril)", zone = "Azshara", zid = Z.AZSHARA,
+  tier = "Medium · quiet", mats = { "Mountain Silversage", "Gromsblood", "Mithril Ore", "Truesilver Ore" },
+  body = "A big quiet zone with low traffic: Mountain Silversage and Gromsblood in the south and along the coast, mithril and truesilver in the hills. A relaxed route for levels 45-55." },
+{ group = "1. Herbs & Ore", name = "Felwood (Sungrass, Gromsblood, Dreamfoil)", zone = "Felwood", zid = Z.FELWOOD,
+  tier = "Medium · herb loop", mats = { "Sungrass", "Gromsblood", "Dreamfoil", "Plaguebloom" },
+  body = "Dense herbs along the valleys, easy to pass between Jaedenar and Emerald Sanctuary. The Songflower buffs here are great before a raid or a run." },
+{ group = "1. Herbs & Ore", name = "Badlands (Iron, Mithril, Truesilver)", zone = "Badlands", zid = Z.BADLANDS,
+  tier = "Leveling · mining", mats = { "Iron Ore", "Mithril Ore", "Truesilver Ore", "Gold Ore" },
+  body = "The classic place to raise Mining from 125 to 230: rich nodes in the open valleys. Mithril and truesilver sell for Engineering and Blacksmithing." },
 
 ------------------------------------------------------------------------
-{ group = "2. Midnight — Skinning", name = "Renowned Beast circuit (Majestic materials)", tier = "High value · needs skinning spec",
-  mats = { "Majestic Hide", "Majestic Claw", "Majestic Fin" },
-  body = "Five special beasts drop Majestic Hide / Claw / Fin, which sell for much more than normal leather. Fly the circuit and skin each one.\n\nNeeds: Skinning specialization — take Talented Tracker, then Majestic Materials.\nTip: a rare-tracking addon helps you see when they're up. Each beast below has Show on map." },
-{ group = "2. Midnight — Skinning", name = "Gloomclaw", zid = Z.EVERSONG, x = 0.4195, y = 0.7970, tier = "Renowned beast", mats = { "Majestic Hide", "Majestic Claw" },
-  body = "Renowned beast in Eversong Woods — part of the skinning circuit." },
-{ group = "2. Midnight — Skinning", name = "Silverscale", zid = Z.ZULAMAN, x = 0.4755, y = 0.5365, tier = "Renowned beast", mats = { "Majestic Hide", "Majestic Fin" },
-  body = "Renowned beast in Zul'Aman — part of the skinning circuit." },
-{ group = "2. Midnight — Skinning", name = "Lumenfin", zid = Z.HARANDAR, x = 0.6663, y = 0.4783, tier = "Renowned beast", mats = { "Majestic Fin" },
-  body = "Renowned beast in Harandar — part of the skinning circuit." },
-{ group = "2. Midnight — Skinning", name = "Umbrafang", zid = Z.VOIDSTORM, x = 0.5415, y = 0.6527, tier = "Renowned beast", mats = { "Majestic Hide", "Majestic Claw" },
-  body = "Renowned beast in Voidstorm — part of the skinning circuit." },
-{ group = "2. Midnight — Skinning", name = "Netherscythe", zid = Z.VOIDSTORM, x = 0.4313, y = 0.8281, tier = "Renowned beast", mats = { "Majestic Claw" },
-  body = "Renowned beast in Voidstorm — part of the skinning circuit." },
+{ group = "2. Skinning & Cloth", name = "Un'Goro (Devilsaur Leather, Scorpid Scales)", zone = "Un'Goro Crater", zid = Z.UNGORO,
+  tier = "High value · Leatherworking", mats = { "Devilsaur Leather", "Scorpid Scale", "Thick Leather" },
+  body = "Devilsaurs (level 55) drop the sought-after Devilsaur Leather but hit hard; kill them with a mount or from range. Scorpids and raptors give scales and Thick Leather for Leatherworking." },
+{ group = "2. Skinning & Cloth", name = "Winterspring (Frostsaber Leather)", zone = "Winterspring", zid = Z.WINTERSPRING,
+  tier = "High value · quiet", mats = { "Frostsaber Leather", "Rugged Leather" },
+  body = "Frostsabers and yeti pull easily and drop Rugged Leather and Frostsaber Leather for cold-weather gear. Skin them as you gather." },
+{ group = "2. Skinning & Cloth", name = "Runecloth in the Plaguelands", zone = "Western Plaguelands", zid = Z.WPL,
+  tier = "Steady · all classes", mats = { "Runecloth", "Mageweave Cloth", "Silk Cloth" },
+  body = "Humanoid undead and furbolgs drop cloth. Runecloth is needed for turn-ins to your faction and for bandages, so it sells well. Pull in groups with AoE and loot as you go." },
 
 ------------------------------------------------------------------------
-{ group = "3. Midnight — Cloth & BoE gear", name = "Shadowguard Point delve (best solo cloth)", zid = Z.VOIDSTORM, x = 0.3738, y = 0.4774,
-  tier = "High · solo", body = "The best solo cloth farm reported for Midnight. Run it, reset it, run it again — every reset gives fresh humanoids that drop cloth (and sometimes BoE gear)." },
-{ group = "3. Midnight — Cloth & BoE gear", name = "The Grudge Pit delve (easier cloth)", zid = Z.HARANDAR, x = 0.7030, y = 0.6714,
-  tier = "Medium · easy", body = "An easier solo cloth delve. Same idea: clear, reset, repeat." },
-{ group = "3. Midnight — Cloth & BoE gear", name = "Broken Throne, south-west Zul'Aman (group cloth)", zid = Z.ZULAMAN,
-  tier = "High · with a group", body = "Big humanoid packs in the south-west of Zul'Aman — best farmed with friends for cloth." },
-{ group = "3. Midnight — Cloth & BoE gear", name = "BoE gear from any Midnight mob",
-  tier = "Lottery · good with AoE", body = "Almost any enemy in Midnight zones can drop Bind-on-Equip gear, worth gold on the Auction House or for disenchanting. Pick a dense spot and kill in a loop so mobs respawn behind you. Ranged AoE specs do best (Balance Druid, Frost/Fire Mage, Beast Mastery/Marksmanship Hunter)." },
+{ group = "3. Dungeons & BoE gear", name = "How gold works in Classic", tier = "Read first",
+  body = "• Gold comes from vendor trash, cloth, herbs, ore, leather, and green or blue BoE items sold on the auction house.\n• World drops from level 50+ monsters are the main source of BoE blues; kill many in one area and loot each.\n• The auction houses of the big cities pay best; use Auctionator or the addon's scan to learn real prices.\n• Raid consumables (flasks, fire protection potions, Mongoose) sell very well in the weeks before a raid." },
+{ group = "3. Dungeons & BoE gear", name = "Zul'Farrak", inst = "Zul'Farrak",
+  tier = "Groups · BoEs + cloth", body = "A fast group run with BoE blues from the trash, plus Mageweave and Silk cloth on the stairs." },
+{ group = "3. Dungeons & BoE gear", name = "Maraudon", inst = "Maraudon",
+  tier = "Herbs + cloth + BoE", body = "Many mobs close together, rich herbs and cloth. Princess Theradras drops the first epic items for many players." },
+{ group = "3. Dungeons & BoE gear", name = "Uldaman", inst = "Uldaman",
+  tier = "Levels 38-50", body = "Short runs with good vendor trash and BoE greens." },
+{ group = "3. Dungeons & BoE gear", name = "Blackrock Depths", inst = "Blackrock Depths",
+  tier = "Big runs · BoEs", body = "Large pulls, Dark Iron ore and rare BoE items. A long run but a rewarding clear." },
+{ group = "3. Dungeons & BoE gear", name = "Lower Blackrock Spire", inst = "Lower Blackrock Spire",
+  tier = "Fast resets · epics", body = "Short and quick to clear; Rend Blackhand and Gyth drop epic items." },
+{ group = "3. Dungeons & BoE gear", name = "Scholomance", inst = "Scholomance",
+  tier = "Level 60 dungeon", body = "Big cloth and leather packs for Runecloth, plus epic drops. Good gold per run once you can clear it quickly." },
 
 ------------------------------------------------------------------------
-{ group = "4. Old content — transmog, BoEs, collectibles", name = "How old-content gold works",
-  tier = "Read first", body = "Old dungeon and raid mobs give only a small fixed amount of gold per kill (Blizzard scaled it down years ago so soloing isn't a gold fountain). The money in old content comes from:\n• BoE gear and rare transmog appearances to sell.\n• Recipes, pets and mounts (sell or keep).\n• Vendor trash and disenchanting.\nHigh-value items can take weeks to sell — list a few at a time." },
-{ group = "4. Old content — transmog, BoEs, collectibles", name = "Blackrock Depths", inst = "Blackrock Depths",
-  tier = "Raw gold + BoEs", body = "Huge pulls and lots of mobs: vendor gold and BoE items. Long but rewarding clear." },
-{ group = "4. Old content — transmog, BoEs, collectibles", name = "Maraudon", inst = "Maraudon",
-  tier = "Transmog + herbs", body = "Very dense mobs, transmog drops and herbs inside." },
-{ group = "4. Old content — transmog, BoEs, collectibles", name = "Uldaman", inst = "Uldaman",
-  tier = "Rare transmog lottery", body = "Known for rare, valuable transmog appearances — a lottery farm." },
-{ group = "4. Old content — transmog, BoEs, collectibles", name = "Razorfen Kraul", inst = "Razorfen Kraul",
-  tier = "Fast resets", body = "Short and fast to clear — good to chain many runs (you can enter 10 instances per hour per account)." },
-{ group = "4. Old content — transmog, BoEs, collectibles", name = "Legion, BfA & Shadowlands raids",
-  tier = "Weekly · low effort", body = "With decent Midnight gear these raids are easy solo. Weekly lockouts, but they give gold from bosses and trash, sellable transmog, low-chance mounts and pets, and lots to disenchant. Do them once a week on every max-level character." },
+{ group = "4. Raids & gold", name = "Molten Core, Onyxia, Blackwing Lair", tier = "Weekly · lockouts",
+  body = "At 60 these raids give most of your gold: bosses drop Lava Core, Fiery Core, set tokens and enchanting materials, and the trash drops consumables. Sell what you do not need." },
+{ group = "4. Raids & gold", name = "Zul'Gurub, Ruins and Temple of Ahn'Qiraj", tier = "Weekly · profit",
+  body = "Zul'Gurub (20 players) drops Bijous and coins for rewards and a lot of vendor gold. The Ahn'Qiraj raids drop Qiraji gear, Elementium Ore and rare crafting reagents." },
+{ group = "4. Raids & gold", name = "Naxxramas", tier = "Weekly · endgame",
+  body = "The last raid of Classic. Plan for the dungeon-set tokens and the gold from the trash." },
 
 ------------------------------------------------------------------------
-{ group = "5. Weekly & passive income", name = "Weekly routine", tier = "Steady",
-  body = "• Weekly quests and event caches (reagents and sellable items).\n• Great Vault: take gear you can sell or disenchant if it's not an upgrade.\n• Rares and treasures in Midnight zones (including Zul'Aman) for reagents.\n• Delves: chain a few per day and gather along the way; community reports say the rare reagent Petrified Root comes from delve and Prey caches." },
-{ group = "5. Weekly & passive income", name = "Crafting orders & the Auction House", tier = "Best gold per time for crafters",
-  body = "• Crafting orders often pay better than selling on the Auction House — if you have a specialized crafter.\n• Buy herbs/ore in the evening when gatherers flood the market, sell mid-week.\n• Stock consumables and gems before a new patch or raid tier.\n• Watch for underpriced mounts, recipes and transmog. A price addon (Auctionator / TSM) helps a lot." },
+{ group = "5. Crafting & the auction house", name = "Professions that make money", tier = "Steady",
+  body = "• Alchemy: flasks and potions (Major Healing, Mongoose, Greater Arcane) for raiders.\n• Enchanting: scrolls and enchants for Strength, Agility and Spell Power; rods for leveling.\n• Tailoring: bags (Mooncloth, Runecloth) and bandages; the Mooncloth cooldown is a daily gain.\n• Engineering: Goblin Sappers and mining gear.\n• Cooking: raid buffs such as Smoked Desert Dumplings." },
+{ group = "5. Crafting & the auction house", name = "Buying and selling", tier = "Best gold per time",
+  body = "• Buy herbs and ore in the evening when sellers flood the market, sell on weekdays before raids.\n• Undercut by a copper and relist once or twice a day.\n• The addon's Recipe planner shows what to craft for profit once you scanned the auction house." },
 }
 
 -- live price from Auctionator, if installed (copper -> text)
