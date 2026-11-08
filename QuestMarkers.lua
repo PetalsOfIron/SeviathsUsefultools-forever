@@ -32,6 +32,8 @@ local function available(entry)
     local out = {}
     for _, q in ipairs(list) do
         local ok = q.req <= lvl and (q.side == 0 or q.side == 3 or q.side == side or side == 0)   -- (Wowhead: 1 Alliance, 2 Horde, 3 both)
+        -- quests far above the level are not offered (the Darkmoon Faire quests of level 60 need only level 1, but are not for a level 6 character)
+        if ok and q.level > 0 and q.level > lvl + 6 then ok = false end
         -- quests far below the level give nothing: left out
         if ok and q.level > 0 and q.level < lvl - 8 and not SFP.db.questMarkersAll then ok = false end
         if ok and C_QuestLog then
