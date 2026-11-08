@@ -780,3 +780,26 @@
 228822|Calyx Greenglow|361:61.4,13;61.6,13|84369:60:52:3:Healing the Healer
 229018|Rotting Dwarf Corpse|139:27.4,85.4;27.4,85.8|84414:55:50:1:Send Me On Me Way!
 231498|Aeonas|28:52,83.4|85457:60:60:1:Just What Was Needed,85508:60:60:1:Our Wayward Friend
+231500|Gregory|28:69.4,79.6;69.6,79.6|85458:60:60:1:Darkwhisper Gorge
+232381|Valxx Cracklequil|618:60.6,38|85386:60:55:3:Essence of Frost
+232596|Riosus|11:74.2,70|85446:60:60:3:Scale of the Dragon Lord,85453:60:60:3:No Good Deed Goes Unpunished
+232624|Krasus|11:74.4,70|85454:60:60:3:A Just Reward
+232802|Doan Karhan|139:81.2,59|85485:60:60:3:Soul of the Void,85486:60:60:3:Soul of Enthralling,85505:60:60:3:Soul of Devouring,85506:60:60:3:The Final Test
+232924|Doan Karhan|331:84.8,70.4;84.8,70.6|85506:60:60:3:The Final Test
+232929|Gregory|618:53.4,83.4;53.4,83.6|85063:60:60:1:Culmination,85064:60:60:1:Worst Case Scenario
+232932|Gregory|28:39.4,67.2;39.6,67.2|85065:60:60:1:A Most Curious Gnome,85067:60:60:1:A Paladin of the Silver Hand,85091:60:60:1:The Cost of Victory
+233084|Estelenn|490:23.4,33.2;23.6,33.2|85251:60:60:3:Showdown at Un'Goro Crater,85559:60:60:3:Night Falls
+237818|Harrison Jones|41:52.2,34.2|86968:60:60:3:Are You Afraid of the Dark?,86971:60:60:3:Curious Karazhan Curios!
+237819|Injured Adventurer|41:65.2,78.4;65.2,78.6|86967:60:60:3:To the Rescue
+237820|Deceased Adventurer|41:40,74.2;40,74.6|86965:60:60:3:No Ordinary Shadows
+238376|Brother Luctus|46:65.4,55.2~139:80.4,65.4;80.6,65.4|87377:60:60:3:Never at Rest,88713:60:60:3:Never at Rest,88714:60:60:3:Never at Rest,88715:60:60:3:Never at Rest,88716:60:60:3:Never at Rest,88717:60:60:3:Never at Rest,88718:60:60:2:Never at Rest
+238415|Grok'lo Mok'lo|8:34.4,65.8~16:32.2,54.6~46:65.4,55.2~139:80.4,65.4;80.6,65.2~440:54.4,28.4~618:58.2,36|90626:60:60:3:Sinew of Light,90627:60:60:3:Crafty the Crafter
+239054|Argent Emissary|139:67.8,83.2|87508:60:60:3:Report to Lord Tyrosus
+240248|Bryon Steelblade|139:98.4,84;98.6,84|89255:60:60:3:Prove Your Worth: Headgear,89256:60:60:3:Prove Your Worth: Shoulderpads,89257:60:60:3:Prove Your Worth: Chestpiece,89258:60:60:3:Prove Your Worth: Wristguards,89259:60:60:3:Prove Your Worth: Gloves,89260:60:60:3:Prove Your Worth: Belt,89261:60:60:3:Prove Your Worth: Legguards,89262:60:60:3:Prove Your Worth: Boots
+240604|Carrie Hearthfire|139:95.2,78.4|89224:60:60:3:Food Shortage,89236:60:60:3:Wrangling Apples,89245:60:60:3:Fish in a Barrel,89253:60:60:3:Main Course,89341:60:60:3:The Great Feast,90518:60:60:3:An Apple a Day Keeps the Undead at Bay,90519:60:60:3:Fish On Demand,90520:60:60:3:Food Safety
+240607|Devon Woods|139:95.2,80.2|89342:60:60:3:VIP Haute Club Membership
+240631|Taylor Stitchings|139:94.6,83.4;94.6,83.6|90116:60:60:3:Holy Threads,90120:60:60:3:Red is Not Dead
+241613|Kyndra Swiftarrow|139:93.8,90.2|89381:60:60:3:Pin Cushion,89421:60:60:3:Bullet Heaven
+241834|Istaria|493:52.2,43|89462:60:60:3:The Druid of the Talon
+242019|Leonid Barthalomew the Revered|139:33.4,27.4;33.4,27.6;33.6,27.4|89234:60:60:3:A Personal Matter,89568:60:60:3:Something New,89574:60:60:3:Servants of Death
+242174|Thisalee Crow|618:60.4,38;60.8,38|90506:60:60:3:Take Their Breath Away,90507:60:60:3:Logistics Challenges,90508:60:60:3:As The Crow Flies

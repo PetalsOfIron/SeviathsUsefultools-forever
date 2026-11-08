@@ -103,26 +103,48 @@ local function waypointTo(map, x, y, label)
     end
 end
 
+-- which dungeons are good for a class: the armor and weapons that drop there suit the class (a guide, not a rule)
+local ARMOR_OF = { MAGE = "cloth", PRIEST = "cloth", WARLOCK = "cloth", ROGUE = "leather", DRUID = "leather", HUNTER = "mail", SHAMAN = "mail",
+    WARRIOR = "plate", PALADIN = "plate" }
+local FIT = {
+    cloth = { "Scarlet Monastery", "Shadowfang Keep", "Blackfathom Deeps", "Maraudon", "Stratholme", "Scholomance" },
+    leather = { "Wailing Caverns", "Razorfen Kraul", "The Deadmines", "Zul'Farrak", "Maraudon", "Scholomance" },
+    mail = { "Gnomeregan", "Razorfen Downs", "Uldaman", "Zul'Farrak", "Scarlet Monastery", "Lower Blackrock Spire" },
+    plate = { "Scarlet Monastery", "Uldaman", "Blackrock Depths", "Stratholme", "Lower Blackrock Spire", "Dire Maul" },
+}
+local function fitsClass(name)
+    local _, token = UnitClass("player")
+    local group = ARMOR_OF[token or ""]
+    for _, n in ipairs(FIT[group or ""] or {}) do if n == name then return true, group end end
+    return false, group
+end
+
 local buildDungeons = K.simplePage("Dungeon & Raid Planner",
-    "Tick a dungeon or raid when you are done with it, untick it to plan it again. The list starts with the ones that fit your level (green), then the ones coming up (yellow). " ..
-    "Waypoint sets a marker on the way in (approximate). Below your level pick the dungeons that suit your class; at 60 the raids come first.",
+    "Two lists: the one on top is your plan (the dungeons and raids you picked; tick one when you are done with it), the one below lists everything you can pick from. " ..
+    "A star marks what suits your class. Waypoint sets a marker on the way in (approximate).",
     function(pane, y)
         local head = K.mkText(pane, "", 12, y - 8, 480, "GameFontNormal")
         local stats = K.mkText(pane, "", 12, y - 28, 470, "GameFontHighlightSmall")
         stats:SetHeight(30)
         stats:SetJustifyV("TOP")
-        local scroll = CreateFrame("ScrollFrame", nil, pane, "UIPanelScrollFrameTemplate")
-        scroll:SetPoint("TOPLEFT", 8, y - 66)
-        scroll:SetPoint("BOTTOMRIGHT", -30, 8)
-        local child = CreateFrame("Frame", nil, scroll)
-        child:SetSize(470, 10)
-        scroll:SetScrollChild(child)
-        local rowsUI = {}
         local function done() SFP.db.plannerDone = SFP.db.plannerDone or {}; local d = SFP.db.plannerDone[charKey()]; if not d then d = {}; SFP.db.plannerDone[charKey()] = d end return d end
-        local function rowFrame(i)
-            local r = rowsUI[i]
+        local function pick() SFP.db.plannerPick = SFP.db.plannerPick or {}; local d = SFP.db.plannerPick[charKey()]; if not d then d = {}; SFP.db.plannerPick[charKey()] = d end return d end
+
+        -- a scrolling list of rows; mode "plan" = tick means done, mode "all" = tick means in your plan
+        local function makeList(top, bottomOffset, mode)
+            local scroll = CreateFrame("ScrollFrame", nil, pane, "UIPanelScrollFrameTemplate")
+            scroll:SetPoint("TOPLEFT", 8, top)
+            scroll:SetPoint("TOPRIGHT", -30, top)
+            scroll:SetHeight(bottomOffset)
+            local child = CreateFrame("Frame", nil, scroll)
+            child:SetSize(470, 10)
+            scroll:SetScrollChild(child)
+            return { child = child, rows = {}, scroll = scroll, mode = mode }
+        end
+        local function rowFrame(list, i)
+            local r = list.rows[i]
             if r then return r end
-            r = CreateFrame("Frame", nil, child)
+            r = CreateFrame("Frame", nil, list.child)
             r:SetSize(470, 22)
             r:SetPoint("TOPLEFT", 0, -(i - 1) * 24)
             r.check = CreateFrame("CheckButton", nil, r, "UICheckButtonTemplate")
@@ -134,15 +156,49 @@ local buildDungeons = K.simplePage("Dungeon & Raid Planner",
             r.text:SetJustifyH("LEFT")
             r.way = K.mkButton(r, "Waypoint", 78, function(self) local d = self.entry and ENTRANCE[self.entry[1]]; if d then waypointTo(d[1], d[2], d[3], self.entry[1]) end end)
             r.way:SetPoint("RIGHT", 0, 0)
-            rowsUI[i] = r
+            list.rows[i] = r
             return r
         end
+        local planList, allList
+        local H = 8   -- (the lists are placed below)
+        planList = makeList(y - 86, 130, "plan")
+        local sep = K.mkText(pane, "", 12, y - 224, 470, "GameFontNormal")
+        allList = makeList(y - 246, 240, "all")
+        local planLabel = K.mkText(pane, "", 12, y - 68, 470, "GameFontNormal")
+
+        local function fillList(list, entries, lvl)
+            for i, r in ipairs(entries) do
+                local d = r.d
+                local row = rowFrame(list, i)
+                local isDone = done()[d[1]] and true or false
+                local picked = pick()[d[1]] and true or false
+                if list.mode == "plan" then
+                    row.check:SetChecked(isDone)
+                    row.check:SetScript("OnClick", function(self) done()[d[1]] = self:GetChecked() and true or nil; SFP:Safe("planner", pane.refresh) end)
+                else
+                    row.check:SetChecked(picked)
+                    row.check:SetScript("OnClick", function(self) pick()[d[1]] = self:GetChecked() and true or nil; SFP:Safe("planner", pane.refresh) end)
+                end
+                local star = r.fit and ("|cffffd100*|r ") or ""
+                row.text:SetText(("%s%s%s|r  |cff808080%s%s|r"):format(star, (list.mode == "plan" and isDone) and "|cff606060" or "|cffffffff", d[1],
+                    d[2] == d[3] and ("level " .. d[2]) or ("level " .. d[2] .. "-" .. d[3]), r.raid and "  raid" or ""))
+                row.way.entry = d
+                row.way:SetShown(ENTRANCE[d[1]] ~= nil)
+                row:Show()
+            end
+            for i = #entries + 1, #list.rows do list.rows[i]:Hide() end
+            list.child:SetHeight(math.max(10, #entries * 24 + 8))
+        end
+
         return function()
             local lvl = myLevel()
-            local rows = {}
-            local have = {}
-            for _, d in ipairs(DUNGEONS) do rows[#rows + 1] = { d = d, dist = distance(lvl, d[2], d[3]), raid = d[4] == "raid" }; have[d[1]:lower()] = true end
-            -- every other dungeon and raid the game's group finder has shown (the Dungeons & Raids tools keep the list): level not known
+            local rows, have = {}, {}
+            for _, d in ipairs(DUNGEONS) do
+                local fit = fitsClass(d[1])
+                rows[#rows + 1] = { d = d, dist = distance(lvl, d[2], d[3]), raid = d[4] == "raid", fit = fit }
+                have[d[1]:lower()] = true
+            end
+            -- every other dungeon and raid the group finder has shown (the Dungeons & Raids tools keep the list): level not known
             local dr = SFP_Module and select(2, SFP_Module("DungeonsRaids"))
             for kind, listName in pairs({ dungeon = "dungeon", raid = "raid" }) do
                 local known = dr and dr.db and dr.db[listName] and dr.db[listName].known
@@ -156,31 +212,27 @@ local buildDungeons = K.simplePage("Dungeon & Raid Planner",
                     end
                 end
             end
+            -- order: what fits your level and your class first, raids first at 60
             table.sort(rows, function(a, b)
-                local ad, bd = done()[a.d[1]], done()[b.d[1]]
-                if (ad and true or false) ~= (bd and true or false) then return not ad end
                 if lvl >= 60 and a.raid ~= b.raid then return a.raid end
                 if a.dist ~= b.dist then return a.dist < b.dist end
+                if (a.fit and true or false) ~= (b.fit and true or false) then return a.fit end
                 return a.d[2] < b.d[2]
             end)
-            local best
-            for _, r in ipairs(rows) do if not done()[r.d[1]] then best = r.d break end end
-            head:SetText(("%sLevel %d|r  -  next: %s"):format(CY, lvl, best and ("|cffffd100" .. best[1] .. "|r") or "all done"))
-            stats:SetText(statLine())
-            for i, r in ipairs(rows) do
-                local d = r.d
-                local row = rowFrame(i)
-                local isDone = done()[d[1]] and true or false
-                row.check:SetChecked(isDone)
-                row.check:SetScript("OnClick", function(self) done()[d[1]] = self:GetChecked() and true or nil; SFP:Safe("planner", pane.refresh) end)
-                row.text:SetText(("%s%s|r  |cff808080%s%s|r"):format(isDone and "|cff606060" or levelColor(lvl, d[2], d[3]), d[1],
-                    d[2] == d[3] and ("level " .. d[2]) or ("level " .. d[2] .. "-" .. d[3]), r.raid and "  raid" or ""))
-                row.way.entry = d
-                row.way:SetShown(ENTRANCE[d[1]] ~= nil)
-                row:Show()
+            local planRows, suggest = {}, {}
+            for _, r in ipairs(rows) do
+                if pick()[r.d[1]] then planRows[#planRows + 1] = r end
+                if r.fit and r.dist <= 5 and #suggest < 4 and not done()[r.d[1]] then suggest[#suggest + 1] = r.d[1] end
             end
-            for i = #rows + 1, #rowsUI do rowsUI[i]:Hide() end
-            child:SetHeight(#rows * 24 + 8)
+            local best
+            for _, r in ipairs(planRows) do if not done()[r.d[1]] then best = r.d break end end
+            head:SetText(("%sLevel %d|r  -  %s"):format(CY, lvl, best and ("next: |cffffd100" .. best[1] .. "|r") or "pick dungeons below for your plan"))
+            local _, group = fitsClass("")
+            stats:SetText(statLine() .. ((#suggest > 0) and ("\n|cffffd100Good for your class (" .. (group or "?") .. "):|r " .. table.concat(suggest, ", ")) or ""))
+            planLabel:SetText(CY .. "Your plan|r  |cff808080(tick when done)|r")
+            sep:SetText(CY .. "Choose dungeons and raids|r  |cff808080(tick to add to your plan, * = suits your class)|r")
+            fillList(planList, planRows, lvl)
+            fillList(allList, rows, lvl)
         end
     end)
 
