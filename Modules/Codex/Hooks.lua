@@ -136,7 +136,7 @@ local function AddDetailsButton()
     end)
     b:SetScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        GameTooltip:AddLine("|cffe6483dSeviath's|r Codex")
+        GameTooltip:AddLine("|cffffd100Seviath's|r Codex")
         GameTooltip:AddLine("Open this quest: what to do, how, and where.", 1, 1, 1, true)
         GameTooltip:Show()
     end)
@@ -352,9 +352,9 @@ local function QuestHoverTip(owner, questID, append)
         else
             GameTooltip:SetOwner(owner, "ANCHOR_RIGHT")
         end
-        GameTooltip:AddLine("|cffe6483dSeviath's Codex|r - what to do")
+        GameTooltip:AddLine("|cffffd100Seviath's Codex|r - what to do")
         for _, l in ipairs(lines) do GameTooltip:AddLine(l, 1, 1, 1, true) end
-        GameTooltip:AddLine("|cffe6483dAlt+click: open in Codex|r")
+        GameTooltip:AddLine("|cffffd100Alt+click: open in Codex|r")
         GameTooltip:Show()
         questBlockShown = true
         hoverOwner = owner
@@ -454,7 +454,7 @@ local function RegisterItemHint()
     TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, function(tt, data)
         if tt ~= GameTooltip or not data or not data.id or InCombatLockdown() then return end
         if ns.db and ns.db.hideHint then return end
-        tt:AddLine("|cffe6483dAlt+click: open in Codex|r")
+        tt:AddLine("|cffffd100Alt+click: open in Codex|r")
     end)
 end
 local hintFrame = CreateFrame("Frame")

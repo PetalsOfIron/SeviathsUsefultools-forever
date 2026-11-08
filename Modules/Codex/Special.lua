@@ -3,7 +3,7 @@
 -- names only, no guessed coordinates — use the Wowhead link for spawn maps.
 
 local ADDON, ns = SFP_Module("Codex")
-local C, R = "|cffe6483d", "|r"
+local C, R = "|cffffd100", "|r"
 
 local function wh(name)
     return "search?q=" .. name:gsub(" ", "%%20"):gsub("'", "%%27")

@@ -66,7 +66,7 @@ end
 local function materialBody(e)
     local id = e.itemID
     local d = SFP.MaterialData and SFP.MaterialData[id] or {}
-    local c = "|cffe6483d"
+    local c = "|cffffd100"
     local t = {}
     local function add(title, text) if text and text ~= "" then t[#t + 1] = c .. title .. "|r\n" .. text end end
 
@@ -180,7 +180,7 @@ end
 local function mountHowTo(cx, e)
     local d = SFP.MountData and SFP.MountData[e.spellID]
     if not d or not d.f then return nil end
-    local c = cx.CYAN or "|cffe6483d"
+    local c = cx.CYAN or "|cffffd100"
     local steps, pin = {}, nil
     local function step(text) steps[#steps + 1] = #steps + 1 .. ". " .. text end
     local out = {}
@@ -304,7 +304,7 @@ local function staticMountHowTo(cx, e)
     local itemID = mountItemByID[e.id]
     if not itemID then return nil end
     local info = SFP.Items[itemID] or {}
-    local c = cx.CYAN or "|cffe6483d"
+    local c = cx.CYAN or "|cffffd100"
     local out, steps = {}, {}
     local function step(text) steps[#steps + 1] = #steps + 1 .. ". " .. text end
     if e.collected ~= nil then out[#out + 1] = e.collected and "|cff40ff40You have this mount|r" or "|cffff7070You do not have this mount yet|r" end

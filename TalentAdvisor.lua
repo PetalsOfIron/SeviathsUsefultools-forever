@@ -1093,7 +1093,7 @@ local function refreshForever()
         fitWindow()
         return
     end
-    local lines = { ("|cffe6483d%s|r  |cff808080(%s, %s builds%s)|r"):format(chosen, token:sub(1, 1) .. token:sub(2):lower(), CONTENTS[c],
+    local lines = { ("|cffffd100%s|r  |cff808080(%s, %s builds%s)|r"):format(chosen, token:sub(1, 1) .. token:sub(2):lower(), CONTENTS[c],
         auto and ", found from your talents" or ""), "" }
     if true then   -- only the benefit system: the talents ranked by what they do (the guide builds only add to the score)
         -- the talents of the chosen tree ranked by their descriptions
@@ -1129,7 +1129,7 @@ local function refreshForever()
             scored[#scored + 1] = { t = t, s = s, tags = tags }
         end
         table.sort(scored, function(a, b) if a.s ~= b.s then return a.s > b.s end return a.t.name < b.t.name end)
-        lines[1] = ("|cffe6483d%s|r  |cff808080(%s, %s)|r"):format(chosen, token:sub(1, 1) .. token:sub(2):lower(), role == "feral" and "cat or bear" or role)
+        lines[1] = ("|cffffd100%s|r  |cff808080(%s, %s)|r"):format(chosen, token:sub(1, 1) .. token:sub(2):lower(), role == "feral" and "cat or bear" or role)
         -- the talents as buttons (hover shows what the talent does); the best ones you do not have yet flash in the Talents window
         local items, flashed, buttons = {}, 0, nil
         for i = 1, #scored do
@@ -1155,7 +1155,7 @@ local function refreshForever()
             end
         end
         lines[#lines + 1] = "|cffffd100Take next, best first.|r Click to select, hover to see what it does."
-        if flashed > 0 then lines[#lines + 1] = ("|cffe6483dThe %d best flash in the Talents window.|r"):format(flashed) end
+        if flashed > 0 then lines[#lines + 1] = ("|cffffd100The %d best flash in the Talents window.|r"):format(flashed) end
         if #items == 0 then lines[#lines + 1] = "|cff40ff40Nothing to add: you have the best talents of this tree.|r" end
         text:SetText(table.concat(lines, "\n"))
         setRows(items, text:GetStringHeight() + 8)
@@ -1201,7 +1201,7 @@ local function refreshForever()
                     local text = tl[1] .. (tl[2] > 1 and (" " .. tl[2]) or "")
                     names[i] = (taken and got >= tl[2]) and ("|cff40ff40" .. text .. "|r") or text
                 end
-                lines[#lines + 1] = ("    |cffe6483d%s|r: %s"):format(t[1], table.concat(names, ", "))
+                lines[#lines + 1] = ("    |cffffd100%s|r: %s"):format(t[1], table.concat(names, ", "))
             end
         end
         lines[#lines + 1] = ""
@@ -1225,7 +1225,7 @@ local function refresh()
         return
     end
     local lines = {}
-    lines[#lines + 1] = ("|cffe6483d%s|r  best build: |cffffd100%s|r  (%d build%s counted)"):format(CONTENTS[c], s.best or "?", s.builds, s.builds == 1 and "" or "s")
+    lines[#lines + 1] = ("|cffffd100%s|r  best build: |cffffd100%s|r  (%d build%s counted)"):format(CONTENTS[c], s.best or "?", s.builds, s.builds == 1 and "" or "s")
     -- what you chose (the hero talents in the middle) and the best build of each content, side by side
     lines[#lines + 1] = ("You chose: hero talents |cffffd100%s|r"):format(s.heroChosen and s.hero or "none yet")
     if s.matchName and (s.matchPct or 0) >= 0.4 then
@@ -1264,9 +1264,9 @@ local function refresh()
         return ("%d class (left), %d spec (right), %d hero (middle)"):format(per.class, per.spec, per.hero)
     end
     if #s.nextPicks > 0 then
-        lines[#lines + 1] = "|cffe6483dFlashing in the tree, take these:|r " .. flashAll(s.nextPicks)
+        lines[#lines + 1] = "|cffffd100Flashing in the tree, take these:|r " .. flashAll(s.nextPicks)
     elseif #s.wanted > 0 then
-        lines[#lines + 1] = "|cffe6483dNo point to spend on these yet, flashing the ones still missing:|r " .. flashAll(s.wanted)
+        lines[#lines + 1] = "|cffffd100No point to spend on these yet, flashing the ones still missing:|r " .. flashAll(s.wanted)
     else
         lines[#lines + 1] = "|cff40ff40Nothing to add: everything the builds take, you have.|r"
     end
@@ -1515,7 +1515,7 @@ local function updateHeroDialog()
         heroLabel:SetJustifyH("CENTER")
         heroLabel:SetSpacing(3)
     end
-    local lines = { "|cffe6483dSeviaths advisor - the better hero tree:|r" }
+    local lines = { "|cffffd100Seviaths advisor - the better hero tree:|r" }
     for _, key in ipairs({ "raid", "mythic", "delves" }) do
         local okC, sc = pcall(A.Suggest, key)
         if okC and sc and sc.heroShares and #sc.heroShares > 0 then

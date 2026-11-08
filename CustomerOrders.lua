@@ -122,11 +122,11 @@ local dismissed   -- the recipe whose menu you closed: it stays closed until ano
 local function rowsFor(d)
     local rows = {}
     local function add(text) rows[#rows + 1] = { text = text } end
-    add("|cffe6483d" .. d.name .. "|r")
+    add("|cffffd100" .. d.name .. "|r")
     if d.sell then add("Auction price: " .. money(d.sell))
     else add("|cff808080Auction price: not seen yet (scan the auction house)|r") end
     add("")
-    add("|cffe6483dMaterials|r")
+    add("|cffffd100Materials|r")
     for _, r in ipairs(d.reagents) do
         -- name, how many, the price of one, of the amount needed, and of a whole stack
         local stack = SFP:StackCount(r.id)
@@ -154,7 +154,7 @@ local function rowsFor(d)
     end
     add("")
     local tips = d.outID and SFP.OrderList and SFP:OrderList(d.outID) or {}
-    add(("|cffe6483dCrafting orders listed for this item|r  (%d)"):format(#tips))
+    add(("|cffffd100Crafting orders listed for this item|r  (%d)"):format(#tips))
     if #tips == 0 then
         add("|cff808080None read yet. Open the Crafting Orders tab of the profession and look at this item: every order the game lists is saved here.|r")
     else
@@ -174,7 +174,7 @@ end
 local function overviewRows()
     local rows = {}
     local function add(text) rows[#rows + 1] = { text = text } end
-    add("|cffe6483dCrafting order prices|r")
+    add("|cffffd100Crafting order prices|r")
     add("|cff808080Pick an item in the list to see its materials, prices, profit and the orders listed for it.|r")
     add("")
     local list = {}
@@ -184,7 +184,7 @@ local function overviewRows()
         if tip then list[#list + 1] = { id = id, tip = tip, n = n } end
     end
     table.sort(list, function(a, b) if a.tip ~= b.tip then return a.tip > b.tip end return a.id < b.id end)
-    add(("|cffe6483dBest paying items read so far|r  (%d)"):format(#list))
+    add(("|cffffd100Best paying items read so far|r  (%d)"):format(#list))
     if #list == 0 then
         add("|cff808080No orders read yet. Open the Crafting Orders tab of a profession and look through the orders: every order the game lists is saved here.|r")
     end

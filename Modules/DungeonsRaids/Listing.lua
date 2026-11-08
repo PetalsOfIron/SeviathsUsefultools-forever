@@ -979,7 +979,7 @@ local function MembersText(resultID)
   local r = ns:Analyze(resultID)
   if not r then return "|cff808080The group is gone from the list.|r" end
   local out = {}
-  out[#out + 1] = "|cffe6483d" .. (ns.KIND_LABEL[r.kind] or "Group") .. (r.placeName and (" - " .. r.placeName) or "") .. "|r"
+  out[#out + 1] = "|cffffd100" .. (ns.KIND_LABEL[r.kind] or "Group") .. (r.placeName and (" - " .. r.placeName) or "") .. "|r"
   local function block(title, fullName)
     local lines = PlayerLines(fullName)
     -- no Raider.IO number for this player: the check runs by itself and says what Raider.IO answered

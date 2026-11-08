@@ -210,7 +210,7 @@ local buildKilled = simplePage("Killed Today",
             local lines, last = {}, nil
             for _, k in ipairs(list) do
                 if k.char ~= last then
-                    lines[#lines + 1] = (#lines > 0 and "\n" or "") .. "|cffe6483d" .. k.char .. "|r"
+                    lines[#lines + 1] = (#lines > 0 and "\n" or "") .. "|cffffd100" .. k.char .. "|r"
                     last = k.char
                 end
                 lines[#lines + 1] = ("  %s%s  |cff808080%s  -  %s|r"):format(k.name, k.rare and "  |cffff9933[rare]|r" or "", k.zone, date("%H:%M", k.t))
@@ -738,7 +738,7 @@ local buildDelve = simplePage("Delve Planner",
                     if tips.where then lines[#lines + 1] = "Where: " .. tips.where end
                     if #tips.variants > 0 then lines[#lines + 1] = "Story variants: " .. table.concat(tips.variants, ", ") end
                     if #tips.tips > 0 then
-                        lines[#lines + 1] = "|cffe6483dAbout Valeera here (from the guide):|r"
+                        lines[#lines + 1] = "|cffffd100About Valeera here (from the guide):|r"
                         for i = 1, math.min(8, #tips.tips) do lines[#lines + 1] = "  - " .. tips.tips[i] end
                     else
                         lines[#lines + 1] = "The guide has no special advice for Valeera in this delve."
@@ -775,7 +775,7 @@ local buildDelve = simplePage("Delve Planner",
             end
             local zone
             for _, dv in ipairs(list) do
-                if dv.zone ~= zone then zone = dv.zone; row("|cffe6483d" .. zone .. "|r", nil, true) end
+                if dv.zone ~= zone then zone = dv.zone; row("|cffffd100" .. zone .. "|r", nil, true) end
                 row(dv.name .. (dv.bountiful and "  |cffffd100bountiful today|r" or ""), dv.name)
             end
             for i = n + 1, #delveRows do delveRows[i]:Hide(); if delveRows[i].hdr then delveRows[i].hdr:Hide() end end

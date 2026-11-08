@@ -56,7 +56,7 @@ local orderItem, orderName, orderCost       -- the item the window is about, its
 function SFP.RefreshOrderTab()
     if not (orderPanel and orderPanel:IsShown()) then return end
     local list = (SFP.OrderList and orderItem) and SFP:OrderList(orderItem) or {}
-    local lines = { ("|cffe6483d%s|r"):format(orderName or "this item"), "" }
+    local lines = { ("|cffffd100%s|r"):format(orderName or "this item"), "" }
     -- the 4 highest commissions of an item, highest first
     local function top4(l)
         local out = {}
@@ -69,7 +69,7 @@ function SFP.RefreshOrderTab()
         local sum = 0
         for _, t in ipairs(list) do sum = sum + t end
         local avg = math.floor(sum / #list)
-        lines[#lines + 1] = ("|cffe6483dThe %d highest of %d order%s:|r"):format(math.min(4, #list), #list, #list == 1 and "" or "s")
+        lines[#lines + 1] = ("|cffffd100The %d highest of %d order%s:|r"):format(math.min(4, #list), #list, #list == 1 and "" or "s")
         for i, t in ipairs(top4(list)) do lines[#lines + 1] = ("%d.  %s"):format(i, money(t)) end
         lines[#lines + 1] = ("Average of all: %s"):format(money(avg))
         -- against the auction house price of the item (a commission is usually below it)
@@ -101,7 +101,7 @@ function SFP.RefreshOrderTab()
     end
     table.sort(others, function(a, b) if a.top ~= b.top then return a.top > b.top end return a.id < b.id end)
     lines[#lines + 1] = ""
-    lines[#lines + 1] = ("|cffe6483dAll items checked at the crafting orders|r  (%d)"):format(#others + ((#list > 0) and 1 or 0))
+    lines[#lines + 1] = ("|cffffd100All items checked at the crafting orders|r  (%d)"):format(#others + ((#list > 0) and 1 or 0))
     if #others == 0 and #list == 0 then
         lines[#lines + 1] = "|cff808080None yet. The game does not let addons ask for orders: open the Crafting Orders tab of a profession, pick a category and look through the orders. The addon saves each one by itself and lists it here.|r"
     end
@@ -232,7 +232,7 @@ local function update(recipeInfo, form)
     local listed = SFP.Listings and outID and SFP:Listings(outID)
     if listed and #listed.p > 0 then
         -- only one price: the cheapest auction listing, and how many are listed
-        lines[#lines + 1] = ("|cffe6483dAuction price:|r %s  |cff808080(%d listed)|r"):format(money(listed.p[1]), listed.n)
+        lines[#lines + 1] = ("|cffffd100Auction price:|r %s  |cff808080(%d listed)|r"):format(money(listed.p[1]), listed.n)
     end
     -- crafting orders get their own tab (button) and panel, only for items that have orders
     orderItem = outID

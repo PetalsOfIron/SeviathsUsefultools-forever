@@ -5,7 +5,7 @@ local _, SFP = ...
 local K = SFP.MenuKit
 if not K then return end
 
-local CY = "|c" .. (SFP.CYAN_HEX or "ffe6483d")   -- CYAN_HEX already starts with the alpha (ff)
+local CY = "|c" .. (SFP.CYAN_HEX or "ffffd100")   -- CYAN_HEX already starts with the alpha (ff)
 
 ---------------------------------------------------------------------------
 -- the level ranges (as in the original game; the guides of Forever may move them a little)

@@ -1375,3 +1375,126 @@
 3174|Spider Ichor|1|7|8|10|0
 3182|Spider's Silk|1|7|5|20|0
 4428|Spider Palp|0|15|0|1|0
+1256|Crystal Kelp Frond|1|12|0|1|0
+1968|Ogre's Monocle|1|12|0|1|0
+13019|Harpyclaw Short Bow|3|2|2|32|27
+2080|Hillborne Axe|2|2|0|34|29
+2382|The Embalmer's Heart|1|12|0|1|0
+3037|Whipwood Recurve Bow|2|2|2|34|29
+3778|Taut Compound Bow|0|2|2|31|26
+3779|Hefty War Axe|0|2|1|32|27
+3780|Long-barreled Musket|0|2|3|33|28
+3781|Broad Claymore|0|2|8|34|29
+3782|Large War Club|0|2|5|35|30
+3783|Light Scimitar|0|2|7|36|31
+3784|Metal Stave|0|2|10|37|32
+3785|Keen Axe|0|2|0|38|33
+3786|Shiny Dirk|0|2|15|39|34
+3787|Stone Club|0|2|4|40|35
+3792|Interlaced Belt|0|4|1|34|29
+3793|Interlaced Boots|0|4|1|32|27
+3794|Interlaced Bracers|0|4|1|38|33
+3795|Interlaced Cloak|0|4|-6|36|31
+3796|Interlaced Gloves|0|4|1|33|28
+3797|Interlaced Pants|0|4|1|39|34
+3798|Interlaced Shoulderpads|0|4|1|35|30
+3799|Interlaced Vest|0|4|1|37|32
+3800|Hardened Leather Belt|0|4|2|39|34
+3801|Hardened Leather Boots|0|4|2|35|30
+3802|Hardened Leather Bracers|0|4|2|34|29
+3803|Hardened Cloak|0|4|-6|38|33
+3804|Hardened Leather Gloves|0|4|2|36|31
+3805|Hardened Leather Pants|0|4|2|32|27
+3806|Hardened Leather Shoulderpads|0|4|2|37|32
+3807|Hardened Leather Tunic|0|4|2|33|28
+3808|Double Mail Belt|0|4|3|34|29
+3809|Double Mail Boots|0|4|3|32|27
+3810|Double Mail Bracers|0|4|3|38|33
+3811|Double-stitched Cloak|0|4|-6|37|32
+3812|Double Mail Gloves|0|4|3|36|31
+3813|Double Mail Pants|0|4|3|35|30
+3814|Double Mail Shoulderpads|0|4|3|39|34
+3815|Double Mail Vest|0|4|3|33|28
+3816|Reflective Heater|0|4|6|36|31
+3817|Reinforced Buckler|0|4|6|33|28
+4075|Mail Combat Gauntlets|2|4|3|34|29
+4634|Iron Lockbox|2|15|4|30|0
+5433|Rag Doll|0|15|0|1|0
+7357|Elder's Hat|2|4|1|34|29
+7414|Infiltrator Pants|2|4|2|34|29
+7417|Phalanx Boots|2|4|3|34|29
+8746|Interlaced Cowl|0|4|1|33|28
+8747|Hardened Leather Helm|0|4|2|35|30
+8748|Double Mail Coif|0|4|3|30|25
+9853|Conjurer's Cinch|2|4|1|34|29
+9865|Renegade Bracers|2|4|3|34|29
+3185|Acrobatic Staff|2|2|10|34|29
+3197|Stonecutter Claymore|2|2|8|35|30
+3629|Mistmantle Family Ring|1|12|0|1|0
+4039|Nightsky Cowl|2|4|1|35|30
+4052|Insignia Cap|2|4|2|35|30
+4054|Insignia Leggings|2|4|2|35|30
+4717|Mail Combat Belt|2|4|3|34|29
+5213|Scorching Wand|2|2|19|35|30
+6408|Insignia Gloves|2|4|2|34|29
+7367|Elder's Mantle|2|4|1|33|28
+7368|Elder's Pants|2|4|1|34|29
+7609|Elder's Amber Stave|2|4|-5|35|30
+16883|Worn Junkbox|1|15|4|30|0
+981|Bernice's Necklace|1|12|0|1|0
+1175|A Gold Tooth|0|15|0|1|0
+205940|Memory of a Dark Purpose|2|0|-3|10|0
+3633|Head of Gath'Ilzogg|1|12|0|1|0
+209778|Summoner's Salt|1|12|0|1|0
+2700|Recipe: Succulent Pork Ribs|1|9|5|20|0
+3175|Ruined Dragonhide|0|15|0|1|0
+3176|Small Claw|0|15|0|1|0
+4402|Small Flame Sac|1|7|11|25|0
+2295|Large Boar Tusk|0|15|0|1|0
+2296|Great Goretusk Snout|1|7|0|16|0
+3403|Ivory Boar Tusk|0|15|0|1|0
+3631|Bellygrub's Tusk|1|12|0|1|0
+3636|Scale of Old Murk-Eye|1|12|0|1|0
+17057|Shiny Fish Scales|1|15|0|1|0
+208741|Rune of Endless Rage|2|0|-3|10|0
+2566|Sacrificial Robes|2|4|1|27|22
+3617|Pendant of Shadow|1|12|0|1|0
+5374|Small Pocket Watch|0|15|0|1|0
+3360|Stitches' Femur|1|4|-5|30|25
+1467|Spotted Sunfish|1|12|0|1|0
+1468|Murloc Fin|1|7|8|16|0
+1211|Gnoll War Harness|2|4|2|15|10
+1212|Gnoll Spittle|0|15|0|15|0
+1219|Redridge Machete|2|2|7|16|11
+1013|Iron Rivet|1|12|0|1|0
+1214|Gnoll Punisher|2|2|4|17|12
+2856|Iron Pike|1|12|0|1|0
+556|Buzzard Beak|0|15|0|1|0
+1080|Tough Condor Meat|1|7|8|15|0
+1464|Buzzard Talon|0|15|0|1|0
+1075|Shadowhide Pendant|1|12|0|1|0
+1462|Ring of the Shadow|2|4|-2|25|20
+1962|Glowing Shadowhide Pendant|1|12|0|15|15
+1461|Slayer's Battle Axe|2|2|1|25|20
+5375|Scratching Stick|0|15|0|1|0
+1458|Shadowhide Maul|2|2|5|23|18
+1457|Shadowhide Mace|2|2|4|22|17
+1460|Shadowhide Two-handed Sword|2|2|8|20|15
+1455|Blackrock Champion's Axe|2|2|1|24|19
+3014|Battleworn Axe|1|12|0|1|0
+1261|Midnight Orb|1|12|0|1|0
+1299|Lesser Belt of the Spire|2|4|1|22|17
+1300|Lesser Staff of the Spire|2|2|10|20|15
+211530|Prophecy of a City Enthralled|2|0|-3|25|0
+1296|Blackrock Mace|2|2|4|21|16
+7906|Horns of Nez'ra|1|12|0|1|0
+1446|Blackrock Boots|2|4|3|19|14
+5379|Boot Knife|0|2|16|8|3
+1221|Underbelly Whelp Scale|1|12|0|1|0
+3177|Tiny Fang|0|15|0|1|0
+1287|Giant Tarantula Fang|2|2|15|15|10
+3167|Thick Spider Hair|0|15|0|1|0
+1218|Heavy Gnoll War Club|2|2|5|21|16
+1440|Gnoll Skull Basher|2|2|4|19|14
+1931|Huge Gnoll Claw|1|12|0|1|0
+203753|Spell Notes: RING SEFF OSTROF|2|0|-3|10|0

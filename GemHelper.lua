@@ -540,7 +540,7 @@ local function planRefresh()
     planRows:Set(rows)
     local n, total, noPrice = GH.PlanTotal()
     planInfo:SetText(n == 0 and "|cff808080Tick what you want to count. Prices follow the auction house scans.|r"
-        or ("|cffe6483dTotal for the ticked ones:|r " .. moneyText(total) .. (noPrice > 0 and ("  |cffff6060(" .. noPrice .. " without a price)|r") or "")))
+        or ("|cffffd100Total for the ticked ones:|r " .. moneyText(total) .. (noPrice > 0 and ("  |cffff6060(" .. noPrice .. " without a price)|r") or "")))
 end
 GH.PlannerRefresh = planRefresh
 

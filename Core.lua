@@ -50,7 +50,7 @@ SFP.NAME    = "SeviathsUsefulTools"
 SFP.VERSION = meta("Version") or "dev"
 SFP.AUTHOR  = meta("Author") or "Seviath"
 
-SFP.CYAN = { r = 0.9, g = 0.28, b = 0.24 }
+SFP.CYAN = { r = 1, g = 0.82, b = 0 }   -- the gold of the game's own titles
 
 
 -- the word WAYPOINT in a row of a list is a real red button (the look of the map buttons): the row's text is written as before, the word is taken out of it and
@@ -105,16 +105,16 @@ function SFP.BlizzardFrame(f, big)
         return
     end
     -- a window: the dark dialog background of the game, a red tooltip border, and the snake in the corner
-    f:SetBackdrop({ bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-        tile = true, tileSize = 32, edgeSize = 14, insets = { left = 3, right = 3, top = 3, bottom = 3 } })
-    f:SetBackdropColor(0.6, 0.35, 0.35, 1)
-    f:SetBackdropBorderColor(0.9, 0.28, 0.24, 1)
+    f:SetBackdrop({ bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+        tile = true, tileSize = 32, edgeSize = 24, insets = { left = 6, right = 6, top = 6, bottom = 6 } })
+    f:SetBackdropColor(1, 1, 1, 1)
+    f:SetBackdropBorderColor(1, 1, 1, 1)
     -- never see-through: a solid dark base under the dialog background, and later color calls on a window (old per-window tints) are ignored
     if not f.seviathBase then
         local base = f:CreateTexture(nil, "BACKGROUND", nil, -8)
-        base:SetPoint("TOPLEFT", 3, -3)
-        base:SetPoint("BOTTOMRIGHT", -3, 3)
-        base:SetColorTexture(0.07, 0.03, 0.03, 1)
+        base:SetPoint("TOPLEFT", 6, -6)
+        base:SetPoint("BOTTOMRIGHT", -6, 6)
+        base:SetColorTexture(0.09, 0.06, 0.04, 1)
         f.seviathBase = base
         f.SetBackdropColor = function() end
         f.SetBackdropBorderColor = function() end
@@ -129,7 +129,7 @@ function SFP.BlizzardFrame(f, big)
         f.seviathSnake = tex
     end
 end
-SFP.CYAN_HEX = "ffe6483d"
+SFP.CYAN_HEX = "ffffd100"
 SFP.WOWHEAD_ITEM = "https://www.wowhead.com/item=%d"
 
 local defaults = {

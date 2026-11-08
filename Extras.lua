@@ -207,7 +207,7 @@ function SFP:ShowSessionControl()
             local sess = SFP.session
             if not sess then gain:SetText("|cff808080No session - press Play|r"); return end
             local secs, total, perHour = sessionTotals()
-            gain:SetText(("|cffe6483d%s|r  Gained: |cffffd100%s|r  (%s/h)%s"):format(fmtTime(secs), money(total), money(perHour), sess.stop and "  |cff808080stopped|r" or ""))
+            gain:SetText(("|cffffd100%s|r  Gained: |cffffd100%s|r  (%s/h)%s"):format(fmtTime(secs), money(total), money(perHour), sess.stop and "  |cff808080stopped|r" or ""))
         end
         ctl:SetScript("OnUpdate", function(_, dt)
             acc = acc + dt
@@ -671,7 +671,7 @@ local function checkVignette(vguid)
         if okp and pos and pos.GetXY then x, y = pos:GetXY() end
     end
     x, y = x or rec.sp.hx, y or rec.sp.hy
-    local link = (x and y) and (" |cffe6483d|Haddon:SUT:way:" .. map .. ":" .. x .. ":" .. y .. "|h[set waypoint]|h|r") or ""
+    local link = (x and y) and (" |cffffd100|Haddon:SUT:way:" .. map .. ":" .. x .. ":" .. y .. "|h[set waypoint]|h|r") or ""
     SFP:Print("|cffff9933Rare nearby:|r " .. (rec.sp.name or "?") .. " - you still miss: " .. table.concat(missing, ", ") .. link)
     if SFP.db.rareAlertSound ~= false and PlaySound and SOUNDKIT and SOUNDKIT.UI_RAID_BOSS_WHISPER_WARNING then PlaySound(SOUNDKIT.UI_RAID_BOSS_WHISPER_WARNING) end
 end

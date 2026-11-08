@@ -5,7 +5,7 @@ local ADDON, ns = SFP_Module("Codex")
 SeviathsCodex = ns
 
 ns.COLOR = { r = 0.2, g = 0.9, b = 1.0 }          -- Seviath cyan
-ns.CYAN  = "|cffe6483d"
+ns.CYAN  = "|cffffd100"
 
 ------------------------------------------------------------------------
 -- Categories (order = order in the sidebar)

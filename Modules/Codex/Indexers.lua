@@ -801,7 +801,7 @@ ns.INDEXERS = {
 local FLAGS = {
     [0] = "|cff8fb3ffTank|r", [1] = "|cffff8080DPS|r", [2] = "|cff80ff80Healer|r",
     [3] = "|cffffc000Heroic|r", [4] = "|cffff3030DEADLY|r", [5] = "|cffff9900Important|r",
-    [6] = "|cffe6483dInterrupt|r", [7] = "|cff7aa8ffMagic|r", [8] = "|cffc080ffCurse|r",
+    [6] = "|cffffd100Interrupt|r", [7] = "|cff7aa8ffMagic|r", [8] = "|cffc080ffCurse|r",
     [9] = "|cff60c060Poison|r", [10] = "|cffb08040Disease|r", [11] = "|cffff6040Enrage|r",
     [12] = "|cffff40ffMythic|r", [13] = "|cffcc2020Bleed|r",
 }

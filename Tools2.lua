@@ -184,18 +184,18 @@ local function altContent(key)
         local rows, total = {}, 0
         for k, rec in pairs(db.alts or {}) do rows[#rows + 1] = { k = k, m = rec.money or 0 }; total = total + (rec.money or 0) end
         table.sort(rows, function(x, y) return x.m > y.m end)
-        lines[1] = "|cffe6483dGold on every character|r"
+        lines[1] = "|cffffd100Gold on every character|r"
         for _, e in ipairs(rows) do lines[#lines + 1] = ("%s   %s"):format(e.k, money(e.m)) end
         local wb = db.warband and db.warband.money
         lines[#lines + 1] = ""
         lines[#lines + 1] = "Characters together: " .. money(total)
         lines[#lines + 1] = "Warband bank: " .. (wb and money(wb) or "|cff808080not read yet - open the bank once|r")
-        lines[#lines + 1] = "|cffe6483dTogether: " .. money(total + (wb or 0)) .. "|r"
+        lines[#lines + 1] = "|cffffd100Together: " .. money(total + (wb or 0)) .. "|r"
         return table.concat(lines, "\n")
     end
     if altView == "warband" then
         local w = db.warband
-        lines[1] = "|cffe6483dWarband bank (shared by all your characters)|r"
+        lines[1] = "|cffffd100Warband bank (shared by all your characters)|r"
         if not (w and w.items) then
             lines[2] = "Not read yet. Open your bank (the Warband tabs) with any character once: the addon saves what is in it."
         else
@@ -210,7 +210,7 @@ local function altContent(key)
     local short = key:match("^([^-]+)") or key
     if altView == "bags" or altView == "bank" then
         local data = altView == "bags" and r.bags or r.bank
-        lines[1] = ("|cffe6483d%s - %s|r"):format(key, altView == "bags" and "bags" or "character bank")
+        lines[1] = ("|cffffd100%s - %s|r"):format(key, altView == "bags" and "bags" or "character bank")
         if not data then
             lines[2] = altView == "bags" and ("Not read yet. Log in with " .. short .. " once.") or
                 ("Not read yet. Open the bank with " .. short .. " once: the addon saves what is in it.")
@@ -224,7 +224,7 @@ local function altContent(key)
     end
     -- overview
     local age = math.floor((time() - (r.t or 0)) / 3600)
-    lines[#lines + 1] = ("|cffe6483d%s|r  |cff808080(%s)|r"):format(key, age < 1 and "now" or (age .. " h ago"))
+    lines[#lines + 1] = ("|cffffd100%s|r  |cff808080(%s)|r"):format(key, age < 1 and "now" or (age .. " h ago"))
     lines[#lines + 1] = ("Level %s %s %s"):format(tostring(r.level or "?"), r.spec or "", r.class or "")
     lines[#lines + 1] = ("Item level %s     Gold %s"):format(tostring(r.ilvl or "?"), money(r.money))
     lines[#lines + 1] = "Professions: " .. (#(r.profs or {}) > 0 and table.concat(r.profs, ", ") or "none")
@@ -383,7 +383,7 @@ local function topRefresh()
     local items = {}
     for i, e in ipairs(topSpots()) do
         items[i] = {
-            text = ("%d. |cffe6483d%s|r  |cff808080%s|r  %s"):format(i, tostring(e.s.name), SFP:ZoneName(e.map), SFP:FormatPrice(e.v)),
+            text = ("%d. |cffffd100%s|r  |cff808080%s|r  %s"):format(i, tostring(e.s.name), SFP:ZoneName(e.map), SFP:FormatPrice(e.v)),
             buttons = { { "Waypoint", 70, function() SFP:SetWaypoint(e.map, e.s.hx, e.s.hy, e.s.name) end } },
         }
     end
@@ -455,7 +455,7 @@ function SFP:ShowKeys()
         rl:SetText("Rares of the Midnight zones (50 shards each): press Waypoint for the nearest spot")
         keyRares = SFP.MakeRowList(keyWin, 10, -346, 460, 296, 20)
     end
-    local lines = { "|cffe6483dKeys and delve currencies|r" }
+    local lines = { "|cffffd100Keys and delve currencies|r" }
     local cur = keyCurrencies()
     for _, c in ipairs(cur) do
         local week = (c.canEarnPerWeek and c.maxWeeklyQuantity and c.maxWeeklyQuantity > 0)
@@ -464,7 +464,7 @@ function SFP:ShowKeys()
     end
     if #cur == 0 then lines[#lines + 1] = "  none found (open the currency tab once, or you have none yet)" end
     lines[#lines + 1] = ""
-    lines[#lines + 1] = "|cffe6483dBountiful delves today|r"
+    lines[#lines + 1] = "|cffffd100Bountiful delves today|r"
     local b = bountiful()
     if b == nil then
         lines[#lines + 1] = "  This game version does not tell addons which delves are bountiful. Open the map: they have the golden delve icon."
@@ -474,12 +474,12 @@ function SFP:ShowKeys()
         for _, d in ipairs(b) do lines[#lines + 1] = ("  %s - %s"):format(d.name, d.zone) end
     end
     lines[#lines + 1] = ""
-    lines[#lines + 1] = "|cffe6483dHow keys work|r"
+    lines[#lines + 1] = "|cffffd100How keys work|r"
     lines[#lines + 1] = "  - A bountiful delve gives a Bountiful Coffer at the end; opening it needs one Restored Coffer Key."
     lines[#lines + 1] = "  - 100 Coffer Key Shards make 1 key. The conversion happens by itself when you enter a delve, or by talking to Naleidea Rivergleam."
     lines[#lines + 1] = "  - You can earn up to 600 shards a week (6 keys). Shards over the limit are lost, so spend keys before the next reset."
     lines[#lines + 1] = ""
-    lines[#lines + 1] = "|cffe6483dWhere to get shards (activity - amount)|r"
+    lines[#lines + 1] = "|cffffd100Where to get shards (activity - amount)|r"
     lines[#lines + 1] = "  - Delver's Starter Kit (one time only) - 200"
     lines[#lines + 1] = "  - Prey hunt quests - 75 each (Astalor Bloodsworn, Silvermoon)"
     lines[#lines + 1] = "  - Rares in the Midnight zones - 50 each (list below)"
@@ -488,7 +488,7 @@ function SFP:ShowKeys()
     lines[#lines + 1] = "  - Treasures in the Midnight zones - about 5 each"
     lines[#lines + 1] = "  - Void Motes - 1 each"
     lines[#lines + 1] = ""
-    lines[#lines + 1] = "|cffe6483dWhere to buy keys|r"
+    lines[#lines + 1] = "|cffffd100Where to buy keys|r"
     lines[#lines + 1] = "  - Naleidea Rivergleam, Delver's Headquarters, Silvermoon City: sells Restored Coffer Keys (a small number per week, with Undercoin, once you have ranked up the Delver's Journey)."
     lines[#lines + 1] = "|cff808080Amounts come from the Warcraft Wiki and a Midnight Season 2 key guide; they can change with patches. The addon could not verify them in the game.|r"
     -- rares of the Midnight zones, from the addon's own data: a list with a waypoint button for each
@@ -830,8 +830,8 @@ function SFP:DelveBestSetup()
         pick("utility", "Soul-Cracking Dreamcatcher", "Mandate of Sacred Death")
     end
     local L = out.lines
-    L[#L + 1] = ("|cffe6483dSuggested setup for %s|r"):format(info.spec.name)
-    if self.db.delveSel then L[1] = ("|cffe6483dSuggested setup for %s in %s|r"):format(info.spec.name, self.db.delveSel) end
+    L[#L + 1] = ("|cffffd100Suggested setup for %s|r"):format(info.spec.name)
+    if self.db.delveSel then L[1] = ("|cffffd100Suggested setup for %s in %s|r"):format(info.spec.name, self.db.delveSel) end
     L[#L + 1] = ("  Valeera as |cff40ff40%s|r"):format(out.companion)
     if delveNote then L[#L + 1] = "  |cff808080Why (guide for this delve): " .. delveNote .. "|r" end
     for i, sl in ipairs(self:CurioSlots()) do
@@ -1310,7 +1310,7 @@ function SFP:ZoneCheckReport()
     local inInstance, itype = IsInInstance()
     local instName = (inInstance and (itype == "party" or itype == "raid")) and (GetInstanceInfo()) or nil
     local count, names = missingHere(mapID, instName)
-    local lines = { "|cffe6483d" .. (instName or self:ZoneName(mapID)) .. "|r", "" }
+    local lines = { "|cffffd100" .. (instName or self:ZoneName(mapID)) .. "|r", "" }
     if count == 0 then
         lines[#lines + 1] = "Nothing missing here that the addon knows about (mounts, pets and toys of the rares and bosses here)."
     else
@@ -1847,7 +1847,7 @@ end
 local function achDetail(id)
     local ok, _, name, points, completed, _, _, _, desc = pcall(GetAchievementInfo, id)
     if not ok or not name then return "Could not read that achievement.", nil end
-    local lines = { "|cffe6483d" .. name .. "|r  |cff808080" .. (points or 0) .. " points|r" }
+    local lines = { "|cffffd100" .. name .. "|r  |cff808080" .. (points or 0) .. " points|r" }
     if desc and desc ~= "" then lines[#lines + 1] = desc end
     if completed then lines[#lines + 1] = "|cff40ff40Completed on this account.|r"; return table.concat(lines, "\n"), nil end
     local n = GetAchievementNumCriteria and GetAchievementNumCriteria(id) or 0

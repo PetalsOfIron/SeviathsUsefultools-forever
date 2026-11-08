@@ -3,7 +3,7 @@
 -- the pages say where to read the current values in the game.
 
 local ADDON, ns = SFP_Module("Codex")
-local C = "|cffe6483d"
+local C = "|cffffd100"
 local R = "|r"
 local NOTE = "|cff888888Numbers, rules and rewards change every season. Check the in-game windows and the Adventure Guide for the current values.|r"
 

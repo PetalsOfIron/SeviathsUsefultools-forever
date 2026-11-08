@@ -1477,7 +1477,7 @@ local function buildSpotPanel()
         b:SetPoint("TOPLEFT", x, -21)
         b.text = b:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
         b.text:SetPoint("LEFT")
-        b.text:SetText("|cffe6483d" .. text .. "|r")
+        b.text:SetText("|cffffd100" .. text .. "|r")
         b:SetWidth(b.text:GetStringWidth() + 4)
         return b
     end
@@ -2298,7 +2298,7 @@ drawFarmScroll = function(mapID, spots)
             r.text:SetFontObject("GameFontNormalLarge")
             r.text:SetPoint("LEFT", r.icon, "RIGHT", 6, 0)
             r.text:SetPoint("RIGHT", r.right, "LEFT", -6, 0)
-            r.text:SetText("|cffe6483d" .. tostring(s.name) .. "|r")
+            r.text:SetText("|cffffd100" .. tostring(s.name) .. "|r")
             r.map, r.x, r.y, r.label = mapID, x0, y0, s.name
             r.hint = "Click: set a waypoint on " .. tostring(s.name)
         end)
