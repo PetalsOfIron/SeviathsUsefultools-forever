@@ -1362,7 +1362,7 @@ local buildSocial = simplePage("Players & Party",
             checks[#checks + 1] = mkCheck(pane, d[2], function() return S.Config().dislikes[id] end,
                 function(v) S.Config().dislikes[id] = v and true or nil end, 12 + col * 255, y - 396 - row * 24)
         end
-        local preview = mkText(pane, "", 12, y - 506, 640, "GameFontHighlightSmall")
+        local preview = mkText(pane, "", 12, y - 552, 640, "GameFontHighlightSmall")
         preview:SetTextColor(0.8, 0.8, 0.8)
         return function()
             local cfg = S.Config()
@@ -1370,7 +1370,7 @@ local buildSocial = simplePage("Players & Party",
             local anyChosen = false
             for _, on in pairs(cfg.styles or {}) do if on then anyChosen = true end end
             if not anyChosen then
-                styleInfo:SetText("The addon says you are: |cffffd100" .. S.StyleLabels(p.style) .. "|r  (from what you did in the last 28 days: raids, Mythic+, delves, collecting, achievements, PvP, dailies, farming, gold. The two strongest.)")
+                styleInfo:SetText("The addon says you are: |cffffd100" .. S.StyleLabels(p.style) .. "|r  (from what you did in the last 28 days: ".. ((WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT) and "raids, dungeons, collecting, achievements, PvP, quests, farming, gold" or "raids, Mythic+, delves, collecting, achievements, PvP, dailies, farming, gold") .. ". The two strongest.)")
             else
                 styleInfo:SetText("You chose: |cffffd100" .. S.StyleLabels(p.style) .. "|r")
             end
