@@ -10,6 +10,40 @@ SFP.QuestMarkers = QM
 local pins = {}
 local shown = 0
 
+-- is a quest already in your log? Every way the game offers is tried (the calls differ between versions); a log scan by quest number is the last
+local logIDs, logAt
+local function haveQuest(id)
+    if C_QuestLog then
+        if C_QuestLog.IsOnQuest then
+            local ok, v = pcall(C_QuestLog.IsOnQuest, id)
+            if ok and v then return true end
+        end
+        if C_QuestLog.GetLogIndexForQuestID then
+            local ok, v = pcall(C_QuestLog.GetLogIndexForQuestID, id)
+            if ok and v then return true end
+        end
+    end
+    if GetNumQuestLogEntries and (GetQuestLogTitle or (C_QuestLog and C_QuestLog.GetInfo)) then
+        if not logIDs or GetTime() - (logAt or 0) > 2 then
+            logIDs, logAt = {}, GetTime()
+            local n = GetNumQuestLogEntries() or 0
+            for i = 1, n do
+                local qid
+                if C_QuestLog and C_QuestLog.GetInfo then
+                    local ok, info = pcall(C_QuestLog.GetInfo, i)
+                    qid = ok and type(info) == "table" and not info.isHeader and info.questID or nil
+                elseif GetQuestLogTitle then
+                    local _, _, _, isHeader, _, _, _, id2 = GetQuestLogTitle(i)
+                    qid = (not isHeader) and id2 or nil
+                end
+                if qid then logIDs[qid] = true end
+            end
+        end
+        return logIDs[id] == true
+    end
+    return false
+end
+
 local function playerFaction()
     local f = UnitFactionGroup("player")
     return f == "Alliance" and 1 or f == "Horde" and 2 or 0
@@ -59,7 +93,7 @@ local function available(entry)
         if ok and prev and C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted and not C_QuestLog.IsQuestFlaggedCompleted(prev) then ok = false end
         if ok and C_QuestLog then
             if C_QuestLog.IsQuestFlaggedCompleted and C_QuestLog.IsQuestFlaggedCompleted(q.id) then ok = false end
-            if ok and C_QuestLog.GetLogIndexForQuestID and C_QuestLog.GetLogIndexForQuestID(q.id) then ok = false end
+            if ok and haveQuest(q.id) then ok = false end
         end
         if ok then out[#out + 1] = q end
     end
@@ -148,7 +182,7 @@ local function learnedQuestGivers(map)
     for qid, r in pairs((SFP.db and SFP.db.learnedQuests) or {}) do
         if type(r) == "table" and r.m == map and r.g and r.x then
             local done = C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted and C_QuestLog.IsQuestFlaggedCompleted(qid)
-            local inLog = C_QuestLog and C_QuestLog.GetLogIndexForQuestID and C_QuestLog.GetLogIndexForQuestID(qid)
+            local inLog = haveQuest(qid)
             local prev = (SFP.QuestPrereq and SFP.QuestPrereq[qid]) or (SFP.db.learnedPrereq and SFP.db.learnedPrereq[qid])
             local blocked = prev and C_QuestLog.IsQuestFlaggedCompleted and not C_QuestLog.IsQuestFlaggedCompleted(prev)
             if not done and not inLog and not blocked then
@@ -168,7 +202,7 @@ local function learnedGivers(map)
         local g = type(rec) == "table" and rec.g
         if type(qid) == "number" and type(g) == "table" and g.m == map and g.x and g.y and g.n then
             local done = C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted and C_QuestLog.IsQuestFlaggedCompleted(qid)
-            local inLog = C_QuestLog and C_QuestLog.GetLogIndexForQuestID and C_QuestLog.GetLogIndexForQuestID(qid)
+            local inLog = haveQuest(qid)
             if not done and not inLog then
                 local qr = type(cdb.quests) == "table" and cdb.quests[qid]
                 local title = type(qr) == "table" and qr.t or ("Quest " .. qid)

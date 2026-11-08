@@ -1,0 +1,3 @@
+-- placeholder: replaced by tools/crawl_event_quests.py
+local _, SFP = ...
+SFP.EventQuests = SFP.EventQuests or {}
