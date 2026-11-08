@@ -327,8 +327,15 @@ end
 ---------------------------------------------------------------------------
 SFP:OnLogin(function()
     if not (WorldMapFrame and WorldMapFrame.ScrollContainer) then return end
-    local fs = WorldMapFrame.ScrollContainer:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-    fs:SetPoint("TOP", WorldMapFrame.ScrollContainer, "TOP", 0, -28)
+    -- its own frame above the map's pins, so nothing covers the text; it sits under the game's own zone name at the top of the map
+    local holder = CreateFrame("Frame", nil, WorldMapFrame)
+    holder:SetFrameStrata("FULLSCREEN_DIALOG")
+    holder:SetAllPoints(WorldMapFrame.ScrollContainer)
+    holder:EnableMouse(false)
+    local fs = holder:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+    fs:SetPoint("TOP", holder, "TOP", 0, -62)
+    fs:SetShadowOffset(1, -1)
+    local byName
     local driver = CreateFrame("Frame")
     local acc = 0
     driver:SetScript("OnUpdate", function(_, dt)
@@ -341,6 +348,14 @@ SFP:OnLogin(function()
         if okC and type(x) == "number" and x >= 0 and x <= 1 and y >= 0 and y <= 1 then
             local okM, info = pcall(C_Map.GetMapInfoAtPosition, WorldMapFrame:GetMapID(), x, y)
             local z = okM and type(info) == "table" and ZONE_LEVEL[info.mapID]
+            if okM and type(info) == "table" and not z and type(info.name) == "string" then
+                -- the zone found by its name when the map number is not one of the list's
+                if not byName then
+                    byName = {}
+                    for _, zz in ipairs(ZONES) do byName[zoneName(zz[1])] = zz end
+                end
+                z = byName[info.name]
+            end
             if z then
                 text = ("%s%s|r  |cffffd100level %d-%d|r  |cff808080(as in the original game)|r"):format(CY, zoneName(z[1]), z[2], z[3])
             end

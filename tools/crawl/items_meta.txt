@@ -1930,3 +1930,82 @@
 1688|Long Soft Tail|0|15|0|1|0
 3838|Shadowmaw Claw|1|12|0|1|0
 10605|Schematic: Spellpower Goggles Xtreme|3|9|3|45|0
+1696|Curved Raptor Talon|0|15|0|1|0
+3685|Raptor Egg|1|7|8|22|0
+4461|Raptor Hide|1|7|6|30|0
+4586|Smooth Raptor Skin|0|15|0|1|0
+12184|Raptor Flesh|1|7|8|30|0
+217284|Plans: Golden Scale Shoulders|3|9|4|35|0
+1980|Underworld Band|4|4|-2|43|38
+1981|Icemail Jerkin|4|4|3|44|39
+3863|Jungle Stalker Feather|1|12|0|1|0
+4587|Tribal Raptor Feathers|0|15|0|1|0
+7486|Captain's Breastplate|2|4|3|44|39
+7989|Plans: Mithril Spurs|2|9|4|47|0
+8389|Pattern: Big Voodoo Pants|2|9|1|48|0
+10320|Pattern: Red Mageweave Headband|2|9|2|48|0
+12031|Lodestone Necklace|2|4|-3|44|39
+13058|Khoo's Point|3|2|6|44|39
+13138|The Silencer|3|2|3|42|37
+217271|Pattern: Turtle Scale Gloves|1|9|1|41|0
+220918|Waylaid Supplies: Undermine Clam Chowder|2|7|0|45|0
+220926|Waylaid Supplies: Rugged Leather|2|7|0|45|0
+220927|Waylaid Supplies: Thick Hide|2|7|0|45|0
+220936|Waylaid Supplies: Truesilver Gauntlets|2|7|0|45|0
+220939|Waylaid Supplies: Runic Leather Bracers|2|7|0|45|0
+1701|Curved Basilisk Claw|0|15|0|1|0
+1702|Intact Basilisk Spine|0|15|0|1|0
+3918|Singing Crystal Shard|1|12|0|1|0
+4093|Large Basilisk Tail|0|15|0|1|0
+11386|Squishy Basilisk Eye|0|15|0|1|0
+215399|Waylaid Supplies: Heavy Mithril Gauntlets|2|7|0|35|0
+1703|Crystal Basilisk Spine|1|15|4|35|25
+4351|Pattern: Shadow Hood|2|9|2|34|0
+2476|Chilled Basilisk Haunch|1|12|0|1|0
+5079|Cold Basilisk Eye|2|4|-4|40|35
+13064|Jaina's Firestarter|3|2|19|42|37
+1706|Azuredeep Shards|0|15|0|36|0
+3923|Water Elemental Bracers|1|12|0|1|0
+4791|Enchanted Water|1|0|5|35|25
+7070|Elemental Water|1|7|10|25|0
+1718|Basilisk Hide Pants|3|4|2|43|38
+1998|Bloodscalp Channeling Staff|2|2|10|33|28
+4544|Mulgore Spice Bread|1|0|5|35|25
+13063|Starfaller|3|2|19|34|29
+1997|Pressed Felt Robe|2|4|1|34|29
+3632|Fangore's Paw|1|12|0|1|0
+2787|Trogg Dagger|1|2|15|3|0
+5367|Primitive Rock Tool|0|15|0|1|0
+208213|Top-Right Map Piece|1|0|0|1|0
+208215|Top-Left Map Piece|1|0|0|1|0
+1986|Gutrender|2|2|8|41|36
+4062|Imperial Leather Pants|2|4|2|45|40
+7482|Ranger Shoulders|2|4|2|42|37
+7534|Cabalist Bracers|2|4|2|45|40
+9933|Brigade Leggings|2|4|3|45|40
+11225|Formula: Enchant Bracer - Greater Stamina|2|9|8|49|0
+12023|Tellurium Necklace|2|4|-3|45|40
+221276|Five of Wilds|3|15|0|1|0
+221278|Seven of Wilds|3|15|0|1|0
+221294|Five of Dunes|3|15|0|1|0
+221297|Eight of Dunes|3|15|0|1|0
+1213|Gnoll Kindred Bracers|1|4|2|14|9
+1680|Headchopper|2|2|1|44|39
+3876|Fang of Bhag'thera|1|12|0|1|0
+3879|Paw of Sin'Dall|1|12|0|1|0
+3877|Talon of Tethis|1|12|0|1|0
+4588|Pristine Raptor Skull|0|15|0|1|0
+7536|Champion's Wall Shield|2|4|6|48|43
+3880|Head of Bangalash|1|12|0|1|0
+4580|Sabertooth Fang|0|15|0|1|0
+4581|Patch of Fine Fur|0|15|0|1|0
+4459|Brittle Dragon Bone|0|15|0|1|0
+4460|Ripped Wing Webbing|0|15|0|1|0
+5803|Speck of Dream Dust|1|12|0|1|0
+7392|Green Whelp Scale|1|7|6|1|0
+8498|Tiny Emerald Whelpling|1|15|2|30|0
+15412|Green Dragonscale|1|7|6|50|0
+1447|Ring of Saviors|4|4|-2|46|41
+10088|Gothic Plate Girdle|2|4|4|45|40
+13071|Plated Fist of Hakoo|3|4|4|45|40
+8390|Pattern: Big Voodoo Cloak|2|9|1|48|0
