@@ -36,13 +36,30 @@ end
 
 -- a treasure: an object the game showed as a loot icon where you opened it (rec.tr, set by the Collector). Objects recorded before that was noted count when they
 -- look like one: a name, opened once or twice, not a quest objective, not a gathering node
+local npcNames, npcNamesAt
+local function isMobName(n)
+    -- an "object" that carries the name of a monster is a monster's corpse, not a treasure
+    if type(n) ~= "string" then return false end
+    local npcs = SFP.db and SFP.db.npcs
+    if not npcs then return false end
+    if not npcNames or (npcNamesAt or 0) < time() - 300 then
+        npcNames, npcNamesAt = {}, time()
+        for _, r in (SeviathsAllPairs or pairs)(npcs) do
+            if type(r) == "table" and type(r.n) == "string" then npcNames[r.n] = true end
+        end
+    end
+    return npcNames[n] == true
+end
+
 local function isTreasure(rec)
     if type(rec) ~= "table" or type(rec.d) ~= "table" or not next(rec.d) or type(rec.m) ~= "table" then return false end
+    if isMobName(rec.n) then return false end
     if (rec.k or 0) < 1 then return false end
     if rec.qs and next(rec.qs) then return false end
     if rec.ot then return false end   -- a quest objective or a gathering node has its type text saved
     if SFP.ObjectKind and SFP:ObjectKind({ d = rec.d }) then return false end   -- the kind by its items only
     if rec.tr then return true end   -- the game showed it as a loot icon: a treasure, whatever it gave
+    if WOW_PROJECT_ID and WOW_PROJECT_CAMELOT and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then return false end   -- WoW Forever: only what the game marked as a loot icon; crates, barrels and quest objects are not treasures
     if (rec.k or 0) > 2 then return false end
     if not (type(rec.n) == "string" and not rec.n:find("^Object %d+$") and not rec.n:find("Seviath", 1, true)) then return false end
     -- the clues and objects of quest lines give quest items; a treasure gives ordinary items

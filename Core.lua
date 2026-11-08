@@ -1290,8 +1290,13 @@ events:SetScript("OnEvent", function(_, event, arg1)
         if (SFP.db.schema or 1) < 2 then
             SFP.db.zonePanel = false
             SFP.db.zoneFill = false
-            SFP.db.showSpawns = true
+            SFP.db.showSpawns = false   -- (a new install starts with every spot layer off)
             SFP.db.schema = 2
+        end
+        -- WoW Forever: the farm spots were switched on by that step on a new install; off once, the player turns them on where they want them
+        if not SFP.db.spawnsOffOnce then
+            SFP.db.spawnsOffOnce = true
+            SFP.db.showSpawns = false
         end
         -- 1.11: map text only on hover - labels off for everyone once
         if (SFP.db.schema or 2) < 3 then
