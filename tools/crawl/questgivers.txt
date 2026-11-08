@@ -736,3 +736,4 @@
 17080|Marshal Bluewall|1377:33.2,51|9419:60:1:1:Scouring the Desert
 17081|Scout Bloodfist|1377:48.8,36.6|9416:60:1:2:Report to General Kirika
 17082|Rifleman Torrig|1377:50.6,34.4;50.6,34.6|9415:60:1:1:Report to Marshal Bluewall
+208518|Gaeriyan|440:53.8,23.6;54,23.2|3913:52:47:3:A Grave Situation

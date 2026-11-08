@@ -209,14 +209,12 @@ local function zoneAutoDone(z)
 end
 
 local buildQuests = K.simplePage("Quest Planner",
-    "The zones you still need for your level, and where to head next. Green zones fit your level, yellow ones are a few levels ahead. A zone leaves the list by itself when all the quests of it that you can take are completed. Map opens the world map on the zone.",
+    "The zones you still need for your level, and where to head next. A zone leaves the list by itself when all the quests of it that you can take are completed. Map opens the world map on the zone.",
     function(pane, y)
         local head = K.mkText(pane, "", 12, y - 6, 480, "GameFontNormal")
         local list = SFP.MakeRowList(pane, 8, y - 34, 500, 380, 22)
         local function done() SFP.db.zoneDone = SFP.db.zoneDone or {}; local d = SFP.db.zoneDone[charKey()]; if not d then d = {}; SFP.db.zoneDone[charKey()] = d end return d end
         local showAll = false
-        local allBtn = K.mkButton(pane, "Show all", 70, function(self) showAll = not showAll; self.text:SetText(showAll and "Needed only" or "Show all"); SFP:Safe("quests", pane.refresh) end)
-        allBtn:SetPoint("TOPRIGHT", -34, y - 4)
         return function()
             local lvl = myLevel()
             local rows = {}
@@ -241,7 +239,7 @@ local buildQuests = K.simplePage("Quest Planner",
             for i, r in ipairs(rows) do
                 local z = r.z
                 items[i] = {
-                    text = ("%s%s|r  |cff808080level %d-%d%s|r"):format(r.done and "|cff606060" or levelColor(lvl, z[2], z[3]), zoneName(z[1]), z[2], z[3],
+                    text = ("%s%s|r  |cff808080level %d-%d%s|r"):format("|cffffffff", zoneName(z[1]), z[2], z[3],
                         (C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player") == z[1]) and "  (you are here)" or ""),
                     buttons = {
                         { "Map", 46, function()

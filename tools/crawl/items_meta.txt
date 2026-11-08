@@ -5075,3 +5075,12 @@
 5017|Nitroglycerin|1|12|0|1|0
 5018|Wood Pulp|1|12|0|1|0
 5019|Sodium Nitrate|1|12|0|1|0
+6332|Black Pearl Ring|3|4|-2|22|17
+6333|Spikelash Dagger|2|2|15|22|17
+11467|Blackrock Medallion|1|12|0|1|0
+15738|Pattern: Heavy Scorpid Gauntlets|2|9|1|55|0
+1263|Brain Hacker|4|2|1|60|55
+13476|Recipe: Mighty Rage Potion|2|9|6|51|0
+15748|Pattern: Heavy Scorpid Leggings|2|9|1|57|0
+15774|Pattern: Heavy Scorpid Shoulders|2|9|1|61|0
+225676|Molten Obsidian Core|1|15|0|1|0
