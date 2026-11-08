@@ -74,11 +74,36 @@ local function getPin(i, canvas)
     return p
 end
 
+-- the quest givers this character has learned itself: the Codex notes the giver's place (qloc[quest].g) when a quest is picked up or turned in
+local function learnedGivers(map)
+    local cdb = _G.SeviathsCodexDB
+    local out = {}
+    if not (cdb and type(cdb.qloc) == "table") then return out end
+    local lvl = UnitLevel("player")
+    for qid, rec in pairs(cdb.qloc) do
+        local g = type(rec) == "table" and rec.g
+        if type(qid) == "number" and type(g) == "table" and g.m == map and g.x and g.y and g.n then
+            local done = C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted and C_QuestLog.IsQuestFlaggedCompleted(qid)
+            local inLog = C_QuestLog and C_QuestLog.GetLogIndexForQuestID and C_QuestLog.GetLogIndexForQuestID(qid)
+            if not done and not inLog then
+                local qr = type(cdb.quests) == "table" and cdb.quests[qid]
+                local title = type(qr) == "table" and qr.t or ("Quest " .. qid)
+                local ql = type(qr) == "table" and tonumber(qr.l) or 0
+                if ql == 30 then ql = 0 end   -- 30 = level not known
+                if not (ql > 0 and type(lvl) == "number" and ql < lvl - 8) then
+                    out[#out + 1] = { n = g.n, x = g.x * 100, y = g.y * 100, q = { id = qid, level = ql, name = title } }
+                end
+            end
+        end
+    end
+    return out
+end
+
 function QM:Draw()
     for _, p in ipairs(pins) do p:Hide() end
     if not (SFP.db and SFP.db.questMarkers ~= false and SFP.QuestGivers and WorldMapFrame and WorldMapFrame:IsShown()) then return end
     local map = WorldMapFrame:GetMapID()
-    local list = map and SFP.QuestGivers[map]
+    local list = map and (SFP.QuestGivers[map] or {})
     local canvas = WorldMapFrame.ScrollContainer and WorldMapFrame.ScrollContainer.Child
     if not (list and canvas) then return end
     local w, h = canvas:GetWidth(), canvas:GetHeight()
@@ -89,6 +114,22 @@ function QM:Draw()
             n = n + 1
             local p = getPin(n, canvas)
             p.giver, p.quests, p.map, p.x, p.y = e[1], qs, map, e[2] / 100, e[3] / 100
+            p:ClearAllPoints()
+            p:SetPoint("CENTER", canvas, "TOPLEFT", p.x * w, -p.y * h)
+            p:SetFrameLevel(canvas:GetFrameLevel() + 20)
+            p:Show()
+        end
+    end
+    -- learned by this character: shown when no known giver is within a few percent of the map
+    for _, g in ipairs(learnedGivers(map)) do
+        local near = false
+        for _, e in ipairs(list) do
+            if math.abs(e[2] - g.x) < 1.5 and math.abs(e[3] - g.y) < 1.5 then near = true break end
+        end
+        if not near then
+            n = n + 1
+            local p = getPin(n, canvas)
+            p.giver, p.quests, p.map, p.x, p.y = g.n, { g.q }, map, g.x / 100, g.y / 100
             p:ClearAllPoints()
             p:SetPoint("CENTER", canvas, "TOPLEFT", p.x * w, -p.y * h)
             p:SetFrameLevel(canvas:GetFrameLevel() + 20)
@@ -106,6 +147,8 @@ SFP:OnLogin(function()
     local ev = CreateFrame("Frame")
     ev:RegisterEvent("QUEST_LOG_UPDATE")
     ev:RegisterEvent("QUEST_TURNED_IN")
+    ev:RegisterEvent("QUEST_ACCEPTED")
+    ev:RegisterEvent("QUEST_DETAIL")
     ev:RegisterEvent("PLAYER_LEVEL_UP")
     ev:SetScript("OnEvent", function() if WorldMapFrame:IsShown() then draw() end end)
 end)

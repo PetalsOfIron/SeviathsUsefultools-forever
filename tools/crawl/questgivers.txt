@@ -250,3 +250,13 @@
 3568|Mist|141:31.4,31.4;31.4,31.6;31.6,31.6|938:12:7:1:Mist
 3583|Barithras Moonshade|148:37.2,43.6|947:17:12:1:Cave Mushrooms,948:17:12:1:Onu
 3584|Therylune|148:38.6,87.2;39.4,85.4;39.4,85.6|945:18:10:1:Therylune's Escape
+3593|Alyissia|141:59.4,38.6;59.6,38.4;59.6,38.6|77575:2:2:1:Amidst the Shadowed Webs
+3594|Frahun Shadewhisper|141:59.4,38.8;59.6,38.6|77573:2:2:1:Second-Story Work
+3595|Shanda|141:59.2,40.4;59.2,40.6|5622:4:5:1:In Favor of Elune,77574:2:2:1:Meditation on Elune
+3596|Ayanna Everstride|141:58.6,40.4;58.6,40.6|77568:2:2:1:A Hunter's Strength
+3597|Mardant Strongoak|141:58.6,40.4|77571:2:2:1:Relics of the Kaldorei
+3598|Kyra Windblade|141:56.2,59.2|1684:10:10:1:Elanaria
+3599|Jannok Breezesong|141:56.2,60|2241:10:10:1:The Apple Falls,2259:16:16:1:Erion Shadewhisper
+3600|Laurna Morninglight|141:55.4,56.8;55.6,56.8|5621:4:5:1:Garments of the Moon,5629:10:10:1:Returning Home,5636:10:10:1:Desperate Prayer
+3601|Dazalar|141:56.6,59.4;56.6,59.6|6063:10:10:1:Taming the Beast,6101:10:10:1:Taming the Beast,6102:10:10:1:Taming the Beast,6103:10:10:1:Training the Beast
+3602|Kal|141:56,61.4;56,61.6|5925:10:10:1:Heeding the Call
