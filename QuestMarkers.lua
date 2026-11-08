@@ -50,23 +50,49 @@ local function playerFaction()
 end
 
 -- the quests of one giver that the character can take: { { id, level, name }, ... }
--- the Darkmoon Faire quests are offered only while the fair is on (the first Sunday of each month, for a week): the game's calendar says
-local fairOn, fairAt
-local function darkmoonOn()
-    if fairAt and GetTime() - fairAt < 600 then return fairOn end
-    fairAt, fairOn = GetTime(), false
+-- Holiday event quests are offered only while their event is in the game's calendar. The event of a quest is told by its title (from memory of the events:
+-- an approximation) and, for the Darkmoon Faire, by its quest numbers. Calendar names as the game shows them.
+local EVENTS = {
+    { cal = "Darkmoon", words = { "Darkmoon" } },
+    { cal = "Hallow", words = { "Hallow's End", "Candy Bucket", "Smashing the Pumpkin", "Stinking Up", "Pumpkin" } },
+    { cal = "Winter Veil", words = { "Winter Veil", "Greatfather", "Metzen", "Smokywood Pastures", "Reindeer" } },
+    { cal = "Lunar", words = { "Lunar Festival", "Elune's Blessing", "Festive Lunar" } },
+    { cal = "Love", words = { "Love is in the Air", "Bubbly", "Crown Chemical" } },
+    { cal = "Midsummer", words = { "Midsummer", "Torch Tossing", "Ribbon Pole", "Fire Festival" } },
+    { cal = "Harvest", words = { "Harvest Festival" } },
+    { cal = "Brewfest", words = { "Brewfest" } },
+    { cal = "Noblegarden", words = { "Noblegarden", "Spring Collection", "Painted Egg" } },
+    { cal = "Children", words = { "Children's Week", "Orphan" } },
+}
+local onCache = {}
+local function eventOn(cal)
+    local c = onCache[cal]
+    if c and GetTime() - c.at < 600 then return c.on end
+    local on = false
     if C_Calendar and C_Calendar.GetNumDayEvents and C_Calendar.GetDayEvent and C_DateAndTime and C_DateAndTime.GetCurrentCalendarTime then
-        local ok = pcall(function()
+        pcall(function()
             local now = C_DateAndTime.GetCurrentCalendarTime()
             for i = 1, (C_Calendar.GetNumDayEvents(0, now.monthDay) or 0) do
                 local ev = C_Calendar.GetDayEvent(0, now.monthDay, i)
-                if ev and type(ev.title) == "string" and ev.title:find("Darkmoon", 1, true) then fairOn = true end
+                if ev and type(ev.title) == "string" and ev.title:find(cal, 1, true) then on = true end
             end
         end)
     end
-    return fairOn
+    onCache[cal] = { on = on, at = GetTime() }
+    return on
 end
-local function isFairQuest(id) return (id >= 7881 and id <= 7999) or (id >= 8222 and id <= 8228) or id >= 80000 end
+local function eventOf(id, name)
+    if (id >= 7881 and id <= 7999) or (id >= 8222 and id <= 8228) or id >= 80000 then return "Darkmoon" end
+    if type(name) == "string" then
+        for _, e in ipairs(EVENTS) do
+            for _, w in ipairs(e.words) do if name:find(w, 1, true) then return e.cal end end
+        end
+    end
+end
+local function eventQuestOn(q)
+    local cal = eventOf(q.id, q.name)
+    return not cal or eventOn(cal)
+end
 
 local function available(entry)
     local lvl = UnitLevel("player")
@@ -83,7 +109,7 @@ local function available(entry)
     end
     local out = {}
     for _, q in ipairs(list) do
-        local ok = (not isFairQuest(q.id) or darkmoonOn()) and q.req <= lvl and (q.side == 0 or q.side == 3 or q.side == side or side == 0)   -- (Wowhead: 1 Alliance, 2 Horde, 3 both)
+        local ok = eventQuestOn(q) and q.req <= lvl and (q.side == 0 or q.side == 3 or q.side == side or side == 0)   -- (Wowhead: 1 Alliance, 2 Horde, 3 both)
         -- quests far above the level are not offered (the Darkmoon Faire quests of level 60 need only level 1, but are not for a level 6 character)
         if ok and q.level > 0 and q.level > lvl + 6 then ok = false end
         -- quests far below the level give nothing: left out
