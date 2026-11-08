@@ -77,6 +77,22 @@ function SFP:UpdateAlt()
             end
         end
     end
+    -- Classic style skill list (WoW Forever): the professions are skill lines with a rank
+    if #rec.profs == 0 and GetNumSkillLines and GetSkillLineInfo then
+        local PROFS = { Alchemy = 1, Blacksmithing = 1, Enchanting = 1, Engineering = 1, Herbalism = 1, Leatherworking = 1, Mining = 1, Skinning = 1, Tailoring = 1,
+            Cooking = 1, ["First Aid"] = 1, Fishing = 1, Jewelcrafting = 1 }
+        for i = 1, (GetNumSkillLines() or 0) do
+            local ok, name, isHeader, _, rank, _, _, maxRank = pcall(GetSkillLineInfo, i)
+            if ok and type(name) == "string" and not isHeader and PROFS[name] and not secret(name) then
+                rec.profs[#rec.profs + 1] = ("%s %d/%d"):format(name, tonumber(rank) or 0, tonumber(maxRank) or 0)
+            end
+        end
+    end
+    -- the specialization of this game: the Talent Advisor's own detection
+    if not rec.spec and SFP.TalentAdvisor and SFP.TalentAdvisor.DetectedSpec then
+        local okS, sp = pcall(SFP.TalentAdvisor.DetectedSpec)
+        if okS and type(sp) == "string" then rec.spec = sp end
+    end
     self.db.alts = self.db.alts or {}
     local old = self.db.alts[charKey()]
     if old then rec.bags, rec.bagsT, rec.bank, rec.bankT = old.bags, old.bagsT, old.bank, old.bankT end
@@ -142,7 +158,7 @@ function SFP:SnapshotBags()
     end
 end
 
-local altWin, altRows, altBox
+local altWin, altRows, altBox, altItems
 local altView = "overview"
 -- the Warband bank tab is left out while the game has no Warband bank (WoW Forever; the code stays for a later version)
 local HAS_WARBAND = not (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT)
@@ -285,7 +301,41 @@ local function altRefresh()
     end
     altRows:Set(items)
     for _, bt in ipairs(altViewBtns) do bt:SetText((bt.view == altView and "|cff40ff40" or "") .. bt.label) end
-    altWin:SetContent(altContent(sel))
+    local r = sel and SFP.db.alts[sel]
+    if (altView == "bags" or altView == "bank") and r then
+        -- the items of the bags or the bank as rows, each with its tooltip on hover
+        local data = altView == "bags" and r.bags or r.bank
+        altWin.scroll:Hide()
+        altItems.scroll:Show()
+        local head = {}
+        if not data then
+            head[1] = { text = altView == "bags" and "Not read yet. Log in with this character once." or "Not read yet. Open the bank with this character once." }
+            altItems:Set(head)
+        else
+            local filter = (altBox and altBox:GetText() or ""):lower()
+            local list, value = {}, 0
+            for id, cnt in pairs(data) do
+                local name = SFP:ItemName(id)
+                local plain = name:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", ""):lower()
+                local unit = SFP:GetPrice(id) or 0
+                value = value + unit * cnt
+                if filter == "" or plain:find(filter, 1, true) then list[#list + 1] = { id = id, name = name, plain = plain, cnt = cnt, unit = unit } end
+            end
+            table.sort(list, function(x, y) return x.plain < y.plain end)
+            local rows = { { text = ("|cff808080Read %s. %d different items worth about %s.|r"):format(ago(altView == "bags" and r.bagsT or r.bankT), #list, money(value)) } }
+            for _, e in ipairs(list) do
+                local id = e.id
+                rows[#rows + 1] = { text = ("%dx %s%s"):format(e.cnt, e.name, e.unit > 0 and ("  |cff808080" .. money(e.unit) .. " each|r") or ""),
+                    tip = function(tt) tt:SetItemByID(id) end }
+            end
+            if #list == 0 then rows[#rows + 1] = { text = filter ~= "" and "Nothing matches the search." or "Empty." } end
+            altItems:Set(rows)
+        end
+    else
+        if altItems then altItems.scroll:Hide() end
+        altWin.scroll:Show()
+        altWin:SetContent(altContent(sel))
+    end
 end
 
 function SFP:ShowAlts()
@@ -302,6 +352,8 @@ function SFP:ShowAlts()
         lbl:SetPoint("TOPLEFT", 14, -36)
         lbl:SetText("Characters:")
         altRows = SFP.MakeRowList(altWin, 10, -52, 256, 600, 26)
+        altItems = SFP.MakeRowList(altWin, 264, -92, 590, 570, 24)
+        altItems.scroll:Hide()
         local x = 270
         for _, v in ipairs(ALT_VIEWS) do
             local bt = CreateFrame("Button", nil, altWin, "UIPanelButtonTemplate")

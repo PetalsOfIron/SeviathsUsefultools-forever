@@ -752,8 +752,13 @@ end
 
 local function money(c)
     if not c or c <= 0 then return "" end
-    if GetCoinTextureString then return GetCoinTextureString(c) end
-    return floor(c / 10000) .. "g"
+    -- gold, silver and copper (each shown when it is there)
+    local g, s, cc = floor(c / 10000), floor(c / 100) % 100, c % 100
+    local parts = {}
+    if g > 0 then parts[#parts + 1] = "|cffffd100" .. g .. "g|r" end
+    if s > 0 then parts[#parts + 1] = "|cffc7c7cf" .. s .. "s|r" end
+    if cc > 0 or #parts == 0 then parts[#parts + 1] = "|cffeda55f" .. cc .. "c|r" end
+    return table.concat(parts, " ")
 end
 
 local function itemName(id)

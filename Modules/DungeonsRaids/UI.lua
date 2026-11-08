@@ -866,7 +866,7 @@ function UI:Build()
   local f = CreateFrame("Frame", "SeviathsDungeonsRaidsFrame", UIParent, "BackdropTemplate")
   f:SetSize(700, 680)
   f:SetPoint("CENTER")
-  f:SetFrameStrata("DIALOG")
+  f:SetFrameStrata("FULLSCREEN_DIALOG")
   if _G.SeviathsUsefulTools and _G.SeviathsUsefulTools.RegisterWindow then _G.SeviathsUsefulTools.RegisterWindow(f) end
   UI.Skin(f)
   if _G.SeviathsUsefulTools and _G.SeviathsUsefulTools.BlizzardFrame then _G.SeviathsUsefulTools.BlizzardFrame(f, true) end   -- the red dialog look
@@ -1008,7 +1008,7 @@ function UI:Layout(section)
   f.scroll:ClearAllPoints()
   f.scroll:SetPoint("TOPLEFT", 4, top)
   f.scroll:SetPoint("BOTTOMRIGHT", -28, 8)
-  f:SetHeight(-top + 600)
+  f:SetSize(700, 700)   -- the same size floating and docked
   if section then
     f.title:SetText("Seviath's Dungeons & Raids |cffffffff- " .. (TAB_LABEL[section] or "") .. "|r")
   else
@@ -1088,7 +1088,7 @@ local function Float(f)
   if UI.docked then
     f:ClearAllPoints()
     f:SetPoint("CENTER")
-    f:SetFrameStrata("DIALOG")
+    f:SetFrameStrata("FULLSCREEN_DIALOG")
     UI.docked = false
   end
   UI:Layout(nil)

@@ -275,11 +275,6 @@ local function zoneFitsMe(z)
     local side = ZONE_SIDE[z[1]]
     -- a zone of the other side still counts when enough quests of your own side exist there (camps of your side, from Wowhead and from your own play)
     if side and f and side ~= f and sideCount(z[1], f) < 8 then return false end
-    if START_ZONES[z[1]] then
-        local _, race = UnitRace("player")
-        local mine = START_OF[race or ""]
-        if mine and z[1] ~= mine then return false end
-    end
     return true
 end
 
@@ -302,7 +297,7 @@ local function zoneAutoDone(z)
     return total >= 5 and open == 0
 end
 
-local buildQuests = K.simplePage("Quest Planner",
+local buildQuests = K.simplePage("Questing Zone Planner",
     "The zones you still need for your level, and where to head next. A zone leaves the list by itself when all the quests of it that you can take are completed. Map opens the world map on the zone.",
     function(pane, y)
         local head = K.mkText(pane, "", 12, y - 6, 480, "GameFontNormal")
@@ -557,10 +552,10 @@ function SFP:ShowRoleplayCard()
     lines[#lines + 1] = "|cff808080" .. tostring(race or "") .. " " .. tostring(class or "") .. ", level " .. tostring(UnitLevel("player")) .. "|r"
     lines[#lines + 1] = rec.status == "OOC" and "|cffff6060Out of character|r" or "|cff40ff40In character|r"
     lines[#lines + 1] = ""
-    add("Title", rec.title); add("Age", rec.age); add("Height and build", rec.height); add("Eyes and hair", rec.eyes)
+    add("Title or role", rec.title); add("Age", rec.age); add("Height and build", rec.height); add("Eyes and hair", rec.eyes)
     add("Residence", rec.residence); add("Birthplace", rec.birthplace); add("Motto", rec.motto)
-    add("Looks", rec.looks, true); add("Personality", rec.traits, true); add("Backstory", rec.story, true)
-    add("Currently", rec.currently, true); add("Out of character", rec.ooc, true)
+    add("Looks (physical description)", rec.looks, true); add("Personality", rec.traits, true); add("Backstory (history)", rec.story, true)
+    add("Currently (what my character is doing)", rec.currently, true); add("Out of character info", rec.ooc, true)
     rpCard.title:SetText("Character")
     rpCard:SetContent(table.concat(lines, "\n"))
     rpCard:Show()
@@ -622,7 +617,7 @@ end)
 ---------------------------------------------------------------------------
 for _, s in ipairs(K.sections) do
     if s.key == "delve" then s.label = "Dungeon & Raid Planner"
-    elseif s.key == "keys" then s.label = "Quest Planner"
+    elseif s.key == "keys" then s.label = "Questing Zone Planner"
     elseif s.key == "decor" then s.label = "Roleplay" end
 end
 K.builders.delve, K.builders.keys, K.builders.decor = buildDungeons, buildQuests, buildRoleplay
