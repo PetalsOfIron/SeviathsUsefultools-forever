@@ -43,6 +43,32 @@ function SFP:MonstersOnMap(mapID)
     return out
 end
 
+-- the place of a monster or NPC by its name: { map, x, y } from the shipped monsters (every map's list), the quest givers and your own records.
+-- The index is made the first time it is asked for (a few thousand records, decoded once) and kept.
+local placeByName
+function SFP:NpcPlaceByName(name)
+    if type(name) ~= "string" or name == "" then return nil end
+    if not placeByName then
+        placeByName = {}
+        local function put(n, map, x, y) if n and map and x and y and not placeByName[n] then placeByName[n] = { map = map, x = x, y = y } end end
+        if self:LoadMonsterData() then
+            local _, byMap = shipped()
+            for map, ids in pairs(byMap or {}) do
+                for _, id in ipairs(ids) do
+                    local rec = self:Npc(id)
+                    local pts = type(rec) == "table" and type(rec.m) == "table" and rec.m[map]
+                    local p = type(pts) == "table" and pts[1]
+                    if type(rec) == "table" and rec.n and type(p) == "table" then put(rec.n, map, p[1], p[2]) end
+                end
+            end
+        end
+        for map, list in pairs(self.QuestGivers or {}) do
+            for _, e in ipairs(list) do put(e[1], map, e[2] / 100, e[3] / 100) end
+        end
+    end
+    return placeByName[name]
+end
+
 -- a monster's shipped record, decoded now: a fresh table each time
 function SFP:ShippedNpcRecord(id)
     if not self:LoadMonsterData() then return nil end

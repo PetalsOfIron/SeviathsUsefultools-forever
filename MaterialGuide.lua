@@ -773,6 +773,13 @@ local function mountEntriesBase()
         if not byItem[id] then
             local src = { text = row[2] ~= "" and row[2] or "Mount" }
             local rec = row[3] and row[3] > 0 and SFP.Npc and SFP:Npc(row[3])
+            if not rec and SFP.NpcPlaceByName then
+                -- no number for the source: its name ("Vendor: Ogunaro Wolfrunner", "Drop: Mother Fang") is looked up
+                for nm in tostring(row[2] or ""):gsub("^%a+:%s*", ""):gmatch("[^,]+") do
+                    local pl = SFP:NpcPlaceByName(nm:gsub("^%s+", ""):gsub("%s+$", ""))
+                    if pl then rec = { m = { [pl.map] = { { pl.x, pl.y } } } } break end
+                end
+            end
             if type(rec) == "table" and type(rec.m) == "table" then
                 for map, pts in pairs(rec.m) do
                     local p = type(pts) == "table" and pts[1]
@@ -1018,6 +1025,13 @@ local function petSpots(entries)
                 local p = type(pts) == "table" and pts[1]
                 if p and p[1] and p[2] then found[rec.n] = { map = map, x = p[1], y = p[2] } break end
             end
+        end
+    end
+    -- the vendors and monsters of the sources the collected data did not know: the shipped monsters and the quest givers, by name
+    for name in pairs(need) do
+        if not found[name] then
+            local p = SFP.NpcPlaceByName and SFP:NpcPlaceByName(name)
+            if p then found[name] = p end
         end
     end
     for _, e in ipairs(entries) do
