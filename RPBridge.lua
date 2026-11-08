@@ -225,3 +225,33 @@ if C_ChatInfo and C_ChatInfo.RegisterAddonMessagePrefix and C_ChatInfo.SendAddon
     local oldWhich = Bridge.Which
     function Bridge.Which() return oldWhich() or (next(theirs) and "MSP") or nil end
 end
+
+---------------------------------------------------------------------------
+-- Other tooltip addons that keep data about players: what they know is read here and shown in our own player tooltip, so one tooltip tells it all.
+-- Raider.IO (RaiderIO.GetProfile): the mythic+ score. Every call is guarded: a different version only leaves the line out.
+---------------------------------------------------------------------------
+local function raiderIOLines(tt, unit)
+    local rio = _G.RaiderIO
+    if type(rio) ~= "table" or type(rio.GetProfile) ~= "function" then return end
+    local okp, prof = pcall(rio.GetProfile, unit)
+    if not okp or type(prof) ~= "table" then return end
+    local m = prof.mythicKeystoneProfile
+    if type(m) ~= "table" then return end
+    local score, main = tonumber(m.currentScore) or 0, tonumber(m.mainCurrentScore) or 0
+    if score <= 0 and main <= 0 then return end
+    local txt = "|c" .. (SFP.CYAN_HEX or "ffffd100") .. "Raider.IO:|r " .. math.floor(score)
+    if main > score then txt = txt .. "  |cff808080(main " .. math.floor(main) .. ")|r" end
+    tt:AddLine(txt, 1, 1, 1)
+    tt:Show()
+end
+
+if TooltipDataProcessor and Enum and Enum.TooltipDataType and Enum.TooltipDataType.Unit then
+    pcall(TooltipDataProcessor.AddTooltipPostCall, Enum.TooltipDataType.Unit, function(tt)
+        if tt ~= GameTooltip then return end
+        local okU, _, unit = pcall(tt.GetUnit, tt)
+        if not okU or not unit or (issecretvalue and issecretvalue(unit)) then return end
+        local okP, isPlayer = pcall(UnitIsPlayer, unit)
+        if not okP or not isPlayer or (issecretvalue and issecretvalue(isPlayer)) then return end
+        pcall(raiderIOLines, tt, unit)
+    end)
+end

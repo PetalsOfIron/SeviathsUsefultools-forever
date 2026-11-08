@@ -175,6 +175,35 @@ hookFrame:RegisterEvent("ADDON_LOADED")
 hookFrame:SetScript("OnEvent", hookWho)
 hookWho()
 
+-- The Who List tab of the Looking For Group window (WoW Forever) has frames of its own: every frame with "Who" in its global name gets the same
+-- hooks (opening it or clicking in it asks the next question). Looked for every few seconds for a while, as that window is built when first opened.
+local function hookWhoLike()
+    for name, fr in pairs(_G) do
+        if type(name) == "string" and name:find("Who") and type(fr) == "table" and fr ~= _G.WhoFrame and not rawget(fr, "SeviathScan") then
+            local ok = pcall(function()
+                if fr.IsForbidden and fr:IsForbidden() then error("forbidden") end
+                if not (fr.HookScript and fr.GetObjectType and fr.GetChildren) then error("no frame") end
+                local t = fr:GetObjectType()
+                if t ~= "Frame" and t ~= "Button" then error("type") end
+                fr.SeviathScan = true
+                if fr:HasScript("OnShow") then fr:HookScript("OnShow", askNext) end
+                if t == "Button" and fr:HasScript("OnClick") then fr:HookScript("OnClick", askNext) end
+                for _, c in ipairs({ fr:GetChildren() }) do
+                    if c.GetObjectType and c:GetObjectType() == "Button" and c.HookScript and not (c.IsForbidden and c:IsForbidden()) then c:HookScript("OnClick", askNext) end
+                end
+            end)
+        end
+    end
+end
+do
+    local tries = 0
+    C_Timer.NewTicker(5, function(t)
+        tries = tries + 1
+        pcall(hookWhoLike)
+        if tries >= 30 then t:Cancel() end
+    end)
+end
+
 -- ---------------------------------------------------------------- Guild Roster Manager
 -- GRM_GuildMemberHistory_Save[guildKey][playerKey] = { name, rankName, rankIndex, ... } with guildKey "Guild Name-Realm"
 local function importGRM()

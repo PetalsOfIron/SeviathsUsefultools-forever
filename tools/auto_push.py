@@ -7,7 +7,15 @@ import glob
 import os
 import subprocess
 import sys
+import socket
 import time
+
+# only one copy runs: a second one (for example the one started with Windows while one is already running) stops at once
+_lock = socket.socket()
+try:
+    _lock.bind(("127.0.0.1", 47653))
+except OSError:
+    sys.exit(0)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ADDON = os.path.dirname(HERE)
