@@ -63,6 +63,11 @@ end
 -- wh="item=123", refs={keys}, plus any type-specific fields.
 function ns:Add(e)
     if not e or not e.cat or not e.id or not e.name or e.name == "" then return end
+    -- WoW Forever: items of later expansions (the "Midnight" group of the loot list) are not part of the game
+    if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT and e.cat == "item" then
+        local iid = tonumber(e.itemID or e.id)
+        if iid and iid > 24300 then return end
+    end
     local key = e.cat .. ":" .. tostring(e.id)
     local old = self.entries[key]
     if old then

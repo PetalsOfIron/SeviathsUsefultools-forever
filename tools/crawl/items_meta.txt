@@ -5221,3 +5221,6 @@
 10759|Severed Horn of the Defiler|1|12|0|1|0
 10753|Amulet of Grol|1|12|0|1|0
 10755|Amulet of Allistarj|1|12|0|1|0
+10754|Amulet of Sevine|1|12|0|1|0
+12365|Dense Stone|1|7|7|45|0
+9460|Grimtotem Horn|1|12|0|1|0
