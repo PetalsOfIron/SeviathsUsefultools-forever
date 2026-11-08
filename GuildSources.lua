@@ -40,6 +40,9 @@ who:SetScript("OnEvent", function()
                         SFP.db.seenPlayers[key] = time()
                         SFP.db.seenInfo = SFP.db.seenInfo or {}
                         local rec = SFP.db.seenInfo[key] or {}
+                        -- a player read less than a day ago is not read again (the same as the nameplate scan)
+                        local recent = rec.t and time() - rec.t < 86400 and rec.lvl and rec.class
+                        if not recent then
                         if hasGuild then rec.guild = guild end
                         rec.faction = faction or rec.faction
                         if type(info.level) == "number" and info.level > 0 then rec.lvl = info.level end
@@ -48,6 +51,7 @@ who:SetScript("OnEvent", function()
                         if type(info.raceStr) == "string" and not secret(info.raceStr) and info.raceStr ~= "" then rec.race = info.raceStr end
                         rec.t = time()
                         SFP.db.seenInfo[key] = rec
+                        end
                     end
                 end
             end
