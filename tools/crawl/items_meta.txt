@@ -5292,3 +5292,40 @@
 16056|Schematic: Flawless Arcanite Rifle|2|9|3|61|0
 18960|Lookout's Spyglass|1|12|0|1|0
 10597|Head of Magus Rimtori|1|12|0|0|0
+238935|Gently Plagued Meat|1|12|0|1|0
+10249|Master's Cloak|2|4|-6|61|56
+11395|Bat Ear|0|15|0|1|0
+11402|Sleek Bat Pelt|0|15|0|1|0
+11403|Large Bat Fang|0|15|0|1|0
+11404|Evil Bat Eye|1|12|0|1|0
+13853|Slab of Carrion Worm Meat|1|12|0|1|0
+18512|Larval Acid|1|15|1|55|0
+20023|Encoded Fragment|1|12|0|1|0
+4213|Grimoire of Doom|2|9|0|60|60
+10143|High Councillor's Robe|2|4|1|64|59
+10246|Master's Vest|2|4|1|65|60
+10254|Master's Robe|2|4|1|65|60
+11980|Opal Ring|2|4|-2|64|59
+11992|Vermilion Band|2|4|-2|63|58
+12027|Vermilion Necklace|2|4|-3|63|58
+15942|Master's Rod|2|4|-5|65|60
+18335|Pristine Black Diamond|3|12|0|0|0
+19265|Eight of Warlords|3|15|0|1|0
+21104|Draconic for Dummies|4|15|4|1|0
+944|Elemental Mage Staff|4|2|10|61|56
+10141|High Councillor's Pants|2|4|1|63|58
+10157|Mercurial Breastplate|2|4|3|64|59
+10158|Mercurial Guard|2|4|6|64|59
+10251|Master's Gloves|2|4|1|63|58
+10271|Masterwork Shield|2|4|6|65|60
+14557|The Lion Horn of Stormwind|4|4|-4|63|58
+19235|Seven of Beasts|3|15|0|1|0
+19262|Five of Warlords|3|15|0|1|0
+19263|Six of Warlords|3|15|0|1|0
+19275|Eight of Elementals|3|15|0|1|0
+10374|Imbued Plate Pauldrons|2|4|4|59|54
+3421|Simple Wildflowers|1|4|-5|10|0
+11172|Silvery Claws|1|12|0|1|0
+11058|Sha'ni's Nose-Ring|1|12|0|1|0
+12219|Unadorned Seal of Ascension|1|12|0|1|0
+18987|Blackhand's Command|1|12|0|55|55

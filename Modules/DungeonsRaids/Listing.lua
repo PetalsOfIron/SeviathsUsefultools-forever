@@ -211,6 +211,7 @@ function ns:Analyze(resultID)
       r.tooLow = UnitLevel("player") < act.minLevel
     end
     if r.kind == "raid" then r.isLegacy = act.isCurrentRaidActivity ~= true end
+    if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then r.isLegacy = false end   -- WoW Forever: every raid is a current one
     groupName = act.groupFinderActivityGroupID and C_LFGList.GetActivityGroupInfo
       and ns.Safe(C_LFGList.GetActivityGroupInfo(act.groupFinderActivityGroupID))
   end
@@ -313,6 +314,7 @@ function ns:Analyze(resultID)
       -- expansion tier in the Adventure Guide is legacy.
       local curTier = (GetServerExpansionLevel and GetServerExpansionLevel() or 0) + 1
       r.isLegacy = inst.tier < curTier
+      if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then r.isLegacy = false end
       local mine = ns:GetMyKills(inst.name, r.diff)
       for n in pairs(mine) do skip[n] = true end
       local bosses = ns:GetBosses(inst)

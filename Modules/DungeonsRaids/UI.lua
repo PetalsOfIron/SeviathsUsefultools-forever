@@ -254,11 +254,12 @@ end
 
 local COL2 = 300
 
+local FOREVER_GAME = WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT
 local function DiffRow(p, o, y, mythicLabel)
   Label(p, "Difficulty:", 20, y - 6)
   UI.Check(p, "Normal", o, "diffN", 100, y)
   UI.Check(p, "Heroic", o, "diffH", 250, y)
-  UI.Check(p, mythicLabel or "Mythic", o, "diffM", 400, y)
+  if not FOREVER_GAME then UI.Check(p, mythicLabel or "Mythic", o, "diffM", 400, y) end   -- (Classic has no Mythic difficulty)
 end
 
 local function Legend(p, y, text)
@@ -564,10 +565,12 @@ local function BuildRaid(p)
   Header(p, "Raid filters", 16, -10)
   UI.Check(p, "Enable raid filters", o, "enabled", 16, -34)
   DiffRow(p, o, -60)
-  Label(p, "Raids:", 20, -92)
-  UI.Check(p, "Current", o, "showCurrent", 100, -86)
-  UI.Check(p, "Legacy (old raids)", o, "showLegacy", 250, -86,
-    "Below max level only legacy raids are listed.")
+  if not FOREVER_GAME then   -- (every raid of Classic is a current one: there are no legacy raids)
+    Label(p, "Raids:", 20, -92)
+    UI.Check(p, "Current", o, "showCurrent", 100, -86)
+    UI.Check(p, "Legacy (old raids)", o, "showLegacy", 250, -86,
+      "Below max level only legacy raids are listed.")
+  end
   UI.Check(p, "Only groups needing my role", o, "needMyRole", 16, -112)
   UI.Check(p, "Fresh runs only", o, "freshOnly", COL2, -112, "No bosses killed yet.")
   UI.Check(p, "Hide full groups", o, "hideFull", 16, -138)
