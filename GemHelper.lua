@@ -506,7 +506,26 @@ local function planRefresh()
                         check = plan[e.name:lower()] ~= nil,
                         tip = function(tt)
                             local id = e.itemID
-                            if id and id > 0 then tt:SetItemByID(id) else tt:SetText(e.name) end
+                            -- the recipe that makes it (Data/RecipeData.lua): its spell tooltip and reagents
+                            local rec
+                            if e.rkey then
+                                local prof, nm = e.rkey:match("^(.-)|(.+)$")
+                                for _, r in ipairs(SFP.RecipeData or {}) do
+                                    if r[2] == prof and r[3] == nm then rec = r break end
+                                end
+                            end
+                            if id and id > 0 then tt:SetItemByID(id)
+                            elseif rec and tt.SetSpellByID then tt:SetSpellByID(rec[1])
+                            else tt:SetText(e.name) end
+                            if rec and rec[5] and #rec[5] > 0 then
+                                tt:AddLine(" ")
+                                tt:AddLine("|cffffd100" .. tostring(rec[2]) .. " - reagents:|r")
+                                for _, rg in ipairs(rec[5]) do
+                                    local nm = C_Item and C_Item.GetItemNameByID and C_Item.GetItemNameByID(rg[1])
+                                    tt:AddLine(("  %dx %s"):format(rg[2] or 1, nm or ("item " .. rg[1])), 0.9, 0.9, 0.9)
+                                end
+                            end
+                            tt:Show()
                         end,
                         onToggle = function(on)
                             GH.PlanSet(e.name, e.kind, on, e.itemID)
