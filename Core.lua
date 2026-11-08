@@ -1515,6 +1515,22 @@ SlashCmdList["SEVIATHSUSEFULTOOLS"] = function(msg)
             local name = okI and type(info) == "table" and info.name
             SFP:Print(("  %d  %s%s"):format(id, tostring(name), (SFP.Social and SFP.Social.KindOfCategory) and "" or ""))
         end
+    elseif cmd == "qmark" then
+        -- the quest givers the map marks come from, nearest to you first, with the place the data has for each and your own place (to check them in the game)
+        local map = C_Map.GetBestMapForUnit("player")
+        local pos = map and C_Map.GetPlayerMapPosition(map, "player")
+        local px, py = 0, 0
+        if pos and pos.GetXY then px, py = pos:GetXY() end
+        SFP:Print(("map %s, you are at %.1f, %.1f"):format(tostring(map), px * 100, py * 100))
+        local rows = {}
+        for _, e in ipairs((SFP.QuestGivers and SFP.QuestGivers[map]) or {}) do
+            rows[#rows + 1] = { e = e, d = (e[2] - px * 100) ^ 2 + (e[3] - py * 100) ^ 2 }
+        end
+        table.sort(rows, function(a, b) return a.d < b.d end)
+        for i = 1, math.min(8, #rows) do
+            SFP:Print(("  %s  %.1f, %.1f  (%s)"):format(rows[i].e[1], rows[i].e[2], rows[i].e[3], tostring(rows[i].e[4]):sub(1, 50)))
+        end
+        if #rows == 0 then SFP:Print("  no quest givers in the data for this map") end
     elseif cmd == "lfg" then
         -- which group finder frames this game has, and which one the group tools found (open the Looking For Group window first)
         for _, name in ipairs({ "LFGListFrame", "LFGParentFrame", "PVEFrame", "LFDParentFrame", "GroupFinderFrame" }) do
