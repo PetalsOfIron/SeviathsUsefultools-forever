@@ -333,7 +333,7 @@ function GH.Catalog()
         local rk = prof .. "|" .. name
         if cls == 3 then add(name, "gem", out, prof, rk)
         elseif cls == 8 then add(name:find("^Enchant") and enchantDisplay(name) or name, "enchant", out, prof, rk)
-        elseif prof == "Jewelcrafting" and isGemName(name) then add(name, "gem", out, "Jewelcrafting", rk)
+        elseif prof == "Jewelcrafting" then add(name, "gem", out, "Jewelcrafting", rk)   -- (Classic has no socketed gems: what Jewelcrafting makes is listed instead)
         elseif prof == "Enchanting" and name:find("^Enchant") then add(enchantDisplay(name), "enchant", out, "Enchanting", rk)
         elseif prof == "Tailoring" and name:find("Spellthread") then add(name, "enchant", out, "Tailoring", rk)
         elseif prof == "Leatherworking" and name:find("Armor Kit") then add(name, "enchant", out, "Leatherworking", rk) end
@@ -468,6 +468,7 @@ end
 ---------------------------------------------------------------------------
 local planWin, planResults, planRows, planBox, planInfo
 local planKind = "gem"   -- the list on show: "gem" or "enchant"
+local planKindChecked
 local planKindBtns
 
 local function moneyText(c)
@@ -482,6 +483,13 @@ local function planRefresh()
     -- a click adds one to the planner, another click takes it out
     local counts = { gem = 0, enchant = 0 }
     local items, shown, cap = {}, 0, 900
+    -- nothing to show under Gems (Classic has none): open on the Enchants
+    if planKind == "gem" and not planKindChecked then
+        planKindChecked = true
+        local any = false
+        for _, e in ipairs(GH.Catalog()) do if e.kind == "gem" then any = true break end end
+        if not any then planKind = "enchant" end
+    end
     for _, e in ipairs(GH.Catalog()) do
         if #q < 2 or e.name:lower():find(q, 1, true) then
             counts[e.kind] = (counts[e.kind] or 0) + 1

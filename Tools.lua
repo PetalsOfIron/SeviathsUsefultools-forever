@@ -725,9 +725,16 @@ local function shopSearch(text)
             shopFound[#shopFound + 1] = key
         end
     end
+    -- recipes saved before the characters were noted belong to the character that is playing now (once)
+    local me = (UnitName("player") or "?") .. "-" .. (GetRealmName and GetRealmName() or "")
+    if not SFP.db.recipesByDone then
+        SFP.db.recipesByDone = true
+        for _, rec in pairs(SFP.db.recipes or {}) do if not rec.by then rec.by = { [me] = true } end end
+    end
     for key, rec in pairs(SFP.db.recipes or {}) do
         learnedNames[(rec.p or "") .. "|" .. (rec.n or "")] = true
-        consider(key, rec)
+        -- only what this character has not learned yet is listed
+        if not (rec.by and rec.by[me]) then consider(key, rec) end
     end
     -- the shipped recipes; one your characters learned themselves is not listed twice.
     -- "My recipes only": just the ones your characters learned (they grow when you level a profession and open it)

@@ -593,6 +593,14 @@ local function itemIDFromLink(link)
     return link and tonumber(link:match("item:(%d+)"))
 end
 
+-- which characters know a recipe: rec.by[name-realm] = true (the Recipe planner lists only what the current character has not learned)
+local function markLearnedBy(rec)
+    if type(rec) ~= "table" then return end
+    rec.by = rec.by or {}
+    rec.by[(UnitName("player") or "?") .. "-" .. (GetRealmName and GetRealmName() or "")] = true
+end
+SFP.MarkRecipeLearned = markLearnedBy
+
 local function scanRecipes()
     if not SFP.db then return end
     local count = 0
@@ -615,6 +623,7 @@ local function scanRecipes()
                     SFP.db.recipes[prof .. "|" .. name] = { n = name, p = prof, o = out, r = reag }
                     count = count + 1
                 end
+                markLearnedBy(SFP.db.recipes[prof .. "|" .. name])
             end
         end
     -- modern trade skill API
@@ -625,6 +634,7 @@ local function scanRecipes()
             -- the list holds every recipe of the profession; only the ones this character really has learned are kept.
             -- A recipe that is already saved is left alone: it is not read again and not counted again.
             local info = C_TradeSkillUI.GetRecipeInfo(rid)
+            if info and info.name and info.learned then markLearnedBy(SFP.db.recipes[prof .. "|" .. info.name]) end
             if info and info.name and info.learned and not SFP.db.recipes[prof .. "|" .. info.name] then
                 local schem = C_TradeSkillUI.GetRecipeSchematic and C_TradeSkillUI.GetRecipeSchematic(rid, false)
                 if schem then
@@ -635,6 +645,7 @@ local function scanRecipes()
                         end
                     end
                     SFP.db.recipes[prof .. "|" .. info.name] = { n = info.name, p = prof, o = schem.outputItemID, r = reag, id = rid }
+                    markLearnedBy(SFP.db.recipes[prof .. "|" .. info.name])
                     count = count + 1
                     for _, rg in ipairs(reag) do SFP.LearnMaterial(rg[1]) end   -- the materials too
                 end
