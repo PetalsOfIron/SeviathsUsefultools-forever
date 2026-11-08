@@ -719,3 +719,10 @@
 16134|Rimblat Earthshatter|139:81,59|9068:60:60:2:Earthshatter Tunic,9069:60:60:2:Earthshatter Legguards,9070:60:60:2:Earthshatter Headpiece,9071:60:60:2:Earthshatter Spaulders,9072:60:60:2:Earthshatter Boots,9073:60:60:2:Earthshatter Handguards,9074:60:60:2:Earthshatter Girdle,9075:60:60:2:Earthshatter Wristguards
 16135|Rayne|139:81.2,59|9086:60:60:3:Dreamwalker Tunic,9087:60:60:3:Dreamwalker Legguards,9088:60:60:3:Dreamwalker Headpiece,9089:60:60:3:Dreamwalker Spaulders,9090:60:60:3:Dreamwalker Boots,9091:60:60:3:Dreamwalker Handguards,9092:60:60:3:Dreamwalker Girdle,9093:60:60:3:Dreamwalker Wristguards,9136:60:55:3:Savage Flora,9137:60:55:3:Savage Fronds
 16212|Dispatch Commander Metz|139:81,57.4;81,57.6|9141:60:55:3:They Call Me "The Rooster",9142:60:55:3:Craftsman's Writ
+16361|Commander Thomas Helleran|139:80.8,60.2|9085:60:50:3:Shadows of Doom,9153:60:50:3:Under the Shadow,88744:60:50:3:Under the Shadow,88745:60:50:3:Shadows of Doom
+16376|Craftsman Wilhelm|139:81,59.4;81,59.6|9232:60:60:3:The Only Song I Know...,9234:60:60:3:Icebane Gauntlets,9235:60:60:3:Icebane Bracers,9236:60:60:3:Icebane Breastplate,9237:60:60:3:Glacial Cloak,9238:60:60:1:Glacial Wrists,9239:60:60:1:Glacial Gloves,9240:60:60:1:Glacial Vest,9241:60:60:3:Polar Bracers,9242:60:60:3:Polar Gloves,9243:60:60:3:Polar Tunic,9244:60:60:3:Icy Scale Bracers,9245:60:60:3:Icy Scale Gauntlets,9246:60:60:3:Icy Scale Breastplate,88730:60:60:3:The Only Song I Know...,89446:60:60:3:The Lost Craftsman
+16399|Bloodsail Traitor|33:31.6,70.8|9259:60:30:2:Traitor to the Bloodsail
+16416|Bronn Fitzwrench|618:59.8,39.4;59.8,39.6|9266:60:40:2:Making Amends
+16417|Rumsen Fizzlebrack|440:50.4,26.2|9268:60:40:2:War at Sea
+16418|Mupsi Shacklefridd|17:61.2,37.8|9267:60:15:2:Mending Old Wounds
+16484|Lieutenant Nevell|1:53,35|9261:10:1:1:Investigate the Scourge of Ironforge

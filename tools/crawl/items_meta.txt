@@ -5051,3 +5051,23 @@
 22527|Core of Elements|1|12|0|1|0
 12703|Plans: Storm Gauntlets|3|9|4|59|0
 6315|Steelarrow Crossbow|2|2|18|27|22
+11837|Gorishi Scent Gland|1|12|0|1|0
+22435|Gorishi Sting|1|12|0|1|0
+234011|Qiraji Stalker Venom|1|7|0|60|0
+12235|Un'Goro Slime Sample|1|12|0|1|0
+15772|Pattern: Devilsaur Leggings|3|9|1|60|0
+12291|Merged Ooze Sample|1|12|0|1|0
+14813|Warstrike Cape|2|4|-6|57|52
+14934|Heroic Girdle|2|4|4|57|52
+7076|Essence of Earth|2|7|10|55|0
+11184|Blue Power Crystal|1|12|0|1|0
+11185|Green Power Crystal|1|12|0|1|0
+11186|Red Power Crystal|1|12|0|1|0
+11188|Yellow Power Crystal|1|12|0|1|0
+11315|Bloodpetal Sprout|1|12|0|1|0
+12809|Guardian Stone|2|7|7|60|0
+7306|Fenwick's Head|1|12|0|1|0
+3108|Heavy Throwing Dagger|1|2|16|27|22
+10226|Nightshade Helmet|2|4|2|61|56
+228119|Pattern: Devilcore Gauntlets|3|9|1|58|0
+228120|Pattern: Devilcore Leggings|3|9|1|60|0

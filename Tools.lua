@@ -821,10 +821,10 @@ function SFP:ShowShop()
     if not shopWin then
         local acc = 0
         shopWin = makeWindow("SeviathsUsefulToolsShop", "Recipe planner", 540, 740)
-        shopWin.scroll:SetPoint("TOPLEFT", 12, -520)
+        shopWin.scroll:SetPoint("TOPLEFT", 12, -532)
         shopBox = CreateFrame("EditBox", nil, shopWin, "InputBoxTemplate")
         shopBox:SetSize(240, 22)
-        shopBox:SetPoint("TOPLEFT", 22, -34)
+        shopBox:SetPoint("TOPLEFT", 22, -46)
         shopBox:SetAutoFocus(false)
         shopBox:SetScript("OnTextChanged", function(self) shopSearch(self:GetText()) end)
         shopBox:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
@@ -836,29 +836,29 @@ function SFP:ShowShop()
             b:SetScript("OnClick", fn)
             return b
         end
-        bar("Add all shown", 110, 272, -34, 22, function()
+        bar("Add all shown", 110, 272, -46, 22, function()
             for _, key in ipairs(shopFound) do
                 if not shopIndex(key) then shopData()[#shopData() + 1] = { key = key, qty = 1 } end
             end
             shopRefresh()
         end)
-        bar("Remove all", 100, 386, -34, 22, function() wipe(shopData()); wipe(shopOff); shopRefresh() end)
+        bar("Remove all", 100, 386, -46, 22, function() wipe(shopData()); wipe(shopOff); shopRefresh() end)
         shopWin.tabs = {}
-        shopResRows = SFP.MakeRowList(shopWin, 18, -152, 510, 128, 20)
+        shopResRows = SFP.MakeRowList(shopWin, 18, -164, 510, 128, 20)
         local label = shopWin:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-        label:SetPoint("TOPLEFT", 22, -290)
+        label:SetPoint("TOPLEFT", 22, -302)
         label:SetText("Your list (saved)")
         local expl = shopWin:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-        expl:SetPoint("TOPLEFT", 22, -308)
+        expl:SetPoint("TOPLEFT", 22, -320)
         expl:SetWidth(490)
         expl:SetJustifyH("LEFT")
         expl:SetText("|cffffd100Tick a recipe|r to show the reagents to buy for it below. Tick one for that recipe alone, several for those together, or press |cffffd100Tick all|r for everything on the list.")
-        bar("Tick all", 70, 380, -286, 20, function() wipe(shopOff); shopRefresh() end)
-        bar("Tick none", 70, 454, -286, 20, function()
+        bar("Tick all", 70, 380, -298, 20, function() wipe(shopOff); shopRefresh() end)
+        bar("Tick none", 70, 454, -298, 20, function()
             for _, e in ipairs(shopData()) do shopOff[e.key] = true end
             shopRefresh()
         end)
-        shopRows = SFP.MakeRowList(shopWin, 18, -342, 510, 170, 20)
+        shopRows = SFP.MakeRowList(shopWin, 18, -354, 510, 170, 20)
         -- prices come from the auction scans and from Auctionator / TSM: redraw every few seconds while it is open
         shopWin:SetScript("OnUpdate", function(_, dt)
             acc = acc + dt
@@ -883,7 +883,7 @@ function SFP:ShowShop()
             if s == "@profit" then return "Best profit: " .. (shopSortProfit and "ON" or "OFF") end
             return "My recipes only: " .. (shopKnownOnly and "ON" or "OFF")
         end
-        local x, y = 22, -62
+        local x, y = 22, -74
         for i, nm in ipairs(names) do
             local special = type(nm) == "string" and nm:sub(1, 1) == "@" and nm or nil
             local label = special and specialLabel(special) or (nm or "All")
