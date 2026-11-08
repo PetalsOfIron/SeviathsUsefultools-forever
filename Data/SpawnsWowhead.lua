@@ -1,0 +1,3 @@
+-- SeviathsUsefulTools - monsters that drop crafting reagents (made by tools/bake_wowhead_drops.py)
+local _, SFP = ...
+SFP.SpawnsWowhead = {}

@@ -1,0 +1,124 @@
+2437|21.45|77.38|Honored Warrior's Cache
+2437|32.69|83.50|Nalorakk's Cache
+2437|34.55|33.46|Halazzi's Cache
+2437|54.78|22.39|Jan'alai's Cache
+2437|51.58|84.92|Akil'zon's Cache
+2437|44.7|44.1|Abandoned Ritual Skull
+2413|40.7|28.1|Peculiar Cauldron
+2413|66.15|25.47|Kuri (Skyshard turn-in)
+2437|51.58|84.92|Akil'zon's CacheHexed Vilefeather EagleDynamic Mou
+2437|44.7|44.1|Abandoned Ritual SkullRuddy SporegliderDynamic Mou
+2413|40.7|28.1|Peculiar CauldronReins of the Insatiable Shredclaw
+2413|66.15|25.47|Kuri (Skyshard turn-in)Relinquished Scarlet Charge
+2215|25.82|57.54|Beledar's Spawn
+2215|32.67|39.62|Beledar's Spawn
+2215|37.20|71.91|Beledar's Spawn
+2215|37.74|45.85|Beledar's Spawn
+2215|38.38|24.74|Beledar's Spawn
+2215|42.73|31.33|Beledar's Spawn
+2215|45.25|25.69|Beledar's Spawn
+2215|47.01|55.04|Beledar's Spawn
+2215|48.85|31.97|Beledar's Spawn
+2215|50.51|48.57|Beledar's Spawn
+2215|51.42|70.80|Beledar's Spawn
+2215|54.83|36.81|Beledar's Spawn
+2215|58.03|48.85|Beledar's Spawn
+2215|58.61|28.83|Beledar's Spawn
+2215|60.45|18.62|Beledar's Spawn
+2215|61.38|7.53|Beledar's Spawn
+2215|62.82|38.57|Beledar's Spawn
+2215|68.12|30.14|Beledar's Spawn
+2215|72.06|65.66|Beledar's Spawn
+2215|72.80|41.52|Beledar's Spawn
+2214|49.46|8.81|Lever 1
+2214|53.90|25.29|Lever 2
+2214|57.62|23.57|Lever 3
+2214|62.84|44.64|Lever 4
+2214|59.05|92.39|Lever 5
+2214|60.80|76.68|Lurker of the Deeps
+2248|78.2|42.7|Cinderbrew Meadery 
+2248|44.4|79.8|Dhar Durgaz
+2248|23.1|58.5|Dhar Oztan
+2248|71.8|47.2|Ironwold
+2248|62.1|44.9|Mourning Rise
+2248|37.9|40.9|Storm's Watch
+2248|68.2|71.7|Sunken Shield
+2248|75.7|22.2|The Three Shields
+2248|47.8|26.9|Thul Medran
+2248|56.2|17.7|Thunderhead Peak
+2214|63.8|95.0|Abyssal Excavation
+2214|69.4|34.4|Chittering Den
+2214|49.0|31.5|Gundargaz
+2214|57.1|31.3|Lost Mines
+2214|62.9|66.0|Taelloch Mine
+2214|49.2|66.2|The Living Grotto
+2214|56.1|56.0|The Rumbling Wastes
+2214|46.9|10.0|The Stonevault Exterior
+2214|46.4|51.6|The Waterworks
+2215|62.8|7.1|Bleak Sand
+2215|69.9|44.2|Dunelle's Kindness
+2215|30.7|51.5|Fortune's Fall
+2215|43.3|52.7|Mereldar
+2215|35.3|33.9|Priory of the Sacred Flame
+2215|63.7|65.4|Sanguine Grasps
+2215|57.2|32.7|Sina's Yearning
+2215|57.6|64.6|Tenir's Ascent
+2215|62.8|51.8|The Fangs
+2215|45.7|12.3|Velhan's Claim
+2255|63.4|13.9|Arathi's End
+2255|58.5|89.7|Deepwalker Pass
+2255|42.9|57.1|Eye of Ansurek
+2213|13.2|34.0|Old Sacrificial Pit 
+2255|73.0|84.7|Rak-Ush
+2255|25.1|40.8|Ruptured Lake
+2255|46.6|21.2|Siegehold 
+2255|57.5|57.3|Silken Ward
+2255|66.3|84.8|The Maddening Deep
+2255|70.5|25.0|Trickling Abyss 
+2255|65.4|51.7|Untamed Valley
+2369|44.49|22.70|Forgotten Vault Entrance
+2375|72.50|61.32|Thrayir Ritual
+2369|33.1|73.3|Zek'ul the Shipbreaker
+2375|38.0|76.2|Ksvir the Forgotten
+2369|38.19|51.78|Garden Turbulent Fragment
+2369|67.08|78.44|Rotting Hole Turbulent Fragment
+2369|52.39|38.59|Spirit-Scarred Fragment
+2346|40.6|91.8|Darkfuse Precipitant
+2404|63.7|37.1|Black Blood Bar
+2403|45.0|52.7|Black Blood Bar
+2403|70.5|33.2|Big Keech
+2404|55.8|49.3|Cathedral
+2404|62.9|30.7|Dwarven
+2404|73.6|62.7|Old Town
+2404|66.1|76.3|Trade
+2404|52.6|77.3|Mage
+2403|47.6|74.5|Strength
+2403|57.4|60.8|Drag
+2403|69.0|49.7|Honor
+2403|50.8|45.1|Wisdom
+2403|40.3|79.4|Spirits
+2404|56.0|55.5|Cathedral Horseshoe
+2404|75.5|56.7|Old Town Horseshoe
+2404|61.5|75.5|Trade Horseshoe
+2404|50.9|84.0|Mage Horseshoe
+2404|63.0|37.3|Anvil
+2404|66.0|70.8|Ripped Note
+2403|46.7|52.8|Valley of Wisdom Elevator
+2404|61.5|72.7|Magic-Lined Manifold
+2403|56.9|56.8|Engine Block
+2215|72.80|41.52|Beledar's SpawnCompressed TomTom Script (All of th
+2214|60.80|76.68|Lurker of the DeepsReins of the Soaring MeaderbeeF
+2248|56.2|17.7|Thunderhead PeakRinging Deeps
+2214|46.4|51.6|The WaterworksHallowfall
+2215|45.7|12.3|Velhan's ClaimAzj-Kahet
+2255|65.4|51.7|Untamed ValleyThe Breaker's SongFlying MountAchiev
+2375|72.50|61.32|Thrayir RitualTo activate each runestone around Th
+2369|52.39|38.59|Spirit-Scarred FragmentOnce all runekeys are assem
+2346|40.6|91.8|Darkfuse PrecipitantAsset AdvocatorGround MountSol
+2403|70.5|33.2|Big KeechBlack Blood BarBlack Blood BarBig KeechPv
+2403|40.3|79.4|SpiritsVoid-Forged Stallion's ReinsGround MountEve
+2404|63.0|37.3|AnvilHorseshoeHorseshoeHorseshoeHorseshoeAnvilRein
+2404|66.0|70.8|Ripped NoteRipped NoteVoid-Scarred Pack Mother's H
+2403|46.7|52.8|Valley of Wisdom ElevatorElevatorReins of the Void
+2403|46.7|52.8|Valley of Wisdom ElevatorElevatorFelreaver Deathcy
+2403|56.9|56.8|Engine BlockMagic-Lined ManifoldEngine BlockTyrann

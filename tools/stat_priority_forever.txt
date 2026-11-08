@@ -1,0 +1,27 @@
+WARRIOR:Arms : Weapon Dps > Hit Chance > Expertise > Critical Strike > Strength
+WARRIOR:Fury : Weapon Dps > Hit Chance > Expertise > Critical Strike > Strength
+WARRIOR:Protection : Expertise > Hit Chance > Agility > Strength > Stamina || Stamina > Armor > Agility > Avoidance > Defense
+WARLOCK:Affliction : Hit Chance > Spell Power > Critical Strike > Haste > Intellect
+WARLOCK:Demonology : Hit Chance > Spell Power > Critical Strike > Haste > Intellect
+WARLOCK:Destruction : Hit Chance > Spell Power > Haste > Critical Strike > Intellect
+MAGE:Arcane : Hit Chance > Spell Power > Critical Strike > Intellect > Spirit > Mp5
+MAGE:Fire : Hit Chance > Spell Power > Critical Strike > Intellect > Spirit > Mp5
+MAGE:Frost : Hit Chance > Spell Power > Critical Strike > Intellect > Mp5 > Spirit
+ROGUE:Assassination : Expertise > Hit Chance > Agility > Weapon Damage > Critical Strike
+ROGUE:Combat : Expertise > Hit Chance > Agility > Weapon Damage > Critical Strike
+ROGUE:Subtlety : Weapon Damage > Expertise > Hit Chance > Weapon Skill > Agility
+DRUID:Balance : Hit Chance > Critical Strike > Spell Power > Intellect
+DRUID:Feral Combat : Weapon Dps > Expertise > Hit Chance > Agility > Strength || Armor > Defense > Stamina > Agility > Dodge
+DRUID:Restoration : Healing Power > Intellect > Spirit > Mp5 > Critical Strike
+HUNTER:Beast Mastery : Weapon Damage > Hit Chance > Critical Strike > Agility > Attack Power
+HUNTER:Marksmanship : Weapon Damage > Hit Chance > Critical Strike > Agility > Attack Power
+HUNTER:Survival : Weapon Damage > Hit Chance > Critical Strike > Agility > Attack Power
+PRIEST:Discipline : Healing Power > Mp5 > Spirit > Intellect > Critical Strike
+PRIEST:Holy : Healing Power > Mp5 > Spirit > Intellect > Critical Strike
+PRIEST:Shadow Magic : Hit Chance > Spell Power > Critical Strike > Spell Pierce > Spirit
+SHAMAN:Elemental Combat : Spell Power > Hit Chance > Critical Strike > Intellect > Mp5
+SHAMAN:Enhancement : Hit Chance > Expertise > Intellect > Strength > Spell Power
+SHAMAN:Restoration : Healing Power > Critical Strike > Intellect > Spirit > Mp5
+PALADIN:Holy : Healing Power > Intellect > Spirit > Mp5 > Critical Strike
+PALADIN:Protection : Stamina > Defense > Spell Power > Intellect > Strength
+PALADIN:Retribution : Weapon Damage > Hit Chance > Expertise > Strength > Spell Power || Weapon Dps > Hit Chance > Spell Power > Critical Strike > Expertise

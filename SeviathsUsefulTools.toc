@@ -1,0 +1,137 @@
+## Interface: 16001
+## Title: |cff00e5ffSeviaths|rUsefulTools
+## Notes: Everything Seviath in one addon for WoW Forever (Classic): farm spots, rares and gathering on the map, auction prices, crafting and farming profit on tooltips, the Codex encyclopedia, Dungeons group tools, talent advisor and the Guild Helper. Made from the retail version; being converted to Classic.
+## Author: Seviath
+## Version: 2.3
+## X-Formerly: SeviathsFarmPack, SeviathsCodex, SeviathsDungeonsRaids, SeviathsGuildHelper
+## Category: Professions
+## IconTexture: Interface\Icons\INV_Misc_Map_01
+## OptionalDeps: Auctionator, TradeSkillMaster
+## SavedVariables: SeviathsUsefulToolsDB, SeviathsCodexDB, SeviathsDungeonsRaidsDB, SeviathsGuildHelperDB
+## SavedVariablesPerCharacter: SeviathsGuildHelperCharDB
+## AddonCompartmentFunc: SeviathsUsefulTools_OnCompartmentClick
+## AddonCompartmentFuncOnEnter: SeviathsUsefulTools_OnCompartmentEnter
+## AddonCompartmentFuncOnLeave: SeviathsUsefulTools_OnCompartmentLeave
+## X-Website: https://github.com/PetalsOfIron/WOWSeviathsUsefultools-Retail
+## X-License: CC BY-NC 3.0
+## X-Data-Source: wowhead.com
+
+SavedPack.lua
+Core.lua
+Data\Items.lua
+Data\Expansions.lua
+Data\Spawns.lua
+Data\Rares.lua
+Data\SpawnsWowhead.lua
+Data\WildPets.lua
+Data\WildPetSpots.lua
+Data\WildPetZones.lua
+Data\MountGuide.lua
+Data\Gathering.lua
+Data\GatherZones.lua
+Data\Seed.lua
+Data\RecipeData.lua
+Data\GemEnchantBis.lua
+Data\TalentBuilds.lua
+Data\StatPriority.lua
+Data\Affixes.lua
+Data\PlayerData.lua
+Data\Realms.lua
+Data\RealmRegions.lua
+Data\ConnectedRealms.lua
+Data\GuildLeaders.lua
+collected\codex.beasts.lua
+collected\codex.items.lua
+collected\codex.loot.lua
+collected\codex.lootZones.lua
+collected\codex.matUses.lua
+collected\codex.npcs.lua
+collected\codex.qloc.lua
+collected\codex.quests.lua
+collected\codex.vendorItems.lua
+collected\codex.vendors.lua
+collected\tools.itemExp.lua
+collected\tools.itemIcon.lua
+collected\tools.itemZones.lua
+collected\tools.killPos.lua
+collected\tools.knownItems.lua
+collected\tools.npcPos.lua
+collected\tools.objects.lua
+collected\tools.towns.lua
+collected\tools.vendorLearned.lua
+CollectedImport.lua
+Data\TransmogIndex.lua
+Data\DropIndex.lua
+Data\ItemIndex.lua
+LazyData.lua
+Data\DecorData.lua
+Data\DecorNPCs.lua
+Data\CuriosLearned.lua
+Data\DecorLearned.lua
+Data\AuctionItems.lua
+Auction.lua
+AuctionBar.lua
+AuctionSold.lua
+Income.lua
+Profit.lua
+Instances.lua
+Learn.lua
+Collector.lua
+TransmogHistory.lua
+Extras.lua
+Tools.lua
+Tools2.lua
+ItemInfo.lua
+MinimapPins.lua
+Guides.lua
+Scanner.lua
+WorldMap.lua
+Treasures.lua
+PointsMenu.lua
+MapMenu.lua
+MaterialGuide.lua
+Minimap.lua
+Browser.lua
+About.lua
+GemHelper.lua
+ProfessionInfo.lua
+OrderScan.lua
+CustomerOrders.lua
+NpcSpots.lua
+TalentAdvisor.lua
+Social.lua
+GuildDirectory.lua
+GuildSources.lua
+Modules\GuildHelper\GuildHelper.lua
+Modules\DungeonsRaids\Core.lua
+Modules\DungeonsRaids\Data.lua
+Modules\DungeonsRaids\History.lua
+Modules\DungeonsRaids\Collect.lua
+Modules\DungeonsRaids\Listing.lua
+Modules\DungeonsRaids\Apply.lua
+Modules\DungeonsRaids\Leader.lua
+Modules\DungeonsRaids\UI.lua
+Modules\Codex\Core.lua
+Modules\Codex\Guide.lua
+Modules\Codex\Veterans.lua
+Modules\Codex\RaidMplus.lua
+Modules\Codex\Special.lua
+Modules\Codex\Indexers.lua
+Modules\Codex\Quests.lua
+Modules\Codex\AchievementTips.lua
+Modules\Codex\Explain.lua
+Modules\Codex\Farming.lua
+Modules\Codex\Grind.lua
+Modules\Codex\History.lua
+Modules\Codex\Materials.lua
+Modules\Codex\Collected.lua
+Modules\Codex\Lazy.lua
+Modules\Codex\DelveGuides.lua
+Modules\Codex\Delves.lua
+Modules\Codex\Vendors.lua
+Modules\Codex\UI.lua
+Modules\Codex\Hooks.lua
+Hub.lua
+Menu.lua
+Planners.lua
+SavedPackLogout.lua

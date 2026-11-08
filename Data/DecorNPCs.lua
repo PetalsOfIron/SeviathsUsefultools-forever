@@ -1,0 +1,3 @@
+-- Positions of the vendors and bosses named in decor sources: [name] = { map = uiMapID, x, y } (from Wowhead NPC pages, 2026-10-31)
+local _, SFP = ...
+SFP.DecorNPCs = {}

@@ -1,0 +1,3333 @@
+Title: Catching Every Wild Battle Pet: Locations & Waypoints - Mists of Pandaria Classic - Wowhead
+URL: https://www.wowhead.com/mop-classic/guide/every-wild-pet-locations-battle-pets
+Source element: <div>
+---
+Catching Every Wild Battle Pet: Locations & Waypoints - Mists of Pandaria Classic
+By Buuloki
+Updated: 2025/12/05
+Welcome to Wowhead's Mists of Pandaria Classic wild pet collection guide. This guide will cover how and where to find every wild pet added in Mists of Pandaria Classic—the first Classic installation to introduce the pet battle system.
+
+This guide covers content available during the Mists of Pandaria pre-patch, and it will be expanded on when Mists of Pandaria Classic launches. For more information about Battle Pets, please see our guides:
+
+Pet Battle Basics Guide
+ 
+Battle Pets Tier List & Strongest Pets
+ 
+Battle Pet Tamer Guide
+ 
+Show Table of Contents
+PET BATTLE INFORMATION / GUIDE INSTRUCTIONS
+How to Use This Guide
+Download an addon that uses waypoints, such as TomTom - Copy waypoints into your game to find suggested capture points for these battle pets. You can use an addon like Paste to copy a large amount of waypoints. If you do not use waypoints, follow the guidance in the 'Notes' section or click on the battle pet's name to be taken to a page with a map of pins showing where that pet has been caught.
+Using the waypoints for all zones, make your way through each continent following the waypoints - Each section attempts to stay in order of zones you are flying through (with the exception of powerful pets at the top). As multiple waypoints per pet are provided, you can clear out the remaining waypoints for that pet once it has been found. If you are unable to find that battle pet at the waypoint provided, check the 'Notes' or click on the battle pet's name in the guide for more information on where to find that pet.
+For "multiple continent" pets - Catch them as you see them, and make your way back through the zones if any are missed.
+How to Capture a Wild Battle Pet
+Wild pets are found roaming around nearly every zone in the game. Most zones have completely unique pets while also sharing some common pets between them.
+
+To capture a wild battle pet, you must lower its health below the threshold decided by your traps— Trap,  Strong Trap,  Pristine Trap—then use that trap to capture them. If successful, the battle pet is added to your collection. You can then battle with it, level it, and show it off!
+
+Some wild battle pets only spawn in specific weather or time conditions, such as Sandstorm, Night, Summer/Winter, Snow, or Rain. Keep an eye out on the notes for these pets.
+Best Pets for Capturing Wild Pets
+Unlike current Retail, there's probably only one pet that's especially good to catch wild pets with—Terrible Turnip. This is due to having the ability  Weakening Blow.
+
+Other than this, bring your regular pet roster (preferably with some healing abilities) to capture wild battle pets—and plenty of  Battle Pet Bandage.
+Differences Between Retail and Classic
+There are two key differences between Retail Mists of Pandaria and Classic pet battles:
+Availability of battle pets - Some key battle pets that were not introduced until later Mists of Pandaria patches are immediately available on either the launch or pre-patch of Mists of Pandaria. This includes pets such as Unborn Val'kyr, Emerald Proto-Whelp and Nexus Whelpling.
+Unavailability of battle pets - Some battle pets that were added as part of events, or in the Blizzard store, are unavailable in Mists of Pandaria Classic. These were pets that were commonly used to capture battle pets, or to fight with. This includes pets such as Lil' Ragnaros. While overall not a big deal for capturing pets in general, your favourite pets from back then may not be available.
+MOST POWERFUL WILD-CAUGHT BATTLE PETS
+Eastern Kingdoms
+Blighthawk - One of the best undead pets, Blighthawk allows for massive healing with  Consume Corpse.  Cyclone can be combined with other battle pet abilities that buff damage, to wreak havoc to backline pets.
+Jade Oozeling - A few clones of this pet exist in the game, but this is one of the easier versions to obtain. This pet can put out large amounts of burst damage with  Expunge.
+Kalimdor
+Nether Faerie Dragon - This pet has a fantastic defensive ability with  Evanescence, as well as high-output damage abilities, like  Life Exchange,  Moonfire and  Arcane Blast—combined with being a  Dragonkin pet.
+Nordrassil Wisp -  Flash is a great defensive ability and allows for high damage when combined with  Light.
+Outland
+Flayer Youngling - A speedy breed allows you to use  Kick to get ahead in the fight, damage-wise and move-wise, potentially interrupting or throwing off the opponent's abilities.  Blitz allows you to deal large damage when you attack first, and  Deflection allows you to completely negate an enemy ability.
+Fel Flame -  Scorched Earth and  Conflagrate, when combined, allow you to do large amounts of damage to the enemy pet in succession.
+Northrend
+Unborn Val'kyr -  Curse of Doom can be used to line up with damage-increasing effects, and  Haunt /  Unholy Ascension are used to easily swap out to a different pet while still applying damage.
+Nexus Whelpling -  Arcane Storm and  Mana Surge can be used to deal massive amounts of damage, especially in combination with the Dragonkin family ability,  Dragonkin.
+Emerald Proto-Whelp -  Emerald Presence can be used to negate a lot of damage from enemy pets, combined with the flexibility of  Emerald Dream allowing for more sustain, and  Proto-Strike for more damage and even more sustain if needed. This pet is also a  Dragonkin, allowing for powerful attacks.
+Multiple / Other Continents
+Frogs / Toads (eg., Toad, Small Frog) -  Water Jet,  Healing Wave and  Frog Kiss can be used to deal good damage while keeping your pet alive.
+Rabbits / Hares (eg., Rabbit, Alpine Hare) - A S/S rabbit can be very powerful with  Flurry,  Dodge and  Burrow, making it the best Critter pet in the game. You can avoid many abilities while dealing high damage.
+Moths (eg., Oasis Moth, Grey Moth) - A moth with  Alpha Strike,  Cocoon Strike and  Moth Dust can deal high damage while avoiding abilities from the enemy pet.
+Crow -  Call Darkness and  Nocturnal Strike synergize with each other allowing high damage output.
+WHERE TO CATCH EVERY BATTLE PET
+Mass Waypoints - All Zones
+Use an addon such as TomTom and Paste to mass import these waypoints.
+
+Waypoints - Click to expand me!
+EASTERN KINGDOMS WILD-CAUGHT BATTLE PETS
+The following battle pets can only be found in Eastern Kingdoms. Collecting all these pets, unless specified, awards you with  Eastern Kingdoms Safari, which is part of  World Safari.
+Mass Waypoints - Eastern Kingdoms
+Waypoints - Click to expand me!
+Pet	Abilities	Located	Notes
+
+Blighthawk
+
+	
+ Infected Claw /  Slicing Wind
+
+ Consume Corpse /  Ghostly Bite
+
+ Lift-Off /  Cyclone
+	
+/way #22 44.6 69.2 Blighthawk
+
+/way #22 43.4 71.8 Blighthawk
+
+/way #22 48.0 68.2 Blighthawk
+	
+Found around Andorhal in Western Plaguelands.
+
+This is a powerful pet.
+
+Jade Oozeling
+
+	
+ Ooze Touch /  Absorb
+
+ Corrosion /  Creeping Ooze
+
+ Expunge /  Acidic Goo
+	
+/way #26 56.8 43.0 Jade Oozeling
+
+/way #26 57.6 38.2 Jade Oozeling
+
+/way #26 60.0 42.8 Jade Oozeling
+	
+Found around Skulk Rock in The Hinterlands.
+
+This is a powerful pet.
+
+Black Lamb
+
+	
+ Hoof /  Chew
+
+ Comeback /  Soothe
+
+ Bleat /  Stampede
+	
+/way #37 41.4 54.4 Black Lamb
+
+/way #37 46.4 74.6 Black Lamb
+
+/way #37 70.2 60.4 Black Lamb
+	
+Found all over Elwynn Forest.
+
+Stormwind Rat
+
+	
+ Scratch /  Comeback
+
+ Flurry /  Poison Fang
+
+ Stampede /  Survival
+	
+/way #37 42.8 84.6 Stormwind Rat
+
+/way #37 26.6 86.6 Stormwind Rat
+
+/way #84 78.6 63.8 Stormwind Rat
+	
+Found in Elwynn Forest, Stormwind City.
+
+Best found in Elwynn Forest near the south farms(especially if you're Horde), otherwise found plentiful in Stormwind City.
+
+Tiny Harvester
+
+	
+ Metal Fist /  Thrash
+
+ Overtune /  Extra Plating
+
+ Demolish /  Repair
+	
+/way #52 52.2 22.6 Tiny Harvester
+
+/way #52 44.8 34.6 Tiny Harvester
+
+/way #52 62.8 60.2 Tiny Harvester
+	
+Found around the farms in Westfall.
+
+Dusk Spiderling
+
+	
+ Strike /  Poison Spit
+
+ Sticky Web /  Brittle Webbing
+
+ Leech Life /  Spiderling Swarm
+	
+/way #47 30.6 53.0 Dusk Spiderling
+
+/way #47 65.6 26.6 Dusk Spiderling
+
+/way #47 31.2 58.6 Dusk Spiderling
+	
+Found to the left and right of Twilight grove, around the spiders in Duskwood.
+
+Rat Snake
+
+	
+ Bite /  Poison Fang
+
+ Hiss /  Counterstrike
+
+ Burrow /  Vicious Fang
+	
+/way #47 57.2 56.4 Rat Snake
+
+/way #47 82.0 33.8 Rat Snake
+
+/way #47 21.4 43.4 Rat Snake
+	
+Found all around Duskwood. If you're having issues finding one, they can be found as a secondary pet.
+
+Widow Spiderling
+
+	
+ Strike /  Poison Spit
+
+ Sticky Web /  Brittle Webbing
+
+ Leech Life /  Spiderling Swarm
+	
+/way #47 30.6 42.8 Widow Spiderling
+
+/way #47 34.0 56.6 Widow Spiderling
+
+/way #47 63.2 26.4 Widow Spiderling
+	
+Found to the left and right of Twilight grove, around the spiders in Duskwood.
+
+Can only be found at night.
+
+Crimson Moth
+
+	
+ Slicing Wind /  Alpha Strike
+
+ Cocoon Strike /  Moth Balls
+
+ Adrenaline Rush /  Moth Dust
+	
+/way #50 42.2 36.0 Crimson Moth
+
+/way #50 44.0 42.2 Crimson Moth
+
+/way #210 50.6 49.4 Crimson Moth
+
+/way #210 49.2 57.4 Crimson Moth
+	
+Found in Northern Stranglethorn and the Cape of Stranglethorn, in two isolated pockets.
+
+Forest Spiderling
+
+	
+ Strike /  Poison Spit
+
+ Sticky Web /  Brittle Webbing
+
+ Leech Life /  Spiderling Swarm
+	
+/way #210 49.8 35.4 Forest Spiderling
+
+/way #210 60.2 28.0 Forest Spiderling
+
+/way #50 63.0 37.6 Forest Spiderling
+
+/way #50 47.4 41.2 Forest Spiderling
+	
+Found scattered around Northern Stranglethorn and the Cape of Stranglethorn.
+
+Lizard Hatchling
+
+	
+ Claw /  Quick Attack
+
+ Screech /  Triple Snap
+
+ Comeback /  Ravage
+	
+/way #50 54.0 22.6 Lizard Hatchling
+
+/way #50 53.8 61.8 Lizard Hatchling
+
+/way #210 47.0 36.0 Lizard Hatchling
+
+/way #210 47.2 20.8 Lizard Hatchling
+	
+Found all over Northern Stranglethorn and the Cape of Stranglethorn.
+
+Polly
+
+	
+ Slicing Wind /  Thrash
+
+ Hawk Eye /  Adrenaline Rush
+
+ Lift-Off /  Cyclone
+	
+/way #50 44.6 26.0 Polly
+
+/way #50 59.0 28.6 Polly
+
+/way #50 64.4 64.4 Polly
+	
+Found all over Northern Stranglethorn.
+
+Baby Ape
+
+	
+ Smash /  Rake
+
+ Roar /  Clobber
+
+ Banana Barrage /  Barrel Toss
+	
+/way #210 64.8 76.0 Baby Ape
+
+/way #210 60.2 89.6 Baby Ape
+
+/way #210 63.2 80.8 Baby Ape
+	
+Found on Jaguero Isle in the Cape of Stranglethorn.
+
+Must be raining weather in game.
+
+Wharf Rat
+
+	
+ Scratch /  Comeback
+
+ Flurry /  Poison Fang
+
+ Stampede /  Survival
+	
+/way #210 41.2 68.4 Wharf Rat
+
+/way #210 42.6 74.0 Wharf Rat
+
+/way #210 43.6 69.6 Wharf Rat
+	
+Found in Booty Bay in The Cape of Stranglethorn.
+
+Can also be found in Tol Barad Peninsula, but this isn't part of any continental safari achievement, so it is listed under Eastern Kingdoms.
+
+Scorpling
+
+	
+ Snap /  Triple Snap
+
+ Crouch /  Screech
+
+ Sting /  Rampage
+	
+/way #17 61.4 58.8 Scorpling
+
+/way #17 60.0 58.6 Scorpling
+
+/way #17 65.2 60.6 Scorpling
+	
+Found south of The Dark Portal in Blasted Lands.
+
+Moccasin
+
+	
+ Bite /  Poison Fang
+
+ Hiss /  Counterstrike
+
+ Burrow /  Vicious Fang
+	
+/way #51 27.2 45.8 Moccasin
+
+/way #51 78.4 69.0 Moccasin
+
+/way #51 72.6 33.8 Moccasin
+	
+Found all over Swamp of Sorrows.
+
+Swamp Moth
+
+	
+ Slicing Wind /  Alpha Strike
+
+ Cocoon Strike /  Moth Balls
+
+ Adrenaline Rush /  Moth Dust
+	
+/way #51 75.6 27.6 Swamp Moth
+
+/way #51 36.0 44.4 Swamp Moth
+
+/way #51 83.2 73.6 Swamp Moth
+	
+Found all over Swamp of Sorrows.
+
+Fledgling Buzzard
+
+	
+ Slicing Wind /  Thrash
+
+ Hawk Eye /  Adrenaline Rush
+
+ Lift-Off /  Cyclone
+	
+/way #49 24.8 24.6 Fledgling Buzzard
+
+/way #49 36.2 28.6 Fledgling Buzzard
+
+/way #49 24.6 35.6 Fledgling Buzzard
+	
+Found north of Lakeshire in Redridge Mountains.
+
+Mountain Cottontail
+
+	
+ Scratch /  Flurry
+
+ Adrenaline Rush /  Dodge
+
+ Burrow /  Stampede
+	
+/way #49 66.6 41.6 Mountain Cottontail
+
+/way #49 24.8 35.8 Mountain Cottontail
+
+/way #49 30.6 65.8 Mountain Cottontail
+	
+Found all over Redridge Mountains.
+
+Redridge Rat
+
+	
+ Scratch /  Comeback
+
+ Flurry /  Poison Fang
+
+ Stampede /  Survival
+	
+/way #49 27.2 27.8 Redridge Rat
+
+/way #49 70.6 37.4 Redridge Rat
+
+/way #49 31.8 63.0 Redridge Rat
+	
+Found around various camps in Redridge Mountains.
+
+Lava Beetle
+
+	
+ Burn /  Flank
+
+ Hiss /  Cauterize
+
+ Scorched Earth /  Apocalypse
+	
+/way #36 32.8 43.6 Lava Beetle
+
+/way #36 68.8 36.4 Lava Beetle
+
+/way #36 60.6 71.6 Lava Beetle
+	
+Found all over Burning Steppes.
+
+Lava Crab
+
+	
+ Burn /  Survival
+
+ Shell Shield /  Cauterize
+
+ Conflagrate /  Magma Wave
+	
+/way #32 43.6 34.0 Lava Crab
+
+/way #32 50.8 52.6 Lava Crab
+
+/way #32 35.6 74.8 Lava Crab
+	
+Found all over Burning Steppes and Searing Gorge.
+
+Ash Spiderling
+
+	
+ Strike /  Poison Spit
+
+ Sticky Web /  Brittle Webbing
+
+ Leech Life /  Spiderling Swarm
+	
+/way #32 30.6 45.4 Ash Spiderling
+
+/way #32 60.4 73.0 Ash Spiderling
+
+/way #32 56.6 36.4 Ash Spiderling
+	
+Found all over Searing Gorge.
+
+Molten Hatchling
+
+	
+ Burn /  Leech Life
+
+ Sticky Web /  Cauterize
+
+ Magma Wave /  Brittle Webbing
+	
+/way #32 49.8 50.4 Molten Hatchling
+
+/way #32 35.8 77.4 Molten Hatchling
+
+/way #32 56.8 53.6 Molten Hatchling
+	
+Found all over Searing Gorge.
+
+King Snake
+
+	
+ Bite /  Poison Fang
+
+ Hiss /  Counterstrike
+
+ Burrow /  Vicious Fang
+	
+/way #15 15.4 27.4 King Snake
+
+/way #15 72.0 29.6 King Snake
+
+/way #15 45.6 69.6 King Snake
+	
+Found all over the edges of Badlands, not in the middle.
+
+Fluxfire Feline
+
+	
+ Claw /  Pounce
+
+ Flux /  Overtune
+
+ Prowl /  Supercharge
+	
+/way #469 42.8 38.0 Fluxfire Feline
+
+/way #469 40.6 57.6 Fluxfire Feline
+
+/way #469 47.6 57.8 Fluxfire Feline
+	
+Found in Gnomergan / Dun Morogh at the Toxic Airfields, or near the dungeon entrance to Gnomergan.
+
+This was a very powerful pet in Mists of Pandaria, but we are getting the nerfed version.
+
+Not needed for  Kalimdor Safari.
+
+Irradiated Roach
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #27 27.2 36.0 Irradiated Roach
+	
+Found in Gnomergan, near the dungeon entrance to Gnomergan (underground).
+
+Snow Cub
+
+	
+ Claw /  Pounce
+
+ Rake /  Screech
+
+ Devour /  Prowl
+	
+/way #27 52.0 46.6 Snow Cub
+
+/way #27 51.8 54.0 Snow Cub
+
+/way #27 74.4 49.6 Snow Cub
+	
+Found over Dun Morogh.
+
+Tiny Bog Beast
+
+	
+ Crush /  Poison Lash
+
+ Lash /  Clobber
+
+ Leap /  Rampage
+	
+/way #56 56.2 26.6 Tiny Bog Beast
+
+/way #56 53.6 28.0 Tiny Bog Beast
+
+/way #56 55.2 27.6 Tiny Bog Beast
+	
+Found in the bog in Wetlands.
+
+Highlands Mouse
+
+	
+ Scratch /  Comeback
+
+ Flurry /  Poison Fang
+
+ Stampede /  Survival
+	
+/way #241 20.6 14.6 Highlands Mouse
+
+/way #241 44.8 40.6 Highlands Mouse
+
+/way #241 45.2 43.2 Highlands Mouse
+	
+Found up north near the lake or south of Thundermar in Twilight Highlands.
+
+This pet can be a bit hard to find as a primary pet, you can easily find it as a secondary pet.
+
+Highlands Skunk
+
+	
+ Scratch /  Flurry
+
+ Rake /  Perk Up
+
+ Stench /  Bleat
+	
+/way #241 53.0 34.6 Highlands Skunk
+
+/way #241 72.2 65.6 Highlands Skunk
+
+/way #241 59.2 44.0 Highlands Skunk
+	
+Found around the centre grassy areas in Twilight Highlands.
+
+Highlands Turkey
+
+	
+ Peck /  Slicing Wind
+
+ Squawk /  Gobble Strike
+
+ Food Coma /  Flock
+	
+/way #241 53.4 32.0 Highlands Turkey
+
+/way #241 28.6 28.2 Highlands Turkey
+
+/way #241 47.8 24.6 Highlands Turkey
+	
+Found around Vermillion Redoubt and Thundermar in Twilight Highlands.
+
+Twilight Fiendling
+
+	
+ Creepy Chomp /  Rake
+
+ Leap /  Creeping Ooze
+
+ Adrenal Glands/  Siphon Life
+	
+/way #241 40.2 47.6 Twilight Fiendling
+
+/way #241 58.2 33.0 Twilight Fiendling
+
+/way #241 61.4 54.0 Twilight Fiendling
+	
+Found around each of the three breeches in Twilight Highlands.
+
+Wildhammer Gryphon Hatchling
+
+	
+ Peck /  Squawk
+
+ Slicing Wind /  Adrenaline Rush
+
+ Flock /  Lift-Off
+	
+/way #241 55.4 15.2 Wildhammer Gryphon Hatchling
+
+/way #241 48.4 28.6 Wildhammer Gryphon Hatchling
+	
+Found in two small pockets near Thundermar and Kirthaven in Twilight Highlands.
+
+Yellow-Bellied Marmot
+
+	
+ Chomp /  Adrenaline Rush
+
+ Leap /  Crouch
+
+ Burrow /  Comeback
+	
+/way #241 46.2 25.6 Yellow-Bellied Marmot
+
+/way #241 60.8 59.6 Yellow-Bellied Marmot
+
+/way #241 53.4 71.6 Yellow-Bellied Marmot
+	
+Found all over Twilight Highlands.
+
+Grasslands Cottontail
+
+	
+ Scratch /  Flurry
+
+ Adrenaline Rush /  Dodge
+
+ Burrow /  Stampede
+	
+/way #14 27.6 29.0 Grasslands Cottontail
+
+/way #14 66.6 48.4 Grasslands Cottontail
+
+/way #14 38.8 58.6 Grasslands Cottontail
+	
+Found all over Arathi Highlands.
+
+Tiny Twister
+
+	
+ Slicing Wind /  Wild Winds
+
+ Flyby /  Bash
+
+ Cyclone /  Call Lightning
+	
+/way #14 27.6 29.0 Grasslands Cottontail
+
+/way #14 66.6 48.4 Grasslands Cottontail
+
+/way #14 38.8 58.6 Grasslands Cottontail
+	
+Found in the centre of Arathi Highlands, around the wind elemental shrine.
+
+Infested Bear Cub
+
+	
+ Diseased Bite /  Roar
+
+ Bash /  Hibernate
+
+ Maul /  Corpse Explosion
+	
+/way #25 31.6 67.8 Infested Bear Cub
+
+/way #25 34.4 68.8 Infested Bear Cub
+
+/way #25 35.4 76.8 Infested Bear Cub
+	
+Found around the south west corner of Hillsbrad Foothills, with the adult Infested Bears.
+
+Lofty Libram
+
+	
+ Arcane Blast /  Shadow Shock
+
+ Arcane Explosion /  Amplify Magic
+
+ Inner Vision /  Curse of Doom
+	
+/way #25 31.0 31.8 Lofty Libram
+
+/way #25 33.8 38.6 Lofty Libram
+
+/way #25 30.4 44.0 Lofty Libram
+	
+Found around Dalaran Crater in Hillsbrad Foothills.
+
+Snowshoe Hare
+
+	
+ Scratch /  Flurry
+
+ Adrenaline Rush /  Dodge
+
+ Burrow /  Stampede
+	
+/way #25 40.0 29.8 Snowshoe Hare
+
+/way #25 52.2 23.2 Snowshoe Hare
+
+/way #25 46.8 20.6 Snowshoe Hare
+	
+Found around the snowy area in Hillsbrad Foothills.
+
+Can be found commonly as a secondary pet, if you're having troubles finding one.
+
+Blighted Squirrel
+
+	
+ Scratch /  Woodchipper
+
+ Adrenaline Rush /  Crouch
+
+ Rabid Strike /  Stampede
+	
+/way #21 51.6 19.0 Blighted Squirrel
+
+/way #21 54.2 47.4 Blighted Squirrel
+
+/way #21 60.6 75.6 Blighted Squirrel
+	
+Found all over Silverpine Forest.
+
+Lost of Lordaeron
+
+	
+ Shadow Slash /  Absorb
+
+ Siphon Life /  Arcane Explosion
+
+ Bone Prison /  Curse of Doom
+	
+/way #18 59.6 47.0 Lost of Lordaeron
+
+/way #18 51.2 32.6 Lost of Lordaeron
+
+/way #18 62.8 67.4 Lost of Lordaeron
+	
+Found around the farms and towns in Tirisfal Glades, or around Undercity.
+
+Undercity Rat
+
+	
+ Scratch /  Comeback
+
+ Flurry /  Poison Fang
+
+ Stampede /  Survival
+	
+/way #90 62.2 36.6 Undercity Rat
+
+/way #90 70.6 52.4 Undercity Rat
+
+/way #90 70.6 35.8 Undercity Rat
+	
+Found all around Undercity (underground).
+
+Festering Maggot
+
+	
+ Chomp /  Consume
+
+ Acidic Goo /  Sticky Goo
+
+ Leap /  Burrow
+	
+/way #23 31.2 23.0 Festering Maggot
+
+/way #23 58.8 45.0 Festering Maggot
+
+/way #23 53.0 72.6 Festering Maggot
+	
+Found all around Western Plaguelands.
+
+Larva
+
+	
+ Chomp /  Consume
+
+ Acidic Goo /  Sticky Goo
+
+ Leap /  Burrow
+	
+/way #95 24.0 20.0 Larva
+
+/way #95 44.0 38.6 Larva
+
+/way #95 55.2 53.6 Larva
+	
+Found scattered around Ghostlands.
+
+Spirit Crab
+
+	
+ Snap /  Amplify Magic
+
+ Surge /  Whirlpool
+
+ Shell Shield /  Rot
+	
+/way #95 19.6 14.4 Spirit Crab
+
+/way #95 19.8 24.6 Spirit Crab
+
+/way #95 14.6 46.6 Spirit Crab
+	
+Found on the coast of Ghostlands.
+
+Ruby Sapling
+
+	
+ Scratch /  Ironbark
+
+ Thorns /  Poisoned Branch
+
+ Photosynthesis /  Entangling Roots
+	
+/way #94 44.6 46.0 Ruby Sapling
+
+/way #94 60.2 65.6 Ruby Sapling
+
+/way #94 43.0 69.6 Ruby Sapling
+	
+Found all over Eversong Woods.
+KALIMDOR WILD-CAUGHT BATTLE PETS
+The following battle pets can only be found in Kalimdor. Collecting all these pets, unless specified, awards you with  Kalimdor Safari which is part of  World Safari.
+Mass Waypoints - Kalimdor Only
+Waypoints - Click to expand me!
+Pet	Abilities	Located	Notes
+
+Nether Faerie Dragon
+
+	
+ Slicing Wind /  Arcane Blast
+
+ Evanescence /  Life Exchange
+
+ Moonfire /  Cyclone
+	
+/way #69 62.6 29.8 Nether Faerie Dragon
+
+/way #69 56.6 44.6 Nether Faerie Dragon
+
+/way #69 62.0 39.2 Nether Faerie Dragon
+	
+Found around Dire Maul in Feralas.
+
+This is a powerful pet.
+
+Nordrassil Wisp
+
+	
+ Beam /  Light
+
+ Flash /  Arcane Blast
+
+ Soul Ward /  Arcane Explosion
+	
+/way #198 59.6 23.6 Nordrassil Wisp
+
+/way #198 58.8 24.2 Nordrassil Wisp
+
+/way #198 61.6 29.2 Nordrassil Wisp
+	
+Found under Nordrassil in Mount Hyjal.
+
+This is a powerful pet.
+
+Creepy Crawly
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #1 45.2 20.8 Creepy Crawly
+
+/way #1 50.0 12.6 Creepy Crawly
+
+/way #1 53.4 51.0 Creepy Crawly
+	
+Found in the northern areas of Durotar.
+
+Dung Beetle
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #1 57.2 14.0 Dung Beetle
+
+/way #85 54.2 59.4 Dung Beetle
+	
+Found in the northern areas of Durotar or all over Orgrimmar.
+
+Spiny Lizard
+
+	
+ Claw /  Quick Attack
+
+ Screech /  Triple Snap
+
+ Comeback /  Ravage
+	
+/way #85 51.2 76.8 Spiny Lizard
+
+/way #1 57.6 15.6 Spiny Lizard
+	
+Found scattered around Durotar or all over Orgrimmar.
+
+Rabid Nut Varmint 5000
+
+	
+ Metal Fist /  Thrash
+
+ Overtune /  Extra Plating
+
+ Rabid Strike /  Repair
+	
+/way #76 42.0 75.8 Rabid Nut Varmint 5000
+
+/way #65 66.0 59.0 Rabid Nut Varmint 5000
+
+/way #83 60.6 48.4 Rabid Nut Varmint 5000
+	
+Found in Azshara, Stonetalon Mountains and Winterspring, localized in the Goblin towns.
+
+Robo-Chick
+
+	
+ Peck /  Batter
+
+ Overtune /  Rebuild
+
+ Supercharge /  Wind-Up
+	
+/way #76 42.4 76.8 Robo-Chick
+
+/way #83 61.2 49.6 Robo-Chick
+
+/way #85 40.2 80.0 Robo-Chick
+	
+Found in Azshara, Orgrimmar and Winterspring, localized in the Goblin towns.
+
+Turquoise Turtle
+
+	
+ Bite /  Grasp
+
+ Shell Shield /  Healing Wave
+
+ Headbutt /  Powerball
+	
+/way #76 42.6 45.2 Turquoise Turtle
+
+/way #76 75.0 32.6 Turquoise Turtle
+
+/way #76 69.0 72.8 Turquoise Turtle
+	
+Found on the beaches of Azshara's coast.
+
+Twilight Beetle
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #76 67.2 17.2 Twilight Beetle
+
+/way #198 26.0 37.6 Twilight Beetle
+
+/way #207 61.6 31.6 Twilight Beetle
+	
+Found in Azshara, Deepholm, Mount Hyjal near Twilights Hammer enemies.
+
+Can be caught in Deepholm, but there is no achievement for Deepholm pets, so this has been listed as a Kalimdor pet.
+
+Alpine Chipmunk
+
+	
+ Scratch /  Woodchipper
+
+ Adrenaline Rush /  Crouch
+
+ Nut Barrage /  Stampede
+	
+/way #83 52.4 46.0 Alpine Chipmunk
+
+/way #65 48.4 61.0 Alpine Chipmunk
+
+/way #198 64.0 25.8 Alpine Chipmunk
+	
+Found in Mount Hyjal, Stonetalon Mountains, Winterspring in abundance.
+
+Anodized Robo Cub
+
+	
+ Bite /  Demolish
+
+ Repair /  Rebuild
+
+ Maul /  Supercharge
+	
+/way #83 60.2 50.6 Anodized Robo Cub
+
+/way #83 60.6 53.8 Anodized Robo Cub
+
+/way #83 61.2 46.8 Anodized Robo Cub
+	
+Found exclusively surrounding Everlook in Winterspring.
+
+Crystal Spider
+
+	
+ Strike /  Crystal Prison
+
+ Sticky Web /  Brittle Webbing
+
+ Leech Life /  Spiderling Swarm
+	
+/way #83 49.8 57.0 Crystal Spider
+
+/way #83 63.0 86.8 Crystal Spider
+	
+Found around Lake Kel'theril and Frostwhisper Gorge in Winterspring.
+
+Snowy Owl
+
+	
+ Peck /  Quills
+
+ Shriek /  Cyclone
+
+ Nocturnal Strike /  Predatory Strike
+	
+/way #83 50.0 23.2 Snowy Owl
+
+/way #83 41.2 49.6 Snowy Owl
+
+/way #83 61.6 70.2 Snowy Owl
+	
+Found all over Winterspring.
+
+Must be Winter in game—December to March in real-life calendar days. (Note: These timings have changed multiple times over the years).
+
+Forest Moth
+
+	
+ Slicing Wind /  Alpha Strike
+
+ Cocoon Strike /  Moth Balls
+
+ Adrenaline Rush /  Moth Dust
+	
+/way #63 65.4 71.8 Forest Moth
+
+/way #66 53.8 46.6 Forest Moth
+
+/way #89 61.2 51.0 Forest Moth
+	
+Found in Ashenvale, Darnassus, Desolace, Moonglade, Mount Hyjal, Teldrassil.
+
+Found most plentiful in Ashenvale.
+
+Silky Moth
+
+	
+ Slicing Wind /  Alpha Strike
+
+ Cocoon Strike /  Moth Balls
+
+ Adrenaline Rush /  Moth Dust
+	
+/way #198 60.6 29.6 Silky Moth
+
+/way #80 37.8 62.2 Silky Moth
+
+/way #78 34.2 28.6 Silky Moth
+	
+Found in Moonglade, Mount Hyjal, Un'Goro Crater.
+
+Found most plentiful in Mount Hyjal, under Nordrassil.
+
+Darkshore Cub
+
+	
+ Bite /  Roar
+
+ Hibernate /  Bash
+
+ Maul /  Rampage
+	
+/way #62 46.0 79.0 Darkshore Cub
+
+/way #62 41.6 73.8 Darkshore Cub
+
+/way #62 41.2 81.0 Darkshore Cub
+	
+Found around the south area of Darkshore, near Grove of the Ancients.
+
+Shimmershell Snail
+
+	
+ Ooze Touch /  Absorb
+
+ Acidic Goo /  Shell Shield
+
+ Dive /  Headbutt
+	
+/way #62 37.0 66.8 Shimmershell Snail
+
+/way #62 38.0 68.8 Shimmershell Snail
+	
+Found around the ocean shore of Darkshore.
+
+Minfernal
+
+	
+ Crush /  Immolate
+
+ Immolation /  Extra Plating
+
+ Meteor Strike /  Explode
+	
+/way #77 40.2 40.6 Minfernal
+
+/way #77 43.6 38.2 Minfernal
+
+/way #77 46.6 40.0 Minfernal
+	
+Found around the infernals in the middle of Felwood.
+
+Tainted Moth
+
+	
+ Slicing Wind /  Alpha Strike
+
+ Cocoon Strike /  Moth Balls
+
+ Adrenaline Rush /  Moth Dust
+	
+/way #77 53.0 85.4 Tainted Moth
+
+/way #77 40.6 56.4 Tainted Moth
+
+/way #77 48.6 23.6 Tainted Moth
+	
+Found all round Felwood.
+
+Tainted Rat
+
+	
+ Scratch /  Comeback
+
+ Flurry /  Poison Fang
+
+ Stampede /  Survival
+	
+/way #77 50.6 28.2 Tainted Rat
+
+/way #77 45.0 43.2 Tainted Rat
+
+/way #77 50.4 82.0 Tainted Rat
+	
+Found all round Felwood.
+
+Crested Owl
+
+	
+ Peck /  Quills
+
+ Shriek /  Cyclone
+
+ Nocturnal Strike /  Predatory Strike
+	
+/way #57 42.0 36.0 Crested Owl
+
+/way #57 50.0 48.6 Crested Owl
+
+/way #57 60.2 50.6 Crested Owl
+	
+Found all round Teldrassil.
+
+Elfin Rabbit
+
+	
+ Scratch /  Flurry
+
+ Adrenaline Rush /  Dodge
+
+ Burrow /  Stampede
+	
+/way #198 63.6 30.8 Elfin Rabbit
+
+/way #57 40.6 33.4 Elfin Rabbit
+
+/way #89 67.2 51.6 Elfin Rabbit
+	
+Found in Darnassus, Desolace, Mount Hyjal, Teldrassil.
+
+Found most plentiful in Mount Hyjal, under Nordrassil.
+
+Grey Moth
+
+	
+ Slicing Wind /  Alpha Strike
+
+ Cocoon Strike /  Moth Balls
+
+ Adrenaline Rush /  Moth Dust
+	
+/way #97 40.6 25.8 Grey Moth
+
+/way #97 57.6 39.0 Grey Moth
+
+/way #97 45.4 56.2 Grey Moth
+	
+Found all around Azuremyst Isle.
+
+Ravager Hatchling
+
+	
+ Bite /  Rend
+
+ Screech /  Sting
+
+ Devour /  Rampage
+	
+/way #106 58.8 42.8 Ravager Hatchling
+
+/way #106 30.6 59.4 Ravager Hatchling
+
+/way #106 57.0 30.0 Ravager Hatchling
+	
+Found all around Bloodmyst Isle.
+
+Ash Lizard
+
+	
+ Claw /  Quick Attack
+
+ Screech /  Triple Snap
+
+ Comeback /  Ravage
+	
+/way #198 79.8 54.2 Ash Lizard
+
+/way #198 39.0 79.0 Ash Lizard
+
+/way #78 47.4 44.8 Ash Lizard
+
+/way #78 52.0 52.0 Ash Lizard
+	
+Found in Mount Hyjal, Un'Goro Crater.
+
+Found plentiful in the south part of Mount Hyjal, near the fiery areas, and around the volcano in the middle of Un'Goro.
+
+Carrion Rat
+
+	
+ Scratch /  Comeback
+
+ Flurry /  Poison Fang
+
+ Stampede /  Survival
+	
+/way #198 30.8 78.4 Carrion Rat
+
+/way #198 78.6 50.4 Carrion Rat
+
+/way #198 55.2 85.4 Carrion Rat
+	
+Found in three scattered pockets in Mount Hyjal.
+
+Death's Head Cockroach
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #198 42.6 21.8 Death's Head Cockroach
+
+/way #198 28.0 40.0 Death's Head Cockroach
+
+/way #198 60.0 79.4 Death's Head Cockroach
+	
+Found in three scattered pockets in Mount Hyjal, around the Death's Head encampments.
+
+Fire-Proof Roach
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #198 47.0 56.6 Fire-Proof Roach
+
+/way #198 83.0 55.8 Fire-Proof Roach
+
+/way #198 60.6 74.8 Fire-Proof Roach
+	
+Found all over the southern areas of Mount Hyjal.
+
+Grotto Vole
+
+	
+ Scratch /  Comeback
+
+ Flurry /  Poison Fang
+
+ Stampede /  Survival
+	
+/way #198 53.8 19.6 Grotto Vole
+
+/way #198 53.8 19.6 Grotto Vole
+	
+Found exclusively in a cave in north Mount Hyjal.
+
+Frog
+
+	
+ Water Jet /  Tongue Lash
+
+ Healing Wave /  Cleansing Rain
+
+ Frog Kiss /  Swarm of Flies
+	
+/way #63 66.0 64.4 Frog
+
+/way #63 84.0 65.6 Frog
+
+/way #63 79.2 57.8 Frog
+	
+Found hopping around the rivers of east Ashenvale.
+
+Rusty Snail
+
+	
+ Ooze Touch /  Absorb
+
+ Acidic Goo /  Shell Shield
+
+ Dive /  Headbutt
+	
+/way #63 9.2 11.6 Rusty Snail
+
+/way #63 7.4 14.6 Rusty Snail
+
+/way #63 10.0 26.6 Rusty Snail
+	
+Found on the Zoram Strand, on the ocean shores of west Ashenvale.
+
+Coral Snake
+
+	
+ Bite /  Poison Fang
+
+ Hiss /  Counterstrike
+
+ Burrow /  Vicious Fang
+	
+/way #65 43.6 42.0 Coral Snake
+
+/way #65 66.2 51.8 Coral Snake
+
+/way #65 73.2 52.4 Coral Snake
+	
+Found all over Stonetalon Mountains.
+
+Venomspitter Hatchling
+
+	
+ Strike /  Poison Spit
+
+ Sticky Web /  Brittle Webbing
+
+ Leech Life /  Spiderling Swarm
+	
+/way #65 56.2 68.8 Venomspitter Hatchling
+
+/way #65 57.8 74.6 Venomspitter Hatchling
+
+/way #65 55.2 72.2 Venomspitter Hatchling
+	
+Found in the Webwinder Hollow in Stonetalon Mountains.
+
+Cheetah Cub
+
+	
+ Claw /  Devour
+
+ Rake /  Pounce
+
+ Screech /  Prowl
+	
+/way #10 55.2 20.8 Cheetah Cub
+
+/way #10 51.2 48.6 Cheetah Cub
+
+/way #10 49.2 70.0 Cheetah Cub
+	
+Found all around Northern Barrens, cuddling up with the adult cheetahs.
+
+Emerald Boa
+
+	
+ Bite /  Poison Fang
+
+ Hiss /  Counterstrike
+
+ Burrow /  Vicious Fang
+	
+/way #10 43.8 69.0 Emerald Boa
+
+/way #199 47.6 37.4 Emerald Boa
+
+/way #78 30.4 49.0 Emerald Boa
+
+/way #249 63.4 73.0 Emerald Boa
+	
+Found plentiful in North and South Barrens in the lush grassy areas. Also found all around Un'goro Crater, and Uldum, in the grassy areas.
+
+Harpy Youngling
+
+	
+ Quills /  Slicing Wind
+
+ Flyby /  Counterstrike
+
+ Squawk /  Lift-Off
+	
+/way #10 26.0 28.0 Harpy Youngling
+
+/way #10 29.0 38.0 Harpy Youngling
+
+/way #10 24.2 34.6 Harpy Youngling
+	
+Found near the harpy nest in North Barrens.
+
+Giraffe Calf
+
+	
+ Hoof /  Stampede
+
+ Tranquility /  Survival
+
+ Headbutt /  Bleat
+	
+/way #199 47.6 47.4 Giraffe Calf
+
+/way #199 46.8 64.6 Giraffe Calf
+
+/way #199 49.8 79.8 Giraffe Calf
+	
+Found roaming South Barrens with the adults. You may have to chase one down.
+
+Spawn of Onyxia
+
+	
+ Breath /  Tail Sweep
+
+ Healing Flame /  Scorched Earth
+
+ Lift-Off /  Deep Breath
+	
+/way #70 54.8 72.6 Spawn of Onyxia
+
+/way #70 51.0 80.0 Spawn of Onyxia
+
+/way #70 56.6 80.4 Spawn of Onyxia
+	
+Found around Onyxia's Lair in Dustwallow Marsh.
+
+Gazelle Fawn
+
+	
+ Hoof /  Stampede
+
+ Tranquility /  Nature's Ward
+
+ Bleat /  Headbutt
+	
+/way #7 37.6 44.6 Gazelle Fawn
+
+/way #7 49.0 13.4 Gazelle Fawn
+
+/way #7 42.6 53.6 Gazelle Fawn
+	
+Found all around Mulgore.
+
+Amethyst Shale Hatchling
+
+	
+ Burn /  Leech Life
+
+ Sticky Web /  Poison Spit
+
+ Stone Rush /  Stoneskin
+	
+/way #66 30.0 59.2 Amethyst Shale Hatchling
+
+/way #66 29.6 55.2 Amethyst Shale Hatchling
+
+/way #207 59.0 12.6 Amethyst Shale Hatchling
+
+/way #207 69.6 35.6 Amethyst Shale Hatchling
+	
+Found Maraudon's purple side, in Desolace. Can also be found in Deepholm.
+
+As Deepholm isn't part of any continent, this has been filed under Kalimdor.
+
+Topaz Shale Hatchling
+
+	
+ Burn /  Leech Life
+
+ Sticky Web /  Poison Spit
+
+ Stone Rush /  Stoneskin
+	
+/way #66 30.0 59.2 Topaz Shale Hatchling
+
+/way #66 29.6 55.2 Topaz Shale Hatchling
+
+/way #207 69.4 35.8 Topaz Shale Hatchling
+
+/way #207 73.8 64.2 Topaz Shale Hatchling
+
+	
+Found Maraudon's yellow side in Desolace. Can also be found in Deepholm.
+
+As Deepholm isn't part of any continent, this has been filed under Kalimdor.
+
+Desert Spider
+
+	
+ Strike /  Poison Spit
+
+ Sticky Web /  Brittle Webbing
+
+ Leech Life /  Spiderling Swarm
+	
+/way #66 63.8 22.0 Desert Spider
+
+/way #249 70.6 40.0 Desert Spider
+
+/way #71 49.8 30.8 Desert Spider
+	
+Found in Desolace, Silithus, Tanaris, Uldum.
+
+Found plentiful in Desolace around the north east of the zone.
+
+Horny Toad
+
+	
+ Water Jet /  Tongue Lash
+
+ Healing Wave /  Cleansing Rain
+
+ Frog Kiss /  Swarm of Flies
+
+	
+/way #66 67.4 26.6 Horny Toad
+
+/way #66 74.0 27.0 Horny Toad
+
+/way #66 34.8 58.2 Horny Toad
+	
+Found all over Desolace.
+
+Stone Armadillo
+
+	
+ Scratch /  Thrash
+
+ Shell Shield /  Roar
+
+ Infected Claw /  Powerball
+	
+/way #66 60.4 26.8 Stone Armadillo
+
+/way #66 71.0 41.6 Stone Armadillo
+
+/way #66 66.6 71.4 Stone Armadillo
+	
+Found all over eastern Desolace.
+
+Must be night time in game.
+
+Stunted Yeti
+
+	
+ Thrash /  Punch
+
+ Mangle /  Haymaker
+
+ Rampage /  Bash
+	
+/way #69 56.2 56.2 Stunted Yeti
+
+/way #69 52.2 58.0 Stunted Yeti
+
+/way #69 53.0 59.6 Stunted Yeti
+	
+Found around the yeti gaves in southern Feralas.
+
+Twilight Iguana
+
+	
+ Claw /  Quick Attack
+
+ Screech /  Triple Snap
+
+ Comeback /  Ravage
+	
+/way #64 28.4 53.6 Twilight Iguana
+
+/way #64 36.0 59.2 Twilight Iguana
+
+/way #64 52.4 62.2 Twilight Iguana
+	
+Found around the Twilight's Hammer camps in southern Thousand Needles.
+
+Sand Kitten
+
+	
+ Claw /  Pounce
+
+ Rake /  Screech
+
+ Devour /  Prowl
+	
+/way #71 50.0 26.4 Sand Kitten
+
+/way #71 51.4 26.8 Sand Kitten
+	
+Found around Gadgetzan in Tanaris.
+
+Silithid Hatchling
+
+	
+ Scratch /  Devour
+
+ Hiss /  Survival
+
+ Swarm /  Sandstorm
+	
+/way #71 35.6 47.6 Silithid Hatchling
+
+/way #71 53.4 62.2 Silithid Hatchling
+
+/way #71 35.0 44.6 Silithid Hatchling
+	
+Found around the two Silithid hives in Tanaris.
+
+Must be sandstorm weather in game.
+
+Stinkbug
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #71 48.8 30.2 Stinkbug
+
+/way #71 48.6 51.6 Stinkbug
+
+/way #71 42.4 26.6 Stinkbug
+	
+Found all over Tanaris.
+
+Infinite Whelpling
+
+	
+ Tail Sweep /  Sleeping Gas
+
+ Healing Flame /  Early Advantage
+
+ Weakness /  Darkflame
+	
+/way #71 62.2 50.0 Infinite Whelpling
+
+/way #71 63.2 54.2 Infinite Whelpling
+
+/way #71 63.8 50.2 Infinite Whelpling
+	
+Found in the Caverns of Time, in Tanaris.
+
+Not needed for  Kalimdor Safari.
+
+Diemetradon Hatchling
+
+	
+ Claw /  Quick Attack
+
+ Screech /  Triple Snap
+
+ Comeback /  Ravage
+	
+/way #78 34.8 65.6 Diemetradon Hatchling
+
+/way #78 29.4 62.8 Diemetradon Hatchling
+
+/way #78 38.6 76.4 Diemetradon Hatchling
+	
+Found in Terror Run, in south west Un'goro Crater.
+
+Spotted Bell Frog
+
+	
+ Water Jet /  Tongue Lash
+
+ Healing Wave /  Cleansing Rain
+
+ Frog Kiss /  Swarm of Flies
+	
+/way #78 34.0 26.6 Spotted Bell Frog
+
+/way #78 73.6 44.8 Spotted Bell Frog
+
+/way #78 68.4 72.8 Spotted Bell Frog
+	
+Found around the lakes and rivers of Un'Goro Crater.
+
+Qiraji Guardling
+
+	
+ Crush /  Whirlwind
+
+ Hawk Eye /  Sandstorm
+
+ Reckless Strike /  Blackout Kick
+	
+/way #81 32.6 80.6 Qiraji Guardling
+
+/way #81 39.0 79.4 Qiraji Guardling
+
+/way #81 34.4 82.6 Qiraji Guardling
+	
+Found around the gates of Ahn'Qiraj in Silithus.
+
+Must be Summer in game—June to September in real-life calendar days. (Note: These timings have changed multiple times over the years).
+
+Scarab Hatchling
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #81 37.6 77.8 Scarab Hatchling
+
+/way #81 33.2 85.2 Scarab Hatchling
+	
+Found around the gates of Ahn'Qiraj in Silithus.
+
+Sidewinder
+
+	
+ Bite /  Poison Fang
+
+ Hiss /  Counterstrike
+
+ Burrow /  Vicious Fang
+	
+/way #249 43.4 15.0 Sidewinder
+
+/way #249 66.4 17.2 Sidewinder
+
+/way #81 36.8 81.8 Sidewinder
+
+/way #81 65.6 18.2 Sidewinder
+	
+Found in Silithus, Uldum.
+
+Found plentifully in northern Uldum in the sandy areas.
+
+Horned Lizard
+
+	
+ Claw /  Quick Attack
+
+ Screech /  Triple Snap
+
+ Comeback /  Ravage
+	
+/way #249 62.6 24.6 Horned Lizard
+
+/way #249 73.4 44.0 Horned Lizard
+
+/way #249 26.6 11.6 Horned Lizard
+	
+Found in Uldum, mostly in the eastern desert.
+
+Leopard Scorpid
+
+	
+ Snap /  Triple Snap
+
+ Crouch /  Screech
+
+ Sting /  Rampage
+	
+/way #249 44.4 18.2 Leopard Scorpid
+
+/way #249 63.2 18.0 Leopard Scorpid
+
+/way #249 28.8 17.0 Leopard Scorpid
+	
+Found in Uldum, mostly in the eastern desert.
+
+Locust
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #249 58.4 27.8 Locust
+
+/way #249 49.6 45.2 Locust
+
+/way #249 64.8 71.2 Locust
+	
+Found in Uldum around the main river in the zone.
+
+Mac Frog
+
+	
+ Water Jet /  Tongue Lash
+
+ Healing Wave /  Cleansing Rain
+
+ Frog Kiss /  Swarm of Flies
+	
+/way #249 58.4 27.8 Mac Frog
+
+/way #249 49.6 45.2 Mac Frog
+
+/way #249 64.8 71.2 Mac Frog
+	
+Found in Uldum around the main river in the zone.
+
+Oasis Moth
+
+	
+ Slicing Wind /  Alpha Strike
+
+ Cocoon Strike /  Moth Balls
+
+ Adrenaline Rush /  Moth Dust
+	
+/way #249 57.2 30.6 Oasis Moth
+
+/way #249 58.0 24.0 Oasis Moth
+
+/way #249 58.8 64.2 Oasis Moth
+	
+Found in Uldum around the main river in the zone.
+
+Tol'vir Scarab
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #249 43.0 39.8 Tol'vir Scarab
+
+/way #249 63.6 26.8 Tol'vir Scarab
+
+/way #249 34.8 17.4 Tol'vir Scarab
+	
+Found in Uldum around various Tol'vir encampments.
+OUTLAND WILD-CAUGHT BATTLE PETS
+The following battle pets can only be found in Outland. Collecting all these pets, unless specified, awards you with  Outland Safari which is part of  World Safari.
+Mass Waypoints - Outland Only
+n
+Waypoints - Click to expand me!
+Pet	Abilities	Located	Notes
+
+Flayer Youngling
+
+	
+ Blitz /  Triple Snap
+
+ Focus /  Deflection
+
+ Kick /  Rampage
+	
+/way #108 59.4 12.2 Flayer Youngling
+
+/way #108 48.0 7.2 Flayer Youngling
+
+/way #108 47.8 6.2 Flayer Youngling
+	
+Found in between Terokkar Forest and Hellfire Peninsula, near the Flayer nests.
+
+This is a powerful pet.
+
+Fel Flame
+
+	
+ Burn /  Flame Breath
+
+ Immolate /  Scorched Earth
+
+ Conflagrate /  Immolation
+	
+/way #104 45.0 44.4 Fel Flame
+
+/way #104 59.2 41.8 Fel Flame
+
+/way #104 48.6 39.0 Fel Flame
+	
+Found around the fel lava pools in the middle of Shadowmoon Valley.
+
+This is a powerful pet.
+
+Sporeling Sprout
+
+	
+ Jab /  Charge
+
+ Creeping Fungus /  Leech Seed
+
+ Spore Shrooms /  Crouch
+	
+/way #102 18.6 46.6 Sporeling Sprout
+
+/way #102 17.6 50.2 Sporeling Sprout
+
+/way #102 20.6 51.8 Sporeling Sprout
+	
+Found around Sporeggar in Zangarmarsh.
+
+Warpstalker Hatchling
+
+	
+ Claw /  Blinkstrike
+
+ Screech /  Triple Snap
+
+ Ravage /  Comeback
+	
+/way #108 41.0 29.0 Warpstalker Hatchling
+
+/way #108 54.8 34.4 Warpstalker Hatchling
+
+/way #108 69.8 45.8 Warpstalker Hatchling
+	
+Found around the grassy northren areas of Terokkar Forest.
+
+Clefthoof Runt
+
+	
+ Smash /  Trample
+
+ Survival /  Trumpet Strike
+
+ Horn Attack /  Stampede
+	
+/way #107 44.6 74.0 Clefthoof Runt
+
+/way #107 50.8 35.0 Clefthoof Runt
+
+/way #107 68.8 70.6 Clefthoof Runt
+	
+Found around the grassy areas in the eastern half of Nagrand, following around adult Clefthoof.
+
+Cogblade Raptor
+
+	
+ Bite /  Batter
+
+ Overtune /  Screech
+
+ Exposed Wounds /  Repair
+	
+/way #105 59.0 68.0 Cogblade Raptor
+
+/way #105 66.2 57.0 Cogblade Raptor
+
+/way #105 68.0 69.8 Cogblade Raptor
+	
+Found to the upper left and right of Death's Door in Blade's Edge Mountains.
+
+Scalded Basilisk Hatchling
+
+	
+ Bite /  Crystal Prison
+
+ Roar /  Feign Death
+
+ Thrash /  Screech
+	
+/way #105 71.0 25.6 Scalded Basilisk Hatchling
+
+/way #105 72.0 23.4 Scalded Basilisk Hatchling
+
+/way #105 70.6 20.2 Scalded Basilisk Hatchling
+	
+Found in the northeast corner of Blade's Edge Mountains.
+
+Skittering Cavern Crawler
+
+	
+ Strike /  Poison Spit
+
+ Sticky Web /  Brittle Webbing
+
+ Leech Life /  Spiderling Swarm
+	
+/way #105 35.0 85.2 Skittering Cavern Crawler
+
+/way #105 51.8 84.4 Skittering Cavern Crawler
+
+/way #105 51.6 90.8 Skittering Cavern Crawler
+	
+Found in two pockets in the south of Blade's Edge Mountains.
+
+Fledgling Nether Ray
+
+	
+ Bite /  Arcane Blast
+
+ Tail Sweep /  Slicing Wind
+
+ Shadow Shock /  Lash
+	
+/way #109 28.4 41.2 Fledgling Nether Ray
+
+/way #109 65.4 38.8 Fledgling Nether Ray
+
+/way #109 57.6 64.4 Fledgling Nether Ray
+	
+Found around the various Mangaforges in Netherstorm.
+
+Nether Roach
+
+	
+ Flank /  Nether Blast
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #109 29.6 63.6 Nether Roach
+
+/way #109 58.8 34.8 Nether Roach
+
+/way #109 36.6 26.4 Nether Roach
+	
+Found all around Netherstorm.
+NORTHREND WILD-CAUGHT BATTLE PETS
+The following battle pets can only be found in Northrend. Collecting all these pets, unless specified, awards you with  Northrend Safari which is part of  World Safari.
+Mass Waypoints - Northrend Only
+Waypoints - Click to expand me!
+Pet	Abilities	Located	Notes
+
+Unborn Val'kyr
+
+	
+ Shadow Slash /  Shadow Shock
+
+ Siphon Life /  Curse of Doom
+
+ Haunt /  Unholy Ascension
+	
+Unborn Val'kyr Spawn Points
+	
+Located in various locations in Northrend. This pet can be difficult to get. Check all spawn points.
+
+This is a very sought-after and powerful pet.
+
+Not required for  Northrend Safari.
+
+Nexus Whelpling
+
+	
+ Tail Sweep /  Frost Breath
+
+ Sear Magic /  Mana Surge
+
+ Wild Magic /  Arcane Storm
+	
+/way #114 31.8 31.6 Nexus Whelpling
+
+/way #114 30.6 23.8 Nexus Whelpling
+
+/way #114 26.0 20.6 Nexus Whelpling
+	
+Found around Coldarra in Borean Tundra.
+
+This is a very powerful pet.
+
+Not required for  Northrend Safari.
+
+Emerald Proto-Whelp
+
+	
+ Breath /  Emerald Bite
+
+ Ancient Blessing /  Emerald Presence
+
+ Proto-Strike /  Emerald Dream
+	
+/way #119 44.0 28.8 Emerald Proto-Whelp
+
+/way #119 49.2 27.0 Emerald Proto-Whelp
+
+/way #119 47.8 23.2 Emerald Proto-Whelp
+	
+Found around The Savage Thicket in Sholazar Basin.
+
+This is a very powerful pet.
+
+Not required for  Northrend Safari.
+
+Borean Marmot
+
+	
+ Chomp /  Comeback
+
+ Crouch /  Adrenaline Rush
+
+ Leap /  Burrow
+	
+/way #114 52.4 26.6 Borean Marmot
+
+/way #114 54.8 45.2 Borean Marmot
+
+/way #114 35.2 49.4 Borean Marmot
+	
+Found everywhere across Borean Tundra.
+
+Oily Slimeling
+
+	
+ Ooze Touch /  Absorb
+
+ Corrosion /  Creeping Ooze
+
+ Expunge /  Acidic Goo
+	
+/way #114 59.0 17.4 Oily Slimeling
+
+/way #114 60.6 26.8 Oily Slimeling
+
+/way #114 60.2 36.8 Oily Slimeling
+	
+Found around the oil fields of Borean Tundra.
+
+Dragonbone Hatchling
+
+	
+ Slicing Wind /  Thrash
+
+ Hawk Eye /  Adrenaline Rush
+
+ Lift-Off /  Cyclone
+	
+/way #115 51.6 27.2 Dragonbone Hatchling
+
+/way #115 65.0 52.4 Dragonbone Hatchling
+
+/way #115 52.6 54.2 Dragonbone Hatchling
+	
+Found near the dragon bones scattered around Dragonblight.
+
+Devouring Maggot
+
+	
+ Chomp /  Consume
+
+ Acidic Goo /  Sticky Goo
+
+ Leap /  Burrow
+	
+/way #117 56.4 56.4 Devouring Maggot
+
+/way #117 57.0 54.8 Devouring Maggot
+
+/way #117 57.6 56.6 Devouring Maggot
+	
+Found around Valgarde, south of Utgarde Keep in Howling Fjord.
+
+Fjord Rat
+
+	
+ Scratch /  Comeback
+
+ Flurry /  Poison Fang
+
+ Stampede /  Survival
+	
+/way #117 58.6 53.0 Fjord Rat
+
+/way #117 68.2 29.6 Fjord Rat
+
+/way #117 30.4 44.0 Fjord Rat
+	
+Found around the Viking towns in Howling Fjord.
+
+Fjord Worg Pup
+
+	
+ Bite /  Flurry
+
+ Crouch /  Howl
+
+ Leap /  Dazzling Dance
+	
+/way #117 27.2 57.8 Fjord Worg Pup
+
+/way #117 31.8 65.6 Fjord Worg Pup
+
+/way #117 27.8 63.4 Fjord Worg Pup
+	
+Found on the island of Kamagua in Howling Fjord.
+
+Turkey
+
+	
+ Peck /  Slicing Wind
+
+ Squawk /  Gobble Strike
+
+ Food Coma /  Flock
+	
+/way #117 31.0 43.8 Turkey
+
+/way #117 60.0 60.4 Turkey
+
+/way #117 58.4 63.4 Turkey
+	
+Found in Westguard Keep and Valgarde in Howling Fjord.
+
+Imperial Eagle Chick
+
+	
+ Slicing Wind /  Thrash
+
+ Cyclone /  Adrenaline Rush
+
+ Hawk Eye /  Lift-Off
+	
+/way #116 19.6 58.2 Imperial Eagle Chick
+
+/way #116 64.8 51.6 Imperial Eagle Chick
+
+/way #116 44.8 30.6 Imperial Eagle Chick
+	
+Found in many specific spawn points across Grizzly Hills.
+
+Can be a little hard to find, check all spawn points listed on the pets page - Imperial Eagle Chick.
+
+Water Waveling
+
+	
+ Water Jet /  Ice Lance
+
+ Frost Nova /  Frost Shock
+
+ Geyser /  Tidal Wave
+	
+/way #121 39.8 77.2 Water Waveling
+
+/way #121 45.6 79.2 Water Waveling
+
+/way #121 41.4 72.6 Water Waveling
+	
+Found around the farming fields in Zul'drak.
+
+Arctic Fox Kit
+
+	
+ Bite /  Flurry
+
+ Crouch /  Howl
+
+ Leap /  Dazzling Dance
+	
+/way #120 26.0 41.8 Arctic Fox Kit
+
+/way #120 49.8 59.6 Arctic Fox Kit
+
+/way #120 64.8 42.6 Arctic Fox Kit
+	
+Found around Storm Peaks.
+
+Can only spawn if the weather is snowing.
+
+Scourged Whelpling
+
+	
+ Shadowflame /  Tail Sweep
+
+ Call Darkness /  Death and Decay
+
+ Plagued Blood /  Dreadful Breath
+	
+/way #118 73.8 32.8 Scourged Whelpling
+
+/way #118 73.2 41.8 Scourged Whelpling
+
+/way #118 67.6 38.6 Scourged Whelpling
+	
+Found just south of The Argent Tournament in Icecrown.
+
+Biletoad
+
+	
+ Water Jet /  Tongue Lash
+
+ Healing Wave /  Cleansing Rain
+
+ Frog Kiss /  Swarm of Flies
+	
+/way #119 40.4 59.8 Biletoad
+
+/way #119 53.0 53.2 Biletoad
+
+/way #119 49.6 70.6 Biletoad
+	
+Found around the outer center of the lake in the middle of Sholazar Basin.
+
+Stunted Shardhorn
+
+	
+ Smash /  Survival
+
+ Trample /  Horn Attack
+
+ Trumpet Strike /  Stampede
+	
+/way #119 32.6 40.6 Stunted Shardhorn
+
+/way #119 27.2 56.2 Stunted Shardhorn
+
+/way #119 32.6 57.6 Stunted Shardhorn
+	
+Found following the adult Shardhorns in the west of Sholazar Basin.
+
+Arctic Hare
+
+	
+ Scratch /  Flurry
+
+ Adrenaline Rush /  Burrow
+
+ Dodge /  Stampede
+	
+/way #115 34.6 52.4 Arctic Hare
+
+/way #120 35.4 66.0 Arctic Hare
+
+/way #114 81.6 40.6 Arctic Hare
+
+/way #121 54.4 39.0 Arctic Hare
+	
+Found in Borean Tundra, Dragonblight, The Storm Peaks, Zul'Drak.
+
+Tundra Penguin
+
+	
+ Peck /  Surge
+
+ Frost Spit /  Slippery Ice
+
+ Ice Lance /  Belly Slide
+	
+/way #115 18.6 62.6 Tundra Penguin
+
+/way #114 93.0 44.0 Tundra Penguin
+	
+Found on the border between Borean Tundra and Dragonblight.
+MULTIPLE CONTINENT WILD-CAUGHT BATTLE PETS
+The following pets can be found and caught in multiple continents. For example, a pet may be found both in Durotar and in the Badlands. Some pets are found in many zones. You should search for these pets as you are looking for the above, continent-exclusive battle pets.
+
+Some battle pets on this list can only be found as secondary pets in some zones. Having trouble finding a specific pet? Click that pets name for a compreshensive map of all waypoints. If there are no waypoints in that zone for your pet, it can be found as a secondary pet.
+
+I've included multiple zones of waypoints in the below list. If you catch a pet, clear out that waypoint in other zones (or copy only the waypoint for the zone you're in).
+Mass Waypoints - Multiple Continents Only
+Waypoints - Click to expand me!
+Pet	Abilities	Located	Notes
+
+Grizzly Squirrel
+
+	
+ Scratch /  Woodchipper
+
+ Adrenaline Rush /  Crouch
+
+ Nut Barrage /  Stampede
+	
+/way #116 58.4 47.4 Grizzly Squirrel
+
+/way #116 35.8 56.4 Grizzly Squirrel
+
+/way #241 50.0 32.2 Grizzly Squirrel
+
+/way #241 71.0 67.8 Grizzly Squirrel
+	
+Found in Grizzly Hills, Twilight Highlands.
+
+Fawn
+
+	
+ Hoof /  Stampede
+
+ Tranquility /  Nature's Ward
+
+ Bleat /  Headbutt
+	
+/way #37 32.4 53.6 Fawn
+
+/way #37 42.6 55.4 Fawn
+
+/way #57 50.2 50.4 Fawn
+	
+Found in Elwynn Forest, Teldrassil.
+
+Alpine Hare
+
+	
+ Scratch /  Flurry
+
+ Adrenaline Rush /  Dodge
+
+ Burrow /  Stampede
+	
+/way #83 46.6 53.8 Alpine Hare
+
+/way #27 56.4 44.2 Alpine Hare
+	
+Found in Dun Morogh, Winterspring.
+
+Stripe-Tailed Scorpid
+
+	
+ Snap /  Triple Snap
+
+ Crouch /  Screech
+
+ Sting /  Rampage
+	
+/way #71 48.8 32.8 Stripe-Tailed Scorpid
+
+/way #15 32.4 34.8 Stripe-Tailed Scorpid
+
+/way #108 41.0 52.6 Stripe-Tailed Scorpid
+	
+Found in Badlands, Tanaris, Terokkar Forest.
+
+Ash Viper
+
+	
+ Bite /  Poison Fang
+
+ Hiss /  Counterstrike
+
+ Burrow /  Vicious Fang
+	
+/way #36 40.8 55.0 Ash Viper
+
+/way #36 41.0 37.2 Ash Viper
+
+/way #104 33.8 34.0 Ash Viper
+
+/way #104 64.6 40.2 Ash Viper
+	
+Found in Burning Steppes, Shadowmoon Valley.
+
+Sea Gull
+
+	
+ Slicing Wind /  Thrash
+
+ Cyclone /  Adrenaline Rush
+
+ Hawk Eye /  Lift-Off
+	
+/way #71 54.2 28.4 Sea Gull
+
+/way #71 67.2 41.6 Sea Gull
+
+	
+Found in Krasarang Wilds, Tanaris.
+
+Secondary pet only in Krasarang Wilds.
+
+Tainted Cockroach
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #77 60.6 10.0 Tainted Cockroach
+
+/way #77 49.0 82.8 Tainted Cockroach
+
+/way #104 33.2 40.2 Tainted Cockroach
+
+/way #104 56.6 48.4 Tainted Cockroach
+	
+Found in Felwood, Shadowmoon Valley.
+
+Gold Beetle
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #71 48.8 32.8 Gold Beetle
+
+/way #71 51.2 38.2 Gold Beetle
+
+/way #15 49.6 28.8 Gold Beetle
+
+/way #15 24.8 40.8 Gold Beetle
+	
+Found in Badlands, Tanaris.
+
+Spiky Lizard
+
+	
+ Claw /  Quick Attack
+
+ Screech /  Triple Snap
+
+ Comeback /  Ravage
+	
+/way #81 43.0 32.4 Spiky Lizard
+
+/way #81 46.8 36.8 Spiky Lizard
+
+/way #15 52.4 46.0 Spiky Lizard
+
+/way #15 35.6 38.8 Spiky Lizard
+	
+Found in Badlands, Silithus.
+
+Tree Python
+
+	
+ Bite /  Poison Fang
+
+ Hiss /  Counterstrike
+
+ Burrow /  Vicious Fang
+	
+/way #50 58.8 37.4 Tree Python
+
+/way #210 48.0 36.4 Tree Python
+
+/way #78 60.6 67.0 Tree Python
+	
+Found in Northern Stranglethorn, The Cape of Stranglethorn, Un'Goro Crater.
+
+Brown Marmot
+
+	
+ Chomp /  Adrenaline Rush
+
+ Leap /  Crouch
+
+ Burrow /  Comeback
+	
+/way #26 35.6 51.2 Brown Marmot
+
+/way #26 31.4 64.2 Brown Marmot
+	
+Found in Blade's Edge Mountains, The Hinterlands.
+
+Hare
+
+	
+ Scratch /  Flurry
+
+ Adrenaline Rush /  Dodge
+
+ Burrow /  Stampede
+	
+/way #1 47.2 20.8 Hare
+
+/way #26 55.8 46.0 Hare
+
+/way #461 51.8 54.2 Hare
+	
+Found in Arathi Highlands, Durotar, The Hinterlands.
+
+Bat
+
+	
+ Bite /  Reckless Strike
+
+ Screech /  Leech Life
+
+ Hawk Eye /  Nocturnal Strike
+	
+/way #23 49.6 39.4 Bat
+
+/way #18 50.6 58.8 Bat
+	
+Found in Eastern Plaguelands, Mount Hyjal, Tirisfal Glades.
+
+Secondary pet only in Mount Hyjal.
+
+Rattlesnake
+
+	
+ Bite /  Poison Fang
+
+ Hiss /  Counterstrike
+
+ Burrow /  Vicious Fang
+	
+/way #241 57.6 37.8 Rattlesnake
+
+/way #71 50.6 30.4 Rattlesnake
+
+/way #15 40.6 32.6 Rattlesnake
+	
+Found in Badlands, Tanaris, Twilight Highlands.
+
+Rock Viper
+
+	
+ Bite /  Poison Fang
+
+ Hiss /  Counterstrike
+
+ Burrow /  Vicious Fang
+	
+/way #66 70.6 30.2 Rock Viper
+
+/way #198 78.8 63.6 Rock Viper
+
+/way #105 57.6 64.0 Rock Viper
+	
+Found in Blade's Edge Mountains, Desolace, Mount Hyjal, Silithus.
+
+Parrot
+
+	
+ Slicing Wind /  Thrash
+
+ Hawk Eye /  Adrenaline Rush
+
+ Lift-Off /  Cyclone
+	
+/way #78 60.6 66.8 Parrot
+
+/way #51 44.6 46.8 Parrot
+	
+Found in Northern Stranglethorn, Swamp of Sorrows, The Cape of Stranglethorn, Un'Goro Crater.
+
+Long-tailed Mole
+
+	
+ Scratch /  Comeback
+
+ Flurry /  Poison Fang
+
+ Stampede /  Survival
+	
+/way #78 36.8 34.6 Long-tailed Mole
+
+/way #210 42.6 71.8 Long-tailed Mole
+
+/way #87 53.8 54.8 Long-tailed Mole
+	
+Found in Ironforge, Northern Stranglethorn, The Cape of Stranglethorn, Un'Goro Crater.
+
+Twilight Spider
+
+	
+ Strike /  Poison Spit
+
+ Sticky Web /  Brittle Webbing
+
+ Leech Life /  Spiderling Swarm
+	
+/way #76 67.2 17.2 Twilight Spider
+
+/way #241 59.6 51.0 Twilight Spider
+
+/way #207 64.6 32.4 Twilight Spider
+	
+Found in Azshara, Deepholm, Twilight Highlands.
+
+Infected Fawn
+
+	
+ Diseased Bite /  Flurry
+
+ Adrenaline Rush /  Consume Corpse
+
+ Siphon Life /  Death and Decay
+	
+/way #23 55.0 49.6 Infected Fawn
+
+/way #106 51.4 70.2 Infected Fawn
+
+/way #21 55.4 68.8 Infected Fawn
+	
+Found in Bloodmyst Isle, Eastern Plaguelands, Silverpine Forest.
+
+Infected Squirrel
+
+	
+ Diseased Bite /  Stampede
+
+ Rabid Strike /  Creeping Fungus
+
+ Consume /  Corpse Explosion
+	
+/way #23 46.2 35.4 Infected Squirrel
+
+/way #106 34.6 41.2 Infected Squirrel
+
+/way #21 47.2 19.8 Infected Squirrel
+	
+Found in Bloodmyst Isle, Eastern Plaguelands, Silverpine Forest.
+
+Red-Tailed Chipmunk
+
+	
+ Scratch /  Woodchipper
+
+ Adrenaline Rush /  Crouch
+
+ Nut Barrage /  Stampede
+	
+/way #25 40.2 45.8 Red-Tailed Chipmunk
+
+/way #57 42.6 43.2 Red-Tailed Chipmunk
+
+/way #89 61.8 42.2 Red-Tailed Chipmunk
+	
+Found in Darnassus, Desolace, Hillsbrad Foothills, Teldrassil.
+
+Cat
+
+	
+ Claw /  Pounce
+
+ Rake /  Screech
+
+ Devour /  Prowl
+	
+/way #37 44.6 53.6 Cat
+
+/way #110 91.8 57.8 Cat
+
+/way #14 18.4 67.6 Cat
+	
+Found in Arathi Highlands, Elwynn Forest, Eversong Woods, Netherstorm, Silvermoon City.
+
+Shore Crab
+
+	
+ Snap /  Surge
+
+ Renewing Mists /  Healing Wave
+
+ Shell Shield /  Whirlpool
+	
+/way #114 39.8 19.2 Shore Crab
+
+/way #117 80.4 32.4 Shore Crab
+
+/way #52 28.4 36.0 Shore Crab
+
+/way #76 43.6 43.2 Shore Crab
+	
+Found in Azshara, Krasarang Wilds, Twilight Highlands, Westfall, Borean Tundra, Howling Fjord.
+
+Strand Crab
+
+	
+ Snap /  Surge
+
+ Renewing Mists /  Healing Wave
+
+ Shell Shield /  Whirlpool
+	
+/way #210 38.6 43.0 Strand Crab
+
+/way #50 50.2 31.2 Strand Crab
+
+/way #51 88.6 29.2 Strand Crab
+	
+Found in Darkshore, Dragonblight, Northern Stranglethorn, Swamp of Sorrows, The Cape of Stranglethorn.
+
+Chicken
+
+	
+ Peck /  Slicing Wind
+
+ Squawk /  Adrenaline Rush
+
+ Egg Barrage /  Flock
+	
+/way #52 56.2 31.8 Chicken
+
+/way #47 78.0 48.2 Chicken
+
+/way #117 31.8 43.6 Chicken
+
+/way #37 77.6 65.4 Chicken
+	
+Found in Duskwood, Howling Fjord, Dustwallow Marsh, Elwynn Forest, Hillsbrad Foothills, Redridge Mountains, Terokkar Forest, Tirisfal Glades, Westfall, Wetlands.
+
+Cockroach
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #118 50.4 43.4 Cockroach
+
+/way #241 59.6 54.2 Cockroach
+
+/way #26 62.4 66.2 Cockroach
+	
+Located in Icecrown, Burning Steppes, Eastern Plaguelands, The Hinterlands, Twilight Highlands, Un'Goro Crater.
+
+Maggot
+
+	
+ Chomp /  Consume
+
+ Acidic Goo /  Sticky Goo
+
+ Leap /  Burrow
+	
+/way #63 27.2 63.2 Maggot
+
+/way #95 39.4 40.0 Maggot
+
+/way #25 50.2 70.4 Maggot
+	
+Located in Howling Fjord, Ashenvale, Ghostlands, Hillsbrad Foothills, The Hinterlands, Tirisfal Glades.
+
+Fire Beetle
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #198 54.6 53.2 Fire Beetle
+
+/way #32 44.2 42.2 Fire Beetle
+
+/way #17 58.0 24.6 Fire Beetle
+
+/way #36 39.6 52.6 Fire Beetle
+	
+Located in Blasted Lands, Burning Steppes, Mount Hyjal, Searing Gorge, Un'Goro Crater.
+
+Rabbit
+
+	
+ Scratch /  Flurry
+
+ Adrenaline Rush /  Dodge
+
+ Burrow /  Stampede
+	
+/way #84 72.0 28.2 Rabbit
+
+/way #37 34.0 51.6 Rabbit
+	
+Found in Azshara, Blade's Edge Mountains, Darkshore, Dun Morogh, Duskwood, Elwynn Forest, Crystalsong Forest, Howling Fjord Eversong Woods, Feralas, Hillsbrad Foothills, Moonglade, Mount Hyjal, Mulgore, Nagrand, Redridge Mountains, Silvermoon City, Silverpine Forest, Stonetalon Mountains, Stormwind City, Tirisfal Glades, Western Plaguelands, Westfall, Wetlands.
+
+Rat
+
+	
+ Scratch /  Comeback
+
+ Flurry /  Poison Fang
+
+ Stampede /  Survival
+	
+/way #18 55.8 41.2 Rat
+
+/way #48 36.0 58.2 Rat
+
+/way #25 32.8 43.6 Rat
+	
+Found in Arathi Highlands, Ashenvale, Crystalsong Forest, Howling Fjord, Azshara, Bloodmyst Isle, Crystalsong Forest, Darkshore, Desolace, Ghostlands, Hillsbrad Foothills, Howling Fjord, Loch Modan, Nagrand, Ruins of Gilneas, Silverpine Forest, Stonetalon Mountains, Swamp of Sorrows, Terokkar Forest, The Cape of Stranglethorn, The Hinterlands, Tirisfal Glades.
+
+Roach
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #90 68.8 36.8 Roach
+
+/way #47 21.8 47.6 Roach
+
+/way #49 47.6 38.6 Roach
+	
+Found in Ashenvale, Azshara, Desolace, Dun Morogh, Duskwood, Gilneas, Gilneas City, Kezan, Loch Modan, Northern Stranglethorn, Razorfen Downs, Redridge Mountains, Howling Fjord, Stonetalon Mountains, The Cape of Stranglethorn, Thousand Needles, Tirisfal Glades.
+
+Skunk
+
+	
+ Scratch /  Flurry
+
+ Rake /  Perk Up
+
+ Stench /  Bleat
+	
+/way #47 32.2 33.4 Skunk
+
+/way #76 41.2 70.6 Skunk
+
+/way #117 40.8 34.0 Skunk
+	
+Found in Ammen Vale, Azshara, Bloodmyst Isle, Duskwood, Howling Fjord, Terokkar Forest.
+
+Snake
+
+	
+ Bite /  Poison Fang
+
+ Hiss /  Counterstrike
+
+ Burrow /  Vicious Fang
+	
+/way #69 50.2 29.4 Snake
+
+/way #52 42.8 51.8 Snake
+
+/way #70 50.2 72.8 Snake
+	
+Found in Dustwallow Marsh, Eversong Woods, Feralas, Ghostlands, Howling Fjord, Loch Modan, Nagrand, Northern Stranglethorn, Sholazar Basin, Silverpine Forest, Terokkar Forest, Westfall, Zangarmarsh, Zul'Drak.
+
+Spider
+
+	
+ Strike /  Poison Spit
+
+ Sticky Web /  Brittle Webbing
+
+ Leech Life /  Spiderling Swarm
+	
+/way #76 67.2 18.0 Spider
+
+/way #25 31.6 67.8 Spider
+
+/way #65 57.4 74.2 Spider
+	
+Found in Azshara, Blasted Lands, Dustwallow Marsh, Eastern Plaguelands, Ghostlands, Hillsbrad Foothills, Howling Fjord, Stonetalon Mountains, Swamp of Sorrows, The Hinterlands, The Storm Peaks, Tirisfal Glades, Winterspring, Zul'Drak.
+
+Black Rat
+
+	
+ Scratch /  Comeback
+
+ Flurry /  Poison Fang
+
+ Stampede /  Survival
+	
+/way #47 21.8 38.0 Black Rat
+
+/way #23 11.2 65.6 Black Rat
+
+/way #22 49.8 77.8 Black Rat
+	
+Found in Badlands, Duskwood, Dustwallow Marsh, Eastern Plaguelands, Thousand Needles, Twilight Highlands, Western Plaguelands, Wetlands.
+
+Squirrel
+
+	
+ Scratch /  Woodchipper
+
+ Adrenaline Rush /  Crouch
+
+ Nut Barrage /  Stampede
+	
+/way #84 57.2 12.2 Squirrel
+
+/way #63 69.2 82.6 Squirrel
+
+/way #69 57.0 44.6 Squirrel
+
+/way #47 48.4 40.6 Squirrel
+	
+Found in Ammen Vale, Ashenvale, Azshara, Blade's Edge Mountains, Crystalsong Forest, Darkshore, Duskwood, Dustwallow Marsh, Elwynn Forest, Feralas, Hillsbrad Foothills, Howling Fjord, Loch Modan, Moonglade, Mount Hyjal, Nagrand, Sholazar Basin, Silverpine Forest, Stormwind City, Terokkar Forest, Tol Barad Peninsula, Western Plaguelands, Westfall, Wetlands.
+
+Toad
+
+	
+ Water Jet /  Tongue Lash
+
+ Healing Wave /  Cleansing Rain
+
+ Frog Kiss /  Swarm of Flies
+	
+/way #1 43.8 36.8 Toad
+
+/way #63 70.0 59.8 Toad
+
+/way #70 52.2 71.2 Toad
+
+/way #77 42.2 45.6 Toad
+	
+Found in Ammen Vale, Ashenvale, Azshara, Blade's Edge Mountains, Crystalsong Forest, Darkshore, Duskwood, Dustwallow Marsh, Elwynn Forest, Feralas, Hillsbrad Foothills, Howling Fjord, Loch Modan, Moonglade, Mount Hyjal, Nagrand, Sholazar Basin, Silverpine Forest, Stormwind City, Terokkar Forest, Tol Barad Peninsula, Western Plaguelands, Westfall, Wetlands.
+
+Mountain Skunk
+
+	
+ Scratch /  Flurry
+
+ Rake /  Perk Up
+
+ Stench /  Bleat
+	
+/way #65 62.4 84.4 Mountain Skunk
+
+/way #56 69.0 49.6 Mountain Skunk
+
+/way #116 38.8 54.8 Mountain Skunk
+	
+Found in Grizzly Hills, Stonetalon Mountains, The Storm Peaks, Wetlands, Winterspring.
+
+Mouse
+
+	
+ Scratch /  Comeback
+
+ Flurry /  Poison Fang
+
+ Stampede /  Survival
+	
+/way #70 48.6 78.2 Mouse
+
+/way #47 59.8 60.8 Mouse
+
+/way #7 45.0 11.4 Mouse
+	
+Found in Grizzly Hills, Stonetalon Mountains, The Storm Peaks, Wetlands, Winterspring.
+
+Huge Toad
+
+	
+ Water Jet /  Tongue Lash
+
+ Healing Wave /  Cleansing Rain
+
+ Frog Kiss /  Swarm of Flies
+	
+/way #51 32.6 45.0 Huge Toad
+
+/way #121 43.8 62.4 Huge Toad
+
+/way #241 19.8 16.6 Huge Toad
+	
+Found in Hillsbrad Foothills, Swamp of Sorrows, Twilight Highlands, Zul'Drak.
+
+Adder
+
+	
+ Bite /  Poison Fang
+
+ Hiss /  Counterstrike
+
+ Burrow /  Vicious Fang
+	
+/way #1 48.2 18.0 Adder
+
+/way #100 63.0 52.2 Adder
+
+/way #10 60.4 36.8 Adder
+	
+Found in Blasted Lands, Durotar, Hellfire Peninsula, Nagrand, Northern Barrens, Northern Stranglethorn, Southern Barrens.
+
+Scorpid
+
+	
+ Snap /  Triple Snap
+
+ Crouch /  Screech
+
+ Sting /  Rampage
+	
+/way #100 59.0 71.6 Scorpid
+
+/way #241 53.8 35.6 Scorpid
+
+/way #64 54.0 60.0 Scorpid
+	
+Found in Blasted Lands, Durotar, Hellfire Peninsula, Nagrand, Northern Barrens, Northern Stranglethorn, Southern Barrens.
+
+Small Frog
+
+	
+ Water Jet /  Tongue Lash
+
+ Healing Wave /  Cleansing Rain
+
+ Frog Kiss /  Swarm of Flies
+	
+/way #37 47.6 67.2 Small Frog
+
+/way #199 46.4 35.4 Small Frog
+
+/way #47 23.4 24.8 Small Frog
+	
+Found in Arathi Highlands, Darnassus, Desolace, Elwynn Forest, Eversong Woods, Ghostlands, Loch Modan, Northern Barrens, Southern Barrens, Swamp of Sorrows, Teldrassil, Zangarmarsh.
+
+Beetle
+
+	
+ Scratch /  Flank
+
+ Hiss /  Survival
+
+ Swarm /  Apocalypse
+	
+/way #50 59.0 37.4 Beetle
+
+/way #210 49.8 47.6 Beetle
+
+/way #78 68.6 64.6 Beetle
+	
+Found in Badlands, Eastern Plaguelands, Felwood, Northern Stranglethorn, Silithus, The Cape of Stranglethorn, Un'Goro Crater.
+
+Prairie Dog
+
+	
+ Chomp /  Adrenaline Rush
+
+ Leap /  Crouch
+
+ Burrow /  Comeback
+	
+/way #10 59.0 42.4 Prairie Dog
+
+/way #14 48.0 45.6 Prairie Dog
+
+/way #52 38.4 55.2 Prairie Dog
+	
+Found in Arathi Highlands, Mulgore, Nagrand, Northern Barrens, Southern Barrens, Thunder Bluff, Westfall.
+
+Water Snake
+
+	
+ Bite /  Poison Fang
+
+ Hiss /  Counterstrike
+
+ Burrow /  Vicious Fang
+	
+/way #1 39.0 41.6 Water Snake
+
+/way #51 53.6 39.0 Water Snake
+
+/way #85 48.2 48.6 Water Snake
+	
+Found in Durotar, Northern Stranglethorn, Orgrimmar, Swamp of Sorrows, Twilight Highlands, Wetlands.
+DEEPHOLM AND DARKMOON FAIRE WILD-CAUGHT BATTLE PETS
+These pets are not a part of any of the continental safari achievements, as Deepholm and Darkmoon Faire are outside of these zones, but are wild-caught pets nonetheless. They have been listed under a separate section in case you'd like to catch them for completion's sake. Some Deepholm pets can be found in multiple continents and so are listed in the above sections.
+Mass Waypoints - Deepholm Only
+Darkmoon Faire is not included, as it must be up at the time (check the in game calendar).
+
+Waypoints - Click to expand me!
+Pet	Abilities	Located	Notes
+
+Crow
+
+	
+ Peck /  Alpha Strike
+
+ Squawk /  Call Darkness
+
+ Murder /  Nocturnal Strike
+	
+Occasionally appears alongside other creatures during battles on Darkmoon Island.
+	
+Secondary pet only.
+
+Darkmoon Faire must be up for this pet to be caught.
+
+This is a powerful pet.
+
+Darkmoon Glowfly
+
+	
+ Scratch /  Confusing Sting
+
+ Glowing Toxin /  Slicing Wind
+
+ Sting /  Dazzling Dance
+	
+/way 53.6 23.8
+
+/way 58.6 69.6
+
+/way 70.6 78.6
+	
+Found scattered across Darkmoon Island.
+
+Darkmoon Faire must be up for this pet to be caught.
+
+Crimson Geode
+
+	
+ Feedback /  Spark
+
+ Crystal Overload /  Amplify Magic
+
+ Stone Rush /  Elementium Bolt
+	
+/way #207 67.4 28.2 Crimson Geode
+
+/way #207 68.2 25.8 Crimson Geode
+
+/way #207 74.2 50.2 Crimson Geode
+	
+Found in the Crimson Expanse part of Deepholm.
+
+Crimson Shale Hatchling
+
+	
+ Burn /  Leech Life
+
+ Sticky Web /  Poi
+
+[truncated to 60000 chars]

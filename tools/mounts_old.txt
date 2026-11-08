@@ -1,0 +1,53 @@
+Kor'kron Annihilator	Guild vendor - Exalted with your guild, guild level 25 - Costs 1500 gold
+Golden King	Guild vendor - Exalted with your guild, guild level 25 - Costs 1500 gold
+Volcanic Stone Drake	Achievement: Glory of the Cataclysm Hero
+Drake of the East Wind	Achievement: Glory of the Cataclysm Raider
+Dark Phoenix	Guild vendor - Guild Glory of the Cataclysm Raider - Costs 3000 gold
+Fossilized Raptor	Archaeology - Fossilized Raptor (rare fossil project)
+Ultramarine Qiraji Battle Tank	Archaeology - Scepter of Azj'Aqir (Tol'vir)
+Drake of the South Wind	Drop from Al'Akir in Throne of the Four Winds
+Drake of the North Wind	Drop from Altairus in The Vortex Pinnacle
+Vitreous Stone Drake	Drop from Slabhide in The Stonecore
+Phosphorescent Stone Drake	Drop from Aeonaxx in Deepholm
+Grey Riding Camel	Drop from Dormus the Camel-Hoarder (Mysterious Camel Figurine in Uldum)
+Brown Riding Camel	Vendor: Blacksmith Abasi - Exalted with Ramkahen in Uldum - Costs 80 gold
+Tan Riding Camel	Vendor: Blacksmith Abasi - Exalted with Ramkahen in Uldum - Costs 80 gold
+Spectral Wolf	Vendor: Pogg - Exalted with Hellscream's Reach in Tol Barad - Costs 165 Tol Barad Commendation
+Spectral Steed	Vendor: Quartermaster Brazie - Exalted with Baradin's Wardens in Tol Barad - Costs 165 Tol Barad Commendation
+Drake of the West Wind	Vendor: Tol Barad quartermaster - Exalted with Hellscream's Reach or Baradin's Wardens - Costs 200 Tol Barad Commendation
+Goblin Trike	Vendor: Bilgewater Cartel - Exalted with Bilgewater Cartel - Costs 80 gold
+Goblin Turbo-Trike	Vendor: Bilgewater Cartel - Exalted with Bilgewater Cartel - Costs 80 gold
+Sandstone Drake	Alchemy - Recipe: Vial of the Sands from a Canopic Jar (Archaeology)
+Vashj'ir Seahorse	Quest: The Abyssal Ride in Kelp'thar Forest, Vashj'ir
+Ashes of Al'ar	Drop from Kael'thas Sunstrider in The Eye, Tempest Keep
+Reins of the Raven Lord	Drop from Anzu in Sethekk Halls (Heroic)
+Raven Lord	Drop from Anzu in Sethekk Halls (Heroic)
+Amani War Bear	Drop from Zul'Aman
+Swift White Hawkstrider	Drop from Kael'thas Sunstrider in Magisters' Terrace
+The Horseman's Reins	Drop from The Headless Horseman during Hallow's End in Scarlet Monastery
+Cenarion War Hippogryph	Vendor: Cenarion Expedition - Exalted in Zangarmarsh - Costs 2000 gold
+Black War Tiger	Vendor: Lieutenant Karter - 30 Alterac Valley Mark of Honor, 30 Arathi Basin Mark of Honor, 30 Warsong Gulch Mark of Honor in Stormwind City
+Black War Ram	Vendor: Lieutenant Karter - 30 Alterac Valley Mark of Honor, 30 Arathi Basin Mark of Honor, 30 Warsong Gulch Mark of Honor in Stormwind City
+Black Battlestrider	Vendor: Lieutenant Karter - 30 Alterac Valley Mark of Honor, 30 Arathi Basin Mark of Honor, 30 Warsong Gulch Mark of Honor in Stormwind City
+Swift Nether Drake	Arena - Gladiator reward
+Vengeful Nether Drake	Arena - Gladiator reward
+Merciless Nether Drake	Arena - Gladiator reward
+Brutal Nether Drake	Arena - Gladiator reward
+Flying Machine	Engineering - Flying Machine Control
+Turbo-Charged Flying Machine	Engineering - Turbo-Charged Flying Machine Control
+Deathcharger's Reins	Drop from Baron Rivendare in Stratholme
+Swift Razzashi Raptor	Drop from Bloodlord Mandokir in Zul'Gurub
+Swift Zulian Tiger	Drop from High Priest Thekal in Zul'Gurub
+Pinto Bridle	Vendor: Katie Hunter - Costs 80 gold in Elwynn Forest
+Brown Horse Bridle	Vendor: Katie Hunter - Costs 80 gold in Elwynn Forest
+Chestnut Mare Bridle	Vendor: Katie Hunter - Costs 80 gold in Elwynn Forest
+Swift Brown Steed	Vendor: Katie Hunter - Costs 1000 gold in Elwynn Forest
+Swift Palomino	Vendor: Katie Hunter - Costs 1000 gold in Elwynn Forest
+Swift White Steed	Vendor: Katie Hunter - Costs 1000 gold in Elwynn Forest
+Black Stallion Bridle	Vendor: Unger Statforth - Costs 80 gold in Wetlands
+Horn of the Brown Wolf	Vendor: Ogunaro Wolfrunner - Costs 80 gold in Orgrimmar
+Horn of the Dire Wolf	Vendor: Ogunaro Wolfrunner - Costs 80 gold in Orgrimmar
+Horn of the Timber Wolf	Vendor: Ogunaro Wolfrunner - Costs 80 gold in Orgrimmar
+Horn of the Swift Brown Wolf	Vendor: Ogunaro Wolfrunner - Costs 1000 gold in Orgrimmar
+Horn of the Swift Gray Wolf	Vendor: Ogunaro Wolfrunner - Costs 1000 gold in Orgrimmar
+Horn of the Swift Timber Wolf	Vendor: Ogunaro Wolfrunner - Costs 1000 gold in Orgrimmar

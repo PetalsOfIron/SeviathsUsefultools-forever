@@ -1,0 +1,11 @@
+package-as: SeviathsUsefulTools
+
+manual-changelog:
+  filename: CHANGELOG.md
+  markup-type: markdown
+
+ignore:
+  - .gitignore
+  - .github
+  - .pkgmeta
+  - README.md

@@ -1,0 +1,3 @@
+-- SeviathsUsefulTools - farm spots learned with the old SeviathsFarmPack (copied once, fills in what this account lacks)
+local _, SFP = ...
+SFP.Seed = {}

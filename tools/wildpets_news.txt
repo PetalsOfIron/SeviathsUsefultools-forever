@@ -1,0 +1,97 @@
+Rusty Snail	Ashenvale
+Frog	Ashenvale
+Turquoise Turtle	Azshara
+Ravager Hatchling	Bloodmyst Isle
+Darkshore Cub	Darkshore
+Shimmershell Snail	Darkshore
+Horny Toad	Desolace
+Stone Armadillo	Desolace
+Creepy Crawly	Durotar
+Spawn of Onyxia	Dustwallow Marsh
+Minfernal	Felwood
+Tainted Moth	Felwood
+Tainted Rat	Felwood
+Nether Faerie Dragon	Feralas
+Twilight Iguana	Thousand Needles
+Carrion Rat	Mount Hyjal
+Death's Head Cockroach	Mount Hyjal
+Fire-Proof Roach	Mount Hyjal
+Grotto Vole	Mount Hyjal
+Nordrassil Wisp	Mount Hyjal
+Gazelle Fawn	Mulgore
+Cheetah Cub	Northern Barrens
+Qiraji Guardling	Silithus
+Scarab Hatchling	Silithus
+Giraffe Calf	Southern Barrens
+Coral Snake	Stonetalon Mountains
+Mule Deer	Stonetalon Mountains
+Venomspitter Hatchling	Stonetalon Mountains
+Sand Kitten	Tanaris
+Silithid Hatchling	Tanaris
+Stinkbug	Tanaris
+Crested Owl	Teldrassil
+Leopard Scorpid	Uldum
+Tol'vir Scarab	Uldum
+Diemetradon Hatchling	Un'Goro Crater
+Spotted Bell Frog	Un'Goro Crater
+Twilight Beetle	Azshara, Mount Hyjal, Deepholm
+Rabid Nut Varmint 5000	Azshara, Stonetalon Mountains, Winterspring
+Twilight Spider	Azshara, Twilight Highlands, Deepholm
+Shore Crab	Azshara, Westfall, Howling Fjord, Borean Tundra, Twilight Highlands, Krasarang Wilds
+Robo-Chick	Azshara, Orgrimmar, Winterspring
+Grey Moth	Azuremyst Isle
+Beetle	Northern Stranglethorn, The Cape of Stranglethorn, Un'Goro Crater, Silithus, Badlands
+Spiky Lizard	Badlands, Silithus
+Horned Lizard	Badlands, Silithus, Uldum
+Gold Beetle	Badlands, Tanaris
+Stripe-Tailed Scorpid	Badlands, Tanaris, Terokkar Forest
+Rattlesnake	Badlands, Tanaris, Twilight Highlands
+Scorpid	Badlands, Northern Stranglethorn, Eastern Plaguelands, Ashenvale, Felwood, Un'Goro Crater, Silithus, The Cape of Stranglethorn
+Fire Beetle	Blasted Lands, Searing Gorge, Mount Hyjal, Burning Steppes, Un'Goro Crater
+Cockroach	Burning Steppes, Icecrown, The Hinterlands, Twilight Highlands, Un'Goro Crater
+Amethyst Shale Hatchling	Desolace, Deepholm
+Topaz Shale Hatchling	Desolace, Deepholm
+Rock Viper	Desolace, Blade's Edge Mountains, Mount Hyjal, Silithus
+Black Rat	Eastern Plaguelands, Western Plaguelands, Wetlands, Duskwood, Dustwallow Marsh, Twilight Highlands, Badlands
+Adder	Dun Morogh, Blasted Lands, Durotar, Northern Barrens, Northern Stranglethorn, Hellfire Peninsula, Nagrand, Southern Barrens
+Spider	Dun Morogh, Blasted Lands, Swamp of Sorrows, Elwynn Forest, Dustwallow Marsh, Azshara, The Hinterlands, Zul'Drak, The Storm Peaks, Tirisfal Glades, Eastern Plaguelands, Teldrassil, Hillsbrad Foothills, Stonetalon Mountains, Howling Fjord, Winterspring, Orgrimmar, Ghostlands
+Roach	Dun Morogh, Duskwood, Azshara, Northern Stranglethorn, Loch Modan, Redridge Mountains, Tirisfal Glades, Ashenvale, Thousand Needles, Desolace, Stonetalon Mountains, Howling Fjord, The Cape of Stranglethorn
+Rabbit	Dun Morogh, Duskwood, Wetlands, Elwynn Forest, Azshara, Western Plaguelands, Redridge Mountains, Tirisfal Glades, Silverpine Forest, Teldrassil, Darkshore, Mulgore, Hillsbrad Foothills, Feralas, Stonetalon Mountains, Moonglade, Howling Fjord, Mount Hyjal, Stormwind City, Crystalsong Forest, Eversong Woods, Nagrand, Blade's Edge Mountains, Azuremyst Isle
+Squirrel	Dun Morogh, Duskwood, Wetlands, Elwynn Forest, Dustwallow Marsh, Azshara, Western Plaguelands, Loch Modan, Silverpine Forest, Teldrassil, Darkshore, Hillsbrad Foothills, Ashenvale, Feralas, Moonglade, Howling Fjord, Mount Hyjal, Stormwind City, Crystalsong Forest, Nagrand, Terokkar Forest, Blade's Edge Mountains, Azuremyst Isle, Sholazar Basin
+Snake	Dun Morogh, Dustwallow Marsh, Northern Stranglethorn, Loch Modan, Westfall, The Hinterlands, Zul'Drak, Silverpine Forest, Feralas, Eversong Woods, Ghostlands, Nagrand, Terokkar Forest, Zangarmarsh, Sholazar Basin
+Deer	Dun Morogh, Elwynn Forest, Western Plaguelands, The Hinterlands, Silverpine Forest, Teldrassil, Darkshore, Hillsbrad Foothills, Ashenvale, Feralas, Grizzly Hills, Moonglade, Blade's Edge Mountains, Azuremyst Isle
+Long-Tailed Mole	Dun Morogh, Northern Stranglethorn, Un'Goro Crater, Ironforge, The Cape of Stranglethorn
+Small Frog	Dun Morogh, Swamp of Sorrows, Duskwood, Elwynn Forest, Northern Barrens, Loch Modan, Westfall, Arathi Highlands, Teldrassil, Desolace, Darnassus, Eversong Woods, Ghostlands, Zangarmarsh, Southern Barrens
+Strand Crab	Dun Morogh, Swamp of Sorrows, Northern Stranglethorn, Dragonblight, Ashenvale, The Cape of Stranglethorn
+Toad	Dun Morogh, Swamp of Sorrows, Wetlands, Durotar, Dustwallow Marsh, Silverpine Forest, Teldrassil, Hillsbrad Foothills, Ashenvale, Felwood, Howling Fjord, Orgrimmar, Eversong Woods, Ghostlands, Nagrand
+Maggot	Dun Morogh, The Hinterlands, Tirisfal Glades, Hillsbrad Foothills, Ashenvale, Howling Fjord, Undercity, Ghostlands
+Alpine Hare	Dun Morogh, Winterspring
+Crystal Spider	Dun Morogh, Winterspring
+Hare	Durotar, The Hinterlands
+Skunk	Duskwood, Azshara, Howling Fjord, Terokkar Forest, Azuremyst Isle, Bloodmyst Isle
+Mouse	Duskwood, Wetlands, Dustwallow Marsh, Westfall, Mulgore, Grizzly Hills, Netherstorm
+Chicken	Duskwood, Wetlands, Elwynn Forest, Dustwallow Marsh, Northern Barrens, Westfall, Redridge Mountains, Tirisfal Glades, Hillsbrad Foothills, Howling Fjord, Azuremyst Isle, Bloodmyst Isle, Shattrath City
+Sea Gull	Elwynn Forest, Krasarang Wilds, Tanaris
+Tainted Cockroach	Felwood, Shadowmoon Valley
+Locust	Uldum
+Mac Frog	Uldum
+Oasis Moth	Uldum
+Silky Moth	Un'Goro Crater, Moonglade, Mount Hyjal
+Mountain Skunk	Wetlands, The Storm Peaks, Grizzly Hills, Stonetalon Mountains, Winterspring
+Highlands Skunk	Wetlands, The Storm Peaks, Grizzly Hills, Stonetalon Mountains, Winterspring, Twilight Highlands
+Gazelle	Northern Barrens, Mulgore, Desolace, Southern Barrens
+Emerald Boa	Northern Barrens, Un'Goro Crater, Southern Barrens, Uldum
+Biletoad	Northern Barrens, Sholazar Basin
+Prairie Dog	Northern Barrens, Westfall, Arathi Highlands, Mulgore, Stormwind City, Nagrand, Southern Barrens
+Tree Python	Northern Stranglethorn, Un'Goro Crater, The Cape of Stranglethorn
+Mountain Cottontail	Redridge Mountains, Mulgore
+Sidewinder	Silithus, Uldum
+Infected Fawn	Silverpine Forest, Eastern Plaguelands, Bloodmyst Isle
+Infected Squirrel	Silverpine Forest, Eastern Plaguelands, Bloodmyst Isle
+Alpine Chipmunk	Stonetalon Mountains, Mount Hyjal, Winterspring
+Rat	Swamp of Sorrows, Azshara, Loch Modan, Arathi Highlands, The Hinterlands, Tirisfal Glades, Silverpine Forest, Darkshore, Hillsbrad Foothills, Ashenvale, Desolace, Stonetalon Mountains, Howling Fjord, Stormwind City, Ghostlands, Nagrand, Terokkar Forest, Bloodmyst Isle, Shattrath City
+Parrot	Swamp of Sorrows, Northern Stranglethorn, Un'Goro Crater, The Cape of Stranglethorn
+Water Snake	Swamp of Sorrows, Wetlands, Durotar, Northern Stranglethorn, Orgrimmar, Twilight Highlands
+Forest Moth	Teldrassil, Ashenvale, Desolace, Moonglade, Mount Hyjal, Darnassus
+Elfin Rabbit	Teldrassil, Desolace, Mount Hyjal, Darnassus
+Red-Tailed Chipmunk	Teldrassil, Hillsbrad Foothills, Desolace, Darnassus

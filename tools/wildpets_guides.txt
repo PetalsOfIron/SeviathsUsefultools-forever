@@ -1,0 +1,120 @@
+2395|42.8|38.6|Amber Treeflitter
+2395|40.8|46.6|Amber Treeflitter
+2395|50.0|59.6|Amber Treeflitter
+2395|46.0|36.2|Vibrant Manaling
+2395|53.8|55.4|Vibrant Manaling
+2395|39.4|56.6|Vibrant Manaling
+2395|46.0|36.4|Violet Chick
+2395|38.0|57.8|Violet Chick
+2393|30.0|75.0|Silvermoon Broom
+2393|31.2|75.2|Silvermoon Broom
+2393|32.4|75.6|Silvermoon Broom
+2413|64.0|45.6|Azure Sporebat
+2413|56.6|54.6|Azure Sporebat
+2413|70.0|64.4|Azure Sporebat
+2413|70.5|32.2|Mud Potadpole
+2413|69.6|32.2|Mud Potadpole
+2413|71.6|31.2|Mud Potadpole
+2413|60.4|20.7|Rootling Nester
+2413|40.6|43.2|Rootling Nester
+2413|52.8|80.2|Rootling Nester
+2413|41.4|69.8|Silkcrawler
+2413|36.6|26.6|Silkcrawler
+2413|41.6|69.6|Silkcrawler
+2413|60.4|20.9|Waddles
+2413|60.6|20.8|Waddles
+2413|61.4|18.6|Waddles
+2405|62.8|67.2|Blistercreepling
+2405|33.0|48.4|Blistercreepling
+2405|65.4|59.4|Blistercreepling
+2405|51.1|77.4|Devouring Runt
+2405|40.2|37.6|Devouring Runt
+2405|57.2|71.0|Devouring Runt
+2405|63.2|73.6|Riftblade Familiar
+2405|60.0|72.4|Riftblade Familiar
+2405|30.6|66.4|Voidcrawler
+2405|28.2|53.0|Voidcrawler
+2405|48.0|60.0|Voidcrawler
+2437|52.8|80.6|Akil Fledgling
+2437|47.0|75.8|Akil Fledgling
+2437|49.6|81.6|Akil Fledgling
+2437|50.6|24.8|Dragonhawk Mosswing
+2437|51.8|28.8|Dragonhawk Mosswing
+2437|51.6|18.2|Dragonhawk Mosswing
+2437|41.4|48.4|Ebon Snapling
+2437|32.6|45.6|Ebon Snapling
+2437|42.0|59.6|Ebon Snapling
+2437|29.0|41.8|Gloom Toad
+2437|37.4|64.8|Gloom Toad
+2437|45.2|73.0|Gloom Toad
+2437|40.8|54.2|Pangolil
+2437|48.2|54.6|Pangolil
+2437|40.2|54.2|Pangolil
+2437|39.6|51.8|Striped Snakebiter
+2437|51.6|67.0|Striped Snakebiter
+2437|51.8|61.6|Striped Snakebiter
+2437|51.4|65.0|Swamp Biter
+2437|44.6|40.4|Swamp Biter
+2424|43.6|15.6|Nether Familiar
+2424|29.0|29.0|Nether Familiar
+2424|29.0|28.4|Nether Familiar
+2424|41.0|33.0|Wrathful Wyrm
+2424|49.2|22.8|Wrathful Wyrm
+2512|67.8|81.4|Autumn Snapling
+2512|70.6|78.6|Autumn Snapling
+2509|39.0|28.2|Caustic Writhling
+2512|47.2|59.8|Cursed Spawn
+2512|46.20|27.11|Cursed Spawn
+2512|45.2|31.2|Jaundiced Slitherer
+2512|62.6|84.0|Nightfur Kapara
+2512|61.6|81.8|Nightfur Kapara
+2512|62.2|40.8|Poisoned Parasite
+2512|65.2|49.2|Poisoned Parasite
+2512|65.8|32.8|Steady Croakfrog
+2512|69.23|46.35|Steady Croakfrog
+2393|51.4|54.6|Ensorcelled Cryptid
+2393|58.2|41.9|Ensorcelled Cryptid
+2393|28.7|46.7|Ensorcelled Cryptid
+2512|70.0|63.6|Big Mon
+2022|39.05|74.22|Emberling
+2022|77.33|29.20|Magma Slug
+2022|38.82|82.25|Shyfly
+2022|45.83|35.31|Thunderfoot Calf
+2023|63.23|22.13|Black Slyvern Pup
+2023|71.67|74.13|Dusky Timbertooth
+2024|50.25|46.20|Azure Crystalspine
+2024|10.77|48.02|Chalkshell Turtle
+2024|50.87|54.75|Whitewhisker
+2025|62.30|16.95|Blue Dasher
+2025|50.70|64.12|Crimsonspine
+2025|54.97|39.46|Polliswog
+2025|48.8|55.7|Razortooth Bear Cub
+2023|50.55|71.80|Ironbeak Duck
+2022|74.0|34.8|Kindlet
+2025|49.02|58.13|Palamanther
+2022|57.19|71.31|Plucky Duckling
+2022|74.0|55.8|Pricklefury Hare
+2022|54.05|33.90|Scruffy Ottuk
+2023|61.35|47.90|Stoneshell
+2024|53.14|42.25|Snowlemental
+2022|55.04|61.43|Swoglet
+2022|20.49|85.96|Vorquin Runt
+2022|57.0|70.8|Wild Duckling
+2023|73.14|76.22|Tiny Timbertooth
+2023|88.0|13.6|Treeflitter
+2023|55.38|65.07|Trunkalumpf
+2024|32.50|35.48|Grizzlefur Cub
+2023|62.8|25.6|Woodbiter Piculet
+2025|48.18|50.23|Grassland Stomper
+2025|49.02|58.13|Igneoid
+2022|73.8|42.0|Ironbeak Duck
+2022|68.4|36.2|Kindlet
+2022|80.8|35.8|Kindlet
+2023|50.6|36.0|Pricklefury Hare
+2023|82.8|27.4|Stoneshell
+2024|72.2|42.2|Snowlemental
+2023|75.8|72.4|Swoglet
+2022|74.8|48.2|Wild Duckling
+2023|64.23|28.32|Treeflitter
+2175|42.17|75.42|Scarlapod
+2151|58.6|47.9|Vraken the Hunter

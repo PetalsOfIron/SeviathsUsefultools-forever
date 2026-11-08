@@ -1,0 +1,3 @@
+-- SeviathsUsefulTools - housing decor learned from the game, shipped with the addon (made by tools/bake_decor.py from a played account)
+local _, SFP = ...
+SFP.DecorLearned = {}

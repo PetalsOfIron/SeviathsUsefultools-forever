@@ -1,0 +1,521 @@
+537|Dull Frenzy Scale|inv_misc_monsterscales_02|1
+555|Rough Vulture Feathers|spell_magic_featherfall|5
+556|Buzzard Beak|inv_misc_birdbeck_01|1
+755|Melted Candle|inv_misc_candle_01|1
+770|Pointy Crocolisk Tooth|inv_misc_bone_08|1
+771|Chipped Boar Tusk|inv_misc_bone_04|1
+777|Prowler Teeth|inv_misc_monsterfang_01|1
+779|Shiny Seashell|inv_misc_shell_01|1
+813|Broken Cog|inv_misc_gear_01|1
+878|Fist-Sized Spinneret|inv_misc_monsterspidercarapace_01|10
+887|Pound of Flesh|inv_misc_food_14|11
+893|Dire Wolf Fang|inv_misc_monsterfang_01|1
+1074|Hard Spider Leg Tip|inv_misc_monsterspidercarapace_01|1
+1081|Crisp Spider Meat|inv_misc_monsterspidercarapace_01|7
+1175|A Gold Tooth|inv_ore_copper_01|1
+1212|Gnoll Spittle|inv_misc_slime_01|7
+1222|Broken Tooth|inv_misc_bone_08|1
+1464|Buzzard Talon|inv_misc_monsterclaw_01|1
+1476|Snapped Spider Limb|inv_misc_monsterspidercarapace_01|1
+1520|Troll Sweat|inv_potion_15|1
+1630|Broken Electro-Lantern|inv_misc_lantern_01|1
+1686|Bristly Whisker|inv_misc_monstertail_03|1
+1687|Retractable Claw|inv_misc_monsterclaw_03|1
+1688|Long Soft Tail|inv_misc_monstertail_01|1
+1696|Curved Raptor Talon|inv_misc_monsterclaw_02|1
+1697|Keen Raptor Tooth|inv_misc_bone_08|1
+1701|Curved Basilisk Claw|inv_misc_monsterclaw_02|1
+1702|Intact Basilisk Spine|inv_misc_bone_03|1
+1706|Azuredeep Shards|inv_misc_gem_sapphire_03|15
+2085|Chunk of Flesh|inv_misc_food_16|7
+2154|The Story of Morgan Ladimore|inv_misc_book_09|1
+2295|Large Boar Tusk|inv_misc_bone_04|1
+2296|Great Goretusk Snout|inv_misc_food_72|8
+2512|Rough Arrow|inv_ammo_arrow_02|1
+2515|Sharp Arrow|inv_ammo_arrow_02|1
+2516|Light Shot|inv_ammo_bullet_02|1
+2519|Heavy Shot|inv_ammo_bullet_02|1
+2590|Forest Spider Webbing|spell_nature_web|3
+2591|Dirty Trogg Cloth|inv_misc_bandana_01|4
+2608|Threshadon Ambergris|inv_misc_slime_01|5
+2692|Hot Spices|inv_misc_food_wheat_02|10
+2928|Dust of Decay|inv_misc_dust_02|10
+2930|Essence of Pain|inv_potion_12|10
+2931|Maiden's Anguish|inv_misc_herb_03|25
+2940|Bloody Bear Paw|inv_misc_monsterclaw_04|1
+3010|Fine Sand|inv_misc_dust_02|1
+3030|Razor Arrow|inv_ammo_arrow_02|1
+3033|Solid Shot|inv_ammo_bullet_02|1
+3167|Thick Spider Hair|inv_misc_monsterspidercarapace_01|1
+3168|Chipped Scale|inv_misc_monsterscales_02|1
+3169|Chipped Bear Tooth|inv_misc_bone_08|1
+3170|Large Bear Tooth|inv_misc_monsterfang_01|1
+3171|Broken Boar Tusk|inv_misc_bone_05|1
+3175|Ruined Dragonhide|inv_misc_pelt_wolf_ruin_03|1
+3176|Small Claw|inv_misc_monsterclaw_01|1
+3177|Tiny Fang|inv_misc_bone_06|1
+3179|Cracked Dragon Molting|inv_misc_monsterscales_04|1
+3180|Flecked Raptor Scale|inv_misc_monsterscales_01|1
+3181|Partially Digested Meat|inv_misc_food_14|7
+3299|Fractured Canine|inv_misc_bone_08|1
+3300|Rabbit's Foot|inv_gauntlets_02|3
+3301|Sharp Canine|inv_misc_bone_08|1
+3399|Vulture Talon|inv_misc_monsterclaw_01|1
+3401|Rough Crocolisk Scale|inv_misc_monsterscales_02|1
+3402|Soft Patch of Fur|inv_misc_pelt_bear_ruin_05|1
+3403|Ivory Boar Tusk|inv_misc_bone_04|1
+3464|Feathered Arrow|inv_ammo_arrow_02|1
+3465|Exploding Shot|inv_ammo_bullet_02|1
+3669|Gelatinous Goo|inv_misc_slime_01|1
+3670|Large Slimy Bone|inv_misc_bone_01|1
+3671|Lifeless Skull|inv_misc_bone_humanskull_01|1
+3673|Broken Arrow|inv_ammo_arrow_01|1
+3674|Decomposed Boot|inv_boots_01|1
+3676|Slimy Ichor|inv_misc_slime_01|1
+3702|Bear Gall Bladder|inv_misc_organ_02|1
+3711|Belamoore's Research Journal|inv_misc_book_04|1
+3713|Soothing Spices|inv_misc_food_wheat_02|13
+3722|Familiar Hide|inv_misc_pelt_wolf_02|1
+3723|Familiar Fang|inv_misc_bone_08|1
+3724|Familiar Claw|inv_misc_bone_06|1
+3725|Familiar Horn|inv_misc_bone_05|1
+3766|Gryphon Feather Quill|inv_feather_08|1
+3767|Fine Parchment|inv_scroll_08|1
+3769|Broken Wand|inv_wand_02|1
+3776|Crippling Poison|ability_poisonsting|21
+3777|Lethargy Root|inv_misc_dust_02|12
+3882|Buzzard Feather|inv_feather_02|1
+3899|Legends of the Gurubashi, Volume 3|inv_misc_book_04|1
+3931|Poisoned Spider Fang|inv_misc_monsterfang_01|1
+4092|Prismatic Basilisk Scale|inv_misc_monsterscales_01|1
+4093|Large Basilisk Tail|inv_misc_root_02|1
+4096|Coarse Gorilla Hair|inv_misc_monstertail_03|1
+4097|Chipped Gorilla Tooth|inv_misc_bone_08|1
+4098|Carefully Folded Note|inv_letter_13|1
+4099|Tuft of Gorilla Hair|inv_misc_pelt_03|1
+4100|Crumpled Note|inv_letter_15|1
+4101|Ripped Note|inv_letter_15|1
+4102|Torn Note|inv_letter_15|1
+4361|Bent Copper Tube|inv_gizmo_pipe_02|5
+4363|Broken Modulator|inv_gizmo_03|1
+4428|Spider Palp|inv_misc_monsterspidercarapace_01|1
+4459|Brittle Dragon Bone|inv_misc_bone_10|1
+4460|Ripped Wing Webbing|inv_misc_monsterscales_03|1
+4552|Smooth Stone Chip|inv_stone_10|1
+4553|Jagged Piece of Stone|inv_stone_13|1
+4554|Shiny Polished Stone|inv_stone_14|1
+4555|Thick Scaly Tail|inv_misc_monsterscales_04|1
+4556|Speckled Shell Fragment|inv_misc_monsterscales_07|1
+4557|Fiery Gland|spell_fire_flameshock|1
+4558|Empty Barrel|inv_cask_03|1
+4580|Sabertooth Fang|inv_misc_monsterfang_01|1
+4581|Patch of Fine Fur|inv_misc_pelt_bear_01|1
+4582|Soft Bushy Tail|inv_misc_monstertail_02|1
+4583|Thick Furry Mane|inv_misc_pelt_bear_01|1
+4584|Large Trophy Paw|inv_misc_monsterclaw_04|1
+4585|Dripping Spider Mandible|inv_misc_monsterspidercarapace_01|1
+4586|Smooth Raptor Skin|inv_misc_monsterscales_02|1
+4587|Tribal Raptor Feathers|spell_magic_featherfall|1
+4588|Pristine Raptor Skull|inv_misc_bone_taurenskull_01|1
+4589|Long Elegant Feather|spell_magic_featherfall|1
+4590|Curved Yellow Bill|inv_misc_birdbeck_02|1
+4591|Eagle Eye|inv_misc_eye_01|1
+4757|Cracked Egg Shells|inv_egg_04|1
+4775|Cracked Bill|inv_misc_birdbeck_01|1
+4776|Ruffled Feather|inv_feather_01|1
+4779|Dull Kodo Tooth|inv_stone_14|1
+4780|Kodo Horn Fragment|inv_stone_06|1
+4784|Lifeless Stone|inv_stone_10|1
+4787|Burning Pitch|inv_ammo_firetar|1
+4813|Small Leather Collar|inv_misc_bandage_06|1
+4814|Discolored Fang|inv_misc_bone_06|1
+4860|Glistening Frenzy Scale|inv_misc_monsterscales_01|1
+4865|Ruined Pelt|inv_misc_pelt_wolf_ruin_04|1
+4867|Broken Scorpid Leg|inv_misc_monsterspidercarapace_01|1
+4872|Dry Scorpid Eye|inv_misc_eye_01|1
+4873|Dry Hardened Barnacle|inv_stone_06|1
+4874|Clean Fishbones|inv_misc_bone_02|1
+4875|Slimy Bone|inv_misc_bone_01|1
+4876|Bloody Leather Boot|inv_boots_04|1
+4877|Stone Arrowhead|inv_ammo_arrow_01|1
+4878|Broken Bloodstained Bow|inv_weapon_bow_05|1
+4879|Squashed Rabbit Carcass|inv_misc_pelt_wolf_ruin_01|3
+4880|Broken Spear|inv_spear_05|1
+4960|Flash Pellet|inv_ammo_bullet_02|1
+5113|Mark of the Syndicate|inv_jewelry_talisman_05|1
+5114|Severed Talon|inv_misc_monsterclaw_01|1
+5115|Broken Wishbone|inv_misc_bone_10|1
+5117|Vibrant Plume|inv_feather_12|1
+5118|Large Flat Tooth|inv_stone_07|1
+5119|Fine Loose Hair|inv_misc_monstertail_02|1
+5120|Long Tail Hair|inv_misc_monstertail_03|1
+5121|Dirty Kodo Scale|inv_misc_monsterscales_03|1
+5122|Thick Kodo Hair|inv_fabric_linen_01|1
+5123|Steel Arrowhead|inv_ammo_arrow_01|1
+5124|Small Raptor Tooth|inv_misc_bone_08|1
+5125|Charged Scale|inv_misc_monsterscales_02|1
+5128|Shed Lizard Skin|inv_misc_monsterscales_03|1
+5133|Seeping Gizzard|inv_misc_organ_06|1
+5134|Small Furry Paw|ability_hunter_mendpet|1
+5135|Thin Black Claw|inv_misc_bone_06|1
+5136|Torn Furry Ear|inv_misc_pelt_bear_ruin_05|1
+5137|Bright Eyeball|inv_misc_eye_01|1
+5173|Deathweed|inv_misc_flower_03|13
+5263|Pocket Lint|inv_fabric_wool_01|1
+5268|Cracked Silithid Shell|inv_misc_monsterspidercarapace_01|1
+5269|Silithid Ichor|inv_misc_slime_01|1
+5329|Cat Figurine|inv_misc_head_tiger_01|1
+5361|Fishbone Toothpick|inv_misc_bone_06|1
+5362|Chew Toy|inv_misc_eye_01|1
+5363|Folded Handkerchief|inv_fabric_silk_01|1
+5364|Dry Salt Lick|inv_stone_08|1
+5367|Primitive Rock Tool|inv_stone_07|1
+5368|Empty Wallet|inv_misc_armorkit_17|1
+5369|Gnawed Bone|inv_misc_bone_01|1
+5370|Bent Spoon|inv_misc_shovel_01|1
+5371|Piece of Coral|inv_stone_14|1
+5374|Small Pocket Watch|inv_misc_pocketwatch_02|1
+5375|Scratching Stick|inv_misc_branch_01|1
+5376|Broken Mirror|inv_misc_spyglass_03|1
+5377|Scallop Shell|inv_misc_shell_01|1
+5379|Broken Boot Knife|inv_throwingknife_02|4
+5427|Crude Pocket Watch|inv_misc_pocketwatch_03|1
+5428|An Exotic Cookbook|inv_misc_book_03|1
+5429|A Pretty Rock|inv_ore_copper_01|1
+5430|Intricate Bauble|inv_misc_orb_03|1
+5431|Empty Hip Flask|inv_drink_01|1
+5432|Hickory Pipe|inv_misc_pipe_01|1
+5433|Rag Doll|inv_misc_idol_02|1
+5435|Shiny Dinglehopper|inv_misc_shovel_02|1
+5446|Broken Elemental Bracer|inv_bracer_07|1
+5447|Damaged Elemental Bracer|inv_bracer_07|1
+5448|Fractured Elemental Bracer|inv_bracer_07|1
+5451|Crushed Elemental Bracer|inv_bracer_07|1
+5506|Beady Eye Stalk|inv_misc_eye_01|1
+5529|Tomb Dust|inv_misc_dust_02|13
+5530|Blinding Powder|inv_misc_ammo_gunpowder_06|14
+5566|Broken Antler|inv_misc_bone_04|1
+5567|Silver Hook|trade_fishing|1
+5568|Smooth Pebble|inv_ammo_bullet_02|1
+5569|Seaweed|inv_misc_herb_06|1
+5601|Hatched Egg Sac|inv_egg_04|1
+5602|Sticky Spider Webbing|spell_nature_web|1
+5636|Delicate Feather|inv_feather_10|11
+5741|Rock Chip|inv_stone_10|1
+5829|Razor-Sharp Beak|inv_misc_birdbeck_01|1
+5839|Journal Page|inv_misc_note_01|1
+5871|Large Hoof|ability_warstomp|1
+6150|A Frayed Knot|inv_misc_bandage_06|1
+6293|Dried Bat Blood|spell_shadow_lifedrain|1
+6296|Patch of Bat Hair|inv_misc_pelt_bear_ruin_05|1
+6297|Old Skull|inv_misc_bone_orcskull_01|1
+6298|Bloody Bat Fang|inv_misc_monsterfang_01|1
+6300|Husk Fragment|inv_misc_monsterscales_02|1
+6301|Old Teamster's Skull|inv_misc_bone_dwarfskull_01|1
+6302|Delicate Insect Wing|inv_misc_monsterscales_01|1
+6304|Damp Diary Page (Day 4)|inv_misc_note_06|1
+6305|Damp Diary Page (Day 87)|inv_misc_note_06|1
+6306|Damp Diary Page (Day 512)|inv_misc_note_06|1
+6438|Dull Elemental Bracer|inv_bracer_10|1
+6439|Broken Binding Bracer|inv_bracer_10|1
+6444|Forked Tongue|spell_nature_guardianward|1
+6445|Brittle Molting|inv_misc_monsterscales_02|1
+6455|Old Wagonwheel|inv_shield_09|1
+6456|Acidic Slime|inv_misc_slime_01|1
+6457|Rusted Engineering Parts|inv_misc_gear_02|1
+6826|Brilliant Scale|inv_misc_monsterscales_01|1
+6951|Mind-Numbing Poison|spell_nature_nullifydisease|16
+6986|Crimson Lotus|inv_misc_herb_19|17
+7073|Broken Fang|inv_misc_bone_08|1
+7074|Chipped Claw|inv_misc_bone_06|1
+7096|Plucked Feather|inv_feather_16|1
+7098|Splintered Tusk|inv_misc_bone_05|1
+7099|Severed Pincer|inv_misc_birdbeck_02|1
+7100|Sticky Ichor|inv_misc_slime_01|1
+7101|Bug Eye|inv_misc_eye_01|1
+7135|Broken Dragonmaw Shinbone|inv_misc_bone_07|1
+7190|Scorched Rocket Boots|inv_gizmo_rocketboot_destroyed_02|12
+7287|Red Whelp Scale|inv_misc_monsterscales_02|1
+7296|Extinguished Torch|inv_torch_unlit|1
+7428|Shadowcat Hide|inv_misc_pelt_01|13
+7666|Shattered Necklace|inv_jewelry_necklace_02|1
+8067|Crafted Light Shot|inv_ammo_bullet_02|1
+8068|Crafted Heavy Shot|inv_ammo_bullet_02|1
+8069|Crafted Solid Shot|inv_ammo_bullet_02|1
+8146|Wicked Claw|inv_misc_monsterclaw_01|20
+8151|Flask of Mojo|inv_potion_15|1
+8152|Flask of Big Mojo|inv_potion_12|1
+8368|Thick Wolfhide|inv_misc_pelt_02|17
+8425|Parrot Droppings|inv_misc_slime_01|1
+8426|Large Ruffled Feather|inv_feather_12|1
+8427|Mutilated Rat Carcass|inv_misc_pelt_bear_ruin_01|7
+8429|Punctured Dew Gland|inv_misc_slime_01|1
+8430|Empty Dew Gland|inv_misc_bone_10|1
+8483|Wastewander Water Pouch|inv_drink_milk_02|1
+8508|Large Fin|inv_misc_monsterscales_03|1
+8923|Essence of Agony|inv_potion_19|21
+8924|Dust of Deterioration|inv_misc_ammo_gunpowder_01|13
+9186|Mind-numbing Poison III|spell_nature_nullifydisease|22
+9242|Ancient Tablet|inv_misc_stonetablet_03|1
+9250|Water-Damaged Ship Schedule|inv_scroll_03|17
+9251|Upper Map Fragment|inv_misc_note_05|1
+9252|Lower Map Fragment|inv_misc_note_01|1
+9253|Middle Map Fragment|inv_misc_note_03|1
+9254|Cuergo's Treasure Map|inv_misc_map_01|1
+9261|Lead Ore|inv_ore_tin_01|13
+9332|Crusted Bandages|inv_misc_bandage_08|1
+9333|Tarnished Silver Necklace|inv_belt_18|1
+9334|Cracked Pottery|inv_egg_04|1
+9335|Broken Obsidian Club|inv_mace_01|1
+9336|Gold-Capped Troll Tusk|inv_gizmo_pipe_02|1
+9355|Hoop Earring|inv_jewelry_ring_07|1
+9356|A Wooden Leg|inv_mace_04|1
+9357|A Parrot Skeleton|inv_misc_bone_02|1
+9358|A Head Rag|inv_misc_bandana_03|1
+9399|Precision Arrow|inv_ammo_arrow_01|1
+10450|Undamaged Hippogryph Feather|inv_feather_08|1
+10457|Empty Sea Snail Shell|inv_misc_shell_04|1
+10512|Hi-Impact Mithril Slugs|inv_ammo_bullet_01|1
+10513|Mithril Gyro-Shot|inv_ammo_bullet_01|1
+10839|Crystallized Note|inv_misc_rune_03|1
+10840|Crystallized Note|inv_misc_rune_03|1
+11284|Accurate Slugs|inv_ammo_bullet_01|1
+11285|Jagged Arrow|inv_weapon_shortblade_25|1
+11384|Broken Basilisk Teeth|inv_misc_bone_07|1
+11385|Basilisk Scale|inv_misc_monsterscales_11|1
+11386|Squishy Basilisk Eye|inv_misc_eye_01|1
+11387|Basilisk Heart|inv_misc_organ_01|1
+11388|Basilisk Venom|inv_misc_slime_01|1
+11389|Shimmering Basilisk Skin|inv_misc_monsterscales_06|1
+11390|Broken Bat Fang|inv_misc_bone_08|1
+11391|Spined Bat Wing|inv_misc_leatherscrap_08|1
+11392|Severed Bat Claw|inv_misc_monsterclaw_01|1
+11393|Small Bat Skull|inv_misc_bone_orcskull_01|1
+11394|Bat Heart|inv_misc_organ_06|1
+11395|Bat Ear|inv_misc_ear_nightelf_01|1
+11402|Sleek Bat Pelt|inv_misc_pelt_03|1
+11403|Large Bat Fang|inv_misc_bone_06|1
+11404|Evil Bat Eye|inv_misc_eye_01|1
+11406|Rotting Bear Carcass|inv_misc_pelt_bear_ruin_02|1
+11407|Torn Bear Pelt|inv_misc_pelt_bear_ruin_05|1
+11408|Bear Jaw|inv_misc_bone_09|1
+11409|Bear Organ|inv_misc_food_17|1
+11410|Savage Bear Claw|inv_misc_monsterclaw_03|1
+11414|Grizzled Mane|inv_misc_pelt_bear_01|1
+11416|Delicate Ribcage|inv_misc_bone_02|1
+11417|Feathery Wing|inv_misc_monsterscales_01|1
+11418|Hollow Wing Bone|inv_misc_bone_01|1
+11419|Mysterious Unhatched Egg|inv_egg_02|1
+11420|Elegant Writing Tool|inv_feather_07|1
+11463|Undelivered Parcel|inv_misc_bag_07|17
+11482|Crystal Pylon User's Manual|inv_misc_book_08|1
+11630|Rockshard Pellets|inv_ammo_bullet_02|1
+11644|Lesser Arcanum of Resilience|inv_misc_gem_03|25
+11939|Shiny Bracelet|inv_belt_33|1
+11940|Sparkly Necklace|inv_jewelry_necklace_11|1
+11941|False Documents|inv_misc_note_01|1
+11942|Legal Documents|inv_misc_note_06|1
+11943|Deed to Thandol Span|inv_misc_note_02|1
+11944|Dark Iron Baby Booties|inv_boots_06|1
+12654|Doomshot|ability_hunter_criticalshot|1
+12735|Frayed Abomination Stitching|inv_misc_pelt_boar_ruin_03|1
+13362|Letter from the Front|inv_letter_08|1
+13363|Municipal Proclamation|inv_scroll_03|1
+13364|Ezra Grimm's Advertisement|inv_scroll_08|1
+13365|Town Meeting Notice|inv_scroll_10|1
+13366|Ingenious Toy|inv_gizmo_04|1
+13377|Miniature Cannon Balls|inv_ammo_bullet_02|1
+13890|Plated Armorfish|inv_misc_fish_04|23
+15420|Ironfeather|inv_feather_05|21
+15422|Frostsaber Leather|inv_misc_pelt_06|21
+15423|Chimera Leather|inv_misc_leatherscrap_01|21
+15793|A Chewed Bone|inv_misc_bone_09|1
+15798|Chipped Ogre Teeth|inv_misc_bone_07|1
+15846|Salt Shaker|inv_egg_05|21
+15997|Thorium Shells|inv_ammo_bullet_03|1
+16051|Ruined Schematic: Thorium Shells|inv_scroll_03|1
+16084|Expert First Aid - Under Wraps|inv_misc_book_08|13
+16747|Broken Lock|inv_gizmo_03|1
+16748|Padded Lining|inv_fabric_wool_01|1
+17034|Maple Seed|inv_misc_food_02|10
+18042|Thorium Headed Arrow|inv_ammo_arrow_02|1
+18222|Thorny Vine|inv_misc_herb_15|1
+18223|Serrated Petal|inv_misc_herb_04|1
+18224|Lasher Blossom|inv_misc_herb_02|1
+18225|Worn Running Shoes|inv_boots_02|1
+18226|A Sealed Pact|inv_misc_note_05|1
+18227|Nubless Pacifier|inv_gizmo_05|1
+18228|Autographed Picture of Tigule|inv_scroll_10|1
+18230|Broken I.W.I.N. Button|inv_misc_orb_03|1
+18233|Tear Stained Handkerchief|inv_misc_bandage_08|1
+18234|Document from Boomstick Imports|inv_misc_note_01|1
+18236|Gordok Chew Toy|inv_misc_ear_human_01|1
+18237|Mastiff Jawbone|inv_misc_bone_09|1
+18285|Crystallized Mana Shard|inv_misc_gem_diamond_02|1
+18286|Condensed Mana Fragment|inv_misc_gem_diamond_03|1
+18512|Larval Acid|inv_potion_22|23
+18944|Incendosaur Scale|inv_misc_monsterscales_16|1
+19316|Ice Threaded Arrow|spell_frost_iceshard|1
+19317|Ice Threaded Bullet|spell_frost_frostblast|1
+19933|Glowing Scorpid Blood|spell_shadow_lifedrain|1
+19934|Large Scorpid Claw|inv_misc_bone_06|1
+19935|Empty Venom Sac|inv_misc_ear_nightelf_01|1
+19936|Dried Scorpid Carapace|inv_misc_ear_nightelf_01|1
+19937|Small Scorpid Claw|inv_misc_bone_06|1
+19938|Heavy Scorpid Leg|inv_misc_monsterclaw_07|1
+20015|Elder Raptor Feathers|inv_feather_01|1
+20016|Trophy Raptor Skull|inv_misc_bone_taurenskull_01|1
+20030|Pet Rock|inv_stone_08|1
+20498|Silithid Chitin|inv_misc_monsterscales_13|23
+20499|Broken Silithid Chitin|inv_misc_monsterscales_17|23
+20500|Light Silithid Carapace|inv_misc_monsterscales_14|23
+20501|Heavy Silithid Carapace|inv_misc_monsterscales_05|23
+20513|Faded Abyssal Crest|inv_jewelry_talisman_05|1
+20763|Broken Weapon|ability_warrior_sunder|1
+20770|Bubbling Green Ichor|ability_creature_poison_06|1
+20812|Tattered Pelt|inv_misc_pelt_05|1
+20813|Lynx Tooth|inv_misc_bone_08|1
+20842|Frayed Tender Vine|inv_misc_root_01|1
+20843|Smashed Petal|inv_misc_flower_04|1
+20845|Torn Wyrm Scale|inv_misc_monsterscales_09|1
+20846|Faintly Glowing Eye|inv_misc_eye_01|1
+20847|Wraith Fragment|inv_misc_gem_diamond_03|1
+20848|Sparkling Dust|inv_enchant_dustsoul|1
+21222|Armored Chitin|inv_shoulder_04|25
+21223|Black Stone|inv_misc_stonetablet_02|25
+21224|Ancient Armor Fragment|inv_misc_armorkit_06|25
+21225|Heavy Silithid Husk|inv_misc_monsterscales_06|1
+21226|Runic Stone|inv_misc_stonetablet_10|25
+21227|Ancient Hero's Skull|inv_misc_bone_orcskull_01|25
+22012|Master First Aid - Doctor in the House|inv_misc_book_10|25
+22345|Totem of Rebirth|inv_relics_totemofrebirth|30
+22395|Totem of Rage|inv_relics_totemofrage|28
+22396|Totem of Life|inv_relics_totemoflife|32
+22397|Idol of Ferocity|inv_relics_idolofferocity|27
+22398|Idol of Rejuvenation|inv_relics_idolofrejuvenation|30
+22399|Idol of Health|inv_relics_idolofhealth|32
+22400|Libram of Truth|inv_relics_libramoftruth|28
+22401|Libram of Hope|inv_relics_libramofhope|30
+22402|Libram of Grace|inv_relics_libramofgrace|32
+22525|Crypt Fiend Parts|inv_misc_ahnqirajtrinket_02|1
+22526|Bone Fragments|inv_misc_bone_07|1
+22527|Core of Elements|inv_misc_gem_variety_02|1
+22528|Dark Iron Scraps|inv_misc_armorkit_20|1
+22529|Savage Frond|spell_nature_protectionformnature|1
+22535|Formula: Enchant Ring - Striking|inv_misc_note_01|1
+23004|Idol of Longevity|inv_relics_idolofhealth|31
+23005|Totem of Flowing Water|inv_relics_totemoflife|31
+23006|Libram of Light|inv_relics_libramofgrace|31
+23197|Idol of the Moon|inv_relics_idolofrejuvenation|30
+23198|Idol of Brutality|inv_relics_idolofferocity|27
+23199|Totem of the Storm|inv_relics_totemofrage|30
+23200|Totem of Sustaining|inv_relics_totemoflife|24
+23201|Libram of Divinity|inv_relics_libramofhope|24
+23203|Libram of Fervor|inv_relics_libramoftruth|30
+23330|Wilted Petal|inv_misc_herb_04|1
+23331|Broken Vine|inv_misc_herb_15|1
+23332|Withered Lasher Root|inv_misc_food_105_snowplum|1
+23333|Shattered Power Core|inv_misc_gem_diamond_03|1
+23353|Mana Residue|inv_misc_dust_03|1
+23355|Toxic Helboar Meat|inv_misc_food_67|1
+23380|Broken Power Core|inv_misc_gem_diamond_03|1
+23383|Ripped Wyrm Scale|inv_misc_monsterscales_09|1
+23384|Dimly Glowing Eye|inv_misc_eye_01|1
+23385|Dormant Mana Powder|inv_misc_dust_03|1
+23616|Crushed Crystal Fragment|inv_misc_gem_amethyst_02|6
+23695|Featherbeard's Map|inv_misc_note_06|1
+23772|Fel Iron Shells|inv_gizmo_felironshell|1
+23773|Adamantite Shells|inv_misc_ammo_bullet_04|1
+23815|Ruined Schematic|inv_scroll_08|1
+23847|Nolkai's Band|inv_jewelry_ring_35|8
+23920|Tattered Handkerchief|inv_misc_bandage_08|1
+23922|Rat Skeleton|inv_misc_bone_02|1
+23938|Pristine Ravager Carapace|inv_shield_24|1
+23939|Pristine Ravager Claw|inv_misc_ahnqirajtrinket_02|1
+23944|Broken Ravager Carapace|inv_shield_24|1
+23945|Broken Ravager Fang|inv_misc_bone_08|1
+23946|Broken Ravager Claw|inv_misc_ahnqirajtrinket_02|1
+23947|Cracked Ravager Carapace|inv_shield_24|1
+23948|Cracked Ravager Fang|inv_misc_bone_08|1
+23949|Cracked Ravager Claw|inv_misc_ahnqirajtrinket_02|1
+23952|Damaged Ravager Claw|inv_misc_ahnqirajtrinket_02|1
+23965|Chipped Ravager Claw|inv_misc_ahnqirajtrinket_02|1
+23975|Damaged Ravager Fang|inv_misc_bone_08|1
+23976|Gnarled Ravager Carapace|inv_shield_24|1
+23977|Gnarled Ravager Fang|inv_misc_bone_08|1
+23978|Gnarled Ravager Claw|inv_misc_ahnqirajtrinket_02|1
+23979|Chipped Ravager Carapace|inv_shield_24|1
+23980|Chipped Ravager Fang|inv_misc_bone_08|1
+23987|Mutated Petal|inv_misc_herb_04|1
+23988|Mutated Vine|inv_misc_herb_15|1
+24186|Copper Powder|inv_misc_powder_copper|5
+24188|Tin Powder|inv_misc_powder_tin|5
+24189|Crystalline Fragments|inv_misc_gem_ruby_03|1
+24190|Iron Powder|inv_misc_powder_iron|13
+24223|Bloodvalor's Notes|inv_misc_note_02|1
+24231|Coarse Snuff|inv_misc_dust_02|1
+24232|Shabby Knot|inv_misc_bandage_06|1
+24234|Mithril Powder|inv_misc_powder_mithril|13
+24235|Thorium Powder|inv_misc_powder_thorium|21
+24242|Fel Iron Powder|inv_misc_powder_feliron|25
+24277|Items for Magister Astalor Bloodsworn|inv_misc_note_05|1
+24281|Carved Ivory Bone|inv_misc_bone_10|1
+24282|Rogue's Diary|inv_misc_book_09|1
+24283|An Antique Gun|inv_musket_01|1
+24368|Coilfang Armaments|inv_spear_06|1
+24386|Libram of Saints Departed|inv_misc_book_13|34
+24403|Common Fern|inv_misc_herb_11|1
+24404|Ruined Specimen|inv_misc_herb_05|1
+24405|Common Azerothian Species|inv_misc_herb_08|1
+24406|Common Flower|inv_misc_trailofflowers|1
+24413|Totem of the Thunderhead|spell_nature_lightning|37
+24417|Scout's Arrow|inv_misc_ammo_arrow_05|1
+24475|Gordawg's Imprint|inv_stone_15|1
+24507|Elemental Shard|inv_datacrystal02|1
+24508|Elemental Fragment|inv_datacrystal03|1
+24510|Primordial Core|inv_datacrystal11|1
+24511|Primordial Essence|inv_datacrystal07|1
+24516|Damaged Rock Flayer Talon|inv_misc_monsterfang_01|1
+24517|Blood Soaked Tail|inv_misc_monstertail_03|1
+24519|Twisted Rock Flayer Talon|inv_misc_monsterfang_01|1
+24521|Mangled Tail|inv_shield_24|1
+10579|Explosive Arrow||1
+10651|Cracked Arcane Focusing Crystal||1
+18229|Nat Pagle's Guide to Extreme Anglin'||1
+18365|A Thoroughly Read Copy of "Nat Pagle's Extreme' Anglin."||1
+18769|Torn Scroll||1
+18770|Torn Scroll||1
+18771|Torn Scroll||1
+23357|Hatched Ravager Egg||1
+23940|Pristine Ravager Fang||1
+23941|Crushed Ravager Carapace||1
+23942|Crushed Ravager Fang||1
+23943|Crushed Ravager Claw||1
+23950|Damaged Ravager Carapace||1
+23951|Damaged Ravager Fang||1
+23953|Worn Ravager Carapace||1
+23954|Worn Ravager Fang||1
+23955|Worn Ravager Claw||1
+23957|Weathered Ravager Carapace||1
+23958|Weathered Ravager Fang||1
+23959|Weathered Ravager Claw||1
+23960|Beaten Ravager Carapace||1
+23961|Beaten Ravager Fang||1
+23962|Beaten Ravager Claw||1
+23966|Flawed Ravager Carapace||1
+23967|Flawed Ravager Fang||1
+23968|Flawed Ravager Claw||1
+23969|Imperfect Ravager Carapace||1
+23970|Imperfect Ravager Fang||1
+23971|Imperfect Ravager Claw||1
+23972|Mangled Ravager Carapace||1
+23973|Mangled Ravager Fang||1
+23974|Mangled Ravager Claw||1
+23992|Torn Saurian Pelt||1
+23993|Cracked Saurian Claw||1
+24187|Shiny Rock||10
+24191|Small Gem Shards||30
+24506|Elemental Sliver||1
+24509|Primordial Element||1
+24515|Mangy Mane||1
+24518|Coarse Mane||1

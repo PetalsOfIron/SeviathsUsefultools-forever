@@ -1,0 +1,906 @@
+Title: Battle for Azeroth Mount Guide - Wowhead
+URL: https://www.wowhead.com/guide/mount-collecting-battle-for-azeroth
+Source element: <div>
+---
+Battle for Azeroth Mount Guide
+By Sanghelios
+Updated: 2021/07/12
+Show Table of Contents
+Overview
+This guide is a very detailed coverage of every mount that has been added to the game with Battle for Azeroth.
+
+If you find any information missing or misleading, please feel free to leave a comment. Remember to check the Wowhead comments for each mount for even more details from the Wowhead community.
+
+This guide has a lot of information, and therefore tables are included below that lists all the mounts mentioned in this guide and the categories that they belong. Along with the Table of Contents, you can use this table to quickly navigate around this guide and at a glance see from where all mounts are obtained.
+
+If you’re looking to track your collections, Wowhead now has the Battle Pet Collection Tracker and Mount Collection Tracker! To use the tracker, simply import your character to view your collections. You can read more about how to use this feature here!
+Recently Added
+Mounts added in the most recent content update can be quickly found in this table.
+
+Visions of N'Zoth: Patch 8.3
+ Xinlao	Drop from Anh-De the Loyal - Vale of Eternal Blossoms, Mogu Assault
+ Ren's Stalwart Hound	Drop from Houndlord Ren - Vale of Eternal Blossoms, Mogu Assault
+ Clutch of Ha-Li	Drop from Ha-Li - Vale of Eternal Blossoms, Mogu Assault
+ Ivory Cloud Serpent	Use a  Zan-Tien Lasso on the Ivory Cloud Serpent - Vale of Eternal Blossoms, Mogu Assault
+ Reins of the Drake of the Four Winds	Drop from Ishak of the Four Winds - Uldum, Black Empire Assault
+ Malevolent Drone	Drop from Corpse Eater - Uldum, Aqir Assault
+ Waste Marauder	Drop from Rotfeaster - Uldum, Amathet Assault
+ Reins of the Springfur Alpaca	 Alpaca It In - Feed a Friendly Alpaca with  Gersahl Greens in Uldum for 7 days
+ Shadowbarb Drone	Uldum, Shadowbarb Drone Questline
+ Wastewander Skyterror	Uldum Accord Vendor Exalted - 24,000
+ Rajani Warserpent	Rajani Vendor - Requires a  Pristine Cloud Serpent Scale
+ Mechagon Mechanostrider	Reward from  Allied Races: Mechagnome
+ Caravan Hyena	Reward from  Allied Races: Vulpera
+ Sandy Nightsaber	350 Service Medals - Requires  Heroic: War for the Shore/ Heroic: War for the Shore
+ Reins of the Elusive Quickhoof	Vol'dun - Feed a Elusive Quickhoof with  Seaside Leafy Greens Mix
+ Slightly Damp Pile of Fur	Drop from Dunegorger Kraulok - World Boss in Vol'dun
+ Wicked Swarmer	Horrific Visions - 100000  Corrupted Mementos, requires  We Have the Technology
+ Mail Muncher	Horrific Visions - Drop from Mail Muncher, can spawn when inspecting mailboxes
+ Black Serpent of N'Zoth	Horrific Visions - Reward from  Through the Depths of Visions
+ Uncorrupted Voidwing	Ny'alotha Raid - Reward from  Ahead of the Curve: N'Zoth the Corruptor questline
+ Ny'alotha Allseer	Ny'alotha Raid - Mythic N'Zoth the Corruptor drop
+ Wriggling Parasite	Ny'alotha Raid - Reward from  Glory of the Ny'alotha Raider
+ Awakened Mindborer	Reward from  Battle for Azeroth Keystone Master: Season Four
+ Vicious White Warsaber	Battle for Azeroth Season 4 PvP Mount
+ Vicious White Bonesteed	Battle for Azeroth Season 4 PvP Mount
+ Corrupted Gladiator's Proto-Drake	Battle for Azeroth Season 4 Gladiator PvP Mount
+Past Battle for Azeroth Patches
+The Mount Collector Mounts
+In Battle for Azeroth, there are two new milestones for mount collectors to achieve,  No Stable Big Enough for collecting 350 mounts and  A Horde of Hoofbeats for collecting 400 mounts. There have been enough mounts before Battle for Azeroth to achieve these early on, but Battle for Azeroth brings many new mounts to help you reach and obtain these mounts. So keep in mind that all the mounts below in this guide are also working towards these two new achievement mounts or even earlier ones in their series.
+
+The last mount milestone achievement,  Lord of the Reins, was added back during Patch 6.2.2 of the Warlords of Draenor expansion.
+
+Mount	Source
+ Biting Frostshard Core	 No Stable Big Enough - 350 mounts usable on a single character.
+ Frenzied Feltalon	 A Horde of Hoofbeats - 400 mounts usable on a single character.
+Biting Frostshard Core
+Frenzied Feltalon
+
+ Biting Frostshard Core - "These icy minions come from an unknown plane far from this one."
+Teaches:  Frostshard Infernal
+Ground Mount
+This mount is a reward from the achievement,  No Stable Big Enough, for collecting 350 mounts.
+
+Things to know about obtaining this:
+Only the total amount of mounts a single character can use will count towards this total.
+Paladin and Warlock class-specific mounts will only count towards the maximum amount on those characters. This extra count, however, doesn't happen with Legion class mounts.
+Gladiator mounts and certain other special mounts that are not account-wide will only count towards the maximum of the characters that earn these mounts.
+Legion class mounts for an unknown reason count towards the maximum across your account.
+Paladins have an advantage with three unique class specific mounts.
+Strategy to Obtain This Mount
+There are a tremendous amount of mounts, and it would be too much to go into detail about how to obtain all of them, but here are some general tips about increasing your mount collection count.
+Have a Paladin. Simply put, Paladins have their two class-specific mounts and can also obtain an additional mount at the Argent Tournament that no other class can use.
+Having multiple characters allows you to make multiple chances at mounts that a character normally only gets one chance per day/week.
+Legion Class Mounts are special and share credit across your account. A guide to Legion Class mounts can be found here: Obtaining Legion Class Mounts.
+Have fun! If you are just getting into mount collecting, it is a long journey, and you will have to collect many rare mounts that are worth being excited about obtaining after grinding them out.
+Dungeon Mounts
+Mount	Source
+ Underrot Crawg Harness	Mythic / Mythic+ The Underrot
+ Sharkbait's Favorite Crackers	Mythic / Mythic+ Freehold
+ Mummified Raptor Skull	Mythic / Mythic+ Kings' Rest
+ Mechagon Peacekeeper	Drop from HK-8 Aerial Oppression Unit in Operation: Mechagon
+ Aerial Unit R-21/X	Drop from King Mechagon in Operation: Mechagon
+
+ Reins of the Obsidian Krolusk	 Glory of the Wartorn Hero
+ Awakened Mindborer	 Battle for Azeroth Keystone Master: Season Four
+Rare Drop
+The following mounts are rare drops from certain Dungeons in Battle for Azeroth. These can only drop in the Mythic version of these dungeons, giving players one chance a week on a particular character. However these mounts are also available in the Mythic Keystone version of these dungeons and have a chance to be in the "Challenger's Cache" located at the end of a Mythic Keystone dungeon along with the other loot of the dungeon. Therefore multiple attempts can be made at these mounts provided you have a  Mythic Keystone for one of these dungeons. These mounts are awarded automatically through Personal Loot to a player that has not already learned the mount and is tradeable between members of the group.
+
+The last time dungeon mount drops were implemented was in the Cataclysm expansion.
+
+Underrot Crawg Harness
+Sharkbait's Favorite Crackers
+Mummified Raptor Skull
+Mechagon Peacekeeper
+Aerial Unit R-21/X
+ Underrot Crawg Harness - "The eternal twilight of the Underrot has robbed this crawg of all pigmentation."
+
+Teaches:  Underrot Crawg
+Ground Mount
+This mount is a rare drop from the Unbound Abomination in Mythic The Underrot on a weekly lockout. This mount can also be contained in the "Challenger's Cache" at the end of a  Mythic Keystone The Underrot dungeon in addition to the other loot. Beating the timer and the level of the keystone does not affect the chance for this mount to drop.
+
+Estimated Drop Chance: 1%
+
+Things to know about obtaining this:
+Awarded through Personal Loot.
+The mount is tradeable between other group members in the dungeon.
+A player who already has the mount learned will not be able to loot another from the boss or chest.
+Obtaining the mount does not trigger a guild message like some other rare drop mounts.
+Strategy to Obtain This Mount
+
+This mount can be obtained in a very similar way as  Sharkbait's Favorite Crackers.
+
+There is a good chance you may obtain this mount, or encounter someone that has it drop while doing regular Mythic and Mythic+ activities to gear up. If you are interested in getting this mount but aren't in a rush to collect it, it is smart not to go too crazy targeting Underrot Keystones as you will likely be doing plenty of Mythic+ Underrot throughout the entire expansion.
+
+Now if you are eager to add this mount to your collection, there are two good ways to grind out attempts at this mount. In both cases, because the mount is personal loot and the chance to obtain is the same regardless of how many players are present, I suggest doing the following with a group of friends. Perhaps you can even convince a friend to trade you the mount if they get it!
+
+The first method involves speed running regular Mythic The Underrot, skipping as many bosses and trash to get to the last boss, Unbound Abomination who drops the mount. Luckily, in this dungeon, you don't need to kill any other bosses to get to the last one. Therefore clear trash and walk past bosses until you get to the end. Unfortunately, regular Mythic dungeons have a weekly lockout, so after you kill the end boss once; you will either have to swap to a different character and clear again, or wait for the weekly reset. Overall this method is the fastest per attempt and regular Mythic will be easier to clear as you get more gear, but this is limited based on how many characters you have at level 120 and how geared the group is.
+
+The second method involves targeting The Underrot  Mythic Keystones. The best way is to form a four-person group, preferably with a tank and healer already, and then list your group in the Group Finder and ask specifically for Underrot keystones. As the mount has an equal drop chance regardless of the level, pick any level keystone you prefer. If you are solely seeking the mount, lower level keystones will be faster. The advantage to this method is that you can grind out attempts at this mount with one character, but you won't be able to skip bosses or too much trash like you can on regular Mythic dungeons.
+
+Glory of the Wartorn Hero
+ Reins of the Obsidian Krolusk - "This krolusk is marked with proof of surviving scores of trials and hardships."
+
+Teaches:  Obsidian Krolusk
+Ground Mount
+This mount is a reward for completing the achievement  Glory of the Wartorn Hero.
+
+These achievements must be done on the Mythic difficulty of the dungeons and involve doing some special activities throughout the dungeon encounters which often make the fights more challenging.
+
+Things to know about obtaining this:
+Progress towards  Glory of the Wartorn Hero is account-wide.
+Strategy to Obtain This Mount
+As most of these achievements require good coordination as well as making encounters harder, a full group of friends is recommended. A full guide on how to complete all the achievements can be found here: Glory of the Wartorn Hero Achievement Guide.
+Battle for Azeroth Keystone Master: Season 4
+ Awakened Mindborer - "It may look menacing right now, but it's actually kind of cute when it's asleep."
+
+Teaches:  Awakened Mindborer
+Flying Mount
+This mount is a reward for completing the achievement  Battle for Azeroth Keystone Master: Season Four.
+
+For this achievement, you need to complete all Battle for Azeroth dungeons during Season Four, at Mythic level 15 or more, within the time limit.
+
+Things to know about obtaining this:
+Progress towards  Battle for Azeroth Keystone Master: Season Four is account-wide.
+Strategy to Obtain This Mount
+As high level Mythic Keystone dungeons can be hard to complete, a group of friends or competent players used to Mythic Keystone dungeons is required for this achievement.
+Raid Mounts
+While there are no mounts that directly drop from raid bosses in Uldir, Battle for Dazar'alor has two drop mounts,  G.M.O.D., from High Tinker Mekkatorque in any difficulty, and  Glacial Tidestorm, from Mythic Lady Jaina Proudmoore. Besides those drops, there are also the two Glory of the Raider mounts from  Glory of the Uldir Raider and  Glory of the Dazar'alor Raider.
+
+Mount	Source
+ Bloodgorged Crawg	 Glory of the Uldir Raider
+ Dazar'alor Windreaver	 Glory of the Dazar'alor Raider
+ G.M.O.D.	High Tinker Mekkatorque
+ Glacial Tidestorm	Mythic Lady Jaina Proudmoore
+ Azshari Bloatray	 Glory of the Eternal Raider
+ Uncorrupted Voidwing	 Ahead of the Curve: N'Zoth the Corruptor Questline
+ Wriggling Parasite	 Glory of the Ny'alotha Raider
+ Ny'alotha Allseer	Mythic N'Zoth the Corruptor
+Bloodgorged Crawg
+Dazar'alor Windreaver
+G.M.O.D.
+Glacial Tidestorm
+Azshari Bloatray
+Uncorrupted Voidwing
+Wriggling Parasite
+Ny'alotha Allseer
+ Bloodgorged Crawg - "This crawg was left alone to feast on G'huun's corrupted blood and rot. He was so happy."
+
+Teaches:  Bloodgorged Crawg
+Ground Mount
+This mount is a reward from completing  Glory of the Uldir Raider which is an achievement for completing all the achievements for completing particular tasks during the encounters of the Uldir raid.
+
+Things to know about obtaining this:
+Automatically awarded upon completing the achievement,  Glory of the Uldir Raider.
+Progress towards  Glory of the Uldir Raider is account-wide.
+Strategy to Obtain This Mount
+As most of these achievements either make the bosses of Uldir more difficult or involve playing much differently than normal, you will want to form a group with players who intend to work towards these achievements rather than just clearing the raid for other reasons. You'll want to do these achievements on Normal mode and prefer to bring players who are much more geared than what is intended for Normal mode to make these achievements easier.
+
+A full guide to  Glory of the Uldir Raider can be found in Glory of the Uldir Raider Achievement Guide. Specific achievement information can also be found on the comments page of individual achievements.
+Warfronts
+These mounts are obtained from rares located in the zones updated with each Warfront launched.
+
+Mount	Source
+ Swift Albino Raptor	Beastrider Kama in Arathi Highlands
+ Skullripper	Skullripper in Arathi Highlands
+ Witherbark Direwing	Nimar the Slayer in Arathi Highlands
+ Lil' Donkey	Overseer Krix in Arathi Highlands
+ Broken Highland Mustang (Horde Only)	Knight-Captain Aldrin in Arathi Highlands
+ Highland Mustang (Alliance Only)	Doomrider Helgrim in Arathi Highlands
+ Blackpaw	Agathe Wyrmwood/Blackpaw in Darkshore
+ Kaldorei Nightsaber	Croz Bloodrage/Shadowclaw in Darkshore
+ Ashenvale Chimaera	Alash'anir in Darkshore
+ Frightened Kodo	Frightened Kodo in Darkshore
+ Captured Umber Nightsaber	Moxo the Beheader/Athil Dewfire in Darkshore
+Arathi Highlands Rare Spawn Drops
+These mounts are from rare spawn NPCs in the 120 version of Arathi Highlands. While these mounts have a somewhat higher drop-chance than most mounts around the game, these are only killable for loot once about every 2-3 weeks. If you are eager to obtain these, having multiple characters to kill these rares is highly recommended to speed up this collection.
+Swift Albino Raptor
+Skullripper
+Witherbark Direwing
+Lil' Donkey
+Broken Highland Mustang
+Highlands Mustang
+ Swift Albino Raptor - "The Witherbark warrior Beastrider Kama once cut bloody swatches of terror across the Arathi Highlands astride such a monster."
+
+Teaches:  Swift Albino Raptor
+Ground Mount
+This mount is a rare drop from Beastrider Kama in the level 120 version of Arathi Highlands.
+
+Beastrider Kama is located patrolling up and down Witherbark Village at about (66.5, 67.6). He respawns about a minute after being killed.
+
+Estimated Drop Chance: 5%
+
+Things to know about obtaining this mount:
+Awarded through Personal Loot.
+Beastrider Kama has 216k health and can be killed fairly easily alone.
+These rare spawns are only available in the new version of Arathi Highlands which is unlocked after reaching level 120.
+Arathi Highlands rares can be killed once per cycle of the Warfront for loot. This lockout resets when your faction takes control of the zone. A full cycle takes about two weeks.
+Can not be traded, even to other members of the group if killed in a group.
+Darkshore Rare Spawn Drops
+These mounts are from rare spawn NPCs in the 120 version of Darkshore. While these mounts have a fairly higher drop-chance than most mounts around the game, these are only killable for loot once about every 2-3 weeks. If you are eager to obtain these, having multiple characters to kill these rares is highly recommended to speed up this collection.
+Blackpaw
+Kaldorei Nightsaber
+Ashenvale Chimaera
+Frightened Kodo
+Umber Nightsaber
+ Blackpaw/ Caged Bear - "Blackpaw was just hibernating, minding his own business, and then suddenly there was a warfront."
+
+Teaches:  Blackpaw
+Ground Mount
+This mount is a rare drop from Agathe Wyrmwood for Alliance players, or Blackpaw for Horde players in the level 120 version of Darkshore.
+
+Both Alliance and Horde NPCs are fighting with each other and are located near the main road of Darkshore at (49.5 25.1). They respawn a minute after being killed.
+
+Estimated Drop Chance: 5%
+
+Things to know about obtaining this mount:
+Awarded through Personal Loot.
+Both rares, Agathe Wyrmwood and Blackpaw, are endlessly fighting in their location, each friendly to one faction.
+These rare spawns are only available in the 120 version of Darkshore which is unlocked for level 120 players.
+Darkshore rares can be killed once per cycle of the Warfront for loot. This lockout resets when your faction takes control of the zone. A full cycle takes about three weeks.
+Can not be traded, even to other members of the group if killed in a group.
+Service Medals
+A new feature from Tides of Vengeance, Service Medals are rewards from completing tasks related to Warfronts and Faction Assaults. Currently, there are a total of five mounts - two exclusive to Alliance, two exclusive to Horde, and one purchasable by both factions.
+Alliance Mounts
+Azureshell Krolusk
+Priestess' Moonsaber
+ Azureshell Krolusk - "Captured from the desolate sands of Vol'dun, this mount is surprisingly docile in captivity."
+
+Alliance Only
+Teaches:  Azureshell Krolusk
+Also teaches  Rubyshell Krolusk for Horde Characters
+Ground Mount
+Purchased from Provisioner Stoutforge for 250.
+
+Gottum is located in Boralus, near the Warfront Table.
+Horde Mounts
+Rubyshell Krolusk
+Bloodthirsty Dreadwing
+ Rubyshell Krolusk - "Captured from the desolate sands of Vol'dun, this mount is surprisingly docile in captivity."
+
+Horde Only
+Teaches:  Rubyshell Krolusk
+Also teaches  Azureshell Krolusk for Alliance Characters
+Ground Mount
+Purchased from Provisioner Mukra for 250.
+
+Provisioner Mukra is located in Boralus, near the Warfront Table.
+Non Faction Exclusive Mount
+Sandy Nightsaber
+ Sandy Nightsaber - "A rare color for a nightsaber, and rarely seen, they are prized amongst huntresses."
+
+Teaches:  Sandy Nightsaber
+Ground Mount
+Things to know about obtaining this:
+This mount will only show up on its respective vendors once you earn the achievement  Heroic: War for the Shore/ Heroic: War for the Shore, requiring you to win a Heroic Darkshore warfront.
+Purchased from Provisioner Stoutforge or Provisioner Mukra for 350.
+
+Gottum is located in Boralus, near the Warfront Table. Provisioner Mukra is located in Dazar'alor, near the Warfront table.
+World Drop
+These mounts are obtained out in the world and drop from certain NPCs. Battle for Azeroth has many mounts that drop out in the world and can be divided among 5 categories of content.
+Zandalar and Kul'Tiras Zone Drops
+Arathi Highlands Rare Spawn Drops
+Abyssal Fragments "Questline"
+Kua'fon and Child of Torcali Questline (Horde Only)
+Honeyback Harvester Questline (Alliance Only)
+Mount	Source
+ Captured Dune Scavenger	Sethrak in Vol'dun
+ Reins of a Tamed Bloodfeaster	Blood Trolls in Nazmir
+ Goldenmane's Reins	Tidesages and Quilboars in Stormsong Valley
+ Chewed-On Reins of the Terrified Pack Mule	Hexthralled Humans in Drustvar
+ Nazjatar Blood Serpent	20 x  Abyssal Fragment
+ Kua'fon's Harness (Horde Only)	 Pterrordax Egg
+ Wonderwing 2.0	 Battle for Azeroth Pathfinder, Part Two
+ Child of Torcali	Reward from the Wander Not Alone quest, unlocked after completing  How to Train Your Direhorn
+ Honeyback Harvester's Harness	Reward from  Leaving the Hive at the end of the Honeyback Harvester chain
+ Reins of the Elusive Quickhoof	Find a Elusive Quickhoof in Vol'dun and feed it  Seaside Leafy Greens Mix
+ Slightly Damp Pile of Fur	Drop from World Boss Dunegorger Kraulok in Vol'dun
+Kul'Tiras and Zandalar World Drops
+Captured Dune Scavenger
+Reins of a Tamed Bloodfeaster
+Goldenmane's Reins
+Chewed-On Reins of the Terrified Pack Mule
+Elusive Quickhoof
+Mollie
+ Captured Dune Scavenger - "These resilient scavengers can survive for months in the wastes of Vol'dun with scarce access to food and water."
+
+Teaches:  Dune Scavenger
+Ground Mount
+Binds when used
+This mount can be very rarely looted from many various Sethrak creatures in Vol'dun. This mount is also "Bind on Use" allowing it to be traded and purchased/sold on the Auction House.
+
+Things to know about obtaining this:
+Awarded through Personal Loot.
+Can be looted and learned by non-max level characters.
+Tagged "Unique" so you can only have one in your inventory or bank at a given time.
+Make sure to loot, or you may miss out on a drop! The postmaster won't have your back if you forget to loot.
+Strategy to Obtain This Mount
+The following information applies to all 4 of the Kul'Tiras and Zandalar World Drop mounts so if you have read up on one of the other mounts; you may want to skip three paragraphs to the section specific about this mount.
+
+The chance for this mount to drop is very very low and is going to take a significant amount of time and luck (or just extreme luck) to get one to drop. That being said, there are a couple of things to consider before heading out to Vol'dun to mindlessly grind for who knows how long.
+
+Firstly, if you aren't in a rush to get this mount and have Horde characters to level, consider holding off this mount grind until after you have leveled all your Horde characters through Vol'dun. You may conveniently loot this mount while simply questing through the zone. While very unlikely, it will still feel much more efficient to accomplish other tasks while searching for this mount.
+
+Second, the mount is "Bind on Use" meaning if you have gold to spend, you can check the Auction House or check out trade chat and buy the mount to learn for yourself.
+
+Dune Scavenger Farm
+
+Now if you want to get this mount and aren't going to pay-to-win this into your collection, then it is off to the dunes with you. I would highly suggest attempting to join or form a five man group to help tag and kill creatures faster than you could solo. Due to the mount being personal loot, you don't reduce your chance of getting a mount by being in a group. However, a raid group is a no-go, as many items including this mount will not drop for players in raid groups.
+
+You'll be looking to kill the snake looking creatures of Vol'dun called Sethrak. Just about any creature with the word "Sethrak" or "Faithless" in their name. These creatures can be found all over Vol'dun so you have a lot of options and places you may visit to attempt to get this mount. Now popular areas to farm these Sethrak have a history of having spawn rates of creatures nerfed, but here is some information on good locations to farm.
+
+This map marks several locations where you can find "Sethrak" or "Faithless" type creatures that can drop the  Captured Dune Scavenger.
+
+Hide pins
+Vol'dun
+
+Hyper Spawns - This term is used to describe a method of farming a large number of creatures at a fast rate. Hyper Spawn farming is abusing a forced respawn on certain creatures in a reasonably small area, often NPCs that are killed as a requirement of a quest. Generally, these NPC's respawn timer is affected based on how often they are being killed to help quest pacing in crowded areas. So if many creatures in the area are being killed often, the respawn of these creatures will speed up to accommodate.
+
+In some areas, this causes the respawn of NPCs to get as low as 10 seconds, allowing a group to set up camp in a small area and farm the same ten mobs about every 15 seconds. Many of these have been nerfed but is still something to keep an eye out for.
+Nazjatar Blood Serpent
+ Nazjatar Blood Serpent - "Monstrous serpents riddled with corruption serve as mounts for N'zoth's high-ranking lieutenants in the Great Sea."
+
+Teaches:  Nazjatar Blood Serpent
+Flying Mount
+Does not appear in mount journal until learned
+This mount is a guaranteed drop from Adherent of the Abyss who is summoned after completing a series of tasks after collecting 20 x  Abyssal Fragment. Only the player summoning will be eligible for the mount.
+
+The bulk of the work of obtaining this mount is obtaining 20 x  Abyssal Fragments which are very rare drops from several "Old God" related creatures in Kul'Tiras and Zandalar. Creatures such as Naga, Faceless, and void Cultists seem to drop these fragments. The fragments are not "Bind on Pickup" and therefore fully tradeable and can be purchased/sold on the Auction House.
+
+ Abyssal Fragments have also been reported to be contained in boxes awarded after random battleground wins.
+
+ Nazjatar Blood Serpent drop chance: 100%
+Estimate  Abyssal Fragment drop chance: < 1%
+
+Things to know about obtaining this:
+Only the player summoning the boss will be able to loot the mount, but others may help kill the boss.
+ Abyssal Fragment are not bound on pickup, so you can essentially purchase this mount as the fragments are 90% of the work.
+Failing to kill the boss may risk your summon being wasted, I highly suggest having friends along to minimize the chance of wasting your fragments.
+Be level 120 or have level 120 friends when summoning the boss.
+Kua'fon's Harness Questline
+ Kua'fon's Harness - "Once a little hatchling, raised into a mighty pterrordax by a loving handler. He never did learn to fly, though."
+
+This mount is only obtainable on a Horde character, as the entire questline is only accessable by Horde characters. The mount itself however IS usable on Alliance characters once it has been learned on a Horde character.
+
+Teaches:  Kua'fon
+Flying Mount
+This mount is the end reward of the  How to Ptrain Your Pterrordax 29-day questline. This questline begins from the quest item,  Pterrordax Egg, which is a very rare drop from several Pterrordax creatures throughout Zandalar. This questline is only available to level 120 Horde characters.
+
+Estimated  Pterrordax Egg drop chance: < 1%
+
+Things to know about obtaining this:
+After obtaining the  Pterrordax Egg, assuming you never miss a day you will receive your mount in 29 days counting the day you begin the quest.
+The questline is Horde only, but the mount is usable on Alliance characters after you obtain it.
+This mount can fly after finishing a quick questline.
+Skree!
+Wonderwing 2.0
+ Wonderwing 2.0 - "Don't ask what happened to the first one -- Mechagon technology is still gnome technology!"
+
+Teaches:  Wonderwing 2.0
+Flying Mount
+Automatic Learned
+Things to know about obtaining this:
+Learned automatically upon completing  Battle for Azeroth Pathfinder, Part Two and unlocking Flying in Battle for Azeroth.
+Players can work on unlocking it before Patch 8.2 by completing  Battle for Azeroth Pathfinder, Part One.
+Strategy to Obtain This Mount
+
+ Battle for Azeroth Pathfinder, Part Two requires you to complete  Battle for Azeroth Pathfinder, Part One, explore all areas from Patch 8.2 and achieve revered status with the two new reputations for your faction. The gating here comes from the reputations, which takes roughly 10 days of World Quests.
+Child of Torcali
+ Child of Torcali - "This daughter of the great direhorn loa, Torcali, never lost faith that her keeper would help her grow to her full potential."
+
+Teaches:  Child of Torcali
+Ground Mount Mount
+Things to know about obtaining this:
+Reward from the quest "Wander Not Alone", which becomes available upon completing  How to Train Your Direhorn.
+Players can work on unlocking it before Patch 8.2 by completing the first two steps from  How to Train Your Direhorn, which culminates with  Held For Observation.
+Strategy to Obtain This Mount
+
+ Child of Torcali is received as the final prize from the Direhorn questline in Zuldazar, that started all the way back in patch 8.0. The questline starts with  The Missing Handler and ends, before 8.2, at  Held For Observation. With Patch 8.2, however, new quests are added which allow you to fully bond with your Direhorn.
+Honeyback Harvester Questline
+ Honeyback Harvester's Harness - "While most Harvesters dream only of honey and flowers, this adventurous specimen looks to the wide world beyond Stormsong Valley."
+
+This mount is only obtainable on an Alliance character, as the entire questline is only accessable by Alliance characters. The mount itself is NOT usable by Horde characters.
+
+Teaches:  Honeyback Harvester
+Flying Mount
+This mount is the end reward of a questline involving the Honeyback Hive faction. This questline is not timegated, but it does require quite a bit of grinding to end it.
+
+To start this questline, you must obtain one of two battle pets: Bumbles from the achievement  Let's Bee Friends, or Seabreeze Bumblebee, purchased from Sister Lilyana in Stormsong Valley. Once you have either battle pet, you are able to discover this faction and embark on the questline.
+
+Things to know about obtaining this:
+This questline is not timegated and can be grinded at your own leisure -  Thin Jelly, the base item to increase your reputation with the Honeyback Harvester, can be purchased at the Auction House.
+The questline is Alliance only, with the Horde being unable to ride the mount.
+Mechagon
+Mount	Source
+ Keys to the Model W	 Mecha-Done
+ Rusty Mechanocrawler	Drop from Mobs in Mechagon
+ Rusted Keys to the Junkheap Drifter	Drop from Rustfeather in Mechagon
+ Mechanocat Laser Pointer	Sold by Pascal-K1N6 in Mechagon upon unlocking all Mechagon Tinkering potential, plus farming some materials.
+ Scrapforged Mechaspider	Reward from  Drive It Away Today. Likely linked to Rustbolt Resistance, but no more information available.
+Keys to Model W
+Rusty Mechanocrawler
+Rusted Keys to the Junkheap Drifter
+Mechanocat Laser Pointer
+Scrapforged Mechaspider
+ Keys to the Model W - "The rapid technological evolution of the descendents of Mimiron began with the introduction of a new gear, leading to such wonders as the tragically under-produced Model W."
+
+Teaches:  Mechacycle Model W
+Ground Mount
+Things to know about obtaining this:
+Reward from completing  Mecha-Done, Meta-achievement for Mechagon.
+The mount is received on your mail after you complete it.
+Strategy to Obtain This Mount
+
+ Mecha-Done requires you to take part on most activities in Mechagon in order to complete it. Starting with complete its whole questline, unlocking all colors of  Mechanocat Laser Pointer, unlocking all Junkyard projects, and defeating all rares in the zone. Focus on working with as many criteria as possible. Kill rares as you quest or go after Junkyard patterns, etc.
+Nazjatar
+Mount	Source
+ Snapback Scuttler	 Undersea Usurper
+ Silent Glider	Drop from Soundless in Nazjatar
+ Fabious	Take a S.E.L.F.I.E. with Fabious
+ Royal Snapdragon	Rare chance to loot from  Ankoan Supplies/ Unshackled Supplies
+ Crimson Tidestallion	Sold by Mrrl in Nazjatar for completing her secret and awards  Mrrl's Secret Stash upon purchase.
+ Deepcoral Snapdragon	Level Hunter Akana to Rank 20
+ Snapdragon Kelpstalker	Level Neri Sharpfin to Rank 20
+Snapback Scuttler
+Silent Glider
+Fabious
+Royal Snapdragon
+Crimson Tidestallion
+Deepcoral Snapdragon
+Snapdragon Kelpstalker
+ Snapback Scuttler - "Giant crabs are native to Nazjatar and a favored food of the naga. This one must have been well-kept to grow this large."
+
+Teaches:  Snapback Scuttler
+Ground Mount
+Things to know about obtaining this:
+Reward from completing  Undersea Usurper, Meta-achievement for Nazjatar.
+The mount is received on your mail after you complete it.
+Strategy to Obtain This Mount
+
+ Undersea Usurper requires you to take part on most activities in Nazjatar in order to complete it. Starting with complete its whole questline, reaching Exalted with either Waveblade Ankoan or The Unshackled, defeating all rares in the zone, and much more. Focus on working with as many criteria as possible. Kill rares as you complete World Quests or go after Feline Figurines, etc. After this you will know the zone as the palm of your hand!
+N'Zoth Assaults
+These mounts can be obtained from N'Zoth Assaults, a new feature to Patch 8.3, Visions of N'Zoth.
+Uldum Assaults
+Mount	Source
+ Reins of the Drake of the Four Winds	Drop from Ishak of the Four Winds in Any invasions
+ Malevolent Drone	Drop from Corpse Eater in Aqir invasions
+ Waste Marauder	Drop from Rotfeaster in Amathet Invasions
+ Reins of the Springfur Alpaca	 Alpaca It In
+ Shadowbarb Drone	Reward from the Shadowbarb Drone questline
+Drake of the Four Winds
+Malevolent Drone
+Waste Marauder
+Springfur Alpaca
+Shadowbarb Drone
+ Reins of the Drake of the Four Winds - "Rocks erode, fires sputter, but wind remains powerful regardless of the passage of time. -Phaoris"
+
+Teaches:  Drake of the Four Winds
+Flying Mount
+Estimated  Reins of the Drake of the Four Winds drop chance: < 1%
+
+Things to know about obtaining this:
+Rare drop from Ishak of the Four Winds in Uldum.
+Personal Loot
+Not Tradable
+Can spawn in any invasions
+Each character has one daily chance at acquiring this mount when defeating this rare, regardless of how many times you kill it.
+Vale of Eternal Blossoms Assaults
+Mount	Source
+ Clutch of Ha-Li	Drop from Ha-Li in Mogu invasions
+ Ivory Cloud Serpent	Use a  Zan-Tien Lasso on a Ivory Cloud Serpent during Mogu invasions
+ Ren's Stalwart Hound	Drop from Houndlord Ren in Mogu invasions
+ Xinlao	Drop from Anh-De the Loyal in Mogu invasions
+Clutch of Ha-Li
+Ivory Cloud Serpent
+Ren's Stalwart Hound
+Xinlao
+ Clutch of Ha-Li - "The brood of Ha-Li are comfortable in the blue skies of Pandaria, hunting unsuspecting prey."
+
+Teaches:  Clutch of Ha-Li
+Flying Mount
+Estimated  Clutch of Ha-Li drop chance: < 1%
+
+Things to know about obtaining this:
+Rare drop from Ha-Li in Vale of Eternal Blosssoms.
+Personal Loot
+Not Tradable
+Only spawns during Mogu invasions
+Each character has one daily chance at acquiring this mount when defeating this rare, regardless of how many times you kill it.
+Horrific Visions
+These mounts can be obtained from Horrific Visions, a new feature to Patch 8.3, Visions of N'Zoth.
+
+Mount	Source
+ Wicked Swarmer	100000 from Wrathion, requires  We Have the Technology
+ Mail Muncher	Drop from Mail Muncher in Horrific Visions
+ Black Serpent of N'Zoth	 Through the Depths of Visions
+Wicked Swarmer
+Mail Muncher
+Black Serpent of N'Zoth
+ Wicked Swarmer - "When the Void reached out, the Aqir were formed in its terrible image."
+
+Teaches:  Wicked Swarmer
+Flying Mount
+Things to know about obtaining this:
+Requires the achievement to  We Have the Technology to be able to purchase the mount.
+Strategy to obtain this mount:
+As this mount requires the achievement  We Have the Technology, which already requires a high number of  Corrupted Mementos, as well as costing a high amount of Corrupted Mementos itself, this will take a long time and lots of Horrific Visions to obtain.
+
+Be mindful that Corrupted Mementos are also used to purchase the powerful gear augmentation  Gouged Eye of N'Zoth, so consider your strategy to use them carefully.
+Reputation Mounts
+Horde Reputation	Alliance Reputation
+Mount	Source	Mount	Source
+ Reins of the Expedition Bloodswarmer	Talanji's Expedition Exalted + 10,000	 Reins of the Dapple Gray	Storm's Wake Exalted + 10,000
+ Reins of the Captured Swampstalker	Talanji's Expedition Exalted + 90,000	 Reins of the Stormsong Coastwatcher	Storm's Wake Exalted + 90,000
+ Reins of the Alabaster Hyena	Voldunai Exalted + 10,000	 Reins of the Smoky Charger	Order of Embers Exalted + 10,000
+ Reins of the Voldunai Dunescraper	Voldunai Exalted + 90,000	 Reins of the Dusky Waycrest Gryphon	Order of Embers Exalted + 90,000
+ Reins of the Cobalt Pterrordax	Zandalari Empire Exalted + 10,000	 Reins of the Admiralty Stallion	Proudmoore Admiralty Exalted + 10,000
+ Reins of the Spectral Pterrorwing	Zandalari Empire Exalted + 90,000	 Reins of the Proudmoore Sea Scout	Proudmoore Admiralty Exalted + 90,000
+ Unshackled Waveray	The Unshackled Exalted + 250	 Ankoan Waveray	Waveblade Ankoan Exalted + 250
+Neutral Reputation
+Mount	Source
+ Rustbolt Resistor	Rustbolt Resistance Exalted + 524,288
+ Wastewander Skyterror	Uldum Accord Exalted + 24,000
+ Rajani Warserpent	Rajani +  Pristine Cloud Serpent Scale
+
+ Pureheart Courser	 100 Exalted Reputations
+Horde Reputation Mounts
+These mounts are available and usable to Horde players only. 2 of these mounts are flying mounts. In the event that you faction change a character that is Exalted with Horde factions to Alliance, the reputation status will carry over to their Alliance faction equivalents, however the Alliance equivalent mounts will not be automatically learned and will need to be purchased.
+Expedition Bloodswarmer
+Captured Swampstalker
+Alabaster Hyena
+Voldunai Dunescraper
+Cobalt Pterrordax
+Spectral Pterrorwing
+Unshackled Waveray
+ Reins of the Expedition Bloodswarmer - "Orphaned during the rout of the Blood Trolls, this bloodswarmer has been retrained by Talanji's handlers."
+
+Teaches:  Expedition Bloodswarmer
+Flying Mount
+This mount is available for purchase from Provisioner Lija for 10,000 after reaching Exalted status with Talanji's Expedition.
+
+Reputation with Talanji's Expedition is primarily gained by progressing through the Horde story quests and completing World Quests in Nazmir.
+Alliance Reputation Mounts
+These mounts are available and usable to Alliance players only. Unlike the Horde equivalents, all of these mounts are horses and can not fly. Faction changing from Alliance to Horde will cause the reputations to carry over to their Horde equivalents, but the Horde mounts will not and have to be repurchased from their vendors.
+Dapple Gray
+Stormsong Coastwatcher
+Smoky Charger
+Dusky Waycrest Gryphon
+Admirality Stallion
+Proudmoore Sea Scout
+Ankoan Waveray
+ Reins of the Dapple Gray - "A favored mount of the sea priests who call Stormsong home."
+
+Teaches:  Dapple Gray
+Ground Mount
+This mount is available for purchase from Sister Lilyana in Stormsong Valley for 10,000 after reaching Exalted status with Storm's Wake.
+
+Reputation with Storm's Wake is primarily gained by progressing through the Alliance story quests and completing World Quests in Stormsong Valley.
+Neutral Reputations
+Rustbolt Resistor
+ Rustbolt Resistor - "R E S I S T" is carved into the seat in crude letters, along with several, more profane things."
+
+Teaches:  Rustbolt Resistor
+Flying Mount
+This mount is available for purchase from Stolen Royal Vendorbot for 524,288 after reaching Exalted status with the Rustbolt Resistance.
+
+Reputation with Rustbolt Resistance is primarily gained by progressing through the story quests and completing World Quests in Mechagon.
+Wastewander Skyterror
+ Wastewander Skyterror - "Doubting a Wastewander Skyterror's capabilities is a quick way to find yourself missing a limb."
+
+Teaches:  Wastewander Skyterror
+Flying Mount
+This mount is available for purchase from Provisioner Qorra for 24,000 after reaching Exalted status with the Uldum Accord.
+
+Reputation with Uldum Accord is primarily gained by completing assaults, dailies and world quests in Uldum.
+Rajani Warserpent
+ Rajani Warserpent - "Fierce companions of the followers of Ra-den, the Rajani Warserpents are a force to be reckoned with."
+
+Teaches:  Rajani Warserpent
+Flying Mount
+This mount is available for purchase from Zhang Ku for a  Pristine Cloud Serpent Scale and has no reputation requirement.
+
+It is currently unknown how to obtain a  Pristine Cloud Serpent Scale, although as the Rajani is associated with the Vale of Eternal Blossoms zone, it is likely hidden somewhere in there.
+100 Exalted Reputations
+While working towards earning the above reputation mounts, you will slowly be making progress to a new mount added as a reward for reaching  100 Exalted Reputations.
+
+ Pureheart Courser - "These coursers have long been known to exist, but only befriend those that have gone to great lengths for friendship."
+
+Teaches:  Pureheart Courser
+Ground Mount
+This mount is a reward for earning the achievement,  100 Exalted Reputations. Progress towards this achievement counts the maximum reputations currently at Exalted with reputations counting account-wide in a future patch.
+
+Things to know about obtaining this:
+In the next content patch, Tides of Vengeance, reputations will count account-wide for  100 Exalted Reputations. This change means as long as one character on your account is Exalted with a certain reputation, it will count towards your maximum amount of Exalted reputations. So if one character is Exalted with the reputations of Legion but nothing else, meanwhile another character is Exalted with the reputations of Battle for Azeroth, and nothing else, both Legion and BFA reputations will be counted towards  100 Exalted Reputations.
+
+Reputations that have Alliance / Horde equivalents will only count as one reputation, however.
+Island Expedition
+These mounts are very rarely obtained randomly at the end of Island Expeditions. You do not need to kill any specific mobs, simply be in an island with certain mobs. There is also a chance to obtain these mounts from new Island caches added in Visions of N'Zoth.
+
+The chance at obtaining these rewards is not on any diminishing returns so grind to your heart's content.
+
+Mount	Source
+ Craghorn Chasm-Leaper	Finish Islands with Yeti mobs or rarely contained in  Dread Chain Salvage
+ Qinsho's Eternal Hound	Finish Islands with Mogu mobs or rarely contained in  Dread Chain Salvage/ Snowblossom Salvage
+ Squawks	Finish Islands with Pirate mobs or rarely contained in  Rotting Mire Salvage/ Crestfall Salvage
+ Surf Jelly	Finish Islands with Murloc or Naga mobs or rarely contained in  Whispering Reef Salvage
+ Twilight Avenger	Finish Islands with Twilight Dragon mobs or rarely contained in  Crestfall Salvage
+ Stonehide Elderhorn	Finish Islands with Moose/Ox mobs or rarely contained in many Salvage Boxes
+ Risen Mare	Finish Islands with Necromancer mobs or rarely contained in  Havenswood Salvage
+ Island Thunderscale	Finish Islands with Storm Dragon mobs or rarely contained in  Jorundall Salvage
+ Bloodgorged Hunter	Finish Islands with Bat mobs or rarely contained in many Salvage Boxes
+ Saltwater Seahorse	Captain Klarisa/Captain Zen'taga for 500
+ Siltwing Albatross	Captain Klarisa/Captain Zen'taga for 1000
+Craghorn Chasm-Leaper
+Qinsho's Eternal Hound
+Squawks
+Surf Jelly
+Twilight Avenger
+Stonehide Elderhorn
+Risen Mare
+Island Thunderscale
+Bloodgorged Hunter
+Saltwater Seahorse
+Siltwing Albatross
+ Craghorn Chasm-Leaper - "These mighty leapers have adapted to island life by learning to catch seagulls swooping through crags and fissures."
+
+Teaches:  Craghorn Chasm-Leaper
+Ground Mount
+This mount is very rarely rewarded after Island Expeditions with Yeti mobs or within  Dread Chain Salvage.
+
+Things to know about obtaining this:
+Personal Loot
+Can not be traded
+Can be obtained from Normal Island Expeditions and below level 120
+Strategies to Obtain These Mounts
+There is no real strategy to obtain Island Expedition mounts, as they have since been changed from killing specific mobs to simply completing Islands with specific types of mobs with them. As you cannot choose which island you want to farm, you are pretty much forced to fight with RNG.
+
+You are able to grind Island Doubloons for Savage Boxes in Visions of N'Zoth, which have a loot from specific types of Islands, so you can focus on clearing Islands as quickly as possible to obtain enough doubloons for Savage boxes.
+Allied Races
+Allied Race mounts are obtained after unlocking access to your faction's Allied Races for play. These mounts are usable on all characters of the same faction that the Allied Race is part of.
+
+Mount	Source
+ Dark Iron Core Hound	 Allied Races: Dark Iron Dwarf - Earn the allegiance of the Dark Iron dwarves and welcome them into the Alliance.
+ Mag'har Direwolf	 Allied Races: Mag'har Orc - Earn the allegiance of the Mag'har orcs and welcome them into the Horde.
+ Zandalari Direhorn	 Allied Races: Zandalari Troll - Earn the allegiance of the Zandalari Trolls and welcome them into the Horde.
+ Kul Tiran Charger	 Allied Races: Kul Tiran - Earn the allegiance of the Kul Tirans and welcome them into the Alliance.
+ Mechagon Mechanostrider	 Allied Races: Mechagnome - Earn the allegiance of the Mechagnomes and welcome them into the Alliance.
+ Caravan Hyena	 Allied Races: Vulpera - Earn the allegiance of the Vol'dun Vulpera and welcome them into the Horde.
+Dark Iron Core Hound
+Mag'har Direwolf
+Zandalari Direhorn
+Kul Tiran Charger
+Mechagon Mechanostrider
+Caravan Hyena
+ Dark Iron Core Hound - "You don't get dogs hotter than this."
+
+Teaches:  Dark Iron Core Hound
+Alliance Only
+Ground Mount
+This mount is a quest reward for completing the recruitment questline for the Dark Iron Dwarves. This questline is available after reaching Exalted status with 7th Legion and completing the achievement,  Ready for War.
+
+Dark Iron Dwarf Paladins will be able to use  Summon Darkforge Ram as their paladin class mount in addition to the Dark Iron Core Hound.
+
+Profession
+Mount	Source
+ Mecha-Mogul Mk2	Crafted by Engineering  Schematic: Mecha-Mogul Mk2
+ Great Sea Ray	Fishing in Kul Tiras and Zandalar
+ Xiwyllag ATV	Engineering and Blacksmithing - Combining  Super-Charged Engine and  Monelite Reinforced Chassis
+
+Mecha-Mogul Mk2
+Great Sea Ray
+Xiwyllag ATV
+ Mecha-Mogul Mk2 - "The Mk2 is an updated design with a focus on comfort and reliability over firepower."
+
+Teaches:  Mecha-Mogul Mk2
+Flying Mount
+Binds when used.
+Crafted with Engineering and  Schematic: Mecha-Mogul Mk2.
+Things to know about obtaining this:
+Can be traded and bought/sold on the Auction House.
+Requires 150 Engineering in Kul Tiran / Zandalari category to craft but not to use.
+The majority of the materials to craft this mount require BoP items acquired from Engineering salvaging mechanicals in Mythic The MOTHERLODE!!.
+ Schematic: Mecha-Mogul Mk2 can be acquired in Mythic from Mogul Razdunk and Mythic+ The MOTHERLODE!!.
+Vendor
+These mounts are solely obtained by purchasing them from a vendor for a large sum of gold. These mounts usually have no other requirements besides just being able to get to the vendor and being the appropriate level to learn them.
+
+Mount	Source
+ Reins of the Palehide Direhorn	Talutu / Tricky Nick for 500,000
+ Reins of the Mighty Caravan Brutosaur	Talutu / Tricky Nick for 5,000,000
+ Blue Marsh Hopper	Gottum for 333,333
+ Yellow Marsh Hopper	Gottum for 333,333
+ Green Marsh Hopper	Gottum for 333,333
+Mighty Caravan Brutosaur
+Palehide Direhorn
+Blue Marsh Hopper
+Yellow Marsh Hopper
+Green Marsh Hopper
+ Reins of the Mighty Caravan Brutosaur - "Brutosaurs are used by the Zandalari Empire as both weapons of war and enormous, mobile trading posts."
+
+Teaches:  Mighty Caravan Brutosaur
+Ground Mount
+2 Passengers
+Auction House
+BFA Trade Goods Vendor
+Purchased from Talutu or Tricky Nick for 5,000,000.
+
+Talutu is where Horde players can buy this mount located in Dazar'alor (48.6, 87.2).
+
+Tricky Nick is where Alliance players can buy this mount located in Boralus (56.0, 47.0)
+Player vs. Player
+Mount	Source
+ Conqueror's Scythemaw	 Conqueror of Azeroth
+ Prestigious Bloodforged Courser	 Honor Level 500
+ Reins of the Onyx War Hyena	Random chance after winning Rated Arenas or Rated Battlegrounds
+ Vicious War Clefthoof (Horde Only)	Costs 1x Vicious Saddle, Sold by Deathguard Netharian
+ Vicious War Riverbeast (Alliance Only)	Costs 1x Vicious Saddle, Sold by Necrolord Sipe
+ Vicious Black Bonesteed (Horde Only)	Costs 1x Vicious Saddle, Sold by Deathguard Netharian
+ Vicious Black Warsaber (Alliance Only)	Costs 1x Vicious Saddle, Sold by Necrolord Sipe
+ Vicious War Basilisk (Horde Only)	Costs 1x Vicious Saddle, Sold by Deathguard Netharian
+ Vicious War Basilisk (Alliance Only)	Costs 1x Vicious Saddle, Sold by Necrolord Sipe
+ Vicious White Bonesteed (Horde Only)	Win Rated PvP matches beyond 1400 Rating in Battle For Azeroth Season 4
+ Vicious White Warsaber (Alliance Only)	Win Rated PvP matches beyond 1400 Rating in Battle For Azeroth Season 4
+ Dread Gladiator's Proto-Drake	 Gladiator: Battle for Azeroth Season 1 - Win 50 Rated 3v3 arena matches while at Elite rank (2400 rating) in BFA Season 1
+ Sinister Gladiator's Proto-Drake	 Gladiator: Battle for Azeroth Season 2 - Win 50 Rated 3v3 arena matches while at Elite rank (2400 rating) in BFA Season 2
+ Notorious Gladiator's Proto-Drake	 Gladiator: Battle for Azeroth Season 3 - Win 50 Rated 3v3 arena matches while at Elite rank (2400 rating) in BFA Season 3
+ Corrupted Gladiator's Proto-Drake	 Gladiator: Battle for Azeroth Season 4 - Win 50 Rated 3v3 arena matches while at Elite rank (2400 rating) in BFA Season 4
+ Inkscale Deepseeker	Sold by PvP Quartermasters in Nazjatar for 150x  Nazjatar Battle Commendation.
+Conquerer's Scythemaw
+Prestigious Bloodforged Courser
+Onyx War Hyena
+Vicious War Clefthoof
+Vicious War Riverbeast
+Vicious Black Warsaber
+Vicious Black Bonesteed
+Vicious War Basilisk
+Vicious White Bonesteed
+Vicious White Warsaber
+Dread Gladiator's Proto-Drake
+Sinister Gladiator's Proto-Drake
+Notorious Gladiator's Proto-Drake
+Corrupted Gladiator's Proto-Drake
+Inkscale Deepseeker
+ Conqueror's Scythemaw - "The battle-hardened shell of this mighty beast can turn aside even the most heft hammer or sharpened spear."
+
+Teaches:  Conqueror's Scythemaw
+Ground Mount
+This mount is a reward for earning the achievement  Conqueror of Azeroth. This achievement involves completing various tasks with Warmode on.
+
+The mount will be sent to the mailbox upon earning the achievement.
+Promotion
+Mount	Source
+ Meat Wagon	Reward for buying the Spoils of War Edition of Warcraft III: Reforged.
+Meat Wagon
+ Meat Wagon - "A favorite unit of the Lich King, both for its power as a siege weapon, and the satisfying sound of flung meat."
+
+Teaches:  Meat Wagon
+Ground Mount
+This mount is obtained as one of the perks of the Warcraft III Reforged: Spoils of War Edition, an equivalent of a Collectors Edition of the upcoming title Warcraft III: Reforged.
+
+Spoils of War edition costs $39.99, and you also gain several perks on other Blizzard games, such as a Third War-themed card back for Hearthstone, the heroes Jaina, Thrall, Anub'arak and Tyrande in Heroes of the Storm, and a pet for Diablo III.
+Secrets and Puzzles
+Mount	Source
+ The Hivemind	The Hivemind - Currently unknown source, believed to be the "secret puzzle" reward of Tides of Vengeance.
+The Hivemind
+ The Hivemind - "A true union of minds."
+
+Teaches:  Ground Rupture
+Flying Mount
+Multiple Passengers
+This mount is a secret mount awarded after completing a series of puzzles and challenges.
+
+A complete guide to obtaining this mount can be found here: The Hivemind: Complete Guide to the Secret Mount.
+
+Things to know about obtaining this:
+This mount has a special mechanic called  Joined Hivemind. Players that you completed the final puzzle and obtained the mount with may passenger inside each other's mount, and the mount speed is increased for each new person within the Hivemind.
+This mount ultimately requires a group of 5 players to earn.
+War Campaign
+Mount	Source
+ Ironclad Frostclaw (Alliance Only)	 Two Sides to Every Tale
+ Bloodflank Charger (Horde Only)	 Two Sides to Every Tale
+
+Ironclad Frostclaw
+Bloodflank Charger
+ Ironclad Frostclaw - "Captured in the snows of Alterac Valley, this bloodthirsty hunter now roars for the Alliance."
+
+Alliance Only
+Teaches:  Ironclad Frostclaw
+Also teaches  Bloodflank Charger for Horde characters.
+Ground Mount
+This mount is a reward from earning the achievement  Two Sides to Every Tale. This achievement requires you to fully complete both the Horde and Alliance leveling questlines and their war campaign leading up to the  Battle of Dazar'alor.
+
+As the name suggest, you will have to complete the story questlines on an Alliance and Horde character.
+
+Things to know about obtaining this:
+This mount requires you to play and quest through both faction stories. This can be done with 2 seperate characters, or by faction transfering a character to complete the other side's story.
+Earning this mount also teaches the Horde equivalent:  Bloodflank Charger.
+Brawler's Guild
+Mount	Source
+ Bruce	Complete the Brawler's Guild Questline
+
+Bruce
+ Bruce - "BRUCE!"
+
+Teaches:  Bruce
+Ground Mount
+This mount is a quest reward from completing the new Brawler's Guild questline added in Patch 8.1.5. The start of this questline begins after your first win at the Brawler's Guild.
+
+Things to know about obtaining this:
+BRUUUUUUUUCE!
+Obtaining this mount will require you to reach at least Rank 6 with the Brawler's Guild once Patch 8.1.5 launches.
+Timewalking
+Mount	Source
+ Beastlord's Irontusk	Kronnus in Warspear / Tempra in Stormshield for 5000  Timewarped Badge
+ Beastlord's Warwolf	Kronnus in Warspear / Tempra in Stormshield for 5000  Timewarped Badge
+
+Beastlord's Irontusk
+Beastlord's Warwolf
+ Beastlord's Irontusk - "One of Darmac's trained beasts, its tusks can pierce even the hardest Iron Horde steel."
+
+Teaches:  Beastlord's Irontusk
+Ground Mount
+This mount is purchased for 5000  Timewarped Badge from Kronnus or Tempra during the Warlords of Draenor Timewalking Bonus Event.
+Comments (5)
+1 - 5 of 5
+Add your comment|Sort: newest first, oldest first, highest rated|Filter by patch: 
+8.3.0
+8.2.5
+8.2.0
+A
+A
+
+16
+
+	
+UnklSam
+<Rare Premium User>
+BFA 8.2.0
+JUL 25, 2019
+I'm not sure why, the gold totals given above for mount costs at exalted, always exclude the reputation discounts for reaching exalted. ie 90,000 becomes 72,000.
+Last edited by UnklSam on Jul 26, 2019 (Patch 8.2.0)
+
+3
+
+	
+gsnerf
+<Rare Premium User>
+BFA 8.2.5
+JAN 9, 2020
+Nice guide, would be even nicer though if the links where to the live page and not the PTR page. This makes the guide look horrible in other languages as there are no translations for the items and it only shows "item#12345" instead.
+
+2
+
+	
+CycloneDuke
+<Rare Premium User>
+BFA 8.3.0
+MAY 25, 2020
+Hello friend. Please update Soundless/ Silent Glider to include "Not tradable". Killed it with my friends and could not trade it to each other, grouped, and all tapped the boss.
+https://imgur.com/a/ULN8Ocb
+
+2
+
+	
+PokemiitheGreat
+BFA 8.3.0
+JUL 9, 2020
+The Aerial Unit R-21/X isn't a random drop like the other dungeon mounts, It's a guaranteed drop for 1 player (that doesn't already have the mount learned) in a 5-man party (much like the smoldering ember wyrm) after completing all of the bosses that have a *hard mode* on mythic Operation: Mechagon. Here's a link to how it's done: https://www.wowhead.com/news=293738/how-to-activate-and-complete-operation-mechagons-hard-mode .
+
+1
+
+	
+baradiel
+<Rare Premium User>
+BFA 8.3.0
+APR 30, 2020
+I love this, nice guide! Keep it up
+1 - 5 of 5
+ 
+Contribute
+Add your comment
+Please keep the following in mind when posting a comment:
+Your comment must be in English or it will be removed.
+Unsure how to post? Check out our handy guide!
+You might want to proof-read your comments before posting them.
+Please post questions on our forums for quicker reply.
+Post a Comment
+You are not logged in. Please log in or register an account to add your comment.
