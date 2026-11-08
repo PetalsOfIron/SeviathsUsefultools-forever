@@ -1335,35 +1335,38 @@ local buildSocial = simplePage("Players & Party",
             mkCheck(pane, "Show item level and profiles on player tooltips", function() return S.Config().tip end, function(v) S.Config().tip = v end, 12, y - 26),
             mkCheck(pane, "One chat line about my group when it forms", function() return S.Config().groupLine end, function(v) S.Config().groupLine = v end, 12, y - 52),
         }
-        local styleBtn, styleInfo
-        styleBtn = mkButton(pane, "", 300, function()
-            local cfg = S.Config()
-            local idx = 1
-            for i, s in ipairs(S.STYLES) do if s[1] == cfg.style then idx = i end end
-            cfg.style = S.STYLES[(idx % #S.STYLES) + 1][1]
-            pane.refresh()
-        end, "Click to change how you describe your play style. Automatic decides from your numbers.")
-        styleBtn:SetPoint("TOPLEFT", 12, y - 84)
-        mkButton(pane, "Open my group", 130, function() S.ShowGroup() end, "Item level, profile, sockets and enchants of everyone in your group"):SetPoint("TOPLEFT", 322, y - 84)
-        styleInfo = mkText(pane, "", 12, y - 112, 500, "GameFontHighlightSmall")
+        local styleInfo
+        -- the play styles: any number can be ticked; none ticked = Automatic (decided from what you did)
+        mkText(pane, CYHEX .. "My play style|r  (tick as many as fit; none = automatic)", 12, y - 84, 500, "GameFontNormal")
+        local styleChecks = {}
+        local ids = {}
+        for _, s in ipairs(S.STYLES) do if s[1] ~= "auto" then ids[#ids + 1] = s end end
+        for i, s in ipairs(ids) do
+            local id = s[1]
+            styleChecks[#styleChecks + 1] = mkCheck(pane, s[2], function() local cc = S.Config(); return cc.styles and cc.styles[id] end,
+                function(v) local cc = S.Config(); cc.styles = cc.styles or {}; cc.styles[id] = v and true or nil; cc.style = "auto" end,
+                12 + ((i - 1) % 2) * 255, y - 108 - math.floor((i - 1) / 2) * 24)
+        end
+        for _, cb in ipairs(styleChecks) do checks[#checks + 1] = cb end
+        mkButton(pane, "Open my group", 130, function() S.ShowGroup() end, "Item level, profile, sockets and enchants of everyone in your group"):SetPoint("TOPLEFT", 12, y - 306)
+        styleInfo = mkText(pane, "", 12, y - 334, 640, "GameFontHighlightSmall")
 
-        mkText(pane, CYHEX .. "What I dislike in a group|r  (others who have the addon see it on my tooltip)", 12, y - 140, 500, "GameFontNormal")
+        mkText(pane, CYHEX .. "What I dislike in a group|r  (others who have the addon see it on my tooltip)", 12, y - 372, 500, "GameFontNormal")
         for i, d in ipairs(S.DISLIKES) do
             local col = (i - 1) % 2
             local row = math.floor((i - 1) / 2)
             local id = d[1]
             checks[#checks + 1] = mkCheck(pane, d[2], function() return S.Config().dislikes[id] end,
-                function(v) S.Config().dislikes[id] = v and true or nil end, 12 + col * 255, y - 164 - row * 24)
+                function(v) S.Config().dislikes[id] = v and true or nil end, 12 + col * 255, y - 396 - row * 24)
         end
-        local preview = mkText(pane, "", 12, y - 316, 500, "GameFontHighlightSmall")
+        local preview = mkText(pane, "", 12, y - 506, 640, "GameFontHighlightSmall")
         preview:SetTextColor(0.8, 0.8, 0.8)
         return function()
             local cfg = S.Config()
-            local label = "Automatic"
-            for _, s in ipairs(S.STYLES) do if s[1] == cfg.style then label = s[2] end end
-            styleBtn.text:SetText("Play style: " .. (cfg.style == "auto" and "Automatic" or label))
             local p = S.MyProfile()
-            if cfg.style == "auto" then
+            local anyChosen = false
+            for _, on in pairs(cfg.styles or {}) do if on then anyChosen = true end end
+            if not anyChosen then
                 styleInfo:SetText("The addon says you are: |cffffd100" .. S.StyleLabels(p.style) .. "|r  (from what you did in the last 28 days: raids, Mythic+, delves, collecting, achievements, PvP, dailies, farming, gold. The two strongest.)")
             else
                 styleInfo:SetText("You chose: |cffffd100" .. S.StyleLabels(p.style) .. "|r")

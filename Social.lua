@@ -27,6 +27,15 @@ S.STYLES = {
     { "housing",  "Housing fan" },
     { "speed",    "Fast runs and farming" },
     { "roleplay", "Roleplayer" },
+    { "farmer",   "Gold farmer" },
+    { "collector", "Collector" },
+    { "mythic",   (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT) and "Dungeon player" or "Hardcore Mythic+ player" },
+    { "raider",   "Hardcore raider" },
+    { "pvp",      "PvP player" },
+    { "achiever", "Achievement hunter" },
+    { "dailies",  "Daily quest player" },
+    { "casual",   "Casual" },
+    { "hardcore", "Hardcore" },
 }
 local AUTO_LABEL = { raider = "Hardcore raider", mythic = (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT) and "Dungeon player" or "Hardcore Mythic+ player",
     delver = "Delve player", roleplayer = "Roleplayer", collector = "Collector",
@@ -875,10 +884,15 @@ function S.MyProfile()
         "g_loot", "g_daily", "g_quest", "g_trade", "g_other" }) do
         p.act[k] = S.ActWeekSum(k)
     end
-    if c.style == "auto" or not c.style then
+    -- several styles can be chosen (c.styles = { id = true }); an older single choice is moved there once
+    if c.style and c.style ~= "auto" and not c.styles then c.styles = { [c.style] = true }; c.style = "auto" end
+    local chosen = {}
+    for id, on in pairs(c.styles or {}) do if on then chosen[#chosen + 1] = id end end
+    table.sort(chosen)
+    if #chosen == 0 then
         p.style = S.AutoStyles(p)
     else
-        p.style = { c.style }
+        p.style = chosen
     end
     local dis = {}
     for id, on in pairs(c.dislikes) do if on then dis[#dis + 1] = tonumber(id) end end
