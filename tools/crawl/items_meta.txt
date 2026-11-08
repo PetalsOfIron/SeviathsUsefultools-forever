@@ -5834,3 +5834,5 @@
 19234|Six of Beasts|3|15|0|1|0
 19274|Seven of Elementals|3|15|0|1|0
 239119|Holy Arrow|1|12|0|1|0
+19264|Seven of Warlords|3|15|0|1|0
+239092|Preposterously Prosed Postage|1|12|0|1|0

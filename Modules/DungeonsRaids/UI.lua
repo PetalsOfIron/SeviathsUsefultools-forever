@@ -1303,13 +1303,15 @@ if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
     if host and docked then
       -- the tab of the group finder changed (Quests & Zones, Battlegrounds, Custom): the list follows it by itself
       local sec = CurrentSection()
-      if sec ~= lastSection then lastSection = sec; pcall(UI.Dock, UI) end
+      -- (not while the window was opened by hand as a floating window, e.g. the group makeup)
+      local floating = UI.frame and UI.frame:IsShown() and not UI.docked
+      if sec ~= lastSection then lastSection = sec; if not floating then pcall(UI.Dock, UI) end end
     end
     if host and not docked then
       docked = true
       lastSection = CurrentSection()
       UI.lfgHost = host
-      pcall(UI.Dock, UI)
+      if not (UI.frame and UI.frame:IsShown() and not UI.docked) then pcall(UI.Dock, UI) end
     elseif not host and docked then
       docked = false
       UI.lfgHost = nil
