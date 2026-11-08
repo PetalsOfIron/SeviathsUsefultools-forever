@@ -27,3 +27,91 @@
 270|Councilman Millstipe|10:72,47.8|377:26:22:1:Crime and Punishment
 272|Chef Grual|10:73.8,43.4;73.8,43.6|90:25:18:1:Seasoned Wolf Kabobs,93:20:17:1:Dusky Crab Cakes,240:20:17:1:Return to Jitters
 273|Tavernkeep Smitts|10:73.8,44.4;74,44.8|79:28:22:1:The Legend of Stalvan,156:24:20:1:Gather Rot Blossoms,159:24:20:1:Juice Delivery,453:25:20:1:Finding the Shadowy Figure
+276|Viktori Prism'Antras|10:79.8,48|174:25:20:1:Look To The Stars,175:25:20:1:Look To The Stars,181:30:20:1:Look To The Stars
+278|Sara Timberlain|12:79.4,68.6;79.6,68.6|83:9:4:1:Red Linen Goods
+288|Jitters|10:18.2,56.4;18.4,56.6;18.6,56.6|5:20:17:1:Jitters' Growling Gut,268:25:20:1:Return to Sven
+289|Abercrombie|10:28,31.4;28,31.6|133:27:20:1:Ghoulish Effigy,134:30:20:1:Ogre Thieves,148:24:20:1:Supplies from Darkshire,158:24:20:1:Zombie Juice,160:30:20:1:Note to the Mayor
+294|Marshal Haggard|12:84.4,69.2;84.6,69.4;84.6,69.6|75:28:22:1:The Legend of Stalvan,78:28:22:1:The Legend of Stalvan,109:10:9:1:Report to Gryan Stoutmantle,1667:10:10:1:Dead-tooth Jack
+295|Innkeeper Farley|12:43.8,65.8|70:28:22:1:The Legend of Stalvan
+302|Blind Mary|10:81.8,59.2|154:24:20:1:Return the Comb,177:25:20:1:Look To The Stars
+311|Sven Yorgen|10:7.8,34|55:32:20:1:Morbent Fel,95:25:20:1:Sven's Revenge,262:25:20:1:The Shadowy Figure,269:29:20:1:Seeking Wisdom,323:28:20:1:Proving Your Worth
+313|Theocritus|12:65.2,69.8|94:21:20:1:A Watchful Eye,249:27:20:1:Morganth
+328|Zaldimar Wefhellt|12:43.2,66.2|1860:10:10:1:Speak with Jennea,1919:15:15:1:Report to Jennea
+341|Foreman Oslow|44:32,48.4;32.2,48.6|89:20:15:1:The Everstill Bridge,125:16:15:1:The Lost Tools,347:24:20:1:Rethban Ore
+342|Martie Jainrose|44:21.4,46.4;21.8,46.4|34:24:18:1:An Unwelcome Guest,131:15:12:1:Delivering Daffodils
+343|Chef Breanna|44:22.6,44|92:18:15:1:Redridge Goulash
+344|Magistrate Solomon|44:29.8,44.6;30,44.2|120:14:14:1:Messenger to Stormwind,143:14:14:1:Messenger to Westfall,145:18:18:1:Messenger to Darkshire,4184:54:48:1:The True Masters,4223:54:48:1:The True Masters
+346|Barkeep Daniels|44:26.4,44;26.6,44|116:15:12:1:Dry Times
+349|Corporal Keeshan|44:28.4,12.4;28.4,12.6;28.4,13.6|219:25:19:1:Missing In Action
+375|Priestess Anetta|12:49.8,39.4;49.8,39.6|5623:4:5:1:In Favor of the Light,77619:2:2:1:Meditation on the Light
+377|Priestess Josetta|12:43.4,65.6|5624:4:5:1:Garments of the Light,5628:10:10:1:Returning Home,5635:10:10:1:Desperate Prayer
+379|Darcy|44:26.6,44.2;27,45;27,45.6|129:15:12:1:A Free Lunch
+381|Dockmaster Baren|44:27.8,47.2|127:21:16:1:Selling Fish,150:20:20:1:Murloc Poachers
+382|Marshal Marris|44:33.4,48.8;33.6,48.8|19:25:18:1:Tharil'zun,20:21:18:1:Blackrock Menace,115:23:18:1:Shadow Magic
+392|Captain Grayson|40:30,86|103:16:10:3:Keeper of the Flame,104:20:15:3:The Coastal Menace,152:19:10:3:The Coast Isn't Clear
+415|Verner Osgood|44:31,47.4;31,47.6|118:18:14:1:The Price of Shoes,122:18:14:1:Underbelly Scales,124:20:15:1:A Baying of Gnolls,126:25:15:1:Howling in the Hills,1097:15:9:1:Elmore's Task
+459|Drusilla La Salle|12:49.8,42.6|1598:4:1:1:The Stolen Tome,77621:2:2:1:Stolen Power
+460|Alamar Grimm|1:28.6,66.2|1599:4:1:1:Beginnings,77666:2:2:1:Stolen Power
+464|Guard Parker|44:15.2,71.4;15.2,71.6;15.6,71.4|130:15:12:1:Visit the Herbalist,244:16:11:1:Encroaching Gnolls
+467|The Defias Traitor|40:42.4,71.4;42.4,71.6;42.6,71.2|155:18:14:1:The Defias Brotherhood
+469|Lieutenant Doren|33:38,3|200:35:30:1:Bookie Herod,202:40:30:1:Colonel Kurzen,330:37:30:1:Patrol Schedules
+491|Quartermaster Lewis|40:56.8,47.2|6181:10:10:1:A Swift Message
+514|Smith Argus|12:41.6,65.6|119:18:13:1:Return to Verner,1097:15:9:1:Elmore's Task
+523|Thor|40:56.4,52.4;56.4,52.6;56.6,52.4|6281:10:10:1:Continue to Stormwind
+576|Watcher Ladimore|10:73.4,46.6;73.6,46.8;73.8,46.4|231:35:28:1:A Daughter's Love
+633|Elaine Carevin|10:75.2,48.4;75.2,48.6|163:20:17:1:Raven Hill,164:23:17:1:Deliveries to Sven,165:25:17:1:The Hermit
+658|Sten Stoutarm|1:29.8,71.2|179:1:1:1:Dwarven Outfitters,233:3:1:1:Coldridge Valley Mail Delivery,3106:1:1:1:Simple Rune,3107:1:1:1:Consecrated Rune,3108:1:1:1:Etched Rune,3109:1:1:1:Encrypted Rune,3110:1:1:1:Hallowed Rune,3112:1:1:1:Simple Memorandum,3113:1:1:1:Encrypted Memorandum,3114:1:1:1:Glyphic Memorandum,3115:1:1:1:Tainted Memorandum
+661|Jonathan Carevin|10:75.2,48.8|1043:30:25:1:The Scythe of Elune,1044:30:25:1:Answered Questions
+663|Calor|10:75.2,48;75.6,47.4;75.6,47.6|173:28:23:1:Worgen in the Woods,221:29:23:1:Worgen in the Woods,222:31:23:1:Worgen in the Woods,223:31:23:1:Worgen in the Woods
+713|Balir Frosthammer|1:29.6,71.2|170:2:1:1:A New Threat
+714|Talin Keeneye|1:22.6,71.4|183:3:1:1:The Boar Hunter,234:4:1:1:Coldridge Valley Mail Delivery
+715|Hemet Nesingwary|33:35.6,10.8|194:34:28:3:Raptor Mastery,195:36:28:3:Raptor Mastery,196:41:28:3:Raptor Mastery,197:43:28:3:Raptor Mastery,208:43:28:3:Big Game Hunter,78830:40:26:3:Terror of the Desert Skies
+716|Barnil Stonepot|33:35.6,10.4;35.6,10.6|338:40:30:3:The Green Hills of Stranglethorn,339:40:30:3:Chapter I,340:40:30:3:Chapter II,341:40:30:3:Chapter III,342:40:30:3:Chapter IV,583:30:28:3:Welcome to the Jungle
+717|Ajeck Rouack|33:35.6,10.6|185:31:28:3:Tiger Mastery,186:33:28:3:Tiger Mastery,187:35:28:3:Tiger Mastery,188:37:28:3:Tiger Mastery
+718|Sir S. J. Erlgadin|33:35.4,10.4;35.6,10.4;35.6,10.6|190:31:28:3:Panther Mastery,191:33:28:3:Panther Mastery,192:38:28:3:Panther Mastery,193:40:28:3:Panther Mastery
+733|Sergeant Yohwa|33:38,3.4|203:33:30:1:The Second Rebellion,204:34:30:1:Bad Medicine,574:38:30:1:Special Forces
+737|Kebok|33:27,77.2|189:35:30:3:Bloodscalp Ears,209:42:37:3:Skullsplitter Tusks,213:36:31:3:Hostile Takeover
+738|Private Thorsen|33:38,3.4;38,3.6;40.2,8.4|215:33:30:1:Jungle Secrets
+739|Brother Nimetz|33:37.8,3.4;37.8,3.6|205:40:30:1:Troll Witchery,206:46:30:1:Mai'Zoth,207:38:30:1:Kurzen's Mystery
+770|Corporal Kaleb|33:37.8,3.2|210:37:32:1:Krazek's Cookery
+773|Krazek|33:27,77.2|198:32:30:1:Supplies to Private Thorsen,201:32:28:3:Investigate the Camp,616:37:32:1:The Haunted Isle,622:37:32:1:Return to Corporal Kaleb,627:37:32:1:Favor for Krazek,1116:36:30:3:Dream Dust in the Swamp,1117:36:30:3:Rumors for Kravel,2864:45:40:3:Tran'rek
+786|Grelin Whitebeard|1:25,75.8|182:4:1:1:The Troll Cave,218:5:1:1:The Stolen Journal,282:5:1:1:Senir's Observations
+820|Scout Riell|40:56.6,47.4|214:17:14:1:Red Silk Bandanas
+821|Captain Danuvin|40:56.4,47.4;56.4,47.6|102:14:8:1:Patrolling Westfall
+823|Deputy Willem|12:48.2,42.8|6:5:2:1:Bounty on Garrick Padfoot,18:4:2:1:Brotherhood of Thieves,783:1:1:1:A Threat Within,3903:4:2:1:Milly Osworth,5261:2:1:1:Eagan Peltskinner
+836|Durnan Furcutter|1:28.8,66.4|3365:5:4:1:Bring Back the Mug
+837|Branstock Khalder|1:28.6,66.4|5626:4:5:1:In Favor of the Light,77661:2:2:1:Meditation on the Light
+840|Watcher Backus|10:72.2,35;72.2,36.4;72.2,36.6|1244:30:28:1:The Missing Diplomat,1245:30:28:1:The Missing Diplomat
+859|Guard Berton|44:26.4,46.6;26.6,46.8|386:25:22:1:What Comes Around...
+878|Scout Galiaan|40:54,52.8|153:15:10:1:Red Leather Bandanas
+888|Watcher Dodds|10:45,67|245:21:17:1:Eight-Legged Menaces
+893|Lars|10:7.6,33.4;7.6,33.6|226:21:19:1:Wolves at Our Heels
+895|Thorgas Grimson|1:29,67.4;29,67.6|77660:2:2:1:Trek Through the Caves
+900|Bailiff Conacher|44:29.4,44.4;29.6,44.2|91:23:17:1:Solomon's Law
+903|Guard Howe|44:31.4,58;31.6,57.2;31.6,57.8|128:25:20:1:Blackrock Bounty
+911|Llane Beshere|12:50.2,42.2|77616:2:2:1:The Lost Rune
+912|Thran Khorman|1:28.8,67.2|77655:2:2:1:The Lost Rune,77656:2:2:1:The Lost Rune
+913|Lyria Du Lac|12:41,65.8|1638:10:10:1:A Warrior's Training
+915|Jorik Kerridan|12:50.4,39.8;50.6,40|77618:2:2:1:Thrice Stolen
+916|Solm Hargrin|1:28.4,67.4;28.4,67.6|77658:2:2:1:Thrice Stolen,77659:2:2:1:Thrice Stolen
+917|Keryn Sylvius|12:43.8,65.8|2205:10:10:1:Seek out SI: 7,2300:16:16:1:SI:7
+925|Brother Sammuel|12:50.4,42|77617:2:2:1:Relics of the Light
+926|Bromos Grummner|1:28.8,68.2|77657:2:2:1:Relics of the Light
+927|Brother Wilhelm|12:41,66|2998:12:12:1:Tome of Divinity
+944|Marryk Nurribit|1:28.6,66.4|77667:2:2:1:Spell Research
+951|Brother Paxton|12:49.4,40.4;49.6,40.4|345:24:20:1:Ink Supplies,346:24:20:1:Return to Kristoff
+963|Deputy Rainer|12:24.2,74.4;24.2,74.6|11:10:6:1:Riverpaw Gnoll Bounty,109:10:9:1:Report to Gryan Stoutmantle
+1070|Deputy Feldon|44:30.8,60;30.8,60.6|246:17:11:1:Assessing the Threat
+1071|Longbraid the Grim|11:49.8,18.2|304:34:26:1:A Grim Task
+1073|Ashlan Stonesmirk|11:50,18.2|274:18:16:1:A Dark Threat Looms
+1074|Motley Garmason|11:49.6,18.2|303:30:25:1:The Dark Iron War,378:27:22:1:The Fury Runs Deep
+1075|Rhag Garmason|11:49.8,18.2|631:31:28:1:The Thandol Span,633:31:28:1:The Thandol Span,634:31:28:1:Plea To The Alliance
+1076|Merrin Rockweaver|11:38.8,52.2|306:24:21:1:In Search of The Excavation Team
+1077|Prospector Whelgar|11:38.8,52.2|299:28:25:1:Uncovering the Past
+1078|Ormer Ironbraid|11:38,51.2|294:24:22:1:Ormer's Revenge,295:27:22:1:Ormer's Revenge,296:29:22:1:Ormer's Revenge
+1089|Mountaineer Cobbleflint|38:22,73|224:12:10:1:In Defense of the King's Lands
+1090|Mountaineer Wallbang|38:23.4,74.4;23.4,74.6|263:15:10:1:In Defense of the King's Lands
+1091|Mountaineer Gravelgaw|38:23.4,76.2;23.6,76.2|237:15:10:1:In Defense of the King's Lands
+1092|Captain Rugelfuss|38:23.2,73.8|217:17:10:1:In Defense of the King's Lands,267:12:10:1:The Trogg Threat
+1093|Chief Engineer Hinderweir VII|38:46,13.6|161:18:16:1:A Dark Threat Looms,250:18:16:1:A Dark Threat Looms,278:18:16:1:A Dark Threat Looms,280:18:16:1:A Dark Threat Looms
+1105|Jern Hornhelm|38:37.2,47.4;37.2,47.6|273:15:10:1:Resupplying the Excavation,301:15:10:1:Report to Ironforge,436:18:13:1:Ironband's Excavation
