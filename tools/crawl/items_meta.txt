@@ -4407,3 +4407,39 @@
 14918|Jade Belt|2|4|4|47|42
 15625|Gryphon Mail Gauntlets|2|4|3|47|42
 5959|Acidic Venom Sac|1|12|0|1|0
+12989|Gargoyle's Bite|3|2|6|22|20
+1168|Skullflame Shield|4|4|6|59|54
+1443|Jeweled Amulet of Cainwyn|4|4|-3|60|55
+8289|Arcane Leggings|2|4|1|60|55
+8290|Arcane Robe|2|4|1|61|56
+10217|Elegant Leggings|2|4|1|61|56
+10267|Masterwork Cape|2|4|-6|61|56
+10365|Emerald Shield|2|4|6|59|54
+13060|The Needler|3|2|6|60|55
+13116|Spaulders of the Unseen|3|4|2|61|56
+14553|Sash of Mercy|4|4|2|61|56
+15266|Fierce Mauler|2|2|5|61|56
+13486|Recipe: Transmute Undeath to Water|2|9|6|55|0
+5843|Grenka's Claw|1|12|0|1|0
+8307|Hero's Boots|2|4|3|60|55
+231313|Grimy Rune|2|0|0|77|0
+1973|Orb of Deception|3|4|-4|59|54
+8309|Hero's Leggings|2|4|3|61|56
+10140|High Councillor's Gloves|2|4|1|61|56
+10379|Commander's Helm|2|4|4|61|56
+10387|Hyperion Girdle|2|4|4|61|56
+11979|Peridot Circle|2|4|-2|61|56
+13096|Band of the Hierophant|3|4|-2|60|55
+15943|Imbued Shield|2|4|6|61|56
+16252|Formula: Enchant Weapon - Crusader|2|9|8|61|0
+5844|Fragments of Rok'Alim|1|12|0|1|0
+11174|Lesser Nether Essence|2|7|0|40|0
+5811|Frostmaw's Mane|1|12|0|1|0
+5837|Steelsnap's Rib|1|12|0|1|0
+5461|Branch of Cenarius|1|12|0|1|0
+6067|Centaur Ear|1|12|0|1|0
+6079|Crude Charm|1|12|0|1|0
+213574|Desiccated Seed Pod|1|15|0|1|0
+217276|Plans: Golden Scale Boots|3|9|4|40|0
+6074|War Horn Mouthpiece|1|0|0|1|0
+20310|Flayed Demon Skin|1|12|0|25|25

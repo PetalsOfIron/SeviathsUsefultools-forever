@@ -454,3 +454,93 @@
 8583|Dirania Silvershine|141:60.8,42|3521:4:2:1:Iverron's Antidote,3522:4:2:1:Iverron's Antidote,4495:4:2:1:A Good Friend
 8584|Iverron|141:54.6,33|3519:4:2:1:A Friend in Need
 8737|Linken|490:44.6,8.2|3908:52:47:3:It's a Secret to Everybody,3941:52:47:3:A Gnome's Assistance,3962:56:47:3:It's Dangerous to Go Alone
+8965|Shawn|44:29.2,53.4;29.2,53.6|3741:15:12:1:Hilary's Necklace
+8997|Gershala Nightwhisper|148:38.4,43|1275:24:18:1:Researching the Corruption,78926:27:25:1:Researching the Corruption
+9116|Eridan Bluewind|361:51.2,81.4;51.2,81.6|4005:54:47:3:Aquementas,4084:54:47:3:Silver Heart,4421:54:49:1:The Corruption of the Jadefire,4441:54:49:1:Felbound Ancients,4442:54:49:1:Purified!,4906:54:49:1:Further Corruption
+9117|J.D. Collie|490:41.8,2.4;41.8,2.6|3942:54:47:3:Linken's Memory,3961:54:47:3:Linken's Adventure,4284:53:47:3:Crystals of Power,4285:53:47:3:The Northern Pylon,4287:53:47:3:The Eastern Pylon,4288:53:47:3:The Western Pylon,4321:53:47:3:Making Sense of It
+9119|Muigin|490:43,9.4;43,9.6|4141:52:47:1:Muigin and Larion,4142:52:47:1:A Visit to Gregan,4144:53:47:1:Bloodpetal Sprouts
+9177|Oralius|46:84.4,68.4;84.4,68.6;84.6,68.4|3823:52:48:1:Extinguish the Firegut,3824:53:48:1:Gor'tesh the Brute Lord,3825:53:48:1:Ogre Head On A Stick = Party,4283:56:50:1:FIFTY! YEP!,4286:56:50:1:The Good Stuff
+9238|Quentin|400:78.4,74.4;78.4,74.8|3842:47:38:1:A Short Incubation,3843:47:38:1:The Newest Member of the Family
+9270|Williden Marshal|490:43.8,7.2|3881:53:48:3:Expedition Salvation
+9271|Hol'anyee Marshal|490:43.8,7.2|3883:52:48:3:Alien Ecology
+9272|Spark Nilminer|490:43.4,7.4;43.4,7.6;43.6,7.4|3882:51:49:3:Roll the Bones
+9274|Dadanga|490:43.6,7.2|5150:55:47:3:Dadanga is Hungry!
+9296|Milly Osworth|12:50.6,39.4;50.8,39.6|3904:4:2:1:Milly's Harvest,3905:4:2:1:Grape Manifest
+9298|Donova Snowden|618:31.2,45.2|3909:52:47:3:The Videre Elixir,3912:52:47:3:Meet at the Grave,4842:56:51:3:Strange Sources,5082:56:52:3:Threat of the Winterfall,5084:56:52:3:Falling to Corruption,5086:56:52:3:Toxic Horrors,5087:57:52:3:Winterfall Runners,5121:59:52:3:High Chief Winterfall,5128:59:52:3:Words of the High Chief
+9299|Gaeriyan|440:54,23.2|3913:52:47:3:A Grave Situation
+9316|Wenikee Boltbucket|17:49,11.2|3922:15:10:2:Nugget Slugs,3923:18:10:2:Rilli Greasygob
+9459|Cyrus Therepentous|46:94.8,31.6;95,31.4|4022:54:52:3:A Taste of Flame,4023:54:52:3:A Taste of Flame,4024:58:52:3:A Taste of Flame
+9528|Arathandris Silversky|361:54.2,86.8|4101:55:48:1:Cleansing Felwood,4103:55:48:1:Salve via Hunting,4104:55:48:1:Salve via Mining,4105:55:48:1:Salve via Gathering,4106:55:48:1:Salve via Skinning,4107:55:48:1:Salve via Disenchanting,5882:55:48:1:Salve via Hunting,5883:55:48:1:Salve via Mining,5884:55:48:1:Salve via Gathering,5885:55:48:1:Salve via Skinning,5886:55:48:1:Salve via Disenchanting
+9529|Maybess Riverbreeze|361:46.8,83|4102:55:48:2:Cleansing Felwood,4108:55:48:2:Salve via Hunting,4109:55:48:2:Salve via Mining,4110:55:48:2:Salve via Gathering,4111:55:48:2:Salve via Skinning,4112:55:48:2:Salve via Disenchanting,5887:55:48:2:Salve via Hunting,5888:55:48:2:Salve via Mining,5889:55:48:2:Salve via Gathering,5890:55:48:2:Salve via Skinning,5891:55:48:2:Salve via Disenchanting
+9536|Maxwort Uberglint|46:65.2,23.8|4123:55:50:3:The Heart of the Mountain,4296:50:50:3:Tablet of the Seven
+9540|Enohar Thunderbrew|4:63.6,20.4;63.6,20.6|4128:55:50:1:Ragnar Thunderbrew
+9544|Yuka Screwspigot|46:66,22|4136:53:48:3:Ribbly Screwspigot
+9560|Marshal Maxwell|46:84.6,68.8|4224:54:48:1:The True Masters,4241:54:48:1:Marshal Windsor,5081:60:55:1:Maxwell's Mission,5102:60:55:1:General Drakkisath's Demise,6402:60:50:1:Stormwind Rendezvous
+9561|Jalinda Sprig|46:85.4,70|4262:52:48:1:Overmaster Pyron,4263:56:48:1:Incendius!
+9562|Helendis Riverhorn|46:85.4,68.8;85.6,69|4182:54:48:1:Dragonkin Menace,4183:54:48:1:The True Masters,4701:59:55:1:Put Her Down
+9563|Ragged John|46:65,23.6|4866:60:55:3:Mother's Milk
+9565|Mayara Brightwing|46:84.8,69|4764:60:57:1:Doomrigger's Clasp,4765:60:57:1:Delivery to Ridgewell
+9598|Arei|361:48.2,28.8;48.4,26.4;49.2,26.4|4261:56:49:1:Ancient Spirit
+9618|Karna Remtravel|490:46.4,13.4;46.4,13.6;46.6,13.4|4243:53:48:3:Chasing A-Me 01
+9619|Torwa Pathfinder|490:71.6,76|4289:55:47:3:The Apes of Un'Goro,4290:53:48:3:The Fare of Lar'korwi,4291:53:48:3:The Scent of Lar'korwi,4292:56:48:3:The Bait for Lar'korwi,4301:55:50:3:The Mighty U'cha,9051:52:50:3:Toxic Test,9052:52:50:3:Bloodpetal Poison,9053:52:50:3:A Better Ingredient,82112:50:50:3:A Better Ingredient
+9623|A-Me 01|490:65.8,16.6;67.4,16.8;67.6,16.8|4244:53:48:3:Chasing A-Me 01,4245:53:48:3:Chasing A-Me 01
+9660|Agnar Beastamer|47:14,43.4;14,43.6|4297:47:38:1:Food for Baby,4298:48:37:1:Becoming a Parent
+9706|Yorba Screwspigot|440:67,24|4324:53:48:3:Yuka Screwspigot
+9836|Mathredis Firestar|46:65,23.4;65,23.6|4463:55:50:3:Libram of Rumination,4481:55:50:3:Libram of Constitution,4482:55:50:3:Libram of Tenacity,4483:55:50:3:Libram of Resilience,4484:55:50:3:Libram of Voracity
+9997|Spraggle Frock|490:43.6,8.4;43.6,8.6|4492:55:50:3:Lost!
+9998|Shizzle|490:44.2,11.4;44.2,11.6|4503:51:49:3:Shizzle's Flyer
+9999|Ringo|490:43.6,8.4;43.6,8.6;46,13.4|4491:55:50:3:A Little Help From My Friends
+10118|Nessa Shadowsong|141:56.2,92.4|6341:10:10:1:The Bounty of Teldrassil
+10216|Gubber Blump|148:36,44.8|1138:17:15:1:Fruit of the Sea,1141:14:10:1:The Family and the Fishing Pole
+10219|Gwennyth Bly'Leggonde|148:36.6,45.4;36.6,45.6|3524:13:11:1:Washed Ashore,4681:14:11:1:Washed Ashore
+10260|Kibler|46:65.8,22|4729:59:55:3:Kibler's Exotic Pets,4862:59:55:3:En-Ay-Es-Tee-Why
+10267|Tinkee Steamboil|46:65.2,23.8|4726:52:50:3:Broodling Essence,4734:60:57:3:Egg Freezing,4735:60:57:3:Egg Collection,4808:54:50:3:Felnok Steelspring,5522:60:57:3:Leonid Barthalomew
+10300|Ranshalla|618:63,59.4;63.6,59.2;64.4,61.2|4901:59:52:1:Guardians of the Altar
+10301|Jaron Stoneshaper|618:52,30.4|4861:59:53:1:Enraged Wildkin,5245:56:53:1:Troubled Spirits of Kel'Theril
+10302|Krakle|490:30.8,50.4;30.8,50.6|974:55:51:3:Finding the Source,980:55:51:3:The New Springs
+10304|Aurora Skycaller|139:53.4,22;53.6,22|5246:56:53:1:Fragments of the Past,5247:57:53:1:Fragments of the Past,5248:58:53:1:Tormented By the Past
+10305|Umi Rumplesnicker|618:60.8,37.6|977:58:52:3:Are We There  Yeti?,3783:56:52:3:Are We There  Yeti?,5163:58:52:3:Are We There  Yeti?,8798:60:55:3:A Yeti of Your Own
+10307|Witch Doctor Mau'ari|618:61.8,38.2|969:60:55:3:Luck Be With You,975:60:55:3:Cache of Mau'ari,4801:60:55:3:Frostsaber E'ko,4802:60:55:3:Winterfall E'ko,4803:60:55:3:Shardtooth E'ko,4804:60:55:3:Chillwind E'ko,4805:60:55:3:Ice Thistle E'ko,4806:60:55:3:Frostmaul E'ko,4807:60:55:3:Wildkin E'ko
+10431|Gregor Greystone|618:61.2,38.8|6028:52:50:1:The Everlook Report,6029:52:50:2:The Everlook Report,6030:52:50:3:Duke Nicholas Zverenhoff
+10460|Prospector Ironboot|440:66.8,24|4788:58:40:3:The Final Tablets,5065:58:40:3:The Lost Tablets of Mosh'aru,8181:58:40:3:Confront Yeh'kinya,8182:58:40:3:The Hand of Rastakhan
+10468|Felnok Steelspring|618:61.4,38.4;61.6,38.4;61.6,38.6|4809:54:50:3:Chillwind Horns,4810:54:50:3:Return to Tinkee,4907:60:57:3:Tinkee Steamboil
+10616|Supervisor Raelen|12:81.4,66|5545:9:5:1:A Bundle of Trouble
+10618|Rivern Frostwind|618:49.8,9.8|4970:60:58:1:Frostsaber Provisions,5201:60:58:1:Winterfall Intrusion,5981:60:58:1:Rampaging Giants
+10637|Malyfous Darkhammer|618:61,38.6|5124:60:55:3:Fiery Plate Gauntlets,84495:60:55:3:Fiery Plate Gauntlets
+10667|Chromie|28:39.4,66.8|4971:56:53:3:A Matter of Time,4972:56:53:3:Counting Out Time,4973:56:53:3:Counting Out Time,5154:56:50:3:The Annals of Darrowshire,5210:56:50:3:Brother Carlin,5721:60:55:3:The Battle of Darrowshire,85066:60:60:1:Making Ready,85068:60:60:1:Who Says You Can Never Go Back?
+10684|Remorseful Highborne|618:56,44.6;56.2,44.4|5252:58:53:1:Remorseful Highborne
+10739|Mulgris Deepriver|28:53.6,64.6|4984:54:51:3:The Wildlife Suffers Too,4985:56:51:3:The Wildlife Suffers Too,4986:56:51:1:Glyphed Oaken Branch,4987:56:51:2:Glyphed Oaken Branch
+10778|Janice Felstone|28:38.4,54|5021:52:50:3:Better Late Than Never,5051:54:50:3:Two Halves Become One
+10838|Commander Ashlam Valorfist|28:42.8,84|211:60:50:1:Alas  Andorhal,5092:52:50:1:Clear the Way,5097:56:50:1:All Along the Watchtowers,5215:53:50:1:The Scourge Cauldrons,5237:58:50:1:Mission Accomplished!,5533:55:55:1:Scholomance,8414:52:50:1:Dispelling Evil,8418:52:50:1:Forging the Mightstone,82106:50:50:1:Forging the Mightstone
+10839|Argent Officer Garush|85:83.2,68.4;83.2,68.6|5405:55:50:2:Argent Dawn Commission,5406:55:50:2:Corruptor's Scourgestones,5407:55:50:2:Invader's Scourgestones,5408:55:50:2:Minion's Scourgestones
+10840|Argent Officer Pureheart|28:43,83.6|5401:55:50:1:Argent Dawn Commission,5402:55:50:1:Minion's Scourgestones,5403:55:50:1:Invader's Scourgestones,5404:55:50:1:Corruptor's Scourgestones
+10856|Argent Quartermaster Hasana|85:83.2,68.2|5504:60:55:2:Mantles of the Dawn,5524:60:55:2:Chromatic Mantle of the Dawn
+10857|Argent Quartermaster Lightspark|28:42.8,83.8|5507:60:55:1:Mantles of the Dawn,5521:60:55:1:Chromatic Mantle of the Dawn
+10918|Lorax|618:63.8,73.8|5126:60:55:3:Lorax's Tale,5127:60:55:3:The Demon Forge
+10921|Taronn Redfeather|361:50.8,81.6|5156:54:48:3:Verifying the Corruption
+10922|Greta Mosshoof|361:51.2,82.2|5155:51:48:3:Forces of Jaedenar,5157:52:48:3:Collection of the Corrupt Water,5158:52:48:3:Seeking Spiritual Aid,5165:55:48:3:Dousing the Flames of Protection,5242:58:48:3:A Final Blow
+10924|Ivy Leafrunner|361:50.8,81.6|5249:56:53:1:To Winterspring!
+10926|Pamela Redpath|139:36.4,90.8;36.6,90.8|5149:55:50:3:Pamela's Doll,5152:56:50:3:Auntie Marlene,5241:56:50:3:Uncle Carlin,5942:60:50:3:Hidden Treasures
+10927|Marlene Redpath|28:49,78.8;49.2,78.4|5142:55:50:3:Little Pamela,5153:56:50:3:A Strange Historian
+10929|Haleh|618:54.4,51.2;54.6,51.2|5161:60:57:3:Wrath of the Blue Flight,5162:60:57:3:Wrath of the Blue Flight,6502:60:50:1:Drakefire Amulet
+10976|Jeziba|28:39.4,66.8|5164:60:57:3:Catalogue of the Wayward
+11016|Captured Arko'narin|361:35.4,58.4;35.4,59;35.6,57|5203:55:49:3:Rescue From Jaedenar
+11019|Jessir Moonbow|361:51.2,82|5204:57:49:3:Retribution of the Light
+11020|Remains of Trey Lightforge|361:38.4,50.4;38.6,50.4|5385:57:49:3:The Remains of Trey Lightforge
+11023|Weldon Barov|28:43.4,83.6;43.6,83.6|5343:60:52:1:Barov Family Fortune,5344:60:52:1:The Last Barov
+11033|Smokey LaRue|139:80.4,58;80.6,58|5214:60:55:3:The Great Ezra Grimm,6026:58:54:3:That's Asking A Lot,6041:58:54:3:When Smokey Sings  I Get Violent
+11034|Lord Maxwell Tyrosus|139:81.6,58|5265:60:55:3:The Argent Hold,87509:60:60:3:The Wrath of the Dawn,89443:60:60:3:Falling Into Place,89563:60:60:3:Leonid's Burden
+11035|Betina Bigglezink|139:81.4,59.4;81.4,59.6|4771:60:57:3:Dawn's Gambit,5212:60:55:3:The Flesh Does Not Lie,5213:60:55:3:The Active Agent,5529:58:55:3:Plagued Hatchlings
+11036|Leonid Barthalomew the Revered|139:81.6,57.8|5243:60:55:3:Houses of the Holy,5463:60:57:3:Menethil's Gift,5465:60:57:3:Soulbound Keepsake,5531:60:57:3:Betina Bigglezink,87459:60:60:3:Scarlet Activities,87493:60:60:3:Unrest at Tyr's Hand,87498:60:60:3:The Scarlet Reclamation,89562:60:60:3:My Old Enemy,89567:60:60:3:The Wrecked Caravan
+11038|Caretaker Alen|139:79.4,63.8;79.6,63.4;79.6,63.8|5281:60:55:3:The Restless Souls,6021:55:50:3:Zaeldarr the Outcast
+11039|Duke Nicholas Zverenhoff|139:81.4,59.8|5251:60:55:3:The Archivist,5263:60:55:3:Above and Beyond,5264:60:55:3:Lord Maxwell Tyrosus,5503:55:50:3:Argent Dawn Commission,5508:55:50:3:Corruptor's Scourgestones,5509:55:50:3:Invader's Scourgestones,5510:55:50:3:Minion's Scourgestones,85963:60:1:1:One Commendation Signet,85964:60:1:1:Ten Commendation Signets,85965:60:1:2:One Commendation Signet,85966:60:1:2:Ten Commendation Signets
+11053|High Priestess MacDonnell|28:42.8,84.4;42.8,84.6|5216:53:50:1:Target: Felstone Field,5219:55:50:1:Target: Dalson's Tears,5222:55:50:1:Target: Writhing Haunt,5225:58:50:1:Target: Gahrron's Withering
+11056|Alchemist Arbington|28:42.6,83.8|5505:60:55:1:The Key to Scholomance,5537:57:55:1:Skeletal Fragments,5538:57:55:1:Mold Rhymes With...,5803:60:55:1:Araj's Scarab
+11063|Carlin Redpath|139:81.4,59.8|5168:56:50:3:Heroes of Darrowshire,5181:57:50:3:Villains of Darrowshire,5206:60:50:3:Marauders of Darrowshire,5211:55:50:3:Defenders of Darrowshire,5941:60:50:3:Return to Chromie
+11079|Wynd Nightchaser|618:52,30.2|5244:56:53:1:The Ruins of Kel'Theril,5253:58:53:1:The Crystal of Zin-Malor
+11140|Egan|139:14.4,33.6|5282:60:55:3:The Restless Souls
+11191|Lilith the Lithe|618:61.2,37.2|5305:60:50:3:Sweet Serenity,84496:60:50:3:Sweet Serenity
+11192|Kilram|618:61.2,37|5306:60:50:3:Snakestone of the Shadow Huntress,85699:60:50:3:Snakestone of the Shadow Huntress
+11193|Seril Scourgebane|618:61.2,37.2|5307:60:50:3:Corruption,85700:60:50:3:Corruption
+11216|Eva Sarkhoff|28:70.2,73.8|5382:60:55:3:Doctor Theolen Krastinov  the Butcher,5384:60:55:3:Kirtonos the Herald,5515:60:55:3:Krastinov's Bag of Horrors
+11218|Kerlonian Evershade|148:40.8,88.2;44.2,76.6;44.4,76.4|5321:20:17:1:The Sleeper Has Awakened
