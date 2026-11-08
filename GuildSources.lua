@@ -45,6 +45,7 @@ who:SetScript("OnEvent", function()
                         if type(info.level) == "number" and info.level > 0 then rec.lvl = info.level end
                         if type(info.area) == "string" and not secret(info.area) and info.area ~= "" then rec.zone = info.area end
                         if type(info.filename) == "string" and not secret(info.filename) then rec.class = info.filename end
+                        if type(info.raceStr) == "string" and not secret(info.raceStr) and info.raceStr ~= "" then rec.race = info.raceStr end
                         rec.t = time()
                         SFP.db.seenInfo[key] = rec
                     end
@@ -55,7 +56,7 @@ who:SetScript("OnEvent", function()
 end)
 
 -- ---------------------------------------------------------------- the background /who scan
--- The addon asks the game's /who list by itself, one level range or one zone at a time, and keeps what comes back (name, level, class, guild, zone) in
+-- The addon asks the game's /who list by itself, all the time, and keeps what comes back (name, level, class, race, guild, zone) in
 -- the same records as the answers above. It waits between asks (the server allows about one in five seconds), stays out of combat, instances and
 -- the places where someone else is using /who, and the lines the game prints for its answers are hidden while it waits for an answer.
 local scan = { last = 0, step = 0, waiting = 0 }
@@ -79,18 +80,39 @@ if ChatFrame_AddMessageEventFilter then
     end)
 end
 
+-- the questions asked in turn, so that everything the Who list can give is seen: every level on its own with every class, every race,
+-- the zone you are in, and each zone of the game. The order is mixed once, so one part of the list is not always asked first.
+local queries
+local function buildQueries()
+    queries = {}
+    local classes = { "Druid", "Hunter", "Mage", "Paladin", "Priest", "Rogue", "Shaman", "Warlock", "Warrior" }
+    local races = { "Human", "Dwarf", "Night Elf", "Gnome", "Orc", "Undead", "Tauren", "Troll" }
+    for lvl = 1, 60 do
+        for _, c in ipairs(classes) do queries[#queries + 1] = ('%d-%d c-"%s"'):format(lvl, lvl, c) end
+        queries[#queries + 1] = ("%d-%d"):format(lvl, lvl)
+    end
+    for _, r in ipairs(races) do
+        for lo = 1, 60, 10 do queries[#queries + 1] = ('%d-%d r-"%s"'):format(lo, math.min(60, lo + 9), r) end
+    end
+    for _, z in pairs(SFP.ZoneLevels or {}) do
+        local ok, info = pcall(C_Map.GetMapInfo, z[1])
+        if ok and type(info) == "table" and type(info.name) == "string" then queries[#queries + 1] = 'z-"' .. info.name .. '"' end
+    end
+    for i = #queries, 2, -1 do
+        local k = math.random(i)
+        queries[i], queries[k] = queries[k], queries[i]
+    end
+end
+
 local function nextQuery()
+    if not queries then buildQueries() end
     scan.step = scan.step + 1
-    local lvl = UnitLevel("player")
-    if type(lvl) ~= "number" or lvl < 1 then lvl = 1 end
-    local top = 60
-    -- 1 of 3 asks: the zone you are in; the others: level ranges around and above you, all the way up (so every level gets seen)
-    if scan.step % 3 == 0 then
+    -- every fourth ask is the zone you are in (the people around you matter most)
+    if scan.step % 4 == 0 then
         local z = GetRealZoneText and GetRealZoneText()
         if type(z) == "string" and z ~= "" and not secret(z) then return 'z-"' .. z .. '"' end
     end
-    local lo = ((scan.step * 7) % top) + 1
-    return ("%d-%d"):format(lo, math.min(top, lo + 6))
+    return queries[(scan.step % #queries) + 1]
 end
 
 local scanFrame = CreateFrame("Frame")
@@ -99,10 +121,10 @@ scanFrame:SetScript("OnUpdate", function(_, dt)
     acc = acc + dt
     if acc < 6 then return end
     acc = 0
-    if not (SFP.db and SFP.db.whoScan ~= false) then return end
+    if not SFP.db then return end
     if InCombatLockdown and InCombatLockdown() then return end
     if IsInInstance and select(1, IsInInstance()) then return end
-    if GetTime() - scan.last < 25 then return end
+    if GetTime() - scan.last < 12 then return end
     if (FriendsFrame and FriendsFrame:IsShown()) or (WhoFrame and WhoFrame:IsShown()) then return end
     if not (C_FriendList and C_FriendList.SendWho) then return end
     local q = nextQuery()

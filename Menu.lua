@@ -1334,11 +1334,10 @@ local buildSocial = simplePage("Players & Party",
             mkCheck(pane, "Share my profile with other addon users", function() return S.Config().share end, function(v) S.Config().share = v end, 12, y),
             mkCheck(pane, "Show item level and profiles on player tooltips", function() return S.Config().tip end, function(v) S.Config().tip = v end, 12, y - 26),
             mkCheck(pane, "One chat line about my group when it forms", function() return S.Config().groupLine end, function(v) S.Config().groupLine = v end, 12, y - 52),
-            mkCheck(pane, "Read the Who list in the background (level, class, guild, zone of players)", function() return SFP.db.whoScan ~= false end, function(v) SFP.db.whoScan = v and true or false end, 12, y - 78),
         }
         local styleInfo
         -- the play styles: any number can be ticked; none ticked = Automatic (decided from what you did)
-        mkText(pane, CYHEX .. "My play style|r  (tick as many as fit; none = automatic)", 12, y - 108, 500, "GameFontNormal")
+        mkText(pane, CYHEX .. "My play style|r  (tick as many as fit; none = automatic)", 12, y - 84, 500, "GameFontNormal")
         local styleChecks = {}
         local ids = {}
         for _, s in ipairs(S.STYLES) do
@@ -1349,21 +1348,21 @@ local buildSocial = simplePage("Players & Party",
             local id = s[1]
             styleChecks[#styleChecks + 1] = mkCheck(pane, s[2], function() local cc = S.Config(); return cc.styles and cc.styles[id] end,
                 function(v) local cc = S.Config(); cc.styles = cc.styles or {}; cc.styles[id] = v and true or nil; cc.style = "auto" end,
-                12 + ((i - 1) % 2) * 255, y - 132 - math.floor((i - 1) / 2) * 24)
+                12 + ((i - 1) % 2) * 255, y - 108 - math.floor((i - 1) / 2) * 24)
         end
         for _, cb in ipairs(styleChecks) do checks[#checks + 1] = cb end
-        mkButton(pane, "Open my group", 130, function() S.ShowGroup() end, "Item level, profile, sockets and enchants of everyone in your group"):SetPoint("TOPLEFT", 12, y - 330)
-        styleInfo = mkText(pane, "", 12, y - 358, 640, "GameFontHighlightSmall")
+        mkButton(pane, "Open my group", 130, function() S.ShowGroup() end, "Item level, profile, sockets and enchants of everyone in your group"):SetPoint("TOPLEFT", 12, y - 306)
+        styleInfo = mkText(pane, "", 12, y - 334, 640, "GameFontHighlightSmall")
 
-        mkText(pane, CYHEX .. "What I dislike in a group|r  (others who have the addon see it on my tooltip)", 12, y - 396, 500, "GameFontNormal")
+        mkText(pane, CYHEX .. "What I dislike in a group|r  (others who have the addon see it on my tooltip)", 12, y - 372, 500, "GameFontNormal")
         for i, d in ipairs(S.DISLIKES) do
             local col = (i - 1) % 2
             local row = math.floor((i - 1) / 2)
             local id = d[1]
             checks[#checks + 1] = mkCheck(pane, d[2], function() return S.Config().dislikes[id] end,
-                function(v) S.Config().dislikes[id] = v and true or nil end, 12 + col * 255, y - 420 - row * 24)
+                function(v) S.Config().dislikes[id] = v and true or nil end, 12 + col * 255, y - 396 - row * 24)
         end
-        local preview = mkText(pane, "", 12, y - 576, 640, "GameFontHighlightSmall")
+        local preview = mkText(pane, "", 12, y - 552, 640, "GameFontHighlightSmall")
         preview:SetTextColor(0.8, 0.8, 0.8)
         return function()
             local cfg = S.Config()
