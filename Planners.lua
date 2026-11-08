@@ -5,7 +5,7 @@ local _, SFP = ...
 local K = SFP.MenuKit
 if not K then return end
 
-local CY = "|c" .. (SFP.CYAN_HEX and ("ff" .. SFP.CYAN_HEX) or "ffe6483d")
+local CY = "|c" .. (SFP.CYAN_HEX or "ffe6483d")   -- CYAN_HEX already starts with the alpha (ff)
 
 ---------------------------------------------------------------------------
 -- the level ranges (as in the original game; the guides of Forever may move them a little)
@@ -74,18 +74,83 @@ local function statLine()
     return ("For your class (%s %s) choose gear with: %s%s|r"):format(token:sub(1, 1) .. token:sub(2):lower(), spec or "", CY, table.concat(list, " > "))
 end
 
+-- where the way in is: the zone map, and the place in percent (approximate: the entrances of the original game)
+local ENTRANCE = {
+    ["Ragefire Chasm"] = { 85, 52.5, 49.5 }, ["The Deadmines"] = { 52, 43, 72 }, ["Wailing Caverns"] = { 10, 45.7, 36.4 },
+    ["Shadowfang Keep"] = { 21, 44.5, 67.8 }, ["Blackfathom Deeps"] = { 63, 14.2, 14 }, ["The Stockade"] = { 84, 41, 57 },
+    ["Gnomeregan"] = { 27, 31.2, 34.5 }, ["Razorfen Kraul"] = { 199, 40.5, 90.5 }, ["Scarlet Monastery"] = { 18, 85.2, 32.3 },
+    ["Razorfen Downs"] = { 199, 47.5, 93 }, ["Uldaman"] = { 15, 41.8, 12 }, ["Zul'Farrak"] = { 71, 39, 21 }, ["Maraudon"] = { 66, 29, 62 },
+    ["The Temple of Atal'Hakkar"] = { 51, 69.8, 53.7 }, ["Blackrock Depths"] = { 36, 29.5, 38.5 }, ["Lower Blackrock Spire"] = { 36, 29.5, 38.5 },
+    ["Upper Blackrock Spire"] = { 36, 29.5, 38.5 }, ["Stratholme"] = { 23, 31.5, 15.7 }, ["Scholomance"] = { 22, 69.5, 73 }, ["Dire Maul"] = { 69, 62.5, 30.5 },
+    ["Molten Core"] = { 36, 29.5, 38.5 }, ["Onyxia's Lair"] = { 70, 52, 76 }, ["Blackwing Lair"] = { 36, 29.5, 38.5 }, ["Zul'Gurub"] = { 50, 53, 17.5 },
+    ["Ruins of Ahn'Qiraj"] = { 81, 29, 96 }, ["Temple of Ahn'Qiraj"] = { 81, 29, 96 }, ["Naxxramas"] = { 23, 39, 26 },
+}
+
+local function waypointTo(map, x, y, label)
+    if WorldMapFrame and not WorldMapFrame:IsShown() then pcall(ToggleWorldMap) end
+    if WorldMapFrame then pcall(WorldMapFrame.SetMapID, WorldMapFrame, map) end
+    if C_Map and C_Map.CanSetUserWaypointOnMap and C_Map.CanSetUserWaypointOnMap(map) and UiMapPoint then
+        C_Map.SetUserWaypoint(UiMapPoint.CreateFromCoordinates(map, x / 100, y / 100))
+        if C_SuperTrack and C_SuperTrack.SetSuperTrackedUserWaypoint then C_SuperTrack.SetSuperTrackedUserWaypoint(true) end
+        SFP:Print(("Waypoint set: %s, %s %.1f, %.1f"):format(label, zoneName(map), x, y))
+    else
+        SFP:Print("The map of " .. label .. " opened (no waypoint can be set there).")
+    end
+end
+
 local buildDungeons = K.simplePage("Dungeon & Raid Planner",
-    "Plan the dungeons and raids to do next. The list starts with the ones that fit your level (green), then the ones coming up (yellow). Mark a dungeon done when you have what you need from it. " ..
-    "Below your level, pick the dungeons that drop good items for your class; at 60, the raids come first.",
+    "Tick a dungeon or raid when you are done with it, untick it to plan it again. The list starts with the ones that fit your level (green), then the ones coming up (yellow). " ..
+    "Waypoint sets a marker on the way in (approximate). Below your level pick the dungeons that suit your class; at 60 the raids come first.",
     function(pane, y)
-        local head = K.mkText(pane, "", 12, y, 480, "GameFontNormal")
-        local stats = K.mkText(pane, "", 12, y - 20, 480, "GameFontHighlightSmall")
-        local list = SFP.MakeRowList(pane, 8, y - 46, 500, 380, 22)
+        local head = K.mkText(pane, "", 12, y - 8, 480, "GameFontNormal")
+        local stats = K.mkText(pane, "", 12, y - 28, 470, "GameFontHighlightSmall")
+        stats:SetHeight(30)
+        stats:SetJustifyV("TOP")
+        local scroll = CreateFrame("ScrollFrame", nil, pane, "UIPanelScrollFrameTemplate")
+        scroll:SetPoint("TOPLEFT", 8, y - 66)
+        scroll:SetPoint("BOTTOMRIGHT", -30, 8)
+        local child = CreateFrame("Frame", nil, scroll)
+        child:SetSize(470, 10)
+        scroll:SetScrollChild(child)
+        local rowsUI = {}
         local function done() SFP.db.plannerDone = SFP.db.plannerDone or {}; local d = SFP.db.plannerDone[charKey()]; if not d then d = {}; SFP.db.plannerDone[charKey()] = d end return d end
+        local function rowFrame(i)
+            local r = rowsUI[i]
+            if r then return r end
+            r = CreateFrame("Frame", nil, child)
+            r:SetSize(470, 22)
+            r:SetPoint("TOPLEFT", 0, -(i - 1) * 24)
+            r.check = CreateFrame("CheckButton", nil, r, "UICheckButtonTemplate")
+            r.check:SetSize(22, 22)
+            r.check:SetPoint("LEFT", 0, 0)
+            r.text = r:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+            r.text:SetPoint("LEFT", 28, 0)
+            r.text:SetWidth(330)
+            r.text:SetJustifyH("LEFT")
+            r.way = K.mkButton(r, "Waypoint", 78, function(self) local d = self.entry and ENTRANCE[self.entry[1]]; if d then waypointTo(d[1], d[2], d[3], self.entry[1]) end end)
+            r.way:SetPoint("RIGHT", 0, 0)
+            rowsUI[i] = r
+            return r
+        end
         return function()
             local lvl = myLevel()
             local rows = {}
-            for _, d in ipairs(DUNGEONS) do rows[#rows + 1] = { d = d, dist = distance(lvl, d[2], d[3]), raid = d[4] == "raid" } end
+            local have = {}
+            for _, d in ipairs(DUNGEONS) do rows[#rows + 1] = { d = d, dist = distance(lvl, d[2], d[3]), raid = d[4] == "raid" }; have[d[1]:lower()] = true end
+            -- every other dungeon and raid the game's group finder has shown (the Dungeons & Raids tools keep the list): level not known
+            local dr = SFP_Module and select(2, SFP_Module("DungeonsRaids"))
+            for kind, listName in pairs({ dungeon = "dungeon", raid = "raid" }) do
+                local known = dr and dr.db and dr.db[listName] and dr.db[listName].known
+                for name in pairs(known or {}) do
+                    local l = tostring(name):lower()
+                    local dup = have[l]
+                    if not dup then for h in pairs(have) do if h:find(l, 1, true) or l:find(h, 1, true) then dup = true break end end end
+                    if not dup then
+                        have[l] = true
+                        rows[#rows + 1] = { d = { tostring(name), 1, 60, kind == "raid" and "raid" or nil }, dist = 50, raid = kind == "raid" }
+                    end
+                end
+            end
             table.sort(rows, function(a, b)
                 local ad, bd = done()[a.d[1]], done()[b.d[1]]
                 if (ad and true or false) ~= (bd and true or false) then return not ad end
@@ -97,19 +162,20 @@ local buildDungeons = K.simplePage("Dungeon & Raid Planner",
             for _, r in ipairs(rows) do if not done()[r.d[1]] then best = r.d break end end
             head:SetText(("%sLevel %d|r  -  next: %s"):format(CY, lvl, best and ("|cffffd100" .. best[1] .. "|r") or "all done"))
             stats:SetText(statLine())
-            local items = {}
             for i, r in ipairs(rows) do
                 local d = r.d
-                local isDone = done()[d[1]]
-                items[i] = {
-                    text = ("%s%s|r  %s%s%s"):format(isDone and "|cff606060" or levelColor(lvl, d[2], d[3]), d[1],
-                        "|cff808080", d[2] == d[3] and ("level " .. d[2]) or ("level " .. d[2] .. "-" .. d[3]), r.raid and "  raid" or ""),
-                    buttons = {
-                        { isDone and "Undo" or "Done", 60, function() done()[d[1]] = (not isDone) or nil; SFP:Safe("planner", pane.refresh) end },
-                    },
-                }
+                local row = rowFrame(i)
+                local isDone = done()[d[1]] and true or false
+                row.check:SetChecked(isDone)
+                row.check:SetScript("OnClick", function(self) done()[d[1]] = self:GetChecked() and true or nil; SFP:Safe("planner", pane.refresh) end)
+                row.text:SetText(("%s%s|r  |cff808080%s%s|r"):format(isDone and "|cff606060" or levelColor(lvl, d[2], d[3]), d[1],
+                    d[2] == d[3] and ("level " .. d[2]) or ("level " .. d[2] .. "-" .. d[3]), r.raid and "  raid" or ""))
+                row.way.entry = d
+                row.way:SetShown(ENTRANCE[d[1]] ~= nil)
+                row:Show()
             end
-            list:Set(items)
+            for i = #rows + 1, #rowsUI do rowsUI[i]:Hide() end
+            child:SetHeight(#rows * 24 + 8)
         end
     end)
 
