@@ -504,6 +504,10 @@ local function planRefresh()
                             own > 0 and ("  |cff66ff66you have " .. own .. "|r") or "",
                             GH.CanCraft(e) and "  |cffff6a60you can craft|r" or ""),
                         check = plan[e.name:lower()] ~= nil,
+                        tip = function(tt)
+                            local id = e.itemID
+                            if id and id > 0 then tt:SetItemByID(id) else tt:SetText(e.name) end
+                        end,
                         onToggle = function(on)
                             GH.PlanSet(e.name, e.kind, on, e.itemID)
                             planRefresh()

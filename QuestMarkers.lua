@@ -31,7 +31,7 @@ local function available(entry)
     end
     local out = {}
     for _, q in ipairs(list) do
-        local ok = q.req <= lvl and (q.side == 0 or q.side == side or side == 0)
+        local ok = q.req <= lvl and (q.side == 0 or q.side == 3 or q.side == side or side == 0)   -- (Wowhead: 1 Alliance, 2 Horde, 3 both)
         -- quests far below the level give nothing: left out
         if ok and q.level > 0 and q.level < lvl - 8 and not SFP.db.questMarkersAll then ok = false end
         if ok and C_QuestLog then
@@ -150,7 +150,20 @@ SFP:OnLogin(function()
     ev:RegisterEvent("QUEST_ACCEPTED")
     ev:RegisterEvent("QUEST_DETAIL")
     ev:RegisterEvent("PLAYER_LEVEL_UP")
-    ev:SetScript("OnEvent", function() if WorldMapFrame:IsShown() then draw() end end)
+    ev:SetScript("OnEvent", function(_, event)
+        if event == "QUEST_DETAIL" or event == "QUEST_ACCEPTED" then
+            -- the camps of a side: a quest seen in a zone is noted for the faction of this character (the Quest Planner uses it)
+            local mp = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player")
+            local f = UnitFactionGroup("player")
+            if mp and f and SFP.db then
+                SFP.db.questSides = SFP.db.questSides or {}
+                local rec = SFP.db.questSides[mp] or {}
+                SFP.db.questSides[mp] = rec
+                rec[f] = (rec[f] or 0) + 1
+            end
+        end
+        if WorldMapFrame:IsShown() then draw() end
+    end)
 end)
 
 -- the old call of WorldMap.lua (zones of quests): nothing more to draw there

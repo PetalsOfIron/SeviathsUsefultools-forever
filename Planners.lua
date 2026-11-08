@@ -244,14 +244,29 @@ local buildDungeons = K.simplePage("Dungeon & Raid Planner",
 -- which side a zone belongs to (the other side does not quest there); zones not listed are for both
 local ZONE_SIDE = { [1429] = "Alliance", [1426] = "Alliance", [1438] = "Alliance", [1436] = "Alliance", [1432] = "Alliance", [1439] = "Alliance",
     [1433] = "Alliance", [1431] = "Alliance", [1437] = "Alliance",
-    [1411] = "Horde", [1412] = "Horde", [1420] = "Horde", [1413] = "Horde", [1421] = "Horde", [1442] = "Horde", [1441] = "Horde" }
+    [1411] = "Horde", [1412] = "Horde", [1420] = "Horde", [1413] = "Horde", [1421] = "Horde", [1441] = "Horde" }
 -- the starting zone of each race: the other starting zones of the side are not suggested
 local START_OF = { Human = 1429, Dwarf = 1426, Gnome = 1426, NightElf = 1438, Orc = 1411, Troll = 1411, Tauren = 1412, Scourge = 1420 }
 local START_ZONES = { [1429] = true, [1426] = true, [1438] = true, [1411] = true, [1412] = true, [1420] = true }
+-- quests of a zone for one side, from the quest giver data of Wowhead (side 1 Alliance, 2 Horde, 3 both) and from what this character saw
+local function sideCount(map, faction)
+    local want = faction == "Alliance" and 1 or 2
+    local n = 0
+    for _, e in ipairs((SFP.QuestGivers and SFP.QuestGivers[map]) or {}) do
+        for part in string.gmatch(e[4] or "", "[^|]+") do
+            local s = tonumber(part:match("^%d+:%d+:%d+:(%d+):"))
+            if s == want then n = n + 1 end
+        end
+    end
+    local seen = SFP.db and SFP.db.questSides and SFP.db.questSides[map]
+    return n + ((seen and seen[faction]) or 0)
+end
+
 local function zoneFitsMe(z)
     local f = UnitFactionGroup("player")
     local side = ZONE_SIDE[z[1]]
-    if side and f and side ~= f then return false end
+    -- a zone of the other side still counts when enough quests of your own side exist there (camps of your side, from Wowhead and from your own play)
+    if side and f and side ~= f and sideCount(z[1], f) < 8 then return false end
     if START_ZONES[z[1]] then
         local _, race = UnitRace("player")
         local mine = START_OF[race or ""]
@@ -270,7 +285,7 @@ local function zoneAutoDone(z)
         for part in string.gmatch(e[4] or "", "[^|]+") do
             local id, ql, req, qs = part:match("^(%d+):(%d+):(%d+):(%d+):")
             id, ql, req, qs = tonumber(id), tonumber(ql), tonumber(req), tonumber(qs)
-            if id and (qs == 0 or qs == side or side == 0) and ql >= z[2] and ql <= z[3] + 2 and req <= lvl then
+            if id and (qs == 0 or qs == 3 or qs == side or side == 0) and ql >= z[2] and ql <= z[3] + 2 and req <= lvl then
                 total = total + 1
                 if not C_QuestLog.IsQuestFlaggedCompleted(id) then open = open + 1 end
             end

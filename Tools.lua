@@ -510,7 +510,7 @@ local function shippedRecipes()
     for _, r in ipairs(SFP.RecipeData or {}) do
         local reag = {}
         for i, rg in ipairs(r[5]) do reag[i] = { rg[1], rg[2] } end
-        shipped["s" .. r[1]] = { n = r[3], p = r[2], o = (r[4] and r[4] > 0) and r[4] or nil, r = reag }
+        shipped["s" .. r[1]] = { n = r[3], p = r[2], o = (r[4] and r[4] > 0) and r[4] or nil, r = reag, id = r[1] }
     end
     return shipped
 end
@@ -604,6 +604,15 @@ local function shopTotals()
 end
 
 local shopRefresh
+-- the tooltip of a recipe: the item it makes, else the recipe's spell, else its name
+local function recipeTip(rec)
+    return function(tt)
+        if rec and rec.o and rec.o > 0 then tt:SetItemByID(rec.o)
+        elseif rec and rec.id and tt.SetSpellByID then tt:SetSpellByID(rec.id)
+        else tt:SetText((rec and rec.n) or "?") end
+    end
+end
+
 local function shopFillRows()
     local items = {}
     for i, entry in ipairs(shopData()) do
@@ -612,6 +621,7 @@ local function shopFillRows()
         items[#items + 1] = {
             text = ("%dx %s%s"):format(entry.qty, (rec and rec.n) or entry.key, rec and "" or "  |cffff6060(recipe not known on this account)|r"),
             check = not shopOff[key],
+            tip = recipeTip(rec),
             onToggle = function(on) shopOff[key] = (not on) or nil; shopRefresh() end,
             buttons = {
                 { "-", 24, function()
@@ -689,6 +699,7 @@ shopShowResults = function()
             text = ((rec and rec.n) or key) .. "  |cff808080" .. ((rec and rec.p) or "") .. "|r  " .. profitText(rec) ..
                 (learned and "  |cff40ff40learned|r" or "  |cffff9040not learned|r"),
             check = shopIndex(key) ~= nil,
+            tip = recipeTip(rec),
             onToggle = function(on)
                 local i = shopIndex(key)
                 if on and not i then
