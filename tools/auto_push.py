@@ -54,6 +54,13 @@ while True:
         run(sys.executable, os.path.join(HERE, "bake_collected.py"), os.path.join(HERE, "classic_seed.lua"), os.path.join(HERE, "crawl", "crawl_seed.lua"))
         run(sys.executable, os.path.join(HERE, "bake_gold.py"))
         run(sys.executable, os.path.join(HERE, "package_curseforge.py"))
+        try:   # and the zip into the curse folder, where it is taken from
+            import shutil
+            dest = os.path.join(os.path.expanduser("~"), "Downloads", "curse", "forever")
+            os.makedirs(dest, exist_ok=True)
+            shutil.copy(os.path.join(FOREVER, "curseforge", "SeviathsUsefulTools-1.0-forever.zip"), dest)
+        except Exception as e:
+            print("zip copy failed", e, flush=True)
         git("add", "-A")
         code, out = git("commit", "-qm", "Collected data after a reload or logout (automatic)\n\nCo-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>")
         if code == 0:
