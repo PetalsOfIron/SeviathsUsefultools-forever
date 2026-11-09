@@ -249,6 +249,51 @@ C_Timer.NewTicker(2, function()
     if open then readWho() end
 end)
 
+-- ---------------------------------------------------------------- the premade groups list of WoW Forever (LFGBrowseFrame)
+-- Hovering a group shows, beside the game's own tooltip, everything collected about its leader (Social.AddByName: level, race, class, guild, zone, roleplay
+-- profile, item level ...) and one line for each other member of the group.
+local function groupTip(entry)
+    local S = SFP.Social
+    local id = entry and entry.resultID
+    if not (id and S and S.AddByName and C_LFGList and C_LFGList.GetSearchResultLeaderInfo) then return end
+    local anchor = _G.LFGBrowseSearchEntryTooltip or entry
+    local okL, lead = pcall(C_LFGList.GetSearchResultLeaderInfo, id)
+    local leadName = okL and type(lead) == "table" and type(lead.name) == "string" and not secret(lead.name) and lead.name or nil
+    if not leadName then return end
+    GameTooltip:SetOwner(anchor, "ANCHOR_NONE")
+    GameTooltip:ClearAllPoints()
+    GameTooltip:SetPoint("TOPLEFT", anchor, "TOPRIGHT", 4, 0)
+    GameTooltip:AddLine("|c" .. (SFP.CYAN_HEX or "ffffd100") .. "Seviaths|r  |cff808080what is known about the group|r")
+    GameTooltip:AddLine("Leader: " .. leadName, 0.9, 0.28, 0.24)
+    pcall(S.AddByName, GameTooltip, leadName)
+    local okS, res = pcall(C_LFGList.GetSearchResultInfo, id)
+    local numMembers = okS and type(res) == "table" and res.numMembers or 0
+    local shown = 0
+    for i = 1, math.min(numMembers, 10) do
+        local okP, pinfo = pcall(C_LFGList.GetSearchResultPlayerInfo, id, i)
+        local nm = okP and type(pinfo) == "table" and not pinfo.isLeader and type(pinfo.name) == "string" and not secret(pinfo.name) and pinfo.name
+        if nm then
+            local okO, line = pcall(S.OneLine, nm)
+            GameTooltip:AddLine((okO and line) or (nm .. (pinfo.level and (": level " .. pinfo.level) or "")), 0.8, 0.8, 0.8, true)
+            shown = shown + 1
+        end
+    end
+    GameTooltip:Show()
+end
+local function hookGroupRows()
+    local bf = _G.LFGBrowseFrame
+    local sb = bf and bf.ScrollBox
+    if not (sb and sb.ForEachFrame and bf:IsVisible()) then return end
+    sb:ForEachFrame(function(row)
+        if row and not row.SeviathTip and row.HookScript and row.resultID then
+            row.SeviathTip = true
+            row:HookScript("OnEnter", function(self) pcall(groupTip, self) end)
+            row:HookScript("OnLeave", function() if GameTooltip:GetOwner() == _G.LFGBrowseSearchEntryTooltip or GameTooltip:GetOwner() == row then GameTooltip:Hide() end end)
+        end
+    end)
+end
+C_Timer.NewTicker(1, function() pcall(hookGroupRows) end)
+
 -- ---------------------------------------------------------------- Guild Roster Manager
 -- GRM_GuildMemberHistory_Save[guildKey][playerKey] = { name, rankName, rankIndex, ... } with guildKey "Guild Name-Realm"
 local function importGRM()
