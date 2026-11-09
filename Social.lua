@@ -26,7 +26,6 @@ S.STYLES = {
     { "social",   "Social, guild and friends" },
     { "housing",  "Housing fan" },
     { "speed",    "Fast runs and farming" },
-    { "roleplay", "Roleplayer" },
     { "farmer",   "Gold farmer" },
     { "collector", "Collector" },
     { "mythic",   (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT) and "Dungeon player" or "Hardcore Mythic+ player" },
@@ -38,12 +37,12 @@ S.STYLES = {
     { "hardcore", "Serious player (plays to win)" },
 }
 local AUTO_LABEL = { raider = "Serious raider", mythic = (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT) and "Dungeon player" or "Hardcore Mythic+ player",
-    delver = "Delve player", roleplayer = "Roleplayer", collector = "Collector",
+    delver = "Delve player", collector = "Collector",
     achiever = "Achievement hunter", pvp = "PvP player", dailies = "Daily quest player", farmer = "Gold farmer",
     gold = "Gold grinder", ["gold:loot"] = "Gold grinder (farming)", ["gold:daily"] = "Gold grinder (daily quests)",
     ["gold:trade"] = "Gold grinder (auction house)", housing = "Housing fan",
     alliance = "Alliance player", horde = "Horde player", altaholic = "Alt collector", casual = "Casual", hardcore = "Serious player", hardcoremode = "Hardcore (one life)" }
-local STYLE_LABEL = { relaxed = "Relaxed", learning = "Learning", social = "Social", speed = "Fast runs and farming", roleplay = "Roleplayer" }
+local STYLE_LABEL = { relaxed = "Relaxed", learning = "Learning", social = "Social", speed = "Fast runs and farming" }
 
 -- what a player can say they dislike in a group (the number is what is sent)
 S.DISLIKES = {
@@ -801,16 +800,6 @@ function S.AutoStyles(p)
     if weekGold >= 60000 then
         local id = ((a.g_trade or 0) > (a.g_loot or 0)) and "gold:trade" or "gold:loot"
         cand[#cand + 1] = { id = id, score = weekGold / 60000 + (a.scan or 0) / 40 }
-    end
-    -- a roleplayer: an OC written in the Roleplay page, or a character on a roleplay server (the name of the server ends in RP)
-    do
-        local rp = SFP.db and SFP.db.rp and SFP.db.rp.chars
-        local hasOC = false
-        for _, rec in pairs(rp or {}) do if type(rec) == "table" and (rec.name or "") ~= "" then hasOC = true break end end
-        local key = SFP.RealmKey and SFP:RealmKey() or ""
-        local rpServer = tostring(key):upper():find("RP$") or tostring(key):upper():find("RPPVP")
-        if hasOC then cand[#cand + 1] = { id = "roleplayer", score = 6 }
-        elseif rpServer then cand[#cand + 1] = { id = "roleplayer", score = 2 } end
     end
     -- the collector is the easiest style to reach, so any other style that is reached overwrites it
     for _, cd in ipairs(cand) do

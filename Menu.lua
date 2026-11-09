@@ -1195,7 +1195,7 @@ local function buildKnow(pane)
         local b = mkButton(pane, m[2], 70, function()
             know.mode, know.sel = m[1], nil
             knowRebuild(pane); knowRefresh(pane)
-            for _, t in ipairs(pane.tabs) do t:SetBackdropBorderColor(CY.r, CY.g, CY.b, t.mode == m[1] and 1 or 0.4) end
+            for _, t in ipairs(pane.tabs) do if t.mode == m[1] then t:LockHighlight() else t:UnlockHighlight() end end
         end)
         b.mode = m[1]
         b:SetPoint("TOPLEFT", 12 + (i - 1) * 74, -36)
