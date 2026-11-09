@@ -1557,7 +1557,13 @@ SlashCmdList["SEVIATHSUSEFULTOOLS"] = function(msg)
                 local okV, vis = pcall(c.IsVisible, c)
                 if okV and vis then
                     local nm = c.GetName and c:GetName()
-                    if nm then shown[#shown + 1] = nm end
+                    if nm then shown[#shown + 1] = nm
+                    elseif depth >= 1 then   -- no name: its kind and how many children, under which named parent (rows of lists have none)
+                        local okT, ty = pcall(c.GetObjectType, c)
+                        local nk = c.GetNumChildren and c:GetNumChildren() or 0
+                        local pn = fr.GetName and fr:GetName() or "?"
+                        shown[#shown + 1] = ("[%s>%s/%d]"):format(pn, okT and ty or "?", nk)
+                    end
                     walk(c, depth + 1, shown)
                 end
             end
@@ -1565,7 +1571,7 @@ SlashCmdList["SEVIATHSUSEFULTOOLS"] = function(msg)
         if host then
             local shown = {}
             walk(host, 0, shown)
-            SFP:Print("visible named frames in the group finder: " .. (#shown > 0 and table.concat(shown, ", "):sub(1, 900) or "none"))
+            SFP:Print("visible named frames in the group finder: " .. (#shown > 0 and table.concat(shown, ", "):sub(1, 1500) or "none"))
         end
         local S2 = _G.SeviathsDungeonsRaids
         SFP:Print("group tools window: " .. tostring(S2 and "known" or "no handle") .. "; /sut groups to open it by hand")

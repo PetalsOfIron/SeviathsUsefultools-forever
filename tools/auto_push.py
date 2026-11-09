@@ -35,7 +35,7 @@ def newest():
 
 
 def run(*cmd):
-    r = subprocess.run(list(cmd), cwd=ADDON, capture_output=True, text=True)
+    r = subprocess.run(list(cmd), cwd=ADDON, capture_output=True, text=True, creationflags=0x08000000, stdin=subprocess.DEVNULL)
     return r.returncode, (r.stdout + r.stderr).strip()
 
 

@@ -38,7 +38,7 @@ def stamp():
 
 
 def build():
-    r = subprocess.run([sys.executable, os.path.join(HERE, "package_curseforge.py")], capture_output=True, text=True)
+    r = subprocess.run([sys.executable, os.path.join(HERE, "package_curseforge.py")], capture_output=True, text=True, creationflags=0x08000000, stdin=subprocess.DEVNULL)
     out = (r.stdout or "").strip().splitlines()
     zpath = out[-1].split(" ")[1] if out and out[-1].startswith("wrote ") else None
     # the path may hold spaces: take everything between "wrote " and the file count
