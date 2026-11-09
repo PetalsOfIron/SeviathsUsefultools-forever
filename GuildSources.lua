@@ -201,7 +201,8 @@ local function hookWhoLike()
                 local t = fr:GetObjectType()
                 if t ~= "Frame" and t ~= "Button" then error("type") end
                 fr.SeviathScan = true
-                if fr:HasScript("OnShow") then fr:HookScript("OnShow", askNext) end
+                local nm = tostring(name)
+                if fr:HasScript("OnShow") and not (nm:find("Scroll") or nm:find("Bar") or nm:find("Button") or nm:find("Row")) then fr:HookScript("OnShow", askNext) end
                 if t == "Button" and fr:HasScript("OnClick") then fr:HookScript("OnClick", askNext) end
                 for _, c in ipairs({ fr:GetChildren() }) do
                     if c.GetObjectType and c:GetObjectType() == "Button" and c.HookScript and not (c.IsForbidden and c:IsForbidden()) then c:HookScript("OnClick", askNext) end
@@ -216,7 +217,9 @@ local function hookTree(fr, depth)
     if not fr or fr.SeviathScan2 or (fr.IsForbidden and fr:IsForbidden()) then return end
     fr.SeviathScan2 = true
     if fr.HasScript and fr.HookScript then
-        if fr:HasScript("OnShow") then fr:HookScript("OnShow", askNext) end
+        -- OnShow only for the tab frame itself: the frames below it (scroll bars, rows) are shown by the game's own list updates, not by a click,
+        -- and a /who sent from there is blocked (ADDON_ACTION_BLOCKED)
+        if depth == 3 and fr:HasScript("OnShow") then fr:HookScript("OnShow", askNext) end
         local t = fr.GetObjectType and fr:GetObjectType()
         if t == "Button" and fr:HasScript("OnClick") then fr:HookScript("OnClick", askNext) end
     end
