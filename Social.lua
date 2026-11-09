@@ -2066,6 +2066,20 @@ function S.OneLine(fullName)
     nm = nm or fullName
     local rec = peers[fullName] or peers[nm]
     local out = {}
+    -- what the Who list and the nameplates gave: level, race, class, guild, zone
+    do
+        local info = SFP.db and SFP.db.seenInfo
+        info = info and (info[fullName] or (realm and info[nm .. "-" .. realm:gsub("[%s'-]", "")]) or (SFP.db.nameRealms and SFP.db.nameRealms[nm] and info[nm .. "-" .. SFP.db.nameRealms[nm]]))
+        if type(info) == "table" then
+            local head = {}
+            if info.lvl then head[#head + 1] = "level " .. info.lvl end
+            if info.race then head[#head + 1] = info.race end
+            if info.class then head[#head + 1] = info.class:sub(1, 1) .. info.class:sub(2):lower() end
+            if #head > 0 then out[#out + 1] = table.concat(head, " ") end
+            if info.guild then out[#out + 1] = "<" .. info.guild .. ">" end
+            if info.zone then out[#out + 1] = info.zone end
+        end
+    end
     if rec then
         if (rec.ilvl or 0) > 0 then out[#out + 1] = "item level " .. rec.ilvl end
         local tal = rec.talent

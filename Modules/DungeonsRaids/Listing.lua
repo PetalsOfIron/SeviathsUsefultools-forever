@@ -883,7 +883,7 @@ local function AddTooltip(tooltip, resultID)
         local pname = okP and type(pinfo) == "table" and ns.Safe(pinfo.name)
         if pname and ns.FullName(pname) ~= r.leader then
           local okL, line = pcall(S.OneLine, ns.FullName(pname))
-          if okL and line and shown < 5 then
+          if okL and line and shown < 10 then
             tooltip:AddLine(line, 0.8, 0.8, 0.8, true)
             shown = shown + 1
           end

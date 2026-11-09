@@ -20,19 +20,31 @@ end
 -- ---------------------------------------------------------------- /who answers
 local who = CreateFrame("Frame")
 who:RegisterEvent("WHO_LIST_UPDATE")
-who:SetScript("OnEvent", function()
+local whoStats = { events = 0, results = 0, saved = 0, guilds = 0 }
+SFP.WhoStats = whoStats
+local function readWho()
     SFP:Safe("guilds from /who", function()
-        if not (SFP.db and C_FriendList and C_FriendList.GetNumWhoResults and C_FriendList.GetWhoInfo) then return end
+        if not SFP.db then return end
+        local getNum = (C_FriendList and C_FriendList.GetNumWhoResults) or _G.GetNumWhoResults
+        local getInfo = (C_FriendList and C_FriendList.GetWhoInfo) or _G.GetWhoInfo
+        if not (getNum and getInfo) then return end
+        whoStats.events = whoStats.events + 1
         local faction = UnitFactionGroup and UnitFactionGroup("player") or nil   -- /who answers with players of your own faction
-        local n = C_FriendList.GetNumWhoResults() or 0
-        for i = 1, math.min(n, 50) do
-            local okI, info = pcall(C_FriendList.GetWhoInfo, i)
+        local n = getNum() or 0
+        whoStats.results = n
+        for i = 1, math.min(n, 100) do
+            local okI, info = pcall(getInfo, i)
+            if okI and type(info) ~= "table" and info ~= nil then   -- the old way of the game: name, guild, level, race, class, zone, class file
+                local nm, gd, lv, rc, _, zn, cf = getInfo(i)
+                info = { fullName = nm, fullGuildName = gd, level = lv, raceStr = rc, area = zn, filename = cf }
+                okI = type(nm) == "string"
+            end
             if okI and type(info) == "table" and not secret(info.fullName) and type(info.fullName) == "string" then
                 local short, realm = realmOf(info.fullName)
                 local guild = info.fullGuildName
                 local hasGuild = type(guild) == "string" and guild ~= "" and not secret(guild)
                 if realm then
-                    if hasGuild then S.GuildNote(realm, guild, faction, short, nil, nil) end
+                    if hasGuild then S.GuildNote(realm, guild, faction, short, nil, nil); whoStats.guilds = whoStats.guilds + 1 end
                     -- the player himself: the same record the nameplate scan makes
                     local key = short .. "-" .. realm
                     if not S.CanAddSeen or S.CanAddSeen(key) then
@@ -51,13 +63,16 @@ who:SetScript("OnEvent", function()
                         if type(info.raceStr) == "string" and not secret(info.raceStr) and info.raceStr ~= "" then rec.race = info.raceStr end
                         rec.t = time()
                         SFP.db.seenInfo[key] = rec
+                        whoStats.saved = whoStats.saved + 1
                         end
                     end
                 end
             end
         end
     end)
-end)
+end
+who:SetScript("OnEvent", readWho)
+SFP.ReadWho = readWho   -- also read when the Who tab of the Looking For Group window is shown (its answers can come without the event)
 
 -- ---------------------------------------------------------------- the background /who scan
 -- The addon asks the game's /who list by itself, all the time, and keeps what comes back (name, level, class, race, guild, zone) in
@@ -195,14 +210,41 @@ local function hookWhoLike()
         end
     end
 end
+-- the Who List tab of the Looking For Group window of WoW Forever is LFGWhoListFrame: opening it and clicking anything in it (its rows, its buttons) asks the
+-- next question; the search box and the rows below it are hooked down to three levels
+local function hookTree(fr, depth)
+    if not fr or fr.SeviathScan2 or (fr.IsForbidden and fr:IsForbidden()) then return end
+    fr.SeviathScan2 = true
+    if fr.HasScript and fr.HookScript then
+        if fr:HasScript("OnShow") then fr:HookScript("OnShow", askNext) end
+        local t = fr.GetObjectType and fr:GetObjectType()
+        if t == "Button" and fr:HasScript("OnClick") then fr:HookScript("OnClick", askNext) end
+    end
+    if depth > 0 and fr.GetChildren then
+        for _, c in ipairs({ fr:GetChildren() }) do pcall(hookTree, c, depth - 1) end
+    end
+end
 do
     local tries = 0
     C_Timer.NewTicker(5, function(t)
         tries = tries + 1
         pcall(hookWhoLike)
-        if tries >= 30 then t:Cancel() end
+        local lw = _G.LFGWhoListFrame
+        if lw then
+            pcall(hookTree, lw, 3)
+            -- the rows can be made later than the frame: look again a few times, then stop
+            if tries >= 12 and lw.SeviathScan2 then t:Cancel() end
+        end
+        if tries >= 400 then t:Cancel() end
     end)
 end
+
+-- while the Who tab of the Looking For Group window (or the Who list) is open, what it lists is read every 2 seconds (reading needs no click)
+C_Timer.NewTicker(2, function()
+    local lw, wf = _G.LFGWhoListFrame, _G.WhoFrame
+    local open = (lw and lw.IsVisible and lw:IsVisible()) or (wf and wf.IsVisible and wf:IsVisible())
+    if open then readWho() end
+end)
 
 -- ---------------------------------------------------------------- Guild Roster Manager
 -- GRM_GuildMemberHistory_Save[guildKey][playerKey] = { name, rankName, rankIndex, ... } with guildKey "Guild Name-Realm"

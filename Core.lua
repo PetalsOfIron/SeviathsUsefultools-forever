@@ -1535,6 +1535,14 @@ SlashCmdList["SEVIATHSUSEFULTOOLS"] = function(msg)
             SFP:Print(("  %s  %.1f, %.1f  (%s)"):format(rows[i].e[1], rows[i].e[2], rows[i].e[3], tostring(rows[i].e[4]):sub(1, 50)))
         end
         if #rows == 0 then SFP:Print("  no quest givers in the data for this map") end
+    elseif cmd == "who" then
+        local w = SFP.WhoStats or {}
+        local n = 0
+        for _ in pairs((SFP.db and SFP.db.seenInfo) or {}) do n = n + 1 end
+        local g = 0
+        for _, byRealm in pairs((SFP.db and SFP.db.guildDir) or {}) do for _ in pairs(byRealm) do g = g + 1 end end
+        SFP:Print(("Who list: read %d times, %d players in the last answer, %d saved, %d with a guild. Kept in total: %d players, %d guilds."):format(
+            w.events or 0, w.results or 0, w.saved or 0, w.guilds or 0, n, g))
     elseif cmd == "lfg" then
         -- which group finder frames this game has, and which one the group tools found (open the Looking For Group window first)
         for _, name in ipairs({ "LFGListFrame", "LFGParentFrame", "PVEFrame", "LFDParentFrame", "GroupFinderFrame" }) do
