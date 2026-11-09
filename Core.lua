@@ -1542,9 +1542,9 @@ SlashCmdList["SEVIATHSUSEFULTOOLS"] = function(msg)
             SFP:Print(("%s: %s"):format(name, fr and (fr:IsVisible() and "visible" or "hidden") or "none"))
         end
         -- the frames inside the group finder window that are shown now, by name (open the Who tab first): to find the list of the Who tab
-        local host = (_G.LFGListFrame and _G.LFGListFrame:IsVisible() and _G.LFGListFrame) or (_G.PVEFrame and _G.PVEFrame:IsVisible() and _G.PVEFrame)
+        local host = (_G.LFGParentFrame and _G.LFGParentFrame:IsVisible() and _G.LFGParentFrame) or (_G.LFGListFrame and _G.LFGListFrame:IsVisible() and _G.LFGListFrame) or (_G.PVEFrame and _G.PVEFrame:IsVisible() and _G.PVEFrame)
         local function walk(fr, depth, shown)
-            if depth > 4 then return end
+            if depth > 6 then return end
             for _, c in ipairs({ fr:GetChildren() }) do
                 local okV, vis = pcall(c.IsVisible, c)
                 if okV and vis then
