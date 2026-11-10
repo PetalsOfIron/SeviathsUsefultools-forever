@@ -598,7 +598,7 @@ end
 local function learnedQuestGivers(map)
     local out = {}
     for qid, r in pairs((SFP.db and SFP.db.learnedQuests) or {}) do
-        if type(r) == "table" and r.m == map and r.g and r.x then
+        if type(r) == "table" and r.m == map and r.g and r.x and not (SFP.QDB and SFP.QDB[qid]) then   -- (a quest of the database is marked from it, not from what was learned)
             local done = isDone(qid)
             local inLog = haveQuest(qid) or hadQuest(qid)
             local prev = (SFP.QuestPrereq and SFP.QuestPrereq[qid]) or (SFP.db.learnedPrereq and SFP.db.learnedPrereq[qid])
@@ -626,7 +626,7 @@ local function learnedGivers(map)
     local lvl = UnitLevel("player")
     for qid, rec in pairs(cdb.qloc) do
         local g = type(rec) == "table" and rec.g
-        if type(qid) == "number" and type(g) == "table" and g.m == map and g.x and g.y and g.n then
+        if type(qid) == "number" and type(g) == "table" and g.m == map and g.x and g.y and g.n and not (SFP.QDB and SFP.QDB[qid]) then
             local done = isDone(qid)
             local inLog = haveQuest(qid) or hadQuest(qid)
             local qr = type(cdb.quests) == "table" and cdb.quests[qid]
