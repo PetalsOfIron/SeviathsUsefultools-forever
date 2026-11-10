@@ -163,7 +163,8 @@ local function getPin(i, canvas)
     if p then return p end
     p = CreateFrame("Button", nil, canvas)
     p:SetSize(20, 20)
-    p.icon = p:CreateTexture(nil, "OVERLAY")
+    p.icon = p:CreateTexture(nil, "OVERLAY", nil, 7)
+    p:SetFrameStrata("FULLSCREEN")
     p.icon:SetAllPoints()
     -- the game's own yellow "!" of an available quest
     if p.icon.SetAtlas and C_Texture and C_Texture.GetAtlasInfo and C_Texture.GetAtlasInfo("QuestNormal") then
@@ -314,7 +315,7 @@ function QM:Draw()
             p.giver, p.quests, p.map, p.x, p.y = e[1], qs, map, e[2] / 100, e[3] / 100
             p:ClearAllPoints()
             p:SetPoint("CENTER", canvas, "TOPLEFT", p.x * w, -p.y * h)
-            p:SetFrameLevel(canvas:GetFrameLevel() + 20)
+            p:SetFrameLevel(canvas:GetFrameLevel() + 400)   -- above the map's own marks (your arrow, the quest circles)
             p:Show()
         end
     end
@@ -330,7 +331,7 @@ function QM:Draw()
             p.giver, p.quests, p.map, p.x, p.y = g.n, { g.q }, map, g.x / 100, g.y / 100
             p:ClearAllPoints()
             p:SetPoint("CENTER", canvas, "TOPLEFT", p.x * w, -p.y * h)
-            p:SetFrameLevel(canvas:GetFrameLevel() + 20)
+            p:SetFrameLevel(canvas:GetFrameLevel() + 400)   -- above the map's own marks (your arrow, the quest circles)
             p:Show()
         end
     end
