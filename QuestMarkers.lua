@@ -49,16 +49,16 @@ end
 local function charId()
     return (UnitName("player") or "?") .. "-" .. ((GetNormalizedRealmName and GetNormalizedRealmName()) or "")
 end
-local function noteHad(id)
+local function noteHad(id)   -- only a quest that was turned in is kept: a quest started and then dropped can be taken again, so its giver keeps the mark
     if type(id) ~= "number" or not SFP.db then return end
     SFP.db.questsHad = SFP.db.questsHad or {}
     local t = SFP.db.questsHad[charId()]
     if not t then t = {}; SFP.db.questsHad[charId()] = t end
-    t[id] = true
+    t[id] = 2   -- 2 = turned in (an older save has true for every quest that was ever in the log: those are ignored)
 end
 local function hadQuest(id)
     local t = SFP.db and SFP.db.questsHad and SFP.db.questsHad[charId()]
-    return t and t[id] == true
+    return t and t[id] == 2
 end
 local function scanLog()
     if not SFP.db then return end
@@ -72,7 +72,7 @@ local function scanLog()
             local _, _, _, isHeader, _, _, _, id2 = GetQuestLogTitle(i)
             qid = (not isHeader) and id2 or nil
         end
-        if qid then noteHad(qid) end
+        -- (a quest in the log is known by haveQuest; it is not noted as done here)
     end
 end
 QM.ScanLog = scanLog
@@ -145,8 +145,7 @@ local function available(entry)
         local ok = eventQuestOn(q) and q.req <= lvl and (q.side == 0 or q.side == 3 or q.side == side or side == 0)   -- (Wowhead: 1 Alliance, 2 Horde, 3 both)
         -- quests far above the level are not offered (the Darkmoon Faire quests of level 60 need only level 1, but are not for a level 6 character)
         if ok and q.level > 0 and q.level > lvl + 6 then ok = false end
-        -- quests far below the level give nothing: left out
-        if ok and q.level > 0 and q.level < lvl - 8 and not SFP.db.questMarkersAll then ok = false end
+        -- (quests below your level always show: a low-level quest can still be taken)
         -- a quest of a chain is offered only when the one before it is done
         local prev = (SFP.QuestPrereq and SFP.QuestPrereq[q.id]) or (SFP.db.learnedPrereq and SFP.db.learnedPrereq[q.id])
         if ok and prev and C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted and not C_QuestLog.IsQuestFlaggedCompleted(prev) then ok = false end
@@ -268,7 +267,7 @@ local function learnedGivers(map)
                 local title = qr.t
                 local ql = type(qr) == "table" and tonumber(qr.l) or 0
                 if ql == 30 then ql = 0 end   -- 30 = level not known
-                if not (ql > 0 and type(lvl) == "number" and ql < lvl - 8) then
+                do   -- (low-level quests always show)
                     out[#out + 1] = { n = g.n, x = g.x * 100, y = g.y * 100, q = { id = qid, level = ql, name = title } }
                 end
             end
