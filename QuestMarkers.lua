@@ -203,6 +203,25 @@ local function eventQuestOn(q)
     return not cal or eventOn(cal)
 end
 
+-- how many levels above yours a quest can be and still be offered to you: learned from what the game offers and lets you accept (a giver's list, an accepted
+-- quest), the highest difference seen is kept (db.questAbove). Before anything was seen it is 2. The data of the quest database says where the game's own limit
+-- lies: a quest is offered from its "required level" and that is mostly the quest level minus 0 to 5 (see tools/bake_questie.py: l and r of each quest).
+local DEFAULT_ABOVE = 2
+local function levelsAbove()
+    local v = SFP.db and SFP.db.questAbove
+    return type(v) == "number" and math.max(v, DEFAULT_ABOVE) or DEFAULT_ABOVE
+end
+QM.LevelsAbove = levelsAbove
+local function noteAbove(questLevel)
+    if not SFP.db or type(questLevel) ~= "number" or questLevel <= 0 then return end
+    local lvl = UnitLevel("player")
+    if type(lvl) ~= "number" then return end
+    local diff = questLevel - lvl
+    if diff > 12 then return end   -- (a level 60 quest that only asks for level 1 is an event or reputation quest: not a sample)
+    if diff > (SFP.db.questAbove or 0) then SFP.db.questAbove = diff end
+end
+QM.NoteAbove = noteAbove
+
 -- what a quest giver really offers: when you talk to one, the list of quests the game offers you is kept (name, place, your level). A shipped quest of that
 -- giver that the game does not offer now (a prerequisite not done, done already, not in this game) is not marked, until your level changes.
 local function noteOffers()
@@ -222,6 +241,10 @@ local function noteOffers()
     if pos and pos.GetXY then x, y = pos:GetXY() end
     if not (mp and x and x > 0) or (issecretvalue and (issecretvalue(x) or issecretvalue(y))) then return end
     -- a quest the game itself offered you is available: it is remembered (a rule of the database that wrongly hides it is overruled, as Questie does it)
+    for id in pairs(ids) do
+        local r = SFP.QDB and SFP.QDB[id]
+        if r and r.l then noteAbove(r.l) end   -- (what the game offers now shows how far above your level it goes)
+    end
     if any then
         SFP.db.questOffered = SFP.db.questOffered or {}
         local mine = SFP.db.questOffered[charId()] or {}
@@ -386,8 +409,8 @@ local function doable(id, rule, lvl)
     if rule.ev and not eventOn(rule.ev) then return false, "event not on" end
     if SFP.db and SFP.db.questOffered and SFP.db.questOffered[charId()] and SFP.db.questOffered[charId()][id] then return true end   -- (a giver offered it to you: it is available whatever the rules say)
     if (rule.r or 0) > lvl then return false, "level " .. tostring(rule.r) end
-    -- a quest of a higher level than yours is not marked (a level 60 quest that only asks for level 1 is for later)
-    if (rule.l or 0) > lvl then return false, "quest level " .. tostring(rule.l) .. " above yours" end
+    -- a quest too far above your level is not marked (a level 60 quest that only asks for level 1 is for later); how far is learned (levelsAbove)
+    if (rule.l or 0) > lvl + levelsAbove() then return false, "quest level " .. tostring(rule.l) .. " is more than " .. levelsAbove() .. " above yours" end
     if rule.m and rule.m > 0 and lvl > rule.m then return false, "max level" end
     if not raceOk(rule.rc) then return false, "race" end
     if not classOk(rule.cl) then return false, "class" end
@@ -754,6 +777,8 @@ SFP:OnLogin(function()
         if event == "QUEST_ACCEPTED" then
             local qid = select(2, ...) or select(1, ...)
             if type(qid) == "number" then takenSet()[qid] = true end
+            local rr = type(qid) == "number" and SFP.QDB and SFP.QDB[qid]
+            if rr and rr.l then noteAbove(rr.l) end
         end
         if event == "GOSSIP_SHOW" or event == "QUEST_GREETING" then SFP:Safe("note offered quests", noteOffers) return end
         if event == "QUEST_DATA_LOAD_RESULT" then
