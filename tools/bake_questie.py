@@ -24,9 +24,14 @@ import cbor2
 HERE = os.path.dirname(os.path.abspath(__file__))
 ADDON = os.path.abspath(os.path.join(HERE, ".."))
 ADDONS = os.path.dirname(ADDON)
-DB_TOC = os.path.join(ADDONS, "QuestieDB", "QuestieDB_Forever.toc")
-ZONES = os.path.join(ADDONS, "QuestieDB", "support", "Forever", "Zones")
+QDB_DIR = os.path.join(ADDONS, "QuestieDB")
+if not os.path.isdir(QDB_DIR):   # not installed in the game: the Forever release of QuestieDB (https://github.com/Questie/QuestieDB/releases) unpacked anywhere
+    QDB_DIR = os.environ.get("QUESTIEDB_DIR") or os.path.join(os.environ.get("TEMP", "."), "qdb_dl", "x", "QuestieDB")
+DB_TOC = os.path.join(QDB_DIR, "QuestieDB_Forever.toc")
+ZONES = os.path.join(QDB_DIR, "support", "Forever", "Zones")
 QUESTIE = os.path.join(ADDONS, "Questie")
+if not os.path.isdir(QUESTIE):   # Questie itself is not installed: a clone of https://github.com/Questie/Questie (git clone --depth 1) is read instead
+    QUESTIE = os.environ.get("QUESTIE_SRC") or os.path.join(os.environ.get("TEMP", "."), "questie_src")
 
 # quest fields (QuestieDB/src/meta/questMeta.lua)
 Q = dict(name=1, startedBy=2, finishedBy=3, requiredLevel=4, questLevel=5, requiredRaces=6, requiredClasses=7, objectivesText=8, preQuestGroup=12,
@@ -130,6 +135,45 @@ def blacklist():
     return hidden, failed
 
 
+def _eval_entries(text_block):
+    """entries '[id] = true / false / expression,' of a Questie Lua table -> set of the ids that are true (conditions of Expansions / Questie flags /
+    ContentPhases worked out for the Era: no season, everything of Era in)"""
+    E = collections.namedtuple("E", "Current Era Tbc Wotlk Cata MoP")(1, 1, 2, 3, 4, 5)
+
+    class Flags:
+        def __getattr__(self, k):
+            return False
+    CP = type("CP", (), {"activePhases": type("AP", (), {"SoM": 5, "SoD": 7, "Anniversary": 6, "MoP": 5, "TBC": 4})()})()
+    out = set()
+    for m in re.finditer(r"^\s*\[(\d+)\]\s*=\s*([^\n]*?),?\s*(?:--.*)?$", text_block, re.M):
+        qid, expr = int(m.group(1)), m.group(2).strip().rstrip(",").strip()
+        if not expr:
+            continue
+        e = re.sub(r"~=", "!=", expr)
+        e = re.sub(r"not", " not ", e).replace("true", "True").replace("false", "False")
+        e = re.sub(r"nil", "None", e)
+        try:
+            v = eval(e, {"__builtins__": {}}, {"Expansions": E, "Questie": Flags(), "ContentPhases": CP, "HIDE_ON_MAP": "HIDE_ON_MAP", "True": True, "False": False})
+        except Exception:
+            v = False
+        if v is True or v == "HIDE_ON_MAP":
+            out.add(qid)
+    return out
+
+
+def npc_blacklist():
+    src = open(os.path.join(QUESTIE, "Database", "Corrections", "QuestieNPCBlacklist.lua"), encoding="utf-8").read()
+    return _eval_entries(src[src.index("return {"):])
+
+
+def aq_war_effort():
+    """the AQ war effort quests: Questie hides them by default (showAQWarEffortQuests = false)"""
+    src = open(os.path.join(QUESTIE, "Database", "Corrections", "QuestieQuestBlacklist.lua"), encoding="utf-8").read()
+    i = src.index("QuestieQuestBlacklist.AQWarEffortQuests = {")
+    block = src[i: src.index("\n}", i)]
+    return set(int(x) for x in re.findall(r"^\s*\[(\d+)\]\s*=\s*true", block, re.M))
+
+
 # ---- holiday quests ---------------------------------------------------------------------------------------------------------------------------
 CAL = {"Hallow": "Hallow", "Winter": "Winter Veil", "Lunar": "Lunar", "Love": "Love", "Midsummer": "Midsummer", "Harvest": "Harvest", "Children": "Children",
        "Darkmoon": "Darkmoon", "Brewfest": "Brewfest", "Noblegarden": "Noblegarden", "Day of the Dead": "Day of the Dead",
@@ -154,6 +198,9 @@ def main():
     hidden, failed = blacklist()
     print("hidden by Questie:", len(hidden), "conditions not worked out:", len(failed), failed[:5])
     holidays = holiday_quests()
+    bad_npcs, aq = npc_blacklist(), aq_war_effort()
+    print("hidden NPCs:", len(bad_npcs), "AQ war effort quests:", len(aq))
+    hidden = hidden | aq
 
     quest_ids = sorted(int(m.group(1)) for k in kv for m in [re.fullmatch(r"X-Quest-(\d+)-S", k)] if m)
     print("quests in the database:", len(quest_ids))
@@ -201,6 +248,8 @@ def main():
             obj_ids = started[1] if len(started) > 1 and started[1] else []
         for kind, ids, getter in (("npc", npc_ids, npc), ("obj", obj_ids, obj)):
             for i in ids:
+                if kind == "npc" and i in bad_npcs:
+                    continue
                 d = getter(i)
                 if not d:
                     continue

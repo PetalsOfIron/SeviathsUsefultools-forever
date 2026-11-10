@@ -221,6 +221,13 @@ local function noteOffers()
     local x, y
     if pos and pos.GetXY then x, y = pos:GetXY() end
     if not (mp and x and x > 0) or (issecretvalue and (issecretvalue(x) or issecretvalue(y))) then return end
+    -- a quest the game itself offered you is available: it is remembered (a rule of the database that wrongly hides it is overruled, as Questie does it)
+    if any then
+        SFP.db.questOffered = SFP.db.questOffered or {}
+        local mine = SFP.db.questOffered[charId()] or {}
+        SFP.db.questOffered[charId()] = mine   -- (per character: another class or race is not offered the same)
+        for id in pairs(ids) do mine[id] = true end
+    end
     SFP.db.npcOffered = SFP.db.npcOffered or {}
     SFP.db.npcOffered[name] = SFP.db.npcOffered[name] or {}
     local list = SFP.db.npcOffered[name]
@@ -377,6 +384,7 @@ local function doable(id, rule, lvl)
     local sf, fl = rule.sf or 0, rule.fl or 0
     if hasBit(sf, 1) or hasBit(fl, 4096) or hasBit(fl, 32768) then return false, "repeatable / daily" end
     if rule.ev and not eventOn(rule.ev) then return false, "event not on" end
+    if SFP.db and SFP.db.questOffered and SFP.db.questOffered[charId()] and SFP.db.questOffered[charId()][id] then return true end   -- (a giver offered it to you: it is available whatever the rules say)
     if (rule.r or 0) > lvl then return false, "level " .. tostring(rule.r) end
     -- a quest of a higher level than yours is not marked (a level 60 quest that only asks for level 1 is for later)
     if (rule.l or 0) > lvl then return false, "quest level " .. tostring(rule.l) .. " above yours" end
