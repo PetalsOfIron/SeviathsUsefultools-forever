@@ -648,10 +648,19 @@ local function fitWindow()
     -- shrunk: the big metal frame is left out (it is taller than the 34 px bar and showed as lone lines): a plain bar with a gold edge
     if win.NineSlice then win.NineSlice:SetShown(not shrunk) end
     if win.seviathBase then win.seviathBase:SetShown(not shrunk) end
+    -- the bar: one flat dark fill (a tiled picture showed its seams as lines) with the gold edge
+    if not win.shrunkFill then
+        local t = win:CreateTexture(nil, "BACKGROUND", nil, -7)
+        t:SetPoint("TOPLEFT", 3, -3)
+        t:SetPoint("BOTTOMRIGHT", -3, 3)
+        t:SetColorTexture(0.09, 0.04, 0.04, 0.96)
+        win.shrunkFill = t
+    end
+    win.shrunkFill:SetShown(shrunk and true or false)
     if shrunk then
-        win:SetBackdrop({ bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = true, tileSize = 16, edgeSize = 14,
-            insets = { left = 3, right = 3, top = 3, bottom = 3 } })
-        win:SetBackdropBorderColor(0.8, 0.65, 0.3, 1)
+        win:SetBackdrop({ edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", edgeSize = 14, insets = { left = 3, right = 3, top = 3, bottom = 3 } })
+        -- (the window's own color call is switched off by the frame style: the mixin's one is used)
+        if BackdropTemplateMixin then BackdropTemplateMixin.SetBackdropBorderColor(win, 0.8, 0.65, 0.3, 1) else win:SetBackdropBorderColor(0.8, 0.65, 0.3, 1) end
     elseif win.GetBackdrop and win:GetBackdrop() then
         win:SetBackdrop(nil)
     end
