@@ -410,7 +410,12 @@ local function doable(id, rule, lvl)
     if SFP.db and SFP.db.questOffered and SFP.db.questOffered[charId()] and SFP.db.questOffered[charId()][id] then return true end   -- (a giver offered it to you: it is available whatever the rules say)
     if (rule.r or 0) > lvl then return false, "level " .. tostring(rule.r) end
     -- a quest too far above your level is not marked (a level 60 quest that only asks for level 1 is for later); how far is learned (levelsAbove)
-    if (rule.l or 0) > lvl + levelsAbove() then return false, "quest level " .. tostring(rule.l) .. " is more than " .. levelsAbove() .. " above yours" end
+    -- The game offers a quest from its required level (r), however much higher the quest level (l) is: Elmore's Task (level 15, from 9) and Humble Beginnings
+    -- (15, from 10) are such quests, and for most quests l - r is 0 to 10. Only the exceptions with a far larger gap (a level 60 quest that asks for level 1:
+    -- event and reputation quests) need to be near your level; how near is learned (levelsAbove), and a quest the game offered to you is always shown.
+    if ((rule.l or 0) - (rule.r or 0)) > 10 and (rule.l or 0) > lvl + levelsAbove() then
+        return false, "quest level " .. tostring(rule.l) .. " is far above yours (more than " .. levelsAbove() .. ")"
+    end
     if rule.m and rule.m > 0 and lvl > rule.m then return false, "max level" end
     if not raceOk(rule.rc) then return false, "race" end
     if not classOk(rule.cl) then return false, "class" end
