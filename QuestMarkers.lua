@@ -378,6 +378,8 @@ local function doable(id, rule, lvl)
     if hasBit(sf, 1) or hasBit(fl, 4096) or hasBit(fl, 32768) then return false, "repeatable / daily" end
     if rule.ev and not eventOn(rule.ev) then return false, "event not on" end
     if (rule.r or 0) > lvl then return false, "level " .. tostring(rule.r) end
+    -- a quest of a higher level than yours is not marked (a level 60 quest that only asks for level 1 is for later)
+    if (rule.l or 0) > lvl then return false, "quest level " .. tostring(rule.l) .. " above yours" end
     if rule.m and rule.m > 0 and lvl > rule.m then return false, "max level" end
     if not raceOk(rule.rc) then return false, "race" end
     if not classOk(rule.cl) then return false, "class" end
