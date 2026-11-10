@@ -87,6 +87,26 @@ local function isDone(id)
     return hadQuest(id)   -- (every character of the account)
 end
 
+-- does this game have the quest at all? The shipped data comes from Wowhead and holds quests of other versions of the game (Season of Discovery, retail-era
+-- events ...). The game itself is asked once per quest (C_QuestLog.RequestLoadQuestByID answers with QUEST_DATA_LOAD_RESULT) and the answer is kept
+-- (db.questValid[id]); a quest the game says it does not know is not shown. Without that call in the game, every quest is kept.
+local asked, failed = {}, {}
+local function questKnown(id)
+    if not (C_QuestLog and C_QuestLog.RequestLoadQuestByID and SFP.db) then return true end
+    SFP.db.questValid = SFP.db.questValid or {}
+    local v = SFP.db.questValid[id]
+    if v ~= nil then return v end
+    local at = asked[id]
+    if not at then
+        asked[id] = GetTime()
+        pcall(C_QuestLog.RequestLoadQuestByID, id)
+        return false   -- shown once the game has answered
+    end
+    if GetTime() - at > 4 then return true end   -- no answer: the quest is kept (the call may not answer in this game)
+    return false
+end
+QM.Known = questKnown
+
 local function scanLog()
     if not SFP.db then return end
     local n = GetNumQuestLogEntries and GetNumQuestLogEntries() or 0
@@ -111,7 +131,8 @@ function QM.Why(id)
         local ok, v = pcall(C_QuestLog.IsQuestFlaggedCompleted, id)
         flag = ok and tostring(v) or "error"
     end
-    return ("flag=%s list=%s had=%s inLog=%s"):format(tostring(flag), tostring(doneList and doneList[id] or false), tostring(hadQuest(id)), tostring(haveQuest(id)))
+    local kv = SFP.db and SFP.db.questValid and SFP.db.questValid[id]
+    return ("flag=%s list=%s had=%s inLog=%s inGame=%s"):format(tostring(flag), tostring(doneList and doneList[id] or false), tostring(hadQuest(id)), tostring(haveQuest(id)), tostring(kv))
 end
 
 local function playerFaction()
@@ -164,6 +185,48 @@ local function eventQuestOn(q)
     return not cal or eventOn(cal)
 end
 
+-- what a quest giver really offers: when you talk to one, the list of quests the game offers you is kept (name, place, your level). A shipped quest of that
+-- giver that the game does not offer now (a prerequisite not done, done already, not in this game) is not marked, until your level changes.
+local function noteOffers()
+    if not SFP.db then return end
+    local name = UnitName("npc")
+    if type(name) ~= "string" or (issecretvalue and issecretvalue(name)) then return end
+    local ids, any = {}, false
+    if C_GossipInfo and C_GossipInfo.GetAvailableQuests then
+        local ok, list = pcall(C_GossipInfo.GetAvailableQuests)
+        if ok and type(list) == "table" then
+            for _, q in ipairs(list) do if type(q) == "table" and q.questID then ids[q.questID] = true; any = true end end
+        end
+    end
+    local mp = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player")
+    local pos = mp and C_Map.GetPlayerMapPosition(mp, "player")
+    local x, y
+    if pos and pos.GetXY then x, y = pos:GetXY() end
+    if not (mp and x and x > 0) or (issecretvalue and (issecretvalue(x) or issecretvalue(y))) then return end
+    SFP.db.npcOffered = SFP.db.npcOffered or {}
+    SFP.db.npcOffered[name] = SFP.db.npcOffered[name] or {}
+    local list = SFP.db.npcOffered[name]
+    -- one record per place of that name
+    local rec
+    for _, r in ipairs(list) do if r.m == mp and math.abs(r.x - x * 100) < 6 and math.abs(r.y - y * 100) < 6 then rec = r break end end
+    if not rec then rec = {}; list[#list + 1] = rec end
+    rec.m, rec.x, rec.y, rec.lvl, rec.ids, rec.t = mp, x * 100, y * 100, UnitLevel("player"), ids, time()
+end
+QM.NoteOffers = noteOffers
+local function notOffered(entry, qid, mp, lvl)
+    local list = SFP.db and SFP.db.npcOffered and SFP.db.npcOffered[entry[1]]
+    if not list then return false end
+    for _, r in ipairs(list) do
+        if r.m == mp and r.lvl == lvl and math.abs(r.x - entry[2]) < 6 and math.abs(r.y - entry[3]) < 6 and not r.ids[qid] then return true end
+    end
+    return false
+end
+
+-- chains that Wowhead's series boxes miss, found by playing: quest = the quest that must be turned in before it is offered
+QM.PrereqFix = {
+    [46] = 71,   -- Bounty on Murlocs (Guard Thomas) comes after the quest that starts at Rolf's corpse (Report to Thomas)
+}
+
 local function available(entry)
     local lvl = UnitLevel("player")
     if type(lvl) ~= "number" then return nil end
@@ -182,9 +245,11 @@ local function available(entry)
         local ok = eventQuestOn(q) and q.req <= lvl and (q.side == 0 or q.side == 3 or q.side == side or side == 0)   -- (Wowhead: 1 Alliance, 2 Horde, 3 both)
         -- quests far above the level are not offered (the Darkmoon Faire quests of level 60 need only level 1, but are not for a level 6 character)
         if ok and q.level > 0 and q.level > lvl + 6 then ok = false end
+        if ok and not questKnown(q.id) then ok = false end   -- (a quest of another version of the game)
+        if ok and notOffered(entry, q.id, WorldMapFrame and WorldMapFrame.GetMapID and WorldMapFrame:GetMapID(), lvl) then ok = false end   -- (the giver was visited and did not offer it)
         -- (quests below your level always show: a low-level quest can still be taken)
         -- a quest of a chain is offered only when the one before it is done
-        local prev = (SFP.QuestPrereq and SFP.QuestPrereq[q.id]) or (SFP.db.learnedPrereq and SFP.db.learnedPrereq[q.id])
+        local prev = (SFP.QuestPrereq and SFP.QuestPrereq[q.id]) or QM.PrereqFix[q.id] or (SFP.db.learnedPrereq and SFP.db.learnedPrereq[q.id])
         if ok and prev and not isDone(prev) then ok = false end
         if ok and C_QuestLog then
             if isDone(q.id) then ok = false end
@@ -218,10 +283,21 @@ local function getPin(i, canvas)
             if SFP.db and SFP.db.questMarkerDebug ~= false and QM.Why then t:AddLine(("   #%d  %s"):format(q.id or 0, QM.Why(q.id or 0)), 0.55, 0.55, 0.55) end   -- (to find why a done quest still shows; /sut qdebug turns it off)
         end
         t:AddLine("Click: set a waypoint", 0.9, 0.28, 0.24)
+        t:AddLine("Right-click: hide this mark (no quests here)", 0.7, 0.7, 0.7)
         t:Show()
     end)
     p:SetScript("OnLeave", function() (SFP.Tip and SFP.Tip() or GameTooltip):Hide() end)
-    p:SetScript("OnClick", function(self)
+    p:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+    p:SetScript("OnClick", function(self, button)
+        if button == "RightButton" then
+            -- this giver has no quests for you: the mark is hidden, for the whole account
+            if SFP.db then
+                SFP.db.hiddenQuestGivers = SFP.db.hiddenQuestGivers or {}
+                SFP.db.hiddenQuestGivers[("%s|%d|%d,%d"):format(tostring(self.giver), self.map or 0, math.floor((self.x or 0) * 100 + 0.5), math.floor((self.y or 0) * 100 + 0.5))] = true
+            end
+            self:Hide(); GameTooltip:Hide()
+            return
+        end
         if self.map and SFP.SetWaypoint then SFP:SetWaypoint(self.map, self.x, self.y, self.giver) end
     end)
     pins[i] = p
@@ -336,6 +412,11 @@ local function learnedGivers(map)
     return out
 end
 
+local function hiddenGiver(name, map, x, y)
+    local h = SFP.db and SFP.db.hiddenQuestGivers
+    return h and h[("%s|%d|%d,%d"):format(tostring(name), map or 0, math.floor(x + 0.5), math.floor(y + 0.5))] or false
+end
+
 function QM:Draw()
     SFP:Safe("learn finished quests", learnDone)   -- (at most every 20 seconds)
     for _, p in ipairs(pins) do p:Hide() end
@@ -347,7 +428,7 @@ function QM:Draw()
     local w, h = canvas:GetWidth(), canvas:GetHeight()
     local n = 0
     for _, e in ipairs(list) do
-        local qs = available(e)
+        local qs = (not hiddenGiver(e[1], map, e[2], e[3])) and available(e) or nil
         if qs and #qs > 0 then
             n = n + 1
             local p = getPin(n, canvas)
@@ -364,7 +445,7 @@ function QM:Draw()
         for _, e in ipairs(list) do
             if math.abs(e[2] - g.x) < 1.5 and math.abs(e[3] - g.y) < 1.5 then near = true break end
         end
-        if not near then
+        if not near and not hiddenGiver(g.n, map, g.x, g.y) then
             n = n + 1
             local p = getPin(n, canvas)
             p.giver, p.quests, p.map, p.x, p.y = g.n, { g.q }, map, g.x / 100, g.y / 100
@@ -415,6 +496,9 @@ SFP:OnLogin(function()
     ev:RegisterEvent("QUEST_LOG_UPDATE")
     C_Timer.After(3, function() SFP:Safe("scan quest log", scanLog) end)
     ev:RegisterEvent("QUEST_QUERY_COMPLETE")
+    ev:RegisterEvent("QUEST_DATA_LOAD_RESULT")
+    ev:RegisterEvent("GOSSIP_SHOW")
+    ev:RegisterEvent("QUEST_GREETING")
     C_Timer.After(5, function() SFP:Safe("learn finished quests", learnDone, true) end)
     ev:RegisterEvent("QUEST_TURNED_IN")
     ev:RegisterEvent("QUEST_ACCEPTED")
@@ -422,6 +506,24 @@ SFP:OnLogin(function()
     ev:RegisterEvent("PLAYER_LEVEL_UP")
     ev:SetScript("OnEvent", function(_, event, ...)
         if event == "QUEST_TURNED_IN" then noteHad((...)) end
+        if event == "GOSSIP_SHOW" or event == "QUEST_GREETING" then SFP:Safe("note offered quests", noteOffers) return end
+        if event == "QUEST_DATA_LOAD_RESULT" then
+            local qid, success = ...
+            if type(qid) == "number" and SFP.db then
+                SFP.db.questValid = SFP.db.questValid or {}
+                if success then
+                    SFP.db.questValid[qid] = true
+                else
+                    failed[qid] = (failed[qid] or 0) + 1
+                    if failed[qid] >= 2 then SFP.db.questValid[qid] = false else pcall(C_QuestLog.RequestLoadQuestByID, qid) end
+                end
+                if not QM.redrawPending then
+                    QM.redrawPending = true
+                    C_Timer.After(0.5, function() QM.redrawPending = false; if WorldMapFrame and WorldMapFrame:IsShown() then draw() end end)
+                end
+            end
+            return
+        end
         if event == "QUEST_QUERY_COMPLETE" then SFP:Safe("learn finished quests", learnDone, true, true) end
         if event == "QUEST_LOG_UPDATE" or event == "QUEST_ACCEPTED" or event == "QUEST_TURNED_IN" then SFP:Safe("scan quest log", scanLog) end
         if event == "QUEST_DETAIL" then SFP:Safe("learn quest", learnQuest, GetQuestID and GetQuestID()) end
