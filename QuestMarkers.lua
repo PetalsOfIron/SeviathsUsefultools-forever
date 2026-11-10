@@ -310,7 +310,7 @@ local function getPin(i, canvas)
             if SFP.db and SFP.db.questMarkerDebug == true and QM.Why then t:AddLine(("   #%d  %s"):format(q.id or 0, QM.Why(q.id or 0)), 0.55, 0.55, 0.55) end   -- (to find why a done quest still shows; /sut qdebug turns it off)
         end
         t:AddLine("Click: set a waypoint", 0.9, 0.28, 0.24)
-        t:AddLine("Right-click: hide this mark (no quests here)", 0.7, 0.7, 0.7)
+        t:AddLine("Right-click: hide this mark (the giver has no quest for me)", 0.7, 0.7, 0.7)
         t:Show()
     end)
     p:SetScript("OnLeave", function() (SFP.Tip and SFP.Tip() or GameTooltip):Hide() end)
