@@ -1520,8 +1520,8 @@ SlashCmdList["SEVIATHSUSEFULTOOLS"] = function(msg)
             SFP:Print(("  %d  %s%s"):format(id, tostring(name), (SFP.Social and SFP.Social.KindOfCategory) and "" or ""))
         end
     elseif cmd == "qdebug" then
-        SFP.db.questMarkerDebug = (SFP.db.questMarkerDebug == false)
-        SFP:Print("Quest mark tooltip details: " .. (SFP.db.questMarkerDebug ~= false and "on" or "off"))
+        SFP.db.questMarkerDebug = not (SFP.db.questMarkerDebug == true)
+        SFP:Print("Quest mark tooltip details: " .. (SFP.db.questMarkerDebug == true and "on" or "off"))
     elseif cmd == "qmark" then
         -- the quest givers the map marks come from, nearest to you first, with the place the data has for each and your own place (to check them in the game)
         local map = C_Map.GetBestMapForUnit("player")

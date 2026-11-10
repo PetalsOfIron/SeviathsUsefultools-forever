@@ -8,6 +8,7 @@ local QM = { enabled = true }
 SFP.QuestMarkers = QM
 
 local pins = {}
+local learnDone   -- (defined below; the drawing code uses it)
 local shown = 0
 
 -- is a quest already in your log? Every way the game offers is tried (the calls differ between versions); a log scan by quest number is the last
@@ -263,6 +264,15 @@ local function available(entry)
         -- quests far above the level are not offered (the Darkmoon Faire quests of level 60 need only level 1, but are not for a level 6 character)
         if ok and q.level > 0 and q.level > lvl + 6 then ok = false end
         if ok and not questKnown(q.id) then ok = false end   -- (a quest of another version of the game)
+        -- a quest for another class or race (a rogue quest on a mage), and the quests of Season of Discovery, which this game does not have
+        if ok and SFP.QuestReq and SFP.QuestReq[q.id] then
+            local rq = SFP.QuestReq[q.id]
+            local function has(mask, id) return mask == 0 or not id or (math.floor(mask / 2 ^ (id - 1)) % 2 == 1) end
+            local _, _, classID = UnitClass("player")
+            local _, _, raceID = UnitRace("player")
+            if not has(rq[1], classID) or not has(rq[2], raceID) then ok = false end
+        end
+        if ok and SFP.QuestSoD and SFP.QuestSoD[q.id] and not (SFP.db.learnedQuests and SFP.db.learnedQuests[q.id]) then ok = false end
         if ok and notOffered(entry, q.id, WorldMapFrame and WorldMapFrame.GetMapID and WorldMapFrame:GetMapID(), lvl) then ok = false end   -- (the giver was visited and did not offer it)
         -- (quests below your level always show: a low-level quest can still be taken)
         -- a quest of a chain is offered only when the one before it is done
@@ -297,7 +307,7 @@ local function getPin(i, canvas)
         t:AddLine(self.giver or "?", 1, 0.82, 0)
         for _, q in ipairs(self.quests or {}) do
             t:AddLine((q.level and q.level > 0) and ("[%d] %s"):format(q.level, q.name) or tostring(q.name), 1, 1, 1)
-            if SFP.db and SFP.db.questMarkerDebug ~= false and QM.Why then t:AddLine(("   #%d  %s"):format(q.id or 0, QM.Why(q.id or 0)), 0.55, 0.55, 0.55) end   -- (to find why a done quest still shows; /sut qdebug turns it off)
+            if SFP.db and SFP.db.questMarkerDebug == true and QM.Why then t:AddLine(("   #%d  %s"):format(q.id or 0, QM.Why(q.id or 0)), 0.55, 0.55, 0.55) end   -- (to find why a done quest still shows; /sut qdebug turns it off)
         end
         t:AddLine("Click: set a waypoint", 0.9, 0.28, 0.24)
         t:AddLine("Right-click: hide this mark (no quests here)", 0.7, 0.7, 0.7)
@@ -477,7 +487,7 @@ end
 -- the finished quests of this character, asked of the game in every way it offers and kept in the addon's own list (db.questsHad), so they stay known:
 -- the list of finished quests (newer games), the older query that answers with the event QUEST_QUERY_COMPLETE, and the single flag of each quest of the marks
 local learnedAt = 0
-local function learnDone(force, noQuery)
+learnDone = function(force, noQuery)
     if not SFP.db or (not force and GetTime() - learnedAt < 20) then return end
     learnedAt = GetTime()
     local got = 0
@@ -512,11 +522,11 @@ SFP:OnLogin(function()
     local ev = CreateFrame("Frame")
     ev:RegisterEvent("QUEST_LOG_UPDATE")
     C_Timer.After(3, function() SFP:Safe("scan quest log", scanLog) end)
-    ev:RegisterEvent("QUEST_QUERY_COMPLETE")
-    ev:RegisterEvent("QUEST_DATA_LOAD_RESULT")
-    ev:RegisterEvent("GOSSIP_SHOW")
-    ev:RegisterEvent("QUEST_REMOVED")
-    ev:RegisterEvent("QUEST_GREETING")
+    pcall(ev.RegisterEvent, ev, "QUEST_QUERY_COMPLETE")   -- (an event this game does not have only skips)
+    pcall(ev.RegisterEvent, ev, "QUEST_DATA_LOAD_RESULT")   -- (an event this game does not have only skips)
+    pcall(ev.RegisterEvent, ev, "GOSSIP_SHOW")   -- (an event this game does not have only skips)
+    pcall(ev.RegisterEvent, ev, "QUEST_REMOVED")   -- (an event this game does not have only skips)
+    pcall(ev.RegisterEvent, ev, "QUEST_GREETING")   -- (an event this game does not have only skips)
     C_Timer.After(5, function() SFP:Safe("learn finished quests", learnDone, true) end)
     ev:RegisterEvent("QUEST_TURNED_IN")
     ev:RegisterEvent("QUEST_ACCEPTED")
