@@ -53,6 +53,12 @@ while True:
         print(time.strftime("%H:%M:%S"), "saved data changed: baking", flush=True)
         run(sys.executable, os.path.join(HERE, "bake_collected.py"), os.path.join(HERE, "classic_seed.lua"), os.path.join(HERE, "crawl", "crawl_seed.lua"))
         run(sys.executable, os.path.join(HERE, "bake_gold.py"))
+        try:   # the .toc lists the collected files: new or split ones (name.1.lua, name.2.lua) are added, or the game would not load them
+            sys.path.insert(0, HERE)
+            import update_data
+            update_data.sync_toc()
+        except Exception as e:
+            print("toc sync failed", e, flush=True)
         run(sys.executable, os.path.join(HERE, "package_curseforge.py"))
         try:   # and the zip into the curse folder, where it is taken from
             import shutil
