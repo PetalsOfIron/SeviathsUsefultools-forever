@@ -11,8 +11,18 @@ local pins = {}
 local shown = 0
 
 -- is a quest already in your log? Every way the game offers is tried (the calls differ between versions); a log scan by quest number is the last
+-- the quests picked up and not yet turned in or dropped: kept from the events of the game too (QUEST_ACCEPTED / QUEST_REMOVED / QUEST_TURNED_IN), because
+-- the calls that ask the log differ between versions. Saved per character; a scan of the log replaces it when the log can be read.
+local function takenSet()
+    if not SFP.db then return {} end
+    SFP.db.questsTaken = SFP.db.questsTaken or {}
+    local k = (UnitName("player") or "?") .. "-" .. ((GetNormalizedRealmName and GetNormalizedRealmName()) or "")
+    SFP.db.questsTaken[k] = SFP.db.questsTaken[k] or {}
+    return SFP.db.questsTaken[k]
+end
 local logIDs, logAt
 local function haveQuest(id)
+    if takenSet()[id] then return true end
     if C_QuestLog then
         if C_QuestLog.IsOnQuest then
             local ok, v = pcall(C_QuestLog.IsOnQuest, id)
@@ -110,6 +120,7 @@ QM.Known = questKnown
 local function scanLog()
     if not SFP.db then return end
     local n = GetNumQuestLogEntries and GetNumQuestLogEntries() or 0
+    local found, count = {}, 0
     for i = 1, n do
         local qid
         if C_QuestLog and C_QuestLog.GetInfo then
@@ -119,7 +130,13 @@ local function scanLog()
             local _, _, _, isHeader, _, _, _, id2 = GetQuestLogTitle(i)
             qid = (not isHeader) and id2 or nil
         end
-        -- (a quest in the log is known by haveQuest; it is not noted as done here)
+        if qid then found[qid] = true; count = count + 1 end
+    end
+    -- the log could be read: it is the truth; when it cannot (entries but no numbers), the events keep the set
+    if count > 0 or n == 0 then
+        local t = takenSet()
+        for k in pairs(t) do t[k] = nil end
+        for k in pairs(found) do t[k] = true end
     end
 end
 QM.ScanLog = scanLog
@@ -498,6 +515,7 @@ SFP:OnLogin(function()
     ev:RegisterEvent("QUEST_QUERY_COMPLETE")
     ev:RegisterEvent("QUEST_DATA_LOAD_RESULT")
     ev:RegisterEvent("GOSSIP_SHOW")
+    ev:RegisterEvent("QUEST_REMOVED")
     ev:RegisterEvent("QUEST_GREETING")
     C_Timer.After(5, function() SFP:Safe("learn finished quests", learnDone, true) end)
     ev:RegisterEvent("QUEST_TURNED_IN")
@@ -506,6 +524,12 @@ SFP:OnLogin(function()
     ev:RegisterEvent("PLAYER_LEVEL_UP")
     ev:SetScript("OnEvent", function(_, event, ...)
         if event == "QUEST_TURNED_IN" then noteHad((...)) end
+        if event == "QUEST_TURNED_IN" then takenSet()[(...)] = nil end
+        if event == "QUEST_REMOVED" then takenSet()[(...)] = nil end
+        if event == "QUEST_ACCEPTED" then
+            local qid = select(2, ...) or select(1, ...)
+            if type(qid) == "number" then takenSet()[qid] = true end
+        end
         if event == "GOSSIP_SHOW" or event == "QUEST_GREETING" then SFP:Safe("note offered quests", noteOffers) return end
         if event == "QUEST_DATA_LOAD_RESULT" then
             local qid, success = ...
@@ -525,7 +549,7 @@ SFP:OnLogin(function()
             return
         end
         if event == "QUEST_QUERY_COMPLETE" then SFP:Safe("learn finished quests", learnDone, true, true) end
-        if event == "QUEST_LOG_UPDATE" or event == "QUEST_ACCEPTED" or event == "QUEST_TURNED_IN" then SFP:Safe("scan quest log", scanLog) end
+        if event == "QUEST_LOG_UPDATE" then SFP:Safe("scan quest log", scanLog) end   -- (not at ACCEPTED: the log has not got the new quest yet then)
         if event == "QUEST_DETAIL" then SFP:Safe("learn quest", learnQuest, GetQuestID and GetQuestID()) end
         if event == "QUEST_ACCEPTED" then SFP:Safe("learn quest", learnQuest, select(2, ...) or select(1, ...)) end
         if event == "QUEST_DETAIL" or event == "QUEST_ACCEPTED" then
