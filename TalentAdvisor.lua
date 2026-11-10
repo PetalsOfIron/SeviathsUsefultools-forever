@@ -633,7 +633,16 @@ local function fitWindow()
     local shrunk = SFP.db and SFP.db.talentShrunk
     text:SetShown(not shrunk)
     if win.shrinkBtn then win.shrinkBtn:SetText(shrunk and "+" or "-") end
-    for _, btn in pairs(sections) do btn:SetShown(not shrunk) end
+    -- shrunk: the Raid / Dungeon buttons stay in the bar, next to the title (a click on one opens the window again)
+    for _, btn in pairs(sections) do
+        if FOREVER and btn.homeX then
+            btn:ClearAllPoints()
+            if shrunk then btn:SetPoint("TOPLEFT", btn.homeX + 100, -6) else btn:SetPoint("TOPLEFT", btn.homeX, -32) end
+            btn:Show()
+        else
+            btn:SetShown(not shrunk)
+        end
+    end
     for _, btn in pairs(specBtns) do btn:SetShown(not shrunk) end
     if win.roleBtns and shrunk then for _, b in ipairs(win.roleBtns) do b:Hide() end end
     -- shrunk: the big metal frame is left out (it is taller than the 34 px bar and showed as lone lines): a plain bar with a gold edge
@@ -1350,8 +1359,12 @@ local function build()
         b:SetSize(104, 22)
         b:SetPoint("TOPLEFT", x, -32)
         b:SetText(o[2])
-        b:SetScript("OnClick", function() setContent(o[1]); refresh() end)
+        b:SetScript("OnClick", function()
+            if FOREVER and SFP.db and SFP.db.talentShrunk then SFP.db.talentShrunk = false end
+            setContent(o[1]); refresh()
+        end)
         sections[o[1]] = b
+        b.homeX = x
         x = x + 110
     end
     -- Feral Combat has two roles: Cat (damage) and Bear (tank): the buttons choose which builds and stats the advice follows
