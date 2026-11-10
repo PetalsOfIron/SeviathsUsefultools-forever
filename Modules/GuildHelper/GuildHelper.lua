@@ -1822,16 +1822,7 @@ ev:SetScript("OnEvent", function(_, event, ...)
         if C_ChatInfo and C_ChatInfo.RegisterAddonMessagePrefix then C_ChatInfo.RegisterAddonMessagePrefix(PREFIX) end
         if C_GuildInfo and C_GuildInfo.GuildRoster then C_GuildInfo.GuildRoster() end
         -- print(CY .. "SeviathsGuildHelper|r v" .. VERSION .. " loaded — type " .. CY .. "/gi|r or click the minimap button.")
-        if not IsInGuild() then
-            C_Timer.After(3, function()
-                if IsInGuild() then return end
-                if HasCharterItem() then
-                    P("You have a Guild Charter — /gi opens |cffffd100Charter mode|r to collect signatures.")
-                else
-                    P("You are not in a guild. Buy a Guild Charter from a Guild Master NPC and /gi will help you collect signatures.")
-                end
-            end)
-        end
+        -- (the charter hint in chat at login is gone: /gi opens Charter mode when you want it)
         C_Timer.After(8, function() RequestSync(false) end)
         C_Timer.NewTicker(300, function() DB.lastOnline = time() end)
     elseif event == "PLAYER_ENTERING_WORLD" or event == "ZONE_CHANGED_NEW_AREA" then

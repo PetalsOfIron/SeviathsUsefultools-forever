@@ -56,9 +56,14 @@ local function noteHad(id)   -- only a quest that was turned in is kept: a quest
     if not t then t = {}; SFP.db.questsHad[charId()] = t end
     t[id] = 2   -- 2 = turned in (an older save has true for every quest that was ever in the log: those are ignored)
 end
+-- the whole account: a quest that any of your characters finished (or had) is known, so its mark is not shown again on another character
 local function hadQuest(id)
-    local t = SFP.db and SFP.db.questsHad and SFP.db.questsHad[charId()]
-    return t and (t[id] == 2 or t[id] == true)
+    local all = SFP.db and SFP.db.questsHad
+    if not all then return false end
+    for _, t in pairs(all) do
+        if type(t) == "table" and (t[id] == 2 or t[id] == true) then return true end
+    end
+    return false
 end
 -- is a quest finished? Every way the game offers is asked (they differ between versions): the flag, the list of finished quests, and the quests this addon saw
 -- turned in. An older save of this addon noted every quest it ever saw in the log (true): that stays counted as done, so the quests done before stay hidden.
@@ -79,10 +84,7 @@ local function isDone(id)
         end
     end
     if doneList and doneList[id] then return true end
-    local t = SFP.db and SFP.db.questsHad and SFP.db.questsHad[charId()]
-    local v = t and t[id]
-    if v == 2 or v == true then return true end
-    return false
+    return hadQuest(id)   -- (every character of the account)
 end
 
 local function scanLog()
@@ -213,6 +215,7 @@ local function getPin(i, canvas)
         t:AddLine(self.giver or "?", 1, 0.82, 0)
         for _, q in ipairs(self.quests or {}) do
             t:AddLine((q.level and q.level > 0) and ("[%d] %s"):format(q.level, q.name) or tostring(q.name), 1, 1, 1)
+            if SFP.db and SFP.db.questMarkerDebug ~= false and QM.Why then t:AddLine(("   #%d  %s"):format(q.id or 0, QM.Why(q.id or 0)), 0.55, 0.55, 0.55) end   -- (to find why a done quest still shows; /sut qdebug turns it off)
         end
         t:AddLine("Click: set a waypoint", 0.9, 0.28, 0.24)
         t:Show()
@@ -334,6 +337,7 @@ local function learnedGivers(map)
 end
 
 function QM:Draw()
+    SFP:Safe("learn finished quests", learnDone)   -- (at most every 20 seconds)
     for _, p in ipairs(pins) do p:Hide() end
     if not (SFP.db and SFP.db.questMarkers ~= false and SFP.QuestGivers and WorldMapFrame and WorldMapFrame:IsShown()) then return end
     local map = WorldMapFrame:GetMapID()
@@ -372,6 +376,35 @@ function QM:Draw()
     end
 end
 
+-- the finished quests of this character, asked of the game in every way it offers and kept in the addon's own list (db.questsHad), so they stay known:
+-- the list of finished quests (newer games), the older query that answers with the event QUEST_QUERY_COMPLETE, and the single flag of each quest of the marks
+local learnedAt = 0
+local function learnDone(force, noQuery)
+    if not SFP.db or (not force and GetTime() - learnedAt < 20) then return end
+    learnedAt = GetTime()
+    local got = 0
+    local function take(t)
+        if type(t) ~= "table" then return end
+        for k, v in pairs(t) do
+            local id = (type(v) == "number") and v or ((v == true) and type(k) == "number" and k) or nil
+            if id then noteHad(id); got = got + 1 end
+        end
+    end
+    if C_QuestLog and C_QuestLog.GetAllCompletedQuestIDs then
+        local ok, t = pcall(C_QuestLog.GetAllCompletedQuestIDs)
+        if ok then take(t) end
+    end
+    if GetQuestsCompleted then
+        local t = {}
+        local ok, r = pcall(GetQuestsCompleted, t)
+        take(type(r) == "table" and r or t)
+    end
+    if QueryQuestsCompleted and not noQuery then pcall(QueryQuestsCompleted) end   -- the answer comes as QUEST_QUERY_COMPLETE
+    QM.learnedCount = got
+    doneAt = nil   -- the list of isDone is read again
+end
+QM.LearnDone = learnDone
+
 -- the zone name of the mark is drawn together with the other layers, and again when quests change
 SFP:OnLogin(function()
     if not WorldMapFrame then return end
@@ -381,12 +414,15 @@ SFP:OnLogin(function()
     local ev = CreateFrame("Frame")
     ev:RegisterEvent("QUEST_LOG_UPDATE")
     C_Timer.After(3, function() SFP:Safe("scan quest log", scanLog) end)
+    ev:RegisterEvent("QUEST_QUERY_COMPLETE")
+    C_Timer.After(5, function() SFP:Safe("learn finished quests", learnDone, true) end)
     ev:RegisterEvent("QUEST_TURNED_IN")
     ev:RegisterEvent("QUEST_ACCEPTED")
     ev:RegisterEvent("QUEST_DETAIL")
     ev:RegisterEvent("PLAYER_LEVEL_UP")
     ev:SetScript("OnEvent", function(_, event, ...)
         if event == "QUEST_TURNED_IN" then noteHad((...)) end
+        if event == "QUEST_QUERY_COMPLETE" then SFP:Safe("learn finished quests", learnDone, true, true) end
         if event == "QUEST_LOG_UPDATE" or event == "QUEST_ACCEPTED" or event == "QUEST_TURNED_IN" then SFP:Safe("scan quest log", scanLog) end
         if event == "QUEST_DETAIL" then SFP:Safe("learn quest", learnQuest, GetQuestID and GetQuestID()) end
         if event == "QUEST_ACCEPTED" then SFP:Safe("learn quest", learnQuest, select(2, ...) or select(1, ...)) end
