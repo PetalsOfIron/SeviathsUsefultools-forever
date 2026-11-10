@@ -1,4 +1,0 @@
-  File "D:\wow\World of Warcraft\_forever_\Interface\AddOns\SeviathsUsefulTools\tools\crawl_quest_reqs.py", line 33
-    out = open(OUT, "a", encoding="utf8", newline="
-                                                  ^
-SyntaxError: unterminated string literal (detected at line 33)

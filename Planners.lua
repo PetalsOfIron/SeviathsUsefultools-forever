@@ -260,6 +260,26 @@ local START_ZONES = { [1429] = true, [1426] = true, [1438] = true, [1411] = true
 local function sideCount(map, faction)
     local want = faction == "Alliance" and 1 or 2
     local n = 0
+    if SFP.QStarts and SFP.QDB then
+        -- the quest database (Data/QuestDB.lua): quests that the races of that side can take
+        local bitsFor = faction == "Alliance" and { 1, 4, 8, 64 } or { 2, 16, 32, 128 }
+        local seenQ = {}
+        for _, e in ipairs(SFP.QStarts[map] or {}) do
+            if e[5] == nil or (e[5] == "A") == (faction == "Alliance") then
+                for _, id in ipairs(e[4]) do
+                    local r = SFP.QDB[id]
+                    if r and not seenQ[id] then
+                        local rc = r.rc or 0
+                        local ok = rc == 0
+                        if not ok then for _, b in ipairs(bitsFor) do if (rc % (2 * b)) >= b then ok = true break end end end
+                        if ok then seenQ[id] = true; n = n + 1 end
+                    end
+                end
+            end
+        end
+        local seen2 = SFP.db and SFP.db.questSides and SFP.db.questSides[map]
+        return n + ((seen2 and seen2[faction]) or 0)
+    end
     for _, e in ipairs((SFP.QuestGivers and SFP.QuestGivers[map]) or {}) do
         for part in string.gmatch(e[4] or "", "[^|]+") do
             local s = tonumber(part:match("^%d+:%d+:%d+:(%d+):"))
@@ -284,6 +304,23 @@ local function zoneAutoDone(z)
     local f = UnitFactionGroup("player")
     local side = f == "Alliance" and 1 or f == "Horde" and 2 or 0
     local total, open = 0, 0
+    if SFP.QStarts and SFP.QDB and SFP.QuestMarkers and SFP.QuestMarkers.Eligible then
+        -- the quest database: the quests of the zone this character could take (race, class), in the level range of the zone, up to your level
+        local seenQ = {}
+        for _, e in ipairs(SFP.QStarts[z[1]] or {}) do
+            if e[5] == nil or e[5] == (f == "Alliance" and "A" or "H") then
+                for _, id in ipairs(e[4]) do
+                    local r = SFP.QDB[id]
+                    if r and not seenQ[id] and SFP.QuestMarkers.Eligible(id) and (r.l or 0) >= z[2] and (r.l or 0) <= z[3] + 2 and (r.r or 0) <= lvl then
+                        seenQ[id] = true
+                        total = total + 1
+                        if not C_QuestLog.IsQuestFlaggedCompleted(id) then open = open + 1 end
+                    end
+                end
+            end
+        end
+        return total >= 5 and open == 0
+    end
     for _, e in ipairs((SFP.QuestGivers and SFP.QuestGivers[z[1]]) or {}) do
         for part in string.gmatch(e[4] or "", "[^|]+") do
             local id, ql, req, qs = part:match("^(%d+):(%d+):(%d+):(%d+):")

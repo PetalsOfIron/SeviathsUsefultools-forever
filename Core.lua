@@ -1553,27 +1553,30 @@ SlashCmdList["SEVIATHSUSEFULTOOLS"] = function(msg)
         SFP.db.questMarkerDebug = not (SFP.db.questMarkerDebug == true)
         SFP:Print("Quest mark tooltip details: " .. (SFP.db.questMarkerDebug == true and "on" or "off"))
     elseif cmd == "qmark" then
-        -- the quest givers the map marks come from, nearest to you first, with the place the data has for each and your own place (to check them in the game)
+        -- the quest starters of this zone nearest to you, and for each quest why the addon marks it or not (the first rule that fails)
         local map = C_Map.GetBestMapForUnit("player")
         local pos = map and C_Map.GetPlayerMapPosition(map, "player")
         local px, py = 0, 0
         if pos and pos.GetXY then px, py = pos:GetXY() end
         SFP:Print(("map %s, you are at %.1f, %.1f"):format(tostring(map), px * 100, py * 100))
         local rows = {}
-        for _, e in ipairs((SFP.QuestGivers and SFP.QuestGivers[map]) or {}) do
+        for _, e in ipairs((SFP.QStarts and SFP.QStarts[map]) or (SFP.QuestGivers and SFP.QuestGivers[map]) or {}) do
             rows[#rows + 1] = { e = e, d = (e[2] - px * 100) ^ 2 + (e[3] - py * 100) ^ 2 }
         end
         table.sort(rows, function(a, b) return a.d < b.d end)
-        for i = 1, math.min(8, #rows) do
-            SFP:Print(("  %s  %.1f, %.1f  (%s)"):format(rows[i].e[1], rows[i].e[2], rows[i].e[3], tostring(rows[i].e[4]):sub(1, 50)))
-            if i <= 3 and SFP.QuestMarkers and SFP.QuestMarkers.Why then
-                for part in tostring(rows[i].e[4]):gmatch("[^|]+") do
-                    local id, _, _, _, nm = part:match("^(%d+):(%d+):(%d+):(%d+):(.*)$")
-                    if id then SFP:Print(("      %s [%s]: %s"):format(nm, id, SFP.QuestMarkers.Why(tonumber(id)))) end
+        local QM = SFP.QuestMarkers
+        for i = 1, math.min(5, #rows) do
+            local e = rows[i].e
+            SFP:Print(("  %s  %.1f, %.1f"):format(e[1], e[2], e[3]))
+            if type(e[4]) == "table" and QM and QM.Doable then
+                for _, id in ipairs(e[4]) do
+                    local ok, why = QM.Doable(id)
+                    local r = SFP.QDB and SFP.QDB[id]
+                    SFP:Print(("      [%d] %s: %s"):format(id, r and r.n or "?", ok and "|cff40ff40marked|r" or ("|cffff8080" .. tostring(why) .. "|r")))
                 end
             end
         end
-        if #rows == 0 then SFP:Print("  no quest givers in the data for this map") end
+        if #rows == 0 then SFP:Print("  no quest starters in the data for this map") end
     elseif cmd == "who" then
         local w = SFP.WhoStats or {}
         local n = 0

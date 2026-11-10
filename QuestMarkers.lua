@@ -266,7 +266,190 @@ local function mapOffers(map)
 end
 QM.MapOffers = mapOffers
 
+---------------------------------------------------------------------------
+-- The rules of the quest database (Data/QuestDB.lua, from Questie / QuestieDB): the same checks Questie makes before it marks a quest as available
+---------------------------------------------------------------------------
+local RACE_MASK = { [1] = 1, [2] = 2, [3] = 4, [4] = 8, [5] = 16, [6] = 32, [7] = 64, [8] = 128, [9] = 256, [10] = 512, [11] = 1024, [22] = 2097152,
+    [24] = 8388608, [25] = 16777216, [26] = 33554432, [95] = 4294967296, [96] = 8589934592 }
+local function hasBit(mask, flag) return (mask % (2 * flag)) >= flag end
+
+local function raceOk(rc)
+    if not rc or rc == 0 then return true end
+    local _, _, raceID = UnitRace("player")
+    local flag = RACE_MASK[raceID or 0]
+    if not flag then return true end
+    return hasBit(rc, flag)
+end
+local function classOk(cl)
+    if not cl or cl == 0 then return true end
+    local _, _, classID = UnitClass("player")
+    if not classID then return true end
+    return hasBit(cl, 2 ^ (classID - 1))
+end
+
+-- reputation (faction number -> standing value) and professions (skill number -> rank), read from the game now and then; nil when the game does not tell
+local repCache, repAt, skillCache, skillAt
+local function playerReps()
+    if repCache and GetTime() - (repAt or 0) < 10 then return repCache end
+    local t, ok = {}, false
+    local okN, n = pcall(function()
+        if C_Reputation and C_Reputation.GetNumFactions then return C_Reputation.GetNumFactions() end
+        return GetNumFactions and GetNumFactions() or 0
+    end)
+    if okN and type(n) == "number" then
+        for i = 1, n do
+            local okI, id, value = pcall(function()
+                if C_Reputation and C_Reputation.GetFactionDataByIndex then
+                    local d = C_Reputation.GetFactionDataByIndex(i)
+                    return d and d.factionID, d and d.currentStanding
+                end
+                local _, _, _, _, _, bar, _, _, _, _, _, _, _, fid = GetFactionInfo(i)
+                return fid, bar
+            end)
+            if okI and type(id) == "number" and id > 0 and type(value) == "number" then t[id] = value; ok = true end
+        end
+    end
+    repCache, repAt = ok and t or nil, GetTime()
+    return repCache
+end
+local function playerSkills()
+    if skillCache and GetTime() - (skillAt or 0) < 10 then return skillCache end
+    local t, ok = {}, false
+    local okN, n = pcall(function()
+        if C_SkillInfo and C_SkillInfo.GetNumSkillLines then return C_SkillInfo.GetNumSkillLines() end
+        return GetNumSkillLines and GetNumSkillLines() or 0
+    end)
+    if okN and type(n) == "number" then
+        for i = 1, n do
+            local okI, id, rank, header = pcall(function()
+                if C_SkillInfo and C_SkillInfo.GetSkillLineInfo then
+                    local d = C_SkillInfo.GetSkillLineInfo(i)
+                    return d and d.skillID, d and d.rank, d and d.isHeader
+                end
+                return nil
+            end)
+            if okI and type(id) == "number" and not header then t[id] = rank or 0; ok = true end
+        end
+    end
+    skillCache, skillAt = ok and t or nil, GetTime()
+    return skillCache
+end
+
+local function spellKnown(id)
+    if not id then return nil end
+    if C_SpellBook and C_SpellBook.IsSpellKnown then
+        local ok, v = pcall(C_SpellBook.IsSpellKnown, id)
+        if ok then return v and true or false end
+    end
+    if IsPlayerSpell then
+        local ok, v = pcall(IsPlayerSpell, id)
+        if ok then return v and true or false end
+    end
+    return nil
+end
+
+-- the quest before: done, or (for a group) a quest exclusive with it done
+local function preSingleOk(list)
+    for _, id in ipairs(list) do if isDone(id) then return true end end
+    return false
+end
+local function preGroupOk(list)
+    for _, id in ipairs(list) do
+        if id < 0 then
+            if not isDone(-id) then return false end
+        elseif not isDone(id) then
+            local r = SFP.QDB[id]
+            local ex = r and r.ex
+            if not ex then return false end
+            local any = false
+            for _, e in ipairs(ex) do if isDone(e) then any = true break end end
+            if not any then return false end
+        end
+    end
+    return true
+end
+
+-- is this quest available to this character? (the order of Questie's QuestieDB.IsDoable; the level rules are those of this addon: quests below your level stay)
+local function doable(id, rule, lvl)
+    if isDone(id) then return false, "done" end
+    if haveQuest(id) or hadQuest(id) then return false, "in your log" end
+    -- repeatable, daily and weekly quests (the blue "!" of the game) are not marked
+    local sf, fl = rule.sf or 0, rule.fl or 0
+    if hasBit(sf, 1) or hasBit(fl, 4096) or hasBit(fl, 32768) then return false, "repeatable / daily" end
+    if rule.ev and not eventOn(rule.ev) then return false, "event not on" end
+    if (rule.r or 0) > lvl then return false, "level " .. tostring(rule.r) end
+    if rule.m and rule.m > 0 and lvl > rule.m then return false, "max level" end
+    if not raceOk(rule.rc) then return false, "race" end
+    if not classOk(rule.cl) then return false, "class" end
+    if rule.ps and not preSingleOk(rule.ps) then return false, "quest before (one of " .. table.concat(rule.ps, ",") .. ")" end
+    if not rule.ps and rule.pg and not preGroupOk(rule.pg) then return false, "quests before (all of " .. table.concat(rule.pg, ",") .. ")" end
+    if rule.pa and not haveQuest(rule.pa) then return false, "parent quest " .. rule.pa .. " not in log" end
+    if rule.nx and (isDone(rule.nx) or haveQuest(rule.nx)) then return false, "follow-up " .. rule.nx .. " started" end
+    if rule.ex then for _, e in ipairs(rule.ex) do if isDone(e) or haveQuest(e) then return false, "exclusive with " .. e end end end
+    if rule.mr or rule.xr then
+        local reps = playerReps()
+        if reps then
+            if rule.mr and (reps[rule.mr[1]] == nil or reps[rule.mr[1]] < rule.mr[2]) then return false, "reputation" end
+            if rule.xr and reps[rule.xr[1]] ~= nil and reps[rule.xr[1]] >= rule.xr[2] then return false, "reputation too high" end
+        end
+    end
+    if rule.sk then
+        local sk = playerSkills()
+        if sk and (sk[rule.sk[1]] == nil or sk[rule.sk[1]] < rule.sk[2]) then return false, "profession" end
+    end
+    if rule.sp and rule.sp ~= 0 then
+        local k = spellKnown(math.abs(rule.sp))
+        if k ~= nil then
+            if rule.sp > 0 and not k then return false, "spell not known" end
+            if rule.sp < 0 and k then return false, "spell known" end
+        end
+    end
+    if rule.bf and (isDone(rule.bf) or haveQuest(rule.bf)) then return false, "its quest is started" end
+    if rule.br then for _, b in ipairs(rule.br) do if haveQuest(b) then return false, "breadcrumb in log" end end end
+    if rule.db and haveQuest(rule.db) then return false, "disabled by a quest in log" end
+    if rule.au and isDone(rule.au) then return false, "gone after " .. rule.au end
+    if rule["as"] and not (isDone(rule["as"]) or haveQuest(rule["as"])) then return false, "needs " .. rule["as"] .. " started" end
+    return true
+end
+
+-- could this character ever take the quest (race, class, not repeatable / event)? Used by the Questing Zone Planner to count the quests of a zone
+QM.Eligible = function(id, forFaction)
+    local r = SFP.QDB and SFP.QDB[id]
+    if not r then return false end
+    local sf, fl = r.sf or 0, r.fl or 0
+    if hasBit(sf, 1) or hasBit(fl, 4096) or hasBit(fl, 32768) or r.ev then return false end
+    return raceOk(r.rc) and classOk(r.cl)
+end
+QM.Doable = function(id) local r = SFP.QDB and SFP.QDB[id]; if not r then return nil, "not in the database" end return doable(id, r, UnitLevel("player") or 1) end
+
+local function availableDB(entry)
+    local lvl = UnitLevel("player")
+    if type(lvl) ~= "number" then return nil end
+    local f = entry[5]
+    if f then
+        local mine = UnitFactionGroup("player")
+        if (f == "A" and mine == "Horde") or (f == "H" and mine == "Alliance") then return nil end
+    end
+    local mapNow = WorldMapFrame and WorldMapFrame.GetMapID and WorldMapFrame:GetMapID()
+    local out = {}
+    for _, id in ipairs(entry[4]) do
+        local rule = SFP.QDB[id]
+        if rule and doable(id, rule, lvl) and questKnown(id) then
+            local okOffer = true
+            if offerTrusted then
+                local offers = mapOffers(mapNow)
+                if offers and not offers[id] then okOffer = false end
+            end
+            if okOffer and not notOffered(entry, id, mapNow, lvl) then
+                out[#out + 1] = { id = id, level = rule.l or 0, name = rule.n or ("Quest " .. id) }
+            end
+        end
+    end
+    return out
+end
+
 local function available(entry)
+    if type(entry[4]) == "table" and SFP.QDB then return availableDB(entry) end
     local lvl = UnitLevel("player")
     if type(lvl) ~= "number" then return nil end
     local side = playerFaction()
@@ -293,6 +476,7 @@ local function available(entry)
             local _, _, raceID = UnitRace("player")
             if not has(rq[1], classID) or not has(rq[2], raceID) then ok = false end
         end
+        if ok and SFP.QuestRepeat and SFP.QuestRepeat[q.id] then ok = false end   -- (repeatable and daily quests have a blue mark in the game: not marked here)
         if ok and SFP.QuestSoD and SFP.QuestSoD[q.id] and not (SFP.db.learnedQuests and SFP.db.learnedQuests[q.id]) then ok = false end
         local mapNow = WorldMapFrame and WorldMapFrame.GetMapID and WorldMapFrame:GetMapID()
         if ok and offerTrusted then
@@ -304,6 +488,11 @@ local function available(entry)
         -- a quest of a chain is offered only when the one before it is done
         local prev = (SFP.QuestPrereq and SFP.QuestPrereq[q.id]) or QM.PrereqFix[q.id] or (SFP.db.learnedPrereq and SFP.db.learnedPrereq[q.id])
         if ok and prev and not isDone(prev) then ok = false end
+        -- every quest the page of the quest lists as needed first (Data/QuestReqs.lua): all of them must be done
+        local need = SFP.QuestNeeds and SFP.QuestNeeds[q.id]
+        if ok and need then
+            for _, nq in ipairs(need) do if not isDone(nq) then ok = false break end end
+        end
         if ok and C_QuestLog then
             if isDone(q.id) then ok = false end
             if ok and (haveQuest(q.id) or hadQuest(q.id)) then ok = false end
@@ -463,9 +652,9 @@ end
 function QM:Draw()
     SFP:Safe("learn finished quests", learnDone)   -- (at most every 20 seconds)
     for _, p in ipairs(pins) do p:Hide() end
-    if not (SFP.db and SFP.db.questMarkers ~= false and SFP.QuestGivers and WorldMapFrame and WorldMapFrame:IsShown()) then return end
+    if not (SFP.db and SFP.db.questMarkers ~= false and (SFP.QStarts or SFP.QuestGivers) and WorldMapFrame and WorldMapFrame:IsShown()) then return end
     local map = WorldMapFrame:GetMapID()
-    local list = map and (SFP.QuestGivers[map] or {})
+    local list = map and ((SFP.QStarts and SFP.QStarts[map]) or (not SFP.QStarts and SFP.QuestGivers and SFP.QuestGivers[map]) or {})
     local canvas = WorldMapFrame.ScrollContainer and WorldMapFrame.ScrollContainer.Child
     if not (list and canvas) then return end
     local w, h = canvas:GetWidth(), canvas:GetHeight()
