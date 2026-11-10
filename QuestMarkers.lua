@@ -801,6 +801,18 @@ SFP:OnLogin(function()
         if event == "QUEST_QUERY_COMPLETE" then SFP:Safe("learn finished quests", learnDone, true, true) end
         if event == "QUEST_LOG_UPDATE" then SFP:Safe("scan quest log", scanLog) end   -- (not at ACCEPTED: the log has not got the new quest yet then)
         if event == "QUEST_DETAIL" then SFP:Safe("learn quest", learnQuest, GetQuestID and GetQuestID()) end
+        if event == "QUEST_DETAIL" then
+            -- the quest window of a giver: the game offers this quest to you (even if you only read it and decline): kept, and it shows how far above your level it goes
+            local qid = GetQuestID and GetQuestID()
+            if type(qid) == "number" and qid > 0 and SFP.db and not (issecretvalue and issecretvalue(qid)) then
+                SFP.db.questOffered = SFP.db.questOffered or {}
+                local mine = SFP.db.questOffered[charId()] or {}
+                SFP.db.questOffered[charId()] = mine
+                mine[qid] = true
+                local rr = SFP.QDB and SFP.QDB[qid]
+                if rr and rr.l then noteAbove(rr.l) end
+            end
+        end
         if event == "QUEST_ACCEPTED" then SFP:Safe("learn quest", learnQuest, select(2, ...) or select(1, ...)) end
         if event == "QUEST_DETAIL" or event == "QUEST_ACCEPTED" then
             -- the camps of a side: a quest seen in a zone is noted for the faction of this character (the Quest Planner uses it)
