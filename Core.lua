@@ -1533,6 +1533,12 @@ SlashCmdList["SEVIATHSUSEFULTOOLS"] = function(msg)
         table.sort(rows, function(a, b) return a.d < b.d end)
         for i = 1, math.min(8, #rows) do
             SFP:Print(("  %s  %.1f, %.1f  (%s)"):format(rows[i].e[1], rows[i].e[2], rows[i].e[3], tostring(rows[i].e[4]):sub(1, 50)))
+            if i <= 3 and SFP.QuestMarkers and SFP.QuestMarkers.Why then
+                for part in tostring(rows[i].e[4]):gmatch("[^|]+") do
+                    local id, _, _, _, nm = part:match("^(%d+):(%d+):(%d+):(%d+):(.*)$")
+                    if id then SFP:Print(("      %s [%s]: %s"):format(nm, id, SFP.QuestMarkers.Why(tonumber(id)))) end
+                end
+            end
         end
         if #rows == 0 then SFP:Print("  no quest givers in the data for this map") end
     elseif cmd == "who" then

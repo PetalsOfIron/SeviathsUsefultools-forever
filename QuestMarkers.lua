@@ -101,6 +101,16 @@ local function scanLog()
     end
 end
 QM.ScanLog = scanLog
+QM.IsDone, QM.InLog, QM.Had = isDone, haveQuest, hadQuest
+-- for /sut qmark: what the addon knows about one quest number
+function QM.Why(id)
+    local flag
+    if C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted then
+        local ok, v = pcall(C_QuestLog.IsQuestFlaggedCompleted, id)
+        flag = ok and tostring(v) or "error"
+    end
+    return ("flag=%s list=%s had=%s inLog=%s"):format(tostring(flag), tostring(doneList and doneList[id] or false), tostring(hadQuest(id)), tostring(haveQuest(id)))
+end
 
 local function playerFaction()
     local f = UnitFactionGroup("player")
