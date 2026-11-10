@@ -176,7 +176,7 @@ local function getPin(i, canvas)
         t:SetOwner(self, "ANCHOR_RIGHT")
         t:AddLine(self.giver or "?", 1, 0.82, 0)
         for _, q in ipairs(self.quests or {}) do
-            t:AddLine(("[%d] %s"):format(q.level, q.name), 1, 1, 1)
+            t:AddLine((q.level and q.level > 0) and ("[%d] %s"):format(q.level, q.name) or tostring(q.name), 1, 1, 1)
         end
         t:AddLine("Click: set a waypoint", 0.9, 0.28, 0.24)
         t:Show()
@@ -235,6 +235,18 @@ local function learnQuest(questID)
 end
 QM.LearnQuest = learnQuest
 
+-- the title of a quest: what the character saw, else the Codex, else the game's own quest log data
+local function questTitle(qid, rec)
+    if type(rec) == "table" and type(rec.t) == "string" and rec.t ~= "" then return rec.t end
+    local cdb = _G.SeviathsCodexDB
+    local qr = cdb and type(cdb.quests) == "table" and cdb.quests[qid]
+    if type(qr) == "table" and type(qr.t) == "string" and qr.t ~= "" then return qr.t end
+    if C_QuestLog and C_QuestLog.GetTitleForQuestID then
+        local ok, t = pcall(C_QuestLog.GetTitleForQuestID, qid)
+        if ok and type(t) == "string" and t ~= "" and not (issecretvalue and issecretvalue(t)) then return t end
+    end
+end
+
 local function learnedQuestGivers(map)
     local out = {}
     for qid, r in pairs((SFP.db and SFP.db.learnedQuests) or {}) do
@@ -242,9 +254,17 @@ local function learnedQuestGivers(map)
             local done = C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted and C_QuestLog.IsQuestFlaggedCompleted(qid)
             local inLog = haveQuest(qid) or hadQuest(qid)
             local prev = (SFP.QuestPrereq and SFP.QuestPrereq[qid]) or (SFP.db.learnedPrereq and SFP.db.learnedPrereq[qid])
-            local blocked = prev and C_QuestLog.IsQuestFlaggedCompleted and not C_QuestLog.IsQuestFlaggedCompleted(prev)
+            -- a quest this character has learned was taken by it, so the quest before it was done (the chain is only a guess from names): it is never blocked
+            local blocked = false
             if not done and not inLog and not blocked then
-                out[#out + 1] = { n = r.g, x = r.x, y = r.y, q = { id = qid, level = r.l or 0, name = r.t or ("Quest " .. qid) } }
+                local nm, lv = questTitle(qid, r), r.l
+                if not lv then
+                    local cdb = _G.SeviathsCodexDB
+                    local qr = cdb and type(cdb.quests) == "table" and cdb.quests[qid]
+                    lv = type(qr) == "table" and tonumber(qr.l) or 0
+                    if lv == 30 then lv = 0 end
+                end
+                out[#out + 1] = { n = r.g, x = r.x, y = r.y, q = { id = qid, level = lv or 0, name = nm or ("Quest " .. qid) } }
             end
         end
     end
