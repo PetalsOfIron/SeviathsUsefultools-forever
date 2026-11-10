@@ -646,7 +646,23 @@ local function fitWindow()
     for _, btn in pairs(specBtns) do btn:SetShown(not shrunk) end
     if win.roleBtns and shrunk then for _, b in ipairs(win.roleBtns) do b:Hide() end end
     -- shrunk: the big metal frame is left out (it is taller than the 34 px bar and showed as lone lines): a plain bar with a gold edge
-    if win.NineSlice then win.NineSlice:SetShown(not shrunk) end
+    local function frameArt()
+        -- the metal frame is made of pieces taller than the bar, and the game lays them out again when the size changes: every piece is hidden by its alpha too
+        local ns = win.NineSlice
+        if ns then
+            ns:SetShown(not shrunk)
+            ns:SetAlpha(shrunk and 0 or 1)
+            for _, r in ipairs({ ns:GetRegions() }) do if r.SetAlpha then r:SetAlpha(shrunk and 0 or 1) end end
+            for _, c in ipairs({ ns:GetChildren() }) do if c.SetAlpha then c:SetAlpha(shrunk and 0 or 1) end end
+        end
+        for _, r in ipairs({ win:GetRegions() }) do
+            if r ~= win.shrunkFill and r ~= win.seviathBase and r ~= win.seviathSnake and r.GetDrawLayer and r.IsObjectType and r:IsObjectType("Texture") then
+                local tag = win.shrunkEdge and (r == win.shrunkEdge[1] or r == win.shrunkEdge[2] or r == win.shrunkEdge[3] or r == win.shrunkEdge[4])
+                if not tag and r.GetTexture and r:GetTexture() and r:GetAtlas() then r:SetAlpha(shrunk and 0 or 1) end
+            end
+        end
+    end
+    frameArt()
     if win.seviathBase then win.seviathBase:SetShown(not shrunk) end
     if win.seviathSnake then win.seviathSnake:SetShown(not shrunk) end   -- (the snake picture is taller than the bar: it showed as lines)
     -- the bar: one flat dark fill (a tiled picture showed its seams as lines) with the gold edge
@@ -680,6 +696,8 @@ local function fitWindow()
         win.scroll:SetShown(not shrunk)
     end
     if math.abs((win:GetHeight() or 0) - h) > 1 then win:SetHeight(h) end
+    frameArt()
+    C_Timer.After(0, frameArt)
     local b, l, t = win:GetBottom(), win:GetLeft(), win:GetTop()
     if b and l and t and b < 130 then
         win:ClearAllPoints()
