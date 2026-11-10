@@ -648,22 +648,32 @@ local function fitWindow()
     -- shrunk: the big metal frame is left out (it is taller than the 34 px bar and showed as lone lines): a plain bar with a gold edge
     if win.NineSlice then win.NineSlice:SetShown(not shrunk) end
     if win.seviathBase then win.seviathBase:SetShown(not shrunk) end
+    if win.seviathSnake then win.seviathSnake:SetShown(not shrunk) end   -- (the snake picture is taller than the bar: it showed as lines)
     -- the bar: one flat dark fill (a tiled picture showed its seams as lines) with the gold edge
     if not win.shrunkFill then
         local t = win:CreateTexture(nil, "BACKGROUND", nil, -7)
-        t:SetPoint("TOPLEFT", 3, -3)
-        t:SetPoint("BOTTOMRIGHT", -3, 3)
+        t:SetPoint("TOPLEFT", 1, -1)
+        t:SetPoint("BOTTOMRIGHT", -1, 1)
         t:SetColorTexture(0.09, 0.04, 0.04, 0.96)
         win.shrunkFill = t
     end
     win.shrunkFill:SetShown(shrunk and true or false)
-    if shrunk then
-        win:SetBackdrop({ edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", edgeSize = 14, insets = { left = 3, right = 3, top = 3, bottom = 3 } })
-        -- (the window's own color call is switched off by the frame style: the mixin's one is used)
-        if BackdropTemplateMixin then BackdropTemplateMixin.SetBackdropBorderColor(win, 0.8, 0.65, 0.3, 1) else win:SetBackdropBorderColor(0.8, 0.65, 0.3, 1) end
-    elseif win.GetBackdrop and win:GetBackdrop() then
-        win:SetBackdrop(nil)
+    -- the edge of the bar: four flat gold lines (the game's tooltip border picture showed its pieces as ticks on such a small bar)
+    if not win.shrunkEdge then
+        win.shrunkEdge = {}
+        for k = 1, 4 do
+            local e = win:CreateTexture(nil, "BORDER")
+            e:SetColorTexture(0.8, 0.65, 0.3, 1)
+            win.shrunkEdge[k] = e
+        end
+        local E = win.shrunkEdge
+        E[1]:SetPoint("TOPLEFT"); E[1]:SetPoint("TOPRIGHT"); E[1]:SetHeight(1)
+        E[2]:SetPoint("BOTTOMLEFT"); E[2]:SetPoint("BOTTOMRIGHT"); E[2]:SetHeight(1)
+        E[3]:SetPoint("TOPLEFT"); E[3]:SetPoint("BOTTOMLEFT"); E[3]:SetWidth(1)
+        E[4]:SetPoint("TOPRIGHT"); E[4]:SetPoint("BOTTOMRIGHT"); E[4]:SetWidth(1)
     end
+    for _, e in ipairs(win.shrunkEdge) do e:SetShown(shrunk and true or false) end
+    if win.GetBackdrop and win:GetBackdrop() then win:SetBackdrop(nil) end
     local h = shrunk and 34 or math.max(160, math.min(text:GetStringHeight() + 84 + (FOREVER and (28 + (win.extraH or 0)) or 0), (UIParent:GetHeight() or 800) - 140))
     if FOREVER and win.child then
         win.child:SetHeight(text:GetStringHeight() + 10 + (win.extraH or 0))
