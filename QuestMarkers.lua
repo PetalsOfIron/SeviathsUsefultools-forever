@@ -58,8 +58,33 @@ local function noteHad(id)   -- only a quest that was turned in is kept: a quest
 end
 local function hadQuest(id)
     local t = SFP.db and SFP.db.questsHad and SFP.db.questsHad[charId()]
-    return t and t[id] == 2
+    return t and (t[id] == 2 or t[id] == true)
 end
+-- is a quest finished? Every way the game offers is asked (they differ between versions): the flag, the list of finished quests, and the quests this addon saw
+-- turned in. An older save of this addon noted every quest it ever saw in the log (true): that stays counted as done, so the quests done before stay hidden.
+local doneList, doneAt
+local function isDone(id)
+    if C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted then
+        local ok, v = pcall(C_QuestLog.IsQuestFlaggedCompleted, id)
+        if ok and v then return true end
+    end
+    if GetTime() - (doneAt or -999) > 30 then
+        doneAt, doneList = GetTime(), {}
+        local fn = (C_QuestLog and C_QuestLog.GetAllCompletedQuestIDs) or GetQuestsCompleted
+        if fn then
+            local ok, t = pcall(fn, doneList)
+            if ok and type(t) == "table" then
+                for k, v in pairs(t) do if type(v) == "number" then doneList[v] = true elseif v == true then doneList[k] = true end end
+            end
+        end
+    end
+    if doneList and doneList[id] then return true end
+    local t = SFP.db and SFP.db.questsHad and SFP.db.questsHad[charId()]
+    local v = t and t[id]
+    if v == 2 or v == true then return true end
+    return false
+end
+
 local function scanLog()
     if not SFP.db then return end
     local n = GetNumQuestLogEntries and GetNumQuestLogEntries() or 0
@@ -148,9 +173,9 @@ local function available(entry)
         -- (quests below your level always show: a low-level quest can still be taken)
         -- a quest of a chain is offered only when the one before it is done
         local prev = (SFP.QuestPrereq and SFP.QuestPrereq[q.id]) or (SFP.db.learnedPrereq and SFP.db.learnedPrereq[q.id])
-        if ok and prev and C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted and not C_QuestLog.IsQuestFlaggedCompleted(prev) then ok = false end
+        if ok and prev and not isDone(prev) then ok = false end
         if ok and C_QuestLog then
-            if C_QuestLog.IsQuestFlaggedCompleted and C_QuestLog.IsQuestFlaggedCompleted(q.id) then ok = false end
+            if isDone(q.id) then ok = false end
             if ok and (haveQuest(q.id) or hadQuest(q.id)) then ok = false end
         end
         if ok then out[#out + 1] = q end
@@ -252,7 +277,7 @@ local function learnedQuestGivers(map)
     local out = {}
     for qid, r in pairs((SFP.db and SFP.db.learnedQuests) or {}) do
         if type(r) == "table" and r.m == map and r.g and r.x then
-            local done = C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted and C_QuestLog.IsQuestFlaggedCompleted(qid)
+            local done = isDone(qid)
             local inLog = haveQuest(qid) or hadQuest(qid)
             local prev = (SFP.QuestPrereq and SFP.QuestPrereq[qid]) or (SFP.db.learnedPrereq and SFP.db.learnedPrereq[qid])
             -- a quest this character has learned was taken by it, so the quest before it was done (the chain is only a guess from names): it is never blocked
@@ -280,7 +305,7 @@ local function learnedGivers(map)
     for qid, rec in pairs(cdb.qloc) do
         local g = type(rec) == "table" and rec.g
         if type(qid) == "number" and type(g) == "table" and g.m == map and g.x and g.y and g.n then
-            local done = C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted and C_QuestLog.IsQuestFlaggedCompleted(qid)
+            local done = isDone(qid)
             local inLog = haveQuest(qid) or hadQuest(qid)
             local qr = type(cdb.quests) == "table" and cdb.quests[qid]
             -- a quest the Codex has no title for is from another game (the numbers of retail quests): not shown
