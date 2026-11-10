@@ -27,13 +27,22 @@ done = set()
 if os.path.exists(OUT):
     for l in open(OUT, encoding="utf8").read().splitlines():
         if l.split("|")[0].isdigit(): done.add(int(l.split("|")[0]))
-with open(OUT, "a", encoding="utf8", newline="\n") as out:
-    for qid in sorted(quests - done):
-        try: html = fetch(qid)
-        except Exception as e: print(qid, "failed", e, flush=True); continue
-        h = html.replace("\/", "/")
-        m = re.search(r'g_quests\[%d\], (\{.*?\})\);' % qid, h)
-        blob = m.group(1) if m else ""
-        cm = re.search(r'"reqclass":(\d+)', blob); rm = re.search(r'"reqrace":(\d+)', blob)
-        sod = 1 if re.search(r'Added in patch.{0,120}Season of Discovery', h) else 0
-        out.write("%d|%s|%s|%d\n" % (qid, cm.group(1) if cm else 0, rm.group(1) if rm else 0, sod)); out.flush()
+import threading
+from concurrent.futures import ThreadPoolExecutor
+lock = threading.Lock()
+out = open(OUT, "a", encoding="utf8", newline="
+")
+def work(qid):
+    try: html = fetch(qid)
+    except Exception as e: print(qid, "failed", e, flush=True); return
+    h = html.replace(chr(92) + "/", "/")
+    m = re.search(r'g_quests\[%d\], (\{.*?\})\);' % qid, h)
+    blob = m.group(1) if m else ""
+    cm = re.search(r'"reqclass":(\d+)', blob); rm = re.search(r'"reqrace":(\d+)', blob)
+    sod = 1 if re.search(r'Added in patch.{0,120}Season of Discovery', h) else 0
+    with lock:
+        out.write("%d|%s|%s|%d
+" % (qid, cm.group(1) if cm else 0, rm.group(1) if rm else 0, sod)); out.flush()
+with ThreadPoolExecutor(max_workers=6) as ex:
+    list(ex.map(work, sorted(quests - done)))
+out.close()

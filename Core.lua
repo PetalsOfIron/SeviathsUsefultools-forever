@@ -1519,6 +1519,36 @@ SlashCmdList["SEVIATHSUSEFULTOOLS"] = function(msg)
             local name = okI and type(info) == "table" and info.name
             SFP:Print(("  %d  %s%s"):format(id, tostring(name), (SFP.Social and SFP.Social.KindOfCategory) and "" or ""))
         end
+    elseif cmd == "qapi" then
+        -- which calls of this game know the quests a giver offers (to find one that tells it without visiting the giver)
+        local map = C_Map.GetBestMapForUnit("player")
+        SFP:Print("map " .. tostring(map))
+        for _, tn in ipairs({ "C_QuestOffer", "C_QuestLog", "C_GossipInfo", "C_Minimap", "C_QuestInfoSystem" }) do
+            local t = _G[tn]
+            if type(t) ~= "table" then SFP:Print(tn .. ": none")
+            else
+                local names = {}
+                for k, v in pairs(t) do
+                    if type(v) == "function" and (tn == "C_QuestOffer" or tostring(k):find("Offer") or tostring(k):find("Available") or tostring(k):find("Giver") or tostring(k):find("OnMap") or tostring(k):find("Poi") or tostring(k):find("POI")) then names[#names + 1] = k end
+                end
+                table.sort(names)
+                SFP:Print(tn .. ": " .. (#names > 0 and table.concat(names, ", ") or "(nothing about offers)"))
+            end
+        end
+        if C_QuestOffer and C_QuestOffer.GetQuestOffersForMap and map then
+            local ok, list = pcall(C_QuestOffer.GetQuestOffersForMap, map)
+            SFP:Print("GetQuestOffersForMap: " .. tostring(ok) .. ", " .. (type(list) == "table" and (#list .. " offers") or tostring(list)))
+            if type(list) == "table" and list[1] then
+                local o = list[1]
+                local f = {}
+                for k, v in pairs(type(o) == "table" and o or {}) do f[#f + 1] = tostring(k) .. "=" .. tostring(v) end
+                SFP:Print("  first: " .. table.concat(f, ", "))
+            end
+        end
+        if C_QuestLog and C_QuestLog.GetQuestsOnMap and map then
+            local ok, list = pcall(C_QuestLog.GetQuestsOnMap, map)
+            SFP:Print("GetQuestsOnMap: " .. tostring(ok) .. ", " .. (type(list) == "table" and (#list .. " quests") or tostring(list)))
+        end
     elseif cmd == "qdebug" then
         SFP.db.questMarkerDebug = not (SFP.db.questMarkerDebug == true)
         SFP:Print("Quest mark tooltip details: " .. (SFP.db.questMarkerDebug == true and "on" or "off"))

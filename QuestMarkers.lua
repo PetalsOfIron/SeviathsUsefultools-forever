@@ -245,6 +245,27 @@ QM.PrereqFix = {
     [46] = 71,   -- Bounty on Murlocs (Guard Thomas) comes after the quest that starts at Rolf's corpse (Report to Thomas)
 }
 
+-- the quests the GAME says are on offer in a zone for this character (C_QuestOffer, the call behind the available-quest marks of the game's own map):
+-- the one source that knows what a giver far away offers. Used only when the game has the call and has answered with quests at least once
+-- (a game that answers with an empty list always is not trusted).
+local offerSets, offerTrusted = {}, false
+local function mapOffers(map)
+    if not (map and C_QuestOffer and C_QuestOffer.GetQuestOffersForMap) then return nil end
+    local c = offerSets[map]
+    if c and GetTime() - c.at < 5 then return c.set end
+    local ok, list = pcall(C_QuestOffer.GetQuestOffersForMap, map)
+    if not ok or type(list) ~= "table" then return nil end
+    local set, n = {}, 0
+    for _, o in ipairs(list) do
+        local id = type(o) == "table" and (o.questID or o.questId or o.id) or (type(o) == "number" and o)
+        if type(id) == "number" then set[id] = true; n = n + 1 end
+    end
+    if n > 0 then offerTrusted = true end
+    offerSets[map] = { set = set, at = GetTime() }
+    return set
+end
+QM.MapOffers = mapOffers
+
 local function available(entry)
     local lvl = UnitLevel("player")
     if type(lvl) ~= "number" then return nil end
@@ -273,6 +294,11 @@ local function available(entry)
             if not has(rq[1], classID) or not has(rq[2], raceID) then ok = false end
         end
         if ok and SFP.QuestSoD and SFP.QuestSoD[q.id] and not (SFP.db.learnedQuests and SFP.db.learnedQuests[q.id]) then ok = false end
+        local mapNow = WorldMapFrame and WorldMapFrame.GetMapID and WorldMapFrame:GetMapID()
+        if ok and offerTrusted then
+            local offers = mapOffers(mapNow)
+            if offers and not offers[q.id] then ok = false end   -- the game does not offer it to this character
+        end
         if ok and notOffered(entry, q.id, WorldMapFrame and WorldMapFrame.GetMapID and WorldMapFrame:GetMapID(), lvl) then ok = false end   -- (the giver was visited and did not offer it)
         -- (quests below your level always show: a low-level quest can still be taken)
         -- a quest of a chain is offered only when the one before it is done
@@ -310,21 +336,10 @@ local function getPin(i, canvas)
             if SFP.db and SFP.db.questMarkerDebug == true and QM.Why then t:AddLine(("   #%d  %s"):format(q.id or 0, QM.Why(q.id or 0)), 0.55, 0.55, 0.55) end   -- (to find why a done quest still shows; /sut qdebug turns it off)
         end
         t:AddLine("Click: set a waypoint", 0.9, 0.28, 0.24)
-        t:AddLine("Right-click: hide this mark (the giver has no quest for me)", 0.7, 0.7, 0.7)
         t:Show()
     end)
     p:SetScript("OnLeave", function() (SFP.Tip and SFP.Tip() or GameTooltip):Hide() end)
-    p:RegisterForClicks("LeftButtonUp", "RightButtonUp")
-    p:SetScript("OnClick", function(self, button)
-        if button == "RightButton" then
-            -- this giver has no quests for you: the mark is hidden, for the whole account
-            if SFP.db then
-                SFP.db.hiddenQuestGivers = SFP.db.hiddenQuestGivers or {}
-                SFP.db.hiddenQuestGivers[("%s|%d|%d,%d"):format(tostring(self.giver), self.map or 0, math.floor((self.x or 0) * 100 + 0.5), math.floor((self.y or 0) * 100 + 0.5))] = true
-            end
-            self:Hide(); GameTooltip:Hide()
-            return
-        end
+    p:SetScript("OnClick", function(self)
         if self.map and SFP.SetWaypoint then SFP:SetWaypoint(self.map, self.x, self.y, self.giver) end
     end)
     pins[i] = p
@@ -440,6 +455,7 @@ local function learnedGivers(map)
 end
 
 local function hiddenGiver(name, map, x, y)
+    do return false end   -- (marks are no longer hidden by hand: the addon has to find out itself)
     local h = SFP.db and SFP.db.hiddenQuestGivers
     return h and h[("%s|%d|%d,%d"):format(tostring(name), map or 0, math.floor(x + 0.5), math.floor(y + 0.5))] or false
 end

@@ -1,2 +1,4 @@
-D:\wow\World of Warcraft\_forever_\Interface\AddOns\SeviathsUsefulTools\tools\crawl_quest_reqs.py:34: SyntaxWarning: "\/" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\/"? A raw string is also an option.
-  h = html.replace("\/", "/")
+  File "D:\wow\World of Warcraft\_forever_\Interface\AddOns\SeviathsUsefulTools\tools\crawl_quest_reqs.py", line 33
+    out = open(OUT, "a", encoding="utf8", newline="
+                                                  ^
+SyntaxError: unterminated string literal (detected at line 33)
