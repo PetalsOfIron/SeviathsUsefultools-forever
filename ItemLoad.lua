@@ -14,21 +14,34 @@ local function cached(id)
     return true
 end
 
-local function watch(tip)
+-- Only the tooltip of the addon itself is filled again when the item arrives. The tooltips of the game (GameTooltip, ItemRefTooltip) are never called from here: a call of
+-- addon code on them taints them, and Blizzard's own code then fails with "execution tainted by SeviathsUsefulTools". For them the item is only requested (the game
+-- refreshes its tooltip by itself when the item data arrives).
+local function watch(tip, own)
     if not tip or tip.sutItemWatch or not tip.SetItemByID then return end
     tip.sutItemWatch = true
     hooksecurefunc(tip, "SetItemByID", function(self, id)
         if type(id) ~= "number" or cached(id) then return end
-        waiting[id] = waiting[id] or {}
-        waiting[id][self] = true
+        if own then
+            waiting[id] = waiting[id] or {}
+            waiting[id][self] = true
+        end
         pcall(C_Item.RequestLoadItemDataByID, id)
     end)
 end
 
-watch(GameTooltip)
-watch(ItemRefTooltip)
+-- (a post-hook on the tooltips of the game is safe: it only asks the game to load the item)
+local function hookGame(tip)
+    if not tip or not tip.SetItemByID or tip.sutGameHook then return end
+    tip.sutGameHook = true
+    hooksecurefunc(tip, "SetItemByID", function(_, id)
+        if type(id) == "number" and not cached(id) then pcall(C_Item.RequestLoadItemDataByID, id) end
+    end)
+end
+hookGame(GameTooltip)
+hookGame(ItemRefTooltip)
 -- the tooltip of the addon (made on first use)
-C_Timer.After(0, function() pcall(function() watch(SFP.Tip and SFP.Tip()) end) end)
+C_Timer.After(0, function() pcall(function() watch(SFP.Tip and SFP.Tip(), true) end) end)
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ITEM_DATA_LOAD_RESULT")
