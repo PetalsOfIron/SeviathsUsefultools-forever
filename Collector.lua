@@ -273,6 +273,15 @@ local function recordUnit(unit)
     if type(cls) == "string" and cls ~= "normal" then rec.c = cls end
     local map, x, y = playerPos()
     if map then addPoint(rec, map, x, y) end
+    -- a rare met: its spot is put on the map a moment later (once for a burst of sightings)
+    if (cls == "rare" or cls == "rareelite" or cls == "elite") and SFP.ApplyLearnedRares and not SFP._rareApplyPending then
+        SFP._rareApplyPending = true
+        C_Timer.After(2, function()
+            SFP._rareApplyPending = nil
+            pcall(SFP.ApplyLearnedRares)
+            if SFP.RefreshWorldMap then pcall(SFP.RefreshWorldMap) end
+        end)
+    end
 end
 
 local seenGuid = {}

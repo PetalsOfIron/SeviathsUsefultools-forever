@@ -6,7 +6,7 @@
 
 local _, SFP = ...
 
-local SIZE = 5            -- screen pixels of the box
+local SIZE = 9            -- screen pixels of the dot
 local pins, used = {}, 0
 local byMapTime = {}
 local byMap = {}          -- [map] = list of { id, rec, x, y }: made when a map is asked for, dropped when the loot changes
@@ -59,7 +59,15 @@ local function isTreasure(rec)
     if rec.ot then return false end   -- a quest objective or a gathering node has its type text saved
     if SFP.ObjectKind and SFP:ObjectKind({ d = rec.d }) then return false end   -- the kind by its items only
     if rec.tr then return true end   -- the game showed it as a loot icon: a treasure, whatever it gave
-    if WOW_PROJECT_ID and WOW_PROJECT_CAMELOT and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then return false end   -- WoW Forever: only what the game marked as a loot icon; crates, barrels and quest objects are not treasures
+    if WOW_PROJECT_ID and WOW_PROJECT_CAMELOT and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
+        -- WoW Forever shows no loot icons for chests (the game's vignettes are not there), so rec.tr is never set: a chest is known by its name instead. Crates,
+        -- barrels and quest objects (rec.ot, saved above) stay out.
+        local n = type(rec.n) == "string" and rec.n:lower() or ""
+        for _, w in ipairs({ "chest", "cache", "coffer", "strongbox", "lockbox", "footlocker", "treasure", "trove", "stash", "hoard", "satchel", "sack", "bag", "lockbox" }) do
+            if n:find(w, 1, true) then return true end
+        end
+        return false
+    end
     if (rec.k or 0) > 2 then return false end
     if not (type(rec.n) == "string" and not rec.n:find("^Object %d+$") and not rec.n:find("Seviath", 1, true)) then return false end
     -- the clues and objects of quest lines give quest items; a treasure gives ordinary items
@@ -152,7 +160,7 @@ local function treasuresOf(map)
                         for _, p in ipairs(pts) do
                             if type(p) == "table" and p[1] and p[2] then
                                 local x, y = convert(from, p[1], p[2], map)
-                                if x and not openedHere(id, map, x, y) then list[#list + 1] = { id = id, rec = rec, x = x, y = y } end
+                                if x then list[#list + 1] = { id = id, rec = rec, x = x, y = y } end   -- (also the chests you opened: "all chests"; they are not taken off the map)
                             end
                         end
                     end
@@ -256,14 +264,16 @@ local function getPin()
     local p = pins[used]
     if not p then
         p = CreateFrame("Button", nil, layer)
+        -- a round blue dot with a pale ring: easy to find on the map (the grey dot picture of the game, painted blue)
         p.edge = p:CreateTexture(nil, "BACKGROUND")
-        p.edge:SetAllPoints()
-        p.edge:SetColorTexture(0.14, 0.03, 0.03, 0.85)
+        p.edge:SetPoint("TOPLEFT", -1.5, 1.5)
+        p.edge:SetPoint("BOTTOMRIGHT", 1.5, -1.5)
+        p.edge:SetTexture("Interface\\COMMON\\Indicator-Gray")
+        p.edge:SetVertexColor(0.85, 0.93, 1, 0.95)
         p.fill = p:CreateTexture(nil, "ARTWORK")
-        p.fill:SetPoint("TOPLEFT", 1, -1)
-        p.fill:SetPoint("BOTTOMRIGHT", -1, 1)
-        local cy = SFP.CYAN or { 0.9, 0.28, 0.24 }
-        p.fill:SetColorTexture((cy[1] or cy.r or 0) * 0.55, (cy[2] or cy.g or 0.9) * 0.6, (cy[3] or cy.b or 1) * 0.8, 0.8)   -- a softer blue
+        p.fill:SetAllPoints()
+        p.fill:SetTexture("Interface\\COMMON\\Indicator-Gray")
+        p.fill:SetVertexColor(0.12, 0.45, 1, 1)
         p:SetScript("OnEnter", function(self)
             local t = SFP.Tip and SFP.Tip() or GameTooltip
             t:SetOwner(self, "ANCHOR_RIGHT")

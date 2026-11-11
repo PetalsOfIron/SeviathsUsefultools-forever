@@ -344,6 +344,7 @@ local function getPin()
     if p.icon then p.icon:Hide() end
     if p.icon2 then p.icon2:Hide() end
     if p.pinTex then p.pinTex:Hide() end
+    if p.rareTex then p.rareTex:Hide() end
     if p.ring then p.ring:Hide(); p.ringAg:Stop() end
     p.outer:Show(); p.inner:Show()
     p:Show()
@@ -519,8 +520,40 @@ local function placeFarmPin(p, x, y, h)
     hoverList[#hoverList + 1] = h
 end
 
+-- a rare: the game's own rare icon of the map (the silver dragon of a rare elite, the skull of a rare), the one retail shows. The soft glow circle is
+-- not drawn: its picture is missing in some clients, which left the rares invisible.
+local function rareAtlas(sp)
+    -- one icon for every rare (shipped or met by you): they all look the same
+    for _, name in ipairs({ "VignetteKill", "VignetteKillElite" }) do
+        if C_Texture and C_Texture.GetAtlasInfo and C_Texture.GetAtlasInfo(name) then return name end
+    end
+end
+local function placeRarePin(p, x, y, h)
+    local w, hh = spawnLayer:GetWidth(), spawnLayer:GetHeight()
+    local size = math.max(20 / canvasScale(), 11)
+    p:SetSize(size, size)
+    p.outer:Hide(); p.inner:Hide()
+    if not p.rareTex then p.rareTex = p:CreateTexture(nil, "OVERLAY", nil, 3) end
+    local atlas = rareAtlas(h.spawn)
+    if atlas then
+        p.rareTex:SetAtlas(atlas)
+    else
+        p.rareTex:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
+    end
+    p.rareTex:ClearAllPoints()
+    p.rareTex:SetAllPoints(p)
+    p.rareTex:SetDesaturated(false)
+    p.rareTex:SetVertexColor(1, 1, 1, 1)
+    p.rareTex:Show()
+    p:ClearAllPoints()
+    p:SetPoint("CENTER", spawnLayer, "TOPLEFT", x * w, -y * hh)
+    h.mx, h.my = x, y
+    hoverList[#hoverList + 1] = h
+end
+
 local function placePin(p, x, y, outer, outerAlpha, inner, h)
     local s0 = h.spawn
+    if s0 and s0.rare and not s0.hunter then return placeRarePin(p, x, y, h) end
     -- farm spots and special materials
     if s0 and not (s0.rare or s0.hunter or s0.gather) then return placeFarmPin(p, x, y, h) end
     local c = spotColor(h.spawn)
@@ -596,7 +629,7 @@ end
 local function spawnClusters(zone)
     local exact = SFP.db.exactSpots
     local key = (SFP.db.showSpawns and "f" or "") .. (SFP.db.showRares and "r" or "") ..
-        (SFP.db.showSpecial and "s" or "") .. (SFP.db.showHunter and "h" or "") .. (exact and "x" or "") .. SFP.hiddenVer
+        (SFP.db.showSpecial and "s" or "") .. (SFP.db.showHunter and "h" or "") .. (exact and "x" or "") .. SFP.hiddenVer .. "k" .. (SFP.killVer or 0)
     local radius = exact and 0.0035 or AREA_R
     zone._areas = zone._areas or {}
     if zone._areas[key] then return zone._areas[key] end
@@ -790,9 +823,18 @@ local function drawAreas(zoneID, rect, unit, withLabels)
         end
         markSymbol(p, c.order, sc)
         -- a rare you killed today: grey until the daily reset
-        if SFP.db.greyKilled ~= false and main.rare and main.npc and main.npc > 0 and SFP.RareKilledToday and SFP:RareKilledToday(main.npc) then
+        -- (a marker that stands for several rares is grey when every one of them was killed)
+        local allKilled = false
+        if SFP.db.greyKilledRares == true and main.rare and SFP.RareKilledToday then   -- (off: a killed rare looks like every other rare; db.greyKilledRares = true brings the grey back)
+            allKilled = true
+            for _, rs in ipairs(c.order) do
+                if not (rs.rare and rs.npc and rs.npc > 0 and SFP:RareKilledToday(rs.npc)) then allKilled = false break end
+            end
+        end
+        if allKilled then
             p.outer:SetVertexColor(0.55, 0.55, 0.55, 0.3)
             p.inner:SetVertexColor(0.6, 0.6, 0.6, 0.5)
+            if p.rareTex then p.rareTex:SetDesaturated(true); p.rareTex:SetVertexColor(0.45, 0.45, 0.45, 0.45) end   -- (the rare icon of a rare killed today: grey)
         end
         if withLabels and SFP.db.showLabels then
             local shift = 0

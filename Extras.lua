@@ -42,6 +42,7 @@ function SFP:NoteKill(npcID)
     -- forget kills older than two weeks
     local old = time() - 14 * 86400
     for id, t in pairs(k) do if t < old then k[id] = nil end end
+    self.killVer = (self.killVer or 0) + 1   -- (the cached markers of the map are made again: a rare killed today is not drawn)
     if self.RefreshWorldMap then pcall(self.RefreshWorldMap) end
     if self.session then self.session.kills = self.session.kills + 1 end
 end
@@ -83,6 +84,7 @@ end
 -- forget what this character killed today (the greyed rares come back)
 function SFP:ClearKilled()
     if self.db and self.db.killed then self.db.killed[charKey()] = nil end
+    self.killVer = (self.killVer or 0) + 1
     if self.RefreshWorldMap then pcall(self.RefreshWorldMap) end
     self:Print("Today's kills forgotten - the rares are shown again.")
 end

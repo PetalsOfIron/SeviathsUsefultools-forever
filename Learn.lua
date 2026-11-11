@@ -130,6 +130,88 @@ local function updateSpot(map, npcID, rec)
     zone._areas = nil -- marker cache
 end
 
+-- the rares this character met (a monster the game classified as rare / rare elite, seen or killed: db.npcs[...].c and its places) and the rares that
+-- showed on the map (db.rareSeen) are spots of their own on the map, next to the shipped rares (Data/Rares.lua); a rare the shipped data has is not added twice
+local function applyLearnedRares()
+    local db = SFP.db
+    if not db then return end
+    local shipped = {}   -- [map] = { npc ids and names of the shipped rares }
+    for map, list in pairs(SFP.Rares or {}) do
+        local t = {}
+        for _, sp in ipairs(list) do
+            if sp.npc then t[sp.npc] = true end
+            if sp.name then t[sp.name] = true end
+        end
+        shipped[map] = t
+    end
+    local function zoneOf(map)
+        local zone = SFP.zoneByMap[map]
+        if not zone then
+            local exp = SFP:ExpansionForMap(map)
+            if not exp then return nil end
+            zone = { map = map, items = {}, instances = {}, rareOnly = true }
+            table.insert(exp.zones, zone)
+            SFP.zoneByMap[map] = zone
+            SFP.zoneExp[map] = exp
+        end
+        zone.spawns = zone.spawns or {}
+        return zone
+    end
+    local function put(map, key, name, npc, pts)
+        if type(name) ~= "string" or name == "" or name:find("^NPC %d+$") or #pts == 0 then return end
+        local sh = shipped[map]
+        if sh and ((npc and sh[npc]) or sh[name]) then return end
+        local zone = zoneOf(map)
+        if not zone then return end
+        local sp
+        for _, e in ipairs(zone.spawns) do if e.learnedRare == key then sp = e break end end
+        if not sp then
+            sp = { name = name, npc = npc, items = {}, points = {}, rare = true, learnedRare = key, note = "Rare, met by you" }
+            table.insert(zone.spawns, sp)
+        end
+        wipe(sp.points)
+        local sx, sy = 0, 0
+        for _, p in ipairs(pts) do
+            sp.points[#sp.points + 1] = { p[1], p[2] }
+            sx, sy = sx + p[1], sy + p[2]
+        end
+        sp.hx, sp.hy = sx / #pts, sy / #pts
+        zone._areas = nil   -- the marker cache of the zone
+    end
+    -- the monsters the collector saw: classification rare / rare elite
+    db.rareSeen = db.rareSeen or {}
+    for npcID, rec in pairs(db.npcs or {}) do   -- (the monsters this character saved; the rares of others come with the shipped db.rareSeen below)
+        -- a rare, or a lone named elite you killed a few times at most (WoW Forever has monsters like "Croaky" that the game calls "elite" and that hunters treat as
+        -- rares; a common elite is killed many times and is not one)
+        local rareLike = rec.c == "rare" or rec.c == "rareelite" or (rec.c == "elite" and (rec.k or 0) >= 1 and (rec.k or 0) <= 5)
+        if type(rec) == "table" and rareLike and type(rec.m) == "table" and not rec.boss then
+            for map, pts in pairs(rec.m) do
+                if type(pts) == "table" and tonumber(map) then
+                    map = tonumber(map)
+                    local clean = {}
+                    for _, p in ipairs(pts) do if type(p) == "table" and type(p[1]) == "number" and type(p[2]) == "number" then clean[#clean + 1] = p end end
+                    put(map, "n" .. tostring(npcID), rec.n, tonumber(npcID), clean)
+                    -- kept as a small record of its own (db.rareSeen), which is what is shipped with the collected data: other players get this rare too
+                    local key = tostring(rec.n) .. "@" .. tostring(map)
+                    if #clean > 0 and type(rec.n) == "string" and not rec.n:find("^NPC %d+$") and not db.rareSeen[key] then
+                        local sx, sy = 0, 0
+                        for _, p in ipairs(clean) do sx, sy = sx + p[1], sy + p[2] end
+                        db.rareSeen[key] = { n = rec.n, m = map, x = math.floor(sx / #clean * 10000) / 10000, y = math.floor(sy / #clean * 10000) / 10000,
+                            npc = tonumber(npcID), c = rec.c }
+                    end
+                end
+            end
+        end
+    end
+    -- the rares that showed on the map
+    for k, r in (SeviathsAllPairs or pairs)(db.rareSeen or {}) do
+        if type(r) == "table" and r.n and type(r.m) == "number" and type(r.x) == "number" and type(r.y) == "number" then
+            put(r.m, "s" .. tostring(r.n), r.n, tonumber(r.npc), { { r.x, r.y } })
+        end
+    end
+end
+SFP.ApplyLearnedRares = applyLearnedRares
+
 function SFP:ApplyLearned()
     self._bestDone = nil   -- the "best of each zone" choice is made again with the learned spots
     for map, mobs in pairs(self.db.learned or {}) do
@@ -139,6 +221,7 @@ function SFP:ApplyLearned()
             updateSpot(map, npcID, rec)
         end
     end
+    pcall(applyLearnedRares)
 end
 
 ---------------------------------------------------------------------------

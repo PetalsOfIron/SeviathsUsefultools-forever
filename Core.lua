@@ -213,7 +213,7 @@ local defaults = {
     zonePanel    = false,  -- optional item panel when viewing a farm zone
     zoneFill     = false,  -- optional: light whole zones instead of just the farm spots
     showSpawns   = false,  -- cyan farm monster spots (off at the start: only rares are on, turn the rest on in the map's layer menu)
-    showRares    = false,  -- orange glowing rare spawns (mounts, pets, toys)
+    showRares    = true,   -- orange glowing rare spawns (the shipped rares and the ones you met)
     showHunter   = false,  -- green hunter tames (spirit beasts, unique-look pets)
     showMining   = false,  -- (off at the start) best zone for each ore (amber glow)
     showHerbs    = false,  -- (off at the start, everyone can turn it on) best zone for each herb (mint glow)
@@ -1352,6 +1352,7 @@ events:SetScript("OnEvent", function(_, event, arg1)
         if freshInstall then SFP.db.treasuresSeeded = true end   -- a new install has no chests opened yet: the first character sees them all
         -- the map texts (names and coordinates next to the markers) are hidden again after every update and on a new install;
         -- they can be turned on again in the map's layer menu ("Labels")
+        if not SFP.db.raresOnDone then SFP.db.showRares = true; SFP.db.raresOnDone = true end   -- the rares are shown from the start; the layer menu can still turn them off
         if SFP.db.labelsVersion ~= SFP.VERSION then
             SFP.db.showLabels = false
             if not freshInstall then
@@ -1360,7 +1361,7 @@ events:SetScript("OnEvent", function(_, event, arg1)
                     "showDungeons", "showRaids" }) do
                     SFP.db[k] = false
                 end
-                SFP.db.showRares = false      -- (WoW Forever: every spot layer starts off)
+                SFP.db.showRares = true       -- (WoW Forever: the rares are on, the other spot layers start off)
                 SFP.db.minimapSpots = true    -- and they show on the minimap too
             end
             -- every single farm spot starts unticked in the spot list, after an update and on a new install (WorldMap.lua)
@@ -1549,6 +1550,25 @@ SlashCmdList["SEVIATHSUSEFULTOOLS"] = function(msg)
             local ok, list = pcall(C_QuestLog.GetQuestsOnMap, map)
             SFP:Print("GetQuestsOnMap: " .. tostring(ok) .. ", " .. (type(list) == "table" and (#list .. " quests") or tostring(list)))
         end
+    elseif cmd == "rares" then
+        local shipped, zones, spots, met = 0, 0, 0, 0
+        for _, list in pairs(SFP.Rares or {}) do zones = zones + 1; for _ in ipairs(list) do shipped = shipped + 1 end end
+        local map = WorldMapFrame and WorldMapFrame:GetMapID() or C_Map.GetBestMapForUnit("player")
+        local zone = map and SFP.zoneByMap and SFP.zoneByMap[map]
+        for _, sp in ipairs(zone and zone.spawns or {}) do if sp.rare then spots = spots + 1; if sp.learnedRare then met = met + 1 end end end
+        local seen = 0
+        for _, r in pairs(SFP.db.rareSeen or {}) do seen = seen + 1 end
+        local learnedNpc = 0
+        for _, rec in pairs(SFP.db.npcs or {}) do if type(rec) == "table" and (rec.c == "rare" or rec.c == "rareelite") then learnedNpc = learnedNpc + 1 end end
+        local killedN = 0
+        for _, sp in ipairs(zone and zone.spawns or {}) do
+            if sp.rare and sp.npc and sp.npc > 0 and SFP.RareKilledToday and SFP:RareKilledToday(sp.npc) then killedN = killedN + 1 end
+        end
+        local killedAll = 0
+        for _ in pairs(SFP.db.killed and SFP.db.killed[(UnitName("player") or "?") .. "-" .. ((GetNormalizedRealmName and GetNormalizedRealmName()) or "")] or {}) do killedAll = killedAll + 1 end
+        SFP:Print(("Rares killed this week by this character: %d monsters noted, %d rare spots of this map are greyed."):format(killedAll, killedN))
+        SFP:Print(("Rares: layer %s. Shipped: %d rares in %d zones. This map (%s): %s, %d rare spots, %d of them met by you. Met in total: %d monsters, %d seen on the map."):format(
+            SFP.db.showRares and "ON" or "OFF", shipped, zones, tostring(map), zone and "a farm zone" or "not a farm zone", spots, met, learnedNpc, seen))
     elseif cmd == "qlevel" then
         local QM = SFP.QuestMarkers
         SFP:Print(("Quest marks: a quest up to %d level(s) above yours is marked (learned from the quests the game offered or let you accept: %s; start value 2)."):format(
