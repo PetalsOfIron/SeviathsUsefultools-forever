@@ -471,7 +471,7 @@ function SFP:BoeDeals()
             local okI, _, _, quality, _, _, _, _, _, _, _, _, classID, _, bindType = pcall(C_Item.GetItemInfo, id)
             if okI and bindType == nil and C_Item.RequestLoadItemDataByID then
                 pcall(C_Item.RequestLoadItemDataByID, id)   -- not loaded yet: the next time the list opens it is there
-            elseif okI and bindType == 2 and (classID == 2 or classID == 4) and type(quality) == "number" and quality >= 2 then
+            elseif okI and bindType == 2 and (classID == 1 or classID == 2 or classID == 4) and type(quality) == "number" and quality >= 2 then
                 consider(id)
             end
         end
@@ -523,6 +523,14 @@ function SFP:ShowDeals()
         dealWin = makeWindow("SeviathsUsefulToolsDeals", "BoE deals - now against the typical price", 680, 600)
         dealWin.scroll:Hide()
         dealRows = SFP.MakeRowList(dealWin, 12, -34, 650, 548, 26)   -- roomy rows
+        -- loads everything that is in the auction house right now (a whole scan): the list is built from the last scan, so this makes it current
+        dealWin.loadBtn = CreateFrame("Button", nil, dealWin, "UIPanelButtonTemplate")
+        dealWin.loadBtn:SetSize(170, 20)
+        dealWin.loadBtn:SetPoint("TOPRIGHT", -34, -8)
+        dealWin.loadBtn:SetText("Load the auction house now")
+        dealWin.loadBtn:SetScript("OnClick", function()
+            if (AuctionHouseFrame and AuctionHouseFrame:IsShown()) or (AuctionFrame and AuctionFrame:IsShown()) then SFP:StartScan(true) else SFP:Print("Open the auction house first.") end
+        end)
         local acc = 0
         dealWin:SetScript("OnUpdate", function(_, dt)
             acc = acc + dt
@@ -530,6 +538,11 @@ function SFP:ShowDeals()
             acc = 0
             SFP:Safe("deals update", renderDeals, SFP)
         end)
+    end
+    -- the auction house is open: everything in it is loaded (a whole scan, at most once in 5 minutes), then the list is made from it
+    if ((AuctionHouseFrame and AuctionHouseFrame:IsShown()) or (AuctionFrame and AuctionFrame:IsShown())) and (not SFP._dealScanAt or GetTime() - SFP._dealScanAt > 300) then
+        SFP._dealScanAt = GetTime()
+        pcall(SFP.StartScan, SFP, true, false, true)
     end
     renderDeals(self)
     dealWin:Show()
