@@ -439,12 +439,12 @@ function SFP:BoeDeals()
     local function consider(id)
         if seen[id] then return end
         seen[id] = true
-        local okI, name, _, quality, _, minLevel = pcall(C_Item.GetItemInfo, id)
+        local okI, name, _, quality, _, minLevel, _, _, _, _, _, classID = pcall(C_Item.GetItemInfo, id)
         if not (okI and name) then
             if C_Item and C_Item.RequestLoadItemDataByID then pcall(C_Item.RequestLoadItemDataByID, id) end
             return
         end
-        if not (quality and (quality == 3 or quality == 4) and minLevel and minLevel >= 1 and minLevel <= plevel and minLevel >= plevel - DEAL_LEVELS_BELOW) then return end
+        if not ((classID == 2 or classID == 4) and quality and (quality == 3 or quality == 4) and minLevel and minLevel >= 1 and minLevel <= plevel and minLevel >= plevel - DEAL_LEVELS_BELOW) then return end
         -- now: our own scan, else Auctionator / TradeSkillMaster
         local now = self:GetPrice(id)
         if now and now > 0 then
@@ -471,7 +471,7 @@ function SFP:BoeDeals()
             local okI, _, _, quality, _, _, _, _, _, _, _, _, classID, _, bindType = pcall(C_Item.GetItemInfo, id)
             if okI and bindType == nil and C_Item.RequestLoadItemDataByID then
                 pcall(C_Item.RequestLoadItemDataByID, id)   -- not loaded yet: the next time the list opens it is there
-            elseif okI and bindType == 2 and (classID == 1 or classID == 2 or classID == 4) and type(quality) == "number" and quality >= 2 then
+            elseif okI and bindType == 2 and (classID == 2 or classID == 4) and type(quality) == "number" and quality >= 2 then
                 consider(id)
             end
         end
