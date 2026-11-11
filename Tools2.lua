@@ -272,8 +272,8 @@ local function altContent(key)
     lines[#lines + 1] = "Professions: " .. (#(r.profs or {}) > 0 and table.concat(r.profs, ", ") or "none")
     local w = db.weekly and db.weekly[key]
     if w then
-        lines[#lines + 1] = "Weekly: Great Vault " .. (#w.vault > 0 and table.concat(w.vault, " ") or "no data") ..
-            "   Raid lockouts: " .. (#w.locks > 0 and #w.locks or "none") .. "   Rares today: " .. (w.rares or 0)
+        lines[#lines + 1] = "Weekly: " .. (#w.vault > 0 and ("Great Vault " .. table.concat(w.vault, " ") .. "   ") or "") ..
+            "Raid lockouts: " .. (#w.locks > 0 and #w.locks or "none") .. "   Rares today: " .. (w.rares or 0)
     end
     local function count(t) local n = 0 for _ in pairs(t or {}) do n = n + 1 end return n end
     lines[#lines + 1] = ""

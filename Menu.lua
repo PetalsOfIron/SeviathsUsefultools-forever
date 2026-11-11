@@ -392,7 +392,7 @@ local buildNext = simplePage("What To Farm Next",
     end)
 
 local buildWeekly = simplePage("Weekly Checklist",
-    "One window for all your characters: Great Vault progress, raid lockouts and the rares each one killed today. A character appears after you log in with it.",
+    "One window for all your characters: raid lockouts and the rares each one killed today. A character appears after you log in with it.",
     function(pane, y)
         mkButton(pane, "Open weekly checklist", 190, function() SFP:ShowWeekly() end):SetPoint("TOPLEFT", 12, y)
     end)

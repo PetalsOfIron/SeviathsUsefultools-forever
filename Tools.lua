@@ -1,6 +1,6 @@
 -- SeviathsUsefulTools - tools
 --   route   : ticked spots of the zone ordered into a short loop, drawn on the map  (spot list button "Route")
---   weekly  : /sfp weekly  - Great Vault, raid lockouts and rare kills of all your characters
+--   weekly  : /sfp weekly  - raid lockouts and rare kills of all your characters
 --   deals   : /sfp flip    - BoE items now against their typical price (also a button at the auction house)
 --   shop    : /sfp shop    - pick recipes, get the reagent list with prices and where to farm them
 -- Only reads the game and the addon's own saved data.
@@ -352,7 +352,8 @@ function SFP:ShowWeekly()
         local r = self.db.weekly[key]
         local age = math.floor((time() - (r.t or 0)) / 3600)
         lines[#lines + 1] = "|cffffd100" .. key .. "|r  |cff808080(" .. (age < 1 and "now" or (age .. " h ago")) .. ")|r"
-        lines[#lines + 1] = "  Great Vault: " .. (#r.vault > 0 and table.concat(r.vault, "   ") or "no data")
+        -- (no Great Vault line: WoW Forever has none; it shows only if a character record has Vault data)
+        if #r.vault > 0 then lines[#lines + 1] = "  Great Vault: " .. table.concat(r.vault, "   ") end
         lines[#lines + 1] = "  Rares killed today: " .. (r.rares or 0)
         lines[#lines + 1] = "  |cffffd100Raids this week|r"
         for _, raid in ipairs(r.raids or {}) do
@@ -513,7 +514,7 @@ local function renderDeals(self)
         end
     end
     if #items == 0 then
-        items[1] = { text = "No blue or purple BoE of exactly your level has a known price yet. Scan the auction house (button below its window), or install Auctionator or TradeSkillMaster and scan there. Then open this list again." }
+        items[1] = { text = "No blue or purple BoE of exactly your level has a known price yet. Scan the auction house (button below its window): this list fills in by itself when the scan is done." }
     end
     dealRows:Set(items)
 end
@@ -523,14 +524,6 @@ function SFP:ShowDeals()
         dealWin = makeWindow("SeviathsUsefulToolsDeals", "BoE deals - now against the typical price", 680, 600)
         dealWin.scroll:Hide()
         dealRows = SFP.MakeRowList(dealWin, 12, -34, 650, 548, 26)   -- roomy rows
-        -- loads everything that is in the auction house right now (a whole scan): the list is built from the last scan, so this makes it current
-        dealWin.loadBtn = CreateFrame("Button", nil, dealWin, "UIPanelButtonTemplate")
-        dealWin.loadBtn:SetSize(170, 20)
-        dealWin.loadBtn:SetPoint("TOPRIGHT", -34, -8)
-        dealWin.loadBtn:SetText("Load the auction house now")
-        dealWin.loadBtn:SetScript("OnClick", function()
-            if (AuctionHouseFrame and AuctionHouseFrame:IsShown()) or (AuctionFrame and AuctionFrame:IsShown()) then SFP:StartScan(true) else SFP:Print("Open the auction house first.") end
-        end)
         local acc = 0
         dealWin:SetScript("OnUpdate", function(_, dt)
             acc = acc + dt
@@ -538,11 +531,6 @@ function SFP:ShowDeals()
             acc = 0
             SFP:Safe("deals update", renderDeals, SFP)
         end)
-    end
-    -- the auction house is open: everything in it is loaded (a whole scan, at most once in 5 minutes), then the list is made from it
-    if ((AuctionHouseFrame and AuctionHouseFrame:IsShown()) or (AuctionFrame and AuctionFrame:IsShown())) and (not SFP._dealScanAt or GetTime() - SFP._dealScanAt > 300) then
-        SFP._dealScanAt = GetTime()
-        pcall(SFP.StartScan, SFP, true, false, true)
     end
     renderDeals(self)
     dealWin:Show()
@@ -555,6 +543,9 @@ local shopWin, shopBox, shopRows = nil, nil, nil
 local shopOff = {}   -- recipe keys that are unticked: they stay in the list but are left out of the breakdown
 local shopFound = {}  -- the recipes the search found
 local shopProf        -- search only this profession (nil = all)
+-- Professions WoW Forever does not have yet: no tab for them, and their shipped recipes are not listed. One that one of your characters really learns recipes of (the game
+-- gained it) comes back by itself, because its recipes are then in the learned ones.
+local FOREVER_NO_PROF = { Inscription = true, Jewelcrafting = true }
 local shopTruncated    -- how many recipes matched when the list shows only the first ones
 local shopShowResults   -- defined further down; shopRefresh calls it
 
@@ -820,7 +811,7 @@ local function shopSearch(text)
     -- "My recipes only": just the ones your characters learned (they grow when you level a profession and open it)
     if not shopKnownOnly then
         for key, rec in pairs(shippedRecipes()) do
-            if not learnedNames[(rec.p or "") .. "|" .. (rec.n or "")] then consider(key, rec) end
+            if not learnedNames[(rec.p or "") .. "|" .. (rec.n or "")] and not FOREVER_NO_PROF[rec.p or ""] then consider(key, rec) end
         end
     end
     if shopSortProfit then
@@ -956,7 +947,7 @@ function SFP:ShowShop()
     do
         -- every crafting profession gets a tab, learned or not; others the addon learned are added
         local names, seen = {}, {}
-        for _, nm in ipairs({ "Alchemy", "Blacksmithing", "Cooking", "Enchanting", "Engineering", "Inscription", "Jewelcrafting", "Leatherworking", "Tailoring" }) do
+        for _, nm in ipairs({ "Alchemy", "Blacksmithing", "Cooking", "Enchanting", "Engineering", "Leatherworking", "Tailoring" }) do
             seen[nm] = true; names[#names + 1] = nm
         end
         for _, rec in pairs(SFP.db.recipes or {}) do
