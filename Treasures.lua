@@ -168,8 +168,35 @@ local function treasuresOf(map)
             end
         end
     end
-    byMap[map] = list
-    return list
+    -- treasures at the same spot are one pin: their loot is put together
+    local merged = {}
+    for _, t in ipairs(list) do
+        local into
+        for _, m in ipairs(merged) do
+            if math.abs(m.x - t.x) < 0.01 and math.abs(m.y - t.y) < 0.01 then into = m break end
+        end
+        if not into then
+            into = { id = t.id, x = t.x, y = t.y, rec = { n = t.rec.n, k = 0, d = {}, q = {}, ids = {}, count = 0 } }
+            merged[#merged + 1] = into
+        end
+        local r, tr = t.rec, into.rec
+        if not tr.ids[t.id] then
+            tr.ids[t.id] = true
+            tr.count = tr.count + 1
+            tr.k = tr.k + (r.k or 0)
+            for item, c in pairs(r.d or {}) do tr.d[item] = (tr.d[item] or 0) + c end
+            for item, qr in pairs(r.q or {}) do
+                local e = tr.q[item]
+                if type(qr) == "table" and type(qr[1]) == "number" and type(qr[2]) == "number" then
+                    if not e then tr.q[item] = { qr[1], qr[2] }
+                    else e[1] = math.min(e[1], qr[1]); e[2] = math.max(e[2], qr[2]) end
+                end
+            end
+            if tr.count > 1 and r.n and tr.n ~= r.n then tr.n = tr.n .. " / " .. r.n end
+        end
+    end
+    byMap[map] = merged
+    return merged
 end
 
 -- the recorded herb and ore nodes: an object that gave something and is a gathering node (rec.gt "herb" or "ore", else by what it gave or its type text)
@@ -210,7 +237,7 @@ local function nodesOf(map)
     for _, n in ipairs(list) do
         local into
         for _, m in ipairs(merged) do
-            if m.kind == n.kind and math.abs(m.x - n.x) < 0.004 and math.abs(m.y - n.y) < 0.004 then into = m break end
+            if m.kind == n.kind and math.abs(m.x - n.x) < 0.01 and math.abs(m.y - n.y) < 0.01 then into = m break end
         end
         if not into then
             into = { id = n.id, x = n.x, y = n.y, kind = n.kind, rec = { n = n.rec.n, k = 0, d = {}, q = {}, ids = {} } }
@@ -289,8 +316,64 @@ local function getPin()
     return p
 end
 
+
+-- the points of interest of the map itself (the game lists the Auction House and the profession trainers of a city): pins for them even when you never visited them
+local poiCache = {}
+local function poiServices(map)
+    local c = poiCache[map]
+    if c and c.t > time() - 60 then return c.list end
+    local list = {}
+    if C_AreaPoiInfo and C_AreaPoiInfo.GetAreaPOIForMap and C_AreaPoiInfo.GetAreaPOIInfo then
+        local okL, ids = pcall(C_AreaPoiInfo.GetAreaPOIForMap, map)
+        for _, pid in ipairs(okL and type(ids) == "table" and ids or {}) do
+            local okI, info = pcall(C_AreaPoiInfo.GetAreaPOIInfo, map, pid)
+            if okI and type(info) == "table" and type(info.name) == "string" and info.position and info.position.GetXY then
+                local low = info.name:lower()
+                local what
+                if low:find("auction house", 1, true) then what = "Auction house"
+                elseif low:find("trainer", 1, true) then
+                    for _, prof in ipairs(SFP.PROFESSION_WORDS or {}) do
+                        if low:find(prof, 1, true) then what = info.name break end
+                    end
+                end
+                if what then
+                    local x, y = info.position:GetXY()
+                    list[#list + 1] = { n = info.name, x = x, y = y, what = what }
+                end
+            end
+        end
+    end
+    poiCache[map] = { t = time(), list = list }
+    return list
+end
+
+local spins, sused = {}, 0
+local function getServicePin()
+    sused = sused + 1
+    local p = spins[sused]
+    if not p then
+        p = CreateFrame("Button", nil, layer)
+        p.icon = p:CreateTexture(nil, "ARTWORK")
+        p.icon:SetAllPoints()
+        p:SetScript("OnEnter", function(self)
+            local t = SFP.Tip and SFP.Tip() or GameTooltip
+            t:SetOwner(self, "ANCHOR_RIGHT")
+            t:ClearLines()
+            t:AddLine(tostring(self.name or "?"), 1, 0.82, 0.2)
+            t:AddLine(self.what or "", 0.75, 0.75, 0.75)
+            t:Show()
+        end)
+        p:SetScript("OnLeave", function() (SFP.Tip and SFP.Tip() or GameTooltip):Hide() end)
+        spins[sused] = p
+    end
+    p:Show()
+    return p
+end
+
 local function update()
     if not layer then return end
+    for i = 1, #spins do spins[i]:Hide() end
+    sused = 0
     for i = 1, #pins do pins[i]:Hide() end
     for i = 1, #npins do npins[i]:Hide() end
     used, nused = 0, 0
@@ -313,6 +396,43 @@ local function update()
         p:SetPoint("CENTER", c, "TOPLEFT", t.x * w, -t.y * h)
         p.id, p.rec = t.id, t.rec
       end
+    end
+    -- profession trainers and auctioneers: the points of interest of the map, and the NPCs you spoke to or pointed at
+    do
+        local have = {}
+        for _, e in ipairs(poiServices(map)) do
+            local p = getServicePin()
+            p:SetSize(size * 2.6, size * 2.6)
+            p:ClearAllPoints()
+            p:SetPoint("CENTER", c, "TOPLEFT", e.x * w, -e.y * h)
+            p.name, p.what = e.n, e.what
+            p.icon:SetTexture(e.what == "Auction house" and 133784 or 133739)
+            p.icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
+            have[#have + 1] = e
+        end
+        if SFP.db.showServices ~= false and SFP.db.npcPos then
+            for id, r in pairs(SFP.db.npcPos) do
+                local what, icon
+                if r.k and r.k.auctioneer then what, icon = "Auction house", 133784
+                elseif r.k and r.k.proftrainer then what, icon = r.prof or "Profession trainer", 133739 end
+                if what and type(r.m) == "number" and r.x and r.y then
+                    local x, y = convert(r.m, r.x, r.y, map)
+                    local dup = false
+                    for _, e in ipairs(have) do
+                        if x and math.abs(e.x - x) < 0.01 and math.abs(e.y - y) < 0.01 then dup = true end
+                    end
+                    if x and not dup then
+                        local p = getServicePin()
+                        p:SetSize(size * 2.6, size * 2.6)
+                        p:ClearAllPoints()
+                        p:SetPoint("CENTER", c, "TOPLEFT", x * w, -y * h)
+                        p.name, p.what = r.n, what
+                        p.icon:SetTexture(icon)
+                        p.icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
+                    end
+                end
+            end
+        end
     end
     -- the herb and ore nodes (the switches are the Herbalism and Mining ones of the map layers)
     local showH, showO = SFP.db and SFP.db.showHerbs, SFP.db and SFP.db.showMining

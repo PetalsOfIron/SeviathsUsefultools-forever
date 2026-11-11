@@ -136,6 +136,9 @@ Data\QuestStarts.lua
 Data\MountPlaces.lua
 QuestMarkers.lua
 Treasures.lua
+ItemLoad.lua
+BestSkinning.lua
+Premade.lua
 PointsMenu.lua
 MapMenu.lua
 MaterialGuide.lua

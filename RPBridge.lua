@@ -187,7 +187,7 @@ if C_ChatInfo and C_ChatInfo.RegisterAddonMessagePrefix and C_ChatInfo.SendAddon
                 local key = MSP_FIELDS[fld]
                 if key and card[key] and card[key] ~= "" then out[#out + 1] = fld .. "=" .. clean(card[key]) end
             end
-            if #out > 2 then pcall(C_ChatInfo.SendAddonMessage, "MSP", table.concat(out, "\t"), "WHISPER", sender) end
+            if #out > 2 then if SFP.NoteAskedName then SFP.NoteAskedName(sender) end pcall(C_ChatInfo.SendAddonMessage, "MSP", table.concat(out, "\t"), "WHISPER", sender) end
         else
             -- an answer from someone: FIELD=value pairs
             local rec = theirs[sender] or { fields = {} }
@@ -209,6 +209,7 @@ if C_ChatInfo and C_ChatInfo.RegisterAddonMessagePrefix and C_ChatInfo.SendAddon
         local key = (type(realm) == "string" and realm ~= "") and (name .. "-" .. realm) or name
         if asked[key] and GetTime() - asked[key] < 60 then return end
         asked[key] = GetTime()
+        if SFP.NoteAskedName then SFP.NoteAskedName(key) end
         pcall(C_ChatInfo.SendAddonMessage, "MSP", "?NA\t?NT\t?AG\t?AH\t?HH\t?DE\t?PE\t?HI\t?CU", "WHISPER", key)
     end)
     -- the answers are shown on the tooltip like those of an installed roleplay addon

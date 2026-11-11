@@ -354,7 +354,7 @@ local function Visits(seen, name)
   if v then return v.n or 1 end
   local l = name:lower()
   for en, rec in pairs(seen) do
-    local el = en:lower()
+    local el = tostring(en):lower()
     if el:find(l, 1, true) or l:find(el, 1, true) then return rec.n or 1 end
   end
   return 0

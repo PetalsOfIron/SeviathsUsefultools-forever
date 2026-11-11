@@ -965,12 +965,18 @@ end
 -- currently playing." in the chat; those lines are hidden for names the addon asked (nobody else's).
 local askedNames = {}   -- lowercase name (with and without realm) -> time
 
+-- every addon whisper of this addon (also the roleplay card requests) is noted here, so the game's answer for an offline player is hidden
+function SFP.NoteAskedName(target)
+    if type(target) ~= "string" then return end
+    local now = GetTime()
+    askedNames[target:lower()] = now
+    askedNames[((target:match("^([^-]+)")) or target):lower()] = now
+end
+
 local function send(text, channel, target)
     if not (C_ChatInfo and C_ChatInfo.SendAddonMessage) then return end
     if channel == "WHISPER" and type(target) == "string" then
-        local now = GetTime()
-        askedNames[target:lower()] = now
-        askedNames[((target:match("^([^-]+)")) or target):lower()] = now
+        SFP.NoteAskedName(target)
     end
     pcall(C_ChatInfo.SendAddonMessage, PREFIX, text, channel, target)
 end
@@ -985,7 +991,7 @@ do
         if not name then return false end
         local t = askedNames[name:lower()] or askedNames[((name:match("^([^-]+)")) or name):lower()]
         -- asked within the last 15 seconds: the line is hidden
-        if t and GetTime() - t < 15 then return true end
+        if t and GetTime() - t < 45 then return true end
         return false
     end)
 end

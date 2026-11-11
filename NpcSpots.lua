@@ -32,16 +32,20 @@ local function npcIDFromGUID(guid)
     return tonumber(id)
 end
 
+SFP.PROFESSION_WORDS = { "alchemy", "blacksmith", "enchant", "engineer", "inscription", "jewelcraft", "leatherwork", "tailor", "herbalism", "mining",
+    "skinning", "cooking", "fishing", "archaeology", "first aid" }
+
 local nameIndex   -- lowercase name -> npcID, rebuilt when a new NPC is added
 
-local function record(what)
+local function record(what, unit)
+    unit = unit or "npc"
     if not SFP.db then return end
-    local okU, exists = pcall(UnitExists, "npc")
+    local okU, exists = pcall(UnitExists, unit)
     if not okU or not exists then return end
-    local okG, guid = pcall(UnitGUID, "npc")
+    local okG, guid = pcall(UnitGUID, unit)
     local id = okG and npcIDFromGUID(guid)
     if not id then return end
-    local okN, name = pcall(UnitName, "npc")
+    local okN, name = pcall(UnitName, unit)
     if not okN or type(name) ~= "string" or secret(name) or name == "" then return end
     local m = C_Map.GetBestMapForUnit("player")
     local pos = m and C_Map.GetPlayerMapPosition(m, "player")
@@ -65,6 +69,19 @@ local function record(what)
     end
     rec.n = name
     if what then rec.k[what] = true end
+    -- a trainer of a profession (Alchemy Trainer, Blacksmithing Trainer ...): its second tooltip line says what it trains
+    if what == "trainer" then
+        pcall(function()
+            local data = C_TooltipInfo and C_TooltipInfo.GetUnit and C_TooltipInfo.GetUnit(unit)
+            local line = data and data.lines and data.lines[2] and data.lines[2].leftText
+            if type(line) == "string" and not secret(line) then
+                local low = line:lower()
+                for _, prof in ipairs(SFP.PROFESSION_WORDS) do
+                    if low:find(prof, 1, true) then rec.prof = line; rec.k.proftrainer = true; return end
+                end
+            end
+        end)
+    end
     -- the area of this NPC (the sub-zone): an area with NPCs is a town, also when it is no rest area (db.towns, see below)
     do
         local okS, sub = pcall(GetSubZoneText)
@@ -309,4 +326,32 @@ function SFP:Towns()
     end
     table.sort(out, function(a, b) return (a.t or 0) > (b.t or 0) end)
     return out
+end
+
+-- A trainer of a profession is also learned by pointing at it: its tooltip says "Alchemy Trainer" (no need to open its window). The place is where you stand (close to it).
+do
+    local seen = {}
+    local mo = CreateFrame("Frame")
+    mo:RegisterEvent("UPDATE_MOUSEOVER_UNIT")
+    mo:SetScript("OnEvent", function()
+        local okE, ex = pcall(UnitExists, "mouseover")
+        if not okE or not ex or secret(ex) then return end
+        local okP, isP = pcall(UnitIsPlayer, "mouseover")
+        if okP and isP and not secret(isP) then return end
+        local okG, guid = pcall(UnitGUID, "mouseover")
+        if not okG or type(guid) ~= "string" or secret(guid) or seen[guid] then return end
+        local okT, data = pcall(function() return C_TooltipInfo and C_TooltipInfo.GetUnit and C_TooltipInfo.GetUnit("mouseover") end)
+        local line = okT and data and data.lines and data.lines[2] and data.lines[2].leftText
+        if type(line) ~= "string" or secret(line) then return end
+        local low = line:lower()
+        if low:find("trainer", 1, true) then
+            for _, prof in ipairs(SFP.PROFESSION_WORDS) do
+                if low:find(prof, 1, true) then
+                    seen[guid] = true
+                    pcall(record, "trainer", "mouseover")
+                    return
+                end
+            end
+        end
+    end)
 end

@@ -134,7 +134,8 @@ local function buildFarm(pane)
     mkButton(pane, "Farm browser", 130, function() SFP:ToggleBrowser() end, "Expansions, zones, items with auction prices, coordinates"):SetPoint("TOPLEFT", 12, -58)
     mkButton(pane, "Open world map", 130, function() SFP:OpenMapTo(C_Map.GetBestMapForUnit("player") or 1) end):SetPoint("TOPLEFT", 150, -58)
     mkButton(pane, "Scan auction prices", 150, function() SFP:StartScan(true) end, "The auction house must be open"):SetPoint("TOPLEFT", 288, -58)
-    mkText(pane, "Layers on the world map:", 12, -92, 400)
+    mkButton(pane, "Best 15 skinning spots", 180, function() SFP:ShowBestSkinning() end, "The 15 monsters with the most gold per skinning, from drop rate and auction price"):SetPoint("TOPLEFT", 330, -88)
+    mkText(pane, "Layers on the world map:", 12, -92, 300)
     local checks = {
         { "mapOverlay", "Show farm layer" }, { "showSpawns", "Monster farm spots" }, { "showRares", "Rares (mounts, pets)" },
         { "showHunter", "Hunter tames" }, { "showMining", "Mining zones" }, { "showHerbs", "Herb zones" },
