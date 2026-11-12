@@ -1588,7 +1588,7 @@ local function spotRow(i)
         for id, q in pairs(s.counts or {}) do drops[id] = math.max(drops[id] or 0, q) end
         for _, id in ipairs(s.items or {}) do if not drops[id] then drops[id] = 0 end end
         -- the items Wowhead lists for this monster (dungeon monsters and bosses too)
-        local listed = s.npc and SFP.WowheadDrops and SFP:WowheadDrops(s.npc)
+        local listed = not light and s.npc and SFP.WowheadDrops and SFP:WowheadDrops(s.npc)
         if listed then for _, id in ipairs(listed) do if not drops[id] then drops[id] = 0 end end end
         local order = {}
         for id in pairs(drops) do if not (SFP.IsQuestLoot and SFP.IsQuestLoot(id)) then order[#order + 1] = id end end
@@ -1947,6 +1947,23 @@ local simplePanels = {}
 local SIMPLE_H = 22
 
 -- all the drops of a monster (collected data), with how often and the price
+-- the mount and pet rows of a map are worked out over every instance of the game: kept for 30 seconds (the map redraws many times)
+do
+    local memo = {}
+    local function cached(kind, fn)
+        return function(mapID)
+            local k = kind .. tostring(mapID)
+            local m = memo[k]
+            if m and GetTime() - m.t < 30 then return m.v end
+            local v = fn(mapID)
+            memo[k] = { t = GetTime(), v = v }
+            return v
+        end
+    end
+    mountRows = cached("m", mountRows)
+    petRows = cached("p", petRows)
+end
+
 local function addSpotDrops(t, s)
     local drops, kills = {}, s.kills or 0
     local rec = s.npc and SFP.Npc and SFP:Npc(s.npc)
@@ -2197,7 +2214,8 @@ end
 SFP.AreaAt = areaAt
 
 -- every item a monster drops, most often first: { { id, qty } }, and its kill count
-local function monsterLoot(s)
+-- light: only what was counted (no list of Wowhead drops): for ranking many monsters
+local function monsterLoot(s, light)
     local drops, kills = {}, s.kills or 0
     local rec = s.npc and SFP.Npc and SFP:Npc(s.npc)
     if type(rec) == "table" then
@@ -2316,9 +2334,20 @@ drawFarmScroll = function(mapID, spots)
     f.title:SetText("|c" .. SFP.CYAN_HEX .. "Farm spots|r  |cffaaaaaa" .. SFP:ZoneName(mapID) .. "|r")
     f.routeCheck:SetChecked(SFP.db.showRoute ~= false)
     f.route:SetScript("OnClick", function() SFP:BuildRoute(mapID) end)
+    -- the same list (same zone, same spots) is not built again for 20 seconds: the map asks for a redraw many times (zooming, items arriving ...)
+    local sig = tostring(mapID) .. ":" .. #spots .. ":" .. tostring(SFP.hiddenVer or 0) .. ":" .. tostring(SFP.db.minValue or 0)
+    if f.sig == sig and (f.co or GetTime() - (f.sigAt or 0) < 20) then
+        if not f:IsShown() then f:Show() end
+        return
+    end
+    f.sig, f.sigAt = sig, GetTime()
+    f:Show()
+    -- the list is built in pieces: a zone has many monsters with many items each, and all of it in one frame froze the game
+    local function build()
     local y, n = 0, 0
     local function put(h, setup)
         n = n + 1
+        if n % 40 == 0 and coroutine.running() then coroutine.yield() end
         local r = farmRow(f, n)
         r:SetHeight(h)
         r:ClearAllPoints()
@@ -2363,7 +2392,18 @@ drawFarmScroll = function(mapID, spots)
             r.hint = "Click: set a waypoint on " .. tostring(s.name)
         end)
         -- everything it drops, greys included
-        for _, d in ipairs(loot) do
+        for li, d in ipairs(loot) do
+            if li > 30 then
+                put(22, function(r)
+                    r.icon:SetSize(1, 1); r.icon:SetPoint("LEFT", 8, 0); r.icon:SetTexture(nil)
+                    r.text:SetFontObject("GameFontHighlight")
+                    r.text:SetPoint("LEFT", r.icon, "RIGHT", 28, 0)
+                    r.text:SetPoint("RIGHT", r, "RIGHT", -4, 0)
+                    r.text:SetText("|cff808080+" .. (#loot - 30) .. " more items|r")
+                    r.hl:Hide()
+                end)
+                break
+            end
             put(22, function(r)
                 r.icon:SetSize(18, 18); r.icon:SetPoint("LEFT", 28, 0)
                 r.icon:SetTexture(SFP:ItemIcon(d.id))
@@ -2400,6 +2440,20 @@ drawFarmScroll = function(mapID, spots)
     f.content:SetHeight(math.max(y, 1))
     f:Show()
     if SFP.DockPanels then SFP.DockPanels() end
+    end   -- build
+    f.co = coroutine.create(build)
+    if not f.driver then
+        f.driver = CreateFrame("Frame", nil, f)
+        f.driver:SetScript("OnUpdate", function()
+            local co = f.co
+            if not co then return end
+            local ok, err = coroutine.resume(co)
+            if coroutine.status(co) == "dead" then
+                f.co = nil
+                if not ok then geterrorhandler()(err) end
+            end
+        end)
+    end
 end
 
 function SFP.HasCollectables(mapID)
@@ -2638,7 +2692,7 @@ end
 ---------------------------------------------------------------------------
 -- Refresh
 ---------------------------------------------------------------------------
-refresh = function()
+local function doRefresh()
     if not overlay or not SFP.db or not SFP.zoneByMap then return end
     releaseAll()
     clearSpawns()
@@ -2688,6 +2742,22 @@ refresh = function()
                 if SFP:IsValuableZone(zoneID) and isUnder(zoneID, mapID) then drawZoneFill(mapID, zoneID) end
             end
         end
+    end
+end
+-- the redraw is asked for from many places (map changes, zooming, every setting): it runs at most about three times a second, the last ask always counts
+local lastRefresh, refreshWaiting = 0, false
+refresh = function()
+    local t = GetTime()
+    if t - lastRefresh >= 0.3 then
+        lastRefresh = t
+        doRefresh()
+    elseif not refreshWaiting then
+        refreshWaiting = true
+        C_Timer.After(0.3 - (t - lastRefresh) + 0.02, function()
+            refreshWaiting = false
+            lastRefresh = GetTime()
+            doRefresh()
+        end)
     end
 end
 SFP.RefreshWorldMap = refresh

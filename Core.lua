@@ -1419,7 +1419,7 @@ events:SetScript("OnEvent", function(_, event, arg1)
         -- names/icons arrive async; batch one refresh
         if not itemInfoPending then
             itemInfoPending = true
-            C_Timer.After(0.5, function() itemInfoPending = false; SFP:RefreshAll() end)
+            C_Timer.After(2, function() itemInfoPending = false; SFP:RefreshAll() end)
         end
     end
 end)

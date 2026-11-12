@@ -470,11 +470,17 @@ C_Timer.NewTicker(60, function() SFP:Safe("alt", SFP.UpdateAlt, SFP) end)
 local topWin, topList, topTicker
 local function topSpots()
     local out = {}
+    local pm = {}   -- each price is looked up once per run
+    local function price(id)
+        local v = pm[id]
+        if v == nil then v = SFP:GetPrice(id) or false; pm[id] = v end
+        return v or 0
+    end
     for mapID, zone in pairs(SFP.zoneByMap or {}) do
         for _, s in ipairs(zone.spawns or {}) do
             if s.hx and not (s.gather or s.rare or s.special or s.hunter) and s.items and #s.items > 0 then
                 local v = 0
-                for _, id in ipairs(s.items) do v = v + (SFP:GetPrice(id) or 0) end
+                for _, id in ipairs(s.items) do v = v + price(id) end
                 if v > 0 then out[#out + 1] = { s = s, map = mapID, v = v } end
             end
         end
@@ -521,7 +527,7 @@ function SFP:ShowTopSpots()
         topWin:SetScript("OnShow", function()
             topRefresh()
             if topTicker then topTicker:Cancel() end
-            topTicker = C_Timer.NewTicker(5, topRefresh)
+            topTicker = C_Timer.NewTicker(15, topRefresh)
         end)
         topWin:SetScript("OnHide", function() if topTicker then topTicker:Cancel(); topTicker = nil end end)
     end

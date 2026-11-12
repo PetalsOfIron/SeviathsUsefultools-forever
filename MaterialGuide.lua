@@ -1679,7 +1679,8 @@ local function renderBlocks(n, map, spots, compact)
             nr.hint = s.note
             nr.hl:Hide()
         end
-        for _, d in ipairs(compact and {} or loot) do
+        for li, d in ipairs(compact and {} or loot) do
+            if li > 40 then break end
             n = n + 1
             local l = rowOf(list, n)
             place(list, l, n, 30)
@@ -1698,6 +1699,15 @@ local function renderBlocks(n, map, spots, compact)
             -- the materials are plain text here: no highlight, no tooltip, nothing under the mouse
             l:EnableMouse(false)
             l.hl:Hide()
+        end
+        if not compact and #loot > 40 then
+            n = n + 1
+            local more = rowOf(list, n)
+            place(list, more, n, 30)
+            more.icon:SetTexture(nil)
+            more.text:SetText("|cff808080+" .. (#loot - 40) .. " more items|r")
+            more:EnableMouse(false)
+            more.hl:Hide()
         end
         local gold, goldKills = SFP.MonsterGold and SFP.MonsterGold(s)
         if gold and not compact then
@@ -1743,11 +1753,13 @@ end
 
 -- the 15 best farm spots of the whole database: the value of what a monster drops per kill (the chance of each item times its auction
 -- price), over the monsters with at least 3 kills recorded
-local function renderTop()
+local topRunning, topDriver
+local renderTop
+function renderTop()
     local n = 0
     win.title:SetText("|c" .. SFP.CYAN_HEX .. "Best 15 farm spots|r  |cffaaaaaathis week|r")
     local function valueOf(s)
-        local loot, kills = SFP.MonsterLoot(s)
+        local loot, kills = SFP.MonsterLoot(s, true)
         if kills < 3 then return 0 end
         local val = 0
         for _, d in ipairs(loot) do
@@ -1765,21 +1777,45 @@ local function renderTop()
     local weekKey = resetIn and math.floor((time() + resetIn) / 3600 + 0.5) or nil
     local saved = SFP.db.topSpots
     if not (saved and weekKey and saved.week == weekKey and saved.list and #saved.list > 0) then
-        local maps, seenMap = {}, {}
-        for map in pairs(SFP.zoneByMap) do if not seenMap[map] then seenMap[map] = true; maps[#maps + 1] = map end end
-        for map in pairs(guideMaps()) do if not seenMap[map] then seenMap[map] = true; maps[#maps + 1] = map end end
-        local ranked = {}
-        for _, map in ipairs(maps) do
-            for _, s in ipairs(farmSpotsFor(map, "farm")) do
-                local val = valueOf(s)
-                if val > 0 then ranked[#ranked + 1] = { map = map, name = tostring(s.name), npc = s.npc, val = val } end
-            end
+        -- the ranking looks at every monster of the game: it is worked out a piece in each frame (all at once it froze the game), and the list is drawn when it is done
+        if not topRunning then
+            topRunning = true
+            local co = coroutine.create(function()
+                local t0 = debugprofilestop()
+                local function pause()
+                    if debugprofilestop() - t0 > 5 then coroutine.yield(); t0 = debugprofilestop() end
+                end
+                local maps, seenMap = {}, {}
+                for map in pairs(SFP.zoneByMap) do if not seenMap[map] then seenMap[map] = true; maps[#maps + 1] = map end end
+                for map in pairs(guideMaps()) do if not seenMap[map] then seenMap[map] = true; maps[#maps + 1] = map end end
+                local ranked = {}
+                for _, map in ipairs(maps) do
+                    pause()
+                    for _, s in ipairs(farmSpotsFor(map, "farm")) do
+                        pause()
+                        local val = valueOf(s)
+                        if val > 0 then ranked[#ranked + 1] = { map = map, name = tostring(s.name), npc = s.npc, val = val } end
+                    end
+                end
+                table.sort(ranked, function(a, c) return a.val > c.val end)
+                local keep = {}
+                for k = 1, math.min(15, #ranked) do keep[k] = { map = ranked[k].map, name = ranked[k].name, npc = ranked[k].npc } end
+                if weekKey and #keep > 0 then SFP.db.topSpots = { week = weekKey, list = keep } end
+                topRunning = false
+                if win and win:IsShown() and mode == "top" then renderTop() end
+            end)
+            topDriver = topDriver or CreateFrame("Frame")
+            topDriver:SetScript("OnUpdate", function(self)
+                local ok, err = coroutine.resume(co)
+                if coroutine.status(co) == "dead" then
+                    self:SetScript("OnUpdate", nil)
+                    if not ok then topRunning = false; geterrorhandler()(err) end
+                end
+            end)
         end
-        table.sort(ranked, function(a, c) return a.val > c.val end)
-        local keep = {}
-        for k = 1, math.min(15, #ranked) do keep[k] = { map = ranked[k].map, name = ranked[k].name, npc = ranked[k].npc } end
-        saved = { week = weekKey, list = keep }
-        if weekKey and #keep > 0 then SFP.db.topSpots = saved end
+        n = headerRow(0, "|cff808080Working out the best spots (a moment)...|r")
+        finish(list, n)
+        return
     end
     for k, e in ipairs(saved.list) do
         for _, s in ipairs(farmSpotsFor(e.map, "farm")) do
