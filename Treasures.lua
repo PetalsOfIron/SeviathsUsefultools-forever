@@ -326,6 +326,7 @@ local SERVICE_ICONS = {
     { "mining", "Interface\\Icons\\Trade_Mining" }, { "skinning", "Interface\\Icons\\INV_Misc_Pelt_Wolf_01" }, { "cooking", "Interface\\Icons\\INV_Misc_Food_15" },
     { "fishing", "Interface\\Icons\\Trade_Fishing" }, { "first aid", "Interface\\Icons\\Spell_Holy_SealOfSacrifice" }, { "archaeology", "Interface\\Icons\\Trade_Archaeology" },
 }
+local AUCTION_ICON = SERVICE_ICONS[1][2]
 local function serviceIcon(what)
     local low = tostring(what or ""):lower()
     for _, e in ipairs(SERVICE_ICONS) do
@@ -432,7 +433,7 @@ local function update()
         end
         local function near(x, y, icon)
             for _, e in ipairs(have) do
-                if e.icon == icon and math.abs(e.x - x) < 0.012 and math.abs(e.y - y) < 0.012 then return true end
+                if e.icon == icon and math.abs(e.x - x) < (icon == AUCTION_ICON and 0.04 or 0.012) and math.abs(e.y - y) < (icon == AUCTION_ICON and 0.04 or 0.012) then return true end
             end
             return false
         end
