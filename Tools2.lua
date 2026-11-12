@@ -44,6 +44,9 @@ end
 
 -- the Warband bank exists in the new game only (WoW Forever has none)
 local HAS_WARBAND_BANK = not (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT)
+-- true from the moment the game starts leaving the world (logout, character change, loading screen) until the next one is entered: the game answers 0 gold and no skills then,
+-- so nothing is saved in that time
+local leaving = false
 
 -- the money of the character, whole: the game's number, or (when it gives none) the figure on the money frame of the bags
 local function myMoney()
@@ -58,14 +61,17 @@ local function myMoney()
 end
 
 function SFP:UpdateAlt()
-    if not self.db then return end
+    if not self.db or leaving then return end
     mergeCharKeys(self.db.alts, "t")
     mergeCharKeys(self.db.weekly, "t")
     mergeCharKeys(self.db.killed, "t")
     if self.db.altSel and self.db.altSel:find("%s") then self.db.altSel = nil end
     self.db.alts = self.db.alts or {}
     local old = self.db.alts[charKey()]
-    local rec = { v = 2, t = time(), level = UnitLevel("player"), money = myMoney() or (old and old.money) or 0, profs = {} }
+    local m = myMoney()
+    -- a reading of 0 right after something else than a change of gold is not believed when gold was saved before
+    if (m == nil or m == 0) and old and (old.money or 0) > 0 and not (self._moneyEventAt and GetTime() - self._moneyEventAt < 5) then m = old.money end
+    local rec = { v = 2, t = time(), level = UnitLevel("player"), money = m or 0, profs = {} }
     -- both names of the character (first name and surname; the game gives the surname where other games have the realm)
     do
         local n, s = UnitName("player")
@@ -101,7 +107,11 @@ function SFP:UpdateAlt()
             end
         end
     end
-    if #rec.profs == 0 and old and old.profs and #old.profs > 0 and not (GetNumSkillLines or GetProfessions) then rec.profs = old.profs end
+    -- no skills read (the game has not loaded them, or answers none): the saved ones stay
+    if #rec.profs == 0 and old and old.profs and #old.profs > 0 then
+        local lines = GetNumSkillLines and GetNumSkillLines() or nil
+        if not (GetNumSkillLines or GetProfessions) or (lines ~= nil and lines <= 1) or (GetProfessions and not GetNumSkillLines) then rec.profs = old.profs end
+    end
     -- the specialization of this game: the Talent Advisor's own detection
     if not rec.spec and SFP.TalentAdvisor and SFP.TalentAdvisor.DetectedSpec then
         local okS, sp = pcall(SFP.TalentAdvisor.DetectedSpec)
@@ -433,10 +443,11 @@ local function saveSoon(delay)
 end
 af:SetScript("OnEvent", function(_, event, arg1)
     if event == "PLAYER_LOGOUT" or event == "PLAYER_LEAVING_WORLD" then
-        SFP:Safe("alt", SFP.UpdateAlt, SFP)
-        SFP:Safe("bags", SFP.SnapshotBags, SFP)
+        leaving = true   -- (what was changed is saved a moment after each change, so nothing is lost)
         return
     end
+    if event == "PLAYER_ENTERING_WORLD" then leaving = false end
+    if event == "PLAYER_MONEY" then SFP._moneyEventAt = GetTime() end
     if event == "BANKFRAME_OPENED" or (event == "PLAYER_INTERACTION_MANAGER_FRAME_SHOW" and isBankType(arg1)) then
         bankOpen = true
         C_Timer.After(1.5, function() SFP:Safe("bank", SFP.SnapshotBags, SFP) end)
