@@ -65,7 +65,7 @@ function SFP:UpdateAlt()
     if self.db.altSel and self.db.altSel:find("%s") then self.db.altSel = nil end
     self.db.alts = self.db.alts or {}
     local old = self.db.alts[charKey()]
-    local rec = { t = time(), level = UnitLevel("player"), money = myMoney() or (old and old.money) or 0, profs = {} }
+    local rec = { v = 2, t = time(), level = UnitLevel("player"), money = myMoney() or (old and old.money) or 0, profs = {} }
     -- both names of the character (first name and surname; the game gives the surname where other games have the realm)
     do
         local n, s = UnitName("player")
@@ -290,7 +290,7 @@ local function altRefresh()
     for _, k in ipairs(keys) do
         local rec = db.alts[k]
         total = total + (rec.money or 0)
-        local label = (k == sel and altView == "character" and "|cff40ff40> |r" or "") .. altName(k, rec) .. (rec.level and (" " .. rec.level) or "")
+        local label = (k == sel and altView == "character" and "|cff40ff40> |r" or "") .. (rec.v == 2 and "" or "|cff808080") .. altName(k, rec) .. (rec.level and (" " .. rec.level) or "")
         items[#items + 1] = { text = "", buttons = { { label, 224, function() db.altSel = k; altView = "character"; altRefresh() end } } }
     end
     altRows:Set(items)
@@ -314,6 +314,9 @@ local function altRefresh()
         else
             local short = sel:match("^([^-]+)") or sel
             rows[#rows + 1] = { text = ("|cffffd100%s|r  Level %s %s %s"):format(altName(sel, r), tostring(r.level or "?"), r.spec or "", r.class and (r.class:sub(1, 1) .. r.class:sub(2):lower()) or "") }
+            if r.v ~= 2 then
+                rows[#rows + 1] = { text = "|cffff8040Saved by an older version: gold, bags, bank and professions of this character are filled in when you log in with it once.|r" }
+            end
             rows[#rows + 1] = { text = ("Gold: %s%s    |cff808080(saved %s)|r"):format(money(r.money), (r.ilvl or 0) > 0 and ("     Item level: " .. r.ilvl) or "", ago(r.t)) }
             rows[#rows + 1] = { text = "Professions: " .. (#(r.profs or {}) > 0 and table.concat(r.profs, ", ") or "none") }
             local w = db.weekly and db.weekly[sel]
