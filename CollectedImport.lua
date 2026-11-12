@@ -127,6 +127,10 @@ local function mergeGuildDir(dst, realm, guilds)
     end
 end
 
+-- the player tables are merged once per new version of the data: they live in their own load-on-demand folder, read only for that
+local LOD_TABLES = { "nameplateText", "inspected", "seenInfo", "rioCache", "guildDir", "playerIDs", "seenPlayers", "nameRealms", "nameRealm", "seenBuilds", "guildNotes", "itemIcon" }
+local lodMissing = false
+
 local jobs, ji = {}, 1
 
 local function addJobs(smallAlso)
@@ -174,6 +178,11 @@ local function addJobs(smallAlso)
 end
 
 local function finish()
+    -- the shipped player tables are merged: they are let go of (the saved data keeps what it needs)
+    for _, tables in pairs(C.data or {}) do
+        for _, key in ipairs(LOD_TABLES) do tables[key] = nil end
+    end
+    if lodMissing then return end   -- the folder was not there: the date stays, so the merge happens at the next login that finds it
     for _, dbName in ipairs({ "SeviathsUsefulToolsDB", "SeviathsCodexDB", "SeviathsDungeonsRaidsDB" }) do
         if type(_G[dbName]) == "table" then _G[dbName].collectedDate = C.date end
     end
@@ -214,6 +223,17 @@ f:SetScript("OnEvent", function()
     local db = _G.SeviathsUsefulToolsDB
     local first = type(db) == "table" and (db.collectedDate or 0) < (C.date or 0)
     -- all of it at once, right here at the end of the loading screen (a few tenths of a second), not as small steps while playing
+    if first then
+        local loaded = false
+        if C_AddOns and C_AddOns.LoadAddOn then
+            local okL, res = pcall(C_AddOns.LoadAddOn, "SeviathsUsefulTools_Players")
+            loaded = okL and res and true or false
+        elseif LoadAddOn then
+            local okL, res = pcall(LoadAddOn, "SeviathsUsefulTools_Players")
+            loaded = okL and res and true or false
+        end
+        if not loaded and not (C_AddOns and C_AddOns.IsAddOnLoaded and C_AddOns.IsAddOnLoaded("SeviathsUsefulTools_Players")) then lodMissing = true end
+    end
     if pcall(addJobs, first) then
         local guard = 0
         while guard < 2000 and jobs[ji] do

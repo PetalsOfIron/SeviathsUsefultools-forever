@@ -11,15 +11,11 @@ local _, SFP = ...
 
 local function secret(v) return issecretvalue and issecretvalue(v) end
 local function money(c)
-    c = math.floor((c or 0) + 0.5)
-    if GetCoinTextureString then return GetCoinTextureString(c) end
-    -- gold, silver and copper, each shown when it is there
+    -- whole numbers: 1,234g 56s 78c
+    c = math.floor((tonumber(c) or 0) + 0.5)
     local g, s, cc = math.floor(c / 10000), math.floor(c / 100) % 100, c % 100
-    local parts = {}
-    if g > 0 then parts[#parts + 1] = "|cffffd100" .. g .. "g|r" end
-    if s > 0 or g > 0 then parts[#parts + 1] = "|cffc7c7cf" .. s .. "s|r" end
-    parts[#parts + 1] = "|cffeda55f" .. cc .. "c|r"
-    return table.concat(parts, " ")
+    local gs = tostring(g):reverse():gsub("(%d%d%d)", "%1,"):reverse():gsub("^,", "")
+    return ("|cffffd100%sg|r |cffc7c7cf%ds|r |cffeda55f%dc|r"):format(gs, s, cc)
 end
 local function charKey()
     return (UnitName("player") or "?") .. "-" .. ((GetNormalizedRealmName and GetNormalizedRealmName()) or (GetRealmName() or "?"):gsub("[%s%-']", ""))
@@ -46,13 +42,30 @@ local function mergeCharKeys(tbl, stamp)
     end
 end
 
+-- the Warband bank exists in the new game only (WoW Forever has none)
+local HAS_WARBAND_BANK = not (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT)
+
+-- the money of the character, whole: the game's number, or (when it gives none) the figure on the money frame of the bags
+local function myMoney()
+    local ok, m = pcall(GetMoney)
+    if ok and type(m) == "number" and not secret(m) and m > 0 then return m end
+    for _, f in ipairs({ _G.ContainerFrameCombinedBags and ContainerFrameCombinedBags.MoneyFrame, _G.ContainerFrame1MoneyFrame, _G.BackpackTokenFrame }) do
+        local okF, v = pcall(function() return f and f.staticMoney end)
+        if okF and type(v) == "number" and not secret(v) and v > 0 then return v end
+    end
+    if ok and type(m) == "number" and not secret(m) then return m end
+    return nil
+end
+
 function SFP:UpdateAlt()
     if not self.db then return end
     mergeCharKeys(self.db.alts, "t")
     mergeCharKeys(self.db.weekly, "t")
     mergeCharKeys(self.db.killed, "t")
     if self.db.altSel and self.db.altSel:find("%s") then self.db.altSel = nil end
-    local rec = { t = time(), level = UnitLevel("player"), money = GetMoney(), profs = {} }
+    self.db.alts = self.db.alts or {}
+    local old = self.db.alts[charKey()]
+    local rec = { t = time(), level = UnitLevel("player"), money = myMoney() or (old and old.money) or 0, profs = {} }
     -- both names of the character (first name and surname; the game gives the surname where other games have the realm)
     do
         local n, s = UnitName("player")
@@ -80,7 +93,7 @@ function SFP:UpdateAlt()
     -- Classic style skill list (WoW Forever): the professions are skill lines with a rank
     if #rec.profs == 0 and GetNumSkillLines and GetSkillLineInfo then
         local PROFS = { Alchemy = 1, Blacksmithing = 1, Enchanting = 1, Engineering = 1, Herbalism = 1, Leatherworking = 1, Mining = 1, Skinning = 1, Tailoring = 1,
-            Cooking = 1, ["First Aid"] = 1, Fishing = 1, Jewelcrafting = 1 }
+            Cooking = 1, ["First Aid"] = 1, Fishing = 1, Jewelcrafting = 1, Inscription = 1, Archaeology = 1 }
         for i = 1, (GetNumSkillLines() or 0) do
             local ok, name, isHeader, _, rank, _, _, maxRank = pcall(GetSkillLineInfo, i)
             if ok and type(name) == "string" and not isHeader and PROFS[name] and not secret(name) then
@@ -88,30 +101,72 @@ function SFP:UpdateAlt()
             end
         end
     end
+    if #rec.profs == 0 and old and old.profs and #old.profs > 0 and not (GetNumSkillLines or GetProfessions) then rec.profs = old.profs end
     -- the specialization of this game: the Talent Advisor's own detection
     if not rec.spec and SFP.TalentAdvisor and SFP.TalentAdvisor.DetectedSpec then
         local okS, sp = pcall(SFP.TalentAdvisor.DetectedSpec)
         if okS and type(sp) == "string" then rec.spec = sp end
     end
-    self.db.alts = self.db.alts or {}
-    local old = self.db.alts[charKey()]
+    -- dungeons and raids done at the maximum level (unique ones, from the profile of the addon)
+    if SFP.Social and SFP.Social.AltDone then
+        local okD, d = pcall(SFP.Social.AltDone)
+        if okD and type(d) == "table" then rec.done = d end
+    end
+    if not rec.done and old then rec.done = old.done end
     if old then rec.bags, rec.bagsT, rec.bank, rec.bankT = old.bags, old.bagsT, old.bank, old.bankT end
     self.db.alts[charKey()] = rec
+end
+
+-- one slot of a bag: the item and its count, with the other ways the game has to say it when the first gives nothing
+local function slotItem(bag, slot)
+    local id, cnt
+    if C_Container and C_Container.GetContainerItemInfo then
+        local ok, info = pcall(C_Container.GetContainerItemInfo, bag, slot)
+        if ok and type(info) == "table" then
+            if type(info.itemID) == "number" and not secret(info.itemID) then id = info.itemID end
+            if type(info.stackCount) == "number" and not secret(info.stackCount) then cnt = info.stackCount end
+        end
+    end
+    if not id and C_Container and C_Container.GetContainerItemID then
+        local ok, v = pcall(C_Container.GetContainerItemID, bag, slot)
+        if ok and type(v) == "number" and not secret(v) then id = v end
+    end
+    if not id then
+        local link
+        if C_Container and C_Container.GetContainerItemLink then
+            local ok, l = pcall(C_Container.GetContainerItemLink, bag, slot)
+            if ok then link = l end
+        end
+        if not link and GetContainerItemLink then
+            local ok, l = pcall(GetContainerItemLink, bag, slot)
+            if ok then link = l end
+        end
+        if type(link) == "string" and not secret(link) then id = tonumber(link:match("item:(%d+)")) end
+    end
+    if id and not cnt and GetContainerItemInfo then
+        local ok, _, c = pcall(GetContainerItemInfo, bag, slot)
+        if ok and type(c) == "number" and not secret(c) then cnt = c end
+    end
+    return id, cnt or 1
+end
+
+local function numSlots(bag)
+    local fn = (C_Container and C_Container.GetContainerNumSlots) or GetContainerNumSlots
+    if not fn then return 0 end
+    local ok, n = pcall(fn, bag)
+    return (ok and type(n) == "number" and not secret(n)) and n or 0
 end
 
 -- what is in the bags: { [itemID] = count }, read from the given bag slots
 local function readBags(ids)
     local counts, any = {}, false
-    if not (C_Container and C_Container.GetContainerNumSlots and C_Container.GetContainerItemInfo) then return counts, false end
     for _, bag in ipairs(ids) do
-        local okN, n = pcall(C_Container.GetContainerNumSlots, bag)
-        if okN and type(n) == "number" and n > 0 then
+        local n = numSlots(bag)
+        if n > 0 then
             any = true
             for slot = 1, n do
-                local okI, info = pcall(C_Container.GetContainerItemInfo, bag, slot)
-                if okI and type(info) == "table" and info.itemID and not secret(info.itemID) then
-                    counts[info.itemID] = (counts[info.itemID] or 0) + (tonumber(info.stackCount) or 1)
-                end
+                local id, cnt = slotItem(bag, slot)
+                if id then counts[id] = (counts[id] or 0) + (tonumber(cnt) or 1) end
             end
         end
     end
@@ -119,12 +174,19 @@ local function readBags(ids)
 end
 
 local function bagIDs(kind)
-    local first, prefix, n
-    if kind == "bags" then return { 0, 1, 2, 3, 4, 5 } end
-    if kind == "bank" then first, prefix, n = 6, "CharacterBankTab_", 6 else first, prefix, n = 12, "AccountBankTab_", 5 end
+    local B = (Enum and Enum.BagIndex) or {}
+    if kind == "bags" then return { 0, 1, 2, 3, 4, 5 } end   -- (5 is the reagent bag of the new game; a bag that is not there has no slots)
     local ids = {}
-    for i = 1, n do
-        ids[#ids + 1] = (Enum and Enum.BagIndex and Enum.BagIndex[prefix .. i]) or (first + i - 1)
+    if kind == "bank" then
+        if B.CharacterBankTab_1 then
+            for i = 1, 6 do ids[#ids + 1] = B["CharacterBankTab_" .. i] or (5 + i) end
+        else
+            -- the bank of the Classic style game: the bank itself (-1) and its bags (5 to 11)
+            ids[1] = B.Bank or -1
+            for i = 1, 7 do ids[#ids + 1] = B["BankBag_" .. i] or (4 + i) end
+        end
+    else
+        for i = 1, 5 do ids[#ids + 1] = B["AccountBankTab_" .. i] or (11 + i) end
     end
     return ids
 end
@@ -139,34 +201,30 @@ function SFP:SnapshotBags()
     if not self.db.alts[key] then self:UpdateAlt() end
     local rec = self.db.alts[key]
     if not rec then return end
-    rec.bags, rec.bagsT = readBags(bagIDs("bags")), time()
+    local nb, anyB = readBags(bagIDs("bags"))
+    if anyB then rec.bags, rec.bagsT = nb, time() end
     if bankOpen then
         local cb, anyC = readBags(bagIDs("bank"))
         if anyC then rec.bank, rec.bankT = cb, time() end
-        local wb, anyW = readBags(bagIDs("warband"))
-        if anyW then
-            self.db.warband = self.db.warband or {}
-            self.db.warband.items, self.db.warband.t = wb, time()
-        end
-        if C_Bank and C_Bank.FetchDepositedMoney and Enum and Enum.BankType then
-            local okM, m = pcall(C_Bank.FetchDepositedMoney, Enum.BankType.Account)
-            if okM and type(m) == "number" and not secret(m) then
+        if HAS_WARBAND_BANK then
+            local wb, anyW = readBags(bagIDs("warband"))
+            if anyW then
                 self.db.warband = self.db.warband or {}
-                self.db.warband.money = m
+                self.db.warband.items, self.db.warband.t = wb, time()
+            end
+            if C_Bank and C_Bank.FetchDepositedMoney and Enum and Enum.BankType then
+                local okM, m = pcall(C_Bank.FetchDepositedMoney, Enum.BankType.Account)
+                if okM and type(m) == "number" and not secret(m) then
+                    self.db.warband = self.db.warband or {}
+                    self.db.warband.money = m
+                end
             end
         end
     end
 end
 
-local altWin, altRows, altBox, altItems
-local altView = "overview"
--- the Warband bank tab is left out while the game has no Warband bank (WoW Forever; the code stays for a later version)
-local HAS_WARBAND = not (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT)
-local ALT_VIEWS = { { "overview", "Overview", 80 }, { "bags", "Bags", 60 }, { "bank", "Bank", 60 }, { "warband", "Warband bank", 100 }, { "gold", "All gold", 80 } }
-if not HAS_WARBAND then
-    for i = #ALT_VIEWS, 1, -1 do if ALT_VIEWS[i][1] == "warband" then table.remove(ALT_VIEWS, i) end end
-end
-local altViewBtns = {}
+local altWin, altRows, altBox, altItems, altWarbandBtn
+local altView = "character"
 
 local function ago(t)
     if not t then return "never" end
@@ -175,27 +233,6 @@ local function ago(t)
     if m < 120 then return m .. " min ago" end
     if m < 2880 then return math.floor(m / 60) .. " h ago" end
     return math.floor(m / 1440) .. " days ago"
-end
-
-local function itemLines(counts, filter)
-    local list, distinct, value = {}, 0, 0
-    for id, cnt in pairs(counts or {}) do
-        distinct = distinct + 1
-        local unit = SFP:GetPrice(id) or 0
-        value = value + unit * cnt
-        local name = SFP:ItemName(id)
-        local plain = name:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", ""):lower()
-        if filter == "" or plain:find(filter, 1, true) then list[#list + 1] = { name = name, plain = plain, cnt = cnt, unit = unit } end
-    end
-    table.sort(list, function(x, y) return x.plain < y.plain end)
-    local lines = {}
-    for i = 1, math.min(150, #list) do
-        local e = list[i]
-        lines[#lines + 1] = ("%dx %s%s"):format(e.cnt, e.name, e.unit > 0 and ("  |cff808080" .. money(e.unit) .. " each|r") or "")
-    end
-    if #list > 150 then lines[#lines + 1] = ("|cff808080+%d more - type part of a name in the search box|r"):format(#list - 150) end
-    if #list == 0 then lines[1] = filter ~= "" and "Nothing matches the search." or "Empty." end
-    return lines, distinct, value
 end
 
 local function altSelected()
@@ -215,76 +252,31 @@ local function altName(key, rec)
     return key:match("^([^-]+)") or key
 end
 
-local function altContent(key)
-    local db = SFP.db
-    local r = key and db.alts and db.alts[key]
-    local filter = (altBox and altBox:GetText() or ""):lower()
-    local lines = {}
-    if altView == "gold" then
-        local rows, total = {}, 0
-        for k, rec in pairs(db.alts or {}) do rows[#rows + 1] = { k = k, m = rec.money or 0 }; total = total + (rec.money or 0) end
-        table.sort(rows, function(x, y) return x.m > y.m end)
-        lines[1] = "|cffffd100Gold on every character|r"
-        for _, e in ipairs(rows) do lines[#lines + 1] = ("%s   %s"):format(altName(e.k, db.alts[e.k]), money(e.m)) end
-        local wb = db.warband and db.warband.money
-        lines[#lines + 1] = ""
-        lines[#lines + 1] = "Characters together: " .. money(total)
-        if HAS_WARBAND then
-            lines[#lines + 1] = "Warband bank: " .. (wb and money(wb) or "|cff808080not read yet - open the bank once|r")
-            lines[#lines + 1] = "|cffffd100Together: " .. money(total + (wb or 0)) .. "|r"
-        end
-        return table.concat(lines, "\n")
+local function titleCase(s) return (tostring(s):gsub("(%a)([%w']*)", function(a, b) return a:upper() .. b end)) end
+
+local MAX_ITEM_ROWS = 300
+-- the item rows of a bag list, each with its tooltip on hover; returns how many different items and what they are worth
+local function itemRows(rows, counts, filter)
+    local list, value = {}, 0
+    for id, cnt in pairs(counts or {}) do
+        local name = SFP:ItemName(id)
+        local plain = name:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", ""):lower()
+        local unit = SFP:GetPrice(id) or 0
+        value = value + unit * cnt
+        if filter == "" or plain:find(filter, 1, true) then list[#list + 1] = { id = id, name = name, plain = plain, cnt = cnt, unit = unit } end
     end
-    if altView == "warband" then
-        local w = db.warband
-        lines[1] = "|cffffd100Warband bank (shared by all your characters)|r"
-        if not (w and w.items) then
-            lines[2] = "Not read yet. Open your bank (the Warband tabs) with any character once: the addon saves what is in it."
-        else
-            local list, distinct, value = itemLines(w.items, filter)
-            lines[2] = ("|cff808080Read %s. %d different items worth about %s. Gold in it: %s.|r"):format(ago(w.t), distinct, money(value), w.money and money(w.money) or "?")
-            lines[3] = ""
-            for _, l in ipairs(list) do lines[#lines + 1] = l end
-        end
-        return table.concat(lines, "\n")
+    table.sort(list, function(x, y) return x.plain < y.plain end)
+    for i = 1, math.min(MAX_ITEM_ROWS, #list) do
+        local e = list[i]
+        local id = e.id
+        rows[#rows + 1] = { text = ("   %dx %s%s"):format(e.cnt, e.name, e.unit > 0 and ("  |cff808080" .. money(e.unit) .. " each|r") or ""),
+            tip = function(tt) tt:SetItemByID(id) end }
     end
-    if not r then return "No character saved yet. Log in with each character once." end
-    local short = key:match("^([^-]+)") or key
-    if altView == "bags" or altView == "bank" then
-        local data = altView == "bags" and r.bags or r.bank
-        lines[1] = ("|cffffd100%s - %s|r"):format(altName(key, r), altView == "bags" and "bags" or "character bank")
-        if not data then
-            lines[2] = altView == "bags" and ("Not read yet. Log in with " .. short .. " once.") or
-                ("Not read yet. Open the bank with " .. short .. " once: the addon saves what is in it.")
-        else
-            local list, distinct, value = itemLines(data, filter)
-            lines[2] = ("|cff808080Read %s. %d different items worth about %s.|r"):format(ago(altView == "bags" and r.bagsT or r.bankT), distinct, money(value))
-            lines[3] = ""
-            for _, l in ipairs(list) do lines[#lines + 1] = l end
-        end
-        return table.concat(lines, "\n")
-    end
-    -- overview
-    local age = math.floor((time() - (r.t or 0)) / 3600)
-    lines[#lines + 1] = ("|cffffd100%s|r  |cff808080(%s)|r"):format(altName(key, r), age < 1 and "now" or (age .. " h ago"))
-    lines[#lines + 1] = ("Level %s %s %s"):format(tostring(r.level or "?"), r.spec or "", r.class or "")
-    lines[#lines + 1] = ("Item level %s     Gold %s"):format(tostring(r.ilvl or "?"), money(r.money))
-    lines[#lines + 1] = "Professions: " .. (#(r.profs or {}) > 0 and table.concat(r.profs, ", ") or "none")
-    local w = db.weekly and db.weekly[key]
-    if w then
-        lines[#lines + 1] = "Weekly: " .. (#w.vault > 0 and ("Great Vault " .. table.concat(w.vault, " ") .. "   ") or "") ..
-            "Raid lockouts: " .. (#w.locks > 0 and #w.locks or "none") .. "   Rares today: " .. (w.rares or 0)
-    end
-    local function count(t) local n = 0 for _ in pairs(t or {}) do n = n + 1 end return n end
-    lines[#lines + 1] = ""
-    lines[#lines + 1] = ("Bags: %s   Bank: %s"):format(r.bags and (count(r.bags) .. " different items, read " .. ago(r.bagsT)) or "not read yet",
-        r.bank and (count(r.bank) .. " different items, read " .. ago(r.bankT)) or "not read yet (open the bank once)")
-    if HAS_WARBAND then
-        lines[#lines + 1] = "Warband bank: " .. ((db.warband and db.warband.items) and (count(db.warband.items) .. " different items, " .. (db.warband.money and money(db.warband.money) or "?") .. " gold") or "not read yet")
-    end
-    lines[#lines + 1] = ""
-    lines[#lines + 1] = "|cff808080A character shows here after you log in with it. Use the buttons above to see its bags, bank and everybody's gold. Profession cooldowns are not shown.|r"
-    return table.concat(lines, "\n")
+    if #list > MAX_ITEM_ROWS then rows[#rows + 1] = { text = ("   |cff808080+%d more - type part of a name in the search box|r"):format(#list - MAX_ITEM_ROWS) } end
+    if #list == 0 then rows[#rows + 1] = { text = "   |cff808080" .. (filter ~= "" and "Nothing matches the search." or "Empty.") .. "|r" } end
+    local n = 0
+    for _ in pairs(counts or {}) do n = n + 1 end
+    return n, value
 end
 
 local function altRefresh()
@@ -292,50 +284,76 @@ local function altRefresh()
     SFP:UpdateAlt()
     SFP:SnapshotBags()
     if SFP.UpdateWeekly then pcall(SFP.UpdateWeekly, SFP) end
+    local db = SFP.db
     local sel, keys = altSelected()
-    local items = {}
+    local items, total = {}, 0
     for _, k in ipairs(keys) do
-        local rec = SFP.db.alts[k]
-        local label = (k == sel and "|cff40ff40> |r" or "") .. altName(k, rec) .. (rec.level and (" " .. rec.level) or "")
-        items[#items + 1] = { text = "", buttons = { { label, 224, function() SFP.db.altSel = k; altRefresh() end } } }
+        local rec = db.alts[k]
+        total = total + (rec.money or 0)
+        local label = (k == sel and altView == "character" and "|cff40ff40> |r" or "") .. altName(k, rec) .. (rec.level and (" " .. rec.level) or "")
+        items[#items + 1] = { text = "", buttons = { { label, 224, function() db.altSel = k; altView = "character"; altRefresh() end } } }
     end
     altRows:Set(items)
-    for _, bt in ipairs(altViewBtns) do bt:SetText((bt.view == altView and "|cff40ff40" or "") .. bt.label) end
-    local r = sel and SFP.db.alts[sel]
-    if (altView == "bags" or altView == "bank") and r then
-        -- the items of the bags or the bank as rows, each with its tooltip on hover
-        local data = altView == "bags" and r.bags or r.bank
-        altWin.scroll:Hide()
-        altItems.scroll:Show()
-        local head = {}
-        if not data then
-            head[1] = { text = altView == "bags" and "Not read yet. Log in with this character once." or "Not read yet. Open the bank with this character once." }
-            altItems:Set(head)
+    if altWarbandBtn then altWarbandBtn:SetText((altView == "warband" and "|cff40ff40" or "") .. "Warband bank") end
+    local filter = (altBox and altBox:GetText() or ""):lower()
+    local rows = {}
+    if altView == "warband" and HAS_WARBAND_BANK then
+        local w = db.warband
+        rows[1] = { text = "|cffffd100Warband bank (shared by all your characters)|r" }
+        if not (w and w.items) then
+            rows[2] = { text = "Not read yet. Open your bank (the Warband tabs) with any character once: the addon saves what is in it." }
         else
-            local filter = (altBox and altBox:GetText() or ""):lower()
-            local list, value = {}, 0
-            for id, cnt in pairs(data) do
-                local name = SFP:ItemName(id)
-                local plain = name:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", ""):lower()
-                local unit = SFP:GetPrice(id) or 0
-                value = value + unit * cnt
-                if filter == "" or plain:find(filter, 1, true) then list[#list + 1] = { id = id, name = name, plain = plain, cnt = cnt, unit = unit } end
-            end
-            table.sort(list, function(x, y) return x.plain < y.plain end)
-            local rows = { { text = ("|cff808080Read %s. %d different items worth about %s.|r"):format(ago(altView == "bags" and r.bagsT or r.bankT), #list, money(value)) } }
-            for _, e in ipairs(list) do
-                local id = e.id
-                rows[#rows + 1] = { text = ("%dx %s%s"):format(e.cnt, e.name, e.unit > 0 and ("  |cff808080" .. money(e.unit) .. " each|r") or ""),
-                    tip = function(tt) tt:SetItemByID(id) end }
-            end
-            if #list == 0 then rows[#rows + 1] = { text = filter ~= "" and "Nothing matches the search." or "Empty." } end
-            altItems:Set(rows)
+            local n, value = itemRows({}, w.items, filter)
+            rows[2] = { text = ("|cff808080Read %s. %d different items worth about %s. Gold in it: %s.|r"):format(ago(w.t), n, money(value), w.money and money(w.money) or "?") }
+            itemRows(rows, w.items, filter)
         end
     else
-        if altItems then altItems.scroll:Hide() end
-        altWin.scroll:Show()
-        altWin:SetContent(altContent(sel))
+        local r = sel and db.alts[sel]
+        if not r then
+            rows[1] = { text = "No character saved yet. Log in with each character once." }
+        else
+            local short = sel:match("^([^-]+)") or sel
+            rows[#rows + 1] = { text = ("|cffffd100%s|r  Level %s %s %s"):format(altName(sel, r), tostring(r.level or "?"), r.spec or "", r.class and (r.class:sub(1, 1) .. r.class:sub(2):lower()) or "") }
+            rows[#rows + 1] = { text = ("Gold: %s%s    |cff808080(saved %s)|r"):format(money(r.money), (r.ilvl or 0) > 0 and ("     Item level: " .. r.ilvl) or "", ago(r.t)) }
+            rows[#rows + 1] = { text = "Professions: " .. (#(r.profs or {}) > 0 and table.concat(r.profs, ", ") or "none") }
+            local w = db.weekly and db.weekly[sel]
+            if w then
+                rows[#rows + 1] = { text = "Weekly: " .. ((w.vault and #w.vault > 0) and ("Great Vault " .. table.concat(w.vault, " ") .. "   ") or "") ..
+                    "Raid lockouts: " .. ((w.locks and #w.locks > 0) and #w.locks or "none") .. "   Rares today: " .. (w.rares or 0) }
+            end
+            -- done at the maximum level: unique dungeons and raids
+            local d = r.done
+            local dn = d and d.dungeons or {}
+            local rn = d and d.raids or {}
+            rows[#rows + 1] = { text = "|cffffd100Dungeons done at the maximum level|r  " .. ("%d%s"):format(#dn, (d and d.dun and (d.dun[2] or 0) > 0) and (" / " .. math.max(d.dun[2], #dn)) or "") }
+            for _, n in ipairs(dn) do rows[#rows + 1] = { text = "   " .. titleCase(n) } end
+            if #dn == 0 then rows[#rows + 1] = { text = "   |cff808080none yet|r" } end
+            rows[#rows + 1] = { text = "|cffffd100Raids done at the maximum level|r  " .. ("%d%s"):format(#rn, (d and d.rd and (d.rd[2] or 0) > 0) and (" / " .. math.max(d.rd[2], #rn)) or "") }
+            for _, n in ipairs(rn) do rows[#rows + 1] = { text = "   " .. titleCase(n) } end
+            if #rn == 0 then rows[#rows + 1] = { text = "   |cff808080none yet|r" } end
+            -- the bags and the bank
+            local head = #rows + 1
+            rows[head] = { text = "" }
+            local n1, v1 = 0, 0
+            if r.bags then
+                n1, v1 = itemRows(rows, r.bags, filter)
+                rows[head] = { text = ("|cffffd100Bags|r  |cff808080%d different items worth about %s, read %s|r"):format(n1, money(v1), ago(r.bagsT)) }
+            else
+                rows[head] = { text = "|cffffd100Bags|r  |cff808080not read yet - log in with " .. short .. " once|r" }
+            end
+            local head2 = #rows + 1
+            rows[head2] = { text = "" }
+            if r.bank then
+                local n2, v2 = itemRows(rows, r.bank, filter)
+                rows[head2] = { text = ("|cffffd100Bank|r  |cff808080%d different items worth about %s, read %s|r"):format(n2, money(v2), ago(r.bankT)) }
+            else
+                rows[head2] = { text = "|cffffd100Bank|r  |cff808080not read yet - open the bank with " .. short .. " once|r" }
+            end
+            rows[#rows + 1] = { text = "" }
+            rows[#rows + 1] = { text = "All your characters together: " .. money(total) .. ((HAS_WARBAND_BANK and db.warband and db.warband.money) and ("   Warband bank: " .. money(db.warband.money)) or "") }
+        end
     end
+    altItems:Set(rows)
 end
 
 function SFP:ShowAlts()
@@ -343,41 +361,32 @@ function SFP:ShowAlts()
     self:SnapshotBags()
     if not altWin then
         altWin = window("SeviathsUsefulToolsAlts", "Alt overview - all your characters", 880, 680)
-        altWin.scroll:ClearAllPoints()
-        altWin.scroll:SetPoint("TOPLEFT", 270, -94)
-        altWin.scroll:SetPoint("BOTTOMRIGHT", -30, 12)
-        altWin.child:SetWidth(540)
-        altWin.text:SetWidth(536)
+        altWin.scroll:Hide()
         local lbl = altWin:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
         lbl:SetPoint("TOPLEFT", 14, -36)
-        lbl:SetText("Characters:")
+        lbl:SetText("Click a character:")
         altRows = SFP.MakeRowList(altWin, 10, -52, 256, 600, 26)
-        altItems = SFP.MakeRowList(altWin, 264, -92, 590, 570, 24)
-        altItems.scroll:Hide()
-        local x = 270
-        for _, v in ipairs(ALT_VIEWS) do
-            local bt = CreateFrame("Button", nil, altWin, "UIPanelButtonTemplate")
-            bt:SetSize(v[3], 22)
-            bt:SetPoint("TOPLEFT", x, -34)
-            bt.view, bt.label = v[1], v[2]
-            bt:SetText(v[2])
-            bt:SetScript("OnClick", function() altView = v[1]; altRefresh() end)
-            altViewBtns[#altViewBtns + 1] = bt
-            x = x + v[3] + 4
+        altItems = SFP.MakeRowList(altWin, 264, -64, 590, 598, 20)
+        if HAS_WARBAND_BANK then
+            altWarbandBtn = CreateFrame("Button", nil, altWin, "UIPanelButtonTemplate")
+            altWarbandBtn:SetSize(110, 22)
+            altWarbandBtn:SetPoint("TOPLEFT", 270, -34)
+            altWarbandBtn:SetText("Warband bank")
+            altWarbandBtn:SetScript("OnClick", function() altView = (altView == "warband") and "character" or "warband"; altRefresh() end)
         end
         local sl = altWin:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-        sl:SetPoint("TOPLEFT", 274, -68)
+        sl:SetPoint("TOPLEFT", HAS_WARBAND_BANK and 396 or 274, -40)
         sl:SetText("Search items:")
         altBox = CreateFrame("EditBox", nil, altWin, "InputBoxTemplate")
-        altBox:SetSize(220, 20)
-        altBox:SetPoint("TOPLEFT", 360, -64)
+        altBox:SetSize(200, 20)
+        altBox:SetPoint("LEFT", sl, "RIGHT", 10, 0)
         altBox:SetAutoFocus(false)
         altBox:SetScript("OnTextChanged", function() altRefresh() end)
         altBox:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
         local acc = 0
         altWin:SetScript("OnUpdate", function(_, dt)
             acc = acc + dt
-            if acc < 3 then return end
+            if acc < 4 then return end
             acc = 0
             SFP:Safe("alt window", altRefresh)
         end)
@@ -386,16 +395,41 @@ function SFP:ShowAlts()
     altRefresh()
 end
 
+-- /sutalt: what the game answers to the questions the overview asks (for when money or items do not show)
+SLASH_SEVIATHSALT1 = "/sutalt"
+SlashCmdList["SEVIATHSALT"] = function()
+    local okM, m = pcall(GetMoney)
+    SFP:Print(("alt: GetMoney = %s (%s); saved money %s"):format(tostring(okM and m), type(m), tostring(SFP.db and SFP.db.alts and SFP.db.alts[charKey()] and SFP.db.alts[charKey()].money)))
+    SFP:Print(("alt: C_Container %s, slots in bag 0..4: %d %d %d %d %d"):format(tostring(C_Container ~= nil), numSlots(0), numSlots(1), numSlots(2), numSlots(3), numSlots(4)))
+    local nb = readBags(bagIDs("bags"))
+    local n = 0
+    for _ in pairs(nb) do n = n + 1 end
+    SFP:Print(("alt: %d different items read from the bags; bank open: %s; bank ids: %s"):format(n, tostring(bankOpen), table.concat(bagIDs("bank"), ",")))
+    SFP:UpdateAlt()
+    SFP:SnapshotBags()
+    SFP:Print("alt: saved " .. charKey())
+end
+
 local af = CreateFrame("Frame")
-for _, e in ipairs({ "PLAYER_ENTERING_WORLD", "PLAYER_LOGOUT", "TRADE_SKILL_LIST_UPDATE", "BAG_UPDATE_DELAYED", "BANKFRAME_OPENED", "BANKFRAME_CLOSED",
-    "PLAYER_INTERACTION_MANAGER_FRAME_SHOW", "PLAYER_INTERACTION_MANAGER_FRAME_HIDE" }) do pcall(af.RegisterEvent, af, e) end
+for _, e in ipairs({ "PLAYER_ENTERING_WORLD", "PLAYER_LOGOUT", "PLAYER_LEAVING_WORLD", "TRADE_SKILL_LIST_UPDATE", "BAG_UPDATE_DELAYED", "BANKFRAME_OPENED", "BANKFRAME_CLOSED",
+    "PLAYER_INTERACTION_MANAGER_FRAME_SHOW", "PLAYER_INTERACTION_MANAGER_FRAME_HIDE", "PLAYER_LEVEL_UP", "PLAYER_MONEY", "SKILL_LINES_CHANGED", "PLAYER_EQUIPMENT_CHANGED",
+    "ACHIEVEMENT_EARNED", "UPDATE_INSTANCE_INFO", "BOSS_KILL" }) do pcall(af.RegisterEvent, af, e) end
 local altTimer, bagTimer
 local function isBankType(t)
     local P = Enum and Enum.PlayerInteractionType
     return P and t and (t == P.Banker or t == P.AccountBanker)
 end
+local function saveSoon(delay)
+    if altTimer then return end
+    altTimer = true
+    C_Timer.After(delay, function()
+        altTimer = nil
+        SFP:Safe("alt", SFP.UpdateAlt, SFP)
+        SFP:Safe("bags", SFP.SnapshotBags, SFP)
+    end)
+end
 af:SetScript("OnEvent", function(_, event, arg1)
-    if event == "PLAYER_LOGOUT" then
+    if event == "PLAYER_LOGOUT" or event == "PLAYER_LEAVING_WORLD" then
         SFP:Safe("alt", SFP.UpdateAlt, SFP)
         SFP:Safe("bags", SFP.SnapshotBags, SFP)
         return
@@ -413,17 +447,18 @@ af:SetScript("OnEvent", function(_, event, arg1)
     if event == "BAG_UPDATE_DELAYED" then
         if bagTimer then return end
         bagTimer = true
-        C_Timer.After(3, function() bagTimer = nil; SFP:Safe("bags", SFP.SnapshotBags, SFP) end)
+        C_Timer.After(3, function()
+            bagTimer = nil
+            SFP:Safe("bags", SFP.SnapshotBags, SFP)
+            SFP:Safe("alt", SFP.UpdateAlt, SFP)
+        end)
         return
     end
-    if altTimer then return end
-    altTimer = true
-    C_Timer.After(10, function()
-        altTimer = nil
-        SFP:Safe("alt", SFP.UpdateAlt, SFP)
-        SFP:Safe("bags", SFP.SnapshotBags, SFP)
-    end)
+    -- level, gold, skills, gear, achievements and kills: saved a moment after they change (the level a little later: the game answers with the old one at first)
+    saveSoon(event == "PLAYER_LEVEL_UP" and 3 or 2)
 end)
+C_Timer.NewTicker(60, function() SFP:Safe("alt", SFP.UpdateAlt, SFP) end)
+
 
 ---------------------------------------------------------------------------
 -- 6. delve keys and bountiful delves

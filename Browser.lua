@@ -12,6 +12,8 @@ local WIDTH, HEIGHT = 560, 540
 -- Row pool
 ---------------------------------------------------------------------------
 local function getRow(i)
+    -- the list is built in pieces: every 40 rows the build stops and goes on in the next frame (a list of thousands of rows at once froze the game)
+    if i % 40 == 0 and coroutine.running() then coroutine.yield() end
     local row = rows[i]
     if row then row:Show(); return row end
     row = CreateFrame("Button", nil, content)
@@ -82,11 +84,21 @@ end
 ---------------------------------------------------------------------------
 -- List building
 ---------------------------------------------------------------------------
+local priceMemo = {}
+local function price(id)
+    local v = priceMemo[id]
+    if v == nil then
+        v = SFP:GetPrice(id) or false
+        priceMemo[id] = v
+    end
+    return v or nil
+end
+
 local function sortedItems(list)
     local copy = {}
     for i, id in ipairs(list) do copy[i] = id end
     table.sort(copy, function(a, b)
-        local pa, pb = SFP:GetPrice(a) or -1, SFP:GetPrice(b) or -1
+        local pa, pb = price(a) or -1, price(b) or -1
         if pa ~= pb then return pa > pb end
         local ka = SFP.KindOrder[(SFP.Items[a] or {}).kind] or 9
         local kb = SFP.KindOrder[(SFP.Items[b] or {}).kind] or 9
@@ -96,7 +108,7 @@ local function sortedItems(list)
     return copy
 end
 
-local function render()
+local function renderBody()
     if not frame or not frame:IsShown() then return end
     local exp = SFP.Expansions[SFP.db.browser.exp] or SFP.Expansions[1]
     local n, y = 0, 0
@@ -126,7 +138,7 @@ local function render()
         row.left:SetPoint("LEFT", row.icon, "RIGHT", 5, 0)
         row.left:SetText(SFP:ItemName(id))
         row.right:SetPoint("RIGHT", row.wh, "LEFT", -6, 0)
-        local price = SFP:GetPrice(id)
+        local price = price(id)
         local kinfo = SFP.Items[id]
         if not price and kinfo and (kinfo.kind == "mount" or kinfo.kind == "toy") then
             row.right:SetText("|cffa335ee" .. SFP.KindLabel[kinfo.kind] .. "|r")
@@ -267,6 +279,38 @@ local function render()
     end
     for _, cb in ipairs(checks) do cb:SetChecked(cb.get()) end
     if not minBox:HasFocus() then minBox:SetText(tostring(math.floor((SFP.db.minValue or 0) / 10000))) end
+end
+
+-- The build runs as a coroutine, a piece in each frame, and starts again (from the top) when something asks for a new list; asks that come close together (the game
+-- sends hundreds of "item loaded" messages) are put into one.
+local co, driver, lastStart, pendingStart = nil, nil, 0, false
+local function startBuild()
+    pendingStart = false
+    if not frame or not frame:IsShown() then return end
+    lastStart = GetTime()
+    priceMemo = {}
+    co = coroutine.create(renderBody)
+    if not driver then
+        driver = CreateFrame("Frame")
+        driver:SetScript("OnUpdate", function()
+            if not co then return end
+            local ok, err = coroutine.resume(co)
+            if coroutine.status(co) == "dead" then
+                co = nil
+                if not ok then geterrorhandler()(err) end
+            end
+        end)
+    end
+end
+local function render()
+    if not frame or not frame:IsShown() or pendingStart then return end
+    local wait = 0.6 - (GetTime() - lastStart)
+    if wait > 0 and co then
+        pendingStart = true
+        C_Timer.After(wait, startBuild)
+    else
+        startBuild()
+    end
 end
 
 ---------------------------------------------------------------------------

@@ -317,6 +317,23 @@ local function getPin()
 end
 
 
+-- the picture of a service pin by what it is
+local SERVICE_ICONS = {
+    { "auction", "Interface\\Icons\\INV_Misc_Coin_02" }, { "bank", "Interface\\Icons\\INV_Misc_Bag_10" },
+    { "alchemy", "Interface\\Icons\\Trade_Alchemy" }, { "blacksmith", "Interface\\Icons\\Trade_BlackSmithing" }, { "enchant", "Interface\\Icons\\Trade_Engraving" },
+    { "engineer", "Interface\\Icons\\Trade_Engineering" }, { "inscription", "Interface\\Icons\\INV_Inscription_Tradeskill01" }, { "jewelcraft", "Interface\\Icons\\INV_Misc_Gem_01" },
+    { "leatherwork", "Interface\\Icons\\Trade_LeatherWorking" }, { "tailor", "Interface\\Icons\\Trade_Tailoring" }, { "herbalism", "Interface\\Icons\\Trade_Herbalism" },
+    { "mining", "Interface\\Icons\\Trade_Mining" }, { "skinning", "Interface\\Icons\\INV_Misc_Pelt_Wolf_01" }, { "cooking", "Interface\\Icons\\INV_Misc_Food_15" },
+    { "fishing", "Interface\\Icons\\Trade_Fishing" }, { "first aid", "Interface\\Icons\\Spell_Holy_SealOfSacrifice" }, { "archaeology", "Interface\\Icons\\Trade_Archaeology" },
+}
+local function serviceIcon(what)
+    local low = tostring(what or ""):lower()
+    for _, e in ipairs(SERVICE_ICONS) do
+        if low:find(e[1], 1, true) then return e[2] end
+    end
+    return "Interface\\Icons\\INV_Misc_Book_09"
+end
+
 -- the points of interest of the map itself (the game lists the Auction House and the profession trainers of a city): pins for them even when you never visited them
 local poiCache = {}
 local function poiServices(map)
@@ -331,6 +348,7 @@ local function poiServices(map)
                 local low = info.name:lower()
                 local what
                 if low:find("auction house", 1, true) then what = "Auction house"
+                elseif low:find("bank", 1, true) and not low:find("banker's", 1, true) then what = "Bank"
                 elseif low:find("trainer", 1, true) then
                     for _, prof in ipairs(SFP.PROFESSION_WORDS or {}) do
                         if low:find(prof, 1, true) then what = info.name break end
@@ -359,8 +377,9 @@ local function getServicePin()
             local t = SFP.Tip and SFP.Tip() or GameTooltip
             t:SetOwner(self, "ANCHOR_RIGHT")
             t:ClearLines()
-            t:AddLine(tostring(self.name or "?"), 1, 0.82, 0.2)
-            t:AddLine(self.what or "", 0.75, 0.75, 0.75)
+            t:AddLine(tostring(self.name or self.what or "?"), 1, 0.82, 0.2)
+            t:AddLine(tostring(self.what or ""), 0.75, 0.75, 0.75)
+            if self.note then t:AddLine(self.note, 0.55, 0.55, 0.55) end
             t:Show()
         end)
         p:SetScript("OnLeave", function() (SFP.Tip and SFP.Tip() or GameTooltip):Hide() end)
@@ -397,38 +416,43 @@ local function update()
         p.id, p.rec = t.id, t.rec
       end
     end
-    -- profession trainers and auctioneers: the points of interest of the map, and the NPCs you spoke to or pointed at
+    -- services: auction houses, bankers and trainers (the points of interest of the map first, then the NPCs you spoke to or pointed at). Small icons; a hover says what it is.
     do
         local have = {}
-        for _, e in ipairs(poiServices(map)) do
+        local ssize = math.max(size * 1.15, 6)
+        local function put(x, y, name, what, icon, note)
             local p = getServicePin()
-            p:SetSize(size * 2.6, size * 2.6)
+            p:SetSize(ssize, ssize)
             p:ClearAllPoints()
-            p:SetPoint("CENTER", c, "TOPLEFT", e.x * w, -e.y * h)
-            p.name, p.what = e.n, e.what
-            p.icon:SetTexture(e.what == "Auction house" and 133784 or 133739)
+            p:SetPoint("CENTER", c, "TOPLEFT", x * w, -y * h)
+            p.name, p.what, p.note = name, what, note
+            p.icon:SetTexture(icon)
             p.icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
-            have[#have + 1] = e
+            have[#have + 1] = { x = x, y = y, what = what }
         end
-        if SFP.db.showServices ~= false and SFP.db.npcPos then
-            for id, r in pairs(SFP.db.npcPos) do
-                local what, icon
-                if r.k and r.k.auctioneer then what, icon = "Auction house", 133784
-                elseif r.k and r.k.proftrainer then what, icon = r.prof or "Profession trainer", 133739 end
-                if what and type(r.m) == "number" and r.x and r.y then
-                    local x, y = convert(r.m, r.x, r.y, map)
-                    local dup = false
-                    for _, e in ipairs(have) do
-                        if x and math.abs(e.x - x) < 0.01 and math.abs(e.y - y) < 0.01 then dup = true end
-                    end
-                    if x and not dup then
-                        local p = getServicePin()
-                        p:SetSize(size * 2.6, size * 2.6)
-                        p:ClearAllPoints()
-                        p:SetPoint("CENTER", c, "TOPLEFT", x * w, -y * h)
-                        p.name, p.what = r.n, what
-                        p.icon:SetTexture(icon)
-                        p.icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
+        local function near(x, y, what)
+            for _, e in ipairs(have) do
+                if e.what == what and math.abs(e.x - x) < 0.012 and math.abs(e.y - y) < 0.012 then return true end
+            end
+            return false
+        end
+        if SFP.db.showServices ~= false then
+            for _, e in ipairs(poiServices(map)) do
+                put(e.x, e.y, e.n, e.what, serviceIcon(e.what), "Shown by the map of the game")
+            end
+            if SFP.db.npcPos then
+                for id, r in pairs(SFP.db.npcPos) do
+                    local what
+                    local k = r.k
+                    if k and k.auctioneer then what = "Auction house"
+                    elseif k and k.banker then what = "Bank"
+                    elseif k and k.proftrainer then what = r.prof or "Profession trainer"
+                    elseif k and k.trainer then what = "Trainer" end
+                    if what and type(r.m) == "number" and r.x and r.y then
+                        local x, y = convert(r.m, r.x, r.y, map)
+                        if x and not near(x, y, what) then
+                            put(x, y, r.n, what, serviceIcon(what), what == "Trainer" and "What it trains is not known yet: point at it once to learn it" or "You spoke to this NPC")
+                        end
                     end
                 end
             end

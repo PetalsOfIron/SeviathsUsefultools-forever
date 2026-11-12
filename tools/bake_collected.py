@@ -25,6 +25,9 @@ RETAIL = os.path.abspath(os.path.join(HERE, "..", "..", "..", ".."))
 # the monsters and the gray items are shipped in their own load-on-demand addon folder (next to this one in Interface/AddOns): the game reads
 # it only when a monster tooltip or a gray item tooltip is shown, or the farm menu opens
 LOD = os.path.join(RETAIL, "Interface", "AddOns", "SeviathsUsefulTools_Monsters")
+# the player tables (nameplates, inspects ...) are merged once per new version of the data: their own load-on-demand folder
+LOD2 = os.path.join(RETAIL, "Interface", "AddOns", "SeviathsUsefulTools_Players")
+PLAYER_KEYS = ["nameplateText", "inspected", "seenInfo", "rioCache", "guildDir", "playerIDs", "seenPlayers", "nameRealms", "nameRealm", "seenBuilds", "guildNotes", "itemIcon"]
 
 # which saved tables are shipped: { saved global: [keys] }
 SHIP = {
@@ -82,7 +85,7 @@ def read_old():
     """The tables of the files written last time: { db: { key: value } }."""
     out = {}
     import re
-    for path in sorted(glob.glob(os.path.join(OUT, "*.lua"))) + sorted(glob.glob(os.path.join(LOD, "*.lua"))):
+    for path in sorted(glob.glob(os.path.join(OUT, "*.lua"))) + sorted(glob.glob(os.path.join(LOD, "*.lua"))) + sorted(glob.glob(os.path.join(LOD2, "*.lua"))):
         text = open(path, encoding="utf-8").read()
         p = P(text)
         for m in re.finditer(r'^;?\(function\(\) (Dp|D)\("(\w+)","(\w+)",', text, re.M):
@@ -231,7 +234,13 @@ def main():
                 n_files += 1
         return len(by_file), n_files, total
 
+    lod2 = {}
+    for key in PLAYER_KEYS:
+        v = (data.get("SeviathsUsefulToolsDB") or {}).pop(key, None)
+        if v is not None:
+            lod2.setdefault("SeviathsUsefulToolsDB", {})[key] = v
     t1 = emit(data, OUT, True)
+    t3 = emit(lod2, LOD2, False)
     t2 = emit(lod, LOD, False)
     # the toc of the load-on-demand folder: loaded by the main addon with C_AddOns.LoadAddOn when a monster or a gray item is looked at
     main_toc = open(os.path.join(HERE, "..", "SeviathsUsefulTools.toc"), encoding="utf-8").read().splitlines()
@@ -241,6 +250,12 @@ def main():
         fh.write(interface + "\n## Title: SeviathsUsefulTools - monster and gray item data\n## Notes: Shipped monster drops and gray items, read only when needed.\n")
         fh.write("## Dependencies: SeviathsUsefulTools\n## LoadOnDemand: 1\n## Author: Seviath\n\n")
         fh.write("\n".join(files) + "\n")
+    files2 = sorted(os.path.basename(p) for p in glob.glob(os.path.join(LOD2, "*.lua")))
+    with open(os.path.join(LOD2, "SeviathsUsefulTools_Players.toc"), "w", encoding="utf-8", newline="\n") as fh:
+        fh.write(interface + "\n## Title: SeviathsUsefulTools - shipped player data\n## Notes: The players, nameplates and inspects that come with the addon. Read once, when a new version of the data is merged into your saved data.\n")
+        fh.write("## Dependencies: SeviathsUsefulTools\n## LoadOnDemand: 1\n## Author: Seviath\n\n")
+        fh.write("\n".join(files2) + "\n")
+    print("%s: %d tables in %d files, %.1f MB (loaded once per new version)" % (os.path.abspath(LOD2), t3[0], t3[1], t3[2] / 1e6))
     print("%s: %d tables in %d files, %.1f MB" % (os.path.abspath(OUT), t1[0], t1[1], t1[2] / 1e6))
     print("%s: %d tables in %d files, %.1f MB (loaded on demand)" % (os.path.abspath(LOD), t2[0], t2[1], t2[2] / 1e6))
 

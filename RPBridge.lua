@@ -207,6 +207,7 @@ if C_ChatInfo and C_ChatInfo.RegisterAddonMessagePrefix and C_ChatInfo.SendAddon
         local name, realm = UnitName("mouseover")
         if type(name) ~= "string" or (issecretvalue and issecretvalue(name)) then return end
         local key = (type(realm) == "string" and realm ~= "") and (name .. "-" .. realm) or name
+        if WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then key = name end   -- (the part after the dash is the surname here, no realm)
         if asked[key] and GetTime() - asked[key] < 60 then return end
         asked[key] = GetTime()
         if SFP.NoteAskedName then SFP.NoteAskedName(key) end

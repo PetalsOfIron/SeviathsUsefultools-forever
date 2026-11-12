@@ -81,6 +81,29 @@ local function record(what, unit)
                 end
             end
         end)
+        -- not on the tooltip: the window of the trainer names the skill it teaches
+        if not rec.prof then
+            pcall(function()
+                local texts = {}
+                if GetTrainerServiceSkillLine then texts[#texts + 1] = GetTrainerServiceSkillLine(1) end
+                for _, nm in ipairs({ "ClassTrainerFrameTitleText", "ClassTrainerFrameTitle", "ProfessionTrainerFrameTitleText" }) do
+                    local fs = _G[nm]
+                    if fs and fs.GetText then texts[#texts + 1] = fs:GetText() end
+                end
+                if ClassTrainerFrame and ClassTrainerFrame.GetTitleText and ClassTrainerFrame:GetTitleText() then
+                    local t = ClassTrainerFrame:GetTitleText()
+                    texts[#texts + 1] = type(t) == "table" and t.GetText and t:GetText() or t
+                end
+                for _, t in ipairs(texts) do
+                    if type(t) == "string" and not secret(t) then
+                        local low = t:lower()
+                        for _, prof in ipairs(SFP.PROFESSION_WORDS) do
+                            if low:find(prof, 1, true) then rec.prof = t .. " trainer"; rec.k.proftrainer = true; return end
+                        end
+                    end
+                end
+            end)
+        end
     end
     -- the area of this NPC (the sub-zone): an area with NPCs is a town, also when it is no rest area (db.towns, see below)
     do
