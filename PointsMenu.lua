@@ -13,7 +13,7 @@ local KINDS = {
     { "showHerbs",     "Herb nodes",        false },
     { "showTreasures", "Treasures (all chests)", true },
     { "showServices",  "Auction houses, banks, trainers", true },
-    { "showEnemyServices", "... also of the other side (greyed)", false },
+    { "showEnemyServices", "Show other side", false },
 }
 
 local function isOn(key, default)
@@ -67,6 +67,7 @@ local function openMenu(button)
         root:CreateTitle("Seviaths - points on the map")
         for _, k in ipairs(KINDS) do
             local key, label, default = k[1], k[2], k[3]
+            if key == "showEnemyServices" then label = "Show " .. (UnitFactionGroup("player") == "Horde" and "Alliance" or "Horde") .. " side" end
             root:CreateCheckbox(label, function() return isOn(key, default) end, function() toggleKind(key, default) end)
         end
     end)
