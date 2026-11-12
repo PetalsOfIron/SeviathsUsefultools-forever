@@ -421,7 +421,7 @@ local function update()
     do
         local have = {}
         local ssize = math.max(size * 1.15, 6)
-        local function put(x, y, name, what, icon, note)
+        local function put(x, y, name, what, icon, note, enemy)
             local p = getServicePin()
             p:SetSize(ssize, ssize)
             p:ClearAllPoints()
@@ -429,6 +429,8 @@ local function update()
             p.name, p.what, p.note = name, what, note
             p.icon:SetTexture(icon)
             p.icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
+            p.icon:SetDesaturated(enemy and true or false)
+            p:SetAlpha(enemy and 0.7 or 1)
             have[#have + 1] = { x = x, y = y, icon = icon }
         end
         local function near(x, y, icon)
@@ -445,8 +447,9 @@ local function update()
             local mine = UnitFactionGroup and UnitFactionGroup("player")
             for _, e in ipairs((SFP.ServicePins and SFP.ServicePins[map]) or {}) do
                 local f = e[6]
-                if not (f and f ~= "" and mine and not f:find(mine:sub(1, 1), 1, true)) and not near(e[3], e[4], serviceIcon(e[1])) then
-                    put(e[3], e[4], e[5], e[1], serviceIcon(e[1]), nil)
+                local enemy = f and f ~= "" and mine and not f:find(mine:sub(1, 1), 1, true)
+                if (not enemy or SFP.db.showEnemyServices) and not near(e[3], e[4], serviceIcon(e[1])) then
+                    put(e[3], e[4], e[5], e[1], serviceIcon(e[1]), enemy and ((f == "H" and "Horde" or "Alliance") .. " - you cannot use it") or nil, enemy)
                 end
             end
             -- where the game data (Data/ServicePins.lua) knows the services, only it is used: the places you spoke to an NPC from are not the places of the NPCs

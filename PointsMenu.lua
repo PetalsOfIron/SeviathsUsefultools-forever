@@ -12,6 +12,8 @@ local KINDS = {
     { "showMining",    "Mining nodes",      false },
     { "showHerbs",     "Herb nodes",        false },
     { "showTreasures", "Treasures (all chests)", true },
+    { "showServices",  "Auction houses, banks, trainers", true },
+    { "showEnemyServices", "... also of the other side (greyed)", false },
 }
 
 local function isOn(key, default)
