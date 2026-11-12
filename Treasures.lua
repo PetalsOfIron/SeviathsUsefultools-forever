@@ -377,8 +377,8 @@ local function getServicePin()
             local t = SFP.Tip and SFP.Tip() or GameTooltip
             t:SetOwner(self, "ANCHOR_RIGHT")
             t:ClearLines()
-            t:AddLine(tostring(self.name or self.what or "?"), 1, 0.82, 0.2)
-            t:AddLine(tostring(self.what or ""), 0.75, 0.75, 0.75)
+            t:AddLine(tostring(self.what or self.name or "?"), 1, 0.82, 0.2)
+            if self.name and self.name ~= self.what then t:AddLine(tostring(self.name), 0.75, 0.75, 0.75) end
             if self.note then t:AddLine(self.note, 0.55, 0.55, 0.55) end
             t:Show()
         end)
@@ -428,17 +428,25 @@ local function update()
             p.name, p.what, p.note = name, what, note
             p.icon:SetTexture(icon)
             p.icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
-            have[#have + 1] = { x = x, y = y, what = what }
+            have[#have + 1] = { x = x, y = y, icon = icon }
         end
-        local function near(x, y, what)
+        local function near(x, y, icon)
             for _, e in ipairs(have) do
-                if e.what == what and math.abs(e.x - x) < 0.012 and math.abs(e.y - y) < 0.012 then return true end
+                if e.icon == icon and math.abs(e.x - x) < 0.012 and math.abs(e.y - y) < 0.012 then return true end
             end
             return false
         end
         if SFP.db.showServices ~= false then
             for _, e in ipairs(poiServices(map)) do
                 put(e.x, e.y, e.n, e.what, serviceIcon(e.what), "Shown by the map of the game")
+            end
+            -- the trainers, bankers and auctioneers of the game's data (Data/ServicePins.lua, WoW Forever), of your side
+            local mine = UnitFactionGroup and UnitFactionGroup("player")
+            for _, e in ipairs((SFP.ServicePins and SFP.ServicePins[map]) or {}) do
+                local f = e[6]
+                if not (f and f ~= "" and mine and not f:find(mine:sub(1, 1), 1, true)) and not near(e[3], e[4], serviceIcon(e[1])) then
+                    put(e[3], e[4], e[5], e[1], serviceIcon(e[1]), nil)
+                end
             end
             if SFP.db.npcPos then
                 for id, r in pairs(SFP.db.npcPos) do
@@ -447,11 +455,11 @@ local function update()
                     if k and k.auctioneer then what = "Auction house"
                     elseif k and k.banker then what = "Bank"
                     elseif k and k.proftrainer then what = r.prof or "Profession trainer"
-                    elseif k and k.trainer then what = "Trainer" end
+                    end
                     if what and type(r.m) == "number" and r.x and r.y then
                         local x, y = convert(r.m, r.x, r.y, map)
-                        if x and not near(x, y, what) then
-                            put(x, y, r.n, what, serviceIcon(what), what == "Trainer" and "What it trains is not known yet: point at it once to learn it" or "You spoke to this NPC")
+                        if x and not near(x, y, serviceIcon(what)) then
+                            put(x, y, r.n, what, serviceIcon(what), "You spoke to this NPC")
                         end
                     end
                 end

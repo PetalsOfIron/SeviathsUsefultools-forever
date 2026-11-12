@@ -109,6 +109,7 @@ Data\QuestGivers.lua
 Data\QuestPrereqs.lua
 Data\QuestDB.lua
 Data\QuestStarts.lua
+Data\ServicePins.lua
 Data\MountPlaces.lua
 QuestMarkers.lua
 Treasures.lua
