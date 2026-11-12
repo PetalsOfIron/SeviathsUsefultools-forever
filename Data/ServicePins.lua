@@ -103,6 +103,7 @@ SFP.ServicePins = {
 {"Tailoring Trainer (Master)","prof",0.637,0.208,"Daryl Stack","H"},
 },
 [1425]={
+{"Fishing Trainer","prof",0.803,0.815,"Katoom the Angler","H"},
 {"Leatherworking Trainer (Master)","prof",0.134,0.435,"Drakk Stonehand","A"},
 },
 [1427]={
@@ -137,6 +138,7 @@ SFP.ServicePins = {
 },
 [1433]={
 {"Cooking Trainer","prof",0.177,0.435,"Crystal Boughman","A"},
+{"Fishing Trainer","prof",0.219,0.511,"Matthew Hooper","A"},
 {"Herbalism Trainer","prof",0.166,0.458,"Alma Jainrose","A"},
 {"Skinning Trainer","prof",0.837,0.713,"Wilma Ranthal","A"},
 },
@@ -162,6 +164,7 @@ SFP.ServicePins = {
 },
 [1437]={
 {"First Aid Trainer","prof",0.108,0.614,"Fremal Doohickey","A"},
+{"Fishing Trainer","prof",0.081,0.586,"Harold Riggs","A"},
 {"Herbalism Trainer","prof",0.08,0.558,"Telurinon Moonshadow","A"},
 },
 [1438]={
@@ -248,6 +251,7 @@ SFP.ServicePins = {
 {"Engineering Trainer (Expert)","prof",0.621,0.303,"Lilliam Sparkspindle","A"},
 {"Engineering Trainer (Journeyman)","prof",0.619,0.306,"Sprite Jumpsprocket","A"},
 {"First Aid Trainer","prof",0.53,0.447,"Shaina Fuller","A"},
+{"Fishing Trainer","prof",0.55,0.697,"Arnold Leland","A"},
 {"Herbalism Trainer","prof",0.315,0.626,"Shylamiir","A"},
 {"Herbalism Trainer","prof",0.543,0.841,"Tannysa","A"},
 {"Leatherworking Trainer (Expert)","prof",0.717,0.63,"Simon Tanner","A"},
@@ -280,6 +284,7 @@ SFP.ServicePins = {
 {"Engineering Trainer (Expert)","prof",0.76,0.254,"Nogg","H"},
 {"Engineering Trainer (Journeyman)","prof",0.76,0.241,"Thund","H"},
 {"First Aid Trainer","prof",0.342,0.846,"Arnok","H"},
+{"Fishing Trainer","prof",0.698,0.292,"Lumak","H"},
 {"Herbalism Trainer","prof",0.556,0.395,"Jandi","H"},
 {"Leatherworking Trainer (Expert)","prof",0.628,0.442,"Karolek","H"},
 {"Leatherworking Trainer (Journeyman)","prof",0.633,0.448,"Kamari","H"},
@@ -310,6 +315,7 @@ SFP.ServicePins = {
 {"Engineering Trainer (Journeyman)","prof",0.677,0.442,"Jemma Quikswitch","A"},
 {"Engineering Trainer (Master)","prof",0.696,0.503,"Tinkmaster Overspark","A"},
 {"First Aid Trainer","prof",0.551,0.583,"Nissa Firestone","A"},
+{"Fishing Trainer","prof",0.481,0.069,"Grimnur Stonebrand","A"},
 {"Herbalism Trainer","prof",0.559,0.591,"Reyna Stonebranch","A"},
 {"Leatherworking Trainer (Expert)","prof",0.402,0.337,"Fimble Finespindle","A"},
 {"Leatherworking Trainer (Journeyman)","prof",0.388,0.329,"Gretta Finespindle","A"},
@@ -332,6 +338,7 @@ SFP.ServicePins = {
 {"Enchanting Trainer (Expert)","prof",0.449,0.375,"Teg Dawnstrider","H"},
 {"Enchanting Trainer (Journeyman)","prof",0.446,0.385,"Mot Dawnstrider","H"},
 {"First Aid Trainer","prof",0.297,0.212,"Pand Stonebinder","H"},
+{"Fishing Trainer","prof",0.561,0.464,"Kah Mistrunner","H"},
 {"Herbalism Trainer","prof",0.5,0.404,"Komin Winterhoof","H"},
 {"Leatherworking Trainer (Artisan)","prof",0.415,0.426,"Una","H"},
 {"Leatherworking Trainer (Expert)","prof",0.423,0.426,"Tarn","H"},
@@ -356,6 +363,7 @@ SFP.ServicePins = {
 {"Enchanting Trainer (Expert)","prof",0.584,0.131,"Taladan","A"},
 {"Enchanting Trainer (Journeyman)","prof",0.588,0.127,"Lalina Summermoon","A"},
 {"First Aid Trainer","prof",0.517,0.122,"Dannelor","A"},
+{"Fishing Trainer","prof",0.479,0.567,"Astaia","A"},
 {"Herbalism Trainer","prof",0.48,0.68,"Firodren Mooncaller","A"},
 {"Leatherworking Trainer (Artisan)","prof",0.644,0.215,"Telonis","A"},
 {"Leatherworking Trainer (Expert)","prof",0.648,0.218,"Faldron","A"},
@@ -388,6 +396,7 @@ SFP.ServicePins = {
 {"Engineering Trainer (Expert)","prof",0.761,0.74,"Franklin Lloyd","H"},
 {"Engineering Trainer (Journeyman)","prof",0.753,0.731,"Graham Van Talen","H"},
 {"First Aid Trainer","prof",0.732,0.551,"Mary Edras","H"},
+{"Fishing Trainer","prof",0.807,0.313,"Armand Cromwell","H"},
 {"Herbalism Trainer","prof",0.54,0.495,"Martha Alliestar","H"},
 {"Leatherworking Trainer (Expert)","prof",0.702,0.574,"Arthur Moore","H"},
 {"Leatherworking Trainer (Journeyman)","prof",0.709,0.584,"Dan Golthas","H"},

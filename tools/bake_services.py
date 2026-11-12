@@ -12,7 +12,7 @@ import bake_questie as b   # noqa: E402
 
 PROFMAP = [("alchem", "Alchemy"), ("blacksmith", "Blacksmithing"), ("armor crafter", "Blacksmithing"), ("weapon crafter", "Blacksmithing"), ("enchant", "Enchanting"),
            ("engineer", "Engineering"), ("leatherwork", "Leatherworking"), ("tailor", "Tailoring"), ("herbal", "Herbalism"), ("mining", "Mining"), ("miner", "Mining"),
-           ("skinn", "Skinning"), ("cook", "Cooking"), ("butcher", "Cooking"), ("fisher", "Fishing"), ("first aid", "First Aid"), ("physician", "First Aid"),
+           ("skinn", "Skinning"), ("cook", "Cooking"), ("butcher", "Cooking"), ("fisher", "Fishing"), ("fishing", "Fishing"), ("first aid", "First Aid"), ("physician", "First Aid"),
            ("medic", "First Aid"), ("surgeon", "First Aid"), ("jewelcraft", "Jewelcrafting"), ("inscription", "Inscription"), ("archaeolog", "Archaeology")]
 RANKS = ("Apprentice", "Junior", "Journeyman", "Expert", "Artisan", "Superior", "Master", "Grand Master")
 
