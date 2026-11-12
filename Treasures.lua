@@ -448,7 +448,8 @@ local function update()
                     put(e[3], e[4], e[5], e[1], serviceIcon(e[1]), nil)
                 end
             end
-            if SFP.db.npcPos then
+            -- where the game data (Data/ServicePins.lua) knows the services, only it is used: the places you spoke to an NPC from are not the places of the NPCs
+            if SFP.db.npcPos and not SFP.ServicePins then
                 for id, r in pairs(SFP.db.npcPos) do
                     local what
                     local k = r.k

@@ -38,7 +38,7 @@ def main():
         r = b.row(kv, "Npc", i)
         if not r:
             continue
-        sn = b.text(r.get(14))
+        sn = b.text(r.get(14)) or ""
         name = b.text(r.get(1))
         if not isinstance(sn, str) or not isinstance(name, str):
             continue
@@ -47,8 +47,8 @@ def main():
         label = sn
         if low in ("banker",):
             kind, label = "bank", "Banker"
-        elif low.startswith("auctioneer"):
-            kind, label = "auction", "Auctioneer"
+        elif low.startswith("auctioneer") or (isinstance(r.get(15), int) and r.get(15) & 4096 and name.startswith("Auctioneer")):
+            kind, label = "auction", "Auction house"
         elif isinstance(r.get(15), int) and r.get(15) & 16 and profession(sn):
             kind, label = "prof", profession(sn)
         if not kind:
