@@ -47,6 +47,7 @@ local HAS_WARBAND_BANK = not (WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == W
 -- true from the moment the game starts leaving the world (logout, character change, loading screen) until the next one is entered: the game answers 0 gold and no skills then,
 -- so nothing is saved in that time
 local leaving = false
+local enteredAt = nil   -- when the world was entered: the game answers 0 gold for the first moments
 
 -- the money of the character, whole: the game's number, or (when it gives none) the figure on the money frame of the bags
 local function myMoney()
@@ -71,7 +72,10 @@ function SFP:UpdateAlt()
     local m = myMoney()
     -- a reading of 0 right after something else than a change of gold is not believed when gold was saved before
     if (m == nil or m == 0) and old and (old.money or 0) > 0 and not (self._moneyEventAt and GetTime() - self._moneyEventAt < 5) then m = old.money end
-    local rec = { v = 2, t = time(), level = UnitLevel("player"), money = m or 0, profs = {} }
+    -- the first moments in the world the game answers 0 gold (it has not told the addon yet): a 0 then is "not read", not "no gold" - until a change of gold
+    -- arrives or 15 seconds have passed
+    if m == 0 and not (self._moneyEventAt or (enteredAt and GetTime() - enteredAt > 15)) then m = old and old.money or nil end
+    local rec = { v = 2, t = time(), level = UnitLevel("player"), money = m, profs = {} }
     -- both names of the character (first name and surname; the game gives the surname where other games have the realm)
     do
         local n, s = UnitName("player")
@@ -185,15 +189,16 @@ end
 
 local function bagIDs(kind)
     local B = (Enum and Enum.BagIndex) or {}
-    if kind == "bags" then return { 0, 1, 2, 3, 4, 5 } end   -- (5 is the reagent bag of the new game; a bag that is not there has no slots)
+    -- WoW Forever has the bank of the Classic style: the bank itself (-1) and its bags (5 to 11), although the game knows the new bank tabs (6 to 11) too
+    local classic = WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT
+    if kind == "bags" then return classic and { 0, 1, 2, 3, 4 } or { 0, 1, 2, 3, 4, 5 } end   -- (5 is the reagent bag of the new game; a bag that is not there has no slots)
     local ids = {}
     if kind == "bank" then
-        if B.CharacterBankTab_1 then
-            for i = 1, 6 do ids[#ids + 1] = B["CharacterBankTab_" .. i] or (5 + i) end
-        else
-            -- the bank of the Classic style game: the bank itself (-1) and its bags (5 to 11)
+        if classic then
             ids[1] = B.Bank or -1
-            for i = 1, 7 do ids[#ids + 1] = B["BankBag_" .. i] or (4 + i) end
+            for i = 5, 11 do ids[#ids + 1] = i end
+        else
+            for i = 1, 6 do ids[#ids + 1] = B["CharacterBankTab_" .. i] or (5 + i) end
         end
     else
         for i = 1, 5 do ids[#ids + 1] = B["AccountBankTab_" .. i] or (11 + i) end
@@ -327,7 +332,7 @@ local function altRefresh()
             if r.v ~= 2 then
                 rows[#rows + 1] = { text = "|cffff8040Saved by an older version: gold, bags, bank and professions of this character are filled in when you log in with it once.|r" }
             end
-            rows[#rows + 1] = { text = ("Gold: %s%s    |cff808080(saved %s)|r"):format(money(r.money), (r.ilvl or 0) > 0 and ("     Item level: " .. r.ilvl) or "", ago(r.t)) }
+            rows[#rows + 1] = { text = ("Gold: %s%s    |cff808080(saved %s)|r"):format(r.money and money(r.money) or "|cff808080not read yet|r", (r.ilvl or 0) > 0 and ("     Item level: " .. r.ilvl) or "", ago(r.t)) }
             rows[#rows + 1] = { text = "Professions: " .. (#(r.profs or {}) > 0 and table.concat(r.profs, ", ") or "none") }
             local w = db.weekly and db.weekly[sel]
             if w then
@@ -446,7 +451,7 @@ af:SetScript("OnEvent", function(_, event, arg1)
         leaving = true   -- (what was changed is saved a moment after each change, so nothing is lost)
         return
     end
-    if event == "PLAYER_ENTERING_WORLD" then leaving = false end
+    if event == "PLAYER_ENTERING_WORLD" then leaving = false; enteredAt = GetTime(); SFP._moneyEventAt = nil; saveSoon(16) end
     if event == "PLAYER_MONEY" then SFP._moneyEventAt = GetTime() end
     if event == "BANKFRAME_OPENED" or (event == "PLAYER_INTERACTION_MANAGER_FRAME_SHOW" and isBankType(arg1)) then
         bankOpen = true
