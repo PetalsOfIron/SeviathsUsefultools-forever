@@ -343,10 +343,10 @@ local function altRefresh()
             local d = r.done
             local dn = d and d.dungeons or {}
             local rn = d and d.raids or {}
-            rows[#rows + 1] = { text = "|cffffd100Dungeons done at the maximum level|r  " .. ("%d%s"):format(#dn, (d and d.dun and (d.dun[2] or 0) > 0) and (" / " .. math.max(d.dun[2], #dn)) or "") }
+            rows[#rows + 1] = { text = "|cffffd100Dungeons done at the maximum level" .. ((d and d.weekly) and " this week" or "") .. "|r  " .. ("%d%s"):format(#dn, (d and d.dun and (d.dun[2] or 0) > 0) and (" / " .. math.max(d.dun[2], #dn)) or "") }
             for _, n in ipairs(dn) do rows[#rows + 1] = { text = "   " .. titleCase(n) } end
             if #dn == 0 then rows[#rows + 1] = { text = "   |cff808080none yet|r" } end
-            rows[#rows + 1] = { text = "|cffffd100Raids done at the maximum level|r  " .. ("%d%s"):format(#rn, (d and d.rd and (d.rd[2] or 0) > 0) and (" / " .. math.max(d.rd[2], #rn)) or "") }
+            rows[#rows + 1] = { text = "|cffffd100Raids done at the maximum level" .. ((d and d.weekly) and " this week" or "") .. "|r  " .. ("%d%s"):format(#rn, (d and d.rd and (d.rd[2] or 0) > 0) and (" / " .. math.max(d.rd[2], #rn)) or "") }
             for _, n in ipairs(rn) do rows[#rows + 1] = { text = "   " .. titleCase(n) } end
             if #rn == 0 then rows[#rows + 1] = { text = "   |cff808080none yet|r" } end
             -- the bags and the bank

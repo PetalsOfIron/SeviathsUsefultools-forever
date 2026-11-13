@@ -396,6 +396,14 @@ function S.MineDone()
     return m
 end
 
+-- the dungeons and raids this character finished THIS WEEK at the maximum level (each once): the lists start again at every weekly reset
+function S.MineWeek()
+    local m = S.MineDone()
+    local w = weekStart() or 0
+    if not (m.wk and m.wk.t == w) then m.wk = { t = w, dungeon = {}, raid = {} } end
+    return m.wk
+end
+
 -- The instances you enter are collected (all your characters): raids, dungeons and delves, with how often and on which difficulty.
 -- c.lib = { raid = { [name] = { id, n (visits), t (last), diffs = { [difficulty name] = true } } }, dungeon = {...}, delve = {...} }
 -- the Done list counts only the real content: a dungeon only as a Mythic+ (the keystone difficulty), raid bosses only from Heroic, and only at the maximum level
@@ -424,6 +432,7 @@ function S.NoteInstance()
     end
     -- this character's own list: delves, and the dungeons run as Mythic+ (not normal or heroic ones, not while leveling)
     if (kind == "delve" and not FOREVER) or (kind == "dungeon" and atMaxLevel() and (FOREVER or diffID == 8)) then S.MineDone()[kind][name:lower()] = true end
+    if kind == "dungeon" and FOREVER and atMaxLevel() then S.MineWeek().dungeon[name:lower()] = true end
     -- a reload inside the same instance is not a new visit
     if not (rec.t and time() - rec.t < 120) then rec.n = rec.n + 1 end
     rec.t = time()
@@ -452,7 +461,7 @@ function S.NoteBoss(encounterID, bossName)
     local rec = kind and c.lib and c.lib[kind] and c.lib[kind][name]
     if not rec then return end
     -- a raid with a boss killed at the maximum level is a raid done (each raid once)
-    if kind == "raid" and atMaxLevel() and ((WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT) or HEROIC_RAID[diffID]) then S.MineDone().raid[name:lower()] = true end
+    if kind == "raid" and atMaxLevel() and ((WOW_PROJECT_CAMELOT ~= nil and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT) or HEROIC_RAID[diffID]) then S.MineDone().raid[name:lower()] = true; S.MineWeek().raid[name:lower()] = true end
     rec.bosses = rec.bosses or {}
     local b = rec.bosses[bossName] or { n = 0 }
     b.n = b.n + 1
@@ -554,7 +563,7 @@ function S.Progress()
     -- dungeons: this expansion's dungeons (Adventure Guide) and the ones you have entered (collected when you walk in)
     if dr and dr.PlaceTier and dr.db and dr.db.dungeon and GetServerExpansionLevel then
         if dr.LoadEJPlaces then pcall(dr.LoadEJPlaces, dr, "dungeon") end
-        local cur, entered = GetServerExpansionLevel() + 1, mineDone.dungeon
+        local cur, entered = GetServerExpansionLevel() + 1, (FOREVER and S.MineWeek().dungeon or mineDone.dungeon)
         local list = {}
         for name in pairs(dr.db.dungeon.known or {}) do
             if dr:PlaceTier("dungeon", name) == cur then list[#list + 1] = name:lower() end
@@ -605,7 +614,7 @@ function S.Progress()
             end
         end
     end
-    for _ in pairs(mineDone.raid or {}) do out.rd[1] = out.rd[1] + 1 end
+    for _ in pairs((FOREVER and S.MineWeek().raid) or mineDone.raid or {}) do out.rd[1] = out.rd[1] + 1 end
     out.rd[2] = math.max(out.rd[2], out.rd[1])
     return out
 end
@@ -620,7 +629,8 @@ function S.AltDone()
         return out
     end
     local ok, pr = pcall(S.Progress)
-    return { dungeons = names(m.dungeon), raids = names(m.raid), dun = ok and pr and pr.dun or nil, rd = ok and pr and pr.rd or nil }
+    local wk = FOREVER and S.MineWeek()
+    return { weekly = FOREVER or nil, dungeons = names(wk and wk.dungeon or m.dungeon), raids = names(wk and wk.raid or m.raid), dun = ok and pr and pr.dun or nil, rd = ok and pr and pr.rd or nil }
 end
 
 -- a delve was finished: it is marked as done (matched to the Codex list by name)
