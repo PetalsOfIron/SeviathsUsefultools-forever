@@ -74,6 +74,7 @@ collected\tools.learnedQuests.lua
 collected\tools.npcMaps.lua
 collected\tools.npcPos.lua
 collected\tools.objects.lua
+collected\tools.premade.lua
 collected\tools.rareSeen.lua
 collected\tools.realmGroups.lua
 collected\tools.towns.lua
