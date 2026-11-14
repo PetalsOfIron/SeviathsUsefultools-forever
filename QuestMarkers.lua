@@ -21,7 +21,7 @@ local function takenSet()
     SFP.db.questsTaken[k] = SFP.db.questsTaken[k] or {}
     return SFP.db.questsTaken[k]
 end
-local logIDs, logAt
+local logIDs, logAt, logTitles
 local function haveQuest(id)
     if takenSet()[id] then return true end
     if C_QuestLog then
@@ -36,23 +36,31 @@ local function haveQuest(id)
     end
     if GetNumQuestLogEntries and (GetQuestLogTitle or (C_QuestLog and C_QuestLog.GetInfo)) then
         if not logIDs or GetTime() - (logAt or 0) > 2 then
-            logIDs, logAt = {}, GetTime()
+            logIDs, logAt, logTitles = {}, GetTime(), {}
             local n = GetNumQuestLogEntries() or 0
             for i = 1, n do
-                local qid
+                local qid, title
                 if C_QuestLog and C_QuestLog.GetInfo then
                     local ok, info = pcall(C_QuestLog.GetInfo, i)
-                    qid = ok and type(info) == "table" and not info.isHeader and info.questID or nil
+                    if ok and type(info) == "table" and not info.isHeader then qid, title = info.questID, info.title end
                 elseif GetQuestLogTitle then
-                    local _, _, _, isHeader, _, _, _, id2 = GetQuestLogTitle(i)
-                    qid = (not isHeader) and id2 or nil
+                    local t, _, _, isHeader, _, _, _, id2 = GetQuestLogTitle(i)
+                    if not isHeader then qid, title = id2, t end
                 end
                 if qid then logIDs[qid] = true end
+                if type(title) == "string" and not (issecretvalue and issecretvalue(title)) then logTitles[title:lower()] = true end
             end
         end
         return logIDs[id] == true
     end
     return false
+end
+
+-- a quest of the log by its title: the same quest can have another number in the data (a quest of a newer version of the game); the log is the truth
+local function inLogByTitle(name)
+    if type(name) ~= "string" or name == "" then return false end
+    haveQuest(-1)   -- (the log is read again when the last reading is old)
+    return logTitles ~= nil and logTitles[name:lower()] == true
 end
 
 -- the quests this character has had in its log or finished, kept by the addon (db.questsHad[character][quest]): scanned at login and whenever the log changes,
@@ -133,8 +141,9 @@ local function scanLog()
         end
         if qid then found[qid] = true; count = count + 1 end
     end
-    -- the log could be read: it is the truth; when it cannot (entries but no numbers), the events keep the set
-    if count > 0 or n == 0 then
+    -- the log could be read: it is the truth. An empty log is NOT believed: right after the login the game has not filled the log yet (it says 0 entries), and
+    -- that wiped the quests the character had taken: their givers got the mark back. The events (accepted, removed, turned in) keep the set when the log gives nothing.
+    if count > 0 then
         local t = takenSet()
         for k in pairs(t) do t[k] = nil end
         for k in pairs(found) do t[k] = true end
@@ -402,7 +411,7 @@ end
 -- is this quest available to this character? (the order of Questie's QuestieDB.IsDoable; the level rules are those of this addon: quests below your level stay)
 local function doable(id, rule, lvl)
     if isDone(id) then return false, "done" end
-    if haveQuest(id) or hadQuest(id) then return false, "in your log" end
+    if haveQuest(id) or hadQuest(id) or inLogByTitle(rule.n) then return false, "in your log" end
     -- repeatable, daily and weekly quests (the blue "!" of the game) are not marked
     local sf, fl = rule.sf or 0, rule.fl or 0
     if hasBit(sf, 1) or hasBit(fl, 4096) or hasBit(fl, 32768) then return false, "repeatable / daily" end
@@ -533,7 +542,7 @@ local function available(entry)
         end
         if ok and C_QuestLog then
             if isDone(q.id) then ok = false end
-            if ok and (haveQuest(q.id) or hadQuest(q.id)) then ok = false end
+            if ok and (haveQuest(q.id) or hadQuest(q.id) or inLogByTitle(q.name)) then ok = false end
         end
         if ok then out[#out + 1] = q end
     end
@@ -636,7 +645,7 @@ local function learnedQuestGivers(map)
     for qid, r in pairs((SFP.db and SFP.db.learnedQuests) or {}) do
         if type(r) == "table" and r.m == map and r.g and r.x and not (SFP.QDB and SFP.QDB[qid]) then   -- (a quest of the database is marked from it, not from what was learned)
             local done = isDone(qid)
-            local inLog = haveQuest(qid) or hadQuest(qid)
+            local inLog = haveQuest(qid) or hadQuest(qid) or inLogByTitle(questTitle(qid, r))
             local prev = (SFP.QuestPrereq and SFP.QuestPrereq[qid]) or (SFP.db.learnedPrereq and SFP.db.learnedPrereq[qid])
             -- a quest this character has learned was taken by it, so the quest before it was done (the chain is only a guess from names): it is never blocked
             local blocked = false
