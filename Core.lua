@@ -1573,6 +1573,8 @@ SlashCmdList["SEVIATHSUSEFULTOOLS"] = function(msg)
         local QM = SFP.QuestMarkers
         SFP:Print(("Quest marks: a quest up to %d level(s) above yours is marked (learned from the quests the game offered or let you accept: %s; start value 2)."):format(
             QM and QM.LevelsAbove and QM.LevelsAbove() or 2, tostring(SFP.db and SFP.db.questAbove or "none yet")))
+    elseif cmd == "qlog" then
+        SFP:Print(SFP.QuestMarkers and SFP.QuestMarkers.LogReport and SFP.QuestMarkers.LogReport() or "no quest markers")
     elseif cmd == "qdebug" then
         SFP.db.questMarkerDebug = not (SFP.db.questMarkerDebug == true)
         SFP:Print("Quest mark tooltip details: " .. (SFP.db.questMarkerDebug == true and "on" or "off"))

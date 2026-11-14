@@ -22,6 +22,55 @@ local function takenSet()
     return SFP.db.questsTaken[k]
 end
 local logIDs, logAt, logTitles
+-- the quest log read in full: quests under a collapsed zone header are not in the list the game gives (only the header is), so the collapsed headers are opened for the
+-- moment of the reading and closed again. Returns the quest numbers, the titles and the number of entries.
+local reading, expandedAt = false, -999   -- (the game answers the opening and closing with events: a reading that opens headers is made at most once in 20 seconds, so it cannot feed itself)
+local function readLog()
+    local ids, titles = {}, {}
+    local function entry(i)
+        if C_QuestLog and C_QuestLog.GetInfo then
+            local ok, info = pcall(C_QuestLog.GetInfo, i)
+            if ok and type(info) == "table" then return info.questID, info.title, info.isHeader, info.isCollapsed end
+        elseif GetQuestLogTitle then
+            local t, _, _, h, c, _, _, id2 = GetQuestLogTitle(i)
+            return id2, t, h, c
+        end
+    end
+    local function pass()
+        local n = GetNumQuestLogEntries and GetNumQuestLogEntries() or 0
+        local collapsed = {}
+        for i = 1, n do
+            local qid, title, isHeader, isCollapsed = entry(i)
+            if isHeader then
+                if isCollapsed and type(title) == "string" then collapsed[#collapsed + 1] = title end
+            else
+                if type(qid) == "number" and qid > 0 then ids[qid] = true end
+                if type(title) == "string" and not (issecretvalue and issecretvalue(title)) then titles[title:lower()] = true end
+            end
+        end
+        return n, collapsed
+    end
+    local n, collapsed = pass()
+    if #collapsed > 0 and not reading and GetTime() - expandedAt > 20 then
+        expandedAt = GetTime()
+        local expand = (C_QuestLog and C_QuestLog.ExpandQuestHeader) or ExpandQuestHeader
+        local collapse = (C_QuestLog and C_QuestLog.CollapseQuestHeader) or CollapseQuestHeader
+        if expand and collapse then
+            reading = true
+            pcall(expand, 0, true)
+            n = pass()
+            local want = {}
+            for _, t in ipairs(collapsed) do want[t] = true end
+            for i = (GetNumQuestLogEntries and GetNumQuestLogEntries() or 0), 1, -1 do   -- (from the bottom up: the places above do not move)
+                local _, title, isHeader = entry(i)
+                if isHeader and want[title] then pcall(collapse, i) end
+            end
+            reading = false
+        end
+    end
+    return ids, titles, n
+end
+
 local function haveQuest(id)
     if takenSet()[id] then return true end
     if C_QuestLog then
@@ -36,20 +85,8 @@ local function haveQuest(id)
     end
     if GetNumQuestLogEntries and (GetQuestLogTitle or (C_QuestLog and C_QuestLog.GetInfo)) then
         if not logIDs or GetTime() - (logAt or 0) > 2 then
-            logIDs, logAt, logTitles = {}, GetTime(), {}
-            local n = GetNumQuestLogEntries() or 0
-            for i = 1, n do
-                local qid, title
-                if C_QuestLog and C_QuestLog.GetInfo then
-                    local ok, info = pcall(C_QuestLog.GetInfo, i)
-                    if ok and type(info) == "table" and not info.isHeader then qid, title = info.questID, info.title end
-                elseif GetQuestLogTitle then
-                    local t, _, _, isHeader, _, _, _, id2 = GetQuestLogTitle(i)
-                    if not isHeader then qid, title = id2, t end
-                end
-                if qid then logIDs[qid] = true end
-                if type(title) == "string" and not (issecretvalue and issecretvalue(title)) then logTitles[title:lower()] = true end
-            end
+            logIDs, logTitles = readLog()
+            logAt = GetTime()
         end
         return logIDs[id] == true
     end
@@ -106,6 +143,22 @@ local function isDone(id)
     return hadQuest(id)   -- (every character of the account)
 end
 
+-- finished by THIS character (the quests before another one, the follow-ups and the exclusive quests are about this character's own progress: a quest another
+-- character of the account finished does not open the next quest of a chain for this one)
+local function hadQuestMine(id)
+    local t = SFP.db and SFP.db.questsHad and SFP.db.questsHad[charId()]
+    return type(t) == "table" and (t[id] == 2 or t[id] == true) or false
+end
+local function isDoneMine(id)
+    if C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted then
+        local ok, v = pcall(C_QuestLog.IsQuestFlaggedCompleted, id)
+        if ok and v then return true end
+    end
+    isDone(-1)   -- (the list of finished quests is read again when it is old)
+    if doneList and doneList[id] then return true end
+    return hadQuestMine(id)
+end
+
 -- does this game have the quest at all? The shipped data comes from Wowhead and holds quests of other versions of the game (Season of Discovery, retail-era
 -- events ...). The game itself is asked once per quest (C_QuestLog.RequestLoadQuestByID answers with QUEST_DATA_LOAD_RESULT) and the answer is kept
 -- (db.questValid[id]); a quest the game says it does not know is not shown. Without that call in the game, every quest is kept.
@@ -128,28 +181,34 @@ QM.Known = questKnown
 
 local function scanLog()
     if not SFP.db then return end
-    local n = GetNumQuestLogEntries and GetNumQuestLogEntries() or 0
-    local found, count = {}, 0
-    for i = 1, n do
-        local qid
-        if C_QuestLog and C_QuestLog.GetInfo then
-            local ok, info = pcall(C_QuestLog.GetInfo, i)
-            qid = ok and type(info) == "table" and not info.isHeader and info.questID or nil
-        elseif GetQuestLogTitle then
-            local _, _, _, isHeader, _, _, _, id2 = GetQuestLogTitle(i)
-            qid = (not isHeader) and id2 or nil
-        end
-        if qid then found[qid] = true; count = count + 1 end
-    end
-    -- the log could be read: it is the truth. An empty log is NOT believed: right after the login the game has not filled the log yet (it says 0 entries), and
-    -- that wiped the quests the character had taken: their givers got the mark back. The events (accepted, removed, turned in) keep the set when the log gives nothing.
+    local found = readLog()
+    local count = 0
+    for _ in pairs(found) do count = count + 1 end
+    -- the quests of the log are added to the set. A quest leaves the set only when the game says it is no longer on it (QUEST_REMOVED / QUEST_TURNED_IN, or
+    -- IsOnQuest answering no): a reading of the log that misses quests (collapsed headers, a log not filled yet after the login) never wipes the set.
     if count > 0 then
         local t = takenSet()
-        for k in pairs(t) do t[k] = nil end
         for k in pairs(found) do t[k] = true end
+        if C_QuestLog and C_QuestLog.IsOnQuest then
+            for k in pairs(t) do
+                if not found[k] then
+                    local ok, v = pcall(C_QuestLog.IsOnQuest, k)
+                    if ok and v == false then t[k] = nil end
+                end
+            end
+        end
     end
 end
 QM.ScanLog = scanLog
+-- /sut qlog: what the game gives for the quest log
+function QM.LogReport()
+    local ids, _, n = readLog()
+    local c, t = 0, 0
+    for _ in pairs(ids) do c = c + 1 end
+    for _ in pairs(takenSet()) do t = t + 1 end
+    return ("quest log: %d entries, %d quests read, %d remembered; IsOnQuest %s, C_QuestLog.GetInfo %s, GetQuestLogTitle %s"):format(n or 0, c, t,
+        tostring(C_QuestLog and C_QuestLog.IsOnQuest ~= nil), tostring(C_QuestLog and C_QuestLog.GetInfo ~= nil), tostring(GetQuestLogTitle ~= nil))
+end
 QM.IsDone, QM.InLog, QM.Had = isDone, haveQuest, hadQuest
 -- for /sut qmark: what the addon knows about one quest number
 function QM.Why(id)
@@ -389,19 +448,19 @@ end
 
 -- the quest before: done, or (for a group) a quest exclusive with it done
 local function preSingleOk(list)
-    for _, id in ipairs(list) do if isDone(id) then return true end end
+    for _, id in ipairs(list) do if isDoneMine(id) then return true end end
     return false
 end
 local function preGroupOk(list)
     for _, id in ipairs(list) do
         if id < 0 then
-            if not isDone(-id) then return false end
-        elseif not isDone(id) then
+            if not isDoneMine(-id) then return false end
+        elseif not isDoneMine(id) then
             local r = SFP.QDB[id]
             local ex = r and r.ex
             if not ex then return false end
             local any = false
-            for _, e in ipairs(ex) do if isDone(e) then any = true break end end
+            for _, e in ipairs(ex) do if isDoneMine(e) then any = true break end end
             if not any then return false end
         end
     end
@@ -431,8 +490,8 @@ local function doable(id, rule, lvl)
     if rule.ps and not preSingleOk(rule.ps) then return false, "quest before (one of " .. table.concat(rule.ps, ",") .. ")" end
     if not rule.ps and rule.pg and not preGroupOk(rule.pg) then return false, "quests before (all of " .. table.concat(rule.pg, ",") .. ")" end
     if rule.pa and not haveQuest(rule.pa) then return false, "parent quest " .. rule.pa .. " not in log" end
-    if rule.nx and (isDone(rule.nx) or haveQuest(rule.nx)) then return false, "follow-up " .. rule.nx .. " started" end
-    if rule.ex then for _, e in ipairs(rule.ex) do if isDone(e) or haveQuest(e) then return false, "exclusive with " .. e end end end
+    if rule.nx and (isDoneMine(rule.nx) or haveQuest(rule.nx)) then return false, "follow-up " .. rule.nx .. " started" end
+    if rule.ex then for _, e in ipairs(rule.ex) do if isDoneMine(e) or haveQuest(e) then return false, "exclusive with " .. e end end end
     if rule.mr or rule.xr then
         local reps = playerReps()
         if reps then
@@ -451,11 +510,11 @@ local function doable(id, rule, lvl)
             if rule.sp < 0 and k then return false, "spell known" end
         end
     end
-    if rule.bf and (isDone(rule.bf) or haveQuest(rule.bf)) then return false, "its quest is started" end
+    if rule.bf and (isDoneMine(rule.bf) or haveQuest(rule.bf)) then return false, "its quest is started" end
     if rule.br then for _, b in ipairs(rule.br) do if haveQuest(b) then return false, "breadcrumb in log" end end end
     if rule.db and haveQuest(rule.db) then return false, "disabled by a quest in log" end
-    if rule.au and isDone(rule.au) then return false, "gone after " .. rule.au end
-    if rule["as"] and not (isDone(rule["as"]) or haveQuest(rule["as"])) then return false, "needs " .. rule["as"] .. " started" end
+    if rule.au and isDoneMine(rule.au) then return false, "gone after " .. rule.au end
+    if rule["as"] and not (isDoneMine(rule["as"]) or haveQuest(rule["as"])) then return false, "needs " .. rule["as"] .. " started" end
     return true
 end
 
@@ -534,11 +593,11 @@ local function available(entry)
         -- (quests below your level always show: a low-level quest can still be taken)
         -- a quest of a chain is offered only when the one before it is done
         local prev = (SFP.QuestPrereq and SFP.QuestPrereq[q.id]) or QM.PrereqFix[q.id] or (SFP.db.learnedPrereq and SFP.db.learnedPrereq[q.id])
-        if ok and prev and not isDone(prev) then ok = false end
+        if ok and prev and not isDoneMine(prev) then ok = false end
         -- every quest the page of the quest lists as needed first (Data/QuestReqs.lua): all of them must be done
         local need = SFP.QuestNeeds and SFP.QuestNeeds[q.id]
         if ok and need then
-            for _, nq in ipairs(need) do if not isDone(nq) then ok = false break end end
+            for _, nq in ipairs(need) do if not isDoneMine(nq) then ok = false break end end
         end
         if ok and C_QuestLog then
             if isDone(q.id) then ok = false end
